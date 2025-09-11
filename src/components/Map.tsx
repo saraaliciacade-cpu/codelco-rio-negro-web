@@ -51,7 +51,7 @@ const Map = () => {
       // Crear mapa con Map ID personalizado
       const map = new window.google.maps.Map(mapRef.current!, {
         center: location,
-        zoom: 6,
+        zoom: 7,
         mapId: "30fd671af640a655e95c3547"
       });
 
@@ -67,7 +67,7 @@ const Map = () => {
         <div>
           <strong>${name}</strong><br>
           ${address}<br>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" style="color: #FFA500;">Cómo llegar</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" style="color: #FFAB40;">Cómo llegar</a>
         </div>
       `;
 
@@ -98,26 +98,13 @@ const Map = () => {
   }, []);
 
   return (
-    <section className="py-32">
-      <div className="container mx-auto px-8 max-w-8xl">
-        <div className="mb-16 text-center">
-          <h3 className="text-4xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-            Nuestra Ubicación
-          </h3>
-          <p className="text-xl text-muted-foreground">
-            Visítanos en nuestra sede en Cipolletti, Río Negro
-          </p>
-        </div>
-        
-        <div className="rounded-lg overflow-hidden shadow-soft border">
-          <div 
-            ref={mapRef}
-            id="map"
-            className="w-full"
-            style={{ height: '500px' }}
-          />
-        </div>
-      </div>
+    <section className="mt-17.5">
+      <div 
+        ref={mapRef}
+        id="map"
+        className="w-full"
+        style={{ height: '100vh' }}
+      />
     </section>
   );
 };

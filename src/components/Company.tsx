@@ -1,19 +1,19 @@
 const Company = () => {
   return (
-    <section className="py-32 bg-secondary/30">
-      <div className="container mx-auto px-8 max-w-8xl">
-        <div className="text-center mb-24">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+    <section className="py-15 bg-background">
+      <div className="container mx-auto px-20 max-w-4xl">
+        <div className="text-center mb-10">
+          <h2 className="text-h1 font-bold mb-5 text-foreground">
             Nuestra Empresa
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 max-w-8xl mx-auto items-center">
+        <div className="grid lg:grid-cols-2 gap-12.5 max-w-full mx-auto items-center px-6">
           {/* Company Text */}
-          <div className="space-y-8">
-            <h3 className="text-4xl font-bold text-foreground mb-8">CODELCO S.A.</h3>
+          <div className="space-y-5">
+            <h3 className="text-h2 font-bold text-foreground mb-5">CODELCO S.A.</h3>
             
-            <div className="space-y-6 text-muted-foreground leading-relaxed text-lg">
+            <div className="space-y-5 text-foreground leading-normal text-body">
               <p>
                 Comenzamos nuestra actividad en el año 2012, coincidiendo con el crecimiento acelerado 
                 de las necesidades de la industria petrolera (perforaciones de pozos no convencionales- Vaca Muerta). 
@@ -44,9 +44,8 @@ const Company = () => {
               <img 
                 src="/lovable-uploads/0d0ca016-4bdf-4961-872b-f8420e63a6f1.png" 
                 alt="Flota de vehículos Codelco" 
-                className="rounded-lg shadow-soft max-w-full h-auto hover:shadow-strong transition-shadow duration-300"
+                className="max-w-full h-auto"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
             </div>
           </div>
         </div>

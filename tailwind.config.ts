@@ -17,44 +17,31 @@ export default {
         'sans': ['Open Sans', 'system-ui', 'sans-serif'],
       },
       fontSize: {
-        'title': ['24px', { lineHeight: '1.3', fontWeight: '700' }],
-        'subtitle': ['16px', { lineHeight: '1.5', fontWeight: '400', fontStyle: 'italic' }],
+        'h1': ['18px', { lineHeight: '1.8', fontWeight: '700' }],
+        'h2': ['14px', { lineHeight: '1.8', fontWeight: '700' }],
+        'body': ['11px', { lineHeight: '1.8', fontWeight: '400' }],
       },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        background: "#FFFFFF",
+        foreground: "#666666",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-          light: "hsl(var(--primary-light))",
-          dark: "hsl(var(--primary-dark))",
+          DEFAULT: "#FFAB40",
+          foreground: "#FFFFFF",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#F9F9F9",
+          foreground: "#666666",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "#E0E0E0",
+          foreground: "#666666",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "#FFFFFF",
+          foreground: "#666666",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

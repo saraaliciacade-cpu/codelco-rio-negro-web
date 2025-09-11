@@ -51,113 +51,107 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contacto" className="py-32 bg-secondary/30">
-      <div className="container mx-auto px-8 max-w-8xl">
-        <div className="text-center mb-24">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+    <section id="contacto" className="py-15 bg-background">
+      <div className="container mx-auto px-20 max-w-4xl">
+        <div className="text-center mb-10">
+          <h2 className="text-h1 font-bold mb-5 text-foreground">
             Contacto
           </h2>
-          <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
-            Estamos aquí para ayudarte con tus necesidades industriales. Contáctanos hoy mismo.
-          </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 max-w-8xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12.5 max-w-full mx-auto px-6">
           {/* Contact Information */}
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold mb-6">Información de Contacto</h3>
+          <div className="space-y-5">
+            <h3 className="text-h2 font-bold mb-5 text-foreground">Información de Contacto</h3>
             
             {contactInfo.map((info, index) => (
-              <div key={index} className="flex items-start space-x-4 p-4 rounded-lg bg-card border hover:shadow-soft transition-shadow duration-300">
-                <div className="bg-gradient-primary p-3 rounded-lg">
-                  <info.icon className="h-6 w-6 text-white" />
+              <div key={index} className="flex items-start space-x-4 p-4 bg-card">
+                <div className="bg-primary p-2 rounded">
+                  <info.icon className="h-4 w-4 text-white" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-foreground">{info.label}</h4>
-                  <div className="text-muted-foreground mt-1 whitespace-pre-line">{info.value}</div>
+                  <h4 className="text-h2 font-bold text-foreground">{info.label}</h4>
+                  <div className="text-body text-foreground mt-1 whitespace-pre-line">{info.value}</div>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Contact Form */}
-          <Card className="shadow-soft">
-            <CardHeader>
-              <CardTitle className="text-2xl font-semibold">Envíanos un Mensaje</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2">
-                      Nombre *
-                    </label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      className="w-full"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email *
-                    </label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      className="w-full"
-                    />
-                  </div>
-                </div>
-                
+          <div className="bg-card p-6">
+            <h3 className="text-h2 font-bold mb-5 text-center text-foreground">Envíanos un Mensaje</h3>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                    Teléfono
+                  <label htmlFor="name" className="block text-body font-normal mb-2 text-foreground">
+                    Nombre *
                   </label>
                   <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium mb-2">
-                    Mensaje *
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
+                    id="name"
+                    name="name"
+                    type="text"
                     required
-                    rows={5}
-                    value={formData.message}
+                    value={formData.name}
                     onChange={handleInputChange}
-                    className="w-full"
-                    placeholder="Describe tu consulta o necesidad..."
+                    className="w-full px-3 py-2 border border-muted text-body"
                   />
                 </div>
-                
-                <Button 
-                  type="submit" 
-                  className="w-full bg-gradient-primary hover:shadow-strong transition-all duration-300 text-lg py-6"
-                >
-                  <Send className="w-5 h-5 mr-2" />
-                  Enviar Mensaje
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
+                <div>
+                  <label htmlFor="email" className="block text-body font-normal mb-2 text-foreground">
+                    Email *
+                  </label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-3 py-2 border border-muted text-body"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="phone" className="block text-body font-normal mb-2 text-foreground">
+                  Teléfono
+                </label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border border-muted text-body"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-body font-normal mb-2 text-foreground">
+                  Mensaje *
+                </label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={4}
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="w-full px-3 py-2 border border-muted text-body resize-none"
+                  placeholder="Describe tu consulta o necesidad..."
+                />
+              </div>
+              
+              <Button 
+                type="submit" 
+                className="w-full bg-primary text-white px-4 py-3 text-body font-normal"
+              >
+                <Send className="w-3 h-3 mr-2" />
+                Enviar Mensaje
+              </Button>
+            </form>
+          </div>
         </div>
       </div>
     </section>

@@ -34,71 +34,55 @@ const Services = () => {
   };
 
   return (
-    <section className="py-32 bg-background">
-      <div className="container mx-auto px-8 max-w-8xl">
-        <div className="text-center mb-24">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
+    <section id="servicios" className="py-15 bg-background">
+      <div className="container mx-auto px-20 max-w-4xl">
+        <div className="text-center mb-10">
+          <h2 className="text-h1 font-bold mb-5 text-foreground">
             Nuestras Áreas
           </h2>
-          <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
-            Soluciones integrales para la industria petrolera y energética
-          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 max-w-8xl mx-auto">
+        <div className="space-y-10 max-w-full mx-auto px-6">
           {services.map((service, index) => (
-            <div 
-              key={service.id}
-              className="group bg-card border rounded-xl p-8 hover:shadow-soft transition-all duration-300 hover:scale-[1.02] flex flex-col min-h-[600px]"
-            >
-              {/* Icon */}
-              <div className="bg-gradient-primary p-6 rounded-xl flex-shrink-0 mb-8 self-center">
-                <service.icon className="h-16 w-16 text-white" />
+            <div key={service.id} className="bg-white p-2.5 my-10">
+              <div className="text-center mb-4">
+                <h3 className="text-h2 font-bold mb-2">
+                  {service.title}
+                </h3>
+                <h4 className="text-body font-normal" style={{ color: '#FFAB40' }}>
+                  {service.subtitle}
+                </h4>
               </div>
 
-              {/* Content */}
-              <div className="flex-1 space-y-6 text-center">
-                <div>
-                  <h3 className="text-3xl font-bold text-foreground mb-3">
-                    {service.title}
-                  </h3>
-                  <h4 className="text-xl font-semibold text-primary mb-6">
-                    {service.subtitle}
-                  </h4>
-                </div>
-                
-                <p className="text-muted-foreground leading-relaxed text-base">
-                  {service.description}
-                </p>
+              <p className="text-body leading-normal mb-4 text-center text-foreground">
+                {service.description}
+              </p>
 
-                {/* Action Buttons */}
-                <div className="flex flex-col gap-4 pt-6 mt-auto">
-                  {service.id === 'fabrica' && (
-                    <Button 
-                      onClick={() => scrollToSection('contacto')}
-                      className="bg-white text-primary px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full text-lg font-semibold"
-                    >
-                      Contáctanos
-                    </Button>
-                  )}
-                  {service.id === 'metalurgica' && (
-                    <Button 
-                      onClick={() => scrollToSection('ubicacion')}
-                      className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full text-lg"
-                    >
-                      Nuestra Ubicación
-                    </Button>
-                  )}
-                  {service.id === 'rental' && (
-                    <Button 
-                      onClick={() => scrollToSection('galeria')}
-                      variant="outline"
-                      className="border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-lg transition-all duration-300 w-full text-lg"
-                    >
-                      La Galería de Imágenes
-                    </Button>
-                  )}
-                </div>
+              <div className="text-center">
+                {service.id === 'fabrica' && (
+                  <Button 
+                    onClick={() => scrollToSection('contacto')}
+                    className="bg-white text-primary border border-primary px-4 py-2 text-body"
+                  >
+                    Contáctanos
+                  </Button>
+                )}
+                {service.id === 'metalurgica' && (
+                  <Button 
+                    onClick={() => scrollToSection('ubicacion')}
+                    className="bg-primary text-white px-4 py-2 text-body"
+                  >
+                    Nuestra Ubicación
+                  </Button>
+                )}
+                {service.id === 'rental' && (
+                  <Button 
+                    onClick={() => scrollToSection('galeria')}
+                    className="bg-white text-primary border border-primary px-4 py-2 text-body"
+                  >
+                    La Galería de Imágenes
+                  </Button>
+                )}
               </div>
             </div>
           ))}
