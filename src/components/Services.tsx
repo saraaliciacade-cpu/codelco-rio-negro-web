@@ -45,49 +45,47 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="space-y-16 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <div 
               key={service.id}
-              className="group bg-card border rounded-xl p-8 hover:shadow-soft transition-all duration-300 hover:scale-[1.02]"
+              className="group bg-card border rounded-xl p-6 hover:shadow-soft transition-all duration-300 hover:scale-[1.02] flex flex-col"
             >
-              <div className="flex flex-col lg:flex-row gap-8 items-start">
-                {/* Icon */}
-                <div className="bg-gradient-primary p-4 rounded-xl flex-shrink-0">
-                  <service.icon className="h-12 w-12 text-white" />
+              {/* Icon */}
+              <div className="bg-gradient-primary p-4 rounded-xl flex-shrink-0 mb-6 self-center">
+                <service.icon className="h-12 w-12 text-white" />
+              </div>
+
+              {/* Content */}
+              <div className="flex-1 space-y-4 text-center">
+                <div>
+                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                    {service.title}
+                  </h3>
+                  <h4 className="text-lg font-semibold text-primary mb-4">
+                    {service.subtitle}
+                  </h4>
                 </div>
+                
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  {service.description}
+                </p>
 
-                {/* Content */}
-                <div className="flex-1 space-y-4">
-                  <div>
-                    <h3 className="text-2xl font-bold text-foreground mb-2">
-                      {service.title}
-                    </h3>
-                    <h4 className="text-lg font-semibold text-primary mb-4">
-                      {service.subtitle}
-                    </h4>
-                  </div>
-                  
-                  <p className="text-muted-foreground leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  {/* Action Buttons */}
-                  <div className="flex flex-wrap gap-3 pt-4">
-                    <Button 
-                      onClick={() => scrollToSection('ubicacion')}
-                      className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
-                    >
-                      Nuestra Ubicación
-                    </Button>
-                    <Button 
-                      onClick={() => scrollToSection('contacto')}
-                      variant="outline"
-                      className="border-orange-500 text-orange-600 hover:bg-orange-50 px-6 py-2 rounded-lg transition-all duration-300"
-                    >
-                      Contáctanos
-                    </Button>
-                  </div>
+                {/* Action Buttons */}
+                <div className="flex flex-col gap-3 pt-4 mt-auto">
+                  <Button 
+                    onClick={() => scrollToSection('ubicacion')}
+                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full"
+                  >
+                    Nuestra Ubicación
+                  </Button>
+                  <Button 
+                    onClick={() => scrollToSection('contacto')}
+                    variant="outline"
+                    className="border-orange-500 text-orange-600 hover:bg-orange-50 px-4 py-2 rounded-lg transition-all duration-300 w-full"
+                  >
+                    Contáctanos
+                  </Button>
                 </div>
               </div>
             </div>
