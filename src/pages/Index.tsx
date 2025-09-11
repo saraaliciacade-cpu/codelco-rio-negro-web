@@ -18,10 +18,10 @@ const Index = () => {
         <Company />
         <Services />
         <Gallery />
+        <Contact />
         <div id="ubicacion">
           <Map />
         </div>
-        <Contact />
       </main>
       <Footer />
     </div>
