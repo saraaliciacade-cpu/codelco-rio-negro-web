@@ -69,7 +69,7 @@ const Map = () => {
         <div className="mt-6 text-center bg-card p-6 rounded-lg border">
           <h4 className="font-semibold text-lg mb-2">Dirección Completa</h4>
           <p className="text-muted-foreground">
-            Ruta 22 Km.1114, Cipolletti - Río Negro, Argentina
+            Ruta 22 Km 1214, R8324 Cipolletti, Río Negro, Argentina
           </p>
         </div>
       </div>
