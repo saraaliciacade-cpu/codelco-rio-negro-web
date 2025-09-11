@@ -34,55 +34,55 @@ const Services = () => {
   };
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
+    <section className="py-32 bg-background">
+      <div className="container mx-auto px-8 max-w-8xl">
+        <div className="text-center mb-24">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Nuestras Áreas
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
             Soluciones integrales para la industria petrolera y energética
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-12 max-w-8xl mx-auto">
           {services.map((service, index) => (
             <div 
               key={service.id}
-              className="group bg-card border rounded-xl p-6 hover:shadow-soft transition-all duration-300 hover:scale-[1.02] flex flex-col"
+              className="group bg-card border rounded-xl p-8 hover:shadow-soft transition-all duration-300 hover:scale-[1.02] flex flex-col min-h-[600px]"
             >
               {/* Icon */}
-              <div className="bg-gradient-primary p-4 rounded-xl flex-shrink-0 mb-6 self-center">
-                <service.icon className="h-12 w-12 text-white" />
+              <div className="bg-gradient-primary p-6 rounded-xl flex-shrink-0 mb-8 self-center">
+                <service.icon className="h-16 w-16 text-white" />
               </div>
 
               {/* Content */}
-              <div className="flex-1 space-y-4 text-center">
+              <div className="flex-1 space-y-6 text-center">
                 <div>
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                  <h3 className="text-3xl font-bold text-foreground mb-3">
                     {service.title}
                   </h3>
-                  <h4 className="text-lg font-semibold text-primary mb-4">
+                  <h4 className="text-xl font-semibold text-primary mb-6">
                     {service.subtitle}
                   </h4>
                 </div>
                 
-                <p className="text-muted-foreground leading-relaxed text-sm">
+                <p className="text-muted-foreground leading-relaxed text-base">
                   {service.description}
                 </p>
 
                 {/* Action Buttons */}
-                <div className="flex flex-col gap-3 pt-4 mt-auto">
+                <div className="flex flex-col gap-4 pt-6 mt-auto">
                   <Button 
                     onClick={() => scrollToSection('ubicacion')}
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full"
+                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full text-lg"
                   >
                     Nuestra Ubicación
                   </Button>
                   <Button 
                     onClick={() => scrollToSection('contacto')}
                     variant="outline"
-                    className="border-orange-500 text-orange-600 hover:bg-orange-50 px-4 py-2 rounded-lg transition-all duration-300 w-full"
+                    className="border-orange-500 text-orange-600 hover:bg-orange-50 px-6 py-3 rounded-lg transition-all duration-300 w-full text-lg"
                   >
                     Contáctanos
                   </Button>

@@ -1,19 +1,19 @@
 const Company = () => {
   return (
-    <section className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
+    <section className="py-32 bg-secondary/30">
+      <div className="container mx-auto px-8 max-w-8xl">
+        <div className="text-center mb-24">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Nuestra Empresa
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-center">
+        <div className="grid lg:grid-cols-2 gap-16 max-w-8xl mx-auto items-center">
           {/* Company Text */}
-          <div className="space-y-6">
-            <h3 className="text-3xl font-bold text-foreground mb-6">CODELCO S.A.</h3>
+          <div className="space-y-8">
+            <h3 className="text-4xl font-bold text-foreground mb-8">CODELCO S.A.</h3>
             
-            <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="space-y-6 text-muted-foreground leading-relaxed text-lg">
               <p>
                 Comenzamos nuestra actividad en el año 2012, coincidiendo con el crecimiento acelerado 
                 de las necesidades de la industria petrolera (perforaciones de pozos no convencionales- Vaca Muerta). 

@@ -22,25 +22,25 @@ const Gallery = () => {
     : images.filter(img => img.category === activeFilter);
 
   return (
-    <section className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
+    <section className="py-32 bg-secondary/30">
+      <div className="container mx-auto px-8 max-w-8xl">
+        <div className="text-center mb-24">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Galería de Imágenes
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
             Conoce nuestros proyectos y capacidades industriales
           </p>
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
+        <div className="flex flex-wrap justify-center gap-6 mb-16">
           {filters.map((filter) => (
             <Button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id)}
               variant={activeFilter === filter.id ? "default" : "outline"}
-              className={`px-6 py-2 rounded-lg transition-all duration-300 ${
+              className={`px-8 py-3 rounded-lg transition-all duration-300 text-lg ${
                 activeFilter === filter.id
                   ? 'bg-gradient-primary text-white shadow-md'
                   : 'border-primary text-primary hover:bg-primary/10'
@@ -52,7 +52,7 @@ const Gallery = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 max-w-8xl mx-auto">
           {filteredImages.length === 0 ? (
             // Placeholder cards when no images are available
             Array.from({ length: 8 }, (_, index) => (

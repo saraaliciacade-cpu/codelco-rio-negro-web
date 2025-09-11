@@ -51,7 +51,7 @@ const Map = () => {
       // Crear mapa con Map ID personalizado
       const map = new window.google.maps.Map(mapRef.current!, {
         center: location,
-        zoom: 16,
+        zoom: 10,
         mapId: "30fd671af640a655e95c3547"
       });
 
@@ -98,13 +98,13 @@ const Map = () => {
   }, []);
 
   return (
-    <section className="py-0">
-      <div className="container mx-auto px-4">
-        <div className="mb-8 text-center">
-          <h3 className="text-3xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
+    <section className="py-32">
+      <div className="container mx-auto px-8 max-w-8xl">
+        <div className="mb-16 text-center">
+          <h3 className="text-4xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Nuestra Ubicación
           </h3>
-          <p className="text-muted-foreground">
+          <p className="text-xl text-muted-foreground">
             Visítanos en nuestra sede en Cipolletti, Río Negro
           </p>
         </div>
@@ -114,7 +114,7 @@ const Map = () => {
             ref={mapRef}
             id="map"
             className="w-full"
-            style={{ height: '450px' }}
+            style={{ height: '500px' }}
           />
         </div>
       </div>
