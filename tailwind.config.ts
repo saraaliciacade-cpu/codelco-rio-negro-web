@@ -13,6 +13,13 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'sans': ['Open Sans', 'system-ui', 'sans-serif'],
+      },
+      fontSize: {
+        'title': ['24px', { lineHeight: '1.3', fontWeight: '700' }],
+        'subtitle': ['16px', { lineHeight: '1.5', fontWeight: '400', fontStyle: 'italic' }],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

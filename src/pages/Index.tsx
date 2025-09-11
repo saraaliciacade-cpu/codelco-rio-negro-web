@@ -15,9 +15,13 @@ const Index = () => {
       <main>
         <Hero />
         <Clients />
-        <Company />
+        <div id="company">
+          <Company />
+        </div>
         <Services />
-        <Gallery />
+        <div id="galeria">
+          <Gallery />
+        </div>
         <Contact />
         <div id="ubicacion">
           <Map />

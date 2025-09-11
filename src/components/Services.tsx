@@ -73,19 +73,31 @@ const Services = () => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col gap-4 pt-6 mt-auto">
-                  <Button 
-                    onClick={() => scrollToSection('ubicacion')}
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full text-lg"
-                  >
-                    Nuestra Ubicación
-                  </Button>
-                  <Button 
-                    onClick={() => scrollToSection('contacto')}
-                    variant="outline"
-                    className="border-orange-500 text-orange-600 hover:bg-orange-50 px-6 py-3 rounded-lg transition-all duration-300 w-full text-lg"
-                  >
-                    Contáctanos
-                  </Button>
+                  {service.id === 'fabrica' && (
+                    <Button 
+                      onClick={() => scrollToSection('contacto')}
+                      className="bg-white text-primary px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full text-lg font-semibold"
+                    >
+                      Contáctanos
+                    </Button>
+                  )}
+                  {service.id === 'metalurgica' && (
+                    <Button 
+                      onClick={() => scrollToSection('ubicacion')}
+                      className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 w-full text-lg"
+                    >
+                      Nuestra Ubicación
+                    </Button>
+                  )}
+                  {service.id === 'rental' && (
+                    <Button 
+                      onClick={() => scrollToSection('galeria')}
+                      variant="outline"
+                      className="border-primary text-primary hover:bg-primary/10 px-6 py-3 rounded-lg transition-all duration-300 w-full text-lg"
+                    >
+                      La Galería de Imágenes
+                    </Button>
+                  )}
                 </div>
               </div>
             </div>
