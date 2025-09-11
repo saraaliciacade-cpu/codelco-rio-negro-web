@@ -21,7 +21,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <img 
-              src={codelcoLogo} 
+              src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" 
               alt="Codelco S.A." 
               className="h-12 w-auto"
             />

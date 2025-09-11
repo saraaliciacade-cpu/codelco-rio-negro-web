@@ -13,195 +13,30 @@ const Map = () => {
   useEffect(() => {
     if (!mapRef.current) return;
 
-    // Configuración del mapa con el estilo personalizado de Google Maps
+    // Configuración del mapa con el nuevo estilo
     const initMap = () => {
+      // Ubicación de Codelco S.A. (Cipolletti, Río Negro)
+      const codelco = { lat: -38.9417, lng: -67.9856 };
+
+      // Crear mapa con el nuevo estilo
       const map = new window.google.maps.Map(mapRef.current!, {
-        center: { lat: -38.9473, lng: -68.0365 }, // Cipolletti, Río Negro coordinates
-        zoom: 15,
-        styles: [
-          {
-            "elementType": "geometry",
-            "stylers": [
-              {
-                "color": "#f5f5f5"
-              }
-            ]
-          },
-          {
-            "elementType": "labels.icon",
-            "stylers": [
-              {
-                "visibility": "off"
-              }
-            ]
-          },
-          {
-            "elementType": "labels.text.fill",
-            "stylers": [
-              {
-                "color": "#616161"
-              }
-            ]
-          },
-          {
-            "elementType": "labels.text.stroke",
-            "stylers": [
-              {
-                "color": "#f5f5f5"
-              }
-            ]
-          },
-          {
-            "featureType": "administrative.land_parcel",
-            "elementType": "labels.text.fill",
-            "stylers": [
-              {
-                "color": "#bdbdbd"
-              }
-            ]
-          },
-          {
-            "featureType": "poi",
-            "elementType": "geometry",
-            "stylers": [
-              {
-                "color": "#eeeeee"
-              }
-            ]
-          },
-          {
-            "featureType": "poi",
-            "elementType": "labels.text.fill",
-            "stylers": [
-              {
-                "color": "#757575"
-              }
-            ]
-          },
-          {
-            "featureType": "poi.park",
-            "elementType": "geometry",
-            "stylers": [
-              {
-                "color": "#e5e5e5"
-              }
-            ]
-          },
-          {
-            "featureType": "poi.park",
-            "elementType": "labels.text.fill",
-            "stylers": [
-              {
-                "color": "#9e9e9e"
-              }
-            ]
-          },
-          {
-            "featureType": "road",
-            "elementType": "geometry",
-            "stylers": [
-              {
-                "color": "#ffffff"
-              }
-            ]
-          },
-          {
-            "featureType": "road.arterial",
-            "elementType": "labels.text.fill",
-            "stylers": [
-              {
-                "color": "#757575"
-              }
-            ]
-          },
-          {
-            "featureType": "road.highway",
-            "elementType": "geometry",
-            "stylers": [
-              {
-                "color": "#dadada"
-              }
-            ]
-          },
-          {
-            "featureType": "road.highway",
-            "elementType": "labels.text.fill",
-            "stylers": [
-              {
-                "color": "#616161"
-              }
-            ]
-          },
-          {
-            "featureType": "road.local",
-            "elementType": "labels.text.fill",
-            "stylers": [
-              {
-                "color": "#9e9e9e"
-              }
-            ]
-          },
-          {
-            "featureType": "transit.line",
-            "elementType": "geometry",
-            "stylers": [
-              {
-                "color": "#e5e5e5"
-              }
-            ]
-          },
-          {
-            "featureType": "transit.station",
-            "elementType": "geometry",
-            "stylers": [
-              {
-                "color": "#eeeeee"
-              }
-            ]
-          },
-          {
-            "featureType": "water",
-            "elementType": "geometry",
-            "stylers": [
-              {
-                "color": "#c9c9c9"
-              }
-            ]
-          },
-          {
-            "featureType": "water",
-            "elementType": "labels.text.fill",
-            "stylers": [
-              {
-                "color": "#9e9e9e"
-              }
-            ]
-          }
-        ]
+        center: codelco,
+        zoom: 13,
+        mapId: "fe3f5785d26e07babd1f5325" // ID del nuevo estilo
       });
 
-      // Marcador personalizado en rojo
+      // Marcador en la ubicación
       new window.google.maps.Marker({
-        position: { lat: -38.9473, lng: -68.0365 },
-        map: map,
-        title: 'Codelco S.A.',
-        icon: {
-          url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-            <svg width="32" height="40" viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16 0C7.164 0 0 7.164 0 16c0 8.837 16 24 16 24s16-15.163 16-24C32 7.164 24.836 0 16 0z" fill="#ff5722"/>
-              <circle cx="16" cy="16" r="8" fill="white"/>
-            </svg>
-          `),
-          scaledSize: new window.google.maps.Size(32, 40),
-          anchor: new window.google.maps.Point(16, 40)
-        }
+        position: codelco,
+        map,
+        title: "Codelco S.A."
       });
     };
 
     // Cargar la API de Google Maps si no está cargada
     if (typeof window.google === 'undefined' || !window.google?.maps) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=TU_API_KEY_NUEVO&callback=initMap`;
       script.async = true;
       script.defer = true;
       window.initMap = initMap;

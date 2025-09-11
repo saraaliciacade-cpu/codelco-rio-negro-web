@@ -9,13 +9,24 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-4">
             <img 
-              src={codelcoLogo} 
+              src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" 
               alt="Codelco S.A." 
-              className="h-12 w-auto filter brightness-0 invert"
+              className="h-16 w-auto"
             />
             <p className="text-white/80 leading-relaxed">
               Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial.
             </p>
+          </div>
+
+          {/* Services */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-semibold mb-4">Nuestros Servicios</h3>
+            <ul className="space-y-2 text-white/80">
+              <li>• Servicios Industriales</li>
+              <li>• Productos Especializados</li>
+              <li>• Rental de Equipos</li>
+              <li>• Consultoría Técnica</li>
+            </ul>
           </div>
 
           {/* Contact Info */}
@@ -30,26 +41,14 @@ const Footer = () => {
                 <Mail className="h-5 w-5 text-primary-light" />
                 <span className="text-white/80">ventas@codelco.com.ar</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-primary-light" />
-                <span className="text-white/80">Rental: (299) 571 4217</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-primary-light" />
-                <span className="text-white/80">Compras: (299) 571 4661</span>
+              <div className="flex items-start space-x-3">
+                <Phone className="h-5 w-5 text-primary-light mt-0.5" />
+                <div className="text-white/80">
+                  <div>Rental: (299) 571 4217</div>
+                  <div>Compras: (299) 571 4661</div>
+                </div>
               </div>
             </div>
-          </div>
-
-          {/* Services */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-semibold mb-4">Nuestros Servicios</h3>
-            <ul className="space-y-2 text-white/80">
-              <li>• Servicios Industriales</li>
-              <li>• Productos Especializados</li>
-              <li>• Rental de Equipos</li>
-              <li>• Consultoría Técnica</li>
-            </ul>
           </div>
         </div>
 

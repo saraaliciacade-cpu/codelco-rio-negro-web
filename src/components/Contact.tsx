@@ -45,13 +45,8 @@ const Contact = () => {
     },
     {
       icon: Phone,
-      label: 'Rental',
-      value: '(299) 571 4217',
-    },
-    {
-      icon: Phone,
-      label: 'Compras',
-      value: '(299) 571 4661',
+      label: 'Teléfonos',
+      value: 'Rental: (299) 571 4217\nCompras: (299) 571 4661',
     },
   ];
 
@@ -79,7 +74,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-foreground">{info.label}</h4>
-                  <p className="text-muted-foreground mt-1">{info.value}</p>
+                  <div className="text-muted-foreground mt-1 whitespace-pre-line">{info.value}</div>
                 </div>
               </div>
             ))}

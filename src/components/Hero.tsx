@@ -17,11 +17,13 @@ const Hero = () => {
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6">
-          <span className="bg-gradient-primary bg-clip-text text-transparent">
-            CODELCO S.A.
-          </span>
-        </h1>
+        <div className="mb-6 flex justify-center">
+          <img 
+            src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" 
+            alt="Codelco S.A." 
+            className="h-32 md:h-40 w-auto"
+          />
+        </div>
         
         <p className="text-xl md:text-2xl mb-2 font-light opacity-90">
           SERVICIOS INDUSTRIALES
