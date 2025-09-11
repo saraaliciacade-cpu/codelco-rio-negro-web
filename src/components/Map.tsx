@@ -1,4 +1,51 @@
+import { useEffect, useRef } from 'react';
+
+declare global {
+  interface Window {
+    google: any;
+    initMap: () => void;
+  }
+}
+
 const Map = () => {
+  const mapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!mapRef.current) return;
+
+    // Función de inicialización del mapa
+    const initMap = () => {
+      // Coordenadas exactas de Codelco S.A.
+      const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
+
+      // Crear mapa con Map ID personalizado
+      const map = new window.google.maps.Map(mapRef.current!, {
+        center: codelcoLocation,
+        zoom: 15,
+        mapId: "30fd671af640a655e95c3547"
+      });
+
+      // Crear marcador
+      new window.google.maps.Marker({
+        position: codelcoLocation,
+        map,
+        title: "Codelco S.A"
+      });
+    };
+
+    // Cargar API de Google Maps si no está cargada
+    if (typeof window.google === 'undefined' || !window.google?.maps) {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAfO6pwad6QXR7W8DJmMaL39wQLvqZbS0I&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      window.initMap = initMap;
+      document.head.appendChild(script);
+    } else {
+      initMap();
+    }
+  }, []);
+
   return (
     <section className="py-0">
       <div className="container mx-auto px-4">
@@ -12,15 +59,11 @@ const Map = () => {
         </div>
         
         <div className="rounded-lg overflow-hidden shadow-soft border">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d397180.10246947134!2d-68.002487!3d-38.947524!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a3100788a8f25%3A0xba6a9741f286941f!2sCodelco%20S.A!5e0!3m2!1ses!2sar!4v1757562014836!5m2!1ses!2sar" 
-            width="100%" 
-            height="400" 
-            style={{ border: 0, minHeight: '400px' }}
-            allowFullScreen
-            loading="lazy" 
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Ubicación de Codelco S.A."
+          <div 
+            ref={mapRef}
+            id="map"
+            className="w-full"
+            style={{ height: '450px' }}
           />
         </div>
         
