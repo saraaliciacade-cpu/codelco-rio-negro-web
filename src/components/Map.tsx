@@ -51,7 +51,7 @@ const Map = () => {
       // Crear mapa con Map ID personalizado
       const map = new window.google.maps.Map(mapRef.current!, {
         center: location,
-        zoom: 7,
+        zoom: 12,
         mapId: "30fd671af640a655e95c3547"
       });
 
