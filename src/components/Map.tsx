@@ -36,7 +36,7 @@ const Map = () => {
     // Cargar la API de Google Maps si no está cargada
     if (typeof window.google === 'undefined' || !window.google?.maps) {
       const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=TU_API_KEY_NUEVO&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAfO6pwad6QXR7W8DJmMaL39wQLvqZbS0I&callback=initMap`;
       script.async = true;
       script.defer = true;
       window.initMap = initMap;

@@ -19,18 +19,18 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 text-center text-white">
         <div className="mb-6 flex justify-center">
           <img 
-            src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" 
+            src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" 
             alt="Codelco S.A." 
-            className="h-32 md:h-40 w-auto"
+            className="h-20 md:h-24 w-auto"
           />
         </div>
         
         <p className="text-xl md:text-2xl mb-2 font-light opacity-90">
-          SERVICIOS INDUSTRIALES
+          Una empresa regional
         </p>
         
-        <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-80">
-          Soluciones integrales en servicios industriales, productos especializados y rental de equipos para el sector industrial en Argentina.
+        <p className="text-lg md:text-xl mb-8 max-w-4xl mx-auto opacity-80 leading-relaxed">
+          Nuestro objetivo es proveerles a nuestros clientes un servicio integral, desde el asesoramiento inicial hasta la entrega final. Para ello, contamos con una planta de 3500m2, totalmente dedicada y equipada a la realización de nuestros productos y todo el personal necesario específicamente para cada sector.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -38,12 +38,12 @@ const Hero = () => {
             size="lg" 
             className="bg-gradient-primary hover:shadow-strong transition-all duration-300 text-lg px-8 py-6"
           >
-            Conoce Nuestros Servicios
+            Nuestros Servicios
           </Button>
           <Button 
-            variant="outline" 
+            variant="secondary" 
             size="lg"
-            className="border-white text-white hover:bg-white hover:text-primary transition-all duration-300 text-lg px-8 py-6"
+            className="text-lg px-8 py-6"
           >
             Contactanos
           </Button>
