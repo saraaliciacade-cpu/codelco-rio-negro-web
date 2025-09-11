@@ -17,6 +17,8 @@ const Map = () => {
     const initMap = () => {
       // Coordenadas exactas de Codelco S.A.
       const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
+      const name = 'Codelco S.A';
+      const address = 'Codelco Cipolletti, Río Negro, Argentina';
 
       // Crear mapa con Map ID personalizado
       const map = new window.google.maps.Map(mapRef.current!, {
@@ -26,10 +28,31 @@ const Map = () => {
       });
 
       // Crear marcador
-      new window.google.maps.Marker({
+      const marker = new window.google.maps.Marker({
         position: codelcoLocation,
         map,
-        title: "Codelco S.A"
+        title: name
+      });
+
+      // Crear ventana de información
+      const infoContent = `
+        <div>
+          <strong>${name}</strong><br>
+          ${address}<br>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${codelcoLocation.lat},${codelcoLocation.lng}" target="_blank">Cómo llegar</a>
+        </div>
+      `;
+
+      const infoWindow = new window.google.maps.InfoWindow({
+        content: infoContent
+      });
+
+      // Mostrar info window por defecto
+      infoWindow.open(map, marker);
+      
+      // Agregar evento click al marcador
+      marker.addListener("click", () => {
+        infoWindow.open(map, marker);
       });
     };
 
