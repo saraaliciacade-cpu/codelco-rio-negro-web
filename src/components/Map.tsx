@@ -51,7 +51,7 @@ const Map = () => {
       // Crear mapa con Map ID personalizado
       const map = new window.google.maps.Map(mapRef.current!, {
         center: location,
-        zoom: 10,
+        zoom: 8,
         mapId: "30fd671af640a655e95c3547"
       });
 
@@ -116,13 +116,6 @@ const Map = () => {
             className="w-full"
             style={{ height: '450px' }}
           />
-        </div>
-        
-        <div className="mt-6 text-center bg-card p-6 rounded-lg border">
-          <h4 className="font-semibold text-lg mb-2">Dirección Completa</h4>
-          <p className="text-muted-foreground">
-            Codelco Cipolletti, Río Negro, Argentina
-          </p>
         </div>
       </div>
     </section>
