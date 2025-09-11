@@ -36,7 +36,7 @@ const Contact = () => {
     {
       icon: MapPin,
       label: 'Dirección',
-      value: 'Ruta 22 Km.1114, Cipolletti - Río Negro',
+      value: 'Ruta 22 Km.1114, Cipolletti - Río Negro\nDías: Lunes a viernes\nHorario: 8-12hs / 15-19hs',
     },
     {
       icon: Mail,
