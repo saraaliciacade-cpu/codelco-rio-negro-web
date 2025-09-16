@@ -3,7 +3,7 @@ import codelcoLogo from '@/assets/codelco-logo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-hero text-white py-12">
+    <footer className="text-white py-12" style={{backgroundColor: '#333333'}}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Company Info */}
@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/20 mt-12 pt-8 text-center">
-          <p className="font-nunito" style={{color: '#333333'}}>
+          <p className="font-nunito text-white">
             © {new Date().getFullYear()} Codelco S.A. Todos los derechos reservados.
           </p>
         </div>

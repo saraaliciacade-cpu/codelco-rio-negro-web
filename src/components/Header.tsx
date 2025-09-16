@@ -37,9 +37,6 @@ const Header = () => {
                 href={item.href}
                 className="relative text-body font-normal text-foreground hover:text-primary transition-all duration-300 ease-in-out group flex items-center"
               >
-                <span className="opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out mr-1">
-                  <img src={searchIcon} alt="Active" className="h-3 w-3" style={{filter: 'invert(48%) sepia(43%) saturate(767%) hue-rotate(335deg) brightness(89%) contrast(92%)'}} />
-                </span>
                 <span>{item.isSearch ? <img src={searchIcon} alt="Buscar" className="h-4 w-4" /> : item.name}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </a>
