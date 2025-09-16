@@ -30,13 +30,18 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 relative">
+          <nav className="hidden md:flex items-center space-x-8 relative">
             {menuItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="relative text-body font-normal text-foreground hover:text-primary transition-all duration-300 ease-in-out group flex items-center"
+                className="relative text-lg font-medium text-foreground hover:text-primary transition-all duration-300 ease-in-out group flex items-center"
               >
+                {!item.isSearch && (
+                  <span className="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-6 opacity-0 group-hover:opacity-100 group-hover:-translate-x-7 transition-all duration-400 ease-in-out">
+                    <img src={searchIcon} alt="Icon" className="h-4 w-4" style={{filter: 'invert(48%) sepia(43%) saturate(767%) hue-rotate(335deg) brightness(89%) contrast(92%)'}} />
+                  </span>
+                )}
                 <span>{item.isSearch ? <img src={searchIcon} alt="Buscar" className="h-4 w-4" /> : item.name}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </a>
