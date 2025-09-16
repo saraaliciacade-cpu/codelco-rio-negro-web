@@ -3,8 +3,9 @@ const Company = () => {
     <section className="py-15 bg-background">
       <div className="container mx-auto px-20 max-w-4xl">
         <div className="text-center mb-10">
-          <h2 className="text-h1 font-bold mb-5 text-foreground">
-            Nuestra Empresa
+          <h2 className="text-3xl font-bold mb-5">
+            <span className="text-gray-600">NUESTRA </span>
+            <span className="text-orange-400">EMPRESA</span>
           </h2>
         </div>
 

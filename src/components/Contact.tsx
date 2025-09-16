@@ -54,8 +54,8 @@ const Contact = () => {
     <section id="contacto" className="py-15 bg-background">
       <div className="container mx-auto px-20 max-w-4xl">
         <div className="text-center mb-10">
-          <h2 className="text-h1 font-bold mb-5 text-foreground">
-            Contacto
+          <h2 className="text-3xl font-bold mb-5">
+            <span className="text-orange-400">CONTACTO</span>
           </h2>
         </div>
 

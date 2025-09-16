@@ -39,7 +39,7 @@ const Services = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-5">
             <span className="text-gray-600">NUESTRAS </span>
-            <span className="text-orange-500">ÁREAS</span>
+            <span className="text-orange-400">ÁREAS</span>
           </h2>
         </div>
 
