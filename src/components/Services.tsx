@@ -34,27 +34,30 @@ const Services = () => {
   };
 
   return (
-    <section id="servicios" className="py-15 bg-background">
+    <section id="servicios" className="py-15 bg-white">
       <div className="container mx-auto px-20 max-w-4xl">
         <div className="text-center mb-10">
-          <h2 className="text-h1 font-bold mb-5 text-foreground">
+          <h2 className="text-h1 font-bold mb-5 text-gray-800">
             Nuestras Áreas
           </h2>
         </div>
 
-        <div className="space-y-10 max-w-full mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-full mx-auto px-6">
           {services.map((service, index) => (
-            <div key={service.id} className="bg-white p-2.5 my-10">
+            <div 
+              key={service.id} 
+              className="bg-white border border-gray-200 rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:border-orange-400 hover:-translate-y-1"
+            >
               <div className="text-center mb-4">
-                <h3 className="text-h2 font-bold mb-2">
+                <h3 className="text-h2 font-bold mb-2 text-gray-800 uppercase tracking-wide">
                   {service.title}
                 </h3>
-                <h4 className="text-body font-normal" style={{ color: '#FFAB40' }}>
+                <h4 className="text-body font-semibold text-orange-400 mb-4">
                   {service.subtitle}
                 </h4>
               </div>
 
-              <p className="text-body leading-normal mb-4 text-center text-foreground">
+              <p className="text-body leading-relaxed mb-6 text-gray-600 text-left">
                 {service.description}
               </p>
 
@@ -62,7 +65,7 @@ const Services = () => {
                 {service.id === 'fabrica' && (
                   <Button 
                     onClick={() => scrollToSection('contacto')}
-                    className="bg-white text-primary border border-primary px-4 py-2 text-body"
+                    className="bg-white text-red-600 border border-red-600 px-4 py-2 text-body hover:bg-red-600 hover:text-white transition-all duration-300"
                   >
                     Contáctanos
                   </Button>
@@ -70,7 +73,7 @@ const Services = () => {
                 {service.id === 'metalurgica' && (
                   <Button 
                     onClick={() => scrollToSection('ubicacion')}
-                    className="bg-primary text-white px-4 py-2 text-body"
+                    className="bg-red-600 text-white px-4 py-2 text-body hover:bg-red-700 transition-all duration-300"
                   >
                     Nuestra Ubicación
                   </Button>
@@ -78,7 +81,7 @@ const Services = () => {
                 {service.id === 'rental' && (
                   <Button 
                     onClick={() => scrollToSection('galeria')}
-                    className="bg-white text-primary border border-primary px-4 py-2 text-body"
+                    className="bg-white text-red-600 border border-red-600 px-4 py-2 text-body hover:bg-red-600 hover:text-white transition-all duration-300"
                   >
                     La Galería de Imágenes
                   </Button>
