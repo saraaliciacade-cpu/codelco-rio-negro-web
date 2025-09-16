@@ -13,26 +13,20 @@ const Header = () => {
     { name: 'Nuestras Areas', href: '#servicios' },
     { name: 'Galería', href: '#galeria' },
     { name: 'Contacto', href: '#contacto' },
+    { name: 'Buscar', href: '#buscar', isSearch: true },
   ];
 
   return (
     <header className="bg-background border-b border-muted sticky top-0 z-50">
       <div className="container mx-auto px-20 max-w-4xl py-3">
         <div className="flex items-center justify-between">
-          {/* Logo and Search */}
-          <div className="flex items-center space-x-4">
+          {/* Logo */}
+          <div className="flex items-center">
             <img 
               src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" 
               alt="Codelco S.A." 
               className="h-8 w-auto"
             />
-            <div className="hidden md:flex items-center">
-              <img 
-                src={searchIcon} 
-                alt="Buscar" 
-                className="h-4 w-4 text-foreground"
-              />
-            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -41,9 +35,16 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="relative text-body font-normal text-foreground hover:text-primary transition-all duration-300 ease-in-out group"
+                className="relative text-body font-normal text-foreground hover:text-primary transition-all duration-300 ease-in-out group flex items-center space-x-1"
               >
-                {item.name}
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {item.isSearch ? (
+                    <img src={searchIcon} alt="Buscar" className="h-3 w-3" />
+                  ) : (
+                    <img src={searchIcon} alt="Active" className="h-3 w-3" />
+                  )}
+                </span>
+                <span>{item.isSearch ? <img src={searchIcon} alt="Buscar" className="h-4 w-4" /> : item.name}</span>
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </a>
             ))}
@@ -68,10 +69,14 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-body font-normal text-foreground hover:text-primary transition-colors duration-300"
+                  className="text-body font-normal text-foreground hover:text-primary transition-colors duration-300 flex items-center space-x-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.name}
+                  {item.isSearch ? (
+                    <img src={searchIcon} alt="Buscar" className="h-4 w-4" />
+                  ) : (
+                    <span>{item.name}</span>
+                  )}
                 </a>
               ))}
             </div>
