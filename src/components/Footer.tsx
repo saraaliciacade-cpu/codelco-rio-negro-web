@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/20 mt-12 pt-8 text-center">
-          <p className="text-white/60 font-nunito">
+          <p className="font-nunito" style={{color: '#333333'}}>
             © {new Date().getFullYear()} Codelco S.A. Todos los derechos reservados.
           </p>
         </div>

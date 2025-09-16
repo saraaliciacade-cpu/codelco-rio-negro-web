@@ -22,7 +22,7 @@ const Hero = () => {
           />
         </div>
         
-        <h1 className="text-2xl font-bold mb-5 text-white font-ramabhadra">
+        <h1 className="text-2xl font-bold mb-5 font-ramabhadra" style={{color: '#d25840'}}>
           UNA EMPRESA REGIONAL
         </h1>
         
@@ -37,7 +37,8 @@ const Hero = () => {
             Nuestros Servicios
           </Button>
           <Button 
-            className="bg-white text-primary px-4 py-2 text-body"
+            className="px-4 py-2 text-body text-white"
+            style={{backgroundColor: '#333333'}}
           >
             Contactanos
           </Button>

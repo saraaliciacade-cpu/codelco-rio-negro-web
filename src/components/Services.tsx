@@ -47,10 +47,10 @@ const Services = () => {
           {services.map((service, index) => {
             const getHeaderColor = (id: string) => {
               switch(id) {
-                case 'fabrica': return 'bg-gray-800';
-                case 'metalurgica': return 'bg-[#d25840]';
-                case 'rental': return 'bg-gray-800';
-                default: return 'bg-gray-800';
+                case 'fabrica': return '#333333';
+                case 'metalurgica': return '#d25840';
+                case 'rental': return '#333333';
+                default: return '#333333';
               }
             };
 
@@ -69,7 +69,7 @@ const Services = () => {
                 className="bg-white border border-gray-200 overflow-hidden"
               >
                 {/* Header with colored background */}
-                <div className={`${getHeaderColor(service.id)} px-6 py-8 text-center`}>
+                <div className="px-6 py-8 text-center" style={{backgroundColor: getHeaderColor(service.id)}}>
                   <h3 className="text-2xl font-bold text-white uppercase tracking-wide font-ramabhadra">
                     {service.title}
                   </h3>
