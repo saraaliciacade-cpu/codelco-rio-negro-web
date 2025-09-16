@@ -1,28 +1,19 @@
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-industrial.jpg';
-
 const Hero = () => {
-  return (
-    <section id="inicio" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+  return <section id="inicio" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${heroImage})`
-        }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${heroImage})`
+    }} />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-20 max-w-4xl text-center text-white">
         <div className="mb-6 flex justify-center">
-          <img 
-            src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" 
-            alt="Codelco S.A." 
-            className="h-24 w-auto"
-          />
+          <img src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" alt="Codelco S.A." className="h-24 w-auto" />
         </div>
         
-        <h1 className="text-2xl font-bold mb-5 text-white font-ramabhadra">
+        <h1 className="font-bold mb-5 font-ramabhadra text-[d25840] text-primary-DEFAULT">
           UNA EMPRESA REGIONAL
         </h1>
         
@@ -31,20 +22,14 @@ const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            className="bg-primary text-white px-4 py-2 text-body"
-          >
+          <Button className="bg-primary text-white px-4 py-2 text-body">
             Nuestros Servicios
           </Button>
-          <Button 
-            className="bg-white text-primary px-4 py-2 text-body"
-          >
+          <Button className="bg-white px-4 py-2 text-body text-secondary-foreground">
             Contactanos
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;

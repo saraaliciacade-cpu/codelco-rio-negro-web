@@ -1,18 +1,12 @@
 import { MapPin, Mail, Phone } from 'lucide-react';
 import codelcoLogo from '@/assets/codelco-logo.png';
-
 const Footer = () => {
-  return (
-    <footer className="bg-gradient-hero text-white py-12">
+  return <footer className="bg-gradient-hero text-white py-12 bg-stone-500">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
-            <img 
-              src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" 
-              alt="Codelco S.A." 
-              className="h-16 w-auto"
-            />
+            <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-16 w-auto" />
             <p className="text-white/80 leading-relaxed font-nunito">
               Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial.
             </p>
@@ -58,8 +52,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
