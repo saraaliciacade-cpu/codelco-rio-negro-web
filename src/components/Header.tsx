@@ -12,16 +12,17 @@ const Header = () => {
     { name: 'Galería', href: '#galeria' },
     { name: 'Contacto', href: '#contacto' }
   ];
-  return <header className="bg-background border-b border-muted sticky top-0 z-50">
-      <div className="container mx-auto px-20 max-w-4xl py-3">
+  return (
+    <header className="bg-background border-b border-muted sticky top-0 z-50">
+      <div className="container mx-auto px-8 max-w-7xl py-3">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo - positioned more to the left */}
           <div className="flex items-center">
             <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-8 w-auto" />
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 relative">
+          {/* Desktop Navigation - positioned more to the right with more spacing */}
+          <nav className="hidden md:flex items-center space-x-8 ml-auto">
             {menuItems.map(item => (
               <a key={item.name} href={item.href} className="relative text-sm font-medium text-foreground hover:text-primary transition-all duration-300 ease-in-out group flex items-center overflow-hidden" style={{ fontFamily: 'Nunito Sans, sans-serif' }}>
                 {/* Animated icon */}
@@ -37,13 +38,14 @@ const Header = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Button variant="ghost" size="icon" className="md:hidden ml-auto" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && <nav className="md:hidden mt-2 pb-2 border-t border-muted pt-2">
+        {isMenuOpen && (
+          <nav className="md:hidden mt-2 pb-2 border-t border-muted pt-2">
             <div className="flex flex-col space-y-2">
               {menuItems.map(item => (
                 <a key={item.name} href={item.href} className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-300 flex items-center space-x-2" onClick={() => setIsMenuOpen(false)} style={{ fontFamily: 'Nunito Sans, sans-serif' }}>
@@ -51,8 +53,10 @@ const Header = () => {
                 </a>
               ))}
             </div>
-          </nav>}
+          </nav>
+        )}
       </div>
-    </header>;
+    </header>
+  );
 };
 export default Header;
