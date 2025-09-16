@@ -8,21 +8,21 @@ const Services = () => {
       icon: Building2,
       title: 'FÁBRICA',
       subtitle: 'Unidad, Módulos, Habitaciones y viviendas',
-      description: 'Nuestra división se especializa en la fabricación de módulos habitacionales y de vivienda, diseñados para satisfacer las necesidades del sector petrolero y afines en la región de Vaca Muerta. Contamos con una planta industrial de 3500 m² equipada para el diseño, producción y montaje de soluciones modulares que incluyen desde viviendas temporales hasta estructuras comerciales e industriales. Nuestro enfoque integral abarca desde el asesoramiento inicial con ingeniería personalizada hasta la entrega final en sitio, garantizando eficiencia y adaptabilidad a las demandas del cliente. Entre nuestras ofertas destacan módulos para alojamiento de personal, oficinas móviles y espacios de trabajo, todos construidos con materiales de alta durabilidad y estándares de seguridad certificados, ideales para entornos remotos y exigentes como los de Cipolletti y Río Negro.'
+      description: 'El sector de fabricación de módulos y viviendas esta preparado para cubrir todas las necesidades del cliente al momento de realizar su proyecto. Cuenta con una línea de producción completa, desde la oficina de ingeniería y diseño hasta las distintas áreas de producción que componen cada unidad, lo cual le proveerá asesoramiento competo en todas las etapas de construcción. Este sector produce todo tipo de módulos habitacionales ya sea con fines comerciales o de vivienda para las distintas industrias y además la modalidad de construcción "en seco" de viviendas familiares con las mejores características termo-acústicas disponibles en el mercado y la posibilidad de elegir el diseño a gusto del cliente.'
     },
     {
       id: 'metalurgica',
       icon: Settings,
       title: 'METALÚRGICA',
       subtitle: 'Equipos, Tanques, Subestructuras',
-      description: 'Nuestra división está orientada a la fabricación de equipos especializados para la industria petrolera, gasífera y el sector afín, proporcionando soluciones robustas y personalizadas para optimizar operaciones en el campo. Ofrecemos una amplia gama de productos, incluyendo tanques de acumulación para agua, lodo y petróleo sobre skid, autotanques, contenedores tipo volquete, estructuras y subestructuras especiales, así como chutes manifolds para líneas de alta presión. Además, realizamos servicios de corte y plegado de chapas para trabajos en general, extracciones subterráneas y plantas móviles de petróleo. Nuestros desarrollos innovadores, como decanters para control de sólidos y verificaciones técnicas móviles, reducen la dependencia de importaciones y mejoran la eficiencia operativa, todo respaldado por un equipo de expertos en Cipolletti que asegura calidad y cumplimiento normativo para proyectos en Río Negro y Patagonia.'
+      description: 'La división Metalúrgica está orientada a la fabricación de equipos para la industria petrolera y afines y todo el asesoramiento necesario para su proyecto. Contamos con una amplia gama de productos, para cubrir todas sus necesidades: Piletas de acumulación para agua, lodo y petróleo sobre skid y auto-portantes. Contenedores tipo volquete. Estructuras y subestructuras especiales. Choke manifolds. Lineas de alta. Estructuras para decanter. Planchadas. Tanques sobre patín para almacenamiento. Plantas móviles de petróleo. Piletas de ensayo. Circuitos de lodo. Además contamos con servicio de corte y plegado de chapas, para trabajos en general'
     },
     {
       id: 'rental',
       icon: Truck,
       title: 'RENTAL',
       subtitle: 'Vehículos, Trailers, Plataformas',
-      description: 'Nuestro servicio se enfoca en el alquiler de vehículos livianos, plataformas y trailers equipados, ofreciendo flotas flexibles para el mantenimiento y operaciones en el sector petrolero. Nuestra división está compuesta por sectores como "Flota Liviana", "Trailers y Equipos" y "Flota Pesada", donde proporcionamos camionetas Toyota Hilux cabina doble y simple 4x4 y 4x2, vehículos livianos 4x4 para uso general, y trailers rodantes sobre patín en 9 y 12 metros. Estos equipos están configurados para contenedores, con manifolds, comedores, laboratorios, camiones y contenedores tipo volquete, adaptados a necesidades específicas como recorridos, port Herramientas, personal general y más. Con un compromiso en la disponibilidad y mantenimiento preventivo, aseguramos soluciones rentables y seguras para clientes en Cipolletti, Río Negro, facilitando la movilidad y logística en entornos desafiantes de la industria energética.'
+      description: 'La división Rental está compuesta por los sectores "Flota Liviana" y "Trailers y Equipos". **Flota Liviana:** contamos actualmente con más de 60 unidades entre Toyota Hilux cabina doble y simple 4x2 y 4x4, VW Amarok y vehículos livianos. Todas estas unidades están equipadas según la necesidad de cada cliente, ya se para uso Gerencial, recorredores, porta herramientas, personal general, etc. **Trailers y Equipos:** en este sector se proveen equipos para alquileres temporarios: Piletas de acumulación. Trailers rodantes y sobre patín en 6, 9 y 12 metros, con configuraciones variadas del tipo "Company Man", comedor, habitación, cocina, laboratorio, etc. Contenedores tipo volquete.'
     }
   ];
 
@@ -57,9 +57,11 @@ const Services = () => {
                 </h4>
               </div>
 
-              <p className="text-body leading-relaxed mb-6 text-gray-600 text-left">
-                {service.description}
-              </p>
+              <div className="text-body leading-relaxed mb-6 text-gray-600 text-left">
+                {service.description.split('**').map((part, index) => 
+                  index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+                )}
+              </div>
 
               <div className="text-center">
                 {service.id === 'fabrica' && (
