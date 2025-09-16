@@ -35,10 +35,14 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6 relative">
-            {menuItems.map(item => <a key={item.name} href={item.href} className="relative text-body font-normal text-foreground hover:text-primary transition-all duration-300 ease-in-out group flex items-center">
-                
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></span>
-              </a>)}
+            {menuItems.map(item => (
+              !item.isSearch && (
+                <a key={item.name} href={item.href} className="relative text-base font-medium text-foreground hover:text-primary transition-all duration-300 ease-in-out group flex items-center" style={{ fontFamily: 'Nunito Sans, sans-serif' }}>
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </a>
+              )
+            ))}
           </nav>
 
           {/* Mobile Menu Button */}
