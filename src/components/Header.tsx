@@ -26,7 +26,7 @@ const Header = () => {
               <a key={item.name} href={item.href} className="relative text-sm font-medium text-foreground hover:text-primary transition-all duration-300 ease-in-out group flex items-center overflow-hidden" style={{ fontFamily: 'Nunito Sans, sans-serif' }}>
                 {/* Animated icon */}
                 <img 
-                  src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" 
+                  src="/logo24.png" 
                   alt="Icon" 
                   className="h-4 w-4 mr-2 opacity-0 transform -translate-x-4 transition-all duration-400 ease-out group-hover:opacity-100 group-hover:translate-x-0" 
                 />
