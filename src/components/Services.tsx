@@ -35,62 +35,88 @@ const Services = () => {
 
   return (
     <section id="servicios" className="py-15 bg-white">
-      <div className="container mx-auto px-20 max-w-4xl">
-        <div className="text-center mb-10">
-          <h2 className="text-h1 font-bold mb-5 text-gray-800">
-            Nuestras Áreas
+      <div className="container mx-auto px-20 max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold mb-5">
+            <span className="text-gray-600">NUESTRAS </span>
+            <span className="text-orange-500">ÁREAS</span>
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-full mx-auto px-6">
-          {services.map((service, index) => (
-            <div 
-              key={service.id} 
-              className="bg-white border border-gray-200 rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:border-orange-400 hover:-translate-y-1"
-            >
-              <div className="text-center mb-4">
-                <h3 className="text-h2 font-bold mb-2 text-gray-800 uppercase tracking-wide">
-                  {service.title}
-                </h3>
-                <h4 className="text-body font-semibold text-orange-400 mb-4">
-                  {service.subtitle}
-                </h4>
-              </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 max-w-full mx-auto">
+          {services.map((service, index) => {
+            const getHeaderColor = (id: string) => {
+              switch(id) {
+                case 'fabrica': return 'bg-gray-800';
+                case 'metalurgica': return 'bg-orange-600';
+                case 'rental': return 'bg-gray-800';
+                default: return 'bg-gray-800';
+              }
+            };
 
-              <div className="text-body leading-relaxed mb-6 text-gray-600 text-left">
-                {service.description.split('**').map((part, index) => 
-                  index % 2 === 1 ? <strong key={index}>{part}</strong> : part
-                )}
-              </div>
+            const getSubtitleText = (id: string) => {
+              switch(id) {
+                case 'fabrica': return 'Unidad Módulos Habitacionales y Vivienda';
+                case 'metalurgica': return 'Corte y Plegado';
+                case 'rental': return 'Alquiler de vehículos livianos, piletas de almacenamiento y contenedores';
+                default: return service.subtitle;
+              }
+            };
 
-              <div className="text-center">
-                {service.id === 'fabrica' && (
-                  <Button 
-                    onClick={() => scrollToSection('contacto')}
-                    className="bg-white text-red-600 border border-red-600 px-4 py-2 text-body hover:bg-red-600 hover:text-white transition-all duration-300"
-                  >
-                    Contáctanos
-                  </Button>
-                )}
-                {service.id === 'metalurgica' && (
-                  <Button 
-                    onClick={() => scrollToSection('ubicacion')}
-                    className="bg-red-600 text-white px-4 py-2 text-body hover:bg-red-700 transition-all duration-300"
-                  >
-                    Nuestra Ubicación
-                  </Button>
-                )}
-                {service.id === 'rental' && (
-                  <Button 
-                    onClick={() => scrollToSection('galeria')}
-                    className="bg-white text-red-600 border border-red-600 px-4 py-2 text-body hover:bg-red-600 hover:text-white transition-all duration-300"
-                  >
-                    La Galería de Imágenes
-                  </Button>
-                )}
+            return (
+              <div 
+                key={service.id} 
+                className="bg-white border border-gray-200 overflow-hidden"
+              >
+                {/* Header with colored background */}
+                <div className={`${getHeaderColor(service.id)} px-6 py-8 text-center`}>
+                  <h3 className="text-2xl font-bold text-white uppercase tracking-wide">
+                    {service.title}
+                  </h3>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                  <h4 className="text-lg font-normal text-gray-500 mb-6 text-center leading-relaxed">
+                    {getSubtitleText(service.id)}
+                  </h4>
+
+                  <div className="text-sm leading-relaxed text-gray-600 text-left mb-8">
+                    {service.description.split('**').map((part, index) => 
+                      index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+                    )}
+                  </div>
+
+                  <div className="text-center">
+                    {service.id === 'fabrica' && (
+                      <Button 
+                        onClick={() => scrollToSection('contacto')}
+                        className="bg-white text-red-600 border border-red-600 px-6 py-2 text-sm hover:bg-red-600 hover:text-white transition-all duration-300"
+                      >
+                        Contáctanos
+                      </Button>
+                    )}
+                    {service.id === 'metalurgica' && (
+                      <Button 
+                        onClick={() => scrollToSection('ubicacion')}
+                        className="bg-red-600 text-white px-6 py-2 text-sm hover:bg-red-700 transition-all duration-300"
+                      >
+                        Nuestra Ubicación
+                      </Button>
+                    )}
+                    {service.id === 'rental' && (
+                      <Button 
+                        onClick={() => scrollToSection('galeria')}
+                        className="bg-white text-red-600 border border-red-600 px-6 py-2 text-sm hover:bg-red-600 hover:text-white transition-all duration-300"
+                      >
+                        La Galería de Imágenes
+                      </Button>
+                    )}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
