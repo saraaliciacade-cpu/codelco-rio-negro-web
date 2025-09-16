@@ -54,15 +54,15 @@ const Contact = () => {
     <section id="contacto" className="py-15 bg-background">
       <div className="container mx-auto px-20 max-w-4xl">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-5">
-            <span className="text-orange-400">CONTACTO</span>
+          <h2 className="text-3xl font-bold mb-5 font-ramabhadra">
+            <span style={{color: '#d25840'}}>CONTACTO</span>
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12.5 max-w-full mx-auto px-6">
           {/* Contact Information */}
           <div className="space-y-5">
-            <h3 className="text-h2 font-bold mb-5 text-foreground">Información de Contacto</h3>
+            <h3 className="text-h2 font-bold mb-5 text-foreground font-montserrat">Información de Contacto</h3>
             
             {contactInfo.map((info, index) => (
               <div key={index} className="flex items-start space-x-4 p-4 bg-card">
@@ -70,8 +70,8 @@ const Contact = () => {
                   <info.icon className="h-4 w-4 text-white" />
                 </div>
                 <div>
-                  <h4 className="text-h2 font-bold text-foreground">{info.label}</h4>
-                  <div className="text-body text-foreground mt-1 whitespace-pre-line">{info.value}</div>
+                  <h4 className="text-h2 font-bold text-foreground font-montserrat">{info.label}</h4>
+                  <div className="text-body text-foreground mt-1 whitespace-pre-line font-nunito">{info.value}</div>
                 </div>
               </div>
             ))}
@@ -79,7 +79,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="bg-card p-6">
-            <h3 className="text-h2 font-bold mb-5 text-center text-foreground">Envíanos un Mensaje</h3>
+            <h3 className="text-h2 font-bold mb-5 text-center text-foreground font-montserrat">Envíanos un Mensaje</h3>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">

@@ -37,9 +37,9 @@ const Services = () => {
     <section id="servicios" className="py-15 bg-white">
       <div className="container mx-auto px-20 max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-5">
-            <span className="text-gray-600">NUESTRAS </span>
-            <span className="text-orange-400">ÁREAS</span>
+          <h2 className="text-3xl font-bold mb-5 font-ramabhadra">
+            <span style={{color: '#333333'}}>NUESTRAS </span>
+            <span style={{color: '#d25840'}}>ÁREAS</span>
           </h2>
         </div>
 
@@ -48,7 +48,7 @@ const Services = () => {
             const getHeaderColor = (id: string) => {
               switch(id) {
                 case 'fabrica': return 'bg-gray-800';
-                case 'metalurgica': return 'bg-orange-600';
+                case 'metalurgica': return 'bg-[#d25840]';
                 case 'rental': return 'bg-gray-800';
                 default: return 'bg-gray-800';
               }
@@ -70,20 +70,20 @@ const Services = () => {
               >
                 {/* Header with colored background */}
                 <div className={`${getHeaderColor(service.id)} px-6 py-8 text-center`}>
-                  <h3 className="text-2xl font-bold text-white uppercase tracking-wide">
+                  <h3 className="text-2xl font-bold text-white uppercase tracking-wide font-ramabhadra">
                     {service.title}
                   </h3>
                 </div>
 
                 {/* Content */}
                 <div className="p-6">
-                  <h4 className="text-lg font-normal text-gray-500 mb-6 text-center leading-relaxed">
+                  <h4 className="text-lg font-bold text-gray-500 mb-6 text-center leading-relaxed font-montserrat">
                     {getSubtitleText(service.id)}
                   </h4>
 
-                  <div className="text-sm leading-relaxed text-gray-600 text-left mb-8">
+                  <div className="text-sm leading-relaxed text-gray-600 text-left mb-8 font-nunito">
                     {service.description.split('**').map((part, index) => 
-                      index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+                      index % 2 === 1 ? <strong key={index} className="font-montserrat">{part}</strong> : part
                     )}
                   </div>
 

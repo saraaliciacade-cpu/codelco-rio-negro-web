@@ -3,18 +3,18 @@ const Company = () => {
     <section className="py-15 bg-background">
       <div className="container mx-auto px-20 max-w-4xl">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-5">
-            <span className="text-gray-600">NUESTRA </span>
-            <span className="text-orange-400">EMPRESA</span>
+          <h2 className="text-3xl font-bold mb-5 font-ramabhadra">
+            <span style={{color: '#333333'}}>NUESTRA </span>
+            <span style={{color: '#d25840'}}>EMPRESA</span>
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12.5 max-w-full mx-auto items-center px-6">
           {/* Company Text */}
           <div className="space-y-5">
-            <h3 className="text-h2 font-bold text-foreground mb-5">CODELCO S.A.</h3>
+            <h3 className="text-h2 font-bold text-foreground mb-5 font-montserrat">CODELCO S.A.</h3>
             
-            <div className="space-y-5 text-foreground leading-normal text-body">
+            <div className="space-y-5 text-foreground leading-normal text-body font-nunito">
               <p>
                 Comenzamos nuestra actividad en el año 2012, coincidiendo con el crecimiento acelerado 
                 de las necesidades de la industria petrolera (perforaciones de pozos no convencionales- Vaca Muerta). 

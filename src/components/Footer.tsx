@@ -13,15 +13,15 @@ const Footer = () => {
               alt="Codelco S.A." 
               className="h-16 w-auto"
             />
-            <p className="text-white/80 leading-relaxed">
+            <p className="text-white/80 leading-relaxed font-nunito">
               Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial.
             </p>
           </div>
 
           {/* Services */}
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold mb-4">Nuestros Servicios</h3>
-            <ul className="space-y-2 text-white/80">
+            <h3 className="text-xl font-semibold mb-4 font-montserrat">Nuestros Servicios</h3>
+            <ul className="space-y-2 text-white/80 font-nunito">
               <li>• Servicios Industriales</li>
               <li>• Productos Especializados</li>
               <li>• Rental de Equipos</li>
@@ -31,19 +31,19 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h3 className="text-xl font-semibold mb-4">Información de Contacto</h3>
+            <h3 className="text-xl font-semibold mb-4 font-montserrat">Información de Contacto</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-primary-light" />
-                <span className="text-white/80">Ruta 22 Km.1114, Cipolletti - Río Negro</span>
+                <span className="text-white/80 font-nunito">Ruta 22 Km.1114, Cipolletti - Río Negro</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-primary-light" />
-                <span className="text-white/80">ventas@codelco.com.ar</span>
+                <span className="text-white/80 font-nunito">ventas@codelco.com.ar</span>
               </div>
               <div className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-primary-light mt-0.5" />
-                <div className="text-white/80">
+                <div className="text-white/80 font-nunito">
                   <div>Rental: (299) 571 4217</div>
                   <div>Compras: (299) 571 4661</div>
                 </div>
@@ -53,7 +53,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/20 mt-12 pt-8 text-center">
-          <p className="text-white/60">
+          <p className="text-white/60 font-nunito">
             © {new Date().getFullYear()} Codelco S.A. Todos los derechos reservados.
           </p>
         </div>

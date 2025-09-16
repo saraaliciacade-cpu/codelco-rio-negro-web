@@ -14,7 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        'sans': ['Open Sans', 'system-ui', 'sans-serif'],
+        'ramabhadra': ['Ramabhadra', 'system-ui', 'sans-serif'],
+        'montserrat': ['Montserrat', 'system-ui', 'sans-serif'], 
+        'nunito': ['Nunito Sans', 'system-ui', 'sans-serif'],
+        'sans': ['Nunito Sans', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'h1': ['18px', { lineHeight: '1.8', fontWeight: '700' }],
@@ -26,22 +29,22 @@ export default {
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "#FFFFFF",
-        foreground: "#666666",
+        foreground: "#333333",
         primary: {
-          DEFAULT: "#FFAB40",
+          DEFAULT: "#d25840",
           foreground: "#FFFFFF",
         },
         secondary: {
           DEFAULT: "#F9F9F9",
-          foreground: "#666666",
+          foreground: "#333333",
         },
         muted: {
           DEFAULT: "#E0E0E0",
-          foreground: "#666666",
+          foreground: "#333333",
         },
         card: {
           DEFAULT: "#FFFFFF",
-          foreground: "#666666",
+          foreground: "#333333",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

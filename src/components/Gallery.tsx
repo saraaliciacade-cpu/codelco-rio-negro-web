@@ -25,9 +25,9 @@ const Gallery = () => {
     <section className="py-15 bg-background">
       <div className="container mx-auto px-20 max-w-4xl">
         <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-5">
-            <span className="text-gray-600">GALERÍA DE </span>
-            <span className="text-orange-400">IMÁGENES</span>
+          <h2 className="text-3xl font-bold mb-5 font-ramabhadra">
+            <span style={{color: '#333333'}}>GALERÍA DE </span>
+            <span style={{color: '#d25840'}}>IMÁGENES</span>
           </h2>
         </div>
 
