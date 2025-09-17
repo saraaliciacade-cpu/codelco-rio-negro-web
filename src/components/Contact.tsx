@@ -114,7 +114,7 @@ const Contact = () => {
                 <Textarea id="message" name="message" required rows={4} value={formData.message} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body resize-none" placeholder="Describe tu consulta o necesidad..." />
               </div>
               
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-white px-6 py-4 text-body font-medium rounded-xl transition-colors duration-300">
+              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 px-6 py-4 rounded-xl transition-colors duration-300 text-zinc-50 font-semibold text-sm">
                 <Send className="w-4 h-4 mr-2" />
                 Enviar Mensaje
               </Button>
