@@ -59,7 +59,7 @@ const Contact = () => {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12.5 max-w-full mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 max-w-full mx-auto px-6 mb-16">
           {/* Contact Information */}
           <div className="space-y-6">
             <h3 className="text-h2 font-bold mb-8 text-foreground font-montserrat">Información de Contacto</h3>
