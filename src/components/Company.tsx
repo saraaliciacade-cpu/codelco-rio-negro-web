@@ -2,8 +2,8 @@ const Company = () => {
   return (
     <section className="py-15 bg-background">
       <div className="container mx-auto px-20 max-w-4xl">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold mb-5 font-ramabhadra">
+        <div>
+          <h2 className="titulo-seccion font-ramabhadra">
             <span style={{color: '#333333'}}>NUESTRA </span>
             <span style={{color: '#d25840'}}>EMPRESA</span>
           </h2>
@@ -45,7 +45,7 @@ const Company = () => {
               <img 
                 src="/nuestra-empresa.jpg" 
                 alt="Flota de vehículos Codelco" 
-                className="max-w-full h-auto rounded-lg shadow-lg"
+                className="w-full h-96 object-cover rounded-lg shadow-lg"
               />
             </div>
           </div>

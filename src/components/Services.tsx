@@ -36,8 +36,8 @@ const Services = () => {
   return (
     <section id="servicios" className="py-15 bg-white">
       <div className="container mx-auto px-20 max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold mb-5 font-ramabhadra">
+        <div>
+          <h2 className="titulo-seccion font-ramabhadra">
             <span style={{color: '#333333'}}>NUESTRAS </span>
             <span style={{color: '#d25840'}}>ÁREAS</span>
           </h2>

@@ -112,3 +112,11 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+
+.titulo-seccion {
+  margin-top: 80px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 2rem;
+}
