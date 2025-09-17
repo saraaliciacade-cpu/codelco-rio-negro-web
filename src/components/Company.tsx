@@ -9,7 +9,7 @@ const Company = () => {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12.5 max-w-full mx-auto items-center px-6">
+        <div className="grid lg:grid-cols-2 gap-20 max-w-full mx-auto items-center px-6">
           {/* Company Text */}
           <div className="space-y-5">
             <h3 className="text-h2 font-bold text-foreground mb-5 font-montserrat">CODELCO S.A.</h3>
@@ -40,12 +40,12 @@ const Company = () => {
           </div>
 
           {/* Company Image */}
-          <div className="flex justify-center">
+          <div className="flex justify-center lg:justify-start lg:pl-8">
             <div className="relative">
               <img 
-                src="/lovable-uploads/0d0ca016-4bdf-4961-872b-f8420e63a6f1.png" 
+                src="/nuestra-empresa.jpg" 
                 alt="Flota de vehículos Codelco" 
-                className="max-w-full h-auto"
+                className="max-w-full h-auto rounded-lg shadow-lg"
               />
             </div>
           </div>
