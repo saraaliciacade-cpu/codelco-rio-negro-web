@@ -61,25 +61,28 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-12.5 max-w-full mx-auto px-6">
           {/* Contact Information */}
-          <div className="space-y-5">
-            <h3 className="text-h2 font-bold mb-5 text-foreground font-montserrat">Información de Contacto</h3>
+          <div className="space-y-6">
+            <h3 className="text-h2 font-bold mb-8 text-foreground font-montserrat">Información de Contacto</h3>
             
             {contactInfo.map((info, index) => (
-              <div key={index} className="flex items-start space-x-4 p-4 bg-card">
-                <div className="bg-primary p-2 rounded">
-                  <info.icon className="h-4 w-4 text-white" />
-                </div>
-                <div>
-                  <h4 className="text-h2 font-bold text-foreground font-montserrat">{info.label}</h4>
-                  <div className="text-body text-foreground mt-1 whitespace-pre-line font-nunito">{info.value}</div>
-                </div>
-              </div>
+              <Card key={index} className="p-6 bg-white border border-gray-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                <CardContent className="flex items-start space-x-4 p-0">
+                  <div className="bg-primary p-3 rounded-full shadow-sm">
+                    <info.icon className="h-5 w-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-lg font-bold text-foreground font-montserrat mb-2">{info.label}</h4>
+                    <div className="text-body text-gray-600 whitespace-pre-line font-nunito leading-relaxed">{info.value}</div>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card p-6">
-            <h3 className="text-h2 font-bold mb-5 text-center text-foreground font-montserrat">Envíanos un Mensaje</h3>
+          <Card className="bg-white border border-gray-200 rounded-3xl shadow-sm p-8">
+            <CardContent className="p-0">
+              <h3 className="text-h2 font-bold mb-8 text-center text-foreground font-montserrat">Envíanos un Mensaje</h3>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
@@ -145,13 +148,14 @@ const Contact = () => {
               
               <Button 
                 type="submit" 
-                className="w-full bg-primary text-white px-4 py-3 text-body font-normal"
+                className="w-full bg-primary hover:bg-primary/90 text-white px-6 py-4 text-body font-medium rounded-xl transition-colors duration-300"
               >
-                <Send className="w-3 h-3 mr-2" />
+                <Send className="w-4 h-4 mr-2" />
                 Enviar Mensaje
               </Button>
             </form>
-          </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
