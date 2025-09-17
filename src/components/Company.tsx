@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Company = () => {
   return (
     <section className="py-12 bg-background">
