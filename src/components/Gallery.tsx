@@ -16,10 +16,67 @@ const Gallery = () => {
     label: 'Rental'
   }];
 
-  // Placeholder for future images - will be populated when user sends images
+  // Gallery images organized by category
   const images = [
-    // Placeholder structure for when images are added
-    // { id: 1, category: 'fabrica', src: 'path/to/image', alt: 'Description' },
+    // Fábrica category images
+    {
+      id: 1,
+      category: 'fabrica',
+      src: '/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png',
+      alt: 'Logo Codelco - Área de Fábrica'
+    },
+    {
+      id: 2,
+      category: 'fabrica',
+      src: '/nuestra-empresa.jpg',
+      alt: 'Instalaciones de fábrica y flota de vehículos'
+    },
+    {
+      id: 3,
+      category: 'fabrica',
+      src: '/codelco-logo-new.png',
+      alt: 'Módulos habitacionales fabricados'
+    },
+    
+    // Metalúrgica category images
+    {
+      id: 4,
+      category: 'metalurgica',
+      src: '/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png',
+      alt: 'Logo Codelco - División Metalúrgica'
+    },
+    {
+      id: 5,
+      category: 'metalurgica',
+      src: '/lovable-uploads/0d0ca016-4bdf-4961-872b-f8420e63a6f1.png',
+      alt: 'Equipos y estructuras metalúrgicas'
+    },
+    {
+      id: 6,
+      category: 'metalurgica',
+      src: '/logo24.png',
+      alt: 'Piletas de acumulación y tanques'
+    },
+    
+    // Rental category images
+    {
+      id: 7,
+      category: 'rental',
+      src: '/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png',
+      alt: 'Flota de vehículos Toyota Hilux'
+    },
+    {
+      id: 8,
+      category: 'rental',
+      src: '/nuestra-empresa.jpg',
+      alt: 'Trailers y equipos para rental'
+    },
+    {
+      id: 9,
+      category: 'rental',
+      src: '/codelco-logo-new.png',
+      alt: 'Contenedores y módulos de rental'
+    }
   ];
   const filteredImages = activeFilter === 'todas' ? images : images.filter(img => img.category === activeFilter);
   return <section className="py-15 bg-background">
