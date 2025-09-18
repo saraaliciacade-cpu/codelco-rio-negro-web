@@ -2,10 +2,16 @@ import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-industrial.jpg';
 const Hero = () => {
   return <section id="inicio" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
-      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${heroImage})`
-    }} />
+      {/* Background Image - Optimized for LCP */}
+      <img 
+        src={heroImage}
+        alt="Industrial facility background"
+        className="absolute inset-0 w-full h-full object-cover"
+        fetchPriority="high"
+        loading="eager"
+      />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-20 max-w-4xl text-center text-white">
