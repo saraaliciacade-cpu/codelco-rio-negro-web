@@ -329,7 +329,7 @@ const Gallery = () => {
 
         {/* Image Modal */}
         {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in" onClick={() => setSelectedImage(null)}>
-            <div className="relative max-w-4xl max-h-full bg-white rounded-lg overflow-hidden animate-scale-in transform transition-all duration-300" onClick={(e) => e.stopPropagation()}>
+            <div className="relative max-w-4xl max-h-full bg-white rounded-lg overflow-hidden animate-scale-in transform transition-all duration-300" onClick={e => e.stopPropagation()}>
               <div className="absolute top-4 right-4 flex gap-2 z-10">
                 <Button onClick={() => downloadImage(selectedImage.src, `codelco-${selectedImage.category}-${selectedImage.id}.jpg`)} className="bg-primary hover:bg-primary/90 text-white p-2 transition-colors duration-200" size="sm">
                   <Download className="w-4 h-4" />
@@ -341,7 +341,7 @@ const Gallery = () => {
               <img src={selectedImage.src} alt={selectedImage.alt} className="w-full h-auto max-h-[80vh] object-contain transition-transform duration-300" />
               <div className="p-4 bg-white text-center">
                 <h3 className="font-semibold text-lg text-gray-800">{selectedImage.alt}</h3>
-                <p className="text-sm text-gray-600 capitalize">{selectedImage.category}</p>
+                <p className="text-sm capitalize text-orange-700">{selectedImage.category}</p>
               </div>
             </div>
           </div>}
