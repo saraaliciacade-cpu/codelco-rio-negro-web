@@ -97,7 +97,7 @@ const Contact = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label htmlFor="name" className="block text-sm font-normal mb-2 text-foreground rounded">
-                    Nombre *
+                    Nombre y apellido *
                   </label>
                   <Input id="name" name="name" type="text" required value={formData.name} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
                 </div>
