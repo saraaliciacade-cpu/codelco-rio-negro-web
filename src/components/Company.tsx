@@ -12,19 +12,19 @@ const Company = () => {
   }, []);
 
   return (
-    <section className="py-15 bg-background">
-      <div className="container mx-auto px-4 w-full"> {/* px-4 para espacio en bordes */}
-        <div>
-          <h2 className="titulo-seccion font-ramabhadra">
+    <section className="py-10 bg-background">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-8">
+          <h2 className="titulo-seccion font-ramabhadra inline-block">
             <span style={{ color: '#333333' }}>NUESTRA </span>
             <span style={{ color: '#d25840' }}>EMPRESA</span>
           </h2>
         </div>
-        <div className="grid lg:grid-cols-[1fr,1.5fr] gap-8 items-center px-4 max-w-full mx-auto"> {/* gap-8 para espacio entre texto e imagen, px-4 para bordes */}
+        <div className="grid lg:grid-cols-2 gap-6 items-center max-w-6xl mx-auto px-6">
           {/* Company Text */}
-          <div className="space-y-6 order-1 lg:pr-8 max-w-prose"> {/* space-y-6 para espacio interno en texto */}
-            <h3 className="font-bold text-foreground mb-5 font-montserrat text-xl">CODELCO S.A.</h3>
-            <div className="space-y-5 text-foreground leading-normal text-body font-nunito">
+          <div className="space-y-4 order-1 text-center lg:text-left">
+            <h3 className="font-bold text-foreground mb-4 font-montserrat text-xl">CODELCO S.A.</h3>
+            <div className="space-y-4 text-foreground leading-normal text-body font-nunito">
               <p className="text-justify text-xs">
                 Comenzamos nuestra actividad en el año 2012, coincidiendo con el crecimiento acelerado
                 de las necesidades de la industria petrolera (perforaciones de pozos no convencionales- Vaca Muerta).
@@ -47,9 +47,9 @@ const Company = () => {
             </div>
           </div>
           {/* Company Image */}
-          <div className="order-2 animate-slide-in-right">
-            <div className="relative">
-              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full max-w-none h-auto object-contain rounded-lg shadow-lg" />
+          <div className="order-2 animate-slide-in-right flex justify-center">
+            <div className="relative w-full max-w-xl">
+              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full h-auto object-contain rounded-lg shadow-lg" />
             </div>
           </div>
         </div>
