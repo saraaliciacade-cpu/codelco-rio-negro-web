@@ -24,7 +24,7 @@ const Company = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto px-8"> {/* Aumentado gap-6 a gap-12 para más espacio en el medio */}
           {/* Company Text */}
           <div className="space-y-4 order-1 text-center lg:text-left max-w-md">
-            <h3 className="font-bold text-foreground mb-4 font-montserrat text-2xl"> {/* Aumentado text-xl a text-2xl */}
+            <h3 className="font-bold text-foreground mb-4 font-montserrat text-3xl"> {/* Aumentado text-xl a text-2xl */}
               CODELCO S.A.
             </h3>
             <div className="space-y-4 text-foreground leading-normal text-body font-nunito">
