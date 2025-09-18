@@ -73,6 +73,17 @@ const Gallery = () => {
   ];
 
   const filteredImages = activeFilter === 'todas' ? images : images.filter(img => img.category === activeFilter);
+  
+  // Debug logging
+  console.log('Active filter:', activeFilter);
+  console.log('Total images:', images.length);
+  console.log('Filtered images:', filteredImages.length);
+  console.log('Image categories count:', {
+    metalurgica: images.filter(img => img.category === 'metalurgica').length,
+    rental: images.filter(img => img.category === 'rental').length,
+    fabrica: images.filter(img => img.category === 'fabrica').length
+  });
+  console.log('Sample image paths:', filteredImages.slice(0, 3).map(img => img.src));
 
   return (
     <section className="py-15 bg-background">
@@ -96,7 +107,7 @@ const Gallery = () => {
                   : 'bg-white text-primary border border-primary hover:bg-primary/10'
               }`}
             >
-              {filter.label} ({images.filter(img => activeFilter === 'todas' || img.category === filter.id).length})
+              {filter.label} ({filter.id === 'todas' ? images.length : images.filter(img => img.category === filter.id).length})
             </Button>
           ))}
         </div>
@@ -111,17 +122,20 @@ const Gallery = () => {
                   alt={image.alt} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                   loading="lazy"
+                  onLoad={() => console.log('Image loaded successfully:', image.src)}
                   onError={(e) => {
                     console.error('Error loading image:', image.src);
+                    console.error('Full image object:', image);
                     const target = e.currentTarget as HTMLImageElement;
                     target.style.display = 'none';
                     const parent = target.parentElement;
                     if (parent) {
                       parent.innerHTML = `
                         <div class="w-full h-full bg-gray-100 flex items-center justify-center">
-                          <div class="text-center">
-                            <p class="text-gray-500 text-sm">Imagen no disponible</p>
-                            <p class="text-xs text-gray-400">${image.alt}</p>
+                          <div class="text-center p-4">
+                            <p class="text-gray-500 text-sm font-medium">Imagen no disponible</p>
+                            <p class="text-xs text-gray-400 mt-1">${image.alt}</p>
+                            <p class="text-xs text-red-400 mt-1">Ruta: ${image.src}</p>
                           </div>
                         </div>
                       `;
