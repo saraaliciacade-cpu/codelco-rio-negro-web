@@ -13,29 +13,39 @@ const Gallery = () => {
     { id: 'rental', label: 'Rental' }
   ];
 
-  // Gallery images - only manually uploaded photos
+  // Gallery images - manually uploaded photos
   const images = [
-    // Metalúrgica category images (10 images manually uploaded)
-    { id: 1, category: 'metalurgica', src: '/metalurgica-08.jpg', alt: 'Equipos metalúrgicos industriales' },
-    { id: 2, category: 'metalurgica', src: '/metalurgica-09.jpg', alt: 'Transporte de estructuras prefabricadas' },
-    { id: 3, category: 'metalurgica', src: '/metalurgica-10.jpg', alt: 'Tanque de acumulación naranja sobre skid' },
-    { id: 4, category: 'metalurgica', src: '/metalurgica-11.jpg', alt: 'Tanques cilíndricos en proceso de fabricación' },
-    { id: 5, category: 'metalurgica', src: '/metalurgica-12.jpg', alt: 'Estructuras azules para equipos industriales' },
-    { id: 6, category: 'metalurgica', src: '/metalurgica-13.jpg', alt: 'Contenedores tipo volquete amarillos' },
-    { id: 7, category: 'metalurgica', src: '/metalurgica-14.jpg', alt: 'Equipos rojos especializados para petróleo' },
-    { id: 8, category: 'metalurgica', src: '/metalurgica-15.jpg', alt: 'Mesa de corte y plegado de chapas' },
-    { id: 9, category: 'metalurgica', src: '/metalurgica-16.jpg', alt: 'Trailer especializado para transporte' },
-    { id: 10, category: 'metalurgica', src: '/metalurgica-17.jpg', alt: 'Contenedor azul para almacenamiento' },
+    // Metalúrgica category images (18 images total)
+    { id: 1, category: 'metalurgica', src: '/metalurgica-01.jpg', alt: 'Contenedores especializados Epersa' },
+    { id: 2, category: 'metalurgica', src: '/metalurgica-02.jpg', alt: 'Tanques cilíndricos especializados' },
+    { id: 3, category: 'metalurgica', src: '/metalurgica-03.jpg', alt: 'Cisterna móvil con equipamiento naranja' },
+    { id: 4, category: 'metalurgica', src: '/metalurgica-04.jpg', alt: 'Sistemas de tuberías industriales complejas' },
+    { id: 5, category: 'metalurgica', src: '/metalurgica-05.jpg', alt: 'Módulo industrial móvil especializado' },
+    { id: 6, category: 'metalurgica', src: '/metalurgica-06.jpg', alt: 'Plataforma móvil con escaleras de acceso' },
+    { id: 7, category: 'metalurgica', src: '/metalurgica-07.jpg', alt: 'Estación de soldadura móvil completa' },
+    { id: 8, category: 'metalurgica', src: '/metalurgica-08.jpg', alt: 'Equipos metalúrgicos industriales' },
+    { id: 9, category: 'metalurgica', src: '/metalurgica-09.jpg', alt: 'Transporte de estructuras prefabricadas' },
+    { id: 10, category: 'metalurgica', src: '/metalurgica-10.jpg', alt: 'Tanque de acumulación naranja sobre skid' },
+    { id: 11, category: 'metalurgica', src: '/metalurgica-11.jpg', alt: 'Tanques cilíndricos en proceso de fabricación' },
+    { id: 12, category: 'metalurgica', src: '/metalurgica-12.jpg', alt: 'Estructuras azules para equipos industriales' },
+    { id: 13, category: 'metalurgica', src: '/metalurgica-13.jpg', alt: 'Contenedores tipo volquete amarillos' },
+    { id: 14, category: 'metalurgica', src: '/metalurgica-14.jpg', alt: 'Equipos rojos especializados para petróleo' },
+    { id: 15, category: 'metalurgica', src: '/metalurgica-15.jpg', alt: 'Mesa de corte y plegado de chapas' },
+    { id: 16, category: 'metalurgica', src: '/metalurgica-16.jpg', alt: 'Trailer especializado para transporte' },
+    { id: 17, category: 'metalurgica', src: '/metalurgica-17.jpg', alt: 'Contenedor azul para almacenamiento' },
+    { id: 18, category: 'metalurgica', src: '/metalurgica-18.jpg', alt: 'Grúa móvil en operación de instalación' },
+    { id: 19, category: 'metalurgica', src: '/metalurgica-19.jpg', alt: 'Operación de elevación con grúas especializadas' },
+    { id: 20, category: 'metalurgica', src: '/metalurgica-20.jpg', alt: 'Módulos transportables con escaleras metálicas' },
 
     // Rental category images (8 images)
-    { id: 11, category: 'rental', src: '/rental-01.jpg', alt: 'Flota de vehículos Toyota Hilux en base operativa' },
-    { id: 12, category: 'rental', src: '/rental-02.jpg', alt: 'Instalaciones de rental y equipos especializados' },
-    { id: 13, category: 'rental', src: '/rental-03.jpg', alt: 'Módulos habitacionales para rental temporal' },
-    { id: 14, category: 'rental', src: '/rental-04.jpg', alt: 'Flota de vehículos 4x4 equipados para trabajo' },
-    { id: 15, category: 'rental', src: '/rental-05.jpg', alt: 'Trailers y contenedores móviles' },
-    { id: 16, category: 'rental', src: '/rental-06.jpg', alt: 'Módulos de alojamiento temporal' },
-    { id: 17, category: 'rental', src: '/rental-07.jpg', alt: 'Trailers especializados para campo petrolero' },
-    { id: 18, category: 'rental', src: '/rental-08.jpg', alt: 'Equipos modulares para proyectos temporales' }
+    { id: 21, category: 'rental', src: '/rental-01.jpg', alt: 'Flota de vehículos Toyota Hilux en base operativa' },
+    { id: 22, category: 'rental', src: '/rental-02.jpg', alt: 'Instalaciones de rental y equipos especializados' },
+    { id: 23, category: 'rental', src: '/rental-03.jpg', alt: 'Módulos habitacionales para rental temporal' },
+    { id: 24, category: 'rental', src: '/rental-04.jpg', alt: 'Flota de vehículos 4x4 equipados para trabajo' },
+    { id: 25, category: 'rental', src: '/rental-05.jpg', alt: 'Trailers y contenedores móviles' },
+    { id: 26, category: 'rental', src: '/rental-06.jpg', alt: 'Módulos de alojamiento temporal' },
+    { id: 27, category: 'rental', src: '/rental-07.jpg', alt: 'Trailers especializados para campo petrolero' },
+    { id: 28, category: 'rental', src: '/rental-08.jpg', alt: 'Equipos modulares para proyectos temporales' }
   ];
 
   const filteredImages = activeFilter === 'todas' ? images : images.filter(img => img.category === activeFilter);
