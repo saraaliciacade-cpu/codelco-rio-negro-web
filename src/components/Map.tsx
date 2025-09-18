@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-// import { supabase } from '@/integrations/supabase/client'; // Descomenta si lo usás
+import { supabase } from '@/integrations/supabase/client';
+
 declare global {
   interface Window {
     google: any;
@@ -10,7 +11,6 @@ declare global {
 const Map = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [locationData, setLocationData] = useState<any>(null);
   const [isMapVisible, setIsMapVisible] = useState(false);
 
   useEffect(() => {
@@ -46,25 +46,24 @@ const Map = () => {
           if (data && data.length > 0) {
             const locationData = data[0];
             const codelcoLocation = { lat: Number(locationData.latitude), lng: Number(locationData.longitude) };
-            createMap(codelcoLocation, locationData.name, locationData.address || 'Codelco Cipolletti, Río Negro, Argentina');
+            createMap(codelcoLocation, locationData.name, locationData.address || 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro');
             return;
           }
         }
       } catch (err) {
         console.log('Error conectando con Supabase:', err);
       }
+      // Fallback ajustado a tus datos
       const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
       const name = 'Codelco S.A';
-      const address = 'Codelco Cipolletti, Río Negro, Argentina';
+      const address = 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro\nDías: Lunes a viernes Horario: 8-12hs / 15-19hs';
       createMap(codelcoLocation, name, address);
     };
 
     const createMap = (location: { lat: number; lng: number }, name: string, address: string) => {
-      const formattedAddress = address.replace(/\n/g, '<br>');
-
       const map = new window.google.maps.Map(mapRef.current!, {
         center: location,
-        zoom: 12,
+        zoom: 11, // Cambiado a 11 para más alejado
         mapId: "30fd671af640a655e95c3547"
       });
 
@@ -73,6 +72,9 @@ const Map = () => {
         map,
         title: name
       });
+
+      // Reemplazar saltos por <br>
+      const formattedAddress = address.replace(/\n/g, '<br>');
 
       const infoContent = `
         <div>
@@ -87,7 +89,6 @@ const Map = () => {
       });
 
       infoWindow.open(map, marker);
-
       marker.addListener("click", () => {
         infoWindow.open(map, marker);
       });
@@ -112,12 +113,12 @@ const Map = () => {
           ref={mapRef}
           id="map"
           className="w-full"
-          style={{ height: '450px' }} // Fijado a 450px
+          style={{ height: '450px' }} // Fijo a 450px
         />
       ) : (
         <div
           className="w-full flex items-center justify-center bg-muted"
-          style={{ height: '450px' }} // Ajustado a 450px
+          style={{ height: '450px' }} // También el placeholder a 450px
         >
           <div className="text-muted-foreground">Cargando mapa...</div>
         </div>
