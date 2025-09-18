@@ -1,11 +1,14 @@
 const Company = () => {
-  return (
-    <section className="py-15 bg-background">
+  return <section className="py-15 bg-background">
       <div className="container mx-auto px-20 w-full"> {/* Cambiado de max-w-4xl a w-full */}
         <div>
           <h2 className="titulo-seccion font-ramabhadra">
-            <span style={{ color: '#333333' }}>NUESTRA </span>
-            <span style={{ color: '#d25840' }}>EMPRESA</span>
+            <span style={{
+            color: '#333333'
+          }}>NUESTRA </span>
+            <span style={{
+            color: '#d25840'
+          }}>EMPRESA</span>
           </h2>
         </div>
         <div className="grid lg:grid-cols-2 gap-20 mx-auto items-center px-6">
@@ -40,12 +43,11 @@ const Company = () => {
           {/* Company Image */}
           <div className="flex justify-center lg:justify-end animate-slide-in-left">
             <div className="relative">
-              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full max-w-full h-auto object-contain rounded-lg shadow-lg" /> {/* Cambiado max-w-2xl a max-w-full */}
+              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full w-full h-auto object-contain rounded-lg shadow-lg" /> {/* Cambiado max-w-2xl a max-w-full */}
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
 export default Company;
