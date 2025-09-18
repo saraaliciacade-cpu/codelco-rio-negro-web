@@ -164,7 +164,7 @@ const Gallery = () => {
     src: '/rental-08.jpg',
     alt: 'Equipos modulares para proyectos temporales'
   },
-  // Fábrica category images (10 images)
+  // Fábrica category images (20 images)
   {
     id: 29,
     category: 'fabrica',
@@ -215,6 +215,56 @@ const Gallery = () => {
     category: 'fabrica',
     src: '/fabrica-10.jpg',
     alt: 'Comedor modular con equipamiento completo'
+  }, {
+    id: 39,
+    category: 'fabrica',
+    src: '/fabrica-11.jpg',
+    alt: 'Sala de capacitación modular equipada'
+  }, {
+    id: 40,
+    category: 'fabrica',
+    src: '/fabrica-12.jpg',
+    alt: 'Centro de control con ventanas panorámicas'
+  }, {
+    id: 41,
+    category: 'fabrica',
+    src: '/fabrica-13.jpg',
+    alt: 'Módulo sanitario completo con urinarios'
+  }, {
+    id: 42,
+    category: 'fabrica',
+    src: '/fabrica-14.jpg',
+    alt: 'Estación de revisión técnica móvil'
+  }, {
+    id: 43,
+    category: 'fabrica',
+    src: '/fabrica-15.jpg',
+    alt: 'Unidad móvil de revisión técnica RTO'
+  }, {
+    id: 44,
+    category: 'fabrica',
+    src: '/fabrica-16.jpg',
+    alt: 'Estación de elevación para vehículos'
+  }, {
+    id: 45,
+    category: 'fabrica',
+    src: '/fabrica-17.jpg',
+    alt: 'Módulo habitacional con ventana panorámica'
+  }, {
+    id: 46,
+    category: 'fabrica',
+    src: '/fabrica-18.jpg',
+    alt: 'Cocina modular completamente equipada'
+  }, {
+    id: 47,
+    category: 'fabrica',
+    src: '/fabrica-19.jpg',
+    alt: 'Baños modulares con lavamanos múltiples'
+  }, {
+    id: 48,
+    category: 'fabrica',
+    src: '/fabrica-20.jpg',
+    alt: 'Kitchenette compacta con electrodomésticos'
   }];
   const filteredImages = activeFilter === 'todas' ? images : images.filter(img => img.category === activeFilter);
   const downloadImage = (imageSrc: string, fileName: string) => {
