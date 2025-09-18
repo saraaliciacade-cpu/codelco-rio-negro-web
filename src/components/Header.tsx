@@ -21,7 +21,7 @@ const Header = () => {
     name: 'Contacto',
     href: '#contacto'
   }];
-  return <header className="bg-background border-b border-muted sticky top-0 z-50">
+  return <header className="bg-background/80 backdrop-blur-md border-b border-muted/50 sticky top-0 z-50">
       <div className="container mx-auto px-8 max-w-7xl py-3 bg-transparent">
         <div className="flex items-center justify-between">
           {/* Logo - positioned more to the left */}
