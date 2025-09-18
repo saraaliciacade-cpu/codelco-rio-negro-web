@@ -76,8 +76,8 @@ const Gallery = () => {
 
   return (
     <section className="py-15 bg-background">
-      <div className="container mx-auto px-20 max-w-4xl">
-        <div>
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="text-center mb-12">
           <h2 className="titulo-seccion font-ramabhadra">
             <span style={{ color: '#333333' }}>GALERÍA DE </span>
             <span style={{ color: '#d25840' }}>IMÁGENES</span>
@@ -85,34 +85,52 @@ const Gallery = () => {
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-4 mb-10">
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
           {filters.map(filter => (
             <Button
               key={filter.id}
               onClick={() => setActiveFilter(filter.id)}
-              className={`px-4 py-2 text-body ${
+              className={`px-6 py-3 text-body font-medium transition-all duration-300 ${
                 activeFilter === filter.id
-                  ? 'bg-primary text-white'
-                  : 'bg-white text-primary border border-primary'
+                  ? 'bg-primary text-white shadow-lg transform scale-105'
+                  : 'bg-white text-primary border border-primary hover:bg-primary/10'
               }`}
             >
-              {filter.label}
+              {filter.label} ({images.filter(img => activeFilter === 'todas' || img.category === filter.id).length})
             </Button>
           ))}
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-full mx-auto my-12.5 px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-full mx-auto">
           {filteredImages.map(image => (
-            <div key={image.id} className="group relative overflow-hidden aspect-square">
-              <img 
-                src={image.src} 
-                alt={image.alt} 
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" 
-                loading="lazy"
-              />
-              <div className="mt-2">
-                <p className="text-body font-normal text-foreground">
+            <div key={image.id} className="gallery-item group relative overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
+              <div className="aspect-square overflow-hidden">
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                  loading="lazy"
+                  onError={(e) => {
+                    console.error('Error loading image:', image.src);
+                    const target = e.currentTarget as HTMLImageElement;
+                    target.style.display = 'none';
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `
+                        <div class="w-full h-full bg-gray-100 flex items-center justify-center">
+                          <div class="text-center">
+                            <p class="text-gray-500 text-sm">Imagen no disponible</p>
+                            <p class="text-xs text-gray-400">${image.alt}</p>
+                          </div>
+                        </div>
+                      `;
+                    }
+                  }}
+                />
+              </div>
+              <div className="p-4">
+                <p className="text-sm font-medium text-foreground line-clamp-2 group-hover:text-primary transition-colors duration-300">
                   {image.alt}
                 </p>
               </div>
@@ -121,8 +139,8 @@ const Gallery = () => {
         </div>
 
         {filteredImages.length === 0 && (
-          <div className="text-center mt-8">
-            <p className="text-body text-foreground">No hay imágenes disponibles para esta categoría.</p>
+          <div className="text-center mt-12 py-12">
+            <p className="text-lg text-foreground">No hay imágenes disponibles para esta categoría.</p>
           </div>
         )}
       </div>
