@@ -10,10 +10,33 @@ declare global {
 
 const Map = () => {
   const mapRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [locationData, setLocationData] = useState<any>(null);
+  const [isMapVisible, setIsMapVisible] = useState(false);
 
   useEffect(() => {
-    if (!mapRef.current) return;
+    if (!containerRef.current) return;
+
+    // Use Intersection Observer to load map only when visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !isMapVisible) {
+          setIsMapVisible(true);
+        }
+      },
+      {
+        rootMargin: '100px', // Load when 100px before coming into view
+      }
+    );
+
+    observer.observe(containerRef.current);
+
+    return () => observer.disconnect();
+  }, [isMapVisible]);
+
+  useEffect(() => {
+    if (!mapRef.current || !isMapVisible) return;
 
     // Función de inicialización del mapa
     const initMap = async () => {
@@ -95,16 +118,25 @@ const Map = () => {
     } else {
       initMap();
     }
-  }, []);
+  }, [isMapVisible]);
 
   return (
-    <section className="mt-17.5">
-      <div 
-        ref={mapRef}
-        id="map"
-        className="w-full"
-        style={{ height: '100vh' }}
-      />
+    <section className="mt-17.5" ref={containerRef}>
+      {isMapVisible ? (
+        <div 
+          ref={mapRef}
+          id="map"
+          className="w-full"
+          style={{ height: '100vh' }}
+        />
+      ) : (
+        <div 
+          className="w-full flex items-center justify-center bg-muted"
+          style={{ height: '100vh' }}
+        >
+          <div className="text-muted-foreground">Cargando mapa...</div>
+        </div>
+      )}
     </section>
   );
 };
