@@ -45,7 +45,19 @@ const Gallery = () => {
     { id: 25, category: 'rental', src: '/rental-05.jpg', alt: 'Trailers y contenedores móviles' },
     { id: 26, category: 'rental', src: '/rental-06.jpg', alt: 'Módulos de alojamiento temporal' },
     { id: 27, category: 'rental', src: '/rental-07.jpg', alt: 'Trailers especializados para campo petrolero' },
-    { id: 28, category: 'rental', src: '/rental-08.jpg', alt: 'Equipos modulares para proyectos temporales' }
+    { id: 28, category: 'rental', src: '/rental-08.jpg', alt: 'Equipos modulares para proyectos temporales' },
+
+    // Fábrica category images (10 images)
+    { id: 29, category: 'fabrica', src: '/fabrica-01.jpg', alt: 'Oficina móvil de control ambiental' },
+    { id: 30, category: 'fabrica', src: '/fabrica-02.jpg', alt: 'Módulo industrial especializado' },
+    { id: 31, category: 'fabrica', src: '/fabrica-03.jpg', alt: 'Planta de fabricación modular interior' },
+    { id: 32, category: 'fabrica', src: '/fabrica-04.jpg', alt: 'Nave industrial con línea de producción' },
+    { id: 33, category: 'fabrica', src: '/fabrica-05.jpg', alt: 'Estructura modular en construcción' },
+    { id: 34, category: 'fabrica', src: '/fabrica-06.jpg', alt: 'Unidad de emergencias médicas transportable' },
+    { id: 35, category: 'fabrica', src: '/fabrica-07.jpg', alt: 'Módulo industrial compacto transportable' },
+    { id: 36, category: 'fabrica', src: '/fabrica-08.jpg', alt: 'Proceso de ensamblaje de paneles' },
+    { id: 37, category: 'fabrica', src: '/fabrica-09.jpg', alt: 'Interior de módulo de laboratorio equipado' },
+    { id: 38, category: 'fabrica', src: '/fabrica-10.jpg', alt: 'Comedor modular con equipamiento completo' }
   ];
 
   const filteredImages = activeFilter === 'todas' ? images : images.filter(img => img.category === activeFilter);
