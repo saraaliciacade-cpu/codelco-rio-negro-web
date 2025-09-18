@@ -3,24 +3,26 @@ import React, { useEffect } from 'react';
 const Company = () => {
   useEffect(() => {
     const imageDiv = document.querySelector('.animate-slide-in-right');
-    if (imageDiv) imageDiv.classList.add('opacity-0');
-    setTimeout(() => {
-      if (imageDiv) imageDiv.classList.remove('opacity-0');
-    }, 100);
+    if (imageDiv) {
+      imageDiv.classList.add('opacity-0');
+      setTimeout(() => {
+        if (imageDiv) imageDiv.classList.remove('opacity-0');
+      }, 100);
+    }
   }, []);
 
   return (
     <section className="py-15 bg-background">
-      <div className="container mx-auto px-20 w-full">
+      <div className="container mx-auto px-4 w-full"> {/* px-4 para espacio en bordes */}
         <div>
           <h2 className="titulo-seccion font-ramabhadra">
             <span style={{ color: '#333333' }}>NUESTRA </span>
             <span style={{ color: '#d25840' }}>EMPRESA</span>
           </h2>
         </div>
-        <div className="grid lg:grid-cols-2 gap-6 items-center px-6 max-w-7xl mx-auto">
+        <div className="grid lg:grid-cols-[1fr,1.5fr] gap-8 items-center px-4 max-w-full mx-auto"> {/* gap-8 para espacio entre texto e imagen, px-4 para bordes */}
           {/* Company Text */}
-          <div className="space-y-5 order-1 lg:pr-6 max-w-prose">
+          <div className="space-y-6 order-1 lg:pr-8 max-w-prose"> {/* space-y-6 para espacio interno en texto */}
             <h3 className="font-bold text-foreground mb-5 font-montserrat text-xl">CODELCO S.A.</h3>
             <div className="space-y-5 text-foreground leading-normal text-body font-nunito">
               <p className="text-justify text-xs">
@@ -47,7 +49,7 @@ const Company = () => {
           {/* Company Image */}
           <div className="order-2 animate-slide-in-right">
             <div className="relative">
-              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full max-w-full h-auto object-contain rounded-lg shadow-lg" />
+              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full max-w-none h-auto object-contain rounded-lg shadow-lg" />
             </div>
           </div>
         </div>
