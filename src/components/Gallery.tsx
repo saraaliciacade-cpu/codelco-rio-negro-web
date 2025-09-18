@@ -301,15 +301,15 @@ const Gallery = () => {
               <div className="aspect-square overflow-hidden">
                 <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
               </div>
-              <div className="p-4">
-                
+              <div className="p-4 text-center">
+                <h3 className="font-semibold text-sm text-gray-800">{image.alt}</h3>
               </div>
             </div>)}
         </div>
 
         {/* Image Modal */}
-        {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4">
-            <div className="relative max-w-4xl max-h-full bg-white rounded-lg overflow-hidden">
+        {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4" onClick={() => setSelectedImage(null)}>
+            <div className="relative max-w-4xl max-h-full bg-white rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
               <div className="absolute top-4 right-4 flex gap-2 z-10">
                 <Button onClick={() => downloadImage(selectedImage.src, `codelco-${selectedImage.category}-${selectedImage.id}.jpg`)} className="bg-primary hover:bg-primary/90 text-white p-2" size="sm">
                   <Download className="w-4 h-4" />
@@ -319,7 +319,7 @@ const Gallery = () => {
                 </Button>
               </div>
               <img src={selectedImage.src} alt={selectedImage.alt} className="w-full h-auto max-h-[80vh] object-contain" />
-              <div className="p-4 bg-white">
+              <div className="p-4 bg-white text-center">
                 <h3 className="font-semibold text-lg text-gray-800">{selectedImage.alt}</h3>
                 <p className="text-sm text-gray-600 capitalize">{selectedImage.category}</p>
               </div>
