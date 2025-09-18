@@ -72,8 +72,17 @@ const Contact = () => {
                     <info.icon className="h-5 w-5 text-white" />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-lg font-bold text-foreground font-montserrat mb-2">{info.label}</h4>
-                    <div className={`text-lg whitespace-pre-line font-nunito leading-relaxed rounded ${info.icon === Mail || info.icon === Phone ? 'font-semibold' : 'text-gray-600'}`} style={info.icon === Mail || info.icon === Phone ? {color: '#d25840'} : {}}>{info.value}</div>
+                    <h4 className="text-base font-bold text-foreground font-montserrat mb-2">{info.label}</h4>
+                    {info.icon === Phone ? (
+                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
+                        <div>Rental: <span style={{color: '#d25840'}}>(299) 571 4217</span></div>
+                        <div>Compras: <span style={{color: '#d25840'}}>(299) 571 4661</span></div>
+                      </div>
+                    ) : info.icon === Mail ? (
+                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold" style={{color: '#d25840'}}>{info.value}</div>
+                    ) : (
+                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">{info.value}</div>
+                    )}
                   </div>
                 </CardContent>
               </Card>)}
@@ -87,13 +96,13 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-lg font-normal mb-2 text-foreground rounded">
+                  <label htmlFor="name" className="block text-sm font-normal mb-2 text-foreground rounded">
                     Nombre *
                   </label>
                   <Input id="name" name="name" type="text" required value={formData.name} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-lg font-normal mb-2 text-foreground">
+                  <label htmlFor="email" className="block text-sm font-normal mb-2 text-foreground">
                     Email *
                   </label>
                   <Input id="email" name="email" type="email" required value={formData.email} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
@@ -101,14 +110,14 @@ const Contact = () => {
               </div>
               
               <div>
-                <label htmlFor="phone" className="block text-lg font-normal mb-2 text-foreground">
+                <label htmlFor="phone" className="block text-sm font-normal mb-2 text-foreground">
                   Teléfono
                 </label>
                 <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
               </div>
               
               <div>
-                <label htmlFor="message" className="block text-lg font-normal mb-2 text-foreground">
+                <label htmlFor="message" className="block text-sm font-normal mb-2 text-foreground">
                   Mensaje *
                 </label>
                 <Textarea id="message" name="message" required rows={4} value={formData.message} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body resize-none" placeholder="Describe tu consulta o necesidad..." />
