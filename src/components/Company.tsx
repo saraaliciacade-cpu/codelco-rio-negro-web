@@ -12,17 +12,17 @@ const Company = () => {
   }, []);
 
   return (
-    <section className="py-10 bg-background">
-      <div className="container mx-auto px-6">
+    <section className="py-12 bg-background">
+      <div className="container mx-auto px-8">
         <div className="text-center mb-8">
           <h2 className="titulo-seccion font-ramabhadra inline-block">
             <span style={{ color: '#333333' }}>NUESTRA </span>
             <span style={{ color: '#d25840' }}>EMPRESA</span>
           </h2>
         </div>
-        <div className="grid lg:grid-cols-2 gap-6 items-center max-w-6xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-6 items-center max-w-5xl mx-auto px-8">
           {/* Company Text */}
-          <div className="space-y-4 order-1 text-center lg:text-left">
+          <div className="space-y-4 order-1 text-center lg:text-left max-w-md">
             <h3 className="font-bold text-foreground mb-4 font-montserrat text-xl">CODELCO S.A.</h3>
             <div className="space-y-4 text-foreground leading-normal text-body font-nunito">
               <p className="text-justify text-xs">
@@ -48,7 +48,7 @@ const Company = () => {
           </div>
           {/* Company Image */}
           <div className="order-2 animate-slide-in-right flex justify-center">
-            <div className="relative w-full max-w-xl">
+            <div className="relative w-full max-w-lg">
               <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full h-auto object-contain rounded-lg shadow-lg" />
             </div>
           </div>
