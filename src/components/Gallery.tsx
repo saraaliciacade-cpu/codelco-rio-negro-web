@@ -34,15 +34,15 @@ const Gallery = () => {
     { id: 18, category: 'metalurgica', src: '/images/metalurgica/metalurgica-18.jpg', alt: 'Instalaciones de producción' },
     { id: 19, category: 'metalurgica', src: '/images/metalurgica/metalurgica-19.jpg', alt: 'Equipamiento especializado' },
 
-    // Rental category images (8 images)
-    { id: 20, category: 'rental', src: '/images/rental/rental-01.jpg', alt: 'Flota de vehículos Toyota Hilux' },
-    { id: 21, category: 'rental', src: '/images/rental/rental-02.jpg', alt: 'Trailers y equipos móviles' },
-    { id: 22, category: 'rental', src: '/images/rental/rental-03.jpg', alt: 'Vehículos 4x4 para rental' },
-    { id: 23, category: 'rental', src: '/images/rental/rental-04.jpg', alt: 'Equipos especializados en alquiler' },
-    { id: 24, category: 'rental', src: '/images/rental/rental-05.jpg', alt: 'Contenedores para rental' },
-    { id: 25, category: 'rental', src: '/images/rental/rental-06.jpg', alt: 'Flota liviana especializada' },
-    { id: 26, category: 'rental', src: '/images/rental/rental-07.jpg', alt: 'Vehículos VW Amarok' },
-    { id: 27, category: 'rental', src: '/images/rental/rental-08.jpg', alt: 'Equipos porta herramientas' },
+    // Rental category images (8 images) - Updated with new images
+    { id: 20, category: 'rental', src: '/rental-01.jpg', alt: 'Flota de vehículos Toyota Hilux en base operativa' },
+    { id: 21, category: 'rental', src: '/rental-02.jpg', alt: 'Instalaciones de rental y equipos especializados' },
+    { id: 22, category: 'rental', src: '/rental-03.jpg', alt: 'Módulos habitacionales para rental temporal' },
+    { id: 23, category: 'rental', src: '/rental-04.jpg', alt: 'Flota de vehículos 4x4 equipados para trabajo' },
+    { id: 24, category: 'rental', src: '/rental-05.jpg', alt: 'Trailers y contenedores móviles' },
+    { id: 25, category: 'rental', src: '/rental-06.jpg', alt: 'Módulos de alojamiento temporal' },
+    { id: 26, category: 'rental', src: '/rental-07.jpg', alt: 'Trailers especializados para campo petrolero' },
+    { id: 27, category: 'rental', src: '/rental-08.jpg', alt: 'Equipos modulares para proyectos temporales' },
 
     // Fábrica category images (25 images)
     { id: 28, category: 'fabrica', src: '/images/fabrica/fabrica-01.jpg', alt: 'Instalaciones de fábrica' },
@@ -125,8 +125,18 @@ const Gallery = () => {
                   onLoad={() => console.log('Image loaded successfully:', image.src)}
                   onError={(e) => {
                     console.error('Error loading image:', image.src);
-                    console.error('Full image object:', image);
                     const target = e.currentTarget as HTMLImageElement;
+                    
+                    // Try alternative path without /images/ prefix
+                    const altSrc = image.src.replace('/images/', '/');
+                    if (target.src !== altSrc) {
+                      console.log('Trying alternative path:', altSrc);
+                      target.src = altSrc;
+                      return;
+                    }
+                    
+                    // If still fails, show placeholder
+                    console.error('All paths failed for image:', image);
                     target.style.display = 'none';
                     const parent = target.parentElement;
                     if (parent) {
