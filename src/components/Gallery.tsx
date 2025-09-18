@@ -164,7 +164,7 @@ const Gallery = () => {
     src: '/rental-08.jpg',
     alt: 'Equipos modulares para proyectos temporales'
   },
-  // Fábrica category images (20 images)
+  // Fábrica category images (24 images)
   {
     id: 29,
     category: 'fabrica',
@@ -265,6 +265,26 @@ const Gallery = () => {
     category: 'fabrica',
     src: '/fabrica-20.jpg',
     alt: 'Kitchenette compacta con electrodomésticos'
+  }, {
+    id: 49,
+    category: 'fabrica',
+    src: '/fabrica-21.jpg',
+    alt: 'Módulos temporales en terreno nevado con bandera argentina'
+  }, {
+    id: 50,
+    category: 'fabrica',
+    src: '/fabrica-22.jpg',
+    alt: 'Oficina modular con estaciones de trabajo rojas'
+  }, {
+    id: 51,
+    category: 'fabrica',
+    src: '/fabrica-23.jpg',
+    alt: 'Módulo en construcción con estructura metálica'
+  }, {
+    id: 52,
+    category: 'fabrica',
+    src: '/fabrica-24.jpg',
+    alt: 'Vista aérea de instalación modular en operación'
   }];
   const filteredImages = activeFilter === 'todas' ? images : images.filter(img => img.category === activeFilter);
   const downloadImage = (imageSrc: string, fileName: string) => {
@@ -308,17 +328,17 @@ const Gallery = () => {
         </div>
 
         {/* Image Modal */}
-        {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4" onClick={() => setSelectedImage(null)}>
-            <div className="relative max-w-4xl max-h-full bg-white rounded-lg overflow-hidden" onClick={(e) => e.stopPropagation()}>
+        {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in" onClick={() => setSelectedImage(null)}>
+            <div className="relative max-w-4xl max-h-full bg-white rounded-lg overflow-hidden animate-scale-in transform transition-all duration-300" onClick={(e) => e.stopPropagation()}>
               <div className="absolute top-4 right-4 flex gap-2 z-10">
-                <Button onClick={() => downloadImage(selectedImage.src, `codelco-${selectedImage.category}-${selectedImage.id}.jpg`)} className="bg-primary hover:bg-primary/90 text-white p-2" size="sm">
+                <Button onClick={() => downloadImage(selectedImage.src, `codelco-${selectedImage.category}-${selectedImage.id}.jpg`)} className="bg-primary hover:bg-primary/90 text-white p-2 transition-colors duration-200" size="sm">
                   <Download className="w-4 h-4" />
                 </Button>
-                <Button onClick={() => setSelectedImage(null)} className="bg-gray-500 hover:bg-gray-600 text-white p-2" size="sm">
+                <Button onClick={() => setSelectedImage(null)} className="bg-gray-500 hover:bg-gray-600 text-white p-2 transition-colors duration-200" size="sm">
                   <X className="w-4 h-4" />
                 </Button>
               </div>
-              <img src={selectedImage.src} alt={selectedImage.alt} className="w-full h-auto max-h-[80vh] object-contain" />
+              <img src={selectedImage.src} alt={selectedImage.alt} className="w-full h-auto max-h-[80vh] object-contain transition-transform duration-300" />
               <div className="p-4 bg-white text-center">
                 <h3 className="font-semibold text-lg text-gray-800">{selectedImage.alt}</h3>
                 <p className="text-sm text-gray-600 capitalize">{selectedImage.category}</p>
