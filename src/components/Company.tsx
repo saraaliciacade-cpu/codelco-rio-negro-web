@@ -13,15 +13,8 @@ const Company = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-20 max-w-full mx-auto items-center px-6">
-          {/* Company Image */}
-          <div className="flex justify-center lg:justify-start animate-slide-in-left order-1 lg:order-1">
-            <div className="relative w-full">
-              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full h-auto object-contain" />
-            </div>
-          </div>
-
           {/* Company Text */}
-          <div className="space-y-5 order-2 lg:order-2">
+          <div className="space-y-5">
             <h3 className="font-bold text-foreground mb-5 font-montserrat text-xl">CODELCO S.A.</h3>
             
             <div className="space-y-5 text-foreground leading-normal text-body font-nunito">
@@ -46,6 +39,13 @@ const Company = () => {
                 Actualmente, junto a nuestro equipo de Ingeniería y Desarrollo (I+D) estamos incursionando 
                 en el tema de soluciones habitacionales tanto para familias como para oficinas.
               </p>
+            </div>
+          </div>
+
+          {/* Company Image */}
+          <div className="flex justify-center lg:justify-end animate-slide-in-left">
+            <div className="relative">
+              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full max-w-2xl h-auto object-contain rounded-lg shadow-lg" />
             </div>
           </div>
         </div>
