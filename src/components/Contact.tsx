@@ -94,19 +94,18 @@ const Contact = () => {
               <h3 className="font-bold mb-8 text-center text-foreground font-montserrat text-lg">Envíanos un Mensaje</h3>
             
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-normal mb-2 text-foreground rounded">
-                    Nombre y apellido *
-                  </label>
-                  <Input id="name" name="name" type="text" required value={formData.name} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-normal mb-2 text-foreground">
-                    Email *
-                  </label>
-                  <Input id="email" name="email" type="email" required value={formData.email} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
-                </div>
+              <div>
+                <label htmlFor="name" className="block text-sm font-normal mb-2 text-foreground rounded">
+                  Nombre y apellido *
+                </label>
+                <Input id="name" name="name" type="text" required value={formData.name} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-normal mb-2 text-foreground">
+                  Email *
+                </label>
+                <Input id="email" name="email" type="email" required value={formData.email} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
               </div>
               
               <div>
