@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 const Company = () => {
   useEffect(() => {
-    const imageDiv = document.querySelector('.animate-slide-in-left');
+    const imageDiv = document.querySelector('.animate-slide-in-right');
     if (imageDiv) imageDiv.classList.add('opacity-0');
     setTimeout(() => {
       if (imageDiv) imageDiv.classList.remove('opacity-0');
@@ -19,16 +19,10 @@ const Company = () => {
           </h2>
         </div>
         <div className="grid lg:grid-cols-2 gap-6 items-center px-6 max-w-7xl mx-auto">
-          {/* Company Image */}
-          <div className="order-1 animate-slide-in-left">
-            <div className="relative">
-              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full max-w-full h-auto object-contain rounded-lg shadow-lg" />
-            </div>
-          </div>
           {/* Company Text */}
-          <div className="space-y-5 order-2 lg:pl-6">
+          <div className="space-y-5 order-1 lg:pr-6 max-w-prose">
             <h3 className="font-bold text-foreground mb-5 font-montserrat text-xl">CODELCO S.A.</h3>
-            <div className="space-y-5 text-foreground leading-normal text-body font-nunito max-w-prose">
+            <div className="space-y-5 text-foreground leading-normal text-body font-nunito">
               <p className="text-justify text-xs">
                 Comenzamos nuestra actividad en el año 2012, coincidiendo con el crecimiento acelerado
                 de las necesidades de la industria petrolera (perforaciones de pozos no convencionales- Vaca Muerta).
@@ -48,6 +42,12 @@ const Company = () => {
                 Actualmente, junto a nuestro equipo de Ingeniería y Desarrollo (I+D) estamos incursionando
                 en el tema de soluciones habitacionales tanto para familias como para oficinas.
               </p>
+            </div>
+          </div>
+          {/* Company Image */}
+          <div className="order-2 animate-slide-in-right">
+            <div className="relative">
+              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full max-w-full h-auto object-contain rounded-lg shadow-lg" />
             </div>
           </div>
         </div>
