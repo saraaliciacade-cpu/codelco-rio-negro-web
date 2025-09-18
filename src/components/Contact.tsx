@@ -73,16 +73,16 @@ const Contact = () => {
                   </div>
                   <div className="flex-1">
                     <h4 className="text-base font-bold text-foreground font-montserrat mb-2">{info.label}</h4>
-                    {info.icon === Phone ? (
-                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
-                        <div>Rental: <span style={{color: '#d25840'}}>(299) 571 4217</span></div>
-                        <div>Compras: <span style={{color: '#d25840'}}>(299) 571 4661</span></div>
-                      </div>
-                    ) : info.icon === Mail ? (
-                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold" style={{color: '#d25840'}}>{info.value}</div>
-                    ) : (
-                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">{info.value}</div>
-                    )}
+                    {info.icon === Phone ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
+                        <div>Rental: <span style={{
+                      color: '#d25840'
+                    }}>(299) 571 4217</span></div>
+                        <div>Compras: <span style={{
+                      color: '#d25840'
+                    }}>(299) 571 4661</span></div>
+                      </div> : info.icon === Mail ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold" style={{
+                  color: '#d25840'
+                }}>{info.value}</div> : <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">{info.value}</div>}
                   </div>
                 </CardContent>
               </Card>)}
