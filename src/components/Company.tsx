@@ -45,7 +45,7 @@ const Company = () => {
           {/* Company Image */}
           <div className="flex justify-center lg:justify-end animate-slide-in-left">
             <div className="relative">
-              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full max-w-lg h-auto object-contain rounded-lg shadow-lg" />
+              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full max-w-2xl h-auto object-contain rounded-lg shadow-lg" />
             </div>
           </div>
         </div>
