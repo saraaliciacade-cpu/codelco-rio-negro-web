@@ -35,15 +35,15 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-primary-light" />
-                <span className="text-white/80 font-nunito text-sm">Ruta 22 Km.1114, Cipolletti - Río Negro</span>
+                <span className="text-white/80 font-nunito text-base">Ruta 22 Km.1114, Cipolletti - Río Negro</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-primary-light" />
-                <span className="text-white/80 font-nunito text-sm">ventas@codelco.com.ar</span>
+                <span className="font-nunito text-base" style={{color: '#d25840'}}>ventas@codelco.com.ar</span>
               </div>
               <div className="flex items-start space-x-2">
                 <Phone className="h-4 w-4 text-primary-light mt-0.5" />
-                <div className="text-white/80 font-nunito text-sm">
+                <div className="font-nunito text-base" style={{color: '#d25840'}}>
                   <div>Rental: (299) 571 4217</div>
                   <div>Compras: (299) 571 4661</div>
                 </div>
