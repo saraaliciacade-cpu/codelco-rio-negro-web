@@ -1,51 +1,39 @@
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-industrial.jpg';
-
 const Hero = () => {
-  return (
-    <section id="inicio" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+  return <section id="inicio" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${heroImage})`
-        }}
-      />
+      <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url(${heroImage})`
+    }} />
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-20 max-w-4xl text-center text-white">
         <div className="mb-6 flex justify-center">
-          <img 
-            src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" 
-            alt="Codelco S.A." 
-            className="h-24 w-auto"
-          />
+          <img src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" alt="Codelco S.A." className="h-24 w-auto" />
         </div>
         
-        <h1 className="text-2xl font-bold mb-5 font-ramabhadra" style={{color: '#d25840'}}>
+        <h1 className="text-2xl font-bold mb-5 font-ramabhadra" style={{
+        color: '#d25840'
+      }}>
           UNA EMPRESA REGIONAL
         </h1>
         
-        <p className="text-sm mb-8 max-w-full mx-auto leading-normal text-white font-nunito">
+        <p className="mb-8 max-w-full mx-auto leading-normal text-white font-nunito text-base">
           Nuestro objetivo es proveerles a nuestros clientes un servicio integral, desde el asesoramiento inicial hasta la entrega final. Para ello, contamos con una planta de 3500m2, totalmente dedicada y equipada a la realización de nuestros productos y todo el personal necesario específicamente para cada sector.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            className="bg-primary text-white px-4 py-2 text-body"
-          >
+          <Button className="bg-primary text-white px-4 py-2 text-body">
             Nuestros Servicios
           </Button>
-          <Button 
-            className="px-4 py-2 text-body text-white"
-            style={{backgroundColor: '#333333'}}
-          >
+          <Button className="px-4 py-2 text-body text-white" style={{
+          backgroundColor: '#333333'
+        }}>
             Contactanos
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;

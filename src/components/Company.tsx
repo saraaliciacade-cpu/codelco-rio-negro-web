@@ -15,7 +15,7 @@ const Company = () => {
         <div className="grid lg:grid-cols-2 gap-20 max-w-full mx-auto items-center px-6">
           {/* Company Text */}
           <div className="space-y-5">
-            <h3 className="text-h2 font-bold text-foreground mb-5 font-montserrat">CODELCO S.A.</h3>
+            <h3 className="font-bold text-foreground mb-5 font-montserrat text-xl">CODELCO S.A.</h3>
             
             <div className="space-y-5 text-foreground leading-normal text-body font-nunito">
               <p className="text-justify text-xs">
@@ -25,7 +25,7 @@ const Company = () => {
                 piletas de almacenamiento y Pick Ups.
               </p>
               
-              <p className="text-justify">
+              <p className="text-justify text-xs">
                 Teniendo en cuenta la demanda, tanto de unidades como mejoras en calidad, tomamos la decisión 
                 de incorporar tecnología como Panelera, guillotina, plegadora, corte de plasma por CNC, 
                 soldadoras semiautomáticas, etc., que con el acompañamiento de personal capacitado, 
@@ -35,7 +35,7 @@ const Company = () => {
                 y un equipo automatizado de verificación técnica.
               </p>
               
-              <p className="text-justify">
+              <p className="text-justify text-xs">
                 Actualmente, junto a nuestro equipo de Ingeniería y Desarrollo (I+D) estamos incursionando 
                 en el tema de soluciones habitacionales tanto para familias como para oficinas.
               </p>
