@@ -63,7 +63,7 @@ const Map = () => {
     const createMap = (location: { lat: number; lng: number }, name: string, address: string) => {
       const map = new window.google.maps.Map(mapRef.current!, {
         center: location,
-        zoom: 11, // Cambiado a 11 para más alejado
+        zoom: 15, // Cambiado a 15 para más cerca
         mapId: "30fd671af640a655e95c3547"
       });
 

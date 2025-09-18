@@ -66,7 +66,16 @@ const Contact = () => {
           <div className="space-y-6">
             <h3 className="mb-8 text-foreground font-montserrat font-extrabold text-xl">Información de Contacto</h3>
             
-            {contactInfo.map((info, index) => <Card key={index} className="p-6 bg-white border border-gray-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300">
+            {contactInfo.map((info, index) => <Card 
+                key={index} 
+                className={`p-6 bg-white border border-gray-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300 ${info.icon === MapPin ? 'cursor-pointer' : ''}`}
+                onClick={info.icon === MapPin ? () => {
+                  const mapElement = document.getElementById('ubicacion');
+                  if (mapElement) {
+                    mapElement.scrollIntoView({ behavior: 'smooth' });
+                  }
+                } : undefined}
+              >
                 <CardContent className="flex items-start space-x-4 p-0">
                   <div className="bg-primary p-3 rounded-full shadow-sm">
                     <info.icon className="h-5 w-5 text-white" />
@@ -82,7 +91,13 @@ const Contact = () => {
                     }}>(299) 571 4661</span></div>
                       </div> : info.icon === Mail ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold" style={{
                   color: '#d25840'
-                }}>{info.value}</div> : <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">{info.value}</div>}
+                }}>{info.value}</div> : info.icon === MapPin ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">
+                        <span style={{color: '#d25840'}} className="font-semibold">Ruta 22 Km.1114, Cipolletti - Río Negro</span>
+                        <br />
+                        Días: Lunes a viernes
+                        <br />
+                        Horario: 8-12hs / 15-19hs
+                      </div> : <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">{info.value}</div>}
                   </div>
                 </CardContent>
               </Card>)}
