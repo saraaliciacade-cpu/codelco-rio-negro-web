@@ -62,7 +62,7 @@ const Map = () => {
     const createMap = (location: { lat: number; lng: number }, name: string, address: string) => {
       const map = new window.google.maps.Map(mapRef.current!, {
         center: location,
-        zoom: 11,
+        zoom: 12, // 11 + 1
         mapId: "30fd671af640a655e95c3547"
       });
 
