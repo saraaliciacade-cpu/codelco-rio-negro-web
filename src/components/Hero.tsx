@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-industrial.jpg';
-import heroImageWebP from '@/assets/hero-industrial.webp';
 const Hero = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -13,18 +12,13 @@ const Hero = () => {
 
   return <section id="inicio" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image - Optimized for LCP */}
-      <picture>
-        <source srcSet={heroImageWebP} type="image/webp" />
-        <img 
-          src={heroImage}
-          alt="Industrial facility background"
-          className="absolute inset-0 w-full h-full object-cover"
-          fetchPriority="high"
-          loading="eager"
-          width="1344"
-          height="752"
-        />
-      </picture>
+      <img 
+        src={heroImage}
+        alt="Industrial facility background"
+        className="absolute inset-0 w-full h-full object-cover"
+        fetchPriority="high"
+        loading="eager"
+      />
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
       
