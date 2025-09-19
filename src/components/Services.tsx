@@ -67,7 +67,7 @@ const Services = () => {
                 return service.subtitle;
             }
           };
-          return <div key={service.id} className="bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg group-hover:scale-95 hover:!scale-110 hover:!shadow-lg hover:z-10 relative">
+          return <div key={service.id} className="bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg group-hover:scale-95 hover:!scale-110 hover:!shadow-lg hover:z-10 relative group">
                 {/* Header with colored background */}
                 <div className="px-6 py-8 text-center" style={{
               backgroundColor: getHeaderColor(service.id)
@@ -79,11 +79,11 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h4 className="text-lg font-bold text-gray-500 mb-6 text-center leading-relaxed font-montserrat transition-colors duration-300 hover:text-orange-500">
+                  <h4 className="text-lg font-bold text-gray-500 mb-6 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-orange-500">
                     {getSubtitleText(service.id)}
                   </h4>
 
-                  <div className="text-sm leading-relaxed text-gray-600 text-left mb-8 font-nunito">
+                  <div className="text-sm leading-relaxed text-gray-600 text-center mb-8 font-nunito">
                     {service.description.split('**').map((part, index) => index % 2 === 1 ? <strong key={index} className="font-montserrat">{part}</strong> : part)}
                   </div>
 
