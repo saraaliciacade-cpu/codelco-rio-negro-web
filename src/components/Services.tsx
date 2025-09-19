@@ -41,7 +41,7 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 max-w-full mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 max-w-full mx-auto group">
           {services.map((service, index) => {
           const getHeaderColor = (id: string) => {
             switch (id) {
@@ -67,7 +67,7 @@ const Services = () => {
                 return service.subtitle;
             }
           };
-          return <div key={service.id} className="bg-white border border-gray-200 overflow-hidden">
+          return <div key={service.id} className="bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg group-hover:scale-95 hover:!scale-110 hover:!shadow-lg hover:z-10 relative">
                 {/* Header with colored background */}
                 <div className="px-6 py-8 text-center" style={{
               backgroundColor: getHeaderColor(service.id)
