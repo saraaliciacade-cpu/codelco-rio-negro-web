@@ -1,6 +1,15 @@
 import { Button } from '@/components/ui/button';
 import heroImage from '@/assets/hero-industrial.jpg';
 const Hero = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return <section id="inicio" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image - Optimized for LCP */}
       <img 
@@ -30,12 +39,17 @@ const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button className="bg-primary text-white px-4 py-2 text-body">
+          <Button 
+            onClick={() => scrollToSection('servicios')}
+            className="bg-primary text-white px-4 py-2 text-body"
+          >
             Nuestros Servicios
           </Button>
-          <Button className="px-4 py-2 text-body text-white" style={{
-          backgroundColor: '#333333'
-        }}>
+          <Button 
+            onClick={() => scrollToSection('contacto')}
+            className="px-4 py-2 text-body text-white" 
+            style={{ backgroundColor: '#333333' }}
+          >
             Contactanos
           </Button>
         </div>
