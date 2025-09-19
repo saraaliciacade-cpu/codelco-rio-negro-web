@@ -347,7 +347,7 @@ const Gallery = () => {
                   +
                 </div>
                 <p className="text-primary font-semibold">
-                  Ver más ({filteredImages.length - visibleCount} restantes)
+                  Ver más Imágenes ({filteredImages.length - visibleCount} restantes)
                 </p>
               </div>
             </div>
