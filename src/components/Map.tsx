@@ -12,8 +12,6 @@ const Map = () => {
   const mapRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isMapVisible, setIsMapVisible] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [mapData, setMapData] = useState<any>(null);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -33,109 +31,53 @@ const Map = () => {
   }, [isMapVisible]);
 
   useEffect(() => {
-    if (!isMapVisible) return;
+    if (!mapRef.current || !isMapVisible) return;
 
-    const fetchMapData = async () => {
-      setIsLoading(true);
+    const initMap = async () => {
       try {
-        console.log('Fetching map data from secure endpoint...');
-        const { data, error } = await supabase.functions.invoke('secure-maps');
-        
-        if (error) {
-          console.error('Error fetching map data:', error);
-          throw error;
-        }
-
-        console.log('Map data received:', data);
-        setMapData(data);
-        
-        if (data.apiKey) {
-          loadGoogleMapsScript(data.apiKey);
-        } else {
-          throw new Error('No API key received');
+        const response = await fetch('https://eymjmdusrvpdhprduwrf.supabase.co/rest/v1/Codelco%20Mapa%20SA?name=eq.Codelco%20S.A&select=latitude,longitude,name,address', {
+          headers: {
+            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5bWptZHVzcnZwZGhwcmR1d3JmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1NjAyMzAsImV4cCI6MjA3MzEzNjIzMH0.mdV5Bydnh93iYUMHhODUIydKsfn4ykocloPxQHhs0Mg',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5bWptZHVzcnZwZGhwcmR1d3JmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1NjAyMzAsImV4cCI6MjA3MzEzNjIzMH0.mdV5Bydnh93iYUMHhODUIydKsfn4ykocloPxQHhs0Mg'
+          }
+        });
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.length > 0) {
+            const locationData = data[0];
+            const codelcoLocation = { lat: Number(locationData.latitude), lng: Number(locationData.longitude) };
+            createMap(codelcoLocation, locationData.name, locationData.address || 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro');
+            return;
+          }
         }
       } catch (err) {
-        console.error('Error loading map data:', err);
-        // Use fallback data
-        const fallbackData = {
-          apiKey: null,
-          locations: [{
-            name: 'Codelco S.A',
-            latitude: -38.947524,
-            longitude: -68.002487,
-            address: 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro\nDías: Lunes a viernes Horario: 8-12hs / 15-19hs'
-          }]
-        };
-        setMapData(fallbackData);
-        setIsLoading(false);
+        console.log('Error conectando con Supabase:', err);
       }
+      const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
+      const name = 'Codelco S.A';
+      const address = 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro\nDías: Lunes a viernes Horario: 8-12hs / 15-19hs';
+      createMap(codelcoLocation, name, address);
     };
 
-    fetchMapData();
-  }, [isMapVisible]);
-
-  const loadGoogleMapsScript = (apiKey: string) => {
-    if (typeof window.google !== 'undefined' && window.google?.maps) {
-      initMap();
-      return;
-    }
-
-    console.log('Loading Google Maps script with secure API key...');
-    const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&loading=async`;
-    script.async = true;
-    script.defer = true;
-    script.onload = () => {
-      console.log('Google Maps script loaded successfully');
-      initMap();
-    };
-    script.onerror = (error) => {
-      console.error('Failed to load Google Maps script:', error);
-      setIsLoading(false);
-    };
-    document.head.appendChild(script);
-  };
-
-  const initMap = () => {
-    if (!mapRef.current || !mapData) {
-      console.error('Map container or data not available');
-      setIsLoading(false);
-      return;
-    }
-
-    try {
-      console.log('Initializing map...');
-      const location = mapData.locations?.[0];
-      if (!location) {
-        console.error('No location data available');
-        setIsLoading(false);
-        return;
-      }
-
-      const codelcoLocation = { 
-        lat: Number(location.latitude), 
-        lng: Number(location.longitude) 
-      };
-
-      const map = new window.google.maps.Map(mapRef.current, {
-        center: codelcoLocation,
-        zoom: 12,
+    const createMap = (location: { lat: number; lng: number }, name: string, address: string) => {
+      const map = new window.google.maps.Map(mapRef.current!, {
+        center: location,
+        zoom: 11,
         mapId: "30fd671af640a655e95c3547"
       });
 
       const marker = new window.google.maps.Marker({
-        position: codelcoLocation,
+        position: location,
         map,
-        title: location.name
+        title: name
       });
 
-      const formattedAddress = location.address.replace(/\n/g, '<br>');
-
+      const formattedAddress = address.replace(/\n/g, '<br>');
       const infoContent = `
         <div>
-          <strong>${location.name}</strong><br>
+          <strong>${name}</strong><br>
           ${formattedAddress}<br>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${codelcoLocation.lat},${codelcoLocation.lng}" target="_blank" style="color: #FFAB40;">Cómo llegar</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" style="color: #FFAB40;">Cómo llegar</a>
         </div>
       `;
 
@@ -147,18 +89,23 @@ const Map = () => {
       marker.addListener("click", () => {
         infoWindow.open(map, marker);
       });
+    };
 
-      console.log('Map initialized successfully');
-      setIsLoading(false);
-    } catch (error) {
-      console.error('Error initializing map:', error);
-      setIsLoading(false);
+    if (typeof window.google === 'undefined' || !window.google?.maps) {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAfO6pwad6QXR7W8DJmMaL39wQLvqZbS0I&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      window.initMap = initMap;
+      document.head.appendChild(script);
+    } else {
+      initMap();
     }
-  };
+  }, [isMapVisible]);
 
   return (
     <section className="mt-17.5" ref={containerRef}>
-      {isMapVisible && !isLoading && mapData ? (
+      {isMapVisible ? (
         <div
           ref={mapRef}
           id="map"
@@ -170,16 +117,7 @@ const Map = () => {
           className="w-full flex items-center justify-center bg-muted"
           style={{ height: '450px' }}
         >
-          <div className="text-muted-foreground flex items-center space-x-2">
-            {isLoading && (
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
-            )}
-            <span>
-              {isLoading ? 'Cargando mapa...' : 
-               !isMapVisible ? 'Preparando mapa...' : 
-               'Mapa no disponible'}
-            </span>
-          </div>
+          <div className="text-muted-foreground">Cargando mapa...</div>
         </div>
       )}
     </section>
