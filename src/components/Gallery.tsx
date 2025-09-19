@@ -338,12 +338,19 @@ const Gallery = () => {
         {/* Show More Button */}
         {hasMoreImages && (
           <div className="text-center mt-8">
-            <Button 
+            <div 
               onClick={handleShowMore}
-              className="px-8 py-3 bg-primary text-white hover:bg-primary/90 transition-all duration-300 transform hover:scale-105"
+              className="inline-block bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 p-6 border border-gray-200"
             >
-              Ver más ({filteredImages.length - visibleCount} restantes)
-            </Button>
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                  +
+                </div>
+                <p className="text-primary font-semibold">
+                  Ver más ({filteredImages.length - visibleCount} restantes)
+                </p>
+              </div>
+            </div>
           </div>
         )}
 
