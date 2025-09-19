@@ -41,7 +41,7 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 max-w-full mx-auto group">
+        <div className="flex flex-col gap-8 max-w-4xl mx-auto group">
           {services.map((service, index) => {
           const getHeaderColor = (id: string) => {
             switch (id) {
