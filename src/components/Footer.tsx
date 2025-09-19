@@ -1,18 +1,14 @@
 import { MapPin, Mail, Phone } from 'lucide-react';
 import codelcoLogo from '@/assets/codelco-logo.png';
-
 const Footer = () => {
-  return (
-    <footer className="text-white py-8" style={{backgroundColor: '#333333'}}>
+  return <footer className="text-white py-8" style={{
+    backgroundColor: '#333333'
+  }}>
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-6">
           {/* Company Info */}
           <div className="space-y-3">
-            <img 
-              src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" 
-              alt="Codelco S.A." 
-              className="h-12 w-auto"
-            />
+            <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-12 w-auto" />
             <p className="text-white/80 leading-relaxed font-nunito text-sm">
               Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial.
             </p>
@@ -39,13 +35,17 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-primary-light" />
-                <span className="font-nunito text-base" style={{color: '#d25840'}}>ventas@codelco.com.ar</span>
+                <span style={{
+                color: '#d25840'
+              }} className="font-nunito text-base text-slate-50">ventas@codelco.com.ar</span>
               </div>
               <div className="flex items-start space-x-2">
                 <Phone className="h-4 w-4 text-primary-light mt-0.5" />
-                <div className="font-nunito text-base" style={{color: '#d25840'}}>
-                  <div>Rental: (299) 571 4217</div>
-                  <div>Compras: (299) 571 4661</div>
+                <div className="font-nunito text-base" style={{
+                color: '#d25840'
+              }}>
+                  <div className="whitespace-normal ">Rental: (299) 571 4217</div>
+                  <div className="bg-black/0">Compras: (299) 571 4661</div>
                 </div>
               </div>
             </div>
@@ -58,8 +58,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
