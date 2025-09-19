@@ -14,7 +14,66 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      "Codelco Mapa SA": {
+        Row: {
+          address: string | null
+          created_at: string
+          id: number
+          latitude: number | null
+          longitude: number | null
+          name: string | null
+        }
+        Insert: {
+          address?: string | null
+          created_at?: string
+          id?: number
+          latitude?: number | null
+          longitude?: number | null
+          name?: string | null
+        }
+        Update: {
+          address?: string | null
+          created_at?: string
+          id?: number
+          latitude?: number | null
+          longitude?: number | null
+          name?: string | null
+        }
+        Relationships: []
+      }
+      contact_submissions: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: string
+          ip_address: unknown | null
+          message: string
+          name: string
+          phone: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: string
+          ip_address?: unknown | null
+          message: string
+          name: string
+          phone?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: string
+          ip_address?: unknown | null
+          message?: string
+          name?: string
+          phone?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
