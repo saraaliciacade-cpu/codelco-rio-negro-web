@@ -1,6 +1,24 @@
 import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/hero-industrial.jpg';
+import { useState, useEffect } from 'react';
 const Hero = () => {
+  const heroImages = [
+    '/images/hero/portada1.jpg',
+    '/images/hero/portada2.jpg', 
+    '/images/hero/portada3.jpg'
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => 
+        (prevIndex + 1) % heroImages.length
+      );
+    }, 4500); // Cambia cada 4.5 segundos
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -11,14 +29,21 @@ const Hero = () => {
   };
 
   return <section id="inicio" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image - Optimized for LCP */}
-      <img 
-        src={heroImage}
-        alt="Industrial facility background"
-        className="absolute inset-0 w-full h-full object-cover"
-        fetchPriority="high"
-        loading="eager"
-      />
+      {/* Animated Background Images */}
+      <div className="absolute inset-0">
+        {heroImages.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`Industrial facility ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover animate-float transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            fetchPriority={index === 0 ? "high" : "low"}
+            loading={index === 0 ? "eager" : "lazy"}
+          />
+        ))}
+      </div>
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
       
