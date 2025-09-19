@@ -41,6 +41,9 @@ const Hero = () => {
             }`}
             fetchPriority={index === 0 ? "high" : "low"}
             loading={index === 0 ? "eager" : "lazy"}
+            decoding={index === 0 ? "sync" : "async"}
+            width="1920"
+            height="1080"
           />
         ))}
       </div>
