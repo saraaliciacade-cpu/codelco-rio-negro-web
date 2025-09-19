@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => ({
           if (id.includes('react') || id.includes('react-dom')) {
             return 'react-vendor';
           }
-          // UI framework
+          // UI framework - split further
           if (id.includes('@radix-ui')) {
             return 'ui-vendor';
           }
@@ -39,13 +39,25 @@ export default defineConfig(({ mode }) => ({
           if (id.includes('lodash') || id.includes('date-fns') || id.includes('clsx') || id.includes('class-variance-authority')) {
             return 'utils';
           }
-          // Icons and assets
-          if (id.includes('lucide-react') || id.includes('recharts')) {
-            return 'icons-charts';
+          // Icons and charts (separate for better caching)
+          if (id.includes('lucide-react')) {
+            return 'icons';
+          }
+          if (id.includes('recharts')) {
+            return 'charts';
           }
           // Heavy components that are conditionally loaded
           if (id.includes('Gallery') || id.includes('Contact') || id.includes('Map')) {
             return 'lazy-components';
+          }
+          // Split UI components that aren't used on initial load
+          if (id.includes('ui/accordion') || id.includes('ui/alert') || id.includes('ui/calendar') || 
+              id.includes('ui/chart') || id.includes('ui/command') || id.includes('ui/context-menu') ||
+              id.includes('ui/dropdown-menu') || id.includes('ui/hover-card') || id.includes('ui/menubar') ||
+              id.includes('ui/navigation-menu') || id.includes('ui/popover') || id.includes('ui/scroll-area') ||
+              id.includes('ui/select') || id.includes('ui/sheet') || id.includes('ui/sidebar') ||
+              id.includes('ui/table') || id.includes('ui/tabs') || id.includes('ui/tooltip')) {
+            return 'ui-extended';
           }
         },
       },
@@ -59,13 +71,24 @@ export default defineConfig(({ mode }) => ({
         pure_funcs: mode === 'production' ? ['console.log', 'console.info'] : [],
         reduce_vars: true,
         reduce_funcs: true,
-        passes: 2,
+        passes: 3,
+        unsafe: true,
+        unsafe_arrows: true,
+        unsafe_methods: true,
+        keep_fargs: false,
       },
       mangle: {
         safari10: true,
+        properties: {
+          regex: /^_/
+        }
+      },
+      format: {
+        comments: false,
       },
     },
-    // Improve bundle analysis
-    chunkSizeWarningLimit: 500,
+    // Improve bundle analysis and splitting
+    chunkSizeWarningLimit: 300,
+    cssCodeSplit: true,
   },
 }));
