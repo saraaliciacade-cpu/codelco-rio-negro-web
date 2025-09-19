@@ -79,7 +79,7 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h4 className="text-lg font-bold text-gray-500 mb-6 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-orange-500">
+                  <h4 className="text-lg font-bold text-gray-500 mb-6 text-center leading-relaxed font-montserrat transition-colors duration-300 hover:text-orange-500">
                     {getSubtitleText(service.id)}
                   </h4>
 
