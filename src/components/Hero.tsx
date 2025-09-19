@@ -28,7 +28,7 @@ const Hero = () => {
     }
   };
 
-  return <section id="inicio" className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
+  return <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background Images */}
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
