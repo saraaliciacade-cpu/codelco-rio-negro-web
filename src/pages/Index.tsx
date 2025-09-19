@@ -1,12 +1,11 @@
 import { lazy, Suspense } from 'react';
-import Header from '@/components/Header';
-import Hero from '@/components/Hero';
-import Clients from '@/components/Clients';
-import Company from '@/components/Company';
-import Services from '@/components/Services';
 
-// Lazy load components that are below the fold for better initial loading
-// These will only be loaded when they become visible or are about to become visible
+// Lazy load all components for better bundle splitting
+const Header = lazy(() => import('@/components/Header'));
+const Hero = lazy(() => import('@/components/Hero'));
+const Clients = lazy(() => import('@/components/Clients'));
+const Company = lazy(() => import('@/components/Company'));
+const Services = lazy(() => import('@/components/Services'));
 const Gallery = lazy(() => import('@/components/Gallery'));
 const Contact = lazy(() => import('@/components/Contact'));
 const Map = lazy(() => import('@/components/Map'));
@@ -15,14 +14,24 @@ const Footer = lazy(() => import('@/components/Footer'));
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      <Suspense fallback={<div className="h-16 bg-background animate-pulse"></div>}>
+        <Header />
+      </Suspense>
       <main>
-        <Hero />
-        <Clients />
-        <div id="company">
-          <Company />
-        </div>
-        <Services />
+        <Suspense fallback={<div className="h-screen bg-background animate-pulse"></div>}>
+          <Hero />
+        </Suspense>
+        <Suspense fallback={<div className="py-8"><div className="animate-pulse rounded-lg bg-gray-200 h-32 mx-auto max-w-4xl"></div></div>}>
+          <Clients />
+        </Suspense>
+        <Suspense fallback={<div className="py-8"><div className="animate-pulse rounded-lg bg-gray-200 h-64 mx-auto max-w-4xl"></div></div>}>
+          <div id="company">
+            <Company />
+          </div>
+        </Suspense>
+        <Suspense fallback={<div className="py-8"><div className="animate-pulse rounded-lg bg-gray-200 h-96 mx-auto max-w-4xl"></div></div>}>
+          <Services />
+        </Suspense>
         <Suspense fallback={<div className="py-8 text-center">
           <div className="animate-pulse rounded-lg bg-gray-200 h-64 mx-auto max-w-4xl"></div>
         </div>}>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 const Company = () => {
   useEffect(() => {
     const imageDiv = document.querySelector('.animate-slide-in-right');
