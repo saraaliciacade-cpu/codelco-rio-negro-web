@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { X, Download } from 'lucide-react';
+
 const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState('todas');
   const [selectedImage, setSelectedImage] = useState<any>(null);
+  const [visibleCount, setVisibleCount] = useState(24);
   const filters = [{
     id: 'todas',
     label: 'Todas'
@@ -287,6 +289,12 @@ const Gallery = () => {
     alt: 'Vista aérea de instalación modular en operación'
   }];
   const filteredImages = activeFilter === 'todas' ? images : images.filter(img => img.category === activeFilter);
+  const displayedImages = activeFilter === 'todas' ? filteredImages.slice(0, visibleCount) : filteredImages;
+  const hasMoreImages = activeFilter === 'todas' && visibleCount < filteredImages.length;
+
+  const handleShowMore = () => {
+    setVisibleCount(prev => prev + 24);
+  };
   const downloadImage = (imageSrc: string, fileName: string) => {
     const link = document.createElement('a');
     link.href = imageSrc;
@@ -317,7 +325,7 @@ const Gallery = () => {
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-full mx-auto">
-          {filteredImages.map(image => <div key={image.id} className="gallery-item group relative overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer" onClick={() => setSelectedImage(image)}>
+          {displayedImages.map(image => <div key={image.id} className="gallery-item group relative overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer" onClick={() => setSelectedImage(image)}>
               <div className="aspect-square overflow-hidden">
                 <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
               </div>
@@ -326,6 +334,18 @@ const Gallery = () => {
               </div>
             </div>)}
         </div>
+
+        {/* Show More Button */}
+        {hasMoreImages && (
+          <div className="text-center mt-8">
+            <Button 
+              onClick={handleShowMore}
+              className="px-8 py-3 bg-primary text-white hover:bg-primary/90 transition-all duration-300 transform hover:scale-105"
+            >
+              Ver más ({filteredImages.length - visibleCount} restantes)
+            </Button>
+          </div>
+        )}
 
         {/* Image Modal */}
         {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in" onClick={() => setSelectedImage(null)}>
