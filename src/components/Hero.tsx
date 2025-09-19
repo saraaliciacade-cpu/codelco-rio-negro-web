@@ -36,7 +36,7 @@ const Hero = () => {
             key={index}
             src={image}
             alt={`Industrial facility ${index + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover animate-float transition-opacity duration-1000 ${
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               index === currentImageIndex ? 'opacity-100' : 'opacity-0'
             }`}
             fetchPriority={index === 0 ? "high" : "low"}
