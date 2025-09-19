@@ -41,7 +41,7 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col gap-8 max-w-4xl mx-auto group">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 max-w-full mx-auto group">
           {services.map((service, index) => {
           const getHeaderColor = (id: string) => {
             switch (id) {
@@ -79,7 +79,7 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="p-6">
-                  <h4 className="text-lg font-bold text-gray-500 mb-6 text-center leading-relaxed font-montserrat">
+                  <h4 className="text-lg font-bold text-gray-500 mb-6 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-orange-500">
                     {getSubtitleText(service.id)}
                   </h4>
 
