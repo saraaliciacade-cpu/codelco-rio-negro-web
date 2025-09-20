@@ -40,7 +40,7 @@ const Services = () => {
     }
   };
   return <section id="servicios" className="py-15 bg-white">
-      <div className="container mx-auto px-20 max-w-6xl">
+      <div className="container mx-auto px-4 sm:px-20 max-w-6xl">
         <div>
           <h2 className="titulo-seccion font-ramabhadra">
             <span style={{
@@ -52,7 +52,7 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 max-w-full mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-0 max-w-full mx-auto px-2 sm:px-0">
           {services.map((service, index) => {
           const getHeaderColor = (id: string) => {
             switch (id) {
@@ -78,18 +78,18 @@ const Services = () => {
                 return service.subtitle;
             }
           };
-          return <div key={service.id} className="bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg hover:z-10 relative group">
+          return <div key={service.id} className="bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg hover:z-10 relative group min-h-[600px] sm:min-h-[500px]">
                 {/* Header with colored background */}
                 <div className="px-6 py-8 text-center" style={{
               backgroundColor: getHeaderColor(service.id)
             }}>
-                  <h3 className="text-2xl font-bold text-white uppercase tracking-wide font-ramabhadra">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-wide font-ramabhadra">
                     {service.title}
                   </h3>
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-6 sm:p-6 lg:p-4 xl:p-6">
                   <h4 className="text-lg font-bold text-gray-500 mb-6 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-[#e65a29]">
                     {getSubtitleText(service.id)}
                   </h4>

@@ -51,9 +51,9 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
       
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-20 max-w-4xl text-center text-white">
+      <div className="relative z-10 container mx-auto px-4 sm:px-20 max-w-4xl text-center text-white">
         <div className="mb-6 flex justify-center">
-          <img src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" alt="Codelco S.A." className="h-24 w-auto" />
+          <img src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" alt="Codelco S.A." className="h-16 sm:h-24 w-auto object-contain" />
         </div>
         
         <h1 className="text-2xl font-bold mb-5 font-ramabhadra" style={{

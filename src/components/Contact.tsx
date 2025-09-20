@@ -71,7 +71,7 @@ const Contact = () => {
     value: 'Rental: (299) 571 4217\nCompras: (299) 571 4661'
   }];
   return <section id="contacto" className="py-15 bg-background">
-      <div className="container mx-auto px-20 max-w-4xl">
+      <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-4xl">
         <div>
           <h2 className="titulo-seccion font-ramabhadra">
             <span style={{
@@ -80,7 +80,7 @@ const Contact = () => {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 max-w-full mx-auto px-6 mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 max-w-full mx-auto px-2 sm:px-6 mb-16">
           {/* Contact Information */}
           <div className="space-y-6">
             <h3 className="mb-8 text-foreground font-montserrat font-extrabold text-xl">Información de Contacto</h3>
