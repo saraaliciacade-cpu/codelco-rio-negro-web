@@ -37,6 +37,8 @@
       .transition-opacity { transition-property: opacity; transition-duration: 1000ms; }
     </style>
     <link rel="stylesheet" href="/src/index.css" media="print" onload="this.media='all'; this.onload=null;">
+    <link rel="modulepreload" href="/src/main.tsx">
+    <script type="module" src="/src/main.tsx" defer></script>
     <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
     <title>Codelco S.A. - Servicios Industriales Argentina</title>
     <meta name="description" content="Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial en Cipolletti, Río Negro.">
@@ -80,7 +82,6 @@
         }, 100);
       });
     </script>
-    <script type="module" src="/src/main.tsx"></script>
     <div id="root"></div>
   </body>
 </html>

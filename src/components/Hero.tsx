@@ -32,21 +32,19 @@ const Hero = () => {
       {/* Animated Background Images */}
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
-          <picture key={index}>
-            <source srcSet={image.replace('.jpg', '.webp')} type="image/webp" />
-            <img
-              src={image}
-              alt={`Industrial facility ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-              fetchPriority={index === 0 ? "high" : "low"}
-              loading={index === 0 ? "eager" : "lazy"}
-              decoding={index === 0 ? "sync" : "async"}
-              width="1920"
-              height="1080"
-            />
-          </picture>
+          <img
+            key={index}
+            src={image}
+            alt={`Industrial facility ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            fetchPriority={index === 0 ? "high" : "low"}
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding={index === 0 ? "sync" : "async"}
+            width="1920"
+            height="1080"
+          />
         ))}
       </div>
       {/* Dark overlay */}
@@ -55,14 +53,7 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-20 max-w-4xl text-center text-white">
         <div className="mb-6 flex justify-center">
-          <img 
-            src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" 
-            alt="Codelco S.A." 
-            className="h-24 w-auto object-contain"
-            width="250"
-            height="93"
-            style={{ aspectRatio: '250/93' }}
-          />
+          <img src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" alt="Codelco S.A." className="h-24 w-auto" />
         </div>
         
         <h1 className="text-2xl font-bold mb-5 font-ramabhadra" style={{
