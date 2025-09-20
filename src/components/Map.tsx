@@ -77,7 +77,7 @@ const Map = () => {
         <div>
           <strong>${name}</strong><br>
           ${formattedAddress}<br>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" style="color: #FFAB40;">Cómo llegar</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" rel="noopener noreferrer" style="color: #FFAB40; text-decoration: underline;">Cómo llegar</a>
         </div>
       `;
 
