@@ -8,6 +8,9 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    headers: {
+      'Cache-Control': mode === 'production' ? 'public, max-age=31536000' : 'no-cache'
+    }
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
@@ -16,6 +19,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
+    assetsInlineLimit: 0, // Don't inline small assets to allow proper caching
     rollupOptions: {
       output: {
         manualChunks: (id) => {
