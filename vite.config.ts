@@ -19,44 +19,67 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // React ecosystem
-          if (id.includes('react') || id.includes('react-dom')) {
+          // Core React (only essential)
+          if (id.includes('react-dom/client') || id.includes('react/jsx-runtime')) {
+            return 'react-core';
+          }
+          // React runtime (deferred)
+          if (id.includes('react') && !id.includes('react-dom/client') && !id.includes('react/jsx-runtime')) {
             return 'react-vendor';
           }
-          // UI framework - split further
+          // UI framework - split by usage frequency
+          if (id.includes('@radix-ui/react-toast') || id.includes('@radix-ui/react-slot') || id.includes('@radix-ui/react-label')) {
+            return 'ui-core';
+          }
           if (id.includes('@radix-ui')) {
             return 'ui-vendor';
           }
-          // Router
+          // Router (critical for SPA)
           if (id.includes('react-router')) {
             return 'router';
           }
-          // Query/data fetching
-          if (id.includes('@tanstack/react-query') || id.includes('supabase')) {
+          // Data fetching (defer until needed)
+          if (id.includes('@tanstack/react-query')) {
+            return 'query-vendor';
+          }
+          if (id.includes('supabase')) {
             return 'data-vendor';
           }
-          // Utility libraries
-          if (id.includes('lodash') || id.includes('date-fns') || id.includes('clsx') || id.includes('class-variance-authority')) {
+          // Utility libraries (defer most)
+          if (id.includes('clsx') || id.includes('tailwind-merge')) {
+            return 'utils-core';
+          }
+          if (id.includes('lodash') || id.includes('date-fns') || id.includes('class-variance-authority')) {
             return 'utils';
           }
-          // Icons and charts (separate for better caching)
+          // Icons (defer until components load)
           if (id.includes('lucide-react')) {
             return 'icons';
           }
+          // Charts (heavy, defer)
           if (id.includes('recharts')) {
             return 'charts';
           }
-          // Heavy components that are conditionally loaded
-          if (id.includes('Gallery') || id.includes('Contact') || id.includes('Map')) {
+          // Form libraries (defer)
+          if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
+            return 'forms';
+          }
+          // Animation libraries (defer)
+          if (id.includes('embla-carousel') || id.includes('vaul') || id.includes('sonner')) {
+            return 'animations';
+          }
+          // Heavy components (lazy load)
+          if (id.includes('Gallery') || id.includes('Contact') || id.includes('Map') || id.includes('Services')) {
             return 'lazy-components';
           }
-          // Split UI components that aren't used on initial load
+          // Non-critical UI components
           if (id.includes('ui/accordion') || id.includes('ui/alert') || id.includes('ui/calendar') || 
               id.includes('ui/chart') || id.includes('ui/command') || id.includes('ui/context-menu') ||
               id.includes('ui/dropdown-menu') || id.includes('ui/hover-card') || id.includes('ui/menubar') ||
               id.includes('ui/navigation-menu') || id.includes('ui/popover') || id.includes('ui/scroll-area') ||
               id.includes('ui/select') || id.includes('ui/sheet') || id.includes('ui/sidebar') ||
-              id.includes('ui/table') || id.includes('ui/tabs') || id.includes('ui/tooltip')) {
+              id.includes('ui/table') || id.includes('ui/tabs') || id.includes('ui/tooltip') ||
+              id.includes('ui/carousel') || id.includes('ui/drawer') || id.includes('ui/input-otp')) {
             return 'ui-extended';
           }
         },
