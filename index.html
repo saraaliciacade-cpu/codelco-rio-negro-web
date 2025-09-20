@@ -55,6 +55,31 @@
 </head>
 
   <body>
+    <!-- Critical hero image for immediate LCP -->
+    <div id="critical-hero" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1;">
+      <img 
+        src="/images/hero/portada1.jpg" 
+        alt="Industrial facility background" 
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"
+        fetchpriority="high"
+        loading="eager"
+        decoding="sync"
+        width="1920"
+        height="1080"
+      />
+      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4));"></div>
+    </div>
+    <script>
+      // Hide critical hero once React app loads
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          const criticalHero = document.getElementById('critical-hero');
+          if (criticalHero) {
+            criticalHero.style.display = 'none';
+          }
+        }, 100);
+      });
+    </script>
     <div id="root"></div>
   </body>
 </html>
