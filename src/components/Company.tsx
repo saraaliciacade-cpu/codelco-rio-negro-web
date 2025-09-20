@@ -52,7 +52,15 @@ const Company = () => {
           {/* Company Image */}
           <div className="order-2 animate-slide-in-right flex justify-center">
             <div className="relative w-full max-w-lg">
-              <img src="/nuestra-empresa.jpg" alt="Flota de vehículos Codelco" className="w-full h-auto object-contain rounded-lg shadow-lg" />
+              <img 
+                src="/nuestra-empresa.jpg" 
+                alt="Flota de vehículos Codelco" 
+                className="w-full h-auto object-contain rounded-lg shadow-lg" 
+                loading="lazy"
+                width="284"
+                height="285"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 284px"
+              />
             </div>
           </div>
         </div>

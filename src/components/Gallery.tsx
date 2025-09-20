@@ -327,7 +327,15 @@ const Gallery = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-full mx-auto">
           {displayedImages.map(image => <div key={image.id} className="gallery-item group relative overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer" onClick={() => setSelectedImage(image)}>
               <div className="aspect-square overflow-hidden">
-                <img src={image.src} alt={image.alt} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                  loading="lazy"
+                  width="507"
+                  height="380"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                />
               </div>
               <div className="p-4 text-center">
                 <h3 className="font-semibold text-sm text-gray-800">{image.alt}</h3>
@@ -365,7 +373,13 @@ const Gallery = () => {
                   <X className="w-4 h-4" />
                 </Button>
               </div>
-              <img src={selectedImage.src} alt={selectedImage.alt} className="w-full h-auto max-h-[80vh] object-contain transition-transform duration-300" />
+              <img 
+                src={selectedImage.src} 
+                alt={selectedImage.alt} 
+                className="w-full h-auto max-h-[80vh] object-contain transition-transform duration-300"
+                loading="eager"
+                sizes="(max-width: 768px) 100vw, 80vw"
+              />
               <div className="p-4 bg-white text-center">
                 <h3 className="font-semibold text-lg text-gray-800">{selectedImage.alt}</h3>
                 <p className="text-sm capitalize text-orange-700">{selectedImage.category}</p>
