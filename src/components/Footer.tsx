@@ -35,15 +35,13 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-primary-light" />
-                <span style={{
-                color: '#d25840'
-              }} className="font-nunito text-base text-slate-50">ventas@codelco.com.ar</span>
+                <span className="text-white/80 font-nunito text-base">ventas@codelco.com.ar</span>
               </div>
               <div className="flex items-start space-x-2">
                 <Phone className="h-4 w-4 text-primary-light mt-0.5" />
-                <div className="font-nunito text-base text-white">
-                  <div className="whitespace-normal ">Rental: (299) 571 4217</div>
-                  <div className="bg-black/0">Compras: (299) 571 4661</div>
+                <div className="font-nunito text-base text-white/80">
+                  <div className="whitespace-normal">Rental: (299) 571 4217</div>
+                  <div>Compras: (299) 571 4661</div>
                 </div>
               </div>
             </div>

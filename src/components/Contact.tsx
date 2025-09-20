@@ -102,10 +102,16 @@ const Contact = () => {
                   <div className="flex-1">
                     <h4 className="text-base font-bold text-foreground font-montserrat mb-2">{info.label}</h4>
                     {info.icon === Phone ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
-                        <div>Rental: <span className="text-gray-600">(299) 571 4217</span></div>
-                        <div>Compras: <span className="text-gray-600">(299) 571 4661</span></div>
-                      </div> : info.icon === Mail ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold text-gray-600">{info.value}</div> : info.icon === MapPin ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">
-                        <span className="text-gray-600 font-semibold">Ruta 22 Km.1114, Cipolletti - Río Negro</span>
+                        <div>Rental: <span style={{
+                      color: '#d25840'
+                    }}>(299) 571 4217</span></div>
+                        <div>Compras: <span style={{
+                      color: '#d25840'
+                    }}>(299) 571 4661</span></div>
+                      </div> : info.icon === Mail ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold" style={{
+                  color: '#d25840'
+                }}>{info.value}</div> : info.icon === MapPin ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">
+                        <span style={{color: '#d25840'}} className="font-semibold">Ruta 22 Km.1114, Cipolletti - Río Negro</span>
                         <br />
                         Días: Lunes a viernes
                         <br />
