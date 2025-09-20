@@ -53,7 +53,14 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-20 max-w-4xl text-center text-white">
         <div className="mb-6 flex justify-center">
-          <img src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" alt="Codelco S.A." className="h-24 w-auto" />
+          <img 
+            src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" 
+            alt="Codelco S.A." 
+            className="h-24 w-auto object-contain"
+            width="250"
+            height="93"
+            style={{ aspectRatio: '250/93' }}
+          />
         </div>
         
         <h1 className="text-2xl font-bold mb-5 font-ramabhadra" style={{
