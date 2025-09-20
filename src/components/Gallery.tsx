@@ -327,15 +327,18 @@ const Gallery = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-full mx-auto">
           {displayedImages.map(image => <div key={image.id} className="gallery-item group relative overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer" onClick={() => setSelectedImage(image)}>
               <div className="aspect-square overflow-hidden">
-                <img 
-                  src={image.src} 
-                  alt={image.alt} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                  loading="lazy"
-                  width="507"
-                  height="380"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                />
+                <picture>
+                  <source srcSet={image.src.replace('.jpg', '.webp')} type="image/webp" />
+                  <img 
+                    src={image.src} 
+                    alt={image.alt} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    loading="lazy"
+                    width="507"
+                    height="380"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  />
+                </picture>
               </div>
               <div className="p-4 text-center">
                 <h3 className="font-semibold text-sm text-gray-800">{image.alt}</h3>

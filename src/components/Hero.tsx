@@ -32,19 +32,21 @@ const Hero = () => {
       {/* Animated Background Images */}
       <div className="absolute inset-0">
         {heroImages.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt={`Industrial facility ${index + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
-              index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-            fetchPriority={index === 0 ? "high" : "low"}
-            loading={index === 0 ? "eager" : "lazy"}
-            decoding={index === 0 ? "sync" : "async"}
-            width="1920"
-            height="1080"
-          />
+          <picture key={index}>
+            <source srcSet={image.replace('.jpg', '.webp')} type="image/webp" />
+            <img
+              src={image}
+              alt={`Industrial facility ${index + 1}`}
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+              fetchPriority={index === 0 ? "high" : "low"}
+              loading={index === 0 ? "eager" : "lazy"}
+              decoding={index === 0 ? "sync" : "async"}
+              width="1920"
+              height="1080"
+            />
+          </picture>
         ))}
       </div>
       {/* Dark overlay */}
