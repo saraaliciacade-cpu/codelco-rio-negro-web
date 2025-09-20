@@ -306,21 +306,13 @@ const Gallery = () => {
   return <section className="py-15 bg-background">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
-          {/* Título completo para web */}
-          <h2 className="titulo-seccion font-ramabhadra hidden sm:block">
+          <h2 className="titulo-seccion font-ramabhadra">
             <span style={{
             color: '#333333'
           }}>GALERÍA DE </span>
             <span style={{
             color: '#d25840'
           }}>IMÁGENES</span>
-          </h2>
-          
-          {/* Título simplificado para móvil */}
-          <h2 className="text-2xl font-ramabhadra block sm:hidden mb-4">
-            <span style={{
-            color: '#d25840'
-          }}>GALERÍA</span>
           </h2>
         </div>
 
