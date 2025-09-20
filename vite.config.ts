@@ -23,68 +23,67 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Core React (only essential)
-          if (id.includes('react-dom/client') || id.includes('react/jsx-runtime')) {
+          // Core React (absolute minimum for initial render)
+          if (id.includes('react/jsx-runtime') || id.includes('react-dom/client')) {
             return 'react-core';
           }
-          // React runtime (deferred)
-          if (id.includes('react') && !id.includes('react-dom/client') && !id.includes('react/jsx-runtime')) {
-            return 'react-vendor';
+          // React hooks and utilities (defer)
+          if (id.includes('react') && !id.includes('react/jsx-runtime') && !id.includes('react-dom/client')) {
+            return 'react-hooks';
           }
-          // UI framework - split by usage frequency
-          if (id.includes('@radix-ui/react-toast') || id.includes('@radix-ui/react-slot') || id.includes('@radix-ui/react-label')) {
-            return 'ui-core';
-          }
-          if (id.includes('@radix-ui')) {
-            return 'ui-vendor';
-          }
-          // Router (critical for SPA)
+          // Router (critical for SPA but can be chunked)
           if (id.includes('react-router')) {
             return 'router';
           }
-          // Data fetching (defer until needed)
+          // UI essentials (only for visible elements)
+          if (id.includes('@radix-ui/react-slot') || id.includes('@radix-ui/react-primitive')) {
+            return 'ui-primitives';
+          }
+          // Toast/notifications (defer until used)
+          if (id.includes('@radix-ui/react-toast') || id.includes('sonner')) {
+            return 'ui-notifications';
+          }
+          // Other UI components (defer)
+          if (id.includes('@radix-ui')) {
+            return 'ui-components';
+          }
+          // Data fetching (defer completely until needed)
           if (id.includes('@tanstack/react-query')) {
             return 'query-vendor';
           }
           if (id.includes('supabase')) {
-            return 'data-vendor';
+            return 'supabase';
           }
-          // Utility libraries (defer most)
+          // Essential utilities only
           if (id.includes('clsx') || id.includes('tailwind-merge')) {
-            return 'utils-core';
+            return 'utils-essential';
           }
-          if (id.includes('lodash') || id.includes('date-fns') || id.includes('class-variance-authority')) {
-            return 'utils';
+          // Non-essential utilities (defer)
+          if (id.includes('class-variance-authority') || id.includes('date-fns')) {
+            return 'utils-extended';
           }
           // Icons (defer until components load)
           if (id.includes('lucide-react')) {
             return 'icons';
           }
-          // Charts (heavy, defer)
+          // Heavy features (defer completely)
           if (id.includes('recharts')) {
             return 'charts';
           }
-          // Form libraries (defer)
           if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
             return 'forms';
           }
-          // Animation libraries (defer)
-          if (id.includes('embla-carousel') || id.includes('vaul') || id.includes('sonner')) {
-            return 'animations';
+          if (id.includes('embla-carousel') || id.includes('vaul')) {
+            return 'carousel';
           }
-          // Heavy components (lazy load)
-          if (id.includes('Gallery') || id.includes('Contact') || id.includes('Map') || id.includes('Services')) {
-            return 'lazy-components';
+          // Page components (lazy load completely)
+          if (id.includes('Gallery') || id.includes('Contact') || id.includes('Map') || 
+              id.includes('Services') || id.includes('Company') || id.includes('Clients')) {
+            return 'page-components';
           }
-          // Non-critical UI components
-          if (id.includes('ui/accordion') || id.includes('ui/alert') || id.includes('ui/calendar') || 
-              id.includes('ui/chart') || id.includes('ui/command') || id.includes('ui/context-menu') ||
-              id.includes('ui/dropdown-menu') || id.includes('ui/hover-card') || id.includes('ui/menubar') ||
-              id.includes('ui/navigation-menu') || id.includes('ui/popover') || id.includes('ui/scroll-area') ||
-              id.includes('ui/select') || id.includes('ui/sheet') || id.includes('ui/sidebar') ||
-              id.includes('ui/table') || id.includes('ui/tabs') || id.includes('ui/tooltip') ||
-              id.includes('ui/carousel') || id.includes('ui/drawer') || id.includes('ui/input-otp')) {
-            return 'ui-extended';
+          // Non-critical UI (defer completely)
+          if (id.includes('ui/')) {
+            return 'ui-deferred';
           }
         },
       },
