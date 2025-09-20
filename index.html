@@ -38,6 +38,9 @@
     </style>
     <link rel="stylesheet" href="/src/index.css" media="print" onload="this.media='all'; this.onload=null;">
     <link rel="modulepreload" href="/src/main.tsx">
+    <!-- Preload critical Vite-generated assets to reduce dependency chain -->
+    <link rel="preload" as="style" href="/assets/index.css" crossorigin>
+    <link rel="modulepreload" href="/assets/index.js" crossorigin>
     <script type="module" src="/src/main.tsx" defer></script>
     <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
     <title>Codelco S.A. - Servicios Industriales Argentina</title>
