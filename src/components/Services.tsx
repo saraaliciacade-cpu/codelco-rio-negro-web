@@ -99,9 +99,12 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="p-6 sm:p-6 lg:p-4 xl:p-6">
-                  <h4 className="text-lg font-bold text-gray-500 mb-6 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-[#e65a29]">
+                  <h4 className="text-lg font-bold text-gray-500 mb-4 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-[#e65a29]">
                     {getSubtitleText(service.id)}
                   </h4>
+
+                  {/* Línea separadora */}
+                  <div className="w-16 h-0.5 bg-gray-300 mx-auto mb-6"></div>
 
                   <div className="text-sm leading-relaxed text-gray-600 text-center mb-8 font-nunito space-y-4">
                     {service.description.map((paragraph, index) => (
