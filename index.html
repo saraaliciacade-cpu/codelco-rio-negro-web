@@ -41,13 +41,17 @@
       .opacity-100 { opacity: 1; }
       .transition-opacity { transition-property: opacity; transition-duration: 1000ms; }
     </style>
-    <link rel="stylesheet" href="/src/index.css" media="print" onload="this.media='all'; this.onload=null;">
+    <!-- Load main CSS non-blocking -->
+    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet';" fetchpriority="high">
     <link rel="modulepreload" href="/src/main.tsx">
-    <!-- Preload critical Vite-generated assets to reduce dependency chain -->
-    <link rel="preload" as="style" href="/assets/index.css" crossorigin>
+    <!-- Preload Vite-generated assets -->
+    <link rel="preload" as="style" href="/assets/index-9zT1bRuk.css" onload="this.onload=null;this.rel='stylesheet';" fetchpriority="high">
     <link rel="modulepreload" href="/assets/index.js" crossorigin>
     <script type="module" src="/src/main.tsx" defer></script>
-    <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
+    <noscript>
+      <link rel="stylesheet" href="/src/index.css">
+      <link rel="stylesheet" href="/assets/index-9zT1bRuk.css">
+    </noscript>
     <title>Codelco S.A. - Servicios Industriales Argentina</title>
     <meta name="description" content="Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial en Cipolletti, Río Negro.">
     <meta name="keywords" content="servicios industriales, rental equipos, Argentina, Cipolletti, Río Negro, Codelco">
