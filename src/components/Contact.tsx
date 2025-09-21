@@ -101,22 +101,27 @@ const Contact = () => {
                   </div>
                   <div className="flex-1">
                     <h4 className="text-base font-bold text-foreground font-montserrat mb-2">{info.label}</h4>
-                    {info.icon === Phone ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
-                        <div>Rental: <span style={{
-                      color: '#d25840'
-                    }}>(299) 571 4217</span></div>
-                        <div>Compras: <span style={{
-                      color: '#d25840'
-                    }}>(299) 571 4661</span></div>
-                      </div> : info.icon === Mail ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold" style={{
-                  color: '#d25840'
-                }}>{info.value}</div> : info.icon === MapPin ? <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">
+                    {info.icon === Phone ? 
+                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
+                        <div>Rental: <a href="tel:+5492995714217" className="hover:underline" style={{color: '#d25840'}}>(299) 571 4217</a></div>
+                        <div>Compras: <a href="tel:+5492995714661" className="hover:underline" style={{color: '#d25840'}}>(299) 571 4661</a></div>
+                      </div> 
+                    : info.icon === Mail ? 
+                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold">
+                        <a href="mailto:ventas@codelco.com.ar" className="hover:underline" style={{color: '#d25840'}}>{info.value}</a>
+                      </div> 
+                    : info.icon === MapPin ? 
+                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">
+                        {/* En móviles, solo texto sin enlace. En desktop, mantiene el enlace de la tarjeta */}
                         <span style={{color: '#d25840'}} className="font-semibold">Ruta 22 Km.1114, Cipolletti - Río Negro</span>
                         <br />
                         Días: Lunes a viernes
                         <br />
                         Horario: 8-12hs / 15-19hs
-                      </div> : <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">{info.value}</div>}
+                      </div> 
+                    : 
+                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">{info.value}</div>
+                    }
                   </div>
                 </CardContent>
               </Card>)}
