@@ -104,7 +104,7 @@ const Services = () => {
                   </h4>
 
                   {/* Línea separadora */}
-                  <div className="w-16 h-0.5 bg-gray-300 mx-auto mb-6"></div>
+                  <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-6 rounded-full"></div>
 
                   <div className="text-sm leading-relaxed text-gray-600 text-center mb-8 font-nunito space-y-4">
                     {service.description.map((paragraph, index) => (
