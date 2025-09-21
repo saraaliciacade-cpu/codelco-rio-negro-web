@@ -52,8 +52,17 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-0 max-w-full mx-auto px-2 sm:px-0">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center gap-8 lg:gap-12 max-w-full mx-auto px-2 sm:px-0">
           {services.map((service, index) => {
+            // Efecto escalera: primera arriba, segunda más abajo, tercera más abajo aún
+            const getStaggerClass = (index: number) => {
+              switch (index) {
+                case 0: return 'lg:mt-0'; // Fábrica arriba
+                case 1: return 'lg:mt-16'; // Metalúrgica más abajo
+                case 2: return 'lg:mt-32'; // Rental más abajo aún
+                default: return '';
+              }
+            };
           const getHeaderColor = (id: string) => {
             switch (id) {
               case 'fabrica':
@@ -78,7 +87,7 @@ const Services = () => {
                 return service.subtitle;
             }
           };
-          return <div key={service.id} className="bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg hover:z-10 relative group min-h-[600px] sm:min-h-[500px]">
+          return <div key={service.id} className={`bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg hover:z-10 relative group min-h-[600px] sm:min-h-[500px] lg:w-80 lg:flex-shrink-0 ${getStaggerClass(index)}`}>
                 {/* Header with colored background */}
                 <div className="px-6 py-8 text-center" style={{
               backgroundColor: getHeaderColor(service.id)
