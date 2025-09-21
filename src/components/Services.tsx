@@ -52,14 +52,14 @@ const Services = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center gap-8 lg:gap-12 max-w-full mx-auto px-2 sm:px-0">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center gap-6 lg:gap-6 max-w-full mx-auto px-2 sm:px-0">
           {services.map((service, index) => {
-            // Efecto escalera: primera arriba, segunda más abajo, tercera más abajo aún
+            // Inclinación sutil: primera arriba, segunda un poco más abajo, tercera un poco más abajo
             const getStaggerClass = (index: number) => {
               switch (index) {
                 case 0: return 'lg:mt-0'; // Fábrica arriba
-                case 1: return 'lg:mt-16'; // Metalúrgica más abajo
-                case 2: return 'lg:mt-32'; // Rental más abajo aún
+                case 1: return 'lg:mt-6'; // Metalúrgica ligeramente más abajo
+                case 2: return 'lg:mt-12'; // Rental un poco más abajo
                 default: return '';
               }
             };
@@ -87,7 +87,7 @@ const Services = () => {
                 return service.subtitle;
             }
           };
-          return <div key={service.id} className={`bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-lg hover:z-10 relative group min-h-[600px] sm:min-h-[500px] lg:w-80 lg:flex-shrink-0 ${getStaggerClass(index)}`}>
+          return <div key={service.id} className={`bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-2xl hover:shadow-black/20 hover:z-10 relative group min-h-[600px] sm:min-h-[500px] lg:w-80 lg:flex-shrink-0 ${getStaggerClass(index)}`}>
                 {/* Header with colored background */}
                 <div className="px-6 py-8 text-center" style={{
               backgroundColor: getHeaderColor(service.id)
