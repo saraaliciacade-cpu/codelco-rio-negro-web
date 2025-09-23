@@ -80,72 +80,54 @@ const Clients = () => {
   const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0) => (
     <div className="relative overflow-hidden w-full">
       <div 
-        className="flex animate-infinite-scroll"
+        className="flex animate-infinite-scroll-smooth"
         style={{
           animationDelay: `${animationDelay}s`,
-          animationDuration: '30s'
+          animationDuration: '60s'
         }}
       >
-        {/* First set */}
-        {clients.map((client, index) => (
-          <div
-            key={`first-${index}`}
-            className="flex-shrink-0 w-48 mx-6 flex flex-col items-center justify-center"
-          >
-            <div className="h-20 w-40 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 p-4 mb-3">
-              <img
-                src={client.logo}
-                alt={`${client.name} logo`}
-                className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-              />
+        {/* Triple the logos for ultra-smooth infinite scroll */}
+        {[...Array(3)].map((_, setIndex) => 
+          clients.map((client, index) => (
+            <div
+              key={`${setIndex}-${index}`}
+              className="flex-shrink-0 w-56 mx-8 flex flex-col items-center justify-center group"
+            >
+              <div className="h-24 w-48 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-4 group-hover:shadow-xl transition-all duration-500 ease-in-out">
+                <img
+                  src={client.logo}
+                  alt={`${client.name} logo`}
+                  className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                />
+              </div>
+              <p className="text-sm text-gray-600 text-center font-semibold leading-tight px-2 group-hover:text-gray-800 transition-colors duration-300">
+                {client.name}
+              </p>
             </div>
-            <p className="text-sm text-gray-600 text-center font-medium leading-tight">
-              {client.name}
-            </p>
-          </div>
-        ))}
-        {/* Duplicate set for seamless loop */}
-        {clients.map((client, index) => (
-          <div
-            key={`second-${index}`}
-            className="flex-shrink-0 w-48 mx-6 flex flex-col items-center justify-center"
-          >
-            <div className="h-20 w-40 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 p-4 mb-3">
-              <img
-                src={client.logo}
-                alt={`${client.name} logo`}
-                className="max-h-full max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-              />
-            </div>
-            <p className="text-sm text-gray-600 text-center font-medium leading-tight">
-              {client.name}
-            </p>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div className="text-center mb-16">
-          <h2 className="titulo-seccion font-ramabhadra">
-            <span style={{color: '#333333'}}>NUESTROS </span>
-            <span style={{color: '#d25840'}}>CLIENTES</span>
-          </h2>
-        </div>
+    <section className="py-20 bg-white overflow-hidden">
+      <div className="text-center mb-16">
+        <h2 className="titulo-seccion font-ramabhadra">
+          <span style={{color: '#333333'}}>NUESTROS </span>
+          <span style={{color: '#d25840'}}>CLIENTES</span>
+        </h2>
+      </div>
 
-        <div className="space-y-12">
-          {/* Row 1 */}
-          {renderCarouselRow(clientsRow1, 0)}
-          
-          {/* Row 2 - Different animation delay for varied movement */}
-          {renderCarouselRow(clientsRow2, 10)}
-          
-          {/* Row 3 - Different animation delay for varied movement */}
-          {renderCarouselRow(clientsRow3, 20)}
-        </div>
+      <div className="space-y-8">
+        {/* Row 1 */}
+        {renderCarouselRow(clientsRow1, 0)}
+        
+        {/* Row 2 - Different animation delay for varied movement */}
+        {renderCarouselRow(clientsRow2, 15)}
+        
+        {/* Row 3 - Different animation delay for varied movement */}
+        {renderCarouselRow(clientsRow3, 30)}
       </div>
     </section>
   );

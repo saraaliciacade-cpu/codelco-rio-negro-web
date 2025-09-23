@@ -168,15 +168,15 @@ All colors MUST be HSL.
 }
 
 /* Infinite Scroll Animation for Client Carousel */
-@keyframes infinite-scroll {
+@keyframes infinite-scroll-smooth {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(calc(-100% / 3));
   }
 }
 
-.animate-infinite-scroll {
-  animation: infinite-scroll 30s linear infinite;
+.animate-infinite-scroll-smooth {
+  animation: infinite-scroll-smooth 60s linear infinite;
 }
