@@ -187,20 +187,9 @@ All colors MUST be HSL.
 }
 
 .animate-infinite-scroll-smooth {
-  animation: infinite-scroll-smooth var(--fast-duration, 45s) linear infinite;
-  transition: animation-duration 0.3s ease-out;
+  animation: infinite-scroll-smooth 45s linear infinite;
 }
 
 .animate-infinite-scroll-reverse {
-  animation: infinite-scroll-reverse var(--fast-duration, 45s) linear infinite;
-  transition: animation-duration 0.3s ease-out;
-}
-
-/* Smooth hover effect to slow down individual carousel row */
-.carousel-row:hover .animate-infinite-scroll-smooth {
-  animation-duration: var(--slow-duration, 85s);
-}
-
-.carousel-row:hover .animate-infinite-scroll-reverse {
-  animation-duration: var(--slow-duration, 85s);
+  animation: infinite-scroll-reverse 45s linear infinite;
 }
