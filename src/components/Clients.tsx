@@ -77,7 +77,7 @@ const Clients = () => {
     { name: "25 de Mayo S.A.", logo: veinticincoMayoLogo },
   ];
 
-  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0) => {
+  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false) => {
     // Calculate total width needed for seamless infinite scroll
     const totalLogos = clients.length;
     const logoWidth = 224; // w-56 = 224px
@@ -91,7 +91,8 @@ const Clients = () => {
           style={{
             animationDelay: `${animationDelay}s`,
             animationDuration: '80s',
-            width: `${totalWidth * 2}px` // Double width for seamless loop
+            width: `${totalWidth * 2}px`, // Double width for seamless loop
+            transform: startFromMiddle ? 'translateX(-50%)' : 'translateX(0)'
           }}
         >
           {/* Double the logos for seamless infinite scroll */}
@@ -129,14 +130,14 @@ const Clients = () => {
       </div>
 
       <div className="space-y-8">
-        {/* Row 1 */}
-        {renderCarouselRow(clientsRow1, 0)}
+        {/* Row 1 - starts from beginning */}
+        {renderCarouselRow(clientsRow1, 0, false)}
         
-        {/* Row 2 - 5 second delay for staggered effect */}
-        {renderCarouselRow(clientsRow2, 5)}
+        {/* Row 2 - starts from middle for staggered effect */}
+        {renderCarouselRow(clientsRow2, 0, true)}
         
-        {/* Row 3 - 10 second delay for staggered effect */}
-        {renderCarouselRow(clientsRow3, 10)}
+        {/* Row 3 - starts from beginning like row 1 */}
+        {renderCarouselRow(clientsRow3, 0, false)}
       </div>
     </section>
   );
