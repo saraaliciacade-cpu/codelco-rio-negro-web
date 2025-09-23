@@ -77,12 +77,27 @@ const Clients = () => {
     { name: "25 de Mayo S.A.", logo: veinticincoMayoLogo },
   ];
 
-  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, offsetMiddle = false) => {
+  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false) => {
     // Calculate total width needed for seamless infinite scroll
     const totalLogos = clients.length;
     const logoWidth = 224; // w-56 = 224px
     const logoMargin = 64; // mx-8 = 32px on each side = 64px total
     const totalWidth = totalLogos * (logoWidth + logoMargin);
+
+    // For middle row, create alternating pattern with empty spaces
+    const createAlternatingClients = (originalClients: typeof clients) => {
+      const alternating = [];
+      for (let i = 0; i < originalClients.length; i++) {
+        // Add empty space first
+        alternating.push({ name: "", logo: "", isEmpty: true });
+        // Then add the actual client
+        alternating.push({ ...originalClients[i], isEmpty: false });
+      }
+      return alternating;
+    };
+
+    const displayClients = startFromMiddle ? createAlternatingClients(clients) : clients;
+    const finalWidth = startFromMiddle ? totalWidth * 4 : totalWidth * 2; // Adjust for alternating pattern
 
     return (
       <div className="relative overflow-hidden w-full">
@@ -91,27 +106,33 @@ const Clients = () => {
           style={{
             animationDelay: `${animationDelay}s`,
             animationDuration: '80s',
-            width: `${totalWidth * 2}px`, // Double width for seamless loop
-            transform: offsetMiddle ? 'translateX(-144px)' : 'translateX(0)' // Offset by half logo width + margin
+            width: `${finalWidth}px`
           }}
         >
           {/* Double the logos for seamless infinite scroll */}
           {[...Array(2)].map((_, setIndex) => 
-            clients.map((client, index) => (
+            displayClients.map((client, index) => (
               <div
                 key={`${setIndex}-${index}`}
                 className="flex-shrink-0 w-56 mx-8 flex flex-col items-center justify-center group"
               >
-                <div className="h-24 w-48 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-4 group-hover:shadow-xl transition-all duration-500 ease-in-out">
-                  <img
-                    src={client.logo}
-                    alt={`${client.name} logo`}
-                    className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
-                  />
-                </div>
-                <p className="text-sm text-gray-600 text-center font-semibold leading-tight px-2 group-hover:text-gray-800 transition-colors duration-300">
-                  {client.name}
-                </p>
+                {!client.isEmpty ? (
+                  <>
+                    <div className="h-24 w-48 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-4 group-hover:shadow-xl transition-all duration-500 ease-in-out">
+                      <img
+                        src={client.logo}
+                        alt={`${client.name} logo`}
+                        className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                      />
+                    </div>
+                    <p className="text-sm text-gray-600 text-center font-semibold leading-tight px-2 group-hover:text-gray-800 transition-colors duration-300">
+                      {client.name}
+                    </p>
+                  </>
+                ) : (
+                  // Empty space for alternating pattern
+                  <div className="h-24 w-48 mb-4"></div>
+                )}
               </div>
             ))
           )}
@@ -130,13 +151,13 @@ const Clients = () => {
       </div>
 
       <div className="space-y-8">
-        {/* Row 1 - normal position */}
+        {/* Row 1 - starts from beginning */}
         {renderCarouselRow(clientsRow1, 0, false)}
         
-        {/* Row 2 - offset to create staggered effect */}
+        {/* Row 2 - starts from middle for staggered effect */}
         {renderCarouselRow(clientsRow2, 0, true)}
         
-        {/* Row 3 - normal position like row 1 */}
+        {/* Row 3 - starts from beginning like row 1 */}
         {renderCarouselRow(clientsRow3, 0, false)}
       </div>
     </section>
