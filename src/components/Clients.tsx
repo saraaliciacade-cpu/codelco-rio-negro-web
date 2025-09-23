@@ -77,7 +77,7 @@ const Clients = () => {
     { name: "25 de Mayo S.A.", logo: veinticincoMayoLogo },
   ];
 
-  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false) => {
+  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false, reverse = false) => {
     // Calculate total width needed for seamless infinite scroll
     const totalLogos = clients.length;
     const logoWidth = 224; // w-56 = 224px
@@ -87,7 +87,7 @@ const Clients = () => {
     return (
       <div className="relative overflow-hidden w-full">
         <div 
-          className="flex animate-infinite-scroll-smooth"
+          className={`flex ${reverse ? 'animate-infinite-scroll-reverse' : 'animate-infinite-scroll-smooth'}`}
           style={{
             animationDelay: `${animationDelay}s`,
             animationDuration: '80s',
@@ -131,13 +131,13 @@ const Clients = () => {
 
       <div className="space-y-8">
         {/* Row 1 - starts from beginning */}
-        {renderCarouselRow(clientsRow1, 0, false)}
+        {renderCarouselRow(clientsRow1, 0, false, false)}
         
-        {/* Row 2 - starts from middle for staggered effect */}
-        {renderCarouselRow(clientsRow2, 0, true)}
+        {/* Row 2 - starts from middle and moves in reverse direction */}
+        {renderCarouselRow(clientsRow2, 0, true, true)}
         
         {/* Row 3 - starts from beginning like row 1 */}
-        {renderCarouselRow(clientsRow3, 0, false)}
+        {renderCarouselRow(clientsRow3, 0, false, false)}
       </div>
     </section>
   );

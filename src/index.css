@@ -177,6 +177,19 @@ All colors MUST be HSL.
   }
 }
 
+@keyframes infinite-scroll-reverse {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .animate-infinite-scroll-smooth {
   animation: infinite-scroll-smooth 80s linear infinite;
+}
+
+.animate-infinite-scroll-reverse {
+  animation: infinite-scroll-reverse 80s linear infinite;
 }
