@@ -1,4 +1,4 @@
-// Import client logos
+// Import client logos - Row 1
 import comprescoLogo from '@/assets/clients/compresco.jpeg';
 import crexellLogo from '@/assets/clients/crexell.png';
 import datumLogo from '@/assets/clients/datum.png';
@@ -9,6 +9,18 @@ import flargentLogo from '@/assets/clients/flargent.jpg';
 import hidromecLogo from '@/assets/clients/hidromec.jpeg';
 import hotHedLogo from '@/assets/clients/hot-hed.png';
 import indasycLogo from '@/assets/clients/indasyc.png';
+
+// Import client logos - Row 2
+import slGroupLogo from '@/assets/clients/sl-group.jpg';
+import ingenieriaLogo from '@/assets/clients/ingenieria-terra.png';
+import lygServiciosLogo from '@/assets/clients/lyg-servicios.jpeg';
+import netlogLogo from '@/assets/clients/netlog.png';
+import oilstoneLogo from '@/assets/clients/oilstone.png';
+import prodengLogo from '@/assets/clients/prodeng.png';
+import quimpeLogo from '@/assets/clients/quimpe.png';
+import rakiduamLogo from '@/assets/clients/rakiduam.png';
+import rangerOilLogo from '@/assets/clients/ranger-oil.png';
+import sanAntonioLogo from '@/assets/clients/san-antonio.png';
 
 const Clients = () => {
   // First 10 clients with actual logos
@@ -25,18 +37,18 @@ const Clients = () => {
     { name: "Indasyc", logo: indasycLogo },
   ];
 
-  // Placeholder for next 10 (will be updated when you provide the images)
+  // Second row with actual logos
   const clientsRow2 = [
-    { name: "Oilstone", logo: comprescoLogo }, // Placeholder
-    { name: "Compañía TSB", logo: crexellLogo }, // Placeholder
-    { name: "San Antonio Internacional", logo: datumLogo }, // Placeholder
-    { name: "Servicios Especiales San Antonio S.A.", logo: egServiciosLogo }, // Placeholder
-    { name: "Tetra Technologies", logo: edvsaLogo }, // Placeholder
-    { name: "Net Log S.A.", logo: emergenciasLogo }, // Placeholder
-    { name: "Prodeng S.A.", logo: flargentLogo }, // Placeholder
-    { name: "Rakiduam S.A.", logo: hidromecLogo }, // Placeholder
-    { name: "Ranger Oil S.A.", logo: hotHedLogo }, // Placeholder
-    { name: "Tuboscope Vetco de Argentina", logo: indasycLogo }, // Placeholder
+    { name: "SL Group Oil Solutions", logo: slGroupLogo },
+    { name: "Ingenieria Terra S.A.", logo: ingenieriaLogo },
+    { name: "LyG Servicios SRL", logo: lygServiciosLogo },
+    { name: "Net Log S.A.", logo: netlogLogo },
+    { name: "Oilstone", logo: oilstoneLogo },
+    { name: "Prodeng S.A.", logo: prodengLogo },
+    { name: "Quimpe SRL", logo: quimpeLogo },
+    { name: "Rakiduam S.A.", logo: rakiduamLogo },
+    { name: "Ranger Oil S.A.", logo: rangerOilLogo },
+    { name: "San Antonio Internacional", logo: sanAntonioLogo },
   ];
 
   // Placeholder for last 10 (will be updated when you provide the images)
