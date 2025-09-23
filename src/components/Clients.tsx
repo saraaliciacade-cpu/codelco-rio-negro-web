@@ -77,38 +77,47 @@ const Clients = () => {
     { name: "25 de Mayo S.A.", logo: veinticincoMayoLogo },
   ];
 
-  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0) => (
-    <div className="relative overflow-hidden w-full">
-      <div 
-        className="flex animate-infinite-scroll-smooth"
-        style={{
-          animationDelay: `${animationDelay}s`,
-          animationDuration: '60s'
-        }}
-      >
-        {/* Triple the logos for ultra-smooth infinite scroll */}
-        {[...Array(3)].map((_, setIndex) => 
-          clients.map((client, index) => (
-            <div
-              key={`${setIndex}-${index}`}
-              className="flex-shrink-0 w-56 mx-8 flex flex-col items-center justify-center group"
-            >
-              <div className="h-24 w-48 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-4 group-hover:shadow-xl transition-all duration-500 ease-in-out">
-                <img
-                  src={client.logo}
-                  alt={`${client.name} logo`}
-                  className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
-                />
+  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0) => {
+    // Calculate total width needed for seamless infinite scroll
+    const totalLogos = clients.length;
+    const logoWidth = 224; // w-56 = 224px
+    const logoMargin = 64; // mx-8 = 32px on each side = 64px total
+    const totalWidth = totalLogos * (logoWidth + logoMargin);
+
+    return (
+      <div className="relative overflow-hidden w-full">
+        <div 
+          className="flex animate-infinite-scroll-smooth"
+          style={{
+            animationDelay: `${animationDelay}s`,
+            animationDuration: '80s',
+            width: `${totalWidth * 2}px` // Double width for seamless loop
+          }}
+        >
+          {/* Double the logos for seamless infinite scroll */}
+          {[...Array(2)].map((_, setIndex) => 
+            clients.map((client, index) => (
+              <div
+                key={`${setIndex}-${index}`}
+                className="flex-shrink-0 w-56 mx-8 flex flex-col items-center justify-center group"
+              >
+                <div className="h-24 w-48 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200 p-6 mb-4 group-hover:shadow-xl transition-all duration-500 ease-in-out">
+                  <img
+                    src={client.logo}
+                    alt={`${client.name} logo`}
+                    className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                  />
+                </div>
+                <p className="text-sm text-gray-600 text-center font-semibold leading-tight px-2 group-hover:text-gray-800 transition-colors duration-300">
+                  {client.name}
+                </p>
               </div>
-              <p className="text-sm text-gray-600 text-center font-semibold leading-tight px-2 group-hover:text-gray-800 transition-colors duration-300">
-                {client.name}
-              </p>
-            </div>
-          ))
-        )}
+            ))
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <section className="py-20 bg-white overflow-hidden">

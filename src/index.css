@@ -173,10 +173,10 @@ All colors MUST be HSL.
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-100% / 3));
+    transform: translateX(-50%);
   }
 }
 
 .animate-infinite-scroll-smooth {
-  animation: infinite-scroll-smooth 60s linear infinite;
+  animation: infinite-scroll-smooth 80s linear infinite;
 }
