@@ -77,7 +77,7 @@ const Clients = () => {
     { name: "25 de Mayo S.A.", logo: veinticincoMayoLogo },
   ];
 
-  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false, reverse = false) => {
+  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false, reverse = false, duration = '80s') => {
     // Calculate total width needed for seamless infinite scroll
     const totalLogos = clients.length;
     const logoWidth = 224; // w-56 = 224px
@@ -90,7 +90,7 @@ const Clients = () => {
           className={`flex ${reverse ? 'animate-infinite-scroll-reverse' : 'animate-infinite-scroll-smooth'}`}
           style={{
             animationDelay: `${animationDelay}s`,
-            animationDuration: '80s',
+            animationDuration: duration,
             width: `${totalWidth * 2}px`, // Double width for seamless loop
             transform: startFromMiddle ? 'translateX(-50%)' : 'translateX(0)'
           }}
@@ -130,14 +130,14 @@ const Clients = () => {
       </div>
 
       <div className="space-y-8">
-        {/* Row 1 - starts from beginning */}
-        {renderCarouselRow(clientsRow1, 0, false, false)}
+        {/* Row 1 - faster speed */}
+        {renderCarouselRow(clientsRow1, 0, false, false, '65s')}
         
-        {/* Row 2 - starts from middle and moves in reverse direction */}
-        {renderCarouselRow(clientsRow2, 0, true, true)}
+        {/* Row 2 - slowest speed, reverse direction */}
+        {renderCarouselRow(clientsRow2, 0, true, true, '85s')}
         
-        {/* Row 3 - starts from beginning like row 1 */}
-        {renderCarouselRow(clientsRow3, 0, false, false)}
+        {/* Row 3 - faster speed like row 1 */}
+        {renderCarouselRow(clientsRow3, 0, false, false, '65s')}
       </div>
     </section>
   );
