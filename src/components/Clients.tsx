@@ -22,6 +22,18 @@ import rakiduamLogo from '@/assets/clients/rakiduam.png';
 import rangerOilLogo from '@/assets/clients/ranger-oil.png';
 import sanAntonioLogo from '@/assets/clients/san-antonio.png';
 
+// Import client logos - Row 3
+import wintershallLogo from '@/assets/clients/wintershall.png';
+import technipFmcLogo from '@/assets/clients/technip-fmc.webp';
+import tecpetrolLogo from '@/assets/clients/tecpetrol.png';
+import tetraLogo from '@/assets/clients/tetra.png';
+import tomrelLogo from '@/assets/clients/tomrel.png';
+import tackerLogo from '@/assets/clients/tacker.png';
+import transporteFerraLogo from '@/assets/clients/transporte-ferra.png';
+import tsbLogo from '@/assets/clients/tsb.png';
+import tuboscopeLogo from '@/assets/clients/tuboscope.jpg';
+import veinticincoMayoLogo from '@/assets/clients/25-de-mayo.png';
+
 const Clients = () => {
   // First 10 clients with actual logos
   const clientsRow1 = [
@@ -51,18 +63,18 @@ const Clients = () => {
     { name: "San Antonio Internacional", logo: sanAntonioLogo },
   ];
 
-  // Placeholder for last 10 (will be updated when you provide the images)
+  // Third row with actual logos
   const clientsRow3 = [
-    { name: "SL Group Oil Solutions", logo: comprescoLogo }, // Placeholder
-    { name: "Tacker SRL", logo: crexellLogo }, // Placeholder
-    { name: "Tecpetrol S.A.", logo: datumLogo }, // Placeholder
-    { name: "Quimpe SRL", logo: egServiciosLogo }, // Placeholder
-    { name: "Wintershall", logo: edvsaLogo }, // Placeholder
-    { name: "25 de Mayo S.A.", logo: emergenciasLogo }, // Placeholder
-    { name: "LyG Servicios SRL", logo: flargentLogo }, // Placeholder
-    { name: "Tomrel S.A.", logo: hidromecLogo }, // Placeholder
-    { name: "Transporte Ferra S.A.", logo: hotHedLogo }, // Placeholder
-    { name: "Ingenieria Terra S.A.", logo: indasycLogo }, // Placeholder
+    { name: "Wintershall", logo: wintershallLogo },
+    { name: "Technip FMC", logo: technipFmcLogo },
+    { name: "Tecpetrol S.A.", logo: tecpetrolLogo },
+    { name: "Tetra Technologies", logo: tetraLogo },
+    { name: "Tomrel S.A.", logo: tomrelLogo },
+    { name: "Tacker SRL", logo: tackerLogo },
+    { name: "Transportes Ferra S.A.", logo: transporteFerraLogo },
+    { name: "Compañía TSB", logo: tsbLogo },
+    { name: "Tuboscope Vetco Ar.", logo: tuboscopeLogo },
+    { name: "25 de Mayo S.A.", logo: veinticincoMayoLogo },
   ];
 
   const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0) => (
