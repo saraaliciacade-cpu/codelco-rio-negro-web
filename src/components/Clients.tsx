@@ -77,7 +77,7 @@ const Clients = () => {
     { name: "25 de Mayo S.A.", logo: veinticincoMayoLogo },
   ];
 
-  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false, reverse = false, duration = '80s') => {
+  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false, reverse = false, fastDuration = '45s', slowDuration = '85s') => {
     // Calculate total width needed for seamless infinite scroll
     const totalLogos = clients.length;
     const logoWidth = 224; // w-56 = 224px
@@ -85,12 +85,12 @@ const Clients = () => {
     const totalWidth = totalLogos * (logoWidth + logoMargin);
 
     return (
-      <div className="relative overflow-hidden w-full">
+      <div className="relative overflow-hidden w-full group">
         <div 
-          className={`flex ${reverse ? 'animate-infinite-scroll-reverse' : 'animate-infinite-scroll-smooth'}`}
+          className={`flex ${reverse ? 'animate-infinite-scroll-reverse' : 'animate-infinite-scroll-smooth'} transition-all duration-500`}
           style={{
             animationDelay: `${animationDelay}s`,
-            animationDuration: duration,
+            animationDuration: fastDuration,
             width: `${totalWidth * 2}px`, // Double width for seamless loop
             transform: startFromMiddle ? 'translateX(-50%)' : 'translateX(0)'
           }}
@@ -130,14 +130,14 @@ const Clients = () => {
       </div>
 
       <div className="space-y-8">
-        {/* Row 1 - faster speed */}
-        {renderCarouselRow(clientsRow1, 0, false, false, '65s')}
+        {/* Row 1 - fast speed, slows on hover */}
+        {renderCarouselRow(clientsRow1, 0, false, false, '45s', '85s')}
         
-        {/* Row 2 - slowest speed, reverse direction */}
-        {renderCarouselRow(clientsRow2, 0, true, true, '85s')}
+        {/* Row 2 - fast speed, slows on hover, reverse direction */}
+        {renderCarouselRow(clientsRow2, 0, true, true, '45s', '85s')}
         
-        {/* Row 3 - faster speed like row 1 */}
-        {renderCarouselRow(clientsRow3, 0, false, false, '65s')}
+        {/* Row 3 - fast speed, slows on hover */}
+        {renderCarouselRow(clientsRow3, 0, false, false, '45s', '85s')}
       </div>
     </section>
   );
