@@ -90,10 +90,11 @@ const Clients = () => {
           className={`flex ${reverse ? 'animate-infinite-scroll-reverse' : 'animate-infinite-scroll-smooth'}`}
           style={{
             animationDelay: `${animationDelay}s`,
-            animationDuration: fastDuration,
             width: `${totalWidth * 2}px`, // Double width for seamless loop
-            transform: startFromMiddle ? 'translateX(-50%)' : 'translateX(0)'
-          }}
+            transform: startFromMiddle ? 'translateX(-50%)' : 'translateX(0)',
+            '--fast-duration': fastDuration,
+            '--slow-duration': slowDuration
+          } as React.CSSProperties}
         >
           {/* Double the logos for seamless infinite scroll */}
           {[...Array(2)].map((_, setIndex) => 
