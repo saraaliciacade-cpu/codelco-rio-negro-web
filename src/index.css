@@ -166,3 +166,17 @@ All colors MUST be HSL.
 .gallery-item:hover {
   transform: translateY(-4px);
 }
+
+/* Infinite Scroll Animation for Client Carousel */
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 30s linear infinite;
+}
