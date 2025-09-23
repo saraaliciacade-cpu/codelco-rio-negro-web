@@ -23,16 +23,16 @@ import rangerOilLogo from '@/assets/clients/ranger-oil-new.png';
 import sanAntonioLogo from '@/assets/clients/san-antonio-new.png';
 
 // Import client logos - Row 3
-import wintershallLogo from '@/assets/clients/wintershall.png';
+import wintershallLogo from '@/assets/clients/wintershall-new.png';
 import technipFmcLogo from '@/assets/clients/technip-fmc.webp';
 import tecpetrolLogo from '@/assets/clients/tecpetrol-new.png';
 import tetraLogo from '@/assets/clients/tetra.png';
 import tomrelLogo from '@/assets/clients/tomrel.png';
-import tackerLogo from '@/assets/clients/tacker.png';
+import tackerLogo from '@/assets/clients/tacker-new.png';
 import transporteFerraLogo from '@/assets/clients/transporte-ferra.png';
 import tsbLogo from '@/assets/clients/tsb-new.png';
 import tuboscopeLogo from '@/assets/clients/tuboscope.jpg';
-import veinticincoMayoLogo from '@/assets/clients/25-de-mayo.png';
+import veinticincoMayoLogo from '@/assets/clients/25-de-mayo-new.png';
 
 const Clients = () => {
   // First 10 clients with actual logos
