@@ -123,11 +123,11 @@ const Clients = () => {
         {/* Row 1 */}
         {renderCarouselRow(clientsRow1, 0)}
         
-        {/* Row 2 - Slight delay for staggered effect */}
-        {renderCarouselRow(clientsRow2, 2)}
+        {/* Row 2 - 5 second delay for staggered effect */}
+        {renderCarouselRow(clientsRow2, 5)}
         
-        {/* Row 3 - Slight delay for staggered effect */}
-        {renderCarouselRow(clientsRow3, 4)}
+        {/* Row 3 - 10 second delay for staggered effect */}
+        {renderCarouselRow(clientsRow3, 10)}
       </div>
     </section>
   );
