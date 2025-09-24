@@ -110,7 +110,7 @@ const Map = () => {
           ref={mapRef}
           id="map"
           className="w-full"
-          style={{ height: '450px' }}
+          style={{ height: '450px', backgroundColor: '#f4f4f4' }}
         />
       ) : (
         <div
