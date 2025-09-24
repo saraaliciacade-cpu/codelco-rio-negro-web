@@ -70,12 +70,17 @@ const Contact = () => {
     label: 'Teléfonos',
     value: 'Rental: (299) 571 4217\nCompras: (299) 571 4661'
   }];
-  return <section id="contacto" className="py-15" style={{ backgroundColor: '#f4f4f4' }}>
+  return <section id="contacto" className="pt-20 pb-15" style={{ backgroundColor: '#f4f4f4' }}>
       <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-4xl">
         <div>
           <h2 className="titulo-seccion font-ramabhadra">
             <span style={{
-            color: '#d25840'
+            color: '#d25840',
+            backgroundColor: 'white',
+            padding: '12px 24px',
+            borderRadius: '16px',
+            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+            display: 'inline-block'
           }}>CONTACTO</span>
           </h2>
         </div>

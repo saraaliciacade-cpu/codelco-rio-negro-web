@@ -104,7 +104,7 @@ const Map = () => {
   }, [isMapVisible]);
 
   return (
-    <section className="mt-17.5" ref={containerRef}>
+    <section id="ubicacion" className="pb-15" style={{ backgroundColor: '#f4f4f4' }} ref={containerRef}>
       {isMapVisible ? (
         <div
           ref={mapRef}
