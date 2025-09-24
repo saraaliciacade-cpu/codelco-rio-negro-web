@@ -193,13 +193,3 @@ All colors MUST be HSL.
 .animate-infinite-scroll-reverse {
   animation: infinite-scroll-reverse 45s linear infinite;
 }
-
-/* Force Google Maps background to match contact section */
-#map {
-  background-color: #f4f4f4 !important;
-}
-
-#map div,
-#map iframe {
-  background-color: #f4f4f4 !important;
-}
