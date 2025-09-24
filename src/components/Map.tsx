@@ -114,8 +114,8 @@ const Map = () => {
         />
       ) : (
         <div
-          className="w-full flex items-center justify-center bg-muted"
-          style={{ height: '450px' }}
+          className="w-full flex items-center justify-center"
+          style={{ height: '450px', backgroundColor: '#f4f4f4' }}
         >
           <div className="text-muted-foreground">Cargando mapa...</div>
         </div>
