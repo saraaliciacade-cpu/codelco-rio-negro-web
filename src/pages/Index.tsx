@@ -51,14 +51,10 @@ const Index = () => {
             <Map />
           </div>
         </Suspense>
-        {/* Gray transition section between map and footer */}
-        <div style={{ backgroundColor: '#f4f4f4', height: '1px' }}></div>
       </main>
-      <div style={{ backgroundColor: '#f4f4f4' }}>
-        <Suspense fallback={<div className="h-16 bg-gray-100 animate-pulse"></div>}>
-          <Footer />
-        </Suspense>
-      </div>
+      <Suspense fallback={<div className="h-16 bg-gray-100 animate-pulse"></div>}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };
