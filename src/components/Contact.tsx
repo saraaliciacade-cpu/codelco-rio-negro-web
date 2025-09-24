@@ -269,27 +269,27 @@ const Contact = () => {
             </CardContent>
           </Card>
         </div>
+      </div>
 
-        {/* Map Section */}
-        <div className="w-full">
-          <div className="w-full" style={{ height: '450px' }}>
-            {isMapVisible ? (
-              <div
-                ref={mapRef}
-                id="map"
-                className="w-full h-full"
-                style={{ backgroundColor: '#f4f4f4' }}
-              />
-            ) : (
-              <div
-                id="map"
-                className="w-full h-full flex items-center justify-center"
-                style={{ backgroundColor: '#f4f4f4' }}
-              >
-                <div className="text-muted-foreground">Cargando mapa...</div>
-              </div>
-            )}
-          </div>
+      {/* Map Section - Full width outside container */}
+      <div className="w-full">
+        <div className="w-full" style={{ height: '450px' }}>
+          {isMapVisible ? (
+            <div
+              ref={mapRef}
+              id="map"
+              className="w-full h-full"
+              style={{ backgroundColor: '#f4f4f4' }}
+            />
+          ) : (
+            <div
+              id="map"
+              className="w-full h-full flex items-center justify-center"
+              style={{ backgroundColor: '#f4f4f4' }}
+            >
+              <div className="text-muted-foreground">Cargando mapa...</div>
+            </div>
+          )}
         </div>
       </div>
     </section>;
