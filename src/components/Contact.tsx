@@ -73,15 +73,8 @@ const Contact = () => {
   return <section id="contacto" className="pt-6 pb-15 mt-20" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '24px', borderTopRightRadius: '24px', boxShadow: '0 -4px 15px rgba(0, 0, 0, 0.1)' }}>
       <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-4xl">
         <div>
-          <h2 className="titulo-seccion font-ramabhadra">
-            <span style={{
-            color: '#d25840',
-            backgroundColor: 'white',
-            padding: '12px 24px',
-            borderRadius: '16px',
-            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
-            display: 'inline-block'
-          }}>CONTACTO</span>
+          <h2 className="titulo-seccion font-ramabhadra" style={{ color: '#d25840' }}>
+            CONTACTO
           </h2>
         </div>
 
