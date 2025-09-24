@@ -8,7 +8,7 @@ const Company = lazy(() => import('@/components/Company'));
 const Services = lazy(() => import('@/components/Services'));
 const Gallery = lazy(() => import('@/components/Gallery'));
 const Contact = lazy(() => import('@/components/Contact'));
-const Map = lazy(() => import('@/components/Map'));
+
 const Footer = lazy(() => import('@/components/Footer'));
 
 const Index = () => {
@@ -42,13 +42,8 @@ const Index = () => {
         <Suspense fallback={<div className="py-8 text-center">
           <div className="animate-pulse rounded-lg bg-gray-200 h-96 mx-auto max-w-4xl"></div>
         </div>}>
-          <Contact />
-        </Suspense>
-        <Suspense fallback={<div className="py-8 text-center">
-          <div className="animate-pulse rounded-lg bg-gray-200 h-96 mx-auto max-w-4xl"></div>
-        </div>}>
           <div id="ubicacion">
-            <Map />
+            <Contact />
           </div>
         </Suspense>
       </main>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MapPin, Mail, Phone, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,10 +6,17 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+
+declare global {
+  interface Window {
+    google: any;
+    initMap: () => void;
+  }
+}
 const Contact = () => {
-  const {
-    toast
-  } = useToast();
+  const { toast } = useToast();
+  const mapRef = useRef<HTMLDivElement>(null);
+  const [isMapVisible, setIsMapVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -70,6 +77,101 @@ const Contact = () => {
     label: 'Teléfonos',
     value: 'Rental: (299) 571 4217\nCompras: (299) 571 4661'
   }];
+
+  // Map initialization logic
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting && !isMapVisible) {
+          setIsMapVisible(true);
+        }
+      },
+      { rootMargin: '100px' }
+    );
+
+    const mapElement = document.getElementById('map');
+    if (mapElement) {
+      observer.observe(mapElement);
+    }
+
+    return () => observer.disconnect();
+  }, [isMapVisible]);
+
+  useEffect(() => {
+    if (!mapRef.current || !isMapVisible) return;
+
+    const initMap = async () => {
+      try {
+        const response = await fetch('https://eymjmdusrvpdhprduwrf.supabase.co/rest/v1/Codelco%20Mapa%20SA?name=eq.Codelco%20S.A&select=latitude,longitude,name,address', {
+          headers: {
+            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5bWptZHVzcnZwZGhwcmR1d3JmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1NjAyMzAsImV4cCI6MjA3MzEzNjIzMH0.mdV5Bydnh93iYUMHhODUIydKsfn4ykocloPxQHhs0Mg',
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5bWptZHVzcnZwZGhwcmR1d3JmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1NjAyMzAsImV4cCI6MjA3MzEzNjIzMH0.mdV5Bydnh93iYUMHhODUIydKsfn4ykocloPxQHhs0Mg'
+          }
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          if (data && data.length > 0) {
+            const locationData = data[0];
+            const codelcoLocation = { lat: Number(locationData.latitude), lng: Number(locationData.longitude) };
+            createMap(codelcoLocation, locationData.name, locationData.address || 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro');
+            return;
+          }
+        }
+      } catch (err) {
+        console.log('Error conectando con Supabase:', err);
+      }
+      
+      const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
+      const name = 'Codelco S.A';
+      const address = 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro\nDías: Lunes a viernes Horario: 8-12hs / 15-19hs';
+      createMap(codelcoLocation, name, address);
+    };
+
+    const createMap = (location: { lat: number; lng: number }, name: string, address: string) => {
+      const map = new window.google.maps.Map(mapRef.current!, {
+        center: location,
+        zoom: 12,
+        mapId: "30fd671af640a655e95c3547"
+      });
+
+      const marker = new window.google.maps.Marker({
+        position: location,
+        map,
+        title: name
+      });
+
+      const formattedAddress = address.replace(/\n/g, '<br>');
+      const infoContent = `
+        <div>
+          <strong>${name}</strong><br>
+          ${formattedAddress}<br>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" style="color: #FFAB40;">Cómo llegar</a>
+        </div>
+      `;
+
+      const infoWindow = new window.google.maps.InfoWindow({
+        content: infoContent
+      });
+
+      infoWindow.open(map, marker);
+      marker.addListener("click", () => {
+        infoWindow.open(map, marker);
+      });
+    };
+
+    if (typeof window.google === 'undefined' || !window.google?.maps) {
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAfO6pwad6QXR7W8DJmMaL39wQLvqZbS0I&callback=initMap`;
+      script.async = true;
+      script.defer = true;
+      window.initMap = initMap;
+      document.head.appendChild(script);
+    } else {
+      initMap();
+    }
+  }, [isMapVisible]);
   return <section id="contacto" className="pt-6 pb-15 mt-20" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '24px', borderTopRightRadius: '24px', boxShadow: '0 -4px 15px rgba(0, 0, 0, 0.1)' }}>
       <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-4xl">
         <div>
@@ -166,6 +268,28 @@ const Contact = () => {
             </form>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Map Section */}
+        <div className="w-full">
+          <div className="w-full" style={{ height: '450px' }}>
+            {isMapVisible ? (
+              <div
+                ref={mapRef}
+                id="map"
+                className="w-full h-full"
+                style={{ backgroundColor: '#f4f4f4' }}
+              />
+            ) : (
+              <div
+                id="map"
+                className="w-full h-full flex items-center justify-center"
+                style={{ backgroundColor: '#f4f4f4' }}
+              >
+                <div className="text-muted-foreground">Cargando mapa...</div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>;
