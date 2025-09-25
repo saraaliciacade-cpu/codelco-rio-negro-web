@@ -189,7 +189,7 @@ const Contact = () => {
                 key={index} 
                 className={`p-6 bg-white border border-gray-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300 ${info.icon === MapPin ? 'cursor-pointer' : ''}`}
                 onClick={info.icon === MapPin ? () => {
-                  const mapElement = document.getElementById('ubicacion');
+                  const mapElement = document.getElementById('map');
                   if (mapElement) {
                     mapElement.scrollIntoView({ behavior: 'smooth' });
                   }
