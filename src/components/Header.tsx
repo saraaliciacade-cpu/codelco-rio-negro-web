@@ -20,19 +20,17 @@ const Header = () => {
     <header className="bg-background/60 backdrop-blur-md border-b border-muted/50 sticky top-0 z-50"> {/* Cambiado a /60 para más transparencia */}
       <div className="container mx-auto px-8 max-w-7xl py-3 bg-transparent">
         <div className="flex items-center justify-between">
-          {/* Logo and Language Selector */}
+          {/* Language Selector and Logo */}
           <div className="flex items-center space-x-6">
-            <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-8 w-auto" />
-            
             {/* Language Selector */}
             <div className="relative">
               <button
                 onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-                className="flex items-center space-x-2 text-sm font-medium text-foreground hover:text-primary transition-colors duration-300"
+                className="flex items-center space-x-2 text-xs font-medium text-foreground hover:text-primary transition-colors duration-300"
                 style={{ fontFamily: 'Nunito Sans, sans-serif' }}
               >
                 <Globe className="h-4 w-4" />
-                <span>{language === 'es' ? 'Español' : 'English'}</span>
+                <span>{language === 'es' ? 'ARG' : 'EEUU'}</span>
               </button>
               
               {isLanguageMenuOpen && (
@@ -58,6 +56,8 @@ const Header = () => {
                 </div>
               )}
             </div>
+            
+            <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-8 w-auto" />
           </div>
           {/* Desktop Navigation - positioned more to the right with more spacing */}
           <nav className="hidden md:flex items-center space-x-8 ml-auto">
