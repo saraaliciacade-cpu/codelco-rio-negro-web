@@ -26,32 +26,41 @@ const Header = () => {
             <div className="relative">
               <button
                 onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-                className="flex items-center space-x-2 text-xs font-medium text-foreground hover:text-primary transition-colors duration-300"
+                className="flex items-center space-x-2 font-medium text-foreground hover:text-primary transition-colors duration-300"
                 style={{ fontFamily: 'Nunito Sans, sans-serif' }}
               >
                 <Globe className="h-4 w-4" />
-                <span>{language === 'es' ? 'ARG' : 'EEUU'}</span>
+                <div className="flex flex-col items-start">
+                  <span className="text-xs leading-none">{language === 'es' ? 'ARG' : 'EEUU'}</span>
+                  <span className="text-sm leading-none">{language === 'es' ? 'Español' : 'English'}</span>
+                </div>
               </button>
               
               {isLanguageMenuOpen && (
-                <div className="absolute top-full left-0 mt-2 bg-background border border-muted rounded-lg shadow-lg overflow-hidden z-50">
+                <div className="absolute top-full left-0 mt-2 bg-background border border-muted rounded-lg shadow-lg overflow-hidden z-50 min-w-[140px]">
                   <button
                     onClick={() => {
                       setLanguage('es');
                       setIsLanguageMenuOpen(false);
                     }}
-                    className={`block w-full px-4 py-2 text-left text-sm hover:bg-muted transition-colors ${language === 'es' ? 'bg-muted text-primary' : 'text-foreground'}`}
+                    className={`block w-full px-4 py-2 text-left hover:bg-muted transition-colors ${language === 'es' ? 'bg-muted text-primary' : 'text-foreground'}`}
                   >
-                    Español
+                    <div className="flex flex-col">
+                      <span className="text-xs leading-none">ARG</span>
+                      <span className="text-sm leading-none">Español</span>
+                    </div>
                   </button>
                   <button
                     onClick={() => {
                       setLanguage('en');
                       setIsLanguageMenuOpen(false);
                     }}
-                    className={`block w-full px-4 py-2 text-left text-sm hover:bg-muted transition-colors ${language === 'en' ? 'bg-muted text-primary' : 'text-foreground'}`}
+                    className={`block w-full px-4 py-2 text-left hover:bg-muted transition-colors ${language === 'en' ? 'bg-muted text-primary' : 'text-foreground'}`}
                   >
-                    English
+                    <div className="flex flex-col">
+                      <span className="text-xs leading-none">EEUU</span>
+                      <span className="text-sm leading-none">English</span>
+                    </div>
                   </button>
                 </div>
               )}
