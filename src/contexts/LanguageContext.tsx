@@ -19,6 +19,58 @@ const translations = {
     'nav.galeria': 'Galería',
     'nav.contacto': 'Contacto',
     
+    // Hero
+    'hero.title': 'UNA EMPRESA REGIONAL',
+    'hero.description': 'Nuestro objetivo es proveerles a nuestros clientes un servicio integral, desde el asesoramiento inicial hasta la entrega final. Para ello, contamos con una planta de 3500m2, totalmente dedicada y equipada a la realización de nuestros productos y todo el personal necesario específicamente para cada sector.',
+    'hero.button.services': 'Nuestros Servicios',
+    'hero.button.contact': 'Contactanos',
+    
+    // Company
+    'company.title': 'NUESTRA EMPRESA',
+    'company.subtitle': 'CODELCO S.A.',
+    'company.paragraph1': 'Comenzamos nuestra actividad en el año 2012, coincidiendo con el crecimiento acelerado de las necesidades de la industria petrolera (perforaciones de pozos no convencionales- Vaca Muerta). Para ese momento, nuestra empresa ya había incursionado en el sector Rental de Trailers, piletas de almacenamiento y Pick Ups.',
+    'company.paragraph2': 'Teniendo en cuenta la demanda, tanto de unidades como mejoras en calidad, tomamos la decisión de incorporar tecnología como Panelera, guillotina, plegadora, corte de plasma por CNC, soldadoras semiautomáticas, etc., que con el acompañamiento de personal capacitado, nos llevó a posicionarnos muy bien en el mercado de fabricación de Módulos Habitacionales orientados al sector petrolero, como así también en la fabricación de Piletas de Acumulación, Tanques API, Contenedores y trabajos especiales como equipos de control de sólidos integrados y un equipo automatizado de verificación técnica.',
+    'company.paragraph3': 'Actualmente, junto a nuestro equipo de Ingeniería y Desarrollo (I+D) estamos incursionando en el tema de soluciones habitacionales tanto para familias como para oficinas.',
+    
+    // Services
+    'services.title': 'NUESTRAS ÁREAS',
+    'services.factory.title': 'FÁBRICA',
+    'services.factory.subtitle': 'FABRICAMOS NUESTROS PRODUCTOS',
+    'services.factory.description': 'Módulos habitacionales, Piletas de acumulación API650, Tanques de almacenamiento API650, Contenedores especiales, Gabinetes para equipos, Trabajos especiales, Equipos de control de sólidos, Equipos automatizados de verificación técnica',
+    'services.factory.button': 'Contáctanos',
+    'services.metallurgical.title': 'METALÚRGICA',
+    'services.metallurgical.subtitle': 'REPARACIÓN Y MANTENIMIENTO',
+    'services.metallurgical.description': 'Servicio de soldaduras especiales SMAW | GMAW | GTAW | SAW, Corte y conformado, Maquinado y torneado, Reparación de equipos pesados, Servicio con soldadores certificados API 1104 / ASME',
+    'services.metallurgical.button': 'Nuestra Ubicación',
+    'services.rental.title': 'RENTAL',
+    'services.rental.subtitle': 'ALQUILER DE EQUIPOS',
+    'services.rental.description': 'Módulos habitacionales para campo, Oficinas móviles, Comedores, Dormitorios, Sanitarios, Trailers de trabajo',
+    'services.rental.button': 'La Galería de Imágenes',
+    
+    // Gallery
+    'gallery.title': 'GALERÍA DE IMÁGENES',
+    'gallery.filter.all': 'Todas',
+    'gallery.filter.factory': 'Fábrica',
+    'gallery.filter.metallurgical': 'Metalúrgica',
+    'gallery.filter.rental': 'Rental',
+    'gallery.showMore': 'Ver más Imágenes',
+    'gallery.remaining': 'restantes',
+    'gallery.noImages': 'No hay imágenes disponibles para esta categoría',
+    'gallery.downloadImage': 'Descargando imagen...',
+    
+    // Footer
+    'footer.services.title': 'Nuestros Servicios',
+    'footer.services.list1': '• Servicios Industriales',
+    'footer.services.list2': '• Productos Especializados',
+    'footer.services.list3': '• Rental de Equipos',
+    'footer.services.list4': '• Consultoría Técnica',
+    'footer.contact.title': 'Información de Contacto',
+    'footer.description': 'Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial.',
+    'footer.copyright': 'Todos los derechos reservados.',
+    
+    // Clients
+    'clients.title': 'NUESTROS CLIENTES',
+    
     // Contact
     'contact.title': 'CONTACTO',
     'contact.info': 'Información de Contacto',
@@ -49,6 +101,58 @@ const translations = {
     'nav.areas': 'Our Areas',
     'nav.galeria': 'Gallery',
     'nav.contacto': 'Contact',
+    
+    // Hero
+    'hero.title': 'A REGIONAL COMPANY',
+    'hero.description': 'Our objective is to provide our clients with comprehensive service, from initial consultation to final delivery. For this, we have a 3500m2 plant, fully dedicated and equipped for the production of our products and all the necessary personnel specifically for each sector.',
+    'hero.button.services': 'Our Services',
+    'hero.button.contact': 'Contact Us',
+    
+    // Company
+    'company.title': 'OUR COMPANY',
+    'company.subtitle': 'CODELCO S.A.',
+    'company.paragraph1': 'We began our activity in 2012, coinciding with the accelerated growth of oil industry needs (unconventional well drilling - Vaca Muerta). At that time, our company had already ventured into the Trailer Rental sector, storage pools and Pick Ups.',
+    'company.paragraph2': 'Taking into account the demand, both for units and quality improvements, we decided to incorporate technology such as Panel machines, guillotine, press brake, CNC plasma cutting, semi-automatic welders, etc., which with the accompaniment of trained personnel, led us to position ourselves very well in the market for manufacturing Residential Modules oriented to the oil sector, as well as in the manufacture of Accumulation Pools, API Tanks, Containers and special works such as integrated solids control equipment and automated technical verification equipment.',
+    'company.paragraph3': 'Currently, together with our Engineering and Development (R&D) team, we are venturing into housing solutions for both families and offices.',
+    
+    // Services
+    'services.title': 'OUR AREAS',
+    'services.factory.title': 'FACTORY',
+    'services.factory.subtitle': 'WE MANUFACTURE OUR PRODUCTS',
+    'services.factory.description': 'Residential modules, API650 accumulation pools, API650 storage tanks, Special containers, Equipment cabinets, Special works, Solids control equipment, Automated technical verification equipment',
+    'services.factory.button': 'Contact Us',
+    'services.metallurgical.title': 'METALLURGICAL',
+    'services.metallurgical.subtitle': 'REPAIR AND MAINTENANCE',
+    'services.metallurgical.description': 'Special welding services SMAW | GMAW | GTAW | SAW, Cutting and forming, Machining and turning, Heavy equipment repair, Service with API 1104 / ASME certified welders',
+    'services.metallurgical.button': 'Our Location',
+    'services.rental.title': 'RENTAL',
+    'services.rental.subtitle': 'EQUIPMENT RENTAL',
+    'services.rental.description': 'Field residential modules, Mobile offices, Dining rooms, Dormitories, Restrooms, Work trailers',
+    'services.rental.button': 'Image Gallery',
+    
+    // Gallery
+    'gallery.title': 'IMAGE GALLERY',
+    'gallery.filter.all': 'All',
+    'gallery.filter.factory': 'Factory',
+    'gallery.filter.metallurgical': 'Metallurgical',
+    'gallery.filter.rental': 'Rental',
+    'gallery.showMore': 'View More Images',
+    'gallery.remaining': 'remaining',
+    'gallery.noImages': 'No images available for this category',
+    'gallery.downloadImage': 'Downloading image...',
+    
+    // Footer
+    'footer.services.title': 'Our Services',
+    'footer.services.list1': '• Industrial Services',
+    'footer.services.list2': '• Specialized Products',
+    'footer.services.list3': '• Equipment Rental',
+    'footer.services.list4': '• Technical Consulting',
+    'footer.contact.title': 'Contact Information',
+    'footer.description': 'Argentine company specialized in industrial services, products and equipment rental for the industrial sector.',
+    'footer.copyright': 'All rights reserved.',
+    
+    // Clients
+    'clients.title': 'OUR CLIENTS',
     
     // Contact
     'contact.title': 'CONTACT',

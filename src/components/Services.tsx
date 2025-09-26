@@ -1,6 +1,9 @@
 import { Building2, Settings, Truck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 const Services = () => {
+  const { t } = useLanguage();
+  
   const services = [{
     id: 'fabrica',
     icon: Building2,
@@ -45,10 +48,10 @@ const Services = () => {
           <h2 className="titulo-seccion font-ramabhadra">
             <span style={{
             color: '#333333'
-          }}>NUESTRAS </span>
+          }}>{t('services.title').split(' ')[0]} </span>
             <span style={{
             color: '#d25840'
-          }}>ÁREAS</span>
+          }}>{t('services.title').split(' ')[1]}</span>
           </h2>
         </div>
 
@@ -93,38 +96,40 @@ const Services = () => {
               backgroundColor: getHeaderColor(service.id)
             }}>
                   <h3 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-wide font-ramabhadra">
-                    {service.title}
+                    {service.id === 'fabrica' ? t('services.factory.title') : 
+                     service.id === 'metalurgica' ? t('services.metallurgical.title') : 
+                     t('services.rental.title')}
                   </h3>
                 </div>
 
                 {/* Content */}
                 <div className="p-6 sm:p-6 lg:p-4 xl:p-6">
                   <h4 className="text-lg font-bold text-gray-500 mb-4 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-[#e65a29]">
-                    {getSubtitleText(service.id)}
+                    {service.id === 'fabrica' ? t('services.factory.subtitle') : 
+                     service.id === 'metalurgica' ? t('services.metallurgical.subtitle') : 
+                     t('services.rental.subtitle')}
                   </h4>
 
                   {/* Línea separadora */}
                   <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-6 rounded-full"></div>
 
                   <div className="text-sm leading-relaxed text-gray-600 text-center mb-8 font-nunito space-y-4">
-                    {service.description.map((paragraph, index) => (
-                      <p key={index}>
-                        {paragraph.split('**').map((part, partIndex) => 
-                          partIndex % 2 === 1 ? <strong key={partIndex} className="font-montserrat">{part}</strong> : part
-                        )}
-                      </p>
-                    ))}
+                    <p>
+                      {service.id === 'fabrica' ? t('services.factory.description') : 
+                       service.id === 'metalurgica' ? t('services.metallurgical.description') : 
+                       t('services.rental.description')}
+                    </p>
                   </div>
 
                   <div className="text-center">
                     {service.id === 'fabrica' && <Button onClick={() => scrollToSection('contacto')} className="border border-zinc-800 px-6 py-2 transition-all duration-300 text-sm text-slate-50 bg-zinc-800 hover:bg-zinc-700">
-                        Contáctanos
+                        {t('services.factory.button')}
                       </Button>}
                     {service.id === 'metalurgica' && <Button onClick={() => scrollToSection('ubicacion')} className="text-white px-6 py-2 text-sm transition-all duration-300 bg-orange-700 hover:bg-orange-600 rounded-lg">
-                        Nuestra Ubicación
+                        {t('services.metallurgical.button')}
                       </Button>}
                     {service.id === 'rental' && <Button onClick={() => scrollToSection('galeria')} className="border border-zinc-800 px-6 py-2 text-sm transition-all duration-300 text-slate-50 bg-neutral-800 hover:bg-neutral-700">
-                        La Galería de Imágenes
+                        {t('services.rental.button')}
                       </Button>}
                   </div>
                 </div>

@@ -1,23 +1,25 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { X, Download } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const Gallery = () => {
+  const { t } = useLanguage();
   const [activeFilter, setActiveFilter] = useState('todas');
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [visibleCount, setVisibleCount] = useState(24);
   const filters = [{
     id: 'todas',
-    label: 'Todas'
+    label: t('gallery.filter.all')
   }, {
     id: 'fabrica',
-    label: 'Fábrica'
+    label: t('gallery.filter.factory')
   }, {
     id: 'metalurgica',
-    label: 'Metalúrgica'
+    label: t('gallery.filter.metallurgical')
   }, {
     id: 'rental',
-    label: 'Rental'
+    label: t('gallery.filter.rental')
   }];
 
   // Gallery images - manually uploaded photos
@@ -309,10 +311,10 @@ const Gallery = () => {
           <h2 className="titulo-seccion font-ramabhadra">
             <span style={{
             color: '#333333'
-          }}>GALERÍA DE </span>
+          }}>{t('gallery.title').split(' ')[0]} {t('gallery.title').split(' ')[1]} </span>
             <span style={{
             color: '#d25840'
-          }}>IMÁGENES</span>
+          }}>{t('gallery.title').split(' ')[2]}</span>
           </h2>
         </div>
 
@@ -355,7 +357,7 @@ const Gallery = () => {
                   +
                 </div>
                 <p className="text-primary font-semibold">
-                  Ver más Imágenes ({filteredImages.length - visibleCount} restantes)
+                  {t('gallery.showMore')} ({filteredImages.length - visibleCount} {t('gallery.remaining')})
                 </p>
               </div>
             </div>
@@ -388,7 +390,7 @@ const Gallery = () => {
           </div>}
 
         {filteredImages.length === 0 && <div className="text-center mt-12 py-12">
-            <p className="text-lg text-foreground">No hay imágenes disponibles para esta categoría.</p>
+            <p className="text-lg text-foreground">{t('gallery.noImages')}</p>
           </div>}
       </div>
     </section>;

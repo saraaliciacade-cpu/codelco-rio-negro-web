@@ -1,5 +1,6 @@
 // Import client logos - Row 1
 import comprescoLogo from '@/assets/clients/compresco.jpeg';
+import { useLanguage } from '@/contexts/LanguageContext';
 import crexellLogo from '@/assets/clients/crexell.png';
 import datumLogo from '@/assets/clients/datum.png';
 import egServiciosLogo from '@/assets/clients/eg-servicios.png';
@@ -35,6 +36,7 @@ import tuboscopeLogo from '@/assets/clients/tuboscope.jpg';
 import veinticincoMayoLogo from '@/assets/clients/25-de-mayo-new.png';
 
 const Clients = () => {
+  const { t } = useLanguage();
   // First 10 clients with actual logos
   const clientsRow1 = [
     { name: "Compresco", logo: comprescoLogo },
@@ -124,8 +126,8 @@ const Clients = () => {
     <section className="py-20 bg-white overflow-hidden">
       <div className="text-center mb-16">
         <h2 className="titulo-seccion font-ramabhadra">
-          <span style={{color: '#333333'}}>NUESTROS </span>
-          <span style={{color: '#d25840'}}>CLIENTES</span>
+          <span style={{color: '#333333'}}>{t('clients.title').split(' ')[0]} </span>
+          <span style={{color: '#d25840'}}>{t('clients.title').split(' ')[1]}</span>
         </h2>
       </div>
 

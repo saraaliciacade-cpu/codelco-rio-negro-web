@@ -1,6 +1,8 @@
 import { MapPin, Mail, Phone } from 'lucide-react';
 import codelcoLogo from '@/assets/codelco-logo.png';
+import { useLanguage } from '@/contexts/LanguageContext';
 const Footer = () => {
+  const { t } = useLanguage();
   return <footer className="text-white py-8" style={{
     backgroundColor: '#333333'
   }}>
@@ -10,24 +12,24 @@ const Footer = () => {
           <div className="space-y-3">
             <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-12 w-auto" />
             <p className="text-white/80 leading-relaxed font-nunito text-sm">
-              Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Services */}
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold mb-3 font-montserrat">Nuestros Servicios</h3>
+            <h3 className="text-lg font-semibold mb-3 font-montserrat">{t('footer.services.title')}</h3>
             <ul className="space-y-1 text-white/80 font-nunito text-sm">
-              <li>• Servicios Industriales</li>
-              <li>• Productos Especializados</li>
-              <li>• Rental de Equipos</li>
-              <li>• Consultoría Técnica</li>
+              <li>{t('footer.services.list1')}</li>
+              <li>{t('footer.services.list2')}</li>
+              <li>{t('footer.services.list3')}</li>
+              <li>{t('footer.services.list4')}</li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold mb-3 font-montserrat">Información de Contacto</h3>
+            <h3 className="text-lg font-semibold mb-3 font-montserrat">{t('footer.contact.title')}</h3>
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-primary-light" />
@@ -50,7 +52,7 @@ const Footer = () => {
 
         <div className="border-t border-white/20 mt-8 pt-6 text-center">
           <p className="font-nunito text-white text-sm">
-            © {new Date().getFullYear()} Codelco S.A. Todos los derechos reservados.
+            © {new Date().getFullYear()} Codelco S.A. {t('footer.copyright')}
           </p>
         </div>
       </div>

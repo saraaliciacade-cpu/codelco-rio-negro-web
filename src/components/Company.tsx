@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 const Company = () => {
+  const { t } = useLanguage();
   useEffect(() => {
     const imageDiv = document.querySelector('.animate-slide-in-right');
     if (imageDiv) {
@@ -15,37 +17,27 @@ const Company = () => {
           <h2 className="titulo-seccion font-ramabhadra inline-block text-4xl"> {/* Aumentado text-4xl para título más grande */}
             <span style={{
             color: '#333333'
-          }}>NUESTRA </span>
+          }}>{t('company.title').split(' ')[0]} </span>
             <span style={{
             color: '#d25840'
-          }}>EMPRESA</span>
+          }}>{t('company.title').split(' ')[1]}</span>
           </h2>
         </div>
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto px-8"> {/* Aumentado gap-6 a gap-12 para más espacio en el medio */}
           {/* Company Text */}
           <div className="space-y-4 order-1 text-center lg:text-left max-w-md">
             <h3 className="font-bold text-foreground mb-4 font-montserrat text-3xl"> {/* Aumentado text-xl a text-2xl */}
-              CODELCO S.A.
+              {t('company.subtitle')}
             </h3>
             <div className="space-y-4 text-foreground leading-normal text-body font-nunito">
               <p className="text-justify text-sm"> {/* Aumentado text-xs a text-base para texto más grande */}
-                Comenzamos nuestra actividad en el año 2012, coincidiendo con el crecimiento acelerado
-                de las necesidades de la industria petrolera (perforaciones de pozos no convencionales- Vaca Muerta).
-                Para ese momento, nuestra empresa ya había incursionado en el sector Rental de Trailers,
-                piletas de almacenamiento y Pick Ups.
+                {t('company.paragraph1')}
               </p>
               <p className="text-justify text-sm">
-                Teniendo en cuenta la demanda, tanto de unidades como mejoras en calidad, tomamos la decisión
-                de incorporar tecnología como Panelera, guillotina, plegadora, corte de plasma por CNC,
-                soldadoras semiautomáticas, etc., que con el acompañamiento de personal capacitado,
-                nos llevó a posicionarnos muy bien en el mercado de fabricación de Módulos Habitacionales
-                orientados al sector petrolero, como así también en la fabricación de Piletas de Acumulación,
-                Tanques API, Contenedores y trabajos especiales como equipos de control de sólidos integrados
-                y un equipo automatizado de verificación técnica.
+                {t('company.paragraph2')}
               </p>
               <p className="text-justify text-sm">
-                Actualmente, junto a nuestro equipo de Ingeniería y Desarrollo (I+D) estamos incursionando
-                en el tema de soluciones habitacionales tanto para familias como para oficinas.
+                {t('company.paragraph3')}
               </p>
             </div>
           </div>

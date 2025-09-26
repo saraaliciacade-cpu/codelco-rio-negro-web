@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 const Hero = () => {
+  const { t } = useLanguage();
   const heroImages = [
     '/images/hero/portada1.jpg',
     '/images/hero/portada2.jpg', 
@@ -59,11 +61,11 @@ const Hero = () => {
         <h1 className="text-2xl font-bold mb-5 font-ramabhadra" style={{
         color: '#d25840'
       }}>
-          UNA EMPRESA REGIONAL
+          {t('hero.title')}
         </h1>
         
         <p className="mb-8 max-w-full mx-auto leading-normal text-white font-nunito text-base">
-          Nuestro objetivo es proveerles a nuestros clientes un servicio integral, desde el asesoramiento inicial hasta la entrega final. Para ello, contamos con una planta de 3500m2, totalmente dedicada y equipada a la realización de nuestros productos y todo el personal necesario específicamente para cada sector.
+          {t('hero.description')}
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -71,14 +73,14 @@ const Hero = () => {
             onClick={() => scrollToSection('servicios')}
             className="bg-primary text-white px-4 py-2 text-body"
           >
-            Nuestros Servicios
+            {t('hero.button.services')}
           </Button>
           <Button 
             onClick={() => scrollToSection('contacto')}
             className="px-4 py-2 text-body text-white" 
             style={{ backgroundColor: '#333333' }}
           >
-            Contactanos
+            {t('hero.button.contact')}
           </Button>
         </div>
       </div>
