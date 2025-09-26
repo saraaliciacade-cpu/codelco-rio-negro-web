@@ -6,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 declare global {
   interface Window {
@@ -15,6 +16,7 @@ declare global {
 }
 const Contact = () => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const mapRef = useRef<HTMLDivElement>(null);
   const [isMapVisible, setIsMapVisible] = useState(false);
   const [formData, setFormData] = useState({
@@ -46,8 +48,8 @@ const Contact = () => {
       }
 
       toast({
-        title: "Mensaje enviado",
-        description: "Gracias por contactarnos. Te responderemos pronto."
+        title: t('contact.form.success.title'),
+        description: t('contact.form.success.description')
       });
       setFormData({
         name: '',
@@ -58,24 +60,24 @@ const Contact = () => {
     } catch (error) {
       console.error('Error submitting contact form:', error);
       toast({
-        title: "Error",
-        description: "Hubo un problema al enviar tu mensaje. Por favor intenta nuevamente.",
+        title: t('contact.form.error.title'),
+        description: t('contact.form.error.description'),
         variant: "destructive",
       });
     }
   };
   const contactInfo = [{
     icon: MapPin,
-    label: 'Dirección',
-    value: 'Ruta 22 Km.1114, Cipolletti - Río Negro\nDías: Lunes a viernes\nHorario: 8-12hs / 15-19hs'
+    label: t('contact.address.label'),
+    value: t('contact.address.value')
   }, {
     icon: Mail,
-    label: 'Email',
+    label: t('contact.email.label'),
     value: 'ventas@codelco.com.ar'
   }, {
     icon: Phone,
-    label: 'Teléfonos',
-    value: 'Rental: (299) 571 4217\nCompras: (299) 571 4661'
+    label: t('contact.phone.label'),
+    value: `${t('contact.phone.rental')}\n${t('contact.phone.compras')}`
   }];
 
   // Map initialization logic
@@ -147,7 +149,7 @@ const Contact = () => {
         <div>
           <strong>${name}</strong><br>
           ${formattedAddress}<br>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" style="color: #FFAB40;">Cómo llegar</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" style="color: #FFAB40;">${t('contact.map.directions')}</a>
         </div>
       `;
 
@@ -176,14 +178,14 @@ const Contact = () => {
       <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-4xl">
         <div>
           <h2 className="titulo-seccion font-ramabhadra" style={{ color: '#d25840' }}>
-            CONTACTO
+            {t('contact.title')}
           </h2>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 max-w-full mx-auto px-2 sm:px-6 mb-16">
           {/* Contact Information */}
           <div className="space-y-6">
-            <h3 className="mb-8 text-foreground font-montserrat font-extrabold text-xl">Información de Contacto</h3>
+            <h3 className="mb-8 text-foreground font-montserrat font-extrabold text-xl">{t('contact.info')}</h3>
             
             {contactInfo.map((info, index) => <Card 
                 key={index} 
@@ -203,9 +205,9 @@ const Contact = () => {
                     <h4 className="text-base font-bold text-foreground font-montserrat mb-2">{info.label}</h4>
                     {info.icon === Phone ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
-                        <div>Rental: <a href="tel:+5492995714217" className="hover:underline" style={{color: '#d25840'}}>(299) 571 4217</a></div>
-                        <div>Compras: <a href="tel:+5492995714661" className="hover:underline" style={{color: '#d25840'}}>(299) 571 4661</a></div>
-                      </div> 
+                        <div>{t('contact.phone.rental').replace('(299) 571 4217', '')}<a href="tel:+5492995714217" className="hover:underline" style={{color: '#d25840'}}>(299) 571 4217</a></div>
+                        <div>{t('contact.phone.compras').replace('(299) 571 4661', '')}<a href="tel:+5492995714661" className="hover:underline" style={{color: '#d25840'}}>(299) 571 4661</a></div>
+                      </div>
                     : info.icon === Mail ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold">
                         <a href="mailto:ventas@codelco.com.ar" className="hover:underline" style={{color: '#d25840'}}>{info.value}</a>
@@ -230,40 +232,40 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="bg-white border border-gray-200 rounded-3xl shadow-sm p-8">
             <CardContent className="p-0">
-              <h3 className="font-bold mb-8 text-center text-foreground font-montserrat text-lg">Envíanos un Mensaje</h3>
+              <h3 className="font-bold mb-8 text-center text-foreground font-montserrat text-lg">{t('contact.form.title')}</h3>
             
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-normal mb-2 text-foreground rounded">
-                  Nombre y apellido *
+                  {t('contact.form.name')}
                 </label>
                 <Input id="name" name="name" type="text" required value={formData.name} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
               </div>
               
               <div>
                 <label htmlFor="email" className="block text-sm font-normal mb-2 text-foreground">
-                  Email *
+                  {t('contact.form.email')}
                 </label>
                 <Input id="email" name="email" type="email" required value={formData.email} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
               </div>
               
               <div>
                 <label htmlFor="phone" className="block text-sm font-normal mb-2 text-foreground">
-                  Teléfono
+                  {t('contact.form.phone')}
                 </label>
                 <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
               </div>
               
               <div>
                 <label htmlFor="message" className="block text-sm font-normal mb-2 text-foreground">
-                  Mensaje *
+                  {t('contact.form.message')}
                 </label>
-                <Textarea id="message" name="message" required rows={4} value={formData.message} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body resize-none" placeholder="Describe tu consulta o necesidad..." />
+                <Textarea id="message" name="message" required rows={4} value={formData.message} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body resize-none" placeholder={t('contact.form.placeholder')} />
               </div>
               
               <Button type="submit" className="w-full bg-primary hover:bg-primary/90 px-6 py-4 rounded-xl transition-colors duration-300 text-zinc-50 font-semibold text-sm">
                 <Send className="w-4 h-4 mr-2" />
-                Enviar Mensaje
+                {t('contact.form.submit')}
               </Button>
             </form>
             </CardContent>
@@ -287,7 +289,7 @@ const Contact = () => {
               className="w-full h-full flex items-center justify-center"
               style={{ backgroundColor: '#f4f4f4' }}
             >
-              <div className="text-muted-foreground">Cargando mapa...</div>
+              <div className="text-muted-foreground">{t('contact.map.loading')}</div>
             </div>
           )}
         </div>
