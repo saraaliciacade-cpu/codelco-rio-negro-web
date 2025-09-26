@@ -114,11 +114,34 @@ const Services = () => {
                   <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-6 rounded-full"></div>
 
                   <div className="text-sm leading-relaxed text-gray-600 text-center mb-8 font-nunito space-y-4">
-                    <p>
-                      {service.id === 'fabrica' ? t('services.factory.description') : 
-                       service.id === 'metalurgica' ? t('services.metallurgical.description') : 
-                       t('services.rental.description')}
-                    </p>
+                    {service.id === 'fabrica' && (
+                      <>
+                        <p>{t('services.factory.description1')}</p>
+                        <p>{t('services.factory.description2')}</p>
+                      </>
+                    )}
+                    {service.id === 'metalurgica' && (
+                      <>
+                        <p>{t('services.metallurgical.description1')}</p>
+                        <p>{t('services.metallurgical.description2')}</p>
+                        <p>{t('services.metallurgical.description3')}</p>
+                      </>
+                    )}
+                    {service.id === 'rental' && (
+                      <>
+                        <p>{t('services.rental.description1')}</p>
+                        <p>
+                          {t('services.rental.description2').split('**').map((part, partIndex) => 
+                            partIndex % 2 === 1 ? <strong key={partIndex} className="font-montserrat">{part}</strong> : part
+                          )}
+                        </p>
+                        <p>
+                          {t('services.rental.description3').split('**').map((part, partIndex) => 
+                            partIndex % 2 === 1 ? <strong key={partIndex} className="font-montserrat">{part}</strong> : part
+                          )}
+                        </p>
+                      </>
+                    )}
                   </div>
 
                   <div className="text-center">
