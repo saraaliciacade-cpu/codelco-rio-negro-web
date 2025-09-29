@@ -127,7 +127,7 @@ const Contact = () => {
       
       const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
       const name = 'Codelco S.A';
-      const address = 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro\nDías: Lunes a viernes Horario: 8-12hs / 15-19hs';
+      const address = t('contact.address.value');
       createMap(codelcoLocation, name, address);
     };
 
@@ -214,12 +214,11 @@ const Contact = () => {
                       </div> 
                     : info.icon === MapPin ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">
-                        {/* En móviles, solo texto sin enlace. En desktop, mantiene el enlace de la tarjeta */}
-                        <span style={{color: '#d25840'}} className="font-semibold">Ruta 22 Km.1114, Cipolletti - Río Negro</span>
+                        <span style={{color: '#d25840'}} className="font-semibold">{t('contact.address.value').split('\n')[0]}</span>
                         <br />
-                        Días: Lunes a viernes
+                        {t('contact.address.value').split('\n')[1]}
                         <br />
-                        Horario: 8-12hs / 15-19hs
+                        {t('contact.address.value').split('\n')[2]}
                       </div> 
                     : 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">{info.value}</div>
