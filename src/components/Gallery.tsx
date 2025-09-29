@@ -384,7 +384,7 @@ const Gallery = () => {
               />
               <div className="p-4 bg-white text-center">
                 <h3 className="font-semibold text-lg text-gray-800">{selectedImage.alt}</h3>
-                <p className="text-sm capitalize text-orange-700">{selectedImage.category}</p>
+                <p className="text-sm text-orange-700">{t(`category.${selectedImage.category}`)}</p>
               </div>
             </div>
           </div>}

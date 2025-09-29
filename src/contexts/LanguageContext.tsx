@@ -82,6 +82,11 @@ const translations = {
     'contact.address.label': 'Dirección',
     'contact.address.value': 'Ruta 22 Km.1114, Cipolletti - Río Negro\nDías: Lunes a viernes\nHorario: 8-12hs / 15-19hs',
     
+    // Category translations
+    'category.fabrica': 'Fábrica',
+    'category.metalurgica': 'Metalúrgica',
+    'category.rental': 'Rental',
+    
     // Image alt texts
     'images.metalurgica.01': 'Contenedores especializados Epersa',
     'images.metalurgica.02': 'Tanques cilíndricos especializados',
@@ -222,7 +227,12 @@ const translations = {
     'contact.title': 'CONTACT',
     'contact.info': 'Contact Information',
     'contact.address.label': 'Address',
-    'contact.address.value': 'Route 22 Km.1114, Cipolletti - Río Negro\nDays: Monday to Friday\nSchedule: 8-12am / 3-7pm',
+    'contact.address.value': 'Route 22 Km.1114, Cipolletti - Río Negro\nDays: Monday to Friday\nHours: 8-12am / 3-7pm',
+    
+    // Category translations
+    'category.fabrica': 'Factory',
+    'category.metalurgica': 'Metallurgical',
+    'category.rental': 'Rental',
     
     // Image alt texts
     'images.metalurgica.01': 'Epersa specialized containers',
