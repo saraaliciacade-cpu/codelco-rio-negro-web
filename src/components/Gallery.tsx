@@ -29,266 +29,266 @@ const Gallery = () => {
     id: 1,
     category: 'metalurgica',
     src: '/metalurgica-01.jpg',
-    alt: 'Contenedores especializados Epersa'
+    alt: t('images.metalurgica.01')
   }, {
     id: 2,
     category: 'metalurgica',
     src: '/metalurgica-02.jpg',
-    alt: 'Tanques cilíndricos especializados'
+    alt: t('images.metalurgica.02')
   }, {
     id: 3,
     category: 'metalurgica',
     src: '/metalurgica-03.jpg',
-    alt: 'Cisterna móvil con equipamiento naranja'
+    alt: t('images.metalurgica.03')
   }, {
     id: 4,
     category: 'metalurgica',
     src: '/metalurgica-04.jpg',
-    alt: 'Sistemas de tuberías industriales complejas'
+    alt: t('images.metalurgica.04')
   }, {
     id: 5,
     category: 'metalurgica',
     src: '/metalurgica-05.jpg',
-    alt: 'Módulo industrial móvil especializado'
+    alt: t('images.metalurgica.05')
   }, {
     id: 6,
     category: 'metalurgica',
     src: '/metalurgica-06.jpg',
-    alt: 'Plataforma móvil con escaleras de acceso'
+    alt: t('images.metalurgica.06')
   }, {
     id: 7,
     category: 'metalurgica',
     src: '/metalurgica-07.jpg',
-    alt: 'Estación de soldadura móvil completa'
+    alt: t('images.metalurgica.07')
   }, {
     id: 8,
     category: 'metalurgica',
     src: '/metalurgica-08.jpg',
-    alt: 'Equipos metalúrgicos industriales'
+    alt: t('images.metalurgica.08')
   }, {
     id: 9,
     category: 'metalurgica',
     src: '/metalurgica-09.jpg',
-    alt: 'Transporte de estructuras prefabricadas'
+    alt: t('images.metalurgica.09')
   }, {
     id: 10,
     category: 'metalurgica',
     src: '/metalurgica-10.jpg',
-    alt: 'Tanque de acumulación naranja sobre skid'
+    alt: t('images.metalurgica.10')
   }, {
     id: 11,
     category: 'metalurgica',
     src: '/metalurgica-11.jpg',
-    alt: 'Tanques cilíndricos en proceso de fabricación'
+    alt: t('images.metalurgica.11')
   }, {
     id: 12,
     category: 'metalurgica',
     src: '/metalurgica-12.jpg',
-    alt: 'Estructuras azules para equipos industriales'
+    alt: t('images.metalurgica.12')
   }, {
     id: 13,
     category: 'metalurgica',
     src: '/metalurgica-13.jpg',
-    alt: 'Contenedores tipo volquete amarillos'
+    alt: t('images.metalurgica.13')
   }, {
     id: 14,
     category: 'metalurgica',
     src: '/metalurgica-14.jpg',
-    alt: 'Equipos rojos especializados para petróleo'
+    alt: t('images.metalurgica.14')
   }, {
     id: 15,
     category: 'metalurgica',
     src: '/metalurgica-15.jpg',
-    alt: 'Mesa de corte y plegado de chapas'
+    alt: t('images.metalurgica.15')
   }, {
     id: 16,
     category: 'metalurgica',
     src: '/metalurgica-16.jpg',
-    alt: 'Trailer especializado para transporte'
+    alt: t('images.metalurgica.16')
   }, {
     id: 17,
     category: 'metalurgica',
     src: '/metalurgica-17.jpg',
-    alt: 'Contenedor azul para almacenamiento'
+    alt: t('images.metalurgica.17')
   }, {
     id: 18,
     category: 'metalurgica',
     src: '/metalurgica-18.jpg',
-    alt: 'Grúa móvil en operación de instalación'
+    alt: t('images.metalurgica.18')
   }, {
     id: 19,
     category: 'metalurgica',
     src: '/metalurgica-19.jpg',
-    alt: 'Operación de elevación con grúas especializadas'
+    alt: t('images.metalurgica.19')
   }, {
     id: 20,
     category: 'metalurgica',
     src: '/metalurgica-20.jpg',
-    alt: 'Módulos transportables con escaleras metálicas'
+    alt: t('images.metalurgica.20')
   },
   // Rental category images (8 images)
   {
     id: 21,
     category: 'rental',
     src: '/rental-01.jpg',
-    alt: 'Flota de vehículos Toyota Hilux en base operativa'
+    alt: t('images.rental.01')
   }, {
     id: 22,
     category: 'rental',
     src: '/rental-02.jpg',
-    alt: 'Instalaciones de rental y equipos especializados'
+    alt: t('images.rental.02')
   }, {
     id: 23,
     category: 'rental',
     src: '/rental-03.jpg',
-    alt: 'Módulos habitacionales para rental temporal'
+    alt: t('images.rental.03')
   }, {
     id: 24,
     category: 'rental',
     src: '/rental-04.jpg',
-    alt: 'Flota de vehículos 4x4 equipados para trabajo'
+    alt: t('images.rental.04')
   }, {
     id: 25,
     category: 'rental',
     src: '/rental-05.jpg',
-    alt: 'Trailers y contenedores móviles'
+    alt: t('images.rental.05')
   }, {
     id: 26,
     category: 'rental',
     src: '/rental-06.jpg',
-    alt: 'Módulos de alojamiento temporal'
+    alt: t('images.rental.06')
   }, {
     id: 27,
     category: 'rental',
     src: '/rental-07.jpg',
-    alt: 'Trailers especializados para campo petrolero'
+    alt: t('images.rental.07')
   }, {
     id: 28,
     category: 'rental',
     src: '/rental-08.jpg',
-    alt: 'Equipos modulares para proyectos temporales'
+    alt: t('images.rental.08')
   },
   // Fábrica category images (24 images)
   {
     id: 29,
     category: 'fabrica',
     src: '/fabrica-01.jpg',
-    alt: 'Oficina móvil de control ambiental'
+    alt: t('images.fabrica.01')
   }, {
     id: 30,
     category: 'fabrica',
     src: '/fabrica-02.jpg',
-    alt: 'Módulo industrial especializado'
+    alt: t('images.fabrica.02')
   }, {
     id: 31,
     category: 'fabrica',
     src: '/fabrica-03.jpg',
-    alt: 'Planta de fabricación modular interior'
+    alt: t('images.fabrica.03')
   }, {
     id: 32,
     category: 'fabrica',
     src: '/fabrica-04.jpg',
-    alt: 'Nave industrial con línea de producción'
+    alt: t('images.fabrica.04')
   }, {
     id: 33,
     category: 'fabrica',
     src: '/fabrica-05.jpg',
-    alt: 'Estructura modular en construcción'
+    alt: t('images.fabrica.05')
   }, {
     id: 34,
     category: 'fabrica',
     src: '/fabrica-06.jpg',
-    alt: 'Unidad de emergencias médicas transportable'
+    alt: t('images.fabrica.06')
   }, {
     id: 35,
     category: 'fabrica',
     src: '/fabrica-07.jpg',
-    alt: 'Módulo industrial compacto transportable'
+    alt: t('images.fabrica.07')
   }, {
     id: 36,
     category: 'fabrica',
     src: '/fabrica-08.jpg',
-    alt: 'Proceso de ensamblaje de paneles'
+    alt: t('images.fabrica.08')
   }, {
     id: 37,
     category: 'fabrica',
     src: '/fabrica-09.jpg',
-    alt: 'Interior de módulo de laboratorio equipado'
+    alt: t('images.fabrica.09')
   }, {
     id: 38,
     category: 'fabrica',
     src: '/fabrica-10.jpg',
-    alt: 'Comedor modular con equipamiento completo'
+    alt: t('images.fabrica.10')
   }, {
     id: 39,
     category: 'fabrica',
     src: '/fabrica-11.jpg',
-    alt: 'Sala de capacitación modular equipada'
+    alt: t('images.fabrica.11')
   }, {
     id: 40,
     category: 'fabrica',
     src: '/fabrica-12.jpg',
-    alt: 'Centro de control con ventanas panorámicas'
+    alt: t('images.fabrica.12')
   }, {
     id: 41,
     category: 'fabrica',
     src: '/fabrica-13.jpg',
-    alt: 'Módulo sanitario completo con urinarios'
+    alt: t('images.fabrica.13')
   }, {
     id: 42,
     category: 'fabrica',
     src: '/fabrica-14.jpg',
-    alt: 'Estación de revisión técnica móvil'
+    alt: t('images.fabrica.14')
   }, {
     id: 43,
     category: 'fabrica',
     src: '/fabrica-15.jpg',
-    alt: 'Unidad móvil de revisión técnica RTO'
+    alt: t('images.fabrica.15')
   }, {
     id: 44,
     category: 'fabrica',
     src: '/fabrica-16.jpg',
-    alt: 'Estación de elevación para vehículos'
+    alt: t('images.fabrica.16')
   }, {
     id: 45,
     category: 'fabrica',
     src: '/fabrica-17.jpg',
-    alt: 'Módulo habitacional con ventana panorámica'
+    alt: t('images.fabrica.17')
   }, {
     id: 46,
     category: 'fabrica',
     src: '/fabrica-18.jpg',
-    alt: 'Cocina modular completamente equipada'
+    alt: t('images.fabrica.18')
   }, {
     id: 47,
     category: 'fabrica',
     src: '/fabrica-19.jpg',
-    alt: 'Baños modulares con lavamanos múltiples'
+    alt: t('images.fabrica.19')
   }, {
     id: 48,
     category: 'fabrica',
     src: '/fabrica-20.jpg',
-    alt: 'Kitchenette compacta con electrodomésticos'
+    alt: t('images.fabrica.20')
   }, {
     id: 49,
     category: 'fabrica',
     src: '/fabrica-21.jpg',
-    alt: 'Módulos temporales en terreno nevado con bandera argentina'
+    alt: t('images.fabrica.21')
   }, {
     id: 50,
     category: 'fabrica',
     src: '/fabrica-22.jpg',
-    alt: 'Oficina modular con estaciones de trabajo rojas'
+    alt: t('images.fabrica.22')
   }, {
     id: 51,
     category: 'fabrica',
     src: '/fabrica-23.jpg',
-    alt: 'Módulo en construcción con estructura metálica'
+    alt: t('images.fabrica.23')
   }, {
     id: 52,
     category: 'fabrica',
     src: '/fabrica-24.jpg',
-    alt: 'Vista aérea de instalación modular en operación'
+    alt: t('images.fabrica.24')
   }];
   const filteredImages = activeFilter === 'todas' ? images : images.filter(img => img.category === activeFilter);
   const displayedImages = activeFilter === 'todas' ? filteredImages.slice(0, visibleCount) : filteredImages;
