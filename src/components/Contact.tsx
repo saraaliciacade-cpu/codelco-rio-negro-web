@@ -153,17 +153,18 @@ const Contact = () => {
     const initMap = async () => {
       try {
         // Use secure-maps edge function to fetch API key and location data
-        const { data: mapsData, error: mapsError } = await supabase.functions.invoke('secure-maps');
+        const response = await fetch('https://eymjmdusrvpdhprduwrf.supabase.co/functions/v1/secure-maps', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        });
         
-        if (mapsError) {
-          console.error('Error fetching secure maps data:', mapsError);
-          toast({
-            title: 'Map Error',
-            description: 'Could not load map. Please refresh the page.',
-            variant: "destructive",
-          });
-          return;
+        if (!response.ok) {
+          throw new Error('Failed to fetch maps data');
         }
+        
+        const mapsData = await response.json();
 
         if (mapsData && mapsData.apiKey) {
           // Check if Google Maps is already loaded
