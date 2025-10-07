@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 
 // Lazy load pages for better bundle splitting
 const Index = lazy(() => import("./pages/Index"));
+const Webmail = lazy(() => import("./pages/Webmail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           </div>}>
             <Routes>
               <Route path="/" element={<Index />} />
+              <Route path="/webmail" element={<Webmail />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
