@@ -50,19 +50,16 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-8 pt-6 text-center">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
-            <p className="font-nunito text-white text-sm">
-              © {new Date().getFullYear()} Codelco S.A. {t('footer.copyright')}
-            </p>
-            <div className="flex items-center gap-2">
+        <div className="border-t border-white/20 mt-8 pt-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
               <a 
                 href="https://organicdesign.com.ar/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="font-nunito text-white/80 text-sm hover:text-white transition-colors"
               >
-                creador del sitio web
+                Creador del Sitio Web
               </a>
               <a 
                 href="https://organicdesign.com.ar/" 
@@ -70,9 +67,12 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="hover:opacity-80 transition-opacity"
               >
-                <img src={organicLogo} alt="Organic Design" className="h-6 w-auto" />
+                <img src={organicLogo} alt="Organic Design" className="h-10 w-auto" />
               </a>
             </div>
+            <p className="font-nunito text-white text-sm">
+              © {new Date().getFullYear()} Codelco S.A. {t('footer.copyright')}
+            </p>
           </div>
         </div>
       </div>
