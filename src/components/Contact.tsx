@@ -148,16 +148,38 @@ const Contact = () => {
   useEffect(() => {
     if (!mapRef.current || !isMapVisible) return;
 
+    let scriptLoaded = false;
+
     const initMap = async () => {
       try {
         // Use secure-maps edge function to fetch API key and location data
         const { data: mapsData, error: mapsError } = await supabase.functions.invoke('secure-maps');
         
         if (mapsError) {
-          throw mapsError;
+          console.error('Error fetching secure maps data:', mapsError);
+          toast({
+            title: 'Map Error',
+            description: 'Could not load map. Please refresh the page.',
+            variant: "destructive",
+          });
+          return;
         }
 
         if (mapsData && mapsData.apiKey) {
+          // Check if Google Maps is already loaded
+          if (typeof window.google !== 'undefined' && window.google?.maps) {
+            // Google Maps already loaded, just create the map
+            const locationData = mapsData.locations?.[0] || { 
+              latitude: -38.947524, 
+              longitude: -68.002487,
+              name: 'Codelco S.A',
+              address: t('contact.address.value')
+            };
+            const codelcoLocation = { lat: Number(locationData.latitude), lng: Number(locationData.longitude) };
+            createMap(codelcoLocation, locationData.name || 'Codelco S.A', locationData.address || t('contact.address.value'));
+            return;
+          }
+
           // Load Google Maps script with secure API key
           const script = document.createElement('script');
           script.src = `https://maps.googleapis.com/maps/api/js?key=${mapsData.apiKey}&callback=initMap`;
@@ -165,37 +187,48 @@ const Contact = () => {
           script.defer = true;
           
           window.initMap = () => {
-            if (mapsData.locations && mapsData.locations.length > 0) {
-              const locationData = mapsData.locations.find((loc: any) => loc.name === 'Codelco S.A') || mapsData.locations[0];
-              const codelcoLocation = { lat: Number(locationData.latitude), lng: Number(locationData.longitude) };
-              createMap(codelcoLocation, locationData.name, locationData.address || 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro');
-            } else {
-              // Fallback coordinates
-              const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
-              const name = 'Codelco S.A';
-              const address = t('contact.address.value');
-              createMap(codelcoLocation, name, address);
-            }
+            if (scriptLoaded) return; // Prevent double initialization
+            scriptLoaded = true;
+
+            const locationData = mapsData.locations?.[0] || { 
+              latitude: -38.947524, 
+              longitude: -68.002487,
+              name: 'Codelco S.A',
+              address: t('contact.address.value')
+            };
+            
+            const codelcoLocation = { lat: Number(locationData.latitude), lng: Number(locationData.longitude) };
+            createMap(codelcoLocation, locationData.name || 'Codelco S.A', locationData.address || t('contact.address.value'));
           };
           
+          // Add error handler for script loading
+          script.onerror = () => {
+            console.error('Failed to load Google Maps script');
+            toast({
+              title: 'Map Error',
+              description: 'Could not load Google Maps. Please check your connection.',
+              variant: "destructive",
+            });
+          };
+
           document.head.appendChild(script);
-          return;
         }
       } catch (err) {
-        console.log('Error loading maps:', err);
+        console.error('Error in map initialization:', err);
+        toast({
+          title: 'Map Error',
+          description: 'An unexpected error occurred loading the map.',
+          variant: "destructive",
+        });
       }
-      
-      // Fallback if secure-maps fails
-      const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
-      const name = 'Codelco S.A';
-      const address = t('contact.address.value');
-      createMap(codelcoLocation, name, address);
     };
 
     const createMap = (location: { lat: number; lng: number }, name: string, address: string) => {
-      const map = new window.google.maps.Map(mapRef.current!, {
+      if (!mapRef.current) return;
+
+      const map = new window.google.maps.Map(mapRef.current, {
         center: location,
-        zoom: 12,
+        zoom: 15,
         mapId: "30fd671af640a655e95c3547"
       });
 
@@ -207,10 +240,10 @@ const Contact = () => {
 
       const formattedAddress = address.replace(/\n/g, '<br>');
       const infoContent = `
-        <div>
-          <strong>${name}</strong><br>
-          ${formattedAddress}<br>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" style="color: #FFAB40;">${t('contact.map.directions')}</a>
+        <div style="padding: 8px;">
+          <strong style="font-size: 16px; color: #d25840;">${name}</strong><br>
+          <div style="margin-top: 8px; color: #333;">${formattedAddress}</div>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" rel="noopener noreferrer" style="color: #d25840; text-decoration: none; font-weight: 600; margin-top: 8px; display: inline-block;">${t('contact.map.directions')}</a>
         </div>
       `;
 
@@ -224,14 +257,15 @@ const Contact = () => {
       });
     };
 
-    // Only initialize if Google Maps is not already loaded
-    if (typeof window.google === 'undefined' || !window.google?.maps) {
-      initMap();
-    } else {
-      // If already loaded, just create the map
-      initMap();
-    }
-  }, [isMapVisible]);
+    initMap();
+
+    // Cleanup function
+    return () => {
+      if (window.initMap) {
+        delete window.initMap;
+      }
+    };
+  }, [isMapVisible, t, toast]);
   return <section id="contacto" className="pt-6 pb-15 mt-20" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '40px', borderTopRightRadius: '40px', boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.15)' }}>
       <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-4xl">
         <div>
