@@ -1,5 +1,6 @@
 import { MapPin, Mail, Phone } from 'lucide-react';
 import codelcoLogo from '@/assets/codelco-logo.png';
+import organicLogo from '@/assets/logo-organic.png';
 import { useLanguage } from '@/contexts/LanguageContext';
 const Footer = () => {
   const { t } = useLanguage();
@@ -50,9 +51,29 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-white/20 mt-8 pt-6 text-center">
-          <p className="font-nunito text-white text-sm">
-            © {new Date().getFullYear()} Codelco S.A. {t('footer.copyright')}
-          </p>
+          <div className="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4">
+            <p className="font-nunito text-white text-sm">
+              © {new Date().getFullYear()} Codelco S.A. {t('footer.copyright')}
+            </p>
+            <div className="flex items-center gap-2">
+              <a 
+                href="https://organicdesign.com.ar/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="font-nunito text-white/80 text-sm hover:text-white transition-colors"
+              >
+                creador del sitio web
+              </a>
+              <a 
+                href="https://organicdesign.com.ar/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+              >
+                <img src={organicLogo} alt="Organic Design" className="h-6 w-auto" />
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>;
