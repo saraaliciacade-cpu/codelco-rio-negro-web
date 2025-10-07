@@ -7,6 +7,27 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { z } from 'zod';
+
+// Form validation schema
+const contactFormSchema = z.object({
+  name: z.string()
+    .min(1, 'Name is required')
+    .max(100, 'Name must be less than 100 characters')
+    .trim(),
+  email: z.string()
+    .email('Invalid email address')
+    .max(255, 'Email must be less than 255 characters')
+    .trim(),
+  phone: z.string()
+    .max(20, 'Phone must be less than 20 characters')
+    .optional()
+    .or(z.literal('')),
+  message: z.string()
+    .min(1, 'Message is required')
+    .max(2000, 'Message must be less than 2000 characters')
+    .trim()
+});
 
 declare global {
   interface Window {
@@ -25,6 +46,7 @@ const Contact = () => {
     phone: '',
     message: ''
   });
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
       name,
@@ -37,10 +59,14 @@ const Contact = () => {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFormErrors({});
     
     try {
+      // Validate form data
+      const validatedData = contactFormSchema.parse(formData);
+      
       const { data, error } = await supabase.functions.invoke('contact-submit', {
-        body: formData
+        body: validatedData
       });
 
       if (error) {
@@ -58,12 +84,28 @@ const Contact = () => {
         message: ''
       });
     } catch (error) {
-      console.error('Error submitting contact form:', error);
-      toast({
-        title: t('contact.form.error.title'),
-        description: t('contact.form.error.description'),
-        variant: "destructive",
-      });
+      if (error instanceof z.ZodError) {
+        // Handle validation errors
+        const errors: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            errors[err.path[0].toString()] = err.message;
+          }
+        });
+        setFormErrors(errors);
+        toast({
+          title: 'Validation Error',
+          description: 'Please check the form for errors',
+          variant: "destructive",
+        });
+      } else {
+        console.error('Error submitting contact form:', error);
+        toast({
+          title: t('contact.form.error.title'),
+          description: t('contact.form.error.description'),
+          variant: "destructive",
+        });
+      }
     }
   };
   const contactInfo = [{
@@ -105,26 +147,42 @@ const Contact = () => {
 
     const initMap = async () => {
       try {
-        const response = await fetch('https://eymjmdusrvpdhprduwrf.supabase.co/rest/v1/Codelco%20Mapa%20SA?name=eq.Codelco%20S.A&select=latitude,longitude,name,address', {
-          headers: {
-            'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5bWptZHVzcnZwZGhwcmR1d3JmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1NjAyMzAsImV4cCI6MjA3MzEzNjIzMH0.mdV5Bydnh93iYUMHhODUIydKsfn4ykocloPxQHhs0Mg',
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV5bWptZHVzcnZwZGhwcmR1d3JmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTc1NjAyMzAsImV4cCI6MjA3MzEzNjIzMH0.mdV5Bydnh93iYUMHhODUIydKsfn4ykocloPxQHhs0Mg'
-          }
-        });
+        // Use secure-maps edge function to fetch API key and location data
+        const { data: mapsData, error: mapsError } = await supabase.functions.invoke('secure-maps');
         
-        if (response.ok) {
-          const data = await response.json();
-          if (data && data.length > 0) {
-            const locationData = data[0];
-            const codelcoLocation = { lat: Number(locationData.latitude), lng: Number(locationData.longitude) };
-            createMap(codelcoLocation, locationData.name, locationData.address || 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro');
-            return;
-          }
+        if (mapsError) {
+          throw mapsError;
+        }
+
+        if (mapsData && mapsData.apiKey) {
+          // Load Google Maps script with secure API key
+          const script = document.createElement('script');
+          script.src = `https://maps.googleapis.com/maps/api/js?key=${mapsData.apiKey}&callback=initMap`;
+          script.async = true;
+          script.defer = true;
+          
+          window.initMap = () => {
+            if (mapsData.locations && mapsData.locations.length > 0) {
+              const locationData = mapsData.locations.find((loc: any) => loc.name === 'Codelco S.A') || mapsData.locations[0];
+              const codelcoLocation = { lat: Number(locationData.latitude), lng: Number(locationData.longitude) };
+              createMap(codelcoLocation, locationData.name, locationData.address || 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro');
+            } else {
+              // Fallback coordinates
+              const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
+              const name = 'Codelco S.A';
+              const address = t('contact.address.value');
+              createMap(codelcoLocation, name, address);
+            }
+          };
+          
+          document.head.appendChild(script);
+          return;
         }
       } catch (err) {
-        console.log('Error conectando con Supabase:', err);
+        console.log('Error loading maps:', err);
       }
       
+      // Fallback if secure-maps fails
       const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
       const name = 'Codelco S.A';
       const address = t('contact.address.value');
@@ -163,14 +221,11 @@ const Contact = () => {
       });
     };
 
+    // Only initialize if Google Maps is not already loaded
     if (typeof window.google === 'undefined' || !window.google?.maps) {
-      const script = document.createElement('script');
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAfO6pwad6QXR7W8DJmMaL39wQLvqZbS0I&callback=initMap`;
-      script.async = true;
-      script.defer = true;
-      window.initMap = initMap;
-      document.head.appendChild(script);
+      initMap();
     } else {
+      // If already loaded, just create the map
       initMap();
     }
   }, [isMapVisible]);
@@ -238,28 +293,72 @@ const Contact = () => {
                 <label htmlFor="name" className="block text-sm font-normal mb-2 text-foreground rounded">
                   {t('contact.form.name')}
                 </label>
-                <Input id="name" name="name" type="text" required value={formData.name} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
+                <Input 
+                  id="name" 
+                  name="name" 
+                  type="text" 
+                  required 
+                  value={formData.name} 
+                  onChange={handleInputChange} 
+                  className={`w-full px-3 py-2 border text-body ${formErrors.name ? 'border-destructive' : 'border-muted'}`}
+                />
+                {formErrors.name && (
+                  <p className="text-destructive text-sm mt-1">{formErrors.name}</p>
+                )}
               </div>
               
               <div>
                 <label htmlFor="email" className="block text-sm font-normal mb-2 text-foreground">
                   {t('contact.form.email')}
                 </label>
-                <Input id="email" name="email" type="email" required value={formData.email} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
+                <Input 
+                  id="email" 
+                  name="email" 
+                  type="email" 
+                  required 
+                  value={formData.email} 
+                  onChange={handleInputChange} 
+                  className={`w-full px-3 py-2 border text-body ${formErrors.email ? 'border-destructive' : 'border-muted'}`}
+                />
+                {formErrors.email && (
+                  <p className="text-destructive text-sm mt-1">{formErrors.email}</p>
+                )}
               </div>
               
               <div>
                 <label htmlFor="phone" className="block text-sm font-normal mb-2 text-foreground">
                   {t('contact.form.phone')}
                 </label>
-                <Input id="phone" name="phone" type="tel" value={formData.phone} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body" />
+                <Input 
+                  id="phone" 
+                  name="phone" 
+                  type="tel" 
+                  value={formData.phone} 
+                  onChange={handleInputChange} 
+                  className={`w-full px-3 py-2 border text-body ${formErrors.phone ? 'border-destructive' : 'border-muted'}`}
+                />
+                {formErrors.phone && (
+                  <p className="text-destructive text-sm mt-1">{formErrors.phone}</p>
+                )}
               </div>
               
               <div>
                 <label htmlFor="message" className="block text-sm font-normal mb-2 text-foreground">
                   {t('contact.form.message')}
                 </label>
-                <Textarea id="message" name="message" required rows={4} value={formData.message} onChange={handleInputChange} className="w-full px-3 py-2 border border-muted text-body resize-none" placeholder={t('contact.form.placeholder')} />
+                <Textarea 
+                  id="message" 
+                  name="message" 
+                  required 
+                  rows={4} 
+                  value={formData.message} 
+                  onChange={handleInputChange} 
+                  className={`w-full px-3 py-2 border text-body resize-none ${formErrors.message ? 'border-destructive' : 'border-muted'}`}
+                  placeholder={t('contact.form.placeholder')} 
+                />
+                {formErrors.message && (
+                  <p className="text-destructive text-sm mt-1">{formErrors.message}</p>
+                )}
               </div>
               
               <Button type="submit" className="w-full bg-primary hover:bg-primary/90 px-6 py-4 rounded-xl transition-colors duration-300 text-zinc-50 font-semibold text-sm">

@@ -23,3 +23,10 @@
 # Default cache for all other assets
 /*
   Cache-Control: public, max-age=31536000
+  
+  # Security Headers
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://maps.googleapis.com https://maps.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: blob:; connect-src 'self' https://eymjmdusrvpdhprduwrf.supabase.co https://*.supabase.co https://maps.googleapis.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self';
