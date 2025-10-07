@@ -74,6 +74,30 @@ export type Database = {
         }
         Relationships: []
       }
+      rate_limit: {
+        Row: {
+          created_at: string | null
+          id: string
+          ip_address: unknown
+          submission_count: number
+          window_start: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          ip_address: unknown
+          submission_count?: number
+          window_start?: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          ip_address?: unknown
+          submission_count?: number
+          window_start?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string | null
@@ -100,6 +124,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      cleanup_rate_limits: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
