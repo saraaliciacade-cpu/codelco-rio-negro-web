@@ -298,8 +298,8 @@ const Contact = () => {
                     <h4 className="text-base font-bold text-foreground font-montserrat mb-2">{info.label}</h4>
                     {info.icon === Phone ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
-                        <div>{t('contact.phone.rental').replace('(299) 571 4217', '')}<a href="tel:+5492995714217" className="hover:underline" style={{color: '#d25840'}}>(299) 571 4217</a></div>
-                        <div>{t('contact.phone.compras').replace('(299) 571 4661', '')}<a href="tel:+5492995714661" className="hover:underline" style={{color: '#d25840'}}>(299) 571 4661</a></div>
+                        <div>Sebastian</div>
+                        <div><a href="tel:+5492994136453" className="hover:underline" style={{color: '#d25840'}}>299 413 6453</a></div>
                       </div>
                     : info.icon === Mail ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold">
