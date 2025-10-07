@@ -1,5 +1,4 @@
 import { MapPin, Mail, Phone } from 'lucide-react';
-import codelcoLogo from '@/assets/codelco-logo.png';
 import organicLogo from '@/assets/logo-organic.png';
 import { useLanguage } from '@/contexts/LanguageContext';
 const Footer = () => {
