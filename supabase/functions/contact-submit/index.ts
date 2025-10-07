@@ -15,14 +15,15 @@ interface ContactSubmission {
   email: string;
   phone?: string;
   message: string;
+  website?: string; // Honeypot field
 }
 
 // Input length limits for security
 const INPUT_LIMITS = {
-  name: 100,
-  email: 255,
-  phone: 20,
-  message: 2000
+  name: { min: 2, max: 100 },
+  email: { min: 5, max: 255 },
+  phone: { min: 0, max: 20 },
+  message: { min: 10, max: 2000 }
 };
 
 // Rate limiting: max 5 submissions per IP per hour
@@ -57,6 +58,21 @@ serve(async (req) => {
   try {
     const body: ContactSubmission = await req.json();
     
+    // Honeypot check - if website field is filled, it's likely a bot
+    if (body.website && body.website.trim().length > 0) {
+      console.log('Bot detected via honeypot field');
+      // Return success to not tip off the bot
+      return new Response(
+        JSON.stringify({ 
+          success: true, 
+          message: 'Contact form submitted successfully'
+        }),
+        {
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        }
+      );
+    }
+    
     // Input validation: required fields
     if (!body.name || !body.email || !body.message) {
       return new Response(
@@ -68,10 +84,10 @@ serve(async (req) => {
       );
     }
 
-    // Input validation: length limits
-    if (body.name.trim().length > INPUT_LIMITS.name) {
+    // Input validation: minimum and maximum length limits
+    if (body.name.trim().length < INPUT_LIMITS.name.min) {
       return new Response(
-        JSON.stringify({ error: `Name must be less than ${INPUT_LIMITS.name} characters` }),
+        JSON.stringify({ error: `Name must be at least ${INPUT_LIMITS.name.min} characters` }),
         { 
           status: 400, 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -79,9 +95,9 @@ serve(async (req) => {
       );
     }
 
-    if (body.email.trim().length > INPUT_LIMITS.email) {
+    if (body.name.trim().length > INPUT_LIMITS.name.max) {
       return new Response(
-        JSON.stringify({ error: `Email must be less than ${INPUT_LIMITS.email} characters` }),
+        JSON.stringify({ error: `Name must be less than ${INPUT_LIMITS.name.max} characters` }),
         { 
           status: 400, 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -89,9 +105,9 @@ serve(async (req) => {
       );
     }
 
-    if (body.phone && body.phone.trim().length > INPUT_LIMITS.phone) {
+    if (body.email.trim().length > INPUT_LIMITS.email.max) {
       return new Response(
-        JSON.stringify({ error: `Phone must be less than ${INPUT_LIMITS.phone} characters` }),
+        JSON.stringify({ error: `Email must be less than ${INPUT_LIMITS.email.max} characters` }),
         { 
           status: 400, 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -99,9 +115,29 @@ serve(async (req) => {
       );
     }
 
-    if (body.message.trim().length > INPUT_LIMITS.message) {
+    if (body.phone && body.phone.trim().length > INPUT_LIMITS.phone.max) {
       return new Response(
-        JSON.stringify({ error: `Message must be less than ${INPUT_LIMITS.message} characters` }),
+        JSON.stringify({ error: `Phone must be less than ${INPUT_LIMITS.phone.max} characters` }),
+        { 
+          status: 400, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    if (body.message.trim().length < INPUT_LIMITS.message.min) {
+      return new Response(
+        JSON.stringify({ error: `Message must be at least ${INPUT_LIMITS.message.min} characters` }),
+        { 
+          status: 400, 
+          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
+    if (body.message.trim().length > INPUT_LIMITS.message.max) {
+      return new Response(
+        JSON.stringify({ error: `Message must be less than ${INPUT_LIMITS.message.max} characters` }),
         { 
           status: 400, 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }

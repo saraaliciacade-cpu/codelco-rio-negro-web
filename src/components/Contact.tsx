@@ -12,7 +12,7 @@ import { z } from 'zod';
 // Form validation schema
 const contactFormSchema = z.object({
   name: z.string()
-    .min(1, 'Name is required')
+    .min(2, 'Name must be at least 2 characters')
     .max(100, 'Name must be less than 100 characters')
     .trim(),
   email: z.string()
@@ -24,9 +24,10 @@ const contactFormSchema = z.object({
     .optional()
     .or(z.literal('')),
   message: z.string()
-    .min(1, 'Message is required')
+    .min(10, 'Message must be at least 10 characters')
     .max(2000, 'Message must be less than 2000 characters')
-    .trim()
+    .trim(),
+  website: z.string().optional().or(z.literal('')) // Honeypot field
 });
 
 declare global {
@@ -44,7 +45,8 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    website: '' // Honeypot field
   });
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -81,7 +83,8 @@ const Contact = () => {
         name: '',
         email: '',
         phone: '',
-        message: ''
+        message: '',
+        website: ''
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -340,6 +343,20 @@ const Contact = () => {
                 {formErrors.phone && (
                   <p className="text-destructive text-sm mt-1">{formErrors.phone}</p>
                 )}
+              </div>
+              
+              {/* Honeypot field - hidden from users but visible to bots */}
+              <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <Input 
+                  id="website" 
+                  name="website" 
+                  type="text" 
+                  value={formData.website} 
+                  onChange={handleInputChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
               </div>
               
               <div>
