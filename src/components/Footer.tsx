@@ -63,7 +63,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="font-nunito text-white/80 text-sm hover:text-white transition-colors"
               >
-                Creador del Sitio Web
+                Creador del Sitio Web:
               </a>
               <a 
                 href="https://organicdesign.com.ar/" 
