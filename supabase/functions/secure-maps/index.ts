@@ -1,13 +1,22 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
 
-// Restrict CORS to specific domain
-const ALLOWED_ORIGIN = 'https://codelco-rio-negro-web.lovable.app';
+// Allow requests from production and Lovable development/preview domains
+const ALLOWED_ORIGINS = [
+  'https://codelco-rio-negro-web.lovable.app',
+  /^https:\/\/.*\.lovableproject\.com$/,
+];
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': ALLOWED_ORIGIN,
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
+const corsHeaders = (origin: string | null) => {
+  const isAllowed = origin && ALLOWED_ORIGINS.some(allowed => 
+    typeof allowed === 'string' ? allowed === origin : allowed.test(origin)
+  );
+  
+  return {
+    'Access-Control-Allow-Origin': isAllowed ? origin : ALLOWED_ORIGINS[0],
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  };
 };
 
 interface LocationResponse {
@@ -22,9 +31,12 @@ interface LocationResponse {
 }
 
 serve(async (req) => {
+  const origin = req.headers.get('origin');
+  const headers = corsHeaders(origin);
+  
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { headers });
   }
 
   try {
@@ -54,7 +66,7 @@ serve(async (req) => {
     };
 
     return new Response(JSON.stringify(response), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      headers: { ...headers, 'Content-Type': 'application/json' },
     });
   } catch (error) {
     console.error('Error in secure-maps function:', error);
@@ -62,7 +74,7 @@ serve(async (req) => {
       JSON.stringify({ error: error.message }), 
       {
         status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: { ...headers, 'Content-Type': 'application/json' },
       }
     );
   }
