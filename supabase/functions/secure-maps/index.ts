@@ -5,6 +5,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
 const ALLOWED_ORIGINS = [
   'https://codelco-rio-negro-web.lovable.app',
   /^https:\/\/.*\.lovableproject\.com$/,
+  /^https:\/\/.*\.lovable\.app$/,
 ];
 
 const corsHeaders = (origin: string | null) => {
