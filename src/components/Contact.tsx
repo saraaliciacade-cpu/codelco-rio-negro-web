@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/components/ui/use-toast';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { supabase } from '@/integrations/supabase/client';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { z } from 'zod';
@@ -23,6 +24,9 @@ const contactFormSchema = z.object({
     .max(20, 'Phone must be less than 20 characters')
     .optional()
     .or(z.literal('')),
+  subject: z.string()
+    .min(1, 'Subject is required')
+    .trim(),
   message: z.string()
     .min(10, 'Message must be at least 10 characters')
     .max(2000, 'Message must be less than 2000 characters')
@@ -45,6 +49,7 @@ const Contact = () => {
     name: '',
     email: '',
     phone: '',
+    subject: '',
     message: '',
     website: '' // Honeypot field
   });
@@ -83,6 +88,7 @@ const Contact = () => {
         name: '',
         email: '',
         phone: '',
+        subject: '',
         message: '',
         website: ''
       });
@@ -363,21 +369,50 @@ const Contact = () => {
                 )}
               </div>
               
-              <div>
-                <label htmlFor="phone" className="block text-sm font-normal mb-2 text-foreground">
-                  {t('contact.form.phone')}
-                </label>
-                <Input 
-                  id="phone" 
-                  name="phone" 
-                  type="tel" 
-                  value={formData.phone} 
-                  onChange={handleInputChange} 
-                  className={`w-full px-3 py-2 border text-body ${formErrors.phone ? 'border-destructive' : 'border-muted'}`}
-                />
-                {formErrors.phone && (
-                  <p className="text-destructive text-sm mt-1">{formErrors.phone}</p>
-                )}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-normal mb-2 text-foreground">
+                    {t('contact.form.phone')}
+                  </label>
+                  <Input 
+                    id="phone" 
+                    name="phone" 
+                    type="tel" 
+                    value={formData.phone} 
+                    onChange={handleInputChange} 
+                    className={`w-full px-3 py-2 border text-body ${formErrors.phone ? 'border-destructive' : 'border-muted'}`}
+                  />
+                  {formErrors.phone && (
+                    <p className="text-destructive text-sm mt-1">{formErrors.phone}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-normal mb-2 text-foreground">
+                    {t('contact.form.subject')}
+                  </label>
+                  <Select 
+                    value={formData.subject} 
+                    onValueChange={(value) => setFormData(prev => ({ ...prev, subject: value }))}
+                  >
+                    <SelectTrigger 
+                      id="subject"
+                      className={`w-full px-3 py-2 border text-body ${formErrors.subject ? 'border-destructive' : 'border-muted'}`}
+                    >
+                      <SelectValue placeholder="Seleccione un asunto" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="fabrica">{t('contact.form.subject.fabrica')}</SelectItem>
+                      <SelectItem value="metalurgica">{t('contact.form.subject.metalurgica')}</SelectItem>
+                      <SelectItem value="rental">{t('contact.form.subject.rental')}</SelectItem>
+                      <SelectItem value="generators">{t('contact.form.subject.generators')}</SelectItem>
+                      <SelectItem value="question">{t('contact.form.subject.question')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {formErrors.subject && (
+                    <p className="text-destructive text-sm mt-1">{formErrors.subject}</p>
+                  )}
+                </div>
               </div>
               
               {/* Honeypot field - hidden from users but visible to bots */}
