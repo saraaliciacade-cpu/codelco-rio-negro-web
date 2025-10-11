@@ -108,7 +108,7 @@ const Clients = () => {
                   <img
                     src={client.logo}
                     alt={`${client.name} logo`}
-                    className="max-h-full max-w-full object-contain filter grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
+                    className="max-h-full max-w-full object-contain group-hover:scale-110 transition-all duration-500 ease-in-out"
                   />
                 </div>
                 <p className="text-sm text-gray-600 text-center font-semibold leading-tight px-2 group-hover:text-gray-800 transition-colors duration-300">
