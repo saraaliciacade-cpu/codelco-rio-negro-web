@@ -275,7 +275,7 @@ const Contact = () => {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-[350px,1fr] gap-8 lg:gap-16 max-w-full mx-auto px-2 sm:px-6 mb-16">
+        <div className="grid lg:grid-cols-[280px,1fr] gap-8 lg:gap-12 max-w-full mx-auto px-2 sm:px-6 mb-16">
           {/* Contact Information */}
           <div className="space-y-6">
             <h3 className="mb-8 text-foreground font-montserrat font-extrabold text-xl">{t('contact.info')}</h3>
