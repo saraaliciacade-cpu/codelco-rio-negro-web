@@ -78,32 +78,13 @@ const Contact = () => {
         return;
       }
 
-      // Map subject codes to readable text for Formspree
-      const subjectMap: Record<string, string> = {
-        fabrica: 'Fábrica',
-        metalurgica: 'Metalúrgica',
-        rental: 'Rental',
-        generators: 'Grupos Electrógenos',
-        question: 'Pregunta'
-      };
-
-      // Send to Formspree
-      const response = await fetch('https://formspree.io/f/mldppvka', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          nombre: validatedData.name,
-          email: validatedData.email,
-          telefono: validatedData.phone || 'No proporcionado',
-          asunto: subjectMap[validatedData.subject] || validatedData.subject,
-          mensaje: validatedData.message
-        })
+      // Send to edge function
+      const { data, error } = await supabase.functions.invoke('contact-submit', {
+        body: validatedData
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit form');
+      if (error) {
+        throw error;
       }
 
       toast({

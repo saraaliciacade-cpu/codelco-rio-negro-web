@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
-import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
+import { Resend } from 'npm:resend@2.0.0';
 
 // Restrict CORS to specific domain
 const ALLOWED_ORIGIN = 'https://codelco-rio-negro-web.lovable.app';
@@ -232,6 +232,7 @@ serve(async (req) => {
         name: body.name.trim(),
         email: body.email.trim().toLowerCase(),
         phone: body.phone?.trim() || null,
+        subject: body.subject,
         message: body.message.trim(),
         ip_address: clientIP,
         user_agent: userAgent
@@ -246,27 +247,16 @@ serve(async (req) => {
     // Log with redacted email for privacy
     console.log(`Contact submission received from ${redactEmail(body.email)} (IP: ${clientIP})`);
 
-    // Send email notification using Gmail SMTP
+    // Send email notification using Resend
     try {
-      const gmailUser = Deno.env.get('GMAIL_USER');
-      const gmailPassword = Deno.env.get('GMAIL_APP_PASSWORD');
+      const resendApiKey = Deno.env.get('RESEND_API_KEY');
 
-      if (!gmailUser || !gmailPassword) {
-        console.error('Gmail credentials not configured');
+      if (!resendApiKey) {
+        console.error('Resend API key not configured');
         throw new Error('Email service not configured');
       }
 
-      const client = new SMTPClient({
-        connection: {
-          hostname: "smtp.gmail.com",
-          port: 465,
-          tls: true,
-          auth: {
-            username: gmailUser,
-            password: gmailPassword,
-          },
-        },
-      });
+      const resend = new Resend(resendApiKey);
 
       // Map subject codes to readable text
       const subjectMap: Record<string, string> = {
@@ -280,16 +270,20 @@ serve(async (req) => {
       const subjectText = subjectMap[body.subject] || body.subject;
       const emailSubject = `${body.name} - ${subjectText}`;
       
-      const emailBody = `Email: ${body.email}\nTeléfono: ${body.phone || 'No proporcionado'}\nMensaje: ${body.message}`;
+      const emailBody = `De: ${body.name} (${body.email})\nTeléfono: ${body.phone || 'No proporcionado'}\nAsunto: ${subjectText}\nMensaje: ${body.message}`;
 
-      await client.send({
-        from: gmailUser,
-        to: "codelcoweb@gmail.com",
+      const emailResponse = await resend.emails.send({
+        from: 'Codelco <onboarding@resend.dev>',
+        to: ['codelcoweb@gmail.com'],
         subject: emailSubject,
-        content: emailBody,
+        text: emailBody,
       });
 
-      await client.close();
+      if (emailResponse.error) {
+        console.error('Resend error:', emailResponse.error);
+        throw emailResponse.error;
+      }
+
       console.log(`Email sent successfully to codelcoweb@gmail.com - Subject: ${emailSubject}`);
     } catch (emailError) {
       console.error('Error sending email:', emailError);
