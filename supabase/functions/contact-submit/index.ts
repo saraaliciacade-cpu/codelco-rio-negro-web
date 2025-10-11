@@ -2,13 +2,23 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
 import { Resend } from 'npm:resend@2.0.0';
 
-// Restrict CORS to specific domain
-const ALLOWED_ORIGIN = 'https://codelco-rio-negro-web.lovable.app';
+// Allow requests from production and Lovable development/preview domains
+const ALLOWED_ORIGINS = [
+  'https://codelco.lovable.app',
+  /^https:\/\/.*\.lovableproject\.com$/,
+  /^https:\/\/.*\.lovable\.app$/,
+];
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': ALLOWED_ORIGIN,
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+const corsHeaders = (origin: string | null) => {
+  const isAllowed = origin && ALLOWED_ORIGINS.some(allowed => 
+    typeof allowed === 'string' ? allowed === origin : allowed.test(origin)
+  );
+  
+  return {
+    'Access-Control-Allow-Origin': isAllowed ? origin : ALLOWED_ORIGINS[0],
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  };
 };
 
 interface ContactSubmission {
@@ -45,15 +55,18 @@ function redactEmail(email: string): string {
 }
 
 serve(async (req) => {
+  const origin = req.headers.get('origin');
+  const headers = corsHeaders(origin);
+  
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
-    return new Response(null, { headers: corsHeaders });
+    return new Response(null, { headers });
   }
 
   if (req.method !== 'POST') {
     return new Response('Method not allowed', { 
       status: 405, 
-      headers: corsHeaders 
+      headers 
     });
   }
 
@@ -70,7 +83,7 @@ serve(async (req) => {
           message: 'Contact form submitted successfully'
         }),
         {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...headers, 'Content-Type': 'application/json' },
         }
       );
     }
@@ -81,7 +94,7 @@ serve(async (req) => {
         JSON.stringify({ error: 'Name, email, subject, and message are required' }),
         { 
           status: 400, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...headers, 'Content-Type': 'application/json' }
         }
       );
     }
@@ -92,7 +105,7 @@ serve(async (req) => {
         JSON.stringify({ error: `Name must be at least ${INPUT_LIMITS.name.min} characters` }),
         { 
           status: 400, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...headers, 'Content-Type': 'application/json' }
         }
       );
     }
@@ -102,7 +115,7 @@ serve(async (req) => {
         JSON.stringify({ error: `Name must be less than ${INPUT_LIMITS.name.max} characters` }),
         { 
           status: 400, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...headers, 'Content-Type': 'application/json' }
         }
       );
     }
@@ -112,7 +125,7 @@ serve(async (req) => {
         JSON.stringify({ error: `Email must be less than ${INPUT_LIMITS.email.max} characters` }),
         { 
           status: 400, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...headers, 'Content-Type': 'application/json' }
         }
       );
     }
@@ -122,7 +135,7 @@ serve(async (req) => {
         JSON.stringify({ error: `Phone must be less than ${INPUT_LIMITS.phone.max} characters` }),
         { 
           status: 400, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...headers, 'Content-Type': 'application/json' }
         }
       );
     }
@@ -132,7 +145,7 @@ serve(async (req) => {
         JSON.stringify({ error: `Message must be at least ${INPUT_LIMITS.message.min} characters` }),
         { 
           status: 400, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...headers, 'Content-Type': 'application/json' }
         }
       );
     }
@@ -142,7 +155,7 @@ serve(async (req) => {
         JSON.stringify({ error: `Message must be less than ${INPUT_LIMITS.message.max} characters` }),
         { 
           status: 400, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...headers, 'Content-Type': 'application/json' }
         }
       );
     }
@@ -154,7 +167,7 @@ serve(async (req) => {
         JSON.stringify({ error: 'Invalid email format' }),
         { 
           status: 400, 
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+          headers: { ...headers, 'Content-Type': 'application/json' }
         }
       );
     }
@@ -191,7 +204,7 @@ serve(async (req) => {
             { 
               status: 429, 
               headers: { 
-                ...corsHeaders, 
+                ...headers, 
                 'Content-Type': 'application/json',
                 'Retry-After': String(Math.ceil(RATE_LIMIT_WINDOW - timeDiff))
               }
@@ -297,7 +310,7 @@ serve(async (req) => {
         id: data[0]?.id
       }),
       {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: { ...headers, 'Content-Type': 'application/json' },
       }
     );
   } catch (error) {
@@ -306,7 +319,7 @@ serve(async (req) => {
       JSON.stringify({ error: 'Internal server error' }), 
       {
         status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: { ...headers, 'Content-Type': 'application/json' },
       }
     );
   }
