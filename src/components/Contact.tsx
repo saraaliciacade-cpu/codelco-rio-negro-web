@@ -371,6 +371,33 @@ const Contact = () => {
               
               <div className="grid grid-cols-2 gap-4">
                 <div>
+                  <label htmlFor="subject" className="block text-sm font-normal mb-2 text-foreground">
+                    {t('contact.form.subject')}
+                  </label>
+                  <Select 
+                    value={formData.subject} 
+                    onValueChange={(value) => setFormData(prev => ({ ...prev, subject: value }))}
+                  >
+                    <SelectTrigger 
+                      id="subject"
+                      className={`w-full px-3 py-2 border text-body ${formData.subject ? 'bg-white' : ''} ${formErrors.subject ? 'border-destructive' : 'border-muted'}`}
+                    >
+                      <SelectValue placeholder="Seleccione un asunto" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-primary z-50">
+                      <SelectItem value="fabrica" className="text-white hover:bg-primary/90 focus:bg-primary/90 focus:text-white cursor-pointer">{t('contact.form.subject.fabrica')}</SelectItem>
+                      <SelectItem value="metalurgica" className="text-white hover:bg-primary/90 focus:bg-primary/90 focus:text-white cursor-pointer">{t('contact.form.subject.metalurgica')}</SelectItem>
+                      <SelectItem value="rental" className="text-white hover:bg-primary/90 focus:bg-primary/90 focus:text-white cursor-pointer">{t('contact.form.subject.rental')}</SelectItem>
+                      <SelectItem value="generators" className="text-white hover:bg-primary/90 focus:bg-primary/90 focus:text-white cursor-pointer">{t('contact.form.subject.generators')}</SelectItem>
+                      <SelectItem value="question" className="text-white hover:bg-primary/90 focus:bg-primary/90 focus:text-white cursor-pointer">{t('contact.form.subject.question')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  {formErrors.subject && (
+                    <p className="text-destructive text-sm mt-1">{formErrors.subject}</p>
+                  )}
+                </div>
+
+                <div>
                   <label htmlFor="phone" className="block text-sm font-normal mb-2 text-foreground">
                     {t('contact.form.phone')}
                   </label>
@@ -384,33 +411,6 @@ const Contact = () => {
                   />
                   {formErrors.phone && (
                     <p className="text-destructive text-sm mt-1">{formErrors.phone}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-normal mb-2 text-foreground">
-                    {t('contact.form.subject')}
-                  </label>
-                  <Select 
-                    value={formData.subject} 
-                    onValueChange={(value) => setFormData(prev => ({ ...prev, subject: value }))}
-                  >
-                    <SelectTrigger 
-                      id="subject"
-                      className={`w-full px-3 py-2 border text-body ${formErrors.subject ? 'border-destructive' : 'border-muted'}`}
-                    >
-                      <SelectValue placeholder="Seleccione un asunto" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="fabrica">{t('contact.form.subject.fabrica')}</SelectItem>
-                      <SelectItem value="metalurgica">{t('contact.form.subject.metalurgica')}</SelectItem>
-                      <SelectItem value="rental">{t('contact.form.subject.rental')}</SelectItem>
-                      <SelectItem value="generators">{t('contact.form.subject.generators')}</SelectItem>
-                      <SelectItem value="question">{t('contact.form.subject.question')}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  {formErrors.subject && (
-                    <p className="text-destructive text-sm mt-1">{formErrors.subject}</p>
                   )}
                 </div>
               </div>
