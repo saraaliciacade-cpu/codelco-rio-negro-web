@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
+import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
 // Restrict CORS to specific domain
 const ALLOWED_ORIGIN = 'https://codelco-rio-negro-web.lovable.app';
@@ -14,6 +15,7 @@ interface ContactSubmission {
   name: string;
   email: string;
   phone?: string;
+  subject: string;
   message: string;
   website?: string; // Honeypot field
 }
@@ -74,9 +76,9 @@ serve(async (req) => {
     }
     
     // Input validation: required fields
-    if (!body.name || !body.email || !body.message) {
+    if (!body.name || !body.email || !body.subject || !body.message) {
       return new Response(
-        JSON.stringify({ error: 'Name, email, and message are required' }),
+        JSON.stringify({ error: 'Name, email, subject, and message are required' }),
         { 
           status: 400, 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' }
@@ -243,6 +245,56 @@ serve(async (req) => {
 
     // Log with redacted email for privacy
     console.log(`Contact submission received from ${redactEmail(body.email)} (IP: ${clientIP})`);
+
+    // Send email notification using Gmail SMTP
+    try {
+      const gmailUser = Deno.env.get('GMAIL_USER');
+      const gmailPassword = Deno.env.get('GMAIL_APP_PASSWORD');
+
+      if (!gmailUser || !gmailPassword) {
+        console.error('Gmail credentials not configured');
+        throw new Error('Email service not configured');
+      }
+
+      const client = new SMTPClient({
+        connection: {
+          hostname: "smtp.gmail.com",
+          port: 465,
+          tls: true,
+          auth: {
+            username: gmailUser,
+            password: gmailPassword,
+          },
+        },
+      });
+
+      // Map subject codes to readable text
+      const subjectMap: Record<string, string> = {
+        fabrica: 'Fábrica',
+        metalurgica: 'Metalúrgica',
+        rental: 'Rental',
+        generators: 'Grupos Electrógenos',
+        question: 'Pregunta'
+      };
+
+      const subjectText = subjectMap[body.subject] || body.subject;
+      const emailSubject = `${body.name} - ${subjectText}`;
+      
+      const emailBody = `Email: ${body.email}\nTeléfono: ${body.phone || 'No proporcionado'}\nMensaje: ${body.message}`;
+
+      await client.send({
+        from: gmailUser,
+        to: "codelcoweb@gmail.com",
+        subject: emailSubject,
+        content: emailBody,
+      });
+
+      await client.close();
+      console.log(`Email sent successfully to codelcoweb@gmail.com - Subject: ${emailSubject}`);
+    } catch (emailError) {
+      console.error('Error sending email:', emailError);
+      // Continue even if email fails - we still saved to database
+    }
 
     return new Response(
       JSON.stringify({ 
