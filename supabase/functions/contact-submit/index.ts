@@ -178,9 +178,9 @@ serve(async (req) => {
     const supabase = createClient(supabaseUrl, supabaseKey);
 
     // Get client IP and user agent for security logging
-    const clientIP = req.headers.get('x-forwarded-for') || 
-                    req.headers.get('x-real-ip') || 
-                    'unknown';
+    const forwardedFor = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip');
+    // Take only the first IP if multiple are present (format: "client, proxy1, proxy2")
+    const clientIP = forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown';
     const userAgent = req.headers.get('user-agent') || 'unknown';
 
     // Rate limiting check
