@@ -275,7 +275,7 @@ const Contact = () => {
           </h2>
         </div>
 
-        <div className="grid lg:grid-cols-3 gap-8 lg:gap-12 max-w-full mx-auto px-2 sm:px-6 mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 max-w-full mx-auto px-2 sm:px-6 mb-16">
           {/* Contact Information */}
           <div className="space-y-6">
             <h3 className="mb-8 text-foreground font-montserrat font-extrabold text-xl">{t('contact.info')}</h3>
@@ -322,64 +322,62 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="lg:col-span-2 bg-white border border-gray-200 rounded-3xl shadow-sm p-8">
+          <Card className="bg-white border border-gray-200 rounded-3xl shadow-sm p-8">
             <CardContent className="p-0">
               <h3 className="font-bold mb-8 text-center text-foreground font-montserrat text-lg">{t('contact.form.title')}</h3>
             
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid md:grid-cols-3 gap-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-normal mb-2 text-foreground rounded">
-                    {t('contact.form.name')}
-                  </label>
-                  <Input 
-                    id="name" 
-                    name="name" 
-                    type="text" 
-                    required 
-                    value={formData.name} 
-                    onChange={handleInputChange} 
-                    className={`w-full px-3 py-2 border text-body ${formErrors.name ? 'border-destructive' : 'border-muted'}`}
-                  />
-                  {formErrors.name && (
-                    <p className="text-destructive text-sm mt-1">{formErrors.name}</p>
-                  )}
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-normal mb-2 text-foreground">
-                    {t('contact.form.email')}
-                  </label>
-                  <Input 
-                    id="email" 
-                    name="email" 
-                    type="email" 
-                    required 
-                    value={formData.email} 
-                    onChange={handleInputChange} 
-                    className={`w-full px-3 py-2 border text-body ${formErrors.email ? 'border-destructive' : 'border-muted'}`}
-                  />
-                  {formErrors.email && (
-                    <p className="text-destructive text-sm mt-1">{formErrors.email}</p>
-                  )}
-                </div>
-                
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-normal mb-2 text-foreground">
-                    {t('contact.form.phone')}
-                  </label>
-                  <Input 
-                    id="phone" 
-                    name="phone" 
-                    type="tel" 
-                    value={formData.phone} 
-                    onChange={handleInputChange} 
-                    className={`w-full px-3 py-2 border text-body ${formErrors.phone ? 'border-destructive' : 'border-muted'}`}
-                  />
-                  {formErrors.phone && (
-                    <p className="text-destructive text-sm mt-1">{formErrors.phone}</p>
-                  )}
-                </div>
+              <div>
+                <label htmlFor="name" className="block text-sm font-normal mb-2 text-foreground rounded">
+                  {t('contact.form.name')}
+                </label>
+                <Input 
+                  id="name" 
+                  name="name" 
+                  type="text" 
+                  required 
+                  value={formData.name} 
+                  onChange={handleInputChange} 
+                  className={`w-full px-3 py-2 border text-body ${formErrors.name ? 'border-destructive' : 'border-muted'}`}
+                />
+                {formErrors.name && (
+                  <p className="text-destructive text-sm mt-1">{formErrors.name}</p>
+                )}
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-normal mb-2 text-foreground">
+                  {t('contact.form.email')}
+                </label>
+                <Input 
+                  id="email" 
+                  name="email" 
+                  type="email" 
+                  required 
+                  value={formData.email} 
+                  onChange={handleInputChange} 
+                  className={`w-full px-3 py-2 border text-body ${formErrors.email ? 'border-destructive' : 'border-muted'}`}
+                />
+                {formErrors.email && (
+                  <p className="text-destructive text-sm mt-1">{formErrors.email}</p>
+                )}
+              </div>
+              
+              <div>
+                <label htmlFor="phone" className="block text-sm font-normal mb-2 text-foreground">
+                  {t('contact.form.phone')}
+                </label>
+                <Input 
+                  id="phone" 
+                  name="phone" 
+                  type="tel" 
+                  value={formData.phone} 
+                  onChange={handleInputChange} 
+                  className={`w-full px-3 py-2 border text-body ${formErrors.phone ? 'border-destructive' : 'border-muted'}`}
+                />
+                {formErrors.phone && (
+                  <p className="text-destructive text-sm mt-1">{formErrors.phone}</p>
+                )}
               </div>
               
               {/* Honeypot field - hidden from users but visible to bots */}
