@@ -327,40 +327,42 @@ const Contact = () => {
               <h3 className="font-bold mb-8 text-center text-foreground font-montserrat text-lg">{t('contact.form.title')}</h3>
             
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-normal mb-2 text-foreground rounded">
-                  {t('contact.form.name')}
-                </label>
-                <Input 
-                  id="name" 
-                  name="name" 
-                  type="text" 
-                  required 
-                  value={formData.name} 
-                  onChange={handleInputChange} 
-                  className={`w-full px-3 py-2 border text-body ${formErrors.name ? 'border-destructive' : 'border-muted'}`}
-                />
-                {formErrors.name && (
-                  <p className="text-destructive text-sm mt-1">{formErrors.name}</p>
-                )}
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-normal mb-2 text-foreground">
-                  {t('contact.form.email')}
-                </label>
-                <Input 
-                  id="email" 
-                  name="email" 
-                  type="email" 
-                  required 
-                  value={formData.email} 
-                  onChange={handleInputChange} 
-                  className={`w-full px-3 py-2 border text-body ${formErrors.email ? 'border-destructive' : 'border-muted'}`}
-                />
-                {formErrors.email && (
-                  <p className="text-destructive text-sm mt-1">{formErrors.email}</p>
-                )}
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-normal mb-2 text-foreground rounded">
+                    {t('contact.form.name')}
+                  </label>
+                  <Input 
+                    id="name" 
+                    name="name" 
+                    type="text" 
+                    required 
+                    value={formData.name} 
+                    onChange={handleInputChange} 
+                    className={`w-full px-3 py-2 border text-body ${formErrors.name ? 'border-destructive' : 'border-muted'}`}
+                  />
+                  {formErrors.name && (
+                    <p className="text-destructive text-sm mt-1">{formErrors.name}</p>
+                  )}
+                </div>
+                
+                <div>
+                  <label htmlFor="email" className="block text-sm font-normal mb-2 text-foreground">
+                    {t('contact.form.email')}
+                  </label>
+                  <Input 
+                    id="email" 
+                    name="email" 
+                    type="email" 
+                    required 
+                    value={formData.email} 
+                    onChange={handleInputChange} 
+                    className={`w-full px-3 py-2 border text-body ${formErrors.email ? 'border-destructive' : 'border-muted'}`}
+                  />
+                  {formErrors.email && (
+                    <p className="text-destructive text-sm mt-1">{formErrors.email}</p>
+                  )}
+                </div>
               </div>
               
               <div>
