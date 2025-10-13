@@ -76,7 +76,7 @@ const Services = () => {
                 case 0: return 'lg:mt-0'; // Fábrica arriba
                 case 1: return 'lg:mt-6'; // Metalúrgica ligeramente más abajo
                 case 2: return 'lg:mt-12'; // Rental un poco más abajo
-                case 3: return 'lg:mt-0'; // Generadores arriba
+                case 3: return 'lg:mt-18'; // Generadores más abajo
                 default: return '';
               }
             };
@@ -110,7 +110,7 @@ const Services = () => {
                 {/* NEW Badge */}
                 {service.isNew && (
                   <div className="absolute top-4 right-4 z-10">
-                    <Badge className="bg-orange-600 text-white hover:bg-orange-700 rounded-full px-3 py-1 text-xs font-bold shadow-lg">
+                    <Badge className="bg-neutral-800 text-white hover:bg-neutral-700 rounded-full px-3 py-1 text-xs font-bold shadow-lg">
                       {t('services.generators.badge')}
                     </Badge>
                   </div>
