@@ -260,7 +260,16 @@ serve(async (req) => {
     // Log with redacted email for privacy
     console.log(`Contact submission received from ${redactEmail(body.email)} (IP: ${clientIP})`);
 
-    // Send email notification using Resend
+    // ============================================================
+    // EMAIL SENDING DISABLED
+    // ============================================================
+    // To re-enable email sending, uncomment the code below and:
+    // 1. Add your RESEND_API_KEY to Supabase secrets
+    // 2. Update the 'to' field with your desired email address
+    // 3. Optionally update the 'from' field with your verified domain
+    // ============================================================
+    
+    /*
     try {
       const resendApiKey = Deno.env.get('RESEND_API_KEY');
 
@@ -287,7 +296,7 @@ serve(async (req) => {
 
       const emailResponse = await resend.emails.send({
         from: 'Codelco <onboarding@resend.dev>',
-        to: ['codelcoweb@gmail.com'],
+        to: ['YOUR_EMAIL@example.com'], // Change this to your email
         subject: emailSubject,
         text: emailBody,
       });
@@ -297,11 +306,14 @@ serve(async (req) => {
         throw emailResponse.error;
       }
 
-      console.log(`Email sent successfully to codelcoweb@gmail.com - Subject: ${emailSubject}`);
+      console.log(`Email sent successfully - Subject: ${emailSubject}`);
     } catch (emailError) {
       console.error('Error sending email:', emailError);
       // Continue even if email fails - we still saved to database
     }
+    */
+    
+    console.log('Email sending is currently disabled. Submission saved to database only.');
 
     return new Response(
       JSON.stringify({ 
