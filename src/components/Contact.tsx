@@ -116,7 +116,6 @@ const Contact = () => {
           variant: "destructive",
         });
       } else {
-        console.error('Error submitting contact form:', error);
         toast({
           title: t('contact.form.error.title'),
           description: t('contact.form.error.description'),
@@ -218,7 +217,6 @@ const Contact = () => {
           
           // Add error handler for script loading
           script.onerror = () => {
-            console.error('Failed to load Google Maps script');
             toast({
               title: 'Map Error',
               description: 'Could not load Google Maps. Please check your connection.',
@@ -229,7 +227,6 @@ const Contact = () => {
           document.head.appendChild(script);
         }
       } catch (err) {
-        console.error('Error in map initialization:', err);
         toast({
           title: 'Map Error',
           description: 'An unexpected error occurred loading the map.',

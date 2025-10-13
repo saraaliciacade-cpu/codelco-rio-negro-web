@@ -61,7 +61,7 @@ const Map = () => {
           return;
         }
       } catch (err) {
-        console.log('Error loading map data:', err);
+        // Error loading map data - fall back to default location
       }
       
       const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
@@ -124,7 +124,7 @@ const Map = () => {
           initMap();
         }
       } catch (err) {
-        console.log('Error loading Google Maps:', err);
+        // Error loading Google Maps - fall back to default API key
         if (typeof window.google === 'undefined' || !window.google?.maps) {
           const script = document.createElement('script');
           script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAfO6pwad6QXR7W8DJmMaL39wQLvqZbS0I&callback=initMap`;
