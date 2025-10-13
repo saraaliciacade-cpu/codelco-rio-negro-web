@@ -61,14 +61,20 @@ const Map = () => {
           return;
         }
       } catch (err) {
-        // Error loading map data - fall back to default location
+        console.error('Failed to load map configuration:', err);
+        // Display error message to user instead of falling back to exposed API key
+        if (mapRef.current) {
+          mapRef.current.innerHTML = `
+            <div class="flex items-center justify-center h-full">
+              <div class="text-center text-muted-foreground">
+                <p>No se pudo cargar el mapa.</p>
+                <p class="text-sm mt-2">Por favor, intente nuevamente más tarde.</p>
+              </div>
+            </div>
+          `;
+        }
+        return;
       }
-      
-      const codelcoLocation = { lat: -38.947524, lng: -68.002487 };
-      const name = 'Codelco S.A';
-      const address = 'Ruta 22 Km 1214, R8324 Cipolletti, Río Negro\nDías: Lunes a viernes Horario: 8-12hs / 15-19hs';
-      const fallbackApiKey = 'AIzaSyAfO6pwad6QXR7W8DJmMaL39wQLvqZbS0I';
-      createMap(codelcoLocation, name, address, fallbackApiKey);
     };
 
     const createMap = (location: { lat: number; lng: number }, name: string, address: string, apiKey: string) => {
@@ -105,12 +111,17 @@ const Map = () => {
 
     const loadGoogleMaps = async () => {
       try {
-        let apiKey = 'AIzaSyAfO6pwad6QXR7W8DJmMaL39wQLvqZbS0I';
-        
         const response = await fetch('https://eymjmdusrvpdhprduwrf.supabase.co/functions/v1/secure-maps');
-        if (response.ok) {
-          const mapData = await response.json();
-          apiKey = mapData.apiKey || apiKey;
+        
+        if (!response.ok) {
+          throw new Error('Failed to fetch API key from secure endpoint');
+        }
+        
+        const mapData = await response.json();
+        const apiKey = mapData.apiKey;
+        
+        if (!apiKey) {
+          throw new Error('No API key returned from secure endpoint');
         }
 
         if (typeof window.google === 'undefined' || !window.google?.maps) {
@@ -124,14 +135,17 @@ const Map = () => {
           initMap();
         }
       } catch (err) {
-        // Error loading Google Maps - fall back to default API key
-        if (typeof window.google === 'undefined' || !window.google?.maps) {
-          const script = document.createElement('script');
-          script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAfO6pwad6QXR7W8DJmMaL39wQLvqZbS0I&callback=initMap`;
-          script.async = true;
-          script.defer = true;
-          window.initMap = initMap;
-          document.head.appendChild(script);
+        console.error('Error loading Google Maps:', err);
+        // Display error message instead of exposing hardcoded API key
+        if (mapRef.current) {
+          mapRef.current.innerHTML = `
+            <div class="flex items-center justify-center h-full">
+              <div class="text-center text-muted-foreground">
+                <p>No se pudo cargar el mapa.</p>
+                <p class="text-sm mt-2">Por favor, intente nuevamente más tarde.</p>
+              </div>
+            </div>
+          `;
         }
       }
     };
