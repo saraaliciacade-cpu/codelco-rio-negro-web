@@ -1,5 +1,6 @@
-import { Building2, Settings, Truck } from 'lucide-react';
+import { Building2, Settings, Truck, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 const Services = () => {
   const { t } = useLanguage();
@@ -33,6 +34,18 @@ const Services = () => {
       '**Flota Liviana:** contamos actualmente con más de 60 unidades entre Toyota Hilux cabina doble y simple 4x2 y 4x4, VW Amarok y vehículos livianos. Todas estas unidades están equipadas según la necesidad de cada cliente, ya se para uso Gerencial, recorredores, porta herramientas, personal general, etc.',
       '**Trailers y Equipos:** en este sector se proveen equipos para alquileres temporarios: Piletas de acumulación. Trailers rodantes y sobre patín en 6, 9 y 12 metros, con configuraciones variadas del tipo "Company Man", comedor, habitación, cocina, laboratorio, etc. Contenedores tipo volquete.'
     ]
+  }, {
+    id: 'generators',
+    icon: Zap,
+    title: 'GRUPOS ELECTRÓGENOS',
+    subtitle: 'Alquiler y Mantenimiento',
+    description: [
+      'Codelco S.A. ofrece servicios de alquiler y mantenimiento de grupos electrógenos industriales, garantizando energía confiable en todo momento.',
+      'Contamos con **equipos de 55 a 180 kVA**, ideales para obras, instalaciones temporales y respaldo eléctrico en operaciones críticas.',
+      'Nuestro servicio incluye la instalación, monitoreo y mantenimiento preventivo, asegurando un rendimiento óptimo y disponibilidad continua para nuestros clientes.'
+    ],
+    isNew: true,
+    image: '/generadores.png'
   }];
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -63,6 +76,7 @@ const Services = () => {
                 case 0: return 'lg:mt-0'; // Fábrica arriba
                 case 1: return 'lg:mt-6'; // Metalúrgica ligeramente más abajo
                 case 2: return 'lg:mt-12'; // Rental un poco más abajo
+                case 3: return 'lg:mt-0'; // Generadores arriba
                 default: return '';
               }
             };
@@ -74,6 +88,8 @@ const Services = () => {
                 return '#d25840';
               case 'rental':
                 return '#333333';
+              case 'generators':
+                return '#d25840';
               default:
                 return '#333333';
             }
@@ -91,6 +107,15 @@ const Services = () => {
             }
           };
           return <div key={service.id} className={`bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-2xl hover:shadow-black/20 hover:z-10 relative group min-h-[600px] sm:min-h-[500px] lg:w-80 lg:flex-shrink-0 ${getStaggerClass(index)}`}>
+                {/* NEW Badge */}
+                {service.isNew && (
+                  <div className="absolute top-4 right-4 z-10">
+                    <Badge className="bg-orange-600 text-white hover:bg-orange-700 rounded-full px-3 py-1 text-xs font-bold shadow-lg">
+                      {t('services.generators.badge')}
+                    </Badge>
+                  </div>
+                )}
+                
                 {/* Header with colored background */}
                 <div className="px-6 py-8 text-center" style={{
               backgroundColor: getHeaderColor(service.id)
@@ -98,7 +123,8 @@ const Services = () => {
                   <h3 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-wide font-ramabhadra">
                     {service.id === 'fabrica' ? t('services.factory.title') : 
                      service.id === 'metalurgica' ? t('services.metallurgical.title') : 
-                     t('services.rental.title')}
+                     service.id === 'rental' ? t('services.rental.title') :
+                     t('services.generators.title')}
                   </h3>
                 </div>
 
@@ -107,7 +133,8 @@ const Services = () => {
                   <h4 className="text-lg font-bold text-gray-500 mb-4 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-[#e65a29]">
                     {service.id === 'fabrica' ? t('services.factory.subtitle') : 
                      service.id === 'metalurgica' ? t('services.metallurgical.subtitle') : 
-                     t('services.rental.subtitle')}
+                     service.id === 'rental' ? t('services.rental.subtitle') :
+                     t('services.generators.subtitle')}
                   </h4>
 
                   {/* Línea separadora */}
@@ -142,6 +169,26 @@ const Services = () => {
                         </p>
                       </>
                     )}
+                    {service.id === 'generators' && (
+                      <>
+                        <p>{t('services.generators.description1')}</p>
+                        <p>
+                          {t('services.generators.description2').split('**').map((part, partIndex) => 
+                            partIndex % 2 === 1 ? <strong key={partIndex} className="font-montserrat font-black">{part}</strong> : part
+                          )}
+                        </p>
+                        <p>{t('services.generators.description3')}</p>
+                        {service.image && (
+                          <div className="mt-6">
+                            <img 
+                              src={service.image} 
+                              alt="Grupos Electrógenos - Codelco" 
+                              className="w-full h-auto rounded-lg shadow-md"
+                            />
+                          </div>
+                        )}
+                      </>
+                    )}
                   </div>
 
                   <div className="text-center">
@@ -153,6 +200,9 @@ const Services = () => {
                       </Button>}
                     {service.id === 'rental' && <Button onClick={() => scrollToSection('galeria')} className="border border-zinc-800 px-6 py-2 text-sm transition-all duration-300 text-slate-50 bg-neutral-800 hover:bg-neutral-700">
                         {t('services.rental.button')}
+                      </Button>}
+                    {service.id === 'generators' && <Button onClick={() => scrollToSection('ubicacion')} className="text-white px-6 py-2 text-sm transition-all duration-300 bg-orange-700 hover:bg-orange-600 rounded-lg">
+                        {t('services.generators.button')}
                       </Button>}
                   </div>
                 </div>

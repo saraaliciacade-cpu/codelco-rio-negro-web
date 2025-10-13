@@ -51,6 +51,13 @@ const translations = {
     'services.rental.description2': '**Flota Liviana:** contamos actualmente con más de 60 unidades entre Toyota Hilux cabina doble y simple 4x2 y 4x4, VW Amarok y vehículos livianos. Todas estas unidades están equipadas según la necesidad de cada cliente, ya se para uso Gerencial, recorredores, porta herramientas, personal general, etc.',
     'services.rental.description3': '**Trailers y Equipos:** en este sector se proveen equipos para alquileres temporarios: Piletas de acumulación. Trailers rodantes y sobre patín en 6, 9 y 12 metros, con configuraciones variadas del tipo "Company Man", comedor, habitación, cocina, laboratorio, etc. Contenedores tipo volquete.',
     'services.rental.button': 'La Galería de Imágenes',
+    'services.generators.title': 'GRUPOS ELECTRÓGENOS',
+    'services.generators.subtitle': 'Alquiler y Mantenimiento',
+    'services.generators.description1': 'Codelco S.A. ofrece servicios de alquiler y mantenimiento de grupos electrógenos industriales, garantizando energía confiable en todo momento.',
+    'services.generators.description2': 'Contamos con **equipos de 55 a 180 kVA**, ideales para obras, instalaciones temporales y respaldo eléctrico en operaciones críticas.',
+    'services.generators.description3': 'Nuestro servicio incluye la instalación, monitoreo y mantenimiento preventivo, asegurando un rendimiento óptimo y disponibilidad continua para nuestros clientes.',
+    'services.generators.button': 'Solicitar Cotización',
+    'services.generators.badge': 'NUEVO',
     
     // Gallery
     'gallery.title': 'GALERÍA DE IMÁGENES',
@@ -204,6 +211,13 @@ const translations = {
     'services.rental.description2': '**Light Fleet:** we currently have more than 60 units including Toyota Hilux double and single cab 4x2 and 4x4, VW Amarok and light vehicles. All these units are equipped according to each customer\'s needs, whether for Management use, runners, tool carriers, general personnel, etc.',
     'services.rental.description3': '**Trailers and Equipment:** this sector provides equipment for temporary rentals: Accumulation pools. Rolling and skid-mounted trailers in 6, 9 and 12 meters, with varied configurations such as "Company Man", dining room, room, kitchen, laboratory, etc. Dump truck type containers.',
     'services.rental.button': 'Image Gallery',
+    'services.generators.title': 'GENERATOR SETS',
+    'services.generators.subtitle': 'Rental and Maintenance',
+    'services.generators.description1': 'Codelco S.A. offers rental and maintenance services for industrial generator sets, guaranteeing reliable energy at all times.',
+    'services.generators.description2': 'We have **equipment from 55 to 180 kVA**, ideal for construction sites, temporary installations and electrical backup in critical operations.',
+    'services.generators.description3': 'Our service includes installation, monitoring and preventive maintenance, ensuring optimal performance and continuous availability for our customers.',
+    'services.generators.button': 'Request Quote',
+    'services.generators.badge': 'NEW',
     
     // Gallery
     'gallery.title': 'IMAGE GALLERY',
