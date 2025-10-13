@@ -195,13 +195,13 @@ const Services = () => {
                     {service.id === 'fabrica' && <Button onClick={() => scrollToSection('contacto')} className="border border-zinc-800 px-6 py-2 transition-all duration-300 text-sm text-slate-50 bg-zinc-800 hover:bg-zinc-700">
                         {t('services.factory.button')}
                       </Button>}
-                    {service.id === 'metalurgica' && <Button onClick={() => scrollToSection('ubicacion')} className="text-white px-6 py-2 text-sm transition-all duration-300 bg-orange-700 hover:bg-orange-600 rounded-lg">
+                    {service.id === 'metalurgica' && <Button onClick={() => scrollToSection('map')} className="text-white px-6 py-2 text-sm transition-all duration-300 bg-orange-700 hover:bg-orange-600 rounded-lg">
                         {t('services.metallurgical.button')}
                       </Button>}
                     {service.id === 'rental' && <Button onClick={() => scrollToSection('galeria')} className="border border-zinc-800 px-6 py-2 text-sm transition-all duration-300 text-slate-50 bg-neutral-800 hover:bg-neutral-700">
                         {t('services.rental.button')}
                       </Button>}
-                    {service.id === 'generators' && <Button onClick={() => scrollToSection('ubicacion')} className="text-white px-6 py-2 text-sm transition-all duration-300 bg-orange-700 hover:bg-orange-600 rounded-lg">
+                    {service.id === 'generators' && <Button onClick={() => scrollToSection('map')} className="text-white px-6 py-2 text-sm transition-all duration-300 bg-orange-700 hover:bg-orange-600 rounded-lg">
                         {t('services.generators.button')}
                       </Button>}
                   </div>
