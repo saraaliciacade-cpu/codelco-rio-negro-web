@@ -70,13 +70,13 @@ const Services = () => {
 
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center gap-6 lg:gap-6 max-w-full mx-auto px-2 sm:px-0">
           {services.map((service, index) => {
-            // Inclinación sutil: primera arriba, segunda un poco más abajo, tercera un poco más abajo
+            // Inclinación sutil: primera arriba, segunda un poco más abajo, tercera un poco más abajo, cuarta aún más abajo
             const getStaggerClass = (index: number) => {
               switch (index) {
                 case 0: return 'lg:mt-0'; // Fábrica arriba
-                case 1: return 'lg:mt-6'; // Metalúrgica ligeramente más abajo
-                case 2: return 'lg:mt-12'; // Rental un poco más abajo
-                case 3: return 'lg:mt-18'; // Generadores más abajo
+                case 1: return 'lg:mt-8'; // Metalúrgica ligeramente más abajo
+                case 2: return 'lg:mt-16'; // Rental un poco más abajo
+                case 3: return 'lg:mt-24'; // Generadores aún más abajo
                 default: return '';
               }
             };

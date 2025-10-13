@@ -50,7 +50,7 @@ const translations = {
     'services.rental.description1': 'La división Rental está compuesta por los sectores "Flota Liviana" y "Trailers y Equipos".',
     'services.rental.description2': '**Flota Liviana:** contamos actualmente con más de 60 unidades entre Toyota Hilux cabina doble y simple 4x2 y 4x4, VW Amarok y vehículos livianos. Todas estas unidades están equipadas según la necesidad de cada cliente, ya se para uso Gerencial, recorredores, porta herramientas, personal general, etc.',
     'services.rental.description3': '**Trailers y Equipos:** en este sector se proveen equipos para alquileres temporarios: Piletas de acumulación. Trailers rodantes y sobre patín en 6, 9 y 12 metros, con configuraciones variadas del tipo "Company Man", comedor, habitación, cocina, laboratorio, etc. Contenedores tipo volquete.',
-    'services.rental.button': 'La Galería de Imágenes',
+    'services.rental.button': 'Galería de Imágenes',
     'services.generators.title': 'GRUPOS ELECTRÓGENOS',
     'services.generators.subtitle': 'Alquiler y Mantenimiento',
     'services.generators.description1': 'Codelco S.A. ofrece servicios de alquiler y mantenimiento de grupos electrógenos industriales, garantizando energía confiable en todo momento.',
