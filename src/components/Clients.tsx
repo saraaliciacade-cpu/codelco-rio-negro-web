@@ -84,10 +84,10 @@ const Clients = () => {
   const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false, reverse = false, duration = '45s') => {
     // Calculate total width needed for seamless infinite scroll - responsive sizes
     const totalLogos = clients.length;
-    const logoWidth = isMobile ? 128 : 224; // w-32 (128px) mobile, w-56 (224px) desktop
-    const logoMargin = isMobile ? 24 : 64; // mx-3 (24px) mobile, mx-8 (64px) desktop
+    const logoWidth = isMobile ? 160 : 224; // w-40 (160px) mobile, w-56 (224px) desktop
+    const logoMargin = isMobile ? 32 : 64; // mx-4 (32px) mobile, mx-8 (64px) desktop
     const totalWidth = totalLogos * (logoWidth + logoMargin);
-    const adjustedDuration = isMobile ? '30s' : duration; // Faster on mobile
+    const adjustedDuration = isMobile ? '35s' : duration; // Faster on mobile
 
     return (
       <div className="relative overflow-hidden w-full">
@@ -105,16 +105,16 @@ const Clients = () => {
             clients.map((client, index) => (
               <div
                 key={`${setIndex}-${index}`}
-                className={`flex-shrink-0 ${isMobile ? 'w-32 mx-3' : 'w-56 mx-8'} flex flex-col items-center justify-center group`}
+                className={`flex-shrink-0 ${isMobile ? 'w-40 mx-4' : 'w-56 mx-8'} flex flex-col items-center justify-center group`}
               >
-                <div className={`${isMobile ? 'h-16 w-28 p-3 mb-2' : 'h-24 w-48 p-6 mb-4'} flex items-center justify-center bg-white rounded-lg shadow-md border border-gray-200 transition-all duration-500 ease-in-out`}>
+                <div className={`${isMobile ? 'h-20 w-36 p-4 mb-3' : 'h-24 w-48 p-6 mb-4'} flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200 transition-all duration-500 ease-in-out`}>
                   <img
                     src={client.logo}
                     alt={`${client.name} logo`}
                     className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-500 ease-in-out"
                   />
                 </div>
-                <p className={`${isMobile ? 'text-[10px] leading-tight' : 'text-sm'} text-gray-600 text-center font-semibold px-1 group-hover:text-gray-800 transition-colors duration-300 line-clamp-2`}>
+                <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-gray-600 text-center font-semibold leading-tight px-2 group-hover:text-gray-800 transition-colors duration-300`}>
                   {client.name}
                 </p>
               </div>
@@ -126,15 +126,15 @@ const Clients = () => {
   };
 
   return (
-    <section className={`${isMobile ? 'py-6' : 'py-12'} bg-white overflow-hidden`}>
-      <div className={`text-center ${isMobile ? 'mb-6' : 'mb-16'}`}>
-        <h2 className={`titulo-seccion font-ramabhadra ${isMobile ? 'text-2xl' : ''}`}>
+    <section className={`${isMobile ? 'py-8' : 'py-12'} bg-white overflow-hidden`}>
+      <div className={`text-center ${isMobile ? 'mb-8' : 'mb-16'}`}>
+        <h2 className={`titulo-seccion font-ramabhadra ${isMobile ? 'text-3xl' : ''}`}>
           <span style={{color: '#333333'}}>{t('clients.title').split(' ')[0]} </span>
           <span style={{color: '#d25840'}}>{t('clients.title').split(' ')[1]}</span>
         </h2>
       </div>
 
-      <div className={isMobile ? 'space-y-4' : 'space-y-8'}>
+      <div className={isMobile ? 'space-y-6' : 'space-y-8'}>
         {/* Row 1 - normal speed */}
         {renderCarouselRow(clientsRow1, 0, false, false, '45s')}
         
