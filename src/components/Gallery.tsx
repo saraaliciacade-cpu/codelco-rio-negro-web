@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { X, Download } from 'lucide-react';
+import { X, Download, Play } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Gallery = () => {
@@ -361,15 +361,22 @@ const Gallery = () => {
                   NUEVO
                 </Badge>
               )}
-              <div className="aspect-square overflow-hidden">
+              <div className="aspect-square overflow-hidden relative">
                 {(image as any).isVideo ? (
-                  <video 
-                    src={image.src} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    muted
-                    loop
-                    playsInline
-                  />
+                  <>
+                    <video 
+                      src={image.src} 
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      muted
+                      loop
+                      playsInline
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity duration-300 group-hover:bg-black/30">
+                      <div className="bg-white/90 rounded-full p-4 shadow-lg">
+                        <Play className="w-8 h-8 text-primary fill-primary" />
+                      </div>
+                    </div>
+                  </>
                 ) : (
                   <img 
                     src={image.src} 
