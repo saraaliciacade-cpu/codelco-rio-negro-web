@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { X, Download } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -24,6 +25,26 @@ const Gallery = () => {
 
   // Gallery images - manually uploaded photos
   const images = [
+  // NEW Fábrica images (FIRST 3)
+  {
+    id: 999,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-26.jpg',
+    alt: 'Interior terminado con piso de madera y luces LED (Crexell)',
+    isNew: true
+  }, {
+    id: 998,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-27.jpg',
+    alt: 'Instalación eléctrica profesional con equipamiento Siemens (Crexell)',
+    isNew: true
+  }, {
+    id: 997,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-28.jpg',
+    alt: 'Proceso de montaje de módulos en nuestra planta industrial (Crexell)',
+    isNew: true
+  },
   // Metalúrgica category images (18 images total)
   {
     id: 1,
@@ -328,6 +349,11 @@ const Gallery = () => {
         {/* Gallery Grid */}
         <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-6 max-w-full mx-auto">
           {displayedImages.map(image => <div key={image.id} className="gallery-item group relative overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer" onClick={() => setSelectedImage(image)}>
+              {(image as any).isNew && (
+                <Badge className="absolute top-2 right-2 z-10 bg-primary text-white font-semibold px-2 py-1 text-xs shadow-lg">
+                  NUEVO
+                </Badge>
+              )}
               <div className="aspect-square overflow-hidden">
                 <img 
                   src={image.src} 
