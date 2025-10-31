@@ -25,8 +25,15 @@ const Gallery = () => {
 
   // Gallery images - manually uploaded photos
   const images = [
-  // NEW Fábrica images (FIRST 3)
+  // NEW Fábrica images and video (FIRST 4)
   {
+    id: 1000,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-29.mp4',
+    alt: 'Video de proceso de fabricación en planta industrial (Crexell)',
+    isNew: true,
+    isVideo: true
+  }, {
     id: 999,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-26.jpg',
@@ -355,15 +362,25 @@ const Gallery = () => {
                 </Badge>
               )}
               <div className="aspect-square overflow-hidden">
-                <img 
-                  src={image.src} 
-                  alt={image.alt} 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                  loading="lazy"
-                  width="507"
-                  height="380"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                />
+                {(image as any).isVideo ? (
+                  <video 
+                    src={image.src} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    muted
+                    loop
+                    playsInline
+                  />
+                ) : (
+                  <img 
+                    src={image.src} 
+                    alt={image.alt} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                    loading="lazy"
+                    width="507"
+                    height="380"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  />
+                )}
               </div>
               <div className="p-4 text-center">
                 <h3 className="font-semibold text-sm text-gray-800">{image.alt}</h3>
@@ -401,13 +418,24 @@ const Gallery = () => {
                   <X className="w-4 h-4" />
                 </Button>
               </div>
-              <img 
-                src={selectedImage.src} 
-                alt={selectedImage.alt} 
-                className="w-full h-auto max-h-[80vh] object-contain transition-transform duration-300"
-                loading="eager"
-                sizes="(max-width: 768px) 100vw, 80vw"
-              />
+              {selectedImage.isVideo ? (
+                <video 
+                  src={selectedImage.src} 
+                  className="w-full h-auto max-h-[80vh] object-contain"
+                  controls
+                  autoPlay
+                  loop
+                  playsInline
+                />
+              ) : (
+                <img 
+                  src={selectedImage.src} 
+                  alt={selectedImage.alt} 
+                  className="w-full h-auto max-h-[80vh] object-contain transition-transform duration-300"
+                  loading="eager"
+                  sizes="(max-width: 768px) 100vw, 80vw"
+                />
+              )}
               <div className="p-4 bg-white text-center">
                 <h3 className="font-semibold text-lg text-gray-800">{selectedImage.alt}</h3>
                 <p className="text-sm text-orange-700">{t(`category.${selectedImage.category}`)}</p>
