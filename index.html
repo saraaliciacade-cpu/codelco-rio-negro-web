@@ -41,9 +41,8 @@
       .opacity-100 { opacity: 1; }
       .transition-opacity { transition-property: opacity; transition-duration: 1000ms; }
     </style>
-    <!-- Load critical CSS inline, defer non-critical -->
-    <link rel="stylesheet" href="/src/index.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
+    <!-- Load critical CSS immediately for LCP -->
+    <link rel="stylesheet" href="/src/index.css">
     
     <!-- Load main script with defer to avoid blocking -->
     <script type="module" src="/src/main.tsx" defer></script>
