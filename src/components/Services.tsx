@@ -180,13 +180,16 @@ const Services = () => {
                         <p>{t('services.generators.description3')}</p>
                         {service.image && (
                           <div className="mt-6">
-                            <img 
-                              src={service.image} 
-                              alt="Grupos Electrógenos - Codelco" 
-                              className="w-full h-auto rounded-lg shadow-md"
-                              width="1248"
-                              height="832"
-                            />
+                            <picture>
+                              <source srcSet="/generadores.webp" type="image/webp" />
+                              <img 
+                                src={service.image} 
+                                alt="Grupos Electrógenos - Codelco" 
+                                className="w-full h-auto rounded-lg shadow-md"
+                                width="1248"
+                                height="832"
+                              />
+                            </picture>
                           </div>
                         )}
                       </>
