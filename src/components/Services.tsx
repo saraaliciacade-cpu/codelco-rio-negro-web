@@ -184,6 +184,8 @@ const Services = () => {
                               src={service.image} 
                               alt="Grupos Electrógenos - Codelco" 
                               className="w-full h-auto rounded-lg shadow-md"
+                              width="1248"
+                              height="832"
                             />
                           </div>
                         )}
