@@ -55,9 +55,18 @@ const AdminGallery = () => {
     }
   };
 
-  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const [selectedFiles, setSelectedFiles] = useState<FileList | null>(null);
+
+  const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
-    if (!files || files.length === 0) return;
+    setSelectedFiles(files);
+  };
+
+  const handleUploadToGallery = async () => {
+    if (!selectedFiles || selectedFiles.length === 0) {
+      toast.error('Por favor selecciona archivos para subir');
+      return;
+    }
 
     if (!altText.trim()) {
       toast.error('Por favor ingresa un texto alternativo');
@@ -67,8 +76,8 @@ const AdminGallery = () => {
     setUploading(true);
 
     try {
-      for (let i = 0; i < files.length; i++) {
-        const file = files[i];
+      for (let i = 0; i < selectedFiles.length; i++) {
+        const file = selectedFiles[i];
         const isVideo = file.type.startsWith('video/');
         const fileExt = file.name.split('.').pop();
         const fileName = `${Date.now()}_${i}.${fileExt}`;
@@ -99,15 +108,17 @@ const AdminGallery = () => {
         if (dbError) throw dbError;
       }
 
-      toast.success('Archivos subidos exitosamente');
+      toast.success(`${selectedFiles.length} archivo(s) subido(s) a la galería exitosamente`);
       setAltText('');
+      setSelectedFiles(null);
       fetchGalleryItems();
       
       // Reset file input
-      event.target.value = '';
+      const fileInput = document.getElementById('file') as HTMLInputElement;
+      if (fileInput) fileInput.value = '';
     } catch (error) {
       console.error('Error uploading:', error);
-      toast.error('Error al subir archivos');
+      toast.error('Error al subir archivos a la galería');
     } finally {
       setUploading(false);
     }
@@ -197,24 +208,39 @@ const AdminGallery = () => {
 
             <div className="space-y-2">
               <Label htmlFor="file">Seleccionar Archivos (Imágenes o Videos)</Label>
-              <div className="flex gap-2">
-                <Input
-                  id="file"
-                  type="file"
-                  accept="image/*,video/*"
-                  multiple
-                  onChange={handleFileUpload}
-                  disabled={uploading}
-                  className="flex-1"
-                />
-                {uploading && (
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
-                    Subiendo...
-                  </div>
-                )}
-              </div>
+              <Input
+                id="file"
+                type="file"
+                accept="image/*,video/*"
+                multiple
+                onChange={handleFileSelect}
+                disabled={uploading}
+              />
+              {selectedFiles && (
+                <p className="text-sm text-muted-foreground">
+                  {selectedFiles.length} archivo(s) seleccionado(s)
+                </p>
+              )}
             </div>
+
+            <Button 
+              onClick={handleUploadToGallery}
+              disabled={uploading || !selectedFiles}
+              className="w-full"
+              size="lg"
+            >
+              {uploading ? (
+                <>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  Subiendo a la Galería...
+                </>
+              ) : (
+                <>
+                  <Upload className="w-4 h-4 mr-2" />
+                  Subir a la Galería
+                </>
+              )}
+            </Button>
           </CardContent>
         </Card>
 
