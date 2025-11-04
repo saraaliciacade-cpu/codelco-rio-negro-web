@@ -125,7 +125,7 @@ const Admin = () => {
           </Button>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader>
               <CardTitle>Gestión de Galería</CardTitle>
@@ -139,23 +139,6 @@ const Admin = () => {
                 className="w-full"
               >
                 Ir a Galería
-              </Button>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>Formularios de Contacto</CardTitle>
-              <CardDescription>
-                Ver mensajes recibidos de clientes
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button 
-                onClick={() => navigate('/admin/contacts')} 
-                className="w-full"
-              >
-                Ver Mensajes
               </Button>
             </CardContent>
           </Card>
