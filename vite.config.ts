@@ -47,22 +47,15 @@ export default defineConfig(({ mode }) => ({
           if (id.includes('react-router')) {
             return 'router';
           }
-          // Data fetching - split more granularly
+          // Data fetching - defer to lazy-loaded pages
           if (id.includes('@tanstack/react-query/build')) {
             return 'query-core';
           }
           if (id.includes('@tanstack/react-query')) {
             return 'query-vendor';
           }
-          if (id.includes('@supabase/supabase-js') && id.includes('/auth/')) {
-            return 'supabase-auth';
-          }
-          if (id.includes('@supabase/supabase-js')) {
-            return 'supabase-core';
-          }
-          if (id.includes('supabase')) {
-            return 'data-vendor';
-          }
+          // Don't bundle Supabase into vendor chunks - let it load with pages that need it
+          // This reduces initial bundle size since Supabase is only used in admin/contact pages
           // Utility libraries (defer most)
           if (id.includes('clsx') || id.includes('tailwind-merge')) {
             return 'utils-core';
