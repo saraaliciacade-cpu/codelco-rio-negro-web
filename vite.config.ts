@@ -21,11 +21,6 @@ export default defineConfig(({ mode }) => ({
   build: {
     assetsInlineLimit: 0, // Don't inline small assets to allow proper caching
     rollupOptions: {
-      treeshake: {
-        moduleSideEffects: false,
-        propertyReadSideEffects: false,
-        tryCatchDeoptimization: false,
-      },
       output: {
         manualChunks: (id) => {
           // Core React (only essential)
@@ -47,18 +42,9 @@ export default defineConfig(({ mode }) => ({
           if (id.includes('react-router')) {
             return 'router';
           }
-          // Data fetching - split more granularly
-          if (id.includes('@tanstack/react-query/build')) {
-            return 'query-core';
-          }
+          // Data fetching (defer until needed)
           if (id.includes('@tanstack/react-query')) {
             return 'query-vendor';
-          }
-          if (id.includes('@supabase/supabase-js') && id.includes('/auth/')) {
-            return 'supabase-auth';
-          }
-          if (id.includes('@supabase/supabase-js')) {
-            return 'supabase-core';
           }
           if (id.includes('supabase')) {
             return 'data-vendor';
@@ -109,21 +95,14 @@ export default defineConfig(({ mode }) => ({
       compress: {
         drop_console: mode === 'production',
         drop_debugger: mode === 'production',
-        pure_funcs: mode === 'production' ? ['console.log', 'console.info', 'console.debug'] : [],
+        pure_funcs: mode === 'production' ? ['console.log', 'console.info'] : [],
         reduce_vars: true,
         reduce_funcs: true,
         passes: 3,
         unsafe: true,
         unsafe_arrows: true,
         unsafe_methods: true,
-        unsafe_comps: true,
-        unsafe_math: true,
-        unsafe_proto: true,
-        unsafe_regexp: true,
         keep_fargs: false,
-        dead_code: true,
-        unused: true,
-        side_effects: true,
       },
       mangle: {
         safari10: true,

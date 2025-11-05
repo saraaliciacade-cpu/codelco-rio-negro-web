@@ -3,18 +3,15 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const Company = () => {
   const { t } = useLanguage();
   useEffect(() => {
-    // Use requestAnimationFrame to prevent forced reflow
-    requestAnimationFrame(() => {
-      const imageDiv = document.querySelector('.animate-slide-in-right');
-      if (imageDiv) {
-        imageDiv.classList.add('opacity-0');
-        requestAnimationFrame(() => {
-          if (imageDiv) imageDiv.classList.remove('opacity-0');
-        });
-      }
-    });
+    const imageDiv = document.querySelector('.animate-slide-in-right');
+    if (imageDiv) {
+      imageDiv.classList.add('opacity-0');
+      setTimeout(() => {
+        if (imageDiv) imageDiv.classList.remove('opacity-0');
+      }, 100);
+    }
   }, []);
-  return <section className="py-12 bg-background" style={{ contentVisibility: 'auto' }}>
+  return <section className="py-12 bg-background">
       <div className="container mx-auto px-8">
         <div className="text-center mb-8">
           <h2 className="titulo-seccion font-ramabhadra inline-block text-4xl"> {/* Aumentado text-4xl para título más grande */}
@@ -47,19 +44,15 @@ const Company = () => {
           {/* Company Image */}
           <div className="order-2 animate-slide-in-right flex justify-center">
             <div className="relative w-full max-w-lg">
-              <picture>
-                <source srcSet="/nuestra-empresa.webp" type="image/webp" />
-                <img 
-                  src="/nuestra-empresa.jpg" 
-                  alt="Flota de vehículos Codelco" 
-                  className="w-full h-auto object-contain rounded-lg shadow-lg" 
-                  loading="lazy"
-                  decoding="async"
-                  width="284"
-                  height="285"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 284px"
-                />
-              </picture>
+              <img 
+                src="/nuestra-empresa.jpg" 
+                alt="Flota de vehículos Codelco" 
+                className="w-full h-auto object-contain rounded-lg shadow-lg" 
+                loading="lazy"
+                width="284"
+                height="285"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 284px"
+              />
             </div>
           </div>
         </div>
