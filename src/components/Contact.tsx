@@ -66,63 +66,15 @@ const Contact = () => {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormErrors({});
     
-    try {
-      // Validate form data
-      const validatedData = contactFormSchema.parse(formData);
-      
-      // Check honeypot field
-      if (validatedData.website) {
-        console.log('Bot detected');
-        return;
-      }
-
-      // Send to edge function
-      const { data, error } = await supabase.functions.invoke('contact-submit', {
-        body: validatedData
-      });
-
-      if (error) {
-        throw error;
-      }
-
-      toast({
-        title: t('contact.form.success.title'),
-        description: t('contact.form.success.description')
-      });
-      
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        subject: '',
-        message: '',
-        website: ''
-      });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        // Handle validation errors
-        const errors: Record<string, string> = {};
-        error.errors.forEach((err) => {
-          if (err.path[0]) {
-            errors[err.path[0].toString()] = err.message;
-          }
-        });
-        setFormErrors(errors);
-        toast({
-          title: 'Validation Error',
-          description: 'Please check the form for errors',
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: t('contact.form.error.title'),
-          description: t('contact.form.error.description'),
-          variant: "destructive",
-        });
-      }
-    }
+    // Formulario desconectado - pendiente de conexión con SISARGENTINA
+    toast({
+      title: 'Formulario desconectado',
+      description: 'Este formulario será conectado próximamente con el sistema de correos de SISARGENTINA para Codelco.',
+      variant: "default",
+    });
+    
+    console.log('Datos del formulario (no enviados):', formData);
   };
   const contactInfo = [{
     icon: MapPin,
