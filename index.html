@@ -68,7 +68,7 @@
 
   <body>
     <!-- Critical hero image for immediate LCP -->
-    <div id="critical-hero" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1;">
+    <div id="critical-hero" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1; transition: opacity 0.3s ease, visibility 0.3s ease;">
       <img 
         src="/images/hero/portada1.jpg" 
         alt="Industrial facility background" 
@@ -82,14 +82,18 @@
       <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4));"></div>
     </div>
     <script>
-      // Hide critical hero once React app loads
+      // Hide critical hero once React app loads - optimized to prevent forced reflow
       document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-          const criticalHero = document.getElementById('critical-hero');
-          if (criticalHero) {
-            criticalHero.style.display = 'none';
-          }
-        }, 100);
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            const criticalHero = document.getElementById('critical-hero');
+            if (criticalHero) {
+              criticalHero.style.opacity = '0';
+              criticalHero.style.visibility = 'hidden';
+              criticalHero.style.pointerEvents = 'none';
+            }
+          });
+        });
       });
     </script>
     <div id="root"></div>

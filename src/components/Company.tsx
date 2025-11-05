@@ -3,13 +3,16 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const Company = () => {
   const { t } = useLanguage();
   useEffect(() => {
-    const imageDiv = document.querySelector('.animate-slide-in-right');
-    if (imageDiv) {
-      imageDiv.classList.add('opacity-0');
-      setTimeout(() => {
-        if (imageDiv) imageDiv.classList.remove('opacity-0');
-      }, 100);
-    }
+    // Use requestAnimationFrame to prevent forced reflow
+    requestAnimationFrame(() => {
+      const imageDiv = document.querySelector('.animate-slide-in-right');
+      if (imageDiv) {
+        imageDiv.classList.add('opacity-0');
+        requestAnimationFrame(() => {
+          if (imageDiv) imageDiv.classList.remove('opacity-0');
+        });
+      }
+    });
   }, []);
   return <section className="py-12 bg-background">
       <div className="container mx-auto px-8">
