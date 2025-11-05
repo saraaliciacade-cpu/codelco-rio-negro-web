@@ -43,13 +43,16 @@
       /* Hero hidden state - use class to avoid forced reflow */
       .hero-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; transition: opacity 0.3s ease, visibility 0s 0.3s; }
     </style>
-    <!-- Optimized CSS loading - single async approach -->
-    <link rel="preload" href="/src/index.css" as="style">
-    <link rel="stylesheet" href="/src/index.css" media="print" onload="this.onload=null;this.media='all'">
+    <!-- Critical CSS inlined, full CSS loaded async -->
+    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
     
     <!-- Load main script with defer to avoid blocking -->
     <script type="module" src="/src/main.tsx" defer></script>
+    
+    <!-- Preconnect to optimize external resource loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Codelco S.A. - Servicios Industriales Argentina</title>
     <meta name="description" content="Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial en Cipolletti, Río Negro.">
     <meta name="keywords" content="servicios industriales, rental equipos, Argentina, Cipolletti, Río Negro, Codelco">
