@@ -42,7 +42,7 @@ const Hero = () => {
           {t('hero.title')}
         </h1>
         
-        <p className="mb-8 max-w-full mx-auto leading-normal font-nunito text-base text-white text-justify">
+        <p className="mb-8 max-w-full mx-auto leading-normal font-nunito text-base text-white text-center">
           {t('hero.description')}
         </p>
         
