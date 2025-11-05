@@ -205,9 +205,9 @@ const Contact = () => {
       const formattedAddress = address.replace(/\n/g, '<br>');
       const infoContent = `
         <div style="padding: 8px;">
-          <strong style="font-size: 16px; color: #d25840;">${name}</strong><br>
+          <strong style="font-size: 16px; color: #b8452e;">${name}</strong><br>
           <div style="margin-top: 8px; color: #333;">${formattedAddress}</div>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" rel="noopener noreferrer" style="color: #d25840; text-decoration: none; font-weight: 600; margin-top: 8px; display: inline-block;">${t('contact.map.directions')}</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" rel="noopener noreferrer" style="color: #b8452e; text-decoration: none; font-weight: 600; margin-top: 8px; display: inline-block;">${t('contact.map.directions')}</a>
         </div>
       `;
 
@@ -262,15 +262,15 @@ const Contact = () => {
                     {info.icon === Phone ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
                         <div>Sebastian</div>
-                        <div><a href="tel:+5492994136453" className="hover:underline" style={{color: '#d25840'}}>299 413 6453</a></div>
+                        <div><a href="tel:+5492994136453" className="hover:underline" style={{color: '#b8452e'}}>299 413 6453</a></div>
                       </div>
                     : info.icon === Mail ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold">
-                        <a href="mailto:ventas@codelco.com.ar" className="hover:underline" style={{color: '#d25840'}}>{info.value}</a>
+                        <a href="mailto:ventas@codelco.com.ar" className="hover:underline" style={{color: '#b8452e'}}>{info.value}</a>
                       </div> 
                     : info.icon === MapPin ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">
-                        <span style={{color: '#d25840'}} className="font-semibold">{t('contact.address.value').split('\n')[0]}</span>
+                        <span style={{color: '#b8452e'}} className="font-semibold">{t('contact.address.value').split('\n')[0]}</span>
                         <br />
                         {t('contact.address.value').split('\n')[1]}
                         <br />
