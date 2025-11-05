@@ -18,8 +18,8 @@
     <!-- Load fonts async with display=swap for better FCP -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ramabhadra:wght@400&family=Montserrat:wght@700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Ramabhadra:wght@400&family=Montserrat:wght@700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
-    <!-- Preload critical hero image only -->
-    <link rel="preload" as="image" href="/images/hero/portada1.jpg" fetchpriority="high" imagesrcset="/images/hero/portada1.jpg 1920w" imagesizes="100vw">
+    <!-- Preload critical hero image with responsive sizes -->
+    <link rel="preload" as="image" href="/images/hero/portada1.jpg" fetchpriority="high" imagesrcset="/images/hero/portada1.jpg 1920w, /images/hero/portada1.jpg 1280w, /images/hero/portada1.jpg 640w" imagesizes="100vw" type="image/jpeg">
     <style>
       /* Critical CSS - inline above-the-fold styles */
       @tailwind base;
@@ -43,12 +43,10 @@
       /* Hero hidden state - use class to avoid forced reflow */
       .hero-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; transition: opacity 0.3s ease, visibility 0s 0.3s; }
     </style>
-    <!-- Preload and async load critical CSS to avoid render blocking -->
-    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Optimized CSS loading - single async approach -->
+    <link rel="preload" href="/src/index.css" as="style">
+    <link rel="stylesheet" href="/src/index.css" media="print" onload="this.onload=null;this.media='all'">
     <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
-    <!-- Async load to prevent render blocking -->
-    <link rel="stylesheet" href="/src/index.css" media="print" onload="this.media='all';this.onload=null;">
-    <script>!function(e){"use strict";var t=function(t,n,r,o){var i,l=e.document,a=l.createElement("link");if(n)i=n;else{var d=(l.body||l.getElementsByTagName("head")[0]).childNodes;i=d[d.length-1]}var s=l.styleSheets;if(o)for(var c in o)o.hasOwnProperty(c)&&a.setAttribute(c,o[c]);a.rel="stylesheet",a.href=t,a.media="only x",function e(t){if(l.body)return t();setTimeout(function(){e(t)})}(function(){i.parentNode.insertBefore(a,n?i:i.nextSibling)});var f=function(e){for(var t=a.href,n=s.length;n--;)if(s[n].href===t)return e();setTimeout(function(){f(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=r||"all"}),a.onloadcssdefined=f,f(function(){a.media!==r&&(a.media=r)}),a};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);</script>
     
     <!-- Load main script with defer to avoid blocking -->
     <script type="module" src="/src/main.tsx" defer></script>
