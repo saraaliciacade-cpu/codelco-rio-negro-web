@@ -40,6 +40,8 @@
       .opacity-0 { opacity: 0; }
       .opacity-100 { opacity: 1; }
       .transition-opacity { transition-property: opacity; transition-duration: 1000ms; }
+      /* Hero hidden state - use class to avoid forced reflow */
+      .hero-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; transition: opacity 0.3s ease, visibility 0s 0.3s; }
     </style>
     <!-- Preload and async load critical CSS to avoid render blocking -->
     <link rel="preload" href="/src/index.css" as="style">
@@ -85,18 +87,24 @@
     </div>
     <script>
       // Hide critical hero once React app loads - optimized to prevent forced reflow
-      document.addEventListener('DOMContentLoaded', function() {
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() {
-            const criticalHero = document.getElementById('critical-hero');
-            if (criticalHero) {
-              criticalHero.style.opacity = '0';
-              criticalHero.style.visibility = 'hidden';
-              criticalHero.style.pointerEvents = 'none';
-            }
+      // Use CSS class toggle instead of direct style manipulation to avoid layout thrashing
+      (function() {
+        var hideCriticalHero = function() {
+          var hero = document.getElementById('critical-hero');
+          if (hero && !hero.classList.contains('hero-hidden')) {
+            hero.classList.add('hero-hidden');
+          }
+        };
+        
+        // Use single RAF to batch DOM changes
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', function() {
+            requestAnimationFrame(hideCriticalHero);
           });
-        });
-      });
+        } else {
+          requestAnimationFrame(hideCriticalHero);
+        }
+      })();
     </script>
     <div id="root"></div>
   </body>
