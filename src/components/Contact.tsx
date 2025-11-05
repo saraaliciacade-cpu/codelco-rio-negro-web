@@ -278,7 +278,7 @@ const Contact = () => {
       }
     };
   }, [isMapVisible, t, toast]);
-  return <section id="contacto" className="pt-6 pb-15 mt-20" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '40px', borderTopRightRadius: '40px', boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.15)' }}>
+  return <section id="contacto" className="pt-6 pb-15 mt-20" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '40px', borderTopRightRadius: '40px', boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.15)', contentVisibility: 'auto' }}>
       <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-7xl">
         <div>
           <h2 className="titulo-seccion font-ramabhadra" style={{ color: '#d25840' }}>

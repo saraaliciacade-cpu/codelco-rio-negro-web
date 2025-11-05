@@ -55,7 +55,7 @@ const Services = () => {
       });
     }
   };
-  return <section id="servicios" className="py-15 bg-white">
+  return <section id="servicios" className="py-15 bg-white" style={{ contentVisibility: 'auto' }}>
       <div className="container mx-auto px-4 sm:px-20 max-w-6xl">
         <div>
           <h2 className="titulo-seccion font-ramabhadra">
@@ -180,11 +180,18 @@ const Services = () => {
                         <p>{t('services.generators.description3')}</p>
                         {service.image && (
                           <div className="mt-6">
-                            <img 
-                              src={service.image} 
-                              alt="Grupos Electrógenos - Codelco" 
-                              className="w-full h-auto rounded-lg shadow-md"
-                            />
+                            <picture>
+                              <source srcSet="/generadores.webp" type="image/webp" />
+                              <img 
+                                src={service.image} 
+                                alt="Grupos Electrógenos - Codelco" 
+                                className="w-full h-auto rounded-lg shadow-md"
+                                loading="lazy"
+                                decoding="async"
+                                width="1248"
+                                height="832"
+                              />
+                            </picture>
                           </div>
                         )}
                       </>

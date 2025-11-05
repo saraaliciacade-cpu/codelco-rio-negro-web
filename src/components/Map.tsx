@@ -64,14 +64,20 @@ const Map = () => {
         console.error('Failed to load map configuration:', err);
         // Display error message to user instead of falling back to exposed API key
         if (mapRef.current) {
-          mapRef.current.innerHTML = `
-            <div class="flex items-center justify-center h-full">
-              <div class="text-center text-muted-foreground">
-                <p>No se pudo cargar el mapa.</p>
-                <p class="text-sm mt-2">Por favor, intente nuevamente más tarde.</p>
-              </div>
-            </div>
-          `;
+          const errorDiv = document.createElement('div');
+          errorDiv.className = 'flex items-center justify-center h-full';
+          const innerDiv = document.createElement('div');
+          innerDiv.className = 'text-center text-muted-foreground';
+          const p1 = document.createElement('p');
+          p1.textContent = 'No se pudo cargar el mapa.';
+          const p2 = document.createElement('p');
+          p2.className = 'text-sm mt-2';
+          p2.textContent = 'Por favor, intente nuevamente más tarde.';
+          innerDiv.appendChild(p1);
+          innerDiv.appendChild(p2);
+          errorDiv.appendChild(innerDiv);
+          mapRef.current.innerHTML = '';
+          mapRef.current.appendChild(errorDiv);
         }
         return;
       }
@@ -138,14 +144,20 @@ const Map = () => {
         console.error('Error loading Google Maps:', err);
         // Display error message instead of exposing hardcoded API key
         if (mapRef.current) {
-          mapRef.current.innerHTML = `
-            <div class="flex items-center justify-center h-full">
-              <div class="text-center text-muted-foreground">
-                <p>No se pudo cargar el mapa.</p>
-                <p class="text-sm mt-2">Por favor, intente nuevamente más tarde.</p>
-              </div>
-            </div>
-          `;
+          const errorDiv = document.createElement('div');
+          errorDiv.className = 'flex items-center justify-center h-full';
+          const innerDiv = document.createElement('div');
+          innerDiv.className = 'text-center text-muted-foreground';
+          const p1 = document.createElement('p');
+          p1.textContent = 'No se pudo cargar el mapa.';
+          const p2 = document.createElement('p');
+          p2.className = 'text-sm mt-2';
+          p2.textContent = 'Por favor, intente nuevamente más tarde.';
+          innerDiv.appendChild(p1);
+          innerDiv.appendChild(p2);
+          errorDiv.appendChild(innerDiv);
+          mapRef.current.innerHTML = '';
+          mapRef.current.appendChild(errorDiv);
         }
       }
     };

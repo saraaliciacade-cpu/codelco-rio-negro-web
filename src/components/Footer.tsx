@@ -70,7 +70,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="hover:opacity-80 transition-opacity"
               >
-                <img src={organicLogo} alt="Organic Design" className="h-12 w-auto" />
+                <img src={organicLogo} alt="Organic Design" className="h-12 w-auto" width="96" height="48" />
               </a>
             </div>
           </div>

@@ -18,6 +18,8 @@ const translations = {
     'nav.areas': 'Nuestras Areas',
     'nav.galeria': 'Galería',
     'nav.contacto': 'Contacto',
+    'nav.openMenu': 'Abrir menú',
+    'nav.closeMenu': 'Cerrar menú',
     
     // Hero
     'hero.title': 'UNA EMPRESA REGIONAL',
@@ -178,6 +180,8 @@ const translations = {
     'nav.areas': 'Our Areas',
     'nav.galeria': 'Gallery',
     'nav.contacto': 'Contact',
+    'nav.openMenu': 'Open menu',
+    'nav.closeMenu': 'Close menu',
     
     // Hero
     'hero.title': 'A REGIONAL COMPANY',

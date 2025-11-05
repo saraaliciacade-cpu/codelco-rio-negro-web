@@ -10,16 +10,16 @@
     <meta http-equiv="X-Cache-Images" content="public, max-age=31536000, immutable" />
     <meta http-equiv="X-Cache-Scripts" content="public, max-age=31536000, immutable" />
     <meta http-equiv="X-Cache-Styles" content="public, max-age=31536000, immutable" />
+    <!-- Preconnect to speed up external resource loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://maps.googleapis.com" crossorigin>
     <link rel="dns-prefetch" href="https://storage.googleapis.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Ramabhadra:wght@400&family=Montserrat:wght@700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <!-- Load fonts async with display=swap for better FCP -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ramabhadra:wght@400&family=Montserrat:wght@700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Ramabhadra:wght@400&family=Montserrat:wght@700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <!-- Preload critical hero image only -->
     <link rel="preload" as="image" href="/images/hero/portada1.jpg" fetchpriority="high" imagesrcset="/images/hero/portada1.jpg 1920w" imagesizes="100vw">
-    <link rel="preload" as="image" href="/images/hero/portada2.jpg" fetchpriority="low">
-    <link rel="preload" as="image" href="/images/hero/portada3.jpg" fetchpriority="low">
-    <link rel="preload" as="style" href="/src/index.css" fetchpriority="high">
     <style>
       /* Critical CSS - inline above-the-fold styles */
       @tailwind base;
@@ -41,21 +41,12 @@
       .opacity-100 { opacity: 1; }
       .transition-opacity { transition-property: opacity; transition-duration: 1000ms; }
     </style>
-    <!-- Preload critical assets EARLY to break dependency chains -->
-    <link rel="preload" href="/assets/index-9zT1bRuk.css" as="style" crossorigin fetchpriority="high">
-    <link rel="modulepreload" href="/assets/index-iXXYKMXh.js" crossorigin fetchpriority="high">
-    <link rel="modulepreload" href="/src/main.tsx" fetchpriority="high">
-    
-    <!-- Load stylesheets non-blocking after preload -->
-    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet';" fetchpriority="high">
-    <link rel="stylesheet" href="/assets/index-9zT1bRuk.css" media="all">
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
     
     <!-- Load main script with defer to avoid blocking -->
     <script type="module" src="/src/main.tsx" defer></script>
-    <noscript>
-      <link rel="stylesheet" href="/src/index.css">
-      <link rel="stylesheet" href="/assets/index-9zT1bRuk.css">
-    </noscript>
     <title>Codelco S.A. - Servicios Industriales Argentina</title>
     <meta name="description" content="Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial en Cipolletti, Río Negro.">
     <meta name="keywords" content="servicios industriales, rental equipos, Argentina, Cipolletti, Río Negro, Codelco">
@@ -78,7 +69,7 @@
 
   <body>
     <!-- Critical hero image for immediate LCP -->
-    <div id="critical-hero" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1;">
+    <div id="critical-hero" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1; transition: opacity 0.3s ease, visibility 0.3s ease;">
       <img 
         src="/images/hero/portada1.jpg" 
         alt="Industrial facility background" 
@@ -92,14 +83,18 @@
       <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4));"></div>
     </div>
     <script>
-      // Hide critical hero once React app loads
+      // Hide critical hero once React app loads - optimized to prevent forced reflow
       document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-          const criticalHero = document.getElementById('critical-hero');
-          if (criticalHero) {
-            criticalHero.style.display = 'none';
-          }
-        }, 100);
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() {
+            const criticalHero = document.getElementById('critical-hero');
+            if (criticalHero) {
+              criticalHero.style.opacity = '0';
+              criticalHero.style.visibility = 'hidden';
+              criticalHero.style.pointerEvents = 'none';
+            }
+          });
+        });
       });
     </script>
     <div id="root"></div>
