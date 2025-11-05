@@ -326,7 +326,7 @@ const Gallery = () => {
     link.click();
     document.body.removeChild(link);
   };
-  return <section className="py-15 bg-background">
+  return <section className="py-15 bg-background" style={{ contentVisibility: 'auto' }}>
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="titulo-seccion font-ramabhadra">
@@ -376,6 +376,7 @@ const Gallery = () => {
                     alt={image.alt} 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
                     loading="lazy"
+                    decoding="async"
                     width="507"
                     height="380"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
