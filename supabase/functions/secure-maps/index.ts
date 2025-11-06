@@ -40,6 +40,22 @@ serve(async (req) => {
     return new Response(null, { headers });
   }
 
+  // Validate origin is from allowed domains
+  const isOriginAllowed = origin && ALLOWED_ORIGINS.some(allowed => 
+    typeof allowed === 'string' ? allowed === origin : allowed.test(origin)
+  );
+
+  if (!isOriginAllowed) {
+    console.warn('Unauthorized origin attempted to access secure-maps:', origin);
+    return new Response(
+      JSON.stringify({ error: 'Access denied' }), 
+      {
+        status: 403,
+        headers: { ...headers, 'Content-Type': 'application/json' },
+      }
+    );
+  }
+
   try {
     const GOOGLE_MAPS_API_KEY = Deno.env.get('GOOGLE_MAPS_API_KEY');
     if (!GOOGLE_MAPS_API_KEY) {
