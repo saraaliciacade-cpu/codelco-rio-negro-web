@@ -55,20 +55,16 @@ const Services = () => {
       });
     }
   };
-  return <section id="servicios" className="py-15 bg-white">
-      <div className="container mx-auto px-4 sm:px-20 max-w-6xl">
+  return <section id="servicios" className="py-8 md:py-12 lg:py-15 bg-white">
+      <div className="container mx-auto px-4 md:px-8 lg:px-20 max-w-6xl">
         <div>
-          <h2 className="titulo-seccion font-ramabhadra">
-            <span style={{
-            color: '#333333'
-          }}>{t('services.title').split(' ')[0]} </span>
-            <span style={{
-            color: '#d25840'
-          }}>{t('services.title').split(' ')[1]}</span>
+          <h2 className="titulo-seccion font-ramabhadra text-2xl md:text-4xl">
+            <span className="text-foreground">{t('services.title').split(' ')[0]} </span>
+            <span className="text-primary">{t('services.title').split(' ')[1]}</span>
           </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center gap-6 lg:gap-6 max-w-full mx-auto px-2 sm:px-0">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center gap-4 md:gap-6 max-w-full mx-auto">
           {services.map((service, index) => {
             // Inclinación sutil: primera arriba, segunda un poco más abajo, tercera un poco más abajo, cuarta aún más abajo
             const getStaggerClass = (index: number) => {
@@ -106,21 +102,23 @@ const Services = () => {
                 return service.subtitle;
             }
           };
-          return <div key={service.id} className={`bg-white border border-gray-200 overflow-hidden transition-all duration-300 ease-in-out hover:scale-110 hover:shadow-2xl hover:shadow-black/20 hover:z-10 relative group min-h-[600px] sm:min-h-[500px] lg:w-80 lg:flex-shrink-0 ${getStaggerClass(index)}`}>
+          return <div key={service.id} className={`bg-white border border-border overflow-hidden transition-all duration-300 ease-in-out md:hover:scale-105 hover:shadow-xl hover:shadow-black/10 hover:z-10 relative group lg:w-80 lg:flex-shrink-0 ${getStaggerClass(index)}`}>
                 {/* NEW Badge */}
                 {service.isNew && (
-                  <div className="absolute top-4 right-4 z-10">
-                    <Badge className="bg-neutral-800 text-white hover:bg-neutral-700 rounded-full px-3 py-1 text-xs font-bold shadow-lg">
+                  <div className="absolute top-3 right-3 md:top-4 md:right-4 z-10">
+                    <Badge className="bg-neutral-800 text-white hover:bg-neutral-700 rounded-full px-2 py-0.5 md:px-3 md:py-1 text-xs font-bold shadow-lg">
                       {t('services.generators.badge')}
                     </Badge>
                   </div>
                 )}
                 
                 {/* Header with colored background */}
-                <div className="px-6 py-8 text-center" style={{
-              backgroundColor: getHeaderColor(service.id)
-            }}>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white uppercase tracking-wide font-ramabhadra">
+                <div className={`px-4 py-6 md:px-6 md:py-8 text-center ${
+                  service.id === 'fabrica' || service.id === 'rental' 
+                    ? 'bg-foreground' 
+                    : 'bg-primary'
+                }`}>
+                  <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white uppercase tracking-wide font-ramabhadra">
                     {service.id === 'fabrica' ? t('services.factory.title') : 
                      service.id === 'metalurgica' ? t('services.metallurgical.title') : 
                      service.id === 'rental' ? t('services.rental.title') :
@@ -129,8 +127,8 @@ const Services = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 sm:p-6 lg:p-4 xl:p-6">
-                  <h4 className="text-lg font-bold text-gray-500 mb-4 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-[#e65a29]">
+                <div className="p-4 md:p-6">
+                  <h4 className="text-base md:text-lg font-bold text-muted-foreground mb-3 md:mb-4 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-primary">
                     {service.id === 'fabrica' ? t('services.factory.subtitle') : 
                      service.id === 'metalurgica' ? t('services.metallurgical.subtitle') : 
                      service.id === 'rental' ? t('services.rental.subtitle') :
@@ -138,9 +136,9 @@ const Services = () => {
                   </h4>
 
                   {/* Línea separadora */}
-                  <div className="w-24 h-0.5 bg-gray-300 mx-auto mb-6 rounded-full"></div>
+                  <div className="w-16 md:w-24 h-0.5 bg-border mx-auto mb-4 md:mb-6 rounded-full"></div>
 
-                  <div className="text-sm leading-relaxed text-gray-600 text-center mb-8 font-nunito space-y-4">
+                  <div className="text-xs md:text-sm leading-relaxed text-muted-foreground text-center mb-6 md:mb-8 font-nunito space-y-3 md:space-y-4">
                     {service.id === 'fabrica' && (
                       <>
                         <p>{t('services.factory.description1')}</p>
@@ -179,11 +177,12 @@ const Services = () => {
                         </p>
                         <p>{t('services.generators.description3')}</p>
                         {service.image && (
-                          <div className="mt-6">
+                          <div className="mt-4 md:mt-6">
                             <img 
                               src={service.image} 
                               alt="Grupos Electrógenos - Codelco" 
                               className="w-full h-auto rounded-lg shadow-md"
+                              loading="lazy"
                             />
                           </div>
                         )}
@@ -192,16 +191,16 @@ const Services = () => {
                   </div>
 
                   <div className="text-center">
-                    {service.id === 'fabrica' && <Button onClick={() => scrollToSection('contacto')} className="border border-zinc-800 px-6 py-2 transition-all duration-300 text-sm text-slate-50 bg-zinc-800 hover:bg-zinc-700">
+                    {service.id === 'fabrica' && <Button onClick={() => scrollToSection('contacto')} className="border border-foreground px-4 md:px-6 py-2 transition-all duration-300 text-xs md:text-sm text-primary-foreground bg-foreground hover:bg-foreground/90">
                         {t('services.factory.button')}
                       </Button>}
-                    {service.id === 'metalurgica' && <Button onClick={() => scrollToSection('map')} className="text-white px-6 py-2 text-sm transition-all duration-300 bg-orange-700 hover:bg-orange-600 rounded-lg">
+                    {service.id === 'metalurgica' && <Button onClick={() => scrollToSection('map')} className="text-primary-foreground px-4 md:px-6 py-2 text-xs md:text-sm transition-all duration-300 bg-primary hover:bg-primary/90 rounded-lg">
                         {t('services.metallurgical.button')}
                       </Button>}
-                    {service.id === 'rental' && <Button onClick={() => scrollToSection('galeria')} className="border border-zinc-800 px-6 py-2 text-sm transition-all duration-300 text-slate-50 bg-neutral-800 hover:bg-neutral-700">
+                    {service.id === 'rental' && <Button onClick={() => scrollToSection('galeria')} className="border border-foreground px-4 md:px-6 py-2 text-xs md:text-sm transition-all duration-300 text-primary-foreground bg-foreground hover:bg-foreground/90">
                         {t('services.rental.button')}
                       </Button>}
-                    {service.id === 'generators' && <Button onClick={() => scrollToSection('map')} className="text-white px-6 py-2 text-sm transition-all duration-300 bg-orange-700 hover:bg-orange-600 rounded-lg">
+                    {service.id === 'generators' && <Button onClick={() => scrollToSection('map')} className="text-primary-foreground px-4 md:px-6 py-2 text-xs md:text-sm transition-all duration-300 bg-primary hover:bg-primary/90 rounded-lg">
                         {t('services.generators.button')}
                       </Button>}
                   </div>
