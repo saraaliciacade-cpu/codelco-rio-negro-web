@@ -111,8 +111,6 @@ const Clients = () => {
                   <img
                     src={client.logo}
                     alt={`${client.name} logo`}
-                    loading="lazy"
-                    decoding="async"
                     className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-in-out"
                   />
                 </div>
@@ -128,7 +126,7 @@ const Clients = () => {
   };
 
   return (
-    <section className={`${isMobile ? 'py-8' : 'py-12'} bg-white overflow-hidden`} style={{ contentVisibility: 'auto' }}>
+    <section className={`${isMobile ? 'py-8' : 'py-12'} bg-white overflow-hidden`}>
       <div className={`text-center ${isMobile ? 'mb-8' : 'mb-16'}`}>
         <h2 className={`titulo-seccion font-ramabhadra ${isMobile ? 'text-3xl' : ''}`}>
           <span style={{color: '#333333'}}>{t('clients.title').split(' ')[0]} </span>

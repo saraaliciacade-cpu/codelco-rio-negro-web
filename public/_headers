@@ -1,32 +1,8 @@
-# Cache hashed assets (JS/CSS with fingerprints) - immutable
-/assets/*.js
+# Cache static assets for 1 year
+/*.js
   Cache-Control: public, max-age=31536000, immutable
-/assets/*.css
+/*.css
   Cache-Control: public, max-age=31536000, immutable
-
-# Cache images in subdirectories
-/assets/*.png
-  Cache-Control: public, max-age=31536000, immutable
-/assets/*.jpg
-  Cache-Control: public, max-age=31536000, immutable
-/assets/*.jpeg
-  Cache-Control: public, max-age=31536000, immutable
-/assets/*.webp
-  Cache-Control: public, max-age=31536000, immutable
-/images/*/*.jpg
-  Cache-Control: public, max-age=31536000, immutable
-/images/*/*.png
-  Cache-Control: public, max-age=31536000, immutable
-/images/*/*.webp
-  Cache-Control: public, max-age=31536000, immutable
-/images/*/*.mp4
-  Cache-Control: public, max-age=31536000, immutable
-/lovable-uploads/*.png
-  Cache-Control: public, max-age=31536000, immutable
-/lovable-uploads/*.jpg
-  Cache-Control: public, max-age=31536000, immutable
-
-# Cache root level images
 /*.png
   Cache-Control: public, max-age=31536000, immutable
 /*.jpg
@@ -40,11 +16,11 @@
 /*.ico
   Cache-Control: public, max-age=31536000, immutable
 
-# Cache HTML for short period to allow updates
+# Cache HTML files for shorter period to allow updates
 /*.html
-  Cache-Control: public, max-age=0, must-revalidate
+  Cache-Control: public, max-age=3600
 
-# Default cache for other assets
+# Default cache for all other assets
 /*
   Cache-Control: public, max-age=31536000
   

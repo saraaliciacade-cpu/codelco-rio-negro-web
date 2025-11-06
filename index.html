@@ -10,16 +10,16 @@
     <meta http-equiv="X-Cache-Images" content="public, max-age=31536000, immutable" />
     <meta http-equiv="X-Cache-Scripts" content="public, max-age=31536000, immutable" />
     <meta http-equiv="X-Cache-Styles" content="public, max-age=31536000, immutable" />
-    <!-- Preconnect to speed up external resource loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://maps.googleapis.com" crossorigin>
     <link rel="dns-prefetch" href="https://storage.googleapis.com">
-    <!-- Load fonts async with display=swap for better FCP -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ramabhadra:wght@400&family=Montserrat:wght@700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Ramabhadra:wght@400&family=Montserrat:wght@700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Ramabhadra:wght@400&family=Montserrat:wght@700&family=Nunito+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
-    <!-- Preload critical hero image with responsive sizes -->
-    <link rel="preload" as="image" href="/images/hero/portada1.jpg" fetchpriority="high" imagesrcset="/images/hero/portada1.jpg 1920w, /images/hero/portada1.jpg 1280w, /images/hero/portada1.jpg 640w" imagesizes="100vw" type="image/jpeg">
+    <link rel="preload" as="image" href="/images/hero/portada1.jpg" fetchpriority="high" imagesrcset="/images/hero/portada1.jpg 1920w" imagesizes="100vw">
+    <link rel="preload" as="image" href="/images/hero/portada2.jpg" fetchpriority="low">
+    <link rel="preload" as="image" href="/images/hero/portada3.jpg" fetchpriority="low">
+    <link rel="preload" as="style" href="/src/index.css" fetchpriority="high">
     <style>
       /* Critical CSS - inline above-the-fold styles */
       @tailwind base;
@@ -40,19 +40,22 @@
       .opacity-0 { opacity: 0; }
       .opacity-100 { opacity: 1; }
       .transition-opacity { transition-property: opacity; transition-duration: 1000ms; }
-      /* Hero hidden state - use class to avoid forced reflow */
-      .hero-hidden { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; transition: opacity 0.3s ease, visibility 0s 0.3s; }
     </style>
-    <!-- Critical CSS inlined, full CSS loaded async -->
-    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="/src/index.css"></noscript>
+    <!-- Preload critical assets EARLY to break dependency chains -->
+    <link rel="preload" href="/assets/index-9zT1bRuk.css" as="style" crossorigin fetchpriority="high">
+    <link rel="modulepreload" href="/assets/index-iXXYKMXh.js" crossorigin fetchpriority="high">
+    <link rel="modulepreload" href="/src/main.tsx" fetchpriority="high">
+    
+    <!-- Load stylesheets non-blocking after preload -->
+    <link rel="preload" href="/src/index.css" as="style" onload="this.onload=null;this.rel='stylesheet';" fetchpriority="high">
+    <link rel="stylesheet" href="/assets/index-9zT1bRuk.css" media="all">
     
     <!-- Load main script with defer to avoid blocking -->
     <script type="module" src="/src/main.tsx" defer></script>
-    
-    <!-- Preconnect to optimize external resource loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <noscript>
+      <link rel="stylesheet" href="/src/index.css">
+      <link rel="stylesheet" href="/assets/index-9zT1bRuk.css">
+    </noscript>
     <title>Codelco S.A. - Servicios Industriales Argentina</title>
     <meta name="description" content="Empresa argentina especializada en servicios industriales, productos y rental de equipos para el sector industrial en Cipolletti, Río Negro.">
     <meta name="keywords" content="servicios industriales, rental equipos, Argentina, Cipolletti, Río Negro, Codelco">
@@ -75,7 +78,7 @@
 
   <body>
     <!-- Critical hero image for immediate LCP -->
-    <div id="critical-hero" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1; transition: opacity 0.3s ease, visibility 0.3s ease;">
+    <div id="critical-hero" style="position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 1;">
       <img 
         src="/images/hero/portada1.jpg" 
         alt="Industrial facility background" 
@@ -89,25 +92,15 @@
       <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.4));"></div>
     </div>
     <script>
-      // Hide critical hero once React app loads - optimized to prevent forced reflow
-      // Use CSS class toggle instead of direct style manipulation to avoid layout thrashing
-      (function() {
-        var hideCriticalHero = function() {
-          var hero = document.getElementById('critical-hero');
-          if (hero && !hero.classList.contains('hero-hidden')) {
-            hero.classList.add('hero-hidden');
+      // Hide critical hero once React app loads
+      document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          const criticalHero = document.getElementById('critical-hero');
+          if (criticalHero) {
+            criticalHero.style.display = 'none';
           }
-        };
-        
-        // Use single RAF to batch DOM changes
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', function() {
-            requestAnimationFrame(hideCriticalHero);
-          });
-        } else {
-          requestAnimationFrame(hideCriticalHero);
-        }
-      })();
+        }, 100);
+      });
     </script>
     <div id="root"></div>
   </body>

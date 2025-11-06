@@ -66,15 +66,63 @@ const Contact = () => {
   };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFormErrors({});
     
-    // Formulario desconectado - pendiente de conexión con SISARGENTINA
-    toast({
-      title: 'Formulario desconectado',
-      description: 'Este formulario será conectado próximamente con el sistema de correos de SISARGENTINA para Codelco.',
-      variant: "default",
-    });
-    
-    console.log('Datos del formulario (no enviados):', formData);
+    try {
+      // Validate form data
+      const validatedData = contactFormSchema.parse(formData);
+      
+      // Check honeypot field
+      if (validatedData.website) {
+        console.log('Bot detected');
+        return;
+      }
+
+      // Send to edge function
+      const { data, error } = await supabase.functions.invoke('contact-submit', {
+        body: validatedData
+      });
+
+      if (error) {
+        throw error;
+      }
+
+      toast({
+        title: t('contact.form.success.title'),
+        description: t('contact.form.success.description')
+      });
+      
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: '',
+        website: ''
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        // Handle validation errors
+        const errors: Record<string, string> = {};
+        error.errors.forEach((err) => {
+          if (err.path[0]) {
+            errors[err.path[0].toString()] = err.message;
+          }
+        });
+        setFormErrors(errors);
+        toast({
+          title: 'Validation Error',
+          description: 'Please check the form for errors',
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: t('contact.form.error.title'),
+          description: t('contact.form.error.description'),
+          variant: "destructive",
+        });
+      }
+    }
   };
   const contactInfo = [{
     icon: MapPin,
@@ -205,9 +253,9 @@ const Contact = () => {
       const formattedAddress = address.replace(/\n/g, '<br>');
       const infoContent = `
         <div style="padding: 8px;">
-          <strong style="font-size: 16px; color: #b8452e;">${name}</strong><br>
+          <strong style="font-size: 16px; color: #d25840;">${name}</strong><br>
           <div style="margin-top: 8px; color: #333;">${formattedAddress}</div>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" rel="noopener noreferrer" style="color: #b8452e; text-decoration: none; font-weight: 600; margin-top: 8px; display: inline-block;">${t('contact.map.directions')}</a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" rel="noopener noreferrer" style="color: #d25840; text-decoration: none; font-weight: 600; margin-top: 8px; display: inline-block;">${t('contact.map.directions')}</a>
         </div>
       `;
 
@@ -230,7 +278,7 @@ const Contact = () => {
       }
     };
   }, [isMapVisible, t, toast]);
-  return <section id="contacto" className="pt-6 pb-15 mt-20" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '40px', borderTopRightRadius: '40px', boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.15)', contentVisibility: 'auto' }}>
+  return <section id="contacto" className="pt-6 pb-15 mt-20" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '40px', borderTopRightRadius: '40px', boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.15)' }}>
       <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-7xl">
         <div>
           <h2 className="titulo-seccion font-ramabhadra" style={{ color: '#d25840' }}>
@@ -262,15 +310,15 @@ const Contact = () => {
                     {info.icon === Phone ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
                         <div>Sebastian</div>
-                        <div><a href="tel:+5492994136453" className="hover:underline" style={{color: '#b8452e'}}>299 413 6453</a></div>
+                        <div><a href="tel:+5492994136453" className="hover:underline" style={{color: '#d25840'}}>299 413 6453</a></div>
                       </div>
                     : info.icon === Mail ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded font-semibold">
-                        <a href="mailto:ventas@codelco.com.ar" className="hover:underline" style={{color: '#b8452e'}}>{info.value}</a>
+                        <a href="mailto:ventas@codelco.com.ar" className="hover:underline" style={{color: '#d25840'}}>{info.value}</a>
                       </div> 
                     : info.icon === MapPin ? 
                       <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">
-                        <span style={{color: '#b8452e'}} className="font-semibold">{t('contact.address.value').split('\n')[0]}</span>
+                        <span style={{color: '#d25840'}} className="font-semibold">{t('contact.address.value').split('\n')[0]}</span>
                         <br />
                         {t('contact.address.value').split('\n')[1]}
                         <br />
