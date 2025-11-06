@@ -25,8 +25,15 @@ const Gallery = () => {
 
   // Gallery images - manually uploaded photos
   const images = [
-  // NEW Fábrica images (FIRST 3)
+  // NEW Fábrica images and video (FIRST 4)
   {
+    id: 1000,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-29.mp4',
+    alt: 'Video de proceso de fabricación en planta industrial (Crexell)',
+    isNew: true,
+    isVideo: true
+  }, {
     id: 999,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-26.jpg',
