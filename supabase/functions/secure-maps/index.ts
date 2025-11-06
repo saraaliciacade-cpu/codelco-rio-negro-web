@@ -43,7 +43,8 @@ serve(async (req) => {
   try {
     const GOOGLE_MAPS_API_KEY = Deno.env.get('GOOGLE_MAPS_API_KEY');
     if (!GOOGLE_MAPS_API_KEY) {
-      throw new Error('Google Maps API key not configured');
+      console.error('Google Maps API key not configured');
+      throw new Error('Service configuration error');
     }
 
     // Initialize Supabase client
@@ -58,7 +59,7 @@ serve(async (req) => {
 
     if (error) {
       console.error('Database error:', error);
-      throw new Error('Failed to fetch location data');
+      throw new Error('Data retrieval error');
     }
 
     const response: LocationResponse = {
@@ -72,7 +73,7 @@ serve(async (req) => {
   } catch (error) {
     console.error('Error in secure-maps function:', error);
     return new Response(
-      JSON.stringify({ error: error.message }), 
+      JSON.stringify({ error: 'Service temporarily unavailable' }), 
       {
         status: 500,
         headers: { ...headers, 'Content-Type': 'application/json' },
