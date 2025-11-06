@@ -370,6 +370,10 @@ const Gallery = () => {
                       muted
                       loop
                       playsInline
+                      onError={(e) => {
+                        console.warn('Video failed to load:', image.src);
+                        (e.target as HTMLVideoElement).style.display = 'none';
+                      }}
                     />
                     <div className="absolute inset-0 flex items-center justify-center bg-black/20 transition-opacity duration-300 group-hover:bg-black/30">
                       <div className="bg-white/90 rounded-full p-4 shadow-lg">
@@ -433,6 +437,9 @@ const Gallery = () => {
                   autoPlay
                   loop
                   playsInline
+                  onError={(e) => {
+                    console.warn('Video failed to load in modal:', selectedImage.src);
+                  }}
                 />
               ) : (
                 <img 
