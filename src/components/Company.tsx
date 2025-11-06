@@ -11,39 +11,35 @@ const Company = () => {
       }, 100);
     }
   }, []);
-  return <section className="py-12 bg-background">
-      <div className="container mx-auto px-8">
-        <div className="text-center mb-8">
-          <h2 className="titulo-seccion font-ramabhadra inline-block text-4xl"> {/* Aumentado text-4xl para título más grande */}
-            <span style={{
-            color: '#333333'
-          }}>{t('company.title').split(' ')[0]} </span>
-            <span style={{
-            color: '#d25840'
-          }}>{t('company.title').split(' ')[1]}</span>
+  return <section className="py-8 md:py-12 bg-background">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="text-center mb-6 md:mb-8">
+          <h2 className="titulo-seccion font-ramabhadra inline-block text-2xl md:text-4xl">
+            <span className="text-foreground">{t('company.title').split(' ')[0]} </span>
+            <span className="text-primary">{t('company.title').split(' ')[1]}</span>
           </h2>
         </div>
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto px-8"> {/* Aumentado gap-6 a gap-12 para más espacio en el medio */}
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-5xl mx-auto">
           {/* Company Text */}
-          <div className="space-y-4 order-1 text-center lg:text-left max-w-md">
-            <h3 className="font-bold text-foreground mb-4 font-montserrat text-3xl"> {/* Aumentado text-xl a text-2xl */}
+          <div className="space-y-3 md:space-y-4 order-1 text-left mx-auto lg:mx-0 max-w-md px-2">
+            <h3 className="font-bold text-foreground mb-3 md:mb-4 font-montserrat text-xl md:text-2xl lg:text-3xl">
               {t('company.subtitle')}
             </h3>
-            <div className="space-y-4 text-foreground leading-normal text-body font-nunito">
-              <p className="text-justify text-sm"> {/* Aumentado text-xs a text-base para texto más grande */}
+            <div className="space-y-3 md:space-y-4 text-foreground leading-relaxed font-nunito">
+              <p className="text-sm md:text-base text-justify">
                 {t('company.paragraph1')}
               </p>
-              <p className="text-justify text-sm">
+              <p className="text-sm md:text-base text-justify">
                 {t('company.paragraph2')}
               </p>
-              <p className="text-justify text-sm">
+              <p className="text-sm md:text-base text-justify">
                 {t('company.paragraph3')}
               </p>
             </div>
           </div>
           {/* Company Image */}
-          <div className="order-2 animate-slide-in-right flex justify-center">
-            <div className="relative w-full max-w-lg">
+          <div className="order-2 animate-slide-in-right flex justify-center px-2">
+            <div className="relative w-full max-w-sm md:max-w-lg">
               <img 
                 src="/nuestra-empresa.jpg" 
                 alt="Flota de vehículos Codelco" 
@@ -51,7 +47,7 @@ const Company = () => {
                 loading="lazy"
                 width="284"
                 height="285"
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 284px"
+                sizes="(max-width: 768px) 90vw, (max-width: 1024px) 50vw, 284px"
               />
             </div>
           </div>
