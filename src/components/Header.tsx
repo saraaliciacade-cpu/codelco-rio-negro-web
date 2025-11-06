@@ -28,6 +28,8 @@ const Header = () => {
                 onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
                 className="flex items-center space-x-2 font-medium text-foreground hover:text-primary transition-colors duration-300"
                 style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+                aria-label={t('nav.changeLanguage')}
+                aria-expanded={isLanguageMenuOpen}
               >
                 <Globe className="h-4 w-4" />
                 <div className="flex flex-col items-start">
@@ -89,7 +91,13 @@ const Header = () => {
             ))}
           </nav>
           {/* Mobile Menu Button */}
-          <Button variant="ghost" size="icon" className="md:hidden ml-auto" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="md:hidden ml-auto" 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
+          >
             {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </Button>
         </div>

@@ -25,7 +25,7 @@ const Hero = () => {
   return <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background Images */}
       <div className="absolute inset-0">
-        {heroImages.map((image, index) => <img key={index} src={image} alt={`Industrial facility ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} fetchPriority={index === 0 ? "high" : "low"} loading={index === 0 ? "eager" : "lazy"} decoding={index === 0 ? "sync" : "async"} width="1920" height="1080" />)}
+        {heroImages.map((image, index) => <img key={index} src={image} alt={`Industrial facility ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} loading={index === 0 ? "eager" : "lazy"} decoding={index === 0 ? "sync" : "async"} width="1920" height="1080" />)}
       </div>
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
@@ -36,9 +36,7 @@ const Hero = () => {
           <img src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" alt="Codelco S.A." className="h-16 sm:h-24 w-auto object-contain" />
         </div>
         
-        <h1 className="text-2xl font-bold mb-5 font-ramabhadra" style={{
-        color: '#d25840'
-      }}>
+        <h1 className="text-2xl font-bold mb-5 font-ramabhadra text-primary">
           {t('hero.title')}
         </h1>
         
@@ -50,9 +48,7 @@ const Hero = () => {
           <Button onClick={() => scrollToSection('servicios')} className="bg-primary text-white px-4 py-2 text-body">
             {t('hero.button.services')}
           </Button>
-          <Button onClick={() => scrollToSection('contacto')} className="px-4 py-2 text-body text-white" style={{
-          backgroundColor: '#333333'
-        }}>
+          <Button onClick={() => scrollToSection('contacto')} className="px-4 py-2 text-body bg-foreground text-white hover:bg-foreground/90">
             {t('hero.button.contact')}
           </Button>
         </div>
