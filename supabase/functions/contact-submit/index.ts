@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
-import { Resend } from 'npm:resend@2.0.0';
+import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
 // Allow requests from production and Lovable development/preview domains
 const ALLOWED_ORIGINS = [
@@ -260,25 +260,21 @@ serve(async (req) => {
     // Log with redacted email for privacy
     console.log(`Contact submission received from ${redactEmail(body.email)} (IP: ${clientIP})`);
 
-    // ============================================================
-    // EMAIL SENDING DISABLED
-    // ============================================================
-    // To re-enable email sending, uncomment the code below and:
-    // 1. Add your RESEND_API_KEY to Supabase secrets
-    // 2. Update the 'to' field with your desired email address
-    // 3. Optionally update the 'from' field with your verified domain
-    // ============================================================
-    
-    /*
+    // Send emails via SMTP
     try {
-      const resendApiKey = Deno.env.get('RESEND_API_KEY');
+      const smtpClient = new SMTPClient({
+        connection: {
+          hostname: Deno.env.get('SMTP_HOST') || 'mail.codelco.com.ar',
+          port: parseInt(Deno.env.get('SMTP_PORT') || '587'),
+          tls: true,
+          auth: {
+            username: Deno.env.get('SMTP_USER') || 'contacto@codelco.com.ar',
+            password: Deno.env.get('SMTP_PASSWORD') || '',
+          },
+        },
+      });
 
-      if (!resendApiKey) {
-        console.error('Resend API key not configured');
-        throw new Error('Email service not configured');
-      }
-
-      const resend = new Resend(resendApiKey);
+      const fromEmail = Deno.env.get('SMTP_FROM_EMAIL') || 'contacto@codelco.com.ar';
 
       // Map subject codes to readable text
       const subjectMap: Record<string, string> = {
@@ -290,30 +286,82 @@ serve(async (req) => {
       };
 
       const subjectText = subjectMap[body.subject] || body.subject;
-      const emailSubject = `${body.name} - ${subjectText}`;
-      
-      const emailBody = `De: ${body.name} (${body.email})\nTeléfono: ${body.phone || 'No proporcionado'}\nAsunto: ${subjectText}\nMensaje: ${body.message}`;
 
-      const emailResponse = await resend.emails.send({
-        from: 'Codelco <onboarding@resend.dev>',
-        to: ['YOUR_EMAIL@example.com'], // Change this to your email
-        subject: emailSubject,
-        text: emailBody,
+      // Send confirmation email to user
+      await smtpClient.send({
+        from: fromEmail,
+        to: body.email.trim().toLowerCase(),
+        subject: 'Confirmación de recepción - Codelco',
+        content: 'auto',
+        html: `
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+            </head>
+            <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+              <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+                <h2 style="color: #d25840;">Gracias por contactarnos, ${body.name}</h2>
+                <p>Hemos recibido tu mensaje y nos pondremos en contacto contigo pronto.</p>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                  <p><strong>Asunto:</strong> ${subjectText}</p>
+                  <p><strong>Tu mensaje:</strong></p>
+                  <p>${body.message}</p>
+                </div>
+                <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;" />
+                <p style="color: #666; font-size: 12px;">
+                  Este es un mensaje automático, por favor no respondas a este correo.
+                </p>
+              </div>
+            </body>
+          </html>
+        `,
       });
 
-      if (emailResponse.error) {
-        console.error('Resend error:', emailResponse.error);
-        throw emailResponse.error;
-      }
+      console.log(`✅ Confirmation email sent to ${redactEmail(body.email)}`);
 
-      console.log(`Email sent successfully - Subject: ${emailSubject}`);
+      // Send notification email to company
+      await smtpClient.send({
+        from: fromEmail,
+        to: 'ventas@codelco.com.ar',
+        subject: `Nuevo contacto: ${body.name} - ${subjectText}`,
+        content: 'auto',
+        html: `
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+            </head>
+            <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+              <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
+                <h2 style="color: #d25840;">Nuevo mensaje de contacto</h2>
+                <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
+                  <p><strong>Nombre:</strong> ${body.name}</p>
+                  <p><strong>Email:</strong> <a href="mailto:${body.email}">${body.email}</a></p>
+                  <p><strong>Teléfono:</strong> ${body.phone || 'No proporcionado'}</p>
+                  <p><strong>Asunto:</strong> ${subjectText}</p>
+                  <p><strong>Mensaje:</strong></p>
+                  <p style="white-space: pre-wrap;">${body.message}</p>
+                </div>
+                <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;" />
+                <p style="color: #666; font-size: 12px;">
+                  IP: ${clientIP}<br />
+                  User Agent: ${userAgent}<br />
+                  ID de envío: ${data[0]?.id || 'N/A'}
+                </p>
+              </div>
+            </body>
+          </html>
+        `,
+      });
+
+      console.log('✅ Notification email sent to company');
+
+      await smtpClient.close();
     } catch (emailError) {
-      console.error('Error sending email:', emailError);
-      // Continue even if email fails - we still saved to database
+      console.error('❌ Email sending error:', emailError);
+      // Don't fail the request if email fails - form was still saved
     }
-    */
-    
-    console.log('Email sending is currently disabled. Submission saved to database only.');
 
     return new Response(
       JSON.stringify({ 
