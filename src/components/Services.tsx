@@ -128,7 +128,7 @@ const Services = () => {
 
                 {/* Content */}
                 <div className="p-4 md:p-6">
-                  <h4 className="text-base md:text-lg font-bold text-muted-foreground mb-3 md:mb-4 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-primary">
+                  <h4 className="text-base md:text-lg font-bold text-foreground mb-3 md:mb-4 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-primary">
                     {service.id === 'fabrica' ? t('services.factory.subtitle') : 
                      service.id === 'metalurgica' ? t('services.metallurgical.subtitle') : 
                      service.id === 'rental' ? t('services.rental.subtitle') :
@@ -138,7 +138,7 @@ const Services = () => {
                   {/* Línea separadora */}
                   <div className="w-16 md:w-24 h-0.5 bg-border mx-auto mb-4 md:mb-6 rounded-full"></div>
 
-                  <div className="text-xs md:text-sm leading-relaxed text-muted-foreground text-center mb-6 md:mb-8 font-nunito space-y-3 md:space-y-4">
+                  <div className="text-xs md:text-sm leading-relaxed text-foreground font-medium text-center mb-6 md:mb-8 font-nunito space-y-3 md:space-y-4">
                     {service.id === 'fabrica' && (
                       <>
                         <p>{t('services.factory.description1')}</p>

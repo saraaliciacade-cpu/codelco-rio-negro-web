@@ -394,7 +394,7 @@ const Gallery = () => {
                 )}
               </div>
               <div className="p-4 text-center">
-                <h3 className="font-semibold text-sm text-gray-800">{image.alt}</h3>
+                <h3 className="font-bold text-sm text-foreground">{image.alt}</h3>
               </div>
             </div>)}
         </div>
@@ -451,7 +451,7 @@ const Gallery = () => {
                 />
               )}
               <div className="p-4 bg-white text-center">
-                <h3 className="font-semibold text-lg text-gray-800">{selectedImage.alt}</h3>
+                <h3 className="font-bold text-lg text-foreground">{selectedImage.alt}</h3>
                 <p className="text-sm text-orange-700">{t(`category.${selectedImage.category}`)}</p>
               </div>
             </div>

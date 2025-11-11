@@ -308,7 +308,7 @@ const Contact = () => {
                   <div className="flex-1">
                     <h4 className="text-base font-bold text-foreground font-montserrat mb-2">{info.label}</h4>
                     {info.icon === Phone ? 
-                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-gray-600">
+                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed rounded text-foreground font-medium">
                         <div>Sebastian</div>
                         <div><a href="tel:+5492994136453" className="hover:underline" style={{color: '#d25840'}}>299 413 6453</a></div>
                       </div>
@@ -317,7 +317,7 @@ const Contact = () => {
                         <a href="mailto:ventas@codelco.com.ar" className="hover:underline" style={{color: '#d25840'}}>{info.value}</a>
                       </div> 
                     : info.icon === MapPin ? 
-                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">
+                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-foreground font-medium rounded-sm">
                         <span style={{color: '#d25840'}} className="font-semibold">{t('contact.address.value').split('\n')[0]}</span>
                         <br />
                         {t('contact.address.value').split('\n')[1]}
@@ -325,7 +325,7 @@ const Contact = () => {
                         {t('contact.address.value').split('\n')[2]}
                       </div> 
                     : 
-                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-gray-600 rounded-sm">{info.value}</div>
+                      <div className="text-base whitespace-pre-line font-nunito leading-relaxed text-foreground font-medium rounded-sm">{info.value}</div>
                     }
                   </div>
                 </CardContent>
