@@ -3,6 +3,8 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
 
 // Allow requests from production and Lovable development/preview domains
 const ALLOWED_ORIGINS = [
+  'https://codelco.com.ar',
+  'https://www.codelco.com.ar',
   'https://codelco-rio-negro-web.lovable.app',
   'https://codelco.lovable.app',
   /^https:\/\/.*\.lovableproject\.com$/,

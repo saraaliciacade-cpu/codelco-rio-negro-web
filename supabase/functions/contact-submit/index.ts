@@ -4,6 +4,8 @@ import { Resend } from "npm:resend@2.0.0";
 
 // Allow requests from production and Lovable development/preview domains
 const ALLOWED_ORIGINS = [
+  'https://codelco.com.ar',
+  'https://www.codelco.com.ar',
   'https://codelco.lovable.app',
   /^https:\/\/.*\.lovableproject\.com$/,
   /^https:\/\/.*\.lovable\.app$/,
