@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
-import nodemailer from "npm:nodemailer@6.9.7";
+import { Resend } from "npm:resend@2.0.0";
 
 // Allow requests from production and Lovable development/preview domains
 const ALLOWED_ORIGINS = [
@@ -260,22 +260,10 @@ serve(async (req) => {
     // Log with redacted email for privacy
     console.log(`Contact submission received from ${redactEmail(body.email)} (IP: ${clientIP})`);
 
-    // Send emails via SMTP using nodemailer
+    // Send emails via Resend
     try {
-      const transporter = nodemailer.createTransport({
-        host: Deno.env.get('SMTP_HOST') || 'mail.codelco.com.ar',
-        port: parseInt(Deno.env.get('SMTP_PORT') || '587'),
-        secure: false, // true for 465, false for other ports
-        auth: {
-          user: Deno.env.get('SMTP_USER') || 'contacto@codelco.com.ar',
-          pass: Deno.env.get('SMTP_PASSWORD') || '',
-        },
-        tls: {
-          rejectUnauthorized: false // Accept self-signed certificates
-        }
-      });
-
-      const fromEmail = Deno.env.get('SMTP_FROM_EMAIL') || 'contacto@codelco.com.ar';
+      const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
+      const fromEmail = 'Codelco <codelcoweb@gmail.com>';
 
       // Map subject codes to readable text
       const subjectMap: Record<string, string> = {
@@ -289,9 +277,9 @@ serve(async (req) => {
       const subjectText = subjectMap[body.subject] || body.subject;
 
       // Send confirmation email to user
-      await transporter.sendMail({
+      await resend.emails.send({
         from: fromEmail,
-        to: body.email.trim().toLowerCase(),
+        to: [body.email.trim().toLowerCase()],
         subject: 'Confirmación de recepción - Codelco',
         html: `
           <!DOCTYPE html>
@@ -321,9 +309,9 @@ serve(async (req) => {
       console.log(`✅ Confirmation email sent to ${redactEmail(body.email)}`);
 
       // Send notification email to company with "contacto web" subject
-      await transporter.sendMail({
+      await resend.emails.send({
         from: fromEmail,
-        to: 'ventas@codelco.com.ar',
+        to: ['ventas@codelco.com.ar'],
         subject: 'Contacto Web',
         html: `
           <!DOCTYPE html>
