@@ -51,6 +51,60 @@ const Gallery = () => {
     src: '/images/fabrica/fabrica-28.jpg',
     alt: 'Proceso de montaje de módulos en nuestra planta industrial (Crexell)',
     isNew: true
+  }, {
+    id: 996,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-30.jpg',
+    alt: 'Interior modular con entrepiso y cocina integrada - Módulo habitacional completo',
+    isNew: true
+  }, {
+    id: 995,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-31.jpg',
+    alt: 'Módulo transportable blanco terminado - Vista exterior con entrada',
+    isNew: true
+  }, {
+    id: 994,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-32.jpg',
+    alt: 'Izaje de módulo prefabricado con grúa - Montaje industrial',
+    isNew: true
+  }, {
+    id: 993,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-33.jpg',
+    alt: 'Módulo habitacional exterior con escalera de acceso - Listo para transporte',
+    isNew: true
+  }, {
+    id: 992,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-34.jpg',
+    alt: 'Interior moderno con grandes ventanales y terraza - Módulo premium',
+    isNew: true
+  }, {
+    id: 991,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-35.jpg',
+    alt: 'Render 3D de módulo habitacional con revestimiento exterior moderno',
+    isNew: true
+  }, {
+    id: 990,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-36.jpg',
+    alt: 'Dormitorio con vista panorámica - Interior de módulo de vivienda',
+    isNew: true
+  }, {
+    id: 989,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-37.jpg',
+    alt: 'Unidad móvil para servicios con generador eléctrico incorporado',
+    isNew: true
+  }, {
+    id: 988,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-38.jpg',
+    alt: 'Estructura metálica en proceso de construcción - Sistema Steel Frame',
+    isNew: true
   },
   // Metalúrgica category images (18 images total)
   {
