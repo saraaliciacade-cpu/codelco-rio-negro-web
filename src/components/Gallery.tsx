@@ -99,6 +99,29 @@ const Gallery = () => {
     alt: 'Estructura metálica en proceso de construcción - Sistema Steel Frame',
     isNew: true
   },
+  // Fábrica - Crexell images (without NEW badge, between new and old)
+  {
+    id: 1000,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-29.mp4',
+    alt: 'Video de proceso de fabricación en planta industrial (Crexell)',
+    isVideo: true
+  }, {
+    id: 999,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-26.jpg',
+    alt: 'Interior terminado con piso de madera y luces LED (Crexell)'
+  }, {
+    id: 998,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-27.jpg',
+    alt: 'Instalación eléctrica profesional con equipamiento Siemens (Crexell)'
+  }, {
+    id: 997,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-28.jpg',
+    alt: 'Proceso de montaje de módulos en nuestra planta industrial (Crexell)'
+  },
   // Metalúrgica category images (18 images total)
   {
     id: 1,
@@ -364,29 +387,6 @@ const Gallery = () => {
     category: 'fabrica',
     src: '/fabrica-24.jpg',
     alt: t('images.fabrica.24')
-  }, 
-  // Fábrica - Crexell older images (at the end, without NEW badge)
-  {
-    id: 1000,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-29.mp4',
-    alt: 'Video de proceso de fabricación en planta industrial (Crexell)',
-    isVideo: true
-  }, {
-    id: 999,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-26.jpg',
-    alt: 'Interior terminado con piso de madera y luces LED (Crexell)'
-  }, {
-    id: 998,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-27.jpg',
-    alt: 'Instalación eléctrica profesional con equipamiento Siemens (Crexell)'
-  }, {
-    id: 997,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-28.jpg',
-    alt: 'Proceso de montaje de módulos en nuestra planta industrial (Crexell)'
   }];
   const filteredImages = activeFilter === 'todas' ? images : images.filter(img => img.category === activeFilter);
   const displayedImages = activeFilter === 'todas' ? filteredImages.slice(0, visibleCount) : filteredImages;
