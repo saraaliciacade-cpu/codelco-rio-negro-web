@@ -266,7 +266,7 @@ serve(async (req) => {
         connection: {
           hostname: Deno.env.get('SMTP_HOST') || 'mail.codelco.com.ar',
           port: parseInt(Deno.env.get('SMTP_PORT') || '587'),
-          tls: true,
+          tls: false,
           auth: {
             username: Deno.env.get('SMTP_USER') || 'contacto@codelco.com.ar',
             password: Deno.env.get('SMTP_PASSWORD') || '',
