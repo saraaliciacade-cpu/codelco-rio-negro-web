@@ -4,9 +4,14 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
 // Allow requests from production and Lovable development/preview domains
 const ALLOWED_ORIGINS = [
   'https://codelco-rio-negro-web.lovable.app',
+  'https://codelco.lovable.app',
   /^https:\/\/.*\.lovableproject\.com$/,
   /^https:\/\/.*\.lovable\.app$/,
 ];
+
+// Rate limiting: max 60 requests per IP per minute
+const RATE_LIMIT_MAX = 60;
+const RATE_LIMIT_WINDOW = 60; // 1 minute in seconds
 
 const corsHeaders = (origin: string | null) => {
   const isAllowed = origin && ALLOWED_ORIGINS.some(allowed => 
@@ -57,18 +62,73 @@ serve(async (req) => {
   }
 
   try {
+    // Initialize Supabase client for rate limiting
+    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
+    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const supabase = createClient(supabaseUrl, supabaseKey);
+
+    // Get client IP for rate limiting
+    const forwardedFor = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip');
+    const clientIP = forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown';
+
+    // Rate limiting check
+    const { data: rateLimitData } = await supabase
+      .from('rate_limit')
+      .select('submission_count, window_start')
+      .eq('ip_address', clientIP)
+      .single();
+
+    if (rateLimitData) {
+      const windowStart = new Date(rateLimitData.window_start);
+      const now = new Date();
+      const timeDiff = (now.getTime() - windowStart.getTime()) / 1000;
+
+      if (timeDiff < RATE_LIMIT_WINDOW) {
+        if (rateLimitData.submission_count >= RATE_LIMIT_MAX) {
+          console.log(`Rate limit exceeded for IP: ${clientIP} on secure-maps`);
+          return new Response(
+            JSON.stringify({ error: 'Too many requests. Please try again later.' }),
+            { 
+              status: 429, 
+              headers: { 
+                ...headers, 
+                'Content-Type': 'application/json',
+                'Retry-After': String(Math.ceil(RATE_LIMIT_WINDOW - timeDiff))
+              }
+            }
+          );
+        }
+        
+        await supabase
+          .from('rate_limit')
+          .update({ submission_count: rateLimitData.submission_count + 1 })
+          .eq('ip_address', clientIP);
+      } else {
+        await supabase
+          .from('rate_limit')
+          .update({ 
+            submission_count: 1, 
+            window_start: now.toISOString() 
+          })
+          .eq('ip_address', clientIP);
+      }
+    } else {
+      await supabase
+        .from('rate_limit')
+        .insert({
+          ip_address: clientIP,
+          submission_count: 1,
+          window_start: new Date().toISOString()
+        });
+    }
+    
     const GOOGLE_MAPS_API_KEY = Deno.env.get('GOOGLE_MAPS_API_KEY');
     if (!GOOGLE_MAPS_API_KEY) {
       console.error('Google Maps API key not configured');
       throw new Error('Service configuration error');
     }
 
-    // Initialize Supabase client
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
-    const supabase = createClient(supabaseUrl, supabaseKey);
-
-    // Fetch location data using Supabase client (more secure than direct REST)
+    // Fetch location data using existing Supabase client
     const { data: locations, error } = await supabase
       .from('Codelco Mapa SA')
       .select('id, name, latitude, longitude, address');
