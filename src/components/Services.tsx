@@ -2,6 +2,8 @@ import { Building2, Settings, Truck, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useState, useEffect } from 'react';
+
 const Services = () => {
   const { t } = useLanguage();
   
@@ -13,6 +15,13 @@ const Services = () => {
     description: [
       'El sector de fabricación de módulos y viviendas esta preparado para cubrir todas las necesidades del cliente al momento de realizar su proyecto. Cuenta con una línea de producción completa, desde la oficina de ingeniería y diseño hasta las distintas áreas de producción que componen cada unidad, lo cual le proveerá asesoramiento competo en todas las etapas de construcción.',
       'Este sector produce todo tipo de módulos habitacionales ya sea con fines comerciales o de vivienda para las distintas industrias y además la modalidad de construcción "en seco" de viviendas familiares con las mejores características termo-acústicas disponibles en el mercado y la posibilidad de elegir el diseño a gusto del cliente.'
+    ],
+    images: [
+      '/images/services/fabrica-01.jpg',
+      '/images/services/fabrica-02.jpg',
+      '/images/services/fabrica-03.jpg',
+      '/images/services/fabrica-04.jpg',
+      '/images/services/fabrica-05.jpg'
     ]
   }, {
     id: 'metalurgica',
@@ -23,6 +32,10 @@ const Services = () => {
       'La división Metalúrgica está orientada a la fabricación de equipos para la industria petrolera y afines y todo el asesoramiento necesario para su proyecto.',
       'Contamos con una amplia gama de productos, para cubrir todas sus necesidades:',
       'Piletas de acumulación para agua, lodo y petróleo sobre skid y auto-portantes. Contenedores tipo volquete. Estructuras y subestructuras especiales. Choke manifolds. Lineas de alta. Estructuras para decanter. Planchadas. Tanques sobre patín para almacenamiento. Plantas móviles de petróleo. Piletas de ensayo. Circuitos de lodo. Además contamos con servicio de corte y plegado de chapas, para trabajos en general'
+    ],
+    images: [
+      '/images/services/metalurgica-01.jpg',
+      '/images/services/metalurgica-02.jpg'
     ]
   }, {
     id: 'rental',
@@ -33,6 +46,10 @@ const Services = () => {
       'La división Rental está compuesta por los sectores "Flota Liviana" y "Trailers y Equipos".',
       '**Flota Liviana:** contamos actualmente con más de 60 unidades entre Toyota Hilux cabina doble y simple 4x2 y 4x4, VW Amarok y vehículos livianos. Todas estas unidades están equipadas según la necesidad de cada cliente, ya se para uso Gerencial, recorredores, porta herramientas, personal general, etc.',
       '**Trailers y Equipos:** en este sector se proveen equipos para alquileres temporarios: Piletas de acumulación. Trailers rodantes y sobre patín en 6, 9 y 12 metros, con configuraciones variadas del tipo "Company Man", comedor, habitación, cocina, laboratorio, etc. Contenedores tipo volquete.'
+    ],
+    images: [
+      '/images/services/rental-01.jpg',
+      '/images/services/rental-02.jpg'
     ]
   }, {
     id: 'generators',
@@ -188,6 +205,11 @@ const Services = () => {
                         )}
                       </>
                     )}
+                    
+                    {/* Carousel de imágenes para Fábrica, Metalúrgica y Rental */}
+                    {(service.id === 'fabrica' || service.id === 'metalurgica' || service.id === 'rental') && service.images && (
+                      <ImageCarousel images={service.images} serviceId={service.id} />
+                    )}
                   </div>
 
                   <div className="text-center">
@@ -211,4 +233,36 @@ const Services = () => {
       </div>
     </section>;
 };
+
+// Componente de Carousel para las imágenes
+const ImageCarousel = ({ images, serviceId }: { images: string[], serviceId: string }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 2000); // Cambia cada 2 segundos (efecto flash)
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  return (
+    <div className="mt-4 md:mt-6 relative overflow-hidden rounded-lg shadow-md">
+      <div className="relative aspect-video">
+        {images.map((image, index) => (
+          <img
+            key={index}
+            src={image}
+            alt={`${serviceId} - imagen ${index + 1}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+              index === currentIndex ? 'opacity-100' : 'opacity-0'
+            }`}
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export default Services;
