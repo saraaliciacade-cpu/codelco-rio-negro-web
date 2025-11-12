@@ -25,7 +25,27 @@ const Gallery = () => {
 
   // Gallery images - manually uploaded photos
   const images = [
-  // NEW Fábrica images and video (FIRST 4)
+  // NEWEST Fábrica images (FIRST 3)
+  {
+    id: 1003,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-39.jpg',
+    alt: 'Módulo habitacional al atardecer - Vista exterior con entrada e iluminación interior',
+    isNew: true
+  }, {
+    id: 1002,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-40.jpg',
+    alt: 'Dormitorio moderno con piso de madera - Interior de módulo premium',
+    isNew: true
+  }, {
+    id: 1001,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-41.jpg',
+    alt: 'Living comedor integrado con grandes ventanales - Módulo habitable completo',
+    isNew: true
+  },
+  // Fábrica images and video from Crexell
   {
     id: 1000,
     category: 'fabrica',
