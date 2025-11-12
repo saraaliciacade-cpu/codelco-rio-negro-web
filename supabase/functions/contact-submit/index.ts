@@ -38,8 +38,8 @@ const INPUT_LIMITS = {
   message: { min: 10, max: 2000 }
 };
 
-// Rate limiting: max 5 submissions per IP per hour
-const RATE_LIMIT_MAX = 5;
+// Rate limiting: max 20 submissions per IP per hour (increased for testing)
+const RATE_LIMIT_MAX = 20;
 const RATE_LIMIT_WINDOW = 3600; // 1 hour in seconds
 
 // Function to redact email for logging (e.g., user@example.com -> u***@e***.com)
