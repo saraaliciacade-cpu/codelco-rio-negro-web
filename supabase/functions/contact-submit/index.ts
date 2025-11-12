@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
-import { Resend } from "npm:resend@4.0.0";
+import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
 
 // Allow requests from production and Lovable development/preview domains
 const ALLOWED_ORIGINS = [
@@ -260,9 +260,24 @@ serve(async (req) => {
     // Log with redacted email for privacy
     console.log(`Contact submission received from ${redactEmail(body.email)} (IP: ${clientIP})`);
 
-    // Send emails via Resend
+    // Send emails via SMTP
     try {
-      const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
+      const smtpClient = new SMTPClient({
+        connection: {
+          hostname: Deno.env.get('SMTP_HOST') || 'mail.codelco.com.ar',
+          port: parseInt(Deno.env.get('SMTP_PORT') || '587'),
+          tls: true,
+          auth: {
+            username: Deno.env.get('SMTP_USER') || 'contacto@codelco.com.ar',
+            password: Deno.env.get('SMTP_PASSWORD') || '',
+          },
+        },
+        debug: {
+          log: true,
+        },
+      });
+
+      const fromEmail = Deno.env.get('SMTP_FROM_EMAIL') || 'contacto@codelco.com.ar';
 
       // Map subject codes to readable text
       const subjectMap: Record<string, string> = {
@@ -276,10 +291,11 @@ serve(async (req) => {
       const subjectText = subjectMap[body.subject] || body.subject;
 
       // Send confirmation email to user
-      const confirmationResult = await resend.emails.send({
-        from: 'Codelco <ventas@codelco.com.ar>',
+      await smtpClient.send({
+        from: fromEmail,
         to: body.email.trim().toLowerCase(),
         subject: 'Confirmación de recepción - Codelco',
+        content: 'auto',
         html: `
           <!DOCTYPE html>
           <html>
@@ -305,13 +321,14 @@ serve(async (req) => {
         `,
       });
 
-      console.log(`✅ Confirmation email sent to ${redactEmail(body.email)}`, confirmationResult);
+      console.log(`✅ Confirmation email sent to ${redactEmail(body.email)}`);
 
-      // Send notification email to company
-      const notificationResult = await resend.emails.send({
-        from: 'Codelco <ventas@codelco.com.ar>',
+      // Send notification email to company with "contacto web" subject
+      await smtpClient.send({
+        from: fromEmail,
         to: 'ventas@codelco.com.ar',
-        subject: `Nuevo contacto: ${body.name} - ${subjectText}`,
+        subject: 'Contacto Web',
+        content: 'auto',
         html: `
           <!DOCTYPE html>
           <html>
@@ -341,7 +358,9 @@ serve(async (req) => {
         `,
       });
 
-      console.log('✅ Notification email sent to company', notificationResult);
+      console.log('✅ Notification email sent to company');
+
+      await smtpClient.close();
     } catch (emailError) {
       console.error('❌ Email sending error:', emailError);
       // Don't fail the request if email fails - form was still saved
