@@ -263,7 +263,7 @@ serve(async (req) => {
     // Send emails via Resend
     try {
       const resend = new Resend(Deno.env.get('RESEND_API_KEY'));
-      const fromEmail = 'Codelco <codelcoweb@gmail.com>';
+      const fromEmail = 'Codelco <onboarding@resend.dev>';
 
       // Map subject codes to readable text
       const subjectMap: Record<string, string> = {
