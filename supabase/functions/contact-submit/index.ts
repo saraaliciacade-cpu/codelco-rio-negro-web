@@ -38,9 +38,21 @@ const INPUT_LIMITS = {
   message: { min: 10, max: 2000 }
 };
 
-// Rate limiting: max 100 submissions per IP per hour (increased for testing)
-const RATE_LIMIT_MAX = 100;
+// Rate limiting: max 5 submissions per IP per hour
+const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW = 3600; // 1 hour in seconds
+
+// Function to escape HTML special characters to prevent XSS
+function escapeHtml(text: string): string {
+  const map: Record<string, string> = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
 
 // Function to redact email for logging (e.g., user@example.com -> u***@e***.com)
 function redactEmail(email: string): string {
@@ -289,12 +301,12 @@ serve(async (req) => {
             </head>
             <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
               <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
-                <h2 style="color: #d25840;">Gracias por contactarnos, ${body.name}</h2>
+                <h2 style="color: #d25840;">Gracias por contactarnos, ${escapeHtml(body.name)}</h2>
                 <p>Hemos recibido tu mensaje y nos pondremos en contacto contigo pronto.</p>
                 <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
-                  <p><strong>Asunto:</strong> ${subjectText}</p>
+                  <p><strong>Asunto:</strong> ${escapeHtml(subjectText)}</p>
                   <p><strong>Tu mensaje:</strong></p>
-                  <p>${body.message}</p>
+                  <p>${escapeHtml(body.message)}</p>
                 </div>
                 <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;" />
                 <p style="color: #666; font-size: 12px;">
@@ -323,18 +335,18 @@ serve(async (req) => {
               <div style="max-width: 600px; margin: 0 auto; padding: 20px;">
                 <h2 style="color: #d25840;">Nuevo mensaje de contacto</h2>
                 <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
-                  <p><strong>Nombre:</strong> ${body.name}</p>
-                  <p><strong>Email:</strong> <a href="mailto:${body.email}">${body.email}</a></p>
-                  <p><strong>Teléfono:</strong> ${body.phone || 'No proporcionado'}</p>
-                  <p><strong>Asunto:</strong> ${subjectText}</p>
+                  <p><strong>Nombre:</strong> ${escapeHtml(body.name)}</p>
+                  <p><strong>Email:</strong> <a href="mailto:${escapeHtml(body.email)}">${escapeHtml(body.email)}</a></p>
+                  <p><strong>Teléfono:</strong> ${escapeHtml(body.phone || 'No proporcionado')}</p>
+                  <p><strong>Asunto:</strong> ${escapeHtml(subjectText)}</p>
                   <p><strong>Mensaje:</strong></p>
-                  <p style="white-space: pre-wrap;">${body.message}</p>
+                  <p style="white-space: pre-wrap;">${escapeHtml(body.message)}</p>
                 </div>
                 <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;" />
                 <p style="color: #666; font-size: 12px;">
-                  IP: ${clientIP}<br />
-                  User Agent: ${userAgent}<br />
-                  ID de envío: ${data[0]?.id || 'N/A'}
+                  IP: ${escapeHtml(clientIP)}<br />
+                  User Agent: ${escapeHtml(userAgent)}<br />
+                  ID de envío: ${escapeHtml(data[0]?.id || 'N/A')}
                 </p>
               </div>
             </body>
