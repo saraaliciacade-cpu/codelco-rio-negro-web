@@ -25,12 +25,36 @@ const Gallery = () => {
 
   // Gallery images - manually uploaded photos
   const images = [
-  // NEWEST Fábrica images (FIRST 3)
+  // NEWEST Fábrica images (non-Crexell)
   {
+    id: 996,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-30.jpg',
+    alt: 'Interior modular con entrepiso y cocina integrada - Módulo habitacional completo',
+    isNew: true
+  }, {
+    id: 990,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-36.jpg',
+    alt: 'Dormitorio con vista panorámica - Interior de módulo de vivienda',
+    isNew: true
+  }, {
     id: 1003,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-39.jpg',
     alt: 'Módulo habitacional al atardecer - Vista exterior con entrada e iluminación interior',
+    isNew: true
+  }, {
+    id: 993,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-33.jpg',
+    alt: 'Módulo habitacional exterior con escalera de acceso - Listo para transporte',
+    isNew: true
+  }, {
+    id: 995,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-31.jpg',
+    alt: 'Módulo transportable blanco terminado - Vista exterior con entrada',
     isNew: true
   }, {
     id: 1002,
@@ -44,56 +68,11 @@ const Gallery = () => {
     src: '/images/fabrica/fabrica-41.jpg',
     alt: 'Living comedor integrado con grandes ventanales - Módulo habitable completo',
     isNew: true
-  },
-  // Fábrica images and video from Crexell
-  {
-    id: 1000,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-29.mp4',
-    alt: 'Video de proceso de fabricación en planta industrial (Crexell)',
-    isNew: true,
-    isVideo: true
-  }, {
-    id: 999,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-26.jpg',
-    alt: 'Interior terminado con piso de madera y luces LED (Crexell)',
-    isNew: true
-  }, {
-    id: 998,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-27.jpg',
-    alt: 'Instalación eléctrica profesional con equipamiento Siemens (Crexell)',
-    isNew: true
-  }, {
-    id: 997,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-28.jpg',
-    alt: 'Proceso de montaje de módulos en nuestra planta industrial (Crexell)',
-    isNew: true
-  }, {
-    id: 996,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-30.jpg',
-    alt: 'Interior modular con entrepiso y cocina integrada - Módulo habitacional completo',
-    isNew: true
-  }, {
-    id: 995,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-31.jpg',
-    alt: 'Módulo transportable blanco terminado - Vista exterior con entrada',
-    isNew: true
   }, {
     id: 994,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-32.jpg',
     alt: 'Izaje de módulo prefabricado con grúa - Montaje industrial',
-    isNew: true
-  }, {
-    id: 993,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-33.jpg',
-    alt: 'Módulo habitacional exterior con escalera de acceso - Listo para transporte',
     isNew: true
   }, {
     id: 992,
@@ -106,12 +85,6 @@ const Gallery = () => {
     category: 'fabrica',
     src: '/images/fabrica/fabrica-35.jpg',
     alt: 'Render 3D de módulo habitacional con revestimiento exterior moderno',
-    isNew: true
-  }, {
-    id: 990,
-    category: 'fabrica',
-    src: '/images/fabrica/fabrica-36.jpg',
-    alt: 'Dormitorio con vista panorámica - Interior de módulo de vivienda',
     isNew: true
   }, {
     id: 989,
@@ -391,6 +364,29 @@ const Gallery = () => {
     category: 'fabrica',
     src: '/fabrica-24.jpg',
     alt: t('images.fabrica.24')
+  }, 
+  // Fábrica - Crexell older images (at the end, without NEW badge)
+  {
+    id: 1000,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-29.mp4',
+    alt: 'Video de proceso de fabricación en planta industrial (Crexell)',
+    isVideo: true
+  }, {
+    id: 999,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-26.jpg',
+    alt: 'Interior terminado con piso de madera y luces LED (Crexell)'
+  }, {
+    id: 998,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-27.jpg',
+    alt: 'Instalación eléctrica profesional con equipamiento Siemens (Crexell)'
+  }, {
+    id: 997,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-28.jpg',
+    alt: 'Proceso de montaje de módulos en nuestra planta industrial (Crexell)'
   }];
   const filteredImages = activeFilter === 'todas' ? images : images.filter(img => img.category === activeFilter);
   const displayedImages = activeFilter === 'todas' ? filteredImages.slice(0, visibleCount) : filteredImages;
