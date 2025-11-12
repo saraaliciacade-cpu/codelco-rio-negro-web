@@ -311,7 +311,7 @@ serve(async (req) => {
       // Send notification email to company with "contacto web" subject
       await resend.emails.send({
         from: fromEmail,
-        to: ['ventas@codelco.com.ar'],
+        to: ['codelcoweb@gmail.com'],
         subject: 'Contacto Web',
         html: `
           <!DOCTYPE html>
