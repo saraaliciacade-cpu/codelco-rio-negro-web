@@ -98,6 +98,30 @@ const Gallery = () => {
     src: '/images/fabrica/fabrica-38.jpg',
     alt: 'Estructura metálica en proceso de construcción - Sistema Steel Frame',
     isNew: true
+  }, {
+    id: 1004,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-42.jpg',
+    alt: 'Módulo prefabricado moderno con revestimiento exterior - Diseño contemporáneo',
+    isNew: true
+  }, {
+    id: 1005,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-43.jpg',
+    alt: 'Sala de estar con grandes ventanales y vista panorámica - Interior premium',
+    isNew: true
+  }, {
+    id: 1006,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-44.jpg',
+    alt: 'Interior de dos pisos con entrepiso y cocina integrada - Módulo completo',
+    isNew: true
+  }, {
+    id: 1007,
+    category: 'fabrica',
+    src: '/images/fabrica/fabrica-45.jpg',
+    alt: 'Construcción de estructura Steel Frame - Montaje en planta',
+    isNew: true
   },
   // Fábrica - Crexell images (without NEW badge, between new and old)
   {
