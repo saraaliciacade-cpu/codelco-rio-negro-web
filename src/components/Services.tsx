@@ -241,7 +241,7 @@ const ImageCarousel = ({ images, serviceId }: { images: string[], serviceId: str
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 2000); // Cambia cada 2 segundos (efecto flash)
+    }, 6000); // Cambia cada 6 segundos
 
     return () => clearInterval(interval);
   }, [images.length]);
