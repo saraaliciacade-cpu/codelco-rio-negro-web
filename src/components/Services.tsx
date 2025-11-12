@@ -35,7 +35,8 @@ const Services = () => {
     ],
     images: [
       '/images/services/metalurgica-01.jpg',
-      '/images/services/metalurgica-02.jpg'
+      '/images/services/metalurgica-02.jpg',
+      '/images/services/metalurgica-03.jpg'
     ]
   }, {
     id: 'rental',
@@ -49,7 +50,8 @@ const Services = () => {
     ],
     images: [
       '/images/services/rental-01.jpg',
-      '/images/services/rental-02.jpg'
+      '/images/services/rental-02.jpg',
+      '/images/services/rental-03.jpg'
     ]
   }, {
     id: 'generators',
