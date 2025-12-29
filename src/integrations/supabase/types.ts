@@ -46,7 +46,7 @@ export type Database = {
           created_at: string | null
           email: string
           id: string
-          ip_address: unknown | null
+          ip_address: unknown
           message: string
           name: string
           phone: string | null
@@ -57,7 +57,7 @@ export type Database = {
           created_at?: string | null
           email: string
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           message: string
           name: string
           phone?: string | null
@@ -68,12 +68,45 @@ export type Database = {
           created_at?: string | null
           email?: string
           id?: string
-          ip_address?: unknown | null
+          ip_address?: unknown
           message?: string
           name?: string
           phone?: string | null
           subject?: string | null
           user_agent?: string | null
+        }
+        Relationships: []
+      }
+      gallery_items: {
+        Row: {
+          alt_text: string
+          category: string
+          created_at: string
+          file_path: string
+          id: string
+          is_new: boolean | null
+          is_video: boolean | null
+          updated_at: string
+        }
+        Insert: {
+          alt_text: string
+          category: string
+          created_at?: string
+          file_path: string
+          id?: string
+          is_new?: boolean | null
+          is_video?: boolean | null
+          updated_at?: string
+        }
+        Update: {
+          alt_text?: string
+          category?: string
+          created_at?: string
+          file_path?: string
+          id?: string
+          is_new?: boolean | null
+          is_video?: boolean | null
+          updated_at?: string
         }
         Relationships: []
       }
@@ -127,10 +160,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      cleanup_rate_limits: {
-        Args: Record<PropertyKey, never>
-        Returns: undefined
-      }
+      cleanup_rate_limits: { Args: never; Returns: undefined }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
