@@ -1,175 +1,47 @@
-import { useEffect, useRef, useState } from 'react';
-import { supabase } from '@/integrations/supabase/client';
-
-declare global {
-  interface Window {
-    google: any;
-    initMap: () => void;
-  }
-}
-
 const Map = () => {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [isMapVisible, setIsMapVisible] = useState(false);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && !isMapVisible) {
-          setIsMapVisible(true);
-        }
-      },
-      {
-        rootMargin: '100px',
-      }
-    );
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, [isMapVisible]);
-
-  useEffect(() => {
-    if (!mapRef.current || !isMapVisible) return;
-
-    const initMap = async () => {
-      try {
-        const response = await fetch('https://eymjmdusrvpdhprduwrf.supabase.co/functions/v1/secure-maps', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        });
-
-        if (!response.ok) {
-          throw new Error('Failed to fetch map configuration');
-        }
-
-        const mapData = await response.json();
-        const apiKey = mapData.apiKey;
-        const locations = mapData.locations || [];
-
-        const locationData = locations.find((loc: any) => loc.name === 'Codelco S.A') || locations[0];
-        
-        if (locationData) {
-          const codelcoLocation = { 
-            lat: Number(locationData.latitude), 
-            lng: Number(locationData.longitude) 
-          };
-          createMap(codelcoLocation, locationData.name, locationData.address, apiKey);
-          return;
-        }
-      } catch (err) {
-        console.error('Failed to load map configuration:', err);
-        // Display error message to user instead of falling back to exposed API key
-        if (mapRef.current) {
-          mapRef.current.innerHTML = `
-            <div class="flex items-center justify-center h-full">
-              <div class="text-center text-muted-foreground">
-                <p>No se pudo cargar el mapa.</p>
-                <p class="text-sm mt-2">Por favor, intente nuevamente más tarde.</p>
-              </div>
-            </div>
-          `;
-        }
-        return;
-      }
-    };
-
-    const createMap = (location: { lat: number; lng: number }, name: string, address: string, apiKey: string) => {
-      const map = new window.google.maps.Map(mapRef.current!, {
-        center: location,
-        zoom: 12,
-        mapId: "30fd671af640a655e95c3547"
-      });
-
-      const marker = new window.google.maps.Marker({
-        position: location,
-        map,
-        title: name
-      });
-
-      const formattedAddress = address.replace(/\n/g, '<br>');
-      const infoContent = `
-        <div>
-          <strong>${name}</strong><br>
-          ${formattedAddress}<br>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" style="color: #FFAB40;">Cómo llegar</a>
-        </div>
-      `;
-
-      const infoWindow = new window.google.maps.InfoWindow({
-        content: infoContent
-      });
-
-      infoWindow.open(map, marker);
-      marker.addListener("click", () => {
-        infoWindow.open(map, marker);
-      });
-    };
-
-    const loadGoogleMaps = async () => {
-      try {
-        const response = await fetch('https://eymjmdusrvpdhprduwrf.supabase.co/functions/v1/secure-maps');
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch API key from secure endpoint');
-        }
-        
-        const mapData = await response.json();
-        const apiKey = mapData.apiKey;
-        
-        if (!apiKey) {
-          throw new Error('No API key returned from secure endpoint');
-        }
-
-        if (typeof window.google === 'undefined' || !window.google?.maps) {
-          const script = document.createElement('script');
-          script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=initMap`;
-          script.async = true;
-          script.defer = true;
-          window.initMap = initMap;
-          document.head.appendChild(script);
-        } else {
-          initMap();
-        }
-      } catch (err) {
-        console.error('Error loading Google Maps:', err);
-        // Display error message instead of exposing hardcoded API key
-        if (mapRef.current) {
-          mapRef.current.innerHTML = `
-            <div class="flex items-center justify-center h-full">
-              <div class="text-center text-muted-foreground">
-                <p>No se pudo cargar el mapa.</p>
-                <p class="text-sm mt-2">Por favor, intente nuevamente más tarde.</p>
-              </div>
-            </div>
-          `;
-        }
-      }
-    };
-
-    loadGoogleMaps();
-  }, [isMapVisible]);
+  const googleMapsUrl = "https://www.google.com/maps/dir/?api=1&destination=-38.94752447171344,-68.0050617242484";
 
   return (
-    <section id="ubicacion" className="pb-15" style={{ backgroundColor: '#f4f4f4' }} ref={containerRef}>
-      {isMapVisible ? (
-        <div
-          ref={mapRef}
-          id="map"
-          className="w-full"
-          style={{ height: '450px', backgroundColor: '#f4f4f4' }}
-        />
-      ) : (
-        <div
-          className="w-full flex items-center justify-center"
-          style={{ height: '450px', backgroundColor: '#f4f4f4' }}
+    <section id="ubicacion" className="relative" style={{ backgroundColor: '#f4f4f4' }}>
+      {/* Info Card Overlay */}
+      <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10 bg-white rounded-lg shadow-lg p-4 max-w-sm w-[90%] sm:w-auto">
+        <button 
+          className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-xl leading-none"
+          onClick={(e) => {
+            const card = e.currentTarget.parentElement;
+            if (card) card.style.display = 'none';
+          }}
         >
-          <div className="text-muted-foreground">Cargando mapa...</div>
-        </div>
-      )}
+          ×
+        </button>
+        <h3 className="text-primary font-semibold text-lg mb-2">Codelco S.A</h3>
+        <p className="text-gray-700 text-sm mb-1">
+          Ruta 22 Km 1214, R8324 Cipolletti, Río Negro
+        </p>
+        <p className="text-gray-700 text-sm mb-3">
+          Días: Lunes a viernes Horario: 8-12hs / 15-19hs
+        </p>
+        <a 
+          href={googleMapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline text-sm font-medium"
+        >
+          Cómo llegar
+        </a>
+      </div>
+
+      {/* Google Maps Embed */}
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3102.9695298942265!2d-68.0050617242484!3d-38.94752447171344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x960a3100788a8f25%3A0xba6a9741f286941f!2sCodelco%20S.A!5e0!3m2!1ses!2sar!4v1767046379563!5m2!1ses!2sar"
+        width="100%"
+        height="450"
+        style={{ border: 0 }}
+        allowFullScreen
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        title="Ubicación de Codelco S.A"
+      />
     </section>
   );
 };
