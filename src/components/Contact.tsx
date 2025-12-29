@@ -339,7 +339,7 @@ const Contact = () => {
       </div>
 
       {/* Map Section - Full width outside container */}
-      <div className="w-full">
+      <div className="w-full relative">
         <div className="w-full h-[450px]" id="map">
           {isMapVisible ? (
             <iframe
@@ -355,6 +355,22 @@ const Contact = () => {
               <div className="text-muted-foreground">{t('contact.map.loading')}</div>
             </div>
           )}
+        </div>
+
+        {/* Info Card Overlay */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-white rounded-lg shadow-lg p-4 max-w-xs sm:max-w-sm">
+          <h3 className="font-bold text-lg mb-2" style={{ color: '#d25840' }}>Codelco S.A</h3>
+          <p className="text-sm text-foreground mb-1">Ruta 22 Km 1214, R8324 Cipolletti, Río Negro</p>
+          <p className="text-sm text-foreground mb-3">Días: Lunes a viernes Horario: 8-12hs / 15-19hs</p>
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=-38.947524,-68.002487"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-semibold hover:underline"
+            style={{ color: '#d25840' }}
+          >
+            {t('contact.map.directions')}
+          </a>
         </div>
       </div>
     </section>;
