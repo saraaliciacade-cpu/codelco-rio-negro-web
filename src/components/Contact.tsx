@@ -358,15 +358,15 @@ const Contact = () => {
         </div>
 
         {/* Info Card Overlay */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 bg-white rounded-lg shadow-lg p-4 max-w-xs sm:max-w-sm">
-          <h3 className="font-bold text-lg mb-2" style={{ color: '#d25840' }}>Codelco S.A</h3>
-          <p className="text-sm text-foreground mb-1">Ruta 22 Km 1214, R8324 Cipolletti, Río Negro</p>
-          <p className="text-sm text-foreground mb-3">Días: Lunes a viernes Horario: 8-12hs / 15-19hs</p>
+        <div className="absolute top-2 sm:top-4 left-2 right-2 sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-10 bg-white rounded-lg shadow-lg p-3 sm:p-4 sm:max-w-sm">
+          <h3 className="font-bold text-base sm:text-lg mb-1 sm:mb-2" style={{ color: '#d25840' }}>Codelco S.A</h3>
+          <p className="text-xs sm:text-sm text-foreground mb-0.5 sm:mb-1">Ruta 22 Km 1214, R8324 Cipolletti, Río Negro</p>
+          <p className="text-xs sm:text-sm text-foreground mb-2 sm:mb-3">Lun a Vie: 8-12hs / 15-19hs</p>
           <a
             href="https://www.google.com/maps/dir/?api=1&destination=-38.947524,-68.002487"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold hover:underline"
+            className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold hover:underline"
             style={{ color: '#d25840' }}
           >
             {t('contact.map.directions')}
