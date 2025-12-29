@@ -34,16 +34,9 @@ const contactFormSchema = z.object({
   website: z.string().optional().or(z.literal('')) // Honeypot field
 });
 
-declare global {
-  interface Window {
-    google: any;
-    initMap: () => void;
-  }
-}
 const Contact = () => {
   const { toast } = useToast();
   const { t } = useLanguage();
-  const mapRef = useRef<HTMLDivElement>(null);
   const [isMapVisible, setIsMapVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -158,126 +151,8 @@ const Contact = () => {
     return () => observer.disconnect();
   }, [isMapVisible]);
 
-  useEffect(() => {
-    if (!mapRef.current || !isMapVisible) return;
+  // Note: Google Maps JS API removed (no API key / billing required).
 
-    let scriptLoaded = false;
-
-    const initMap = async () => {
-      try {
-        // Use secure-maps edge function to fetch API key and location data
-        const response = await fetch('https://eymjmdusrvpdhprduwrf.supabase.co/functions/v1/secure-maps', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          }
-        });
-        
-        if (!response.ok) {
-          throw new Error('Failed to fetch maps data');
-        }
-        
-        const mapsData = await response.json();
-
-        if (mapsData && mapsData.apiKey) {
-          // Check if Google Maps is already loaded
-          if (typeof window.google !== 'undefined' && window.google?.maps) {
-            // Google Maps already loaded, just create the map
-            const locationData = mapsData.locations?.[0] || { 
-              latitude: -38.947524, 
-              longitude: -68.002487,
-              name: 'Codelco S.A',
-              address: t('contact.address.value')
-            };
-            const codelcoLocation = { lat: Number(locationData.latitude), lng: Number(locationData.longitude) };
-            createMap(codelcoLocation, locationData.name || 'Codelco S.A', locationData.address || t('contact.address.value'));
-            return;
-          }
-
-          // Load Google Maps script with secure API key
-          const script = document.createElement('script');
-          script.src = `https://maps.googleapis.com/maps/api/js?key=${mapsData.apiKey}&callback=initMap`;
-          script.async = true;
-          script.defer = true;
-          
-          window.initMap = () => {
-            if (scriptLoaded) return; // Prevent double initialization
-            scriptLoaded = true;
-
-            const locationData = mapsData.locations?.[0] || { 
-              latitude: -38.947524, 
-              longitude: -68.002487,
-              name: 'Codelco S.A',
-              address: t('contact.address.value')
-            };
-            
-            const codelcoLocation = { lat: Number(locationData.latitude), lng: Number(locationData.longitude) };
-            createMap(codelcoLocation, locationData.name || 'Codelco S.A', locationData.address || t('contact.address.value'));
-          };
-          
-          // Add error handler for script loading
-          script.onerror = () => {
-            toast({
-              title: 'Map Error',
-              description: 'Could not load Google Maps. Please check your connection.',
-              variant: "destructive",
-            });
-          };
-
-          document.head.appendChild(script);
-        }
-      } catch (err) {
-        toast({
-          title: 'Map Error',
-          description: 'An unexpected error occurred loading the map.',
-          variant: "destructive",
-        });
-      }
-    };
-
-    const createMap = (location: { lat: number; lng: number }, name: string, address: string) => {
-      if (!mapRef.current) return;
-
-      const map = new window.google.maps.Map(mapRef.current, {
-        center: location,
-        zoom: 12,
-        mapId: "30fd671af640a655e95c3547"
-      });
-
-      const marker = new window.google.maps.Marker({
-        position: location,
-        map,
-        title: name
-      });
-
-      const formattedAddress = address.replace(/\n/g, '<br>');
-      const infoContent = `
-        <div style="padding: 8px;">
-          <strong style="font-size: 16px; color: #d25840;">${name}</strong><br>
-          <div style="margin-top: 8px; color: #333;">${formattedAddress}</div>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}" target="_blank" rel="noopener noreferrer" style="color: #d25840; text-decoration: none; font-weight: 600; margin-top: 8px; display: inline-block;">${t('contact.map.directions')}</a>
-        </div>
-      `;
-
-      const infoWindow = new window.google.maps.InfoWindow({
-        content: infoContent
-      });
-
-      infoWindow.open(map, marker);
-      marker.addListener("click", () => {
-        infoWindow.open(map, marker);
-      });
-    };
-
-    initMap();
-
-    // Cleanup function
-    return () => {
-      if (window.initMap) {
-        delete window.initMap;
-      }
-    };
-  }, [isMapVisible, t, toast]);
   return <section id="contacto" className="pt-6 pb-15 mt-20" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '40px', borderTopRightRadius: '40px', boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.15)' }}>
       <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-7xl">
         <div>
@@ -465,20 +340,18 @@ const Contact = () => {
 
       {/* Map Section - Full width outside container */}
       <div className="w-full">
-        <div className="w-full" style={{ height: '450px' }}>
+        <div className="w-full h-[450px]" id="map">
           {isMapVisible ? (
-            <div
-              ref={mapRef}
-              id="map"
-              className="w-full h-full"
-              style={{ backgroundColor: '#f4f4f4' }}
+            <iframe
+              className="w-full h-full border-0"
+              title="Codelco ubicación"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=-38.947524,-68.002487&z=14&output=embed"
+              allowFullScreen
             />
           ) : (
-            <div
-              id="map"
-              className="w-full h-full flex items-center justify-center"
-              style={{ backgroundColor: '#f4f4f4' }}
-            >
+            <div className="w-full h-full flex items-center justify-center bg-muted">
               <div className="text-muted-foreground">{t('contact.map.loading')}</div>
             </div>
           )}
