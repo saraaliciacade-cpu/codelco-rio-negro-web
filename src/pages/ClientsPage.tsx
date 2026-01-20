@@ -37,7 +37,7 @@ import veinticincoMayoLogo from '@/assets/clients/25-de-mayo-new.png';
 const ClientsPage = () => {
   // All clients combined
   const allClients = [
-    { name: "Compresco", logo: comprescoLogo },
+    { name: "Compressco LP", logo: comprescoLogo },
     { name: "Transportes Crexell S.A.", logo: crexellLogo },
     { name: "Datum S.A.", logo: datumLogo },
     { name: "E&G Servicios SRL", logo: egServiciosLogo },

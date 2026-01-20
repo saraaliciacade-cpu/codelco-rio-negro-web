@@ -41,7 +41,7 @@ const Clients = () => {
   const isMobile = useIsMobile();
   // First 10 clients with actual logos
   const clientsRow1 = [
-    { name: "Compresco", logo: comprescoLogo },
+    { name: "Compressco LP", logo: comprescoLogo },
     { name: "Transportes Crexell S.A.", logo: crexellLogo },
     { name: "Datum S.A.", logo: datumLogo },
     { name: "E&G Servicios SRL", logo: egServiciosLogo },
