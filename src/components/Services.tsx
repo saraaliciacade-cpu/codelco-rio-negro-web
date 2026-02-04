@@ -60,14 +60,10 @@ const Services = () => {
             {/* Tarjeta unificada con las dos secciones */}
             <div className="bg-white border border-border shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 overflow-hidden">
               {/* Header que ocupa todo el ancho */}
-              <div className="bg-primary text-white px-6 py-4 relative">
+              <div className="bg-primary text-white px-6 py-4">
                 <h3 className="text-lg md:text-xl font-bold uppercase tracking-wide text-center font-ramabhadra">
                   TRAILERS AUTOPORTANTES Y EQUIPOS SOBRE VIGA
                 </h3>
-                {/* Badge NOVEDAD redondo, abajo a la derecha */}
-                <span className="absolute bottom-2 right-3 bg-neutral-600 text-white font-semibold px-3 py-1 text-xs rounded-full">
-                  NOVEDAD
-                </span>
               </div>
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -314,7 +310,7 @@ const NovedadCarousel = () => {
     <div className="relative overflow-hidden rounded-lg shadow-lg h-full min-h-[300px]">
       {/* Badge NUEVO dentro del carousel, arriba a la derecha */}
       <Badge className="absolute top-3 right-3 z-10 bg-primary text-white font-semibold px-3 py-1 text-xs shadow-lg">
-        NUEVO
+        NOVEDADES
       </Badge>
       <div className="relative h-full">
         {images.map((image, index) => (
