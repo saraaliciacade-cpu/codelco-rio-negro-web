@@ -153,16 +153,18 @@ const Contact = () => {
 
   // Note: Google Maps JS API removed (no API key / billing required).
 
-  return <section id="contacto" className="pt-6 pb-15 mt-20 relative overflow-hidden" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '40px', borderTopRightRadius: '40px', boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.15)' }}>
-      {/* Imagen de fondo decorativa */}
+  return <section id="contacto" className="pt-6 pb-15 mt-20 relative" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '40px', borderTopRightRadius: '40px', boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.15)' }}>
+      {/* Imagen de fondo decorativa - solo en el área del formulario */}
       <div 
-        className="absolute right-0 top-0 w-full h-full pointer-events-none"
+        className="absolute right-0 bottom-[450px] pointer-events-none hidden lg:block"
         style={{
           backgroundImage: 'url(/images/contact-bg.png)',
           backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'right top',
-          backgroundSize: 'auto 100%',
-          opacity: 0.8
+          backgroundPosition: 'right bottom',
+          backgroundSize: 'contain',
+          width: '600px',
+          height: '400px',
+          opacity: 0.9
         }}
       />
       <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-7xl relative z-10">
