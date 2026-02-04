@@ -139,6 +139,18 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      check_and_increment_rate_limit: {
+        Args: {
+          p_ip_address: unknown
+          p_max_requests?: number
+          p_window_seconds?: number
+        }
+        Returns: {
+          allowed: boolean
+          current_count: number
+          retry_after: number
+        }[]
+      }
       cleanup_rate_limits: { Args: never; Returns: undefined }
     }
     Enums: {

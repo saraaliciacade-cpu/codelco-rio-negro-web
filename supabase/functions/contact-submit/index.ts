@@ -197,59 +197,31 @@ serve(async (req) => {
     const clientIP = forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown';
     const userAgent = req.headers.get('user-agent') || 'unknown';
 
-    // Rate limiting check
-    const { data: rateLimitData, error: rateLimitError } = await supabase
-      .from('rate_limit')
-      .select('submission_count, window_start')
-      .eq('ip_address', clientIP)
+    // Atomic rate limiting check using database function (prevents race conditions)
+    const { data: rateLimitResult, error: rateLimitError } = await supabase
+      .rpc('check_and_increment_rate_limit', {
+        p_ip_address: clientIP,
+        p_max_requests: RATE_LIMIT_MAX,
+        p_window_seconds: RATE_LIMIT_WINDOW
+      })
       .single();
 
-    if (rateLimitData) {
-      const windowStart = new Date(rateLimitData.window_start);
-      const now = new Date();
-      const timeDiff = (now.getTime() - windowStart.getTime()) / 1000; // in seconds
-
-      if (timeDiff < RATE_LIMIT_WINDOW) {
-        // Within the current window
-        if (rateLimitData.submission_count >= RATE_LIMIT_MAX) {
-          console.log(`Rate limit exceeded for IP: ${clientIP}`);
-          return new Response(
-            JSON.stringify({ error: 'Too many requests. Please try again later.' }),
-            { 
-              status: 429, 
-              headers: { 
-                ...headers, 
-                'Content-Type': 'application/json',
-                'Retry-After': String(Math.ceil(RATE_LIMIT_WINDOW - timeDiff))
-              }
-            }
-          );
+    if (rateLimitError) {
+      console.error('Rate limit check error:', rateLimitError);
+      // Continue without rate limiting if check fails (fail-open for availability)
+    } else if (rateLimitResult && !rateLimitResult.allowed) {
+      console.log(`Rate limit exceeded for IP: ${clientIP}`);
+      return new Response(
+        JSON.stringify({ error: 'Too many requests. Please try again later.' }),
+        { 
+          status: 429, 
+          headers: { 
+            ...headers, 
+            'Content-Type': 'application/json',
+            'Retry-After': String(rateLimitResult.retry_after || RATE_LIMIT_WINDOW)
+          }
         }
-        
-        // Increment counter
-        await supabase
-          .from('rate_limit')
-          .update({ submission_count: rateLimitData.submission_count + 1 })
-          .eq('ip_address', clientIP);
-      } else {
-        // Window expired, reset counter
-        await supabase
-          .from('rate_limit')
-          .update({ 
-            submission_count: 1, 
-            window_start: now.toISOString() 
-          })
-          .eq('ip_address', clientIP);
-      }
-    } else {
-      // First submission from this IP
-      await supabase
-        .from('rate_limit')
-        .insert({
-          ip_address: clientIP,
-          submission_count: 1,
-          window_start: new Date().toISOString()
-        });
+      );
     }
 
     // Insert contact submission with security metadata
