@@ -74,8 +74,8 @@ const Services = () => {
               <div className="p-4 md:p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {/* Trailers Autoportantes */}
-                  <div>
-                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-ramabhadra">Trailers Autoportantes</h3>
+                  <div className="group/trailer">
+                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-ramabhadra transition-colors duration-300 group-hover/trailer:text-primary">Trailers Autoportantes</h3>
                     <p className="text-xs md:text-sm mb-3 md:mb-4 font-nunito text-card-foreground">
                       Construidos con estructuras de acero de alta resistencia, soportan el peso total del módulo sin apoyos externos.
                     </p>
@@ -105,8 +105,8 @@ const Services = () => {
                   </div>
 
                   {/* Equipos sobre Viga */}
-                  <div>
-                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-ramabhadra">Equipos sobre Viga</h3>
+                  <div className="group/viga">
+                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-ramabhadra transition-colors duration-300 group-hover/viga:text-primary">Equipos sobre Viga</h3>
                     <p className="text-xs md:text-sm mb-3 md:mb-4 font-nunito text-secondary-foreground">
                       Sistemas sobre vigas de acero para estabilidad y eficiencia en aplicaciones industriales de alta exigencia.
                     </p>
@@ -216,8 +216,8 @@ const Services = () => {
                 
                 {/* Imagen integrada en móvil para Generadores */}
                 {service.id === 'generators' && service.image && (
-                  <div className="lg:hidden h-48 overflow-hidden">
-                    <img src={service.image} alt="Grupos Electrógenos - Codelco" className="w-full h-full object-cover" />
+                  <div className="lg:hidden h-52 overflow-hidden">
+                    <img src={service.image} alt="Grupos Electrógenos - Codelco" className="w-full h-full object-cover object-center scale-110" />
                   </div>
                 )}
 
