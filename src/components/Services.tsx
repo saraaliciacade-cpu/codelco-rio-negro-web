@@ -82,6 +82,79 @@ const Services = () => {
           </h2>
         </div>
 
+        {/* Nueva sección de Novedad */}
+        <div className="mb-8 md:mb-12">
+          <div className="text-center mb-6">
+            <span className="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide">
+              NOVEDAD · TRAILERS AUTOPORTANTES Y EQUIPOS SOBRE VIGA
+            </span>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {/* Tarjeta Trailers Autoportantes */}
+            <div className="bg-white border-2 border-primary rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <h3 className="text-xl font-bold text-foreground mb-3 font-ramabhadra">Trailers Autoportantes</h3>
+              <p className="text-sm text-muted-foreground mb-4 font-nunito">
+                Construidos con estructuras de acero de alta resistencia, los trailers autoportantes soportan el peso total del módulo y sus equipamientos, sin necesidad de apoyos externos adicionales.
+              </p>
+              <h4 className="text-sm font-bold text-primary mb-2 font-montserrat">Características principales:</h4>
+              <ul className="text-sm text-foreground space-y-2 font-nunito">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>Estructura autoportante robusta y segura</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>Listos para traslado e instalación inmediata</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>Diseñados para oficinas móviles, módulos operativos, salas técnicas o habitacionales</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>Configuración adaptable según los requerimientos del proyecto</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>Aptos para uso industrial, petrolero y de obra</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Tarjeta Equipos sobre Viga */}
+            <div className="bg-white border-2 border-primary rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <h3 className="text-xl font-bold text-foreground mb-3 font-ramabhadra">Equipos sobre Viga</h3>
+              <p className="text-sm text-muted-foreground mb-4 font-nunito">
+                Sistemas montados o apoyados sobre vigas estructurales de acero, desarrollados para garantizar estabilidad, seguridad y eficiencia en aplicaciones industriales de alta exigencia.
+              </p>
+              <h4 className="text-sm font-bold text-primary mb-2 font-montserrat">Ventajas:</h4>
+              <ul className="text-sm text-foreground space-y-2 font-nunito">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>Mayor estabilidad estructural</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>Capacidad para soportar cargas pesadas</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>Instalación modular y rápida</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>Flexibilidad para obras temporales o montajes industriales</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-1">•</span>
+                  <span>Optimización de tiempos y costos de montaje</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-center gap-4 md:gap-6 max-w-full mx-auto">
           {services.map((service, index) => {
             // Inclinación sutil: primera arriba, segunda un poco más abajo, tercera un poco más abajo, cuarta aún más abajo
