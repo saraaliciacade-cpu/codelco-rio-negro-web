@@ -58,7 +58,7 @@ const Services = () => {
         <div className="mb-8 md:mb-12">
           <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto">
             {/* Tarjeta unificada con las dos secciones */}
-            <div className="bg-white border border-border shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 overflow-hidden">
+            <div className="bg-white border border-border shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 overflow-hidden rounded-2xl">
               {/* Header que ocupa todo el ancho */}
               <div className="bg-primary text-white px-4 py-3 md:px-6 md:py-4">
                 <h3 className="text-base md:text-xl font-bold uppercase tracking-wide text-center font-ramabhadra">
@@ -192,7 +192,7 @@ const Services = () => {
                 return service.subtitle;
             }
           };
-          return <div key={service.id} className={`bg-white border border-border overflow-hidden transition-all duration-300 ease-in-out md:hover:scale-105 hover:shadow-xl hover:shadow-black/10 hover:z-10 relative group lg:w-80 lg:flex-shrink-0 ${getStaggerClass(index)}`}>
+          return <div key={service.id} className={`bg-white border border-border overflow-hidden transition-all duration-300 ease-in-out md:hover:scale-105 hover:shadow-xl hover:shadow-black/10 hover:z-10 relative group lg:w-80 lg:flex-shrink-0 rounded-2xl ${getStaggerClass(index)}`}>
                 {/* NEW Badge */}
                 {service.isNew && <div className="absolute top-3 right-3 md:top-4 md:right-4 z-10">
                     <Badge className="bg-neutral-800 text-white hover:bg-neutral-700 rounded-full px-2 py-0.5 md:px-3 md:py-1 text-xs font-bold shadow-lg">
