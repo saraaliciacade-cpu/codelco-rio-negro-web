@@ -62,67 +62,77 @@ const Services = () => {
             </span>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {/* Tarjeta Trailers Autoportantes */}
-            <div className="bg-white border-2 border-primary rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-xl font-bold text-foreground mb-3 font-ramabhadra">Trailers Autoportantes</h3>
-              <p className="text-sm mb-4 font-nunito text-card-foreground">
-                Construidos con estructuras de acero de alta resistencia, los trailers autoportantes soportan el peso total del módulo y sus equipamientos, sin necesidad de apoyos externos adicionales.
-              </p>
-              <h4 className="text-sm font-bold text-primary mb-2 font-montserrat">Características principales:</h4>
-              <ul className="text-sm text-foreground space-y-2 font-nunito">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Estructura autoportante robusta y segura</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Listos para traslado e instalación inmediata</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Diseñados para oficinas móviles, módulos operativos, salas técnicas o habitacionales</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Configuración adaptable según los requerimientos del proyecto</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Aptos para uso industrial, petrolero y de obra</span>
-                </li>
-              </ul>
+          <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto">
+            {/* Tarjeta unificada con las dos secciones */}
+            <div className="bg-white border-2 border-primary rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Trailers Autoportantes */}
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-2 font-ramabhadra">Trailers Autoportantes</h3>
+                  <p className="text-xs mb-3 font-nunito text-card-foreground">
+                    Construidos con estructuras de acero de alta resistencia, soportan el peso total del módulo sin apoyos externos.
+                  </p>
+                  <h4 className="text-xs font-bold text-primary mb-2 font-montserrat">Características:</h4>
+                  <ul className="text-xs text-foreground space-y-1 font-nunito">
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>Estructura robusta y segura</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>Listos para traslado inmediato</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>Oficinas, módulos operativos y habitacionales</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>Configuración adaptable</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>Uso industrial, petrolero y de obra</span>
+                    </li>
+                  </ul>
+                </div>
+
+                {/* Equipos sobre Viga */}
+                <div>
+                  <h3 className="text-lg font-bold text-foreground mb-2 font-ramabhadra">Equipos sobre Viga</h3>
+                  <p className="text-xs mb-3 font-nunito text-secondary-foreground">
+                    Sistemas sobre vigas de acero para estabilidad y eficiencia en aplicaciones industriales de alta exigencia.
+                  </p>
+                  <h4 className="text-xs font-bold text-primary mb-2 font-montserrat">Ventajas:</h4>
+                  <ul className="text-xs text-foreground space-y-1 font-nunito">
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>Mayor estabilidad estructural</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>Soporta cargas pesadas</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>Instalación modular y rápida</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>Flexibilidad para obras temporales</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <span className="text-primary">•</span>
+                      <span>Optimiza tiempos y costos</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
 
-            {/* Tarjeta Equipos sobre Viga */}
-            <div className="bg-white border-2 border-primary rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <h3 className="text-xl font-bold text-foreground mb-3 font-ramabhadra">Equipos sobre Viga</h3>
-              <p className="text-sm mb-4 font-nunito text-secondary-foreground">
-                Sistemas montados o apoyados sobre vigas estructurales de acero, desarrollados para garantizar estabilidad, seguridad y eficiencia en aplicaciones industriales de alta exigencia.
-              </p>
-              <h4 className="text-sm font-bold text-primary mb-2 font-montserrat">Ventajas:</h4>
-              <ul className="text-sm text-foreground space-y-2 font-nunito">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Mayor estabilidad estructural</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Capacidad para soportar cargas pesadas</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Instalación modular y rápida</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Flexibilidad para obras temporales o montajes industriales</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">•</span>
-                  <span>Optimización de tiempos y costos de montaje</span>
-                </li>
-              </ul>
+            {/* Carousel de imágenes */}
+            <div className="lg:w-96 flex-shrink-0">
+              <NovedadCarousel />
             </div>
           </div>
         </div>
@@ -268,8 +278,7 @@ const ImageCarousel = ({
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
-    }, 6000); // Cambia cada 6 segundos
-
+    }, 6000);
     return () => clearInterval(interval);
   }, [images.length]);
   return <div className="mt-4 md:mt-6 relative overflow-hidden rounded-lg shadow-md">
@@ -277,5 +286,40 @@ const ImageCarousel = ({
         {images.map((image, index) => <img key={index} src={image} alt={`${serviceId} - imagen ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`} loading="lazy" />)}
       </div>
     </div>;
+};
+
+// Componente de Carousel para Novedad
+const NovedadCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const images = [
+    '/images/novedad/novedad-01.jpg',
+    '/images/novedad/novedad-02.jpg',
+    '/images/novedad/novedad-03.jpg',
+    '/images/novedad/novedad-04.jpg',
+    '/images/novedad/novedad-05.jpg'
+  ];
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex(prevIndex => (prevIndex + 1) % images.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [images.length]);
+  
+  return (
+    <div className="relative overflow-hidden rounded-lg shadow-lg h-full min-h-[300px]">
+      <div className="relative h-full">
+        {images.map((image, index) => (
+          <img 
+            key={index} 
+            src={image} 
+            alt={`Novedad - imagen ${index + 1}`} 
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`} 
+            loading="lazy" 
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 export default Services;
