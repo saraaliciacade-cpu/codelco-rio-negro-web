@@ -199,9 +199,7 @@ const Services = () => {
                   </div>}
                 
                 {/* Header with colored background */}
-                <div className="px-4 py-6 md:px-6 md:py-8 text-center" style={{
-              backgroundColor: service.id === 'fabrica' || service.id === 'rental' ? '#333333' : '#d25840'
-            }}>
+                <div className={`px-4 py-6 md:px-6 md:py-8 text-center ${service.id === 'fabrica' || service.id === 'rental' ? 'bg-foreground' : 'bg-primary'}`}>
                   <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white uppercase tracking-wide font-ramabhadra">
                     {service.id === 'fabrica' ? t('services.factory.title') : service.id === 'metalurgica' ? t('services.metallurgical.title') : service.id === 'rental' ? t('services.rental.title') : t('services.generators.title')}
                   </h3>
