@@ -132,12 +132,7 @@ const Services = () => {
 
             {/* Carousel de imágenes */}
             <div className="lg:w-96 flex-shrink-0">
-              <div className="relative">
-                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-primary text-white font-semibold px-3 py-1 text-xs shadow-lg">
-                  NUEVO
-                </Badge>
-                <NovedadCarousel />
-              </div>
+              <NovedadCarousel />
             </div>
           </div>
         </div>
@@ -313,6 +308,10 @@ const NovedadCarousel = () => {
   
   return (
     <div className="relative overflow-hidden rounded-lg shadow-lg h-full min-h-[300px]">
+      {/* Badge NUEVO dentro del carousel, arriba a la derecha */}
+      <Badge className="absolute top-3 right-3 z-10 bg-primary text-white font-semibold px-3 py-1 text-xs shadow-lg">
+        NUEVO
+      </Badge>
       <div className="relative h-full">
         {images.map((image, index) => (
           <img 
