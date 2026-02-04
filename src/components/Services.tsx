@@ -58,16 +58,18 @@ const Services = () => {
         <div className="mb-8 md:mb-12">
           <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto">
             {/* Tarjeta unificada con las dos secciones */}
-            <div className="bg-white border border-border shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 overflow-hidden relative">
-              {/* Badge NOVEDAD en esquina superior derecha */}
-              <Badge className="absolute top-3 right-3 z-10 bg-primary text-white font-semibold px-3 py-1 text-xs shadow-lg">
-                NOVEDAD
-              </Badge>
+            <div className="bg-white border border-border shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 overflow-hidden">
               {/* Header que ocupa todo el ancho */}
               <div className="bg-primary text-white px-6 py-4">
                 <h3 className="text-lg md:text-xl font-bold uppercase tracking-wide text-center font-ramabhadra">
                   TRAILERS AUTOPORTANTES Y EQUIPOS SOBRE VIGA
                 </h3>
+                {/* Badge NOVEDAD dentro del header, abajo y gris */}
+                <div className="text-center mt-2">
+                  <span className="inline-block bg-neutral-600 text-white font-semibold px-3 py-1 text-xs">
+                    NOVEDAD
+                  </span>
+                </div>
               </div>
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
