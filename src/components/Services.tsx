@@ -68,12 +68,12 @@ const Services = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Trailers Autoportantes */}
                 <div>
-                  <h3 className="text-lg font-bold text-foreground mb-2 font-ramabhadra">Trailers Autoportantes</h3>
-                  <p className="text-xs mb-3 font-nunito text-card-foreground">
+                  <h3 className="text-xl font-bold text-foreground mb-3 font-ramabhadra">Trailers Autoportantes</h3>
+                  <p className="text-sm mb-4 font-nunito text-card-foreground">
                     Construidos con estructuras de acero de alta resistencia, soportan el peso total del módulo sin apoyos externos.
                   </p>
-                  <h4 className="text-xs font-bold text-primary mb-2 font-montserrat">Características:</h4>
-                  <ul className="text-xs text-foreground space-y-1 font-nunito">
+                  <h4 className="text-sm font-bold text-primary mb-2 font-montserrat">Características:</h4>
+                  <ul className="text-sm text-foreground space-y-2 font-nunito">
                     <li className="flex items-start gap-2">
                       <span className="text-primary">•</span>
                       <span>Estructura robusta y segura</span>
@@ -99,12 +99,12 @@ const Services = () => {
 
                 {/* Equipos sobre Viga */}
                 <div>
-                  <h3 className="text-lg font-bold text-foreground mb-2 font-ramabhadra">Equipos sobre Viga</h3>
-                  <p className="text-xs mb-3 font-nunito text-secondary-foreground">
+                  <h3 className="text-xl font-bold text-foreground mb-3 font-ramabhadra">Equipos sobre Viga</h3>
+                  <p className="text-sm mb-4 font-nunito text-secondary-foreground">
                     Sistemas sobre vigas de acero para estabilidad y eficiencia en aplicaciones industriales de alta exigencia.
                   </p>
-                  <h4 className="text-xs font-bold text-primary mb-2 font-montserrat">Ventajas:</h4>
-                  <ul className="text-xs text-foreground space-y-1 font-nunito">
+                  <h4 className="text-sm font-bold text-primary mb-2 font-montserrat">Ventajas:</h4>
+                  <ul className="text-sm text-foreground space-y-2 font-nunito">
                     <li className="flex items-start gap-2">
                       <span className="text-primary">•</span>
                       <span>Mayor estabilidad estructural</span>
