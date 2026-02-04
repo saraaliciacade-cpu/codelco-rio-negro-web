@@ -193,3 +193,34 @@ All colors MUST be HSL.
 .animate-infinite-scroll-reverse {
   animation: infinite-scroll-reverse 45s linear infinite;
 }
+
+/* Responsive animation timing and width for clients carousel */
+.clients-carousel {
+  /* 10 logos × (160px width + 32px margin) × 2 sets = 3840px on mobile */
+  width: 3840px;
+}
+
+@media (min-width: 768px) {
+  /* 10 logos × (224px width + 64px margin) × 2 sets = 5760px on desktop */
+  .clients-carousel {
+    width: 5760px;
+  }
+  
+  .animate-infinite-scroll-smooth {
+    animation-duration: 45s;
+  }
+  
+  .animate-infinite-scroll-reverse {
+    animation-duration: 45s;
+  }
+}
+
+@media (max-width: 767px) {
+  .animate-infinite-scroll-smooth {
+    animation-duration: 35s;
+  }
+  
+  .animate-infinite-scroll-reverse {
+    animation-duration: 35s;
+  }
+}
