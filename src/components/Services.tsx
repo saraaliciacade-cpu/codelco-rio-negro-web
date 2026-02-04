@@ -213,6 +213,13 @@ const Services = () => {
                     <ImageCarousel images={service.images} serviceId={service.id} isMobile={true} />
                   </div>
                 )}
+                
+                {/* Imagen integrada en móvil para Generadores */}
+                {service.id === 'generators' && service.image && (
+                  <div className="lg:hidden h-48 overflow-hidden">
+                    <img src={service.image} alt="Grupos Electrógenos - Codelco" className="w-full h-full object-cover" />
+                  </div>
+                )}
 
                 {/* Content */}
                 <div className="p-4 md:p-6">
@@ -248,7 +255,7 @@ const Services = () => {
                           {t('services.generators.description2').split('**').map((part, partIndex) => partIndex % 2 === 1 ? <strong key={partIndex} className="font-montserrat font-black">{part}</strong> : part)}
                         </p>
                         <p>{t('services.generators.description3')}</p>
-                        {service.image && <div className="mt-4 md:mt-6">
+                        {service.image && <div className="hidden lg:block mt-4 md:mt-6">
                             <img src={service.image} alt="Grupos Electrógenos - Codelco" className="w-full h-auto rounded-lg shadow-md" loading="lazy" />
                           </div>}
                       </>}
