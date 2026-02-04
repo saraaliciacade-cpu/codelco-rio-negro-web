@@ -207,16 +207,14 @@ const Services = () => {
                   </h3>
                 </div>
 
-                {/* Carousel integrado en móvil - justo después del header */}
+                {/* Carousel integrado después del header - visible en todas las pantallas */}
                 {(service.id === 'fabrica' || service.id === 'metalurgica' || service.id === 'rental') && service.images && (
-                  <div className="lg:hidden">
-                    <ImageCarousel images={service.images} serviceId={service.id} isMobile={true} />
-                  </div>
+                  <ImageCarousel images={service.images} serviceId={service.id} isMobile={true} />
                 )}
                 
-                {/* Imagen integrada en móvil para Generadores */}
+                {/* Imagen integrada para Generadores - visible en todas las pantallas */}
                 {service.id === 'generators' && service.image && (
-                  <div className="lg:hidden h-52 overflow-hidden">
+                  <div className="h-48 lg:h-52 overflow-hidden">
                     <img src={service.image} alt="Grupos Electrógenos - Codelco" className="w-full h-full object-cover object-center scale-110" />
                   </div>
                 )}
@@ -255,17 +253,9 @@ const Services = () => {
                           {t('services.generators.description2').split('**').map((part, partIndex) => partIndex % 2 === 1 ? <strong key={partIndex} className="font-montserrat font-black">{part}</strong> : part)}
                         </p>
                         <p>{t('services.generators.description3')}</p>
-                        {service.image && <div className="hidden lg:block mt-4 md:mt-6">
-                            <img src={service.image} alt="Grupos Electrógenos - Codelco" className="w-full h-auto rounded-lg shadow-md" loading="lazy" />
-                          </div>}
                       </>}
                     
-                    {/* Carousel de imágenes solo en desktop para Fábrica, Metalúrgica y Rental */}
-                    {(service.id === 'fabrica' || service.id === 'metalurgica' || service.id === 'rental') && service.images && (
-                      <div className="hidden lg:block">
-                        <ImageCarousel images={service.images} serviceId={service.id} isMobile={false} />
-                      </div>
-                    )}
+                    {/* Sin carousel duplicado - ya está arriba */}
                   </div>
 
                   <div className="text-center">
