@@ -11,8 +11,15 @@ const Company = () => {
       }, 100);
     }
   }, []);
-  return <section className="py-8 md:py-12 bg-background">
-      <div className="container mx-auto px-4 md:px-8">
+  return <section className="py-8 md:py-12 bg-background relative overflow-hidden">
+      {/* Decorative background image */}
+      <img 
+        src="/images/company-bg.png" 
+        alt="" 
+        className="absolute left-0 top-0 opacity-90 hidden lg:block pointer-events-none"
+        style={{ maxWidth: 'none' }}
+      />
+      <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="text-center mb-6 md:mb-8">
           <h2 className="titulo-seccion font-ramabhadra inline-block text-2xl md:text-4xl">
             <span className="text-foreground">{t('company.title').split(' ')[0]} </span>
