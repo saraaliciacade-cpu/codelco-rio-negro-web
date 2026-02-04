@@ -60,81 +60,87 @@ const Services = () => {
             {/* Tarjeta unificada con las dos secciones */}
             <div className="bg-white border border-border shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 overflow-hidden">
               {/* Header que ocupa todo el ancho */}
-              <div className="bg-primary text-white px-6 py-4">
-                <h3 className="text-lg md:text-xl font-bold uppercase tracking-wide text-center font-ramabhadra">
+              <div className="bg-primary text-white px-4 py-3 md:px-6 md:py-4">
+                <h3 className="text-base md:text-xl font-bold uppercase tracking-wide text-center font-ramabhadra">
                   TRAILERS AUTOPORTANTES Y EQUIPOS SOBRE VIGA
                 </h3>
               </div>
-              <div className="p-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Trailers Autoportantes */}
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-3 font-ramabhadra">Trailers Autoportantes</h3>
-                  <p className="text-sm mb-4 font-nunito text-card-foreground">
-                    Construidos con estructuras de acero de alta resistencia, soportan el peso total del módulo sin apoyos externos.
-                  </p>
-                  <h4 className="text-sm font-bold text-primary mb-2 font-montserrat">Características:</h4>
-                  <ul className="text-sm text-foreground space-y-2 font-nunito">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Estructura robusta y segura</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Listos para traslado inmediato</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Oficinas, módulos operativos y habitacionales</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Configuración adaptable</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Uso industrial, petrolero y de obra</span>
-                    </li>
-                  </ul>
-                </div>
+              
+              {/* Carousel integrado en móvil */}
+              <div className="lg:hidden">
+                <NovedadCarousel isMobile={true} />
+              </div>
+              
+              <div className="p-4 md:p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  {/* Trailers Autoportantes */}
+                  <div>
+                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-ramabhadra">Trailers Autoportantes</h3>
+                    <p className="text-xs md:text-sm mb-3 md:mb-4 font-nunito text-card-foreground">
+                      Construidos con estructuras de acero de alta resistencia, soportan el peso total del módulo sin apoyos externos.
+                    </p>
+                    <h4 className="text-xs md:text-sm font-bold text-primary mb-2 font-montserrat">Características:</h4>
+                    <ul className="text-xs md:text-sm text-foreground space-y-1 md:space-y-2 font-nunito">
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        <span>Estructura robusta y segura</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        <span>Listos para traslado inmediato</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        <span>Oficinas, módulos operativos y habitacionales</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        <span>Configuración adaptable</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        <span>Uso industrial, petrolero y de obra</span>
+                      </li>
+                    </ul>
+                  </div>
 
-                {/* Equipos sobre Viga */}
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-3 font-ramabhadra">Equipos sobre Viga</h3>
-                  <p className="text-sm mb-4 font-nunito text-secondary-foreground">
-                    Sistemas sobre vigas de acero para estabilidad y eficiencia en aplicaciones industriales de alta exigencia.
-                  </p>
-                  <h4 className="text-sm font-bold text-primary mb-2 font-montserrat">Ventajas:</h4>
-                  <ul className="text-sm text-foreground space-y-2 font-nunito">
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Mayor estabilidad estructural</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Soporta cargas pesadas</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Instalación modular y rápida</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Flexibilidad para obras temporales</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-primary">•</span>
-                      <span>Optimiza tiempos y costos</span>
-                    </li>
-                  </ul>
+                  {/* Equipos sobre Viga */}
+                  <div>
+                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-2 md:mb-3 font-ramabhadra">Equipos sobre Viga</h3>
+                    <p className="text-xs md:text-sm mb-3 md:mb-4 font-nunito text-secondary-foreground">
+                      Sistemas sobre vigas de acero para estabilidad y eficiencia en aplicaciones industriales de alta exigencia.
+                    </p>
+                    <h4 className="text-xs md:text-sm font-bold text-primary mb-2 font-montserrat">Ventajas:</h4>
+                    <ul className="text-xs md:text-sm text-foreground space-y-1 md:space-y-2 font-nunito">
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        <span>Mayor estabilidad estructural</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        <span>Soporta cargas pesadas</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        <span>Instalación modular y rápida</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        <span>Flexibilidad para obras temporales</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary">•</span>
+                        <span>Optimiza tiempos y costos</span>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-            {/* Carousel de imágenes */}
-            <div className="lg:w-96 flex-shrink-0">
-              <NovedadCarousel />
+            {/* Carousel de imágenes - solo visible en desktop */}
+            <div className="hidden lg:block lg:w-96 flex-shrink-0">
+              <NovedadCarousel isMobile={false} />
             </div>
           </div>
         </div>
@@ -289,7 +295,7 @@ const ImageCarousel = ({
 };
 
 // Componente de Carousel para Novedad
-const NovedadCarousel = () => {
+const NovedadCarousel = ({ isMobile = false }: { isMobile?: boolean }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const images = [
     '/images/novedad/novedad-01.jpg',
@@ -307,19 +313,18 @@ const NovedadCarousel = () => {
   }, [images.length]);
   
   return (
-    <div className="relative overflow-hidden rounded-lg shadow-lg h-full min-h-[300px]">
-      {/* Badge NUEVO dentro del carousel, arriba a la derecha */}
+    <div className={`relative overflow-hidden shadow-lg ${isMobile ? 'h-48' : 'rounded-lg h-full min-h-[300px]'}`}>
+      {/* Badge NOVEDADES */}
       <Badge className="absolute top-3 right-3 z-10 bg-primary text-white font-semibold px-3 py-1 text-xs shadow-lg">
         NOVEDADES
       </Badge>
-      <div className="relative h-full">
+      <div className="relative h-full w-full">
         {images.map((image, index) => (
           <img 
             key={index} 
             src={image} 
             alt={`Novedad - imagen ${index + 1}`} 
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`} 
-            loading="lazy" 
           />
         ))}
       </div>
