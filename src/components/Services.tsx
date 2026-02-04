@@ -58,14 +58,19 @@ const Services = () => {
         <div className="mb-8 md:mb-12">
           <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto">
             {/* Tarjeta unificada con las dos secciones */}
-            <div className="bg-white border border-border p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1">
-              {/* Badge dentro de la tarjeta */}
-              <div className="text-center mb-6">
-                <span className="inline-block bg-primary text-white px-4 py-2 text-sm font-bold uppercase tracking-wide">
-                  NOVEDAD · TRAILERS AUTOPORTANTES Y EQUIPOS SOBRE VIGA
-                </span>
+            <div className="bg-white border border-border shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1 overflow-hidden relative">
+              {/* Badge NOVEDAD en esquina superior derecha */}
+              <Badge className="absolute top-3 right-3 z-10 bg-primary text-white font-semibold px-3 py-1 text-xs shadow-lg">
+                NOVEDAD
+              </Badge>
+              {/* Header que ocupa todo el ancho */}
+              <div className="bg-primary text-white px-6 py-4">
+                <h3 className="text-lg md:text-xl font-bold uppercase tracking-wide text-center font-ramabhadra">
+                  TRAILERS AUTOPORTANTES Y EQUIPOS SOBRE VIGA
+                </h3>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Trailers Autoportantes */}
                 <div>
                   <h3 className="text-xl font-bold text-foreground mb-3 font-ramabhadra">Trailers Autoportantes</h3>
@@ -129,6 +134,7 @@ const Services = () => {
                 </div>
               </div>
             </div>
+          </div>
 
             {/* Carousel de imágenes */}
             <div className="lg:w-96 flex-shrink-0">
