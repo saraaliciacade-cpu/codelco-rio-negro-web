@@ -87,10 +87,22 @@ const Gallery = () => {
     alt: 'Render 3D de módulo habitacional con revestimiento exterior moderno',
     isNew: true
   }, {
+    id: 2001,
+    category: 'fabrica',
+    src: '/images/novedad/novedad-01.jpg',
+    alt: 'Trailers Autoportantes y Equipos sobre Viga - Módulo en construcción',
+    isNew: true
+  }, {
     id: 989,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-37.jpg',
     alt: 'Unidad móvil para servicios con generador eléctrico incorporado',
+    isNew: true
+  }, {
+    id: 2002,
+    category: 'fabrica',
+    src: '/images/novedad/novedad-02.jpg',
+    alt: 'Trailers Autoportantes y Equipos sobre Viga - Vista frontal',
     isNew: true
   }, {
     id: 988,
@@ -99,16 +111,34 @@ const Gallery = () => {
     alt: 'Estructura metálica en proceso de construcción - Sistema Steel Frame',
     isNew: true
   }, {
+    id: 2003,
+    category: 'fabrica',
+    src: '/images/novedad/novedad-03.jpg',
+    alt: 'Trailers Autoportantes y Equipos sobre Viga - Estructura autoportante',
+    isNew: true
+  }, {
     id: 1004,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-42.jpg',
     alt: 'Módulo prefabricado moderno con revestimiento exterior - Diseño contemporáneo',
     isNew: true
   }, {
+    id: 2004,
+    category: 'fabrica',
+    src: '/images/novedad/novedad-04.jpg',
+    alt: 'Trailers Autoportantes y Equipos sobre Viga - Interior en construcción',
+    isNew: true
+  }, {
     id: 1005,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-43.jpg',
     alt: 'Sala de estar con grandes ventanales y vista panorámica - Interior premium',
+    isNew: true
+  }, {
+    id: 2005,
+    category: 'fabrica',
+    src: '/images/novedad/novedad-05.jpg',
+    alt: 'Trailers Autoportantes y Equipos sobre Viga - Vista lateral',
     isNew: true
   }, {
     id: 1006,

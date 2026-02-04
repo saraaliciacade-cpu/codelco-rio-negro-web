@@ -132,7 +132,12 @@ const Services = () => {
 
             {/* Carousel de imágenes */}
             <div className="lg:w-96 flex-shrink-0">
-              <NovedadCarousel />
+              <div className="relative">
+                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 z-10 bg-primary text-white font-semibold px-3 py-1 text-xs shadow-lg">
+                  NUEVO
+                </Badge>
+                <NovedadCarousel />
+              </div>
             </div>
           </div>
         </div>
