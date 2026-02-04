@@ -153,8 +153,19 @@ const Contact = () => {
 
   // Note: Google Maps JS API removed (no API key / billing required).
 
-  return <section id="contacto" className="pt-6 pb-15 mt-20" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '40px', borderTopRightRadius: '40px', boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.15)' }}>
-      <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-7xl">
+  return <section id="contacto" className="pt-6 pb-15 mt-20 relative overflow-hidden" style={{ backgroundColor: '#f4f4f4', borderTopLeftRadius: '40px', borderTopRightRadius: '40px', boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.15)' }}>
+      {/* Imagen de fondo decorativa */}
+      <div 
+        className="absolute right-0 top-0 w-full h-full pointer-events-none"
+        style={{
+          backgroundImage: 'url(/images/contact-bg.png)',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'right top',
+          backgroundSize: 'auto 100%',
+          opacity: 0.8
+        }}
+      />
+      <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-7xl relative z-10">
         <div>
           <h2 className="titulo-seccion font-ramabhadra" style={{ color: '#d25840' }}>
             {t('contact.title')}
