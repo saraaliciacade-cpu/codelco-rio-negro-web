@@ -61,7 +61,7 @@ const Services = () => {
             <div className="bg-white border border-border p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1">
               {/* Badge dentro de la tarjeta */}
               <div className="text-center mb-6">
-                <span className="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide">
+                <span className="inline-block bg-primary text-white px-4 py-2 text-sm font-bold uppercase tracking-wide">
                   NOVEDAD · TRAILERS AUTOPORTANTES Y EQUIPOS SOBRE VIGA
                 </span>
               </div>
