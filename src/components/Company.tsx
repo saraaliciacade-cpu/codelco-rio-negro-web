@@ -16,8 +16,7 @@ const Company = () => {
       <img 
         src="/images/company-bg.png" 
         alt="" 
-        className="absolute left-0 top-0 opacity-90 hidden lg:block pointer-events-none"
-        style={{ maxWidth: 'none' }}
+        className="absolute left-0 top-0 opacity-90 hidden lg:block pointer-events-none w-48 h-auto"
       />
       <div className="container mx-auto px-4 md:px-8 relative z-10">
         <div className="text-center mb-6 md:mb-8">
