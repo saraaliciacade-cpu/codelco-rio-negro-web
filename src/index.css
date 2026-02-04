@@ -17,11 +17,11 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 220 15% 20%;
 
-    /* Codelco brand colors - orange to red gradient - WCAG AA compliant */
-    --primary: 8 68% 47%;
+    /* Codelco brand colors - #e65b2a orange */
+    --primary: 16 79% 53%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 16 75% 52%;
-    --primary-dark: 8 70% 42%;
+    --primary-light: 20 85% 58%;
+    --primary-dark: 12 75% 48%;
 
     --secondary: 220 15% 96%;
     --secondary-foreground: 220 15% 20%;
