@@ -207,6 +207,13 @@ const Services = () => {
                   </h3>
                 </div>
 
+                {/* Carousel integrado en móvil - justo después del header */}
+                {(service.id === 'fabrica' || service.id === 'metalurgica' || service.id === 'rental') && service.images && (
+                  <div className="lg:hidden">
+                    <ImageCarousel images={service.images} serviceId={service.id} isMobile={true} />
+                  </div>
+                )}
+
                 {/* Content */}
                 <div className="p-4 md:p-6">
                   <h4 className="text-base md:text-lg font-bold text-foreground mb-3 md:mb-4 text-center leading-relaxed font-montserrat transition-colors duration-300 group-hover:text-primary">
@@ -246,8 +253,12 @@ const Services = () => {
                           </div>}
                       </>}
                     
-                    {/* Carousel de imágenes para Fábrica, Metalúrgica y Rental */}
-                    {(service.id === 'fabrica' || service.id === 'metalurgica' || service.id === 'rental') && service.images && <ImageCarousel images={service.images} serviceId={service.id} />}
+                    {/* Carousel de imágenes solo en desktop para Fábrica, Metalúrgica y Rental */}
+                    {(service.id === 'fabrica' || service.id === 'metalurgica' || service.id === 'rental') && service.images && (
+                      <div className="hidden lg:block">
+                        <ImageCarousel images={service.images} serviceId={service.id} isMobile={false} />
+                      </div>
+                    )}
                   </div>
 
                   <div className="text-center">
@@ -275,10 +286,12 @@ const Services = () => {
 // Componente de Carousel para las imágenes
 const ImageCarousel = ({
   images,
-  serviceId
+  serviceId,
+  isMobile = false
 }: {
   images: string[];
   serviceId: string;
+  isMobile?: boolean;
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
@@ -287,11 +300,21 @@ const ImageCarousel = ({
     }, 6000);
     return () => clearInterval(interval);
   }, [images.length]);
-  return <div className="mt-4 md:mt-6 relative overflow-hidden rounded-lg shadow-md">
-      <div className="relative aspect-video">
-        {images.map((image, index) => <img key={index} src={image} alt={`${serviceId} - imagen ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`} loading="lazy" />)}
+  
+  return (
+    <div className={`relative overflow-hidden shadow-md ${isMobile ? 'h-48' : 'mt-4 md:mt-6 rounded-lg aspect-video'}`}>
+      <div className="relative h-full w-full">
+        {images.map((image, index) => (
+          <img 
+            key={index} 
+            src={image} 
+            alt={`${serviceId} - imagen ${index + 1}`} 
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${index === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+          />
+        ))}
       </div>
-    </div>;
+    </div>
+  );
 };
 
 // Componente de Carousel para Novedad
