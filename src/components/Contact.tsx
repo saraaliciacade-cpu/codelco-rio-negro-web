@@ -177,7 +177,7 @@ const Contact = () => {
             
             {contactInfo.map((info, index) => <Card 
                 key={index} 
-                className={`p-6 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300 ${info.icon === MapPin ? 'cursor-pointer' : ''}`}
+                className={`p-6 bg-white border border-gray-200 rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300 ${info.icon === MapPin ? 'cursor-pointer' : ''}`}
                 onClick={info.icon === MapPin ? () => {
                   const mapElement = document.getElementById('map');
                   if (mapElement) {
@@ -217,7 +217,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <Card className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-3xl shadow-sm p-8">
+          <Card className="bg-white border border-gray-200 rounded-3xl shadow-sm p-8">
             <CardContent className="p-0">
               <h3 className="font-bold mb-8 text-center text-foreground font-montserrat text-lg">{t('contact.form.title')}</h3>
             
