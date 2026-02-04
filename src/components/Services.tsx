@@ -56,15 +56,15 @@ const Services = () => {
 
         {/* Nueva sección de Novedad */}
         <div className="mb-8 md:mb-12">
-          <div className="text-center mb-6">
-            <span className="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide">
-              NOVEDAD · TRAILERS AUTOPORTANTES Y EQUIPOS SOBRE VIGA
-            </span>
-          </div>
-          
           <div className="flex flex-col lg:flex-row gap-6 max-w-6xl mx-auto">
             {/* Tarjeta unificada con las dos secciones */}
             <div className="bg-white border-2 border-primary rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 flex-1">
+              {/* Badge dentro de la tarjeta */}
+              <div className="text-center mb-6">
+                <span className="inline-block bg-primary text-white px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wide">
+                  NOVEDAD · TRAILERS AUTOPORTANTES Y EQUIPOS SOBRE VIGA
+                </span>
+              </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Trailers Autoportantes */}
                 <div>
