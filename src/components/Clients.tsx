@@ -1,7 +1,6 @@
 // Import client logos - Row 1
 import comprescoLogo from '@/assets/clients/compresco.jpeg';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { useIsMobile } from '@/hooks/use-mobile';
 import crexellLogo from '@/assets/clients/crexell.png';
 import datumLogo from '@/assets/clients/datum.png';
 import egServiciosLogo from '@/assets/clients/eg-servicios.png';
@@ -38,7 +37,6 @@ import veinticincoMayoLogo from '@/assets/clients/25-de-mayo-new.png';
 
 const Clients = () => {
   const { t } = useLanguage();
-  const isMobile = useIsMobile();
   // First 10 clients with actual logos
   const clientsRow1 = [
     { name: "Compressco LP", logo: comprescoLogo },
@@ -81,22 +79,13 @@ const Clients = () => {
     { name: "25 de Mayo S.A.", logo: veinticincoMayoLogo },
   ];
 
-  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false, reverse = false, duration = '45s') => {
-    // Calculate total width needed for seamless infinite scroll - responsive sizes
-    const totalLogos = clients.length;
-    const logoWidth = isMobile ? 160 : 224; // w-40 (160px) mobile, w-56 (224px) desktop
-    const logoMargin = isMobile ? 32 : 64; // mx-4 (32px) mobile, mx-8 (64px) desktop
-    const totalWidth = totalLogos * (logoWidth + logoMargin);
-    const adjustedDuration = isMobile ? '35s' : duration; // Faster on mobile
-
+  const renderCarouselRow = (clients: typeof clientsRow1, animationDelay = 0, startFromMiddle = false, reverse = false) => {
     return (
       <div className="relative overflow-hidden w-full">
         <div 
-          className={`flex ${reverse ? 'animate-infinite-scroll-reverse' : 'animate-infinite-scroll-smooth'}`}
+          className={`flex ${reverse ? 'animate-infinite-scroll-reverse' : 'animate-infinite-scroll-smooth'} clients-carousel`}
           style={{
             animationDelay: `${animationDelay}s`,
-            animationDuration: adjustedDuration,
-            width: `${totalWidth * 2}px`, // Double width for seamless loop
             transform: startFromMiddle ? 'translateX(-50%)' : 'translateX(0)'
           }}
         >
@@ -105,16 +94,16 @@ const Clients = () => {
             clients.map((client, index) => (
               <div
                 key={`${setIndex}-${index}`}
-                className={`flex-shrink-0 ${isMobile ? 'w-40 mx-4' : 'w-56 mx-8'} flex flex-col items-center justify-center group`}
+                className="flex-shrink-0 w-40 md:w-56 mx-4 md:mx-8 flex flex-col items-center justify-center group"
               >
-                <div className={`${isMobile ? 'h-20 w-36 p-4 mb-3' : 'h-24 w-48 p-6 mb-4'} flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200 transition-all duration-500 ease-in-out`}>
+                <div className="h-20 md:h-24 w-36 md:w-48 p-4 md:p-6 mb-3 md:mb-4 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200 transition-all duration-500 ease-in-out">
                   <img
                     src={client.logo}
                     alt={`${client.name} logo`}
                     className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-in-out"
                   />
                 </div>
-                <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-foreground text-center font-bold leading-tight px-2 group-hover:text-primary transition-colors duration-300`}>
+                <p className="text-xs md:text-sm text-foreground text-center font-bold leading-tight px-2 group-hover:text-primary transition-colors duration-300">
                   {client.name}
                 </p>
               </div>
@@ -126,23 +115,23 @@ const Clients = () => {
   };
 
   return (
-    <section className={`${isMobile ? 'py-8' : 'py-12'} bg-white overflow-hidden`}>
-      <div className={`text-center ${isMobile ? 'mb-8' : 'mb-16'}`}>
-        <h2 className={`titulo-seccion font-ramabhadra ${isMobile ? 'text-3xl' : ''}`}>
+    <section className="py-8 md:py-12 bg-white overflow-hidden">
+      <div className="text-center mb-8 md:mb-16">
+        <h2 className="titulo-seccion font-ramabhadra text-3xl md:text-4xl">
           <span style={{color: '#333333'}}>{t('clients.title').split(' ')[0]} </span>
           <span style={{color: '#d25840'}}>{t('clients.title').split(' ')[1]}</span>
         </h2>
       </div>
 
-      <div className={isMobile ? 'space-y-6' : 'space-y-8'}>
+      <div className="space-y-6 md:space-y-8">
         {/* Row 1 - normal speed */}
-        {renderCarouselRow(clientsRow1, 0, false, false, '45s')}
+        {renderCarouselRow(clientsRow1, 0, false, false)}
         
         {/* Row 2 - normal speed, reverse direction */}
-        {renderCarouselRow(clientsRow2, 0, true, true, '45s')}
+        {renderCarouselRow(clientsRow2, 0, true, true)}
         
         {/* Row 3 - normal speed */}
-        {renderCarouselRow(clientsRow3, 0, false, false, '45s')}
+        {renderCarouselRow(clientsRow3, 0, false, false)}
       </div>
     </section>
   );
