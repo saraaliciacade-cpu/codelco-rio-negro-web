@@ -82,7 +82,8 @@ const Header = () => {
                 {/* Animated icon */}
                 <img
                   src="/logo24.png"
-                  alt="Icon"
+                  alt=""
+                  aria-hidden="true"
                   className="h-4 w-4 mr-2 opacity-0 transform -translate-x-4 transition-all duration-400 ease-out group-hover:opacity-100 group-hover:translate-x-0"
                 />
                 {item.name}

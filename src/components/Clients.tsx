@@ -99,7 +99,7 @@ const Clients = () => {
                 <div className="h-20 md:h-24 w-36 md:w-48 p-4 md:p-6 mb-3 md:mb-4 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200 transition-all duration-500 ease-in-out">
                   <img
                     src={client.logo}
-                    alt={`${client.name} logo`}
+                    alt={`${client.name} — cliente de Codelco S.A.`}
                     className="max-h-full max-w-full object-contain grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-in-out"
                   />
                 </div>

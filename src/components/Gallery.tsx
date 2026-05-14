@@ -455,7 +455,7 @@ const Gallery = () => {
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-6 max-w-full mx-auto">
-          {displayedImages.map(image => <div key={image.id} className="gallery-item group relative overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer" onClick={() => setSelectedImage(image)}>
+          {displayedImages.map(image => <button type="button" key={image.id} aria-label={image.alt} className="gallery-item group relative overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer text-left p-0" onClick={() => setSelectedImage(image)}>
               {(image as any).isNew && (
                 <Badge className="absolute top-2 right-2 z-10 bg-primary text-white font-semibold px-2 py-1 text-xs shadow-lg">
                   NUEVO
@@ -496,25 +496,27 @@ const Gallery = () => {
               <div className="p-4 text-center">
                 <h3 className="font-bold text-sm text-foreground">{image.alt}</h3>
               </div>
-            </div>)}
+            </button>)}
         </div>
 
         {/* Show More Button */}
         {hasMoreImages && (
           <div className="text-center mt-8">
-            <div 
+            <button
+              type="button"
               onClick={handleShowMore}
+              aria-label={`${t('gallery.showMore')} (${filteredImages.length - visibleCount} ${t('gallery.remaining')})`}
               className="inline-block bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105 p-6 border border-gray-200"
             >
               <div className="flex flex-col items-center gap-3">
-                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold" aria-hidden="true">
                   +
                 </div>
                 <p className="text-primary font-semibold">
                   {t('gallery.showMore')} ({filteredImages.length - visibleCount} {t('gallery.remaining')})
                 </p>
               </div>
-            </div>
+            </button>
           </div>
         )}
 
@@ -522,11 +524,11 @@ const Gallery = () => {
         {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in" onClick={() => setSelectedImage(null)}>
             <div className="relative max-w-4xl max-h-full bg-white rounded-lg overflow-hidden animate-scale-in transform transition-all duration-300" onClick={e => e.stopPropagation()}>
               <div className="absolute top-4 right-4 flex gap-2 z-10">
-                <Button onClick={() => downloadImage(selectedImage.src, `codelco-${selectedImage.category}-${selectedImage.id}.jpg`)} className="bg-primary hover:bg-primary/90 text-white p-2 transition-colors duration-200" size="sm">
-                  <Download className="w-4 h-4" />
+                <Button onClick={() => downloadImage(selectedImage.src, `codelco-${selectedImage.category}-${selectedImage.id}.jpg`)} aria-label="Descargar imagen" className="bg-primary hover:bg-primary/90 text-white p-2 transition-colors duration-200" size="sm">
+                  <Download className="w-4 h-4" aria-hidden="true" />
                 </Button>
-                <Button onClick={() => setSelectedImage(null)} className="bg-gray-500 hover:bg-gray-600 text-white p-2 transition-colors duration-200" size="sm">
-                  <X className="w-4 h-4" />
+                <Button onClick={() => setSelectedImage(null)} aria-label="Cerrar imagen" className="bg-gray-500 hover:bg-gray-600 text-white p-2 transition-colors duration-200" size="sm">
+                  <X className="w-4 h-4" aria-hidden="true" />
                 </Button>
               </div>
               {selectedImage.isVideo ? (

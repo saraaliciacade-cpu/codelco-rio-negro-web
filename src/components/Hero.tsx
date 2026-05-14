@@ -36,9 +36,10 @@ const Hero = () => {
           <img src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" alt="Codelco S.A." className="h-16 sm:h-24 w-auto object-contain" />
         </div>
         
-        <h1 className="text-2xl font-bold mb-5 font-ramabhadra text-primary">
+        <h1 className="sr-only">Codelco S.A. — Fabricación de Módulos Habitacionales y Servicios Industriales en Cipolletti</h1>
+        <p className="text-2xl font-bold mb-5 font-ramabhadra text-primary" aria-hidden="true">
           {t('hero.title')}
-        </h1>
+        </p>
         
         <p className="mb-8 max-w-full mx-auto leading-normal font-nunito text-base text-white text-justify">
           {t('hero.description')}

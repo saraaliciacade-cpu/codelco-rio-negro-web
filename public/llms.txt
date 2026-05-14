@@ -1,0 +1,14 @@
+# Codelco S.A.
+
+> Empresa argentina ubicada en Cipolletti, Río Negro, especializada en la fabricación de módulos habitacionales, equipos metalúrgicos para la industria petrolera, rental de vehículos y grupos electrógenos.
+
+Codelco S.A. cuenta con una planta de 3500 m² y brinda servicio integral desde el asesoramiento inicial hasta la entrega final, con divisiones de Fábrica, Metalúrgica, Rental y Grupos Electrógenos.
+
+## Pages
+
+- [Inicio](/): Presentación de la empresa, servicios, galería, ubicación y contacto.
+- [Clientes](/clientes): Empresas del sector industrial y petrolero que trabajan con Codelco S.A.
+
+## Optional
+
+- [Webmail](/webmail): Acceso al correo corporativo (redirección externa).
