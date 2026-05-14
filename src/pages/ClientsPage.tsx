@@ -34,6 +34,8 @@ import tsbLogo from '@/assets/clients/tsb-new.png';
 import tuboscopeLogo from '@/assets/clients/tuboscope.jpg';
 import veinticincoMayoLogo from '@/assets/clients/25-de-mayo-new.png';
 
+import { Helmet } from 'react-helmet-async';
+
 const ClientsPage = () => {
   // All clients combined
   const allClients = [
@@ -71,6 +73,21 @@ const ClientsPage = () => {
 
   return (
     <div className="min-h-screen bg-white py-12 px-4">
+      <Helmet>
+        <title>Nuestros Clientes — Codelco S.A.</title>
+        <meta name="description" content="Empresas líderes del sector industrial y petrolero que confían en Codelco S.A. para servicios de fabricación, metalúrgica y rental." />
+        <link rel="canonical" href="https://codelco.com.ar/clientes" />
+        <meta property="og:title" content="Nuestros Clientes — Codelco S.A." />
+        <meta property="og:description" content="Conocé a los clientes que eligen a Codelco S.A. en la industria petrolera, energética y de servicios." />
+        <meta property="og:url" content="https://codelco.com.ar/clientes" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Clientes de Codelco S.A.",
+          "url": "https://codelco.com.ar/clientes",
+          "about": allClients.map(c => ({ "@type": "Organization", "name": c.name }))
+        })}</script>
+      </Helmet>
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-12">
           <span className="text-[#333333]">Nuestros </span>
@@ -86,7 +103,7 @@ const ClientsPage = () => {
               <div className="h-28 w-48 p-4 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200">
                 <img
                   src={client.logo}
-                  alt={`${client.name} logo`}
+                  alt={`${client.name} — cliente de Codelco S.A.`}
                   className="max-h-full max-w-full object-contain"
                 />
               </div>
