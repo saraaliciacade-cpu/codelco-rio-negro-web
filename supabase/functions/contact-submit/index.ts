@@ -191,11 +191,27 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Get client IP and user agent for security logging
-    const forwardedFor = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip');
-    // Take only the first IP if multiple are present (format: "client, proxy1, proxy2")
-    const clientIP = forwardedFor ? forwardedFor.split(',')[0].trim() : 'unknown';
+    // Get client IP and user agent for security logging.
+    // Prefer trusted infra-set headers; fall back to the LAST entry in
+    // X-Forwarded-For (closest to our edge, hardest to spoof).
+    const cfConnectingIp = req.headers.get('cf-connecting-ip');
+    const xRealIp = req.headers.get('x-real-ip');
+    const forwardedFor = req.headers.get('x-forwarded-for');
+    const xffLast = forwardedFor
+      ? forwardedFor.split(',').map((s) => s.trim()).filter(Boolean).pop()
+      : null;
+    const clientIP = cfConnectingIp || xRealIp || xffLast || null;
     const userAgent = req.headers.get('user-agent') || 'unknown';
+
+    // Fail-closed: if we cannot determine a client IP, refuse the request
+    // rather than skipping rate limiting.
+    if (!clientIP) {
+      console.warn('Rejecting request: client IP could not be determined');
+      return new Response(
+        JSON.stringify({ error: 'Unable to verify request origin' }),
+        { status: 400, headers: { ...headers, 'Content-Type': 'application/json' } }
+      );
+    }
 
     // Atomic rate limiting check using database function (prevents race conditions)
     const { data: rateLimitResult, error: rateLimitError } = await supabase
@@ -208,7 +224,11 @@ serve(async (req) => {
 
     if (rateLimitError) {
       console.error('Rate limit check error:', rateLimitError);
-      // Continue without rate limiting if check fails (fail-open for availability)
+      // Fail-closed: if rate limit cannot be evaluated, reject the request
+      return new Response(
+        JSON.stringify({ error: 'Service temporarily unavailable. Please try again later.' }),
+        { status: 503, headers: { ...headers, 'Content-Type': 'application/json' } }
+      );
     } else if (rateLimitResult && !rateLimitResult.allowed) {
       console.log(`Rate limit exceeded for IP: ${clientIP}`);
       return new Response(
