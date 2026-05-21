@@ -6,7 +6,8 @@ const Map = () => {
       {/* Info Card Overlay */}
       <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-10 bg-white rounded-lg shadow-lg p-4 max-w-sm w-[90%] sm:w-auto">
         <button 
-          className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 text-xl leading-none"
+          className="absolute top-2 right-2 text-gray-700 hover:text-gray-900 text-xl leading-none"
+          aria-label="Cerrar"
           onClick={(e) => {
             const card = e.currentTarget.parentElement;
             if (card) card.style.display = 'none';
