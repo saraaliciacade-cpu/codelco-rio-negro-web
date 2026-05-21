@@ -25,7 +25,7 @@ const Hero = () => {
   return <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background Images */}
       <div className="absolute inset-0">
-        {heroImages.map((image, index) => <img key={index} src={image} alt={`Industrial facility ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} loading={index === 0 ? "eager" : "lazy"} decoding={index === 0 ? "sync" : "async"} width="1920" height="1080" />)}
+        {heroImages.map((image, index) => <img key={index} src={image} alt={`Industrial facility ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} loading={index === 0 ? "eager" : "lazy"} decoding={index === 0 ? "sync" : "async"} fetchPriority={index === 0 ? "high" : "low"} width="1920" height="1080" />)}
       </div>
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />

@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://codelco.com.ar/sitemap.xml
+Sitemap: https://codelco.lovable.app/sitemap.xml
