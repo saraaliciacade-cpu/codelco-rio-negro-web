@@ -15,6 +15,9 @@ const Footer = lazy(() => import('@/components/Footer'));
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <link rel="canonical" href="https://codelco.com.ar/" />
+      </Helmet>
       <Header />
       <main>
         <Hero />
