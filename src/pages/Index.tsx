@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 
@@ -14,6 +15,9 @@ const Footer = lazy(() => import('@/components/Footer'));
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <link rel="canonical" href="https://codelco.com.ar/" />
+      </Helmet>
       <Header />
       <main>
         <Hero />
