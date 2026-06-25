@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -6,7 +6,17 @@ import { useLanguage } from '@/contexts/LanguageContext';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const menuItems = [
     { name: 'Divisiones', href: '#servicios' },
@@ -16,7 +26,11 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-[#1A1A1A] border-b border-white/10 sticky top-0 z-50">
+    <header
+      className={`sticky top-0 z-50 border-b border-white/10 transition-colors duration-300 ${
+        isScrolled ? 'bg-[#1A1A1A]/90 backdrop-blur-sm' : 'bg-[#1A1A1A]'
+      }`}
+    >
       <div className="container mx-auto px-8 max-w-7xl py-3">
         <div className="flex items-center justify-between">
           {/* Logo + Language Selector */}
