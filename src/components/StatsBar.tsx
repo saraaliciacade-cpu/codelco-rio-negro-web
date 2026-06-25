@@ -1,4 +1,4 @@
-const BRAND_ORANGE = '#E84E1B';
+const BRAND_ORANGE = '#e04d1c';
 const BRAND_BLACK = '#1A1A1A';
 
 const stats = [
@@ -19,20 +19,20 @@ const StatsBar = () => {
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className={`py-8 sm:py-10 lg:py-12 px-4 sm:px-6 ${
+              className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 ${
                 i % 2 === 1 ? 'border-l border-white/10 lg:border-l-0' : ''
               }`}
             >
               <p
-                className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] mb-3"
+                className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] mb-2 sm:mb-3"
                 style={{ color: BRAND_ORANGE }}
               >
                 {s.label}
               </p>
-              <p className="text-white font-bold leading-none text-4xl sm:text-5xl lg:text-6xl tracking-tight">
+              <p className="text-white font-bold leading-none text-3xl sm:text-4xl lg:text-5xl tracking-tight">
                 {s.value}
               </p>
-              <p className="mt-3 text-xs sm:text-sm text-white/60">{s.desc}</p>
+              <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-white/60">{s.desc}</p>
             </div>
           ))}
         </div>
