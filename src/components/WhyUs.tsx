@@ -36,13 +36,13 @@ const WhyUs = () => {
             />
           </div>
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1] mb-5"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-[1.1] mb-5"
             style={{ color: BRAND_ORANGE }}
           >
             ¿Por qué elegirnos?
           </h2>
           <p
-            className="text-xl sm:text-2xl lg:text-3xl font-semibold leading-snug"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]"
             style={{ color: BRAND_BLACK }}
           >
             Tres razones por las que Vaca Muerta no espera por nosotros
