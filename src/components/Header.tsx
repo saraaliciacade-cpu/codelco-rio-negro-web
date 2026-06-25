@@ -86,7 +86,7 @@ const Header = () => {
             ))}
             <a
               href="#contacto"
-              className="ml-2 inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
+              className="ml-2 inline-flex items-center justify-center rounded-sm bg-[#e04d1c] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#c94418] transition-colors"
               style={{ fontFamily: 'Nunito Sans, sans-serif' }}
             >
               Solicitar presupuesto
