@@ -108,10 +108,30 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  /* Global scale down so the site renders at 100% zoom as if it were 125%.
+     Tailwind sizes are rem-based, so reducing the root font-size proportionally
+     shrinks typography, spacing, and layout widths across the whole app. */
+  html {
+    font-size: 14px;
+  }
+
+  @media (min-width: 1280px) {
+    html {
+      font-size: 15px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
   body {
     @apply bg-background text-foreground;
   }
 }
+
 
 .titulo-seccion {
   margin-top: 80px;
