@@ -34,9 +34,7 @@ const Index = () => {
             <Company />
           </div>
         </Suspense>
-        <Suspense fallback={<div className="py-8"><div className="animate-pulse rounded-lg bg-muted h-96 mx-auto max-w-4xl"></div></div>}>
-          <Services />
-        </Suspense>
+        <Services />
         <Suspense fallback={<div className="py-8 text-center">
           <div className="animate-pulse rounded-lg bg-muted h-64 mx-auto max-w-4xl"></div>
         </div>}>
