@@ -38,7 +38,7 @@ const WhyUs = () => {
               className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em]"
               style={{ color: BRAND_ORANGE }}
             >
-              Por qué elegirnos
+              ¿POR QUÉ ELEGIRNOS?
             </span>
           </div>
           <h2
