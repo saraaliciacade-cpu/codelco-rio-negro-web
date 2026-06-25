@@ -1,4 +1,4 @@
-const BRAND_ORANGE = '#e04d1c';
+const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
 const BRAND_BLACK = '#1A1A1A';
 
@@ -34,19 +34,19 @@ const WhyUs = () => {
               style={{ backgroundColor: BRAND_ORANGE }}
               aria-hidden="true"
             />
+            <span
+              className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em]"
+              style={{ color: BRAND_ORANGE }}
+            >
+              Por qué elegirnos
+            </span>
           </div>
           <h2
-            className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-[1.1] mb-5"
-            style={{ color: BRAND_ORANGE }}
-          >
-            ¿Por qué elegirnos?
-          </h2>
-          <p
             className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]"
             style={{ color: BRAND_BLACK }}
           >
             Tres razones por las que Vaca Muerta no espera por nosotros
-          </p>
+          </h2>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
