@@ -7,26 +7,28 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
-  
+
   const menuItems = [
-    { name: t('nav.inicio'), href: '#inicio' },
-    { name: t('nav.empresa'), href: '#company' },
-    { name: t('nav.areas'), href: '#servicios' },
-    { name: t('nav.galeria'), href: '#galeria' },
-    { name: t('nav.contacto'), href: '#contacto' },
+    { name: 'Divisiones', href: '#servicios' },
+    { name: '¿Por qué elegirnos?', href: '#por-que-elegirnos' },
+    { name: 'Clientes', href: '#clientes' },
+    { name: 'Novedades', href: '/novedades' },
   ];
 
   return (
-    <header className="bg-background/60 backdrop-blur-md border-b border-muted/50 sticky top-0 z-50"> {/* Cambiado a /60 para más transparencia */}
-      <div className="container mx-auto px-8 max-w-7xl py-3 bg-transparent">
+    <header className="bg-[#1A1A1A] border-b border-white/10 sticky top-0 z-50">
+      <div className="container mx-auto px-8 max-w-7xl py-3">
         <div className="flex items-center justify-between">
-          {/* Language Selector and Logo */}
+          {/* Logo + Language Selector */}
           <div className="flex items-center space-x-6">
-            {/* Language Selector */}
+            <a href="#inicio" className="flex items-center">
+              <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-8 w-auto brightness-0 invert" />
+            </a>
+
             <div className="relative">
               <button
                 onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-                className="flex items-center space-x-2 font-medium text-foreground hover:text-primary transition-colors duration-300"
+                className="flex items-center space-x-2 font-medium text-white/80 hover:text-primary transition-colors duration-300"
                 style={{ fontFamily: 'Nunito Sans, sans-serif' }}
                 aria-label={t('nav.changeLanguage')}
                 aria-expanded={isLanguageMenuOpen}
@@ -37,15 +39,12 @@ const Header = () => {
                   <span className="text-sm leading-none">{language === 'es' ? 'Español' : 'English'}</span>
                 </div>
               </button>
-              
+
               {isLanguageMenuOpen && (
-                <div className="absolute top-full left-0 mt-2 bg-background border border-muted rounded-lg shadow-lg overflow-hidden z-50 min-w-[140px]">
+                <div className="absolute top-full left-0 mt-2 bg-[#1A1A1A] border border-white/10 rounded-lg shadow-lg overflow-hidden z-50 min-w-[140px]">
                   <button
-                    onClick={() => {
-                      setLanguage('es');
-                      setIsLanguageMenuOpen(false);
-                    }}
-                    className={`block w-full px-4 py-2 text-left hover:bg-muted transition-colors ${language === 'es' ? 'bg-muted text-primary' : 'text-foreground'}`}
+                    onClick={() => { setLanguage('es'); setIsLanguageMenuOpen(false); }}
+                    className={`block w-full px-4 py-2 text-left hover:bg-white/10 transition-colors ${language === 'es' ? 'bg-white/10 text-primary' : 'text-white/90'}`}
                   >
                     <div className="flex flex-col">
                       <span className="text-xs leading-none">ARG</span>
@@ -53,11 +52,8 @@ const Header = () => {
                     </div>
                   </button>
                   <button
-                    onClick={() => {
-                      setLanguage('en');
-                      setIsLanguageMenuOpen(false);
-                    }}
-                    className={`block w-full px-4 py-2 text-left hover:bg-muted transition-colors ${language === 'en' ? 'bg-muted text-primary' : 'text-foreground'}`}
+                    onClick={() => { setLanguage('en'); setIsLanguageMenuOpen(false); }}
+                    className={`block w-full px-4 py-2 text-left hover:bg-white/10 transition-colors ${language === 'en' ? 'bg-white/10 text-primary' : 'text-white/90'}`}
                   >
                     <div className="flex flex-col">
                       <span className="text-xs leading-none">EEUU</span>
@@ -67,19 +63,17 @@ const Header = () => {
                 </div>
               )}
             </div>
-            
-            <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-8 w-auto" />
           </div>
-          {/* Desktop Navigation - positioned more to the right with more spacing */}
+
+          {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 ml-auto">
             {menuItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="relative text-sm font-medium text-foreground hover:text-primary transition-all duration-300 ease-in-out group flex items-center overflow-hidden"
+                className="relative text-sm font-medium text-white/85 hover:text-white transition-all duration-300 ease-in-out group flex items-center overflow-hidden"
                 style={{ fontFamily: 'Nunito Sans, sans-serif' }}
               >
-                {/* Animated icon */}
                 <img
                   src="/logo24.png"
                   alt=""
@@ -90,33 +84,50 @@ const Header = () => {
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></span>
               </a>
             ))}
+            <a
+              href="#contacto"
+              className="ml-2 inline-flex items-center justify-center rounded-md bg-primary px-5 py-2.5 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
+              style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+            >
+              Solicitar presupuesto
+            </a>
           </nav>
+
           {/* Mobile Menu Button */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="md:hidden ml-auto" 
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden ml-auto text-white hover:bg-white/10 hover:text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
           >
             {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </Button>
         </div>
+
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <nav className="md:hidden mt-2 pb-2 border-t border-muted pt-2">
-            <div className="flex flex-col space-y-2">
+          <nav className="md:hidden mt-2 pb-2 border-t border-white/10 pt-2">
+            <div className="flex flex-col space-y-3">
               {menuItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-sm font-medium text-foreground hover:text-primary transition-colors duration-300 flex items-center space-x-2"
+                  className="text-sm font-medium text-white/85 hover:text-primary transition-colors duration-300"
                   onClick={() => setIsMenuOpen(false)}
                   style={{ fontFamily: 'Nunito Sans, sans-serif' }}
                 >
-                  <span>{item.name}</span>
+                  {item.name}
                 </a>
               ))}
+              <a
+                href="#contacto"
+                onClick={() => setIsMenuOpen(false)}
+                className="inline-flex w-fit items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-semibold text-white hover:bg-primary/90 transition-colors"
+                style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+              >
+                Solicitar presupuesto
+              </a>
             </div>
           </nav>
         )}
