@@ -2,6 +2,9 @@ import { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import StatsBar from '@/components/StatsBar';
+import WhyUs from '@/components/WhyUs';
+
 
 // Lazy load below-the-fold components for better bundle splitting
 const Clients = lazy(() => import('@/components/Clients'));
@@ -21,6 +24,8 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <StatsBar />
+        <WhyUs />
         <Suspense fallback={<div className="py-8"><div className="animate-pulse rounded-lg bg-muted h-32 mx-auto max-w-4xl"></div></div>}>
           <Clients />
         </Suspense>
