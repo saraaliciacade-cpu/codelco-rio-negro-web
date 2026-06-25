@@ -1,59 +1,97 @@
 import { Button } from '@/components/ui/button';
-import { useState, useEffect } from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
-const Hero = () => {
-  const {
-    t
-  } = useLanguage();
-  const heroImages = ['/images/hero/portada1.jpg', '/images/hero/portada2.jpg', '/images/hero/portada3.jpg'];
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex(prevIndex => (prevIndex + 1) % heroImages.length);
-    }, 4500); // Cambia cada 4.5 segundos
 
-    return () => clearInterval(interval);
-  }, [heroImages.length]);
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
-    }
-  };
-  return <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background Images */}
-      <div className="absolute inset-0">
-        {heroImages.map((image, index) => <img key={index} src={image} alt={`Industrial facility ${index + 1}`} className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`} loading={index === 0 ? "eager" : "lazy"} decoding={index === 0 ? "sync" : "async"} fetchPriority={index === 0 ? "high" : "low"} width="1920" height="1080" />)}
-      </div>
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/40" />
-      
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-20 max-w-4xl text-center text-white">
-        <div className="mb-6 flex justify-center">
-          <img src="/lovable-uploads/f4475002-d314-4a46-bb95-54b87d2d6b5c.png" alt="Codelco S.A." className="h-16 sm:h-24 w-auto object-contain" />
-        </div>
-        
-        <h1 className="sr-only">Codelco S.A. — Fabricación de Módulos Habitacionales y Servicios Industriales en Cipolletti</h1>
-        <p className="text-2xl font-bold mb-5 font-ramabhadra text-primary" aria-hidden="true">
-          {t('hero.title')}
-        </p>
-        
-        <p className="mb-8 max-w-full mx-auto leading-normal font-nunito text-base text-white text-justify">
-          {t('hero.description')}
-        </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button onClick={() => scrollToSection('servicios')} className="bg-primary text-white px-4 py-2 text-body">
-            {t('hero.button.services')}
-          </Button>
-          <Button onClick={() => scrollToSection('contacto')} className="px-4 py-2 text-body bg-foreground text-white hover:bg-foreground/90">
-            {t('hero.button.contact')}
-          </Button>
-        </div>
-      </div>
-    </section>;
+const BRAND_ORANGE = '#E84E1B';
+
+const scrollToSection = (sectionId: string) => {
+  const el = document.getElementById(sectionId);
+  if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
+
+const Hero = () => {
+  return (
+    <section
+      id="inicio"
+      className="relative w-full overflow-hidden"
+      style={{ minHeight: 'clamp(680px, 90vh, 880px)' }}
+    >
+      {/* Background image */}
+      <img
+        src="/images/fabrica/fabrica-08.jpg"
+        alt="Módulo habitacional Codelco siendo izado por grúa en planta de Cipolletti"
+        className="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        decoding="sync"
+        fetchPriority="high"
+        width={1920}
+        height={1080}
+      />
+
+      {/* Gradient overlay 55% top -> 92% bottom */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,0.92) 100%)',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* Content - bottom-left aligned */}
+      <div className="relative z-10 flex flex-col justify-end h-full min-h-[inherit]" style={{ minHeight: 'clamp(680px, 90vh, 880px)' }}>
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-16 sm:pb-20 lg:pb-24 pt-28">
+          <div className="max-w-4xl">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3 mb-6">
+              <span
+                className="h-px w-10"
+                style={{ backgroundColor: BRAND_ORANGE }}
+                aria-hidden="true"
+              />
+              <span
+                className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em]"
+                style={{ color: BRAND_ORANGE }}
+              >
+                Cipolletti, Río Negro · Desde 2012
+              </span>
+            </div>
+
+            {/* H1 */}
+            <h1 className="text-white font-bold leading-[1.05] tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
+              Módulos Habitacionales, Metalúrgica y{' '}
+              <span style={{ color: BRAND_ORANGE }}>Rental</span>{' '}
+              para la Industria Petrolera
+            </h1>
+
+            {/* Subtitle */}
+            <p className="mt-6 text-base sm:text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
+              Fabricamos en planta propia y alquilamos la flota que tu obra
+              necesita. <span className="font-bold text-white">+14 años</span>{' '}
+              resolviendo infraestructura para Vaca Muerta sin que la operación
+              se detenga.
+            </p>
+
+            {/* CTAs */}
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <Button
+                onClick={() => scrollToSection('servicios')}
+                className="h-12 px-7 text-sm sm:text-base font-semibold rounded-none text-white border-0 hover:opacity-90 transition"
+                style={{ backgroundColor: BRAND_ORANGE }}
+              >
+                Ver nuestros equipos →
+              </Button>
+              <Button
+                onClick={() => scrollToSection('contacto')}
+                variant="outline"
+                className="h-12 px-7 text-sm sm:text-base font-semibold rounded-none bg-transparent text-white border border-white/70 hover:bg-white hover:text-black transition"
+              >
+                Solicitar presupuesto
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default Hero;
