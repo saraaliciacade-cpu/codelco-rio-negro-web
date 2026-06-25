@@ -25,7 +25,7 @@ const reasons = [
 
 const WhyUs = () => {
   return (
-    <section className="bg-white py-20 sm:py-24 lg:py-28">
+    <section id="por-que-elegirnos" className="bg-white py-20 sm:py-24 lg:py-28">
       <div className="container mx-auto px-6 sm:px-10 lg:px-16">
         <div className="max-w-3xl mb-12 lg:mb-16">
           <div className="flex items-center gap-3 mb-5">
