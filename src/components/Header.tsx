@@ -26,7 +26,11 @@ const Header = () => {
   ];
 
   return (
-    <header className="bg-[#1A1A1A] border-b border-white/10 sticky top-0 z-50">
+    <header
+      className={`sticky top-0 z-50 border-b border-white/10 transition-colors duration-300 ${
+        isScrolled ? 'bg-[#1A1A1A]/90 backdrop-blur-sm' : 'bg-[#1A1A1A]'
+      }`}
+    >
       <div className="container mx-auto px-8 max-w-7xl py-3">
         <div className="flex items-center justify-between">
           {/* Logo + Language Selector */}
