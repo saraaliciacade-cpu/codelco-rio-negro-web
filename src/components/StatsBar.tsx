@@ -24,12 +24,12 @@ const StatsBar = () => {
               }`}
             >
               <p
-                className="text-[10px] sm:text-xs font-mono uppercase tracking-[0.2em] mb-2 sm:mb-3"
+                className="eyebrow text-[10px] sm:text-xs mb-2 sm:mb-3"
                 style={{ color: BRAND_ORANGE }}
               >
                 {s.label}
               </p>
-              <p className="text-white font-bold leading-none text-3xl sm:text-4xl lg:text-5xl tracking-tight">
+              <p className="stat-number text-white leading-none text-3xl sm:text-4xl lg:text-5xl">
                 {s.value}
               </p>
               <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-white/60">{s.desc}</p>
