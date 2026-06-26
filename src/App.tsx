@@ -10,6 +10,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 const Index = lazy(() => import("./pages/Index"));
 const Webmail = lazy(() => import("./pages/Webmail"));
 const ClientsPage = lazy(() => import("./pages/ClientsPage"));
+const FabricaPage = lazy(() => import("./pages/FabricaPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
