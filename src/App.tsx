@@ -10,6 +10,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 const Index = lazy(() => import("./pages/Index"));
 const Webmail = lazy(() => import("./pages/Webmail"));
 const ClientsPage = lazy(() => import("./pages/ClientsPage"));
+const FabricaPage = lazy(() => import("./pages/FabricaPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/webmail" element={<Webmail />} />
               <Route path="/clientes" element={<ClientsPage />} />
+              <Route path="/fabrica" element={<FabricaPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
