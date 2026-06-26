@@ -13,6 +13,9 @@ const Index = lazy(() => import("./pages/Index"));
 const Webmail = lazy(() => import("./pages/Webmail"));
 const ClientsPage = lazy(() => import("./pages/ClientsPage"));
 const FabricaPage = lazy(() => import("./pages/FabricaPage"));
+const MetalurgicaPage = lazy(() => import("./pages/MetalurgicaPage"));
+const RentalPage = lazy(() => import("./pages/RentalPage"));
+const GruposElectrogenosPage = lazy(() => import("./pages/GruposElectrogenosPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -32,6 +35,9 @@ const App = () => (
               <Route path="/webmail" element={<Webmail />} />
               <Route path="/clientes" element={<ClientsPage />} />
               <Route path="/fabrica" element={<FabricaPage />} />
+              <Route path="/metalurgica" element={<MetalurgicaPage />} />
+              <Route path="/rental" element={<RentalPage />} />
+              <Route path="/grupos-electrogenos" element={<GruposElectrogenosPage />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
