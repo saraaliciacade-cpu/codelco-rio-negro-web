@@ -18,8 +18,15 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const servicesSubmenu = [
+    { name: 'Fábrica', href: '/fabrica' },
+    { name: 'Metalúrgica', href: '/metalurgica' },
+    { name: 'Rental', href: '/rental' },
+    { name: 'Grupos Electrógenos', href: '/grupos-electrogenos' },
+  ];
+
   const menuItems = [
-    { name: 'Divisiones', href: '#servicios' },
+    { name: 'Servicios', href: '#servicios', submenu: servicesSubmenu },
     { name: '¿Por qué elegirnos?', href: '#por-que-elegirnos' },
     { name: 'Clientes', href: '#clientes' },
     { name: 'Novedades', href: '/novedades' },
@@ -82,21 +89,38 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 ml-auto">
             {menuItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="relative text-sm font-medium text-white/85 hover:text-white transition-all duration-300 ease-in-out group flex items-center overflow-hidden"
-                style={{ fontFamily: 'Nunito Sans, sans-serif' }}
-              >
-                <img
-                  src="/logo24.png"
-                  alt=""
-                  aria-hidden="true"
-                  className="h-4 w-4 mr-2 opacity-0 transform -translate-x-4 transition-all duration-400 ease-out group-hover:opacity-100 group-hover:translate-x-0"
-                />
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></span>
-              </a>
+              <div key={item.name} className="relative group">
+                <a
+                  href={item.href}
+                  className="relative text-sm font-medium text-white/85 hover:text-white transition-all duration-300 ease-in-out flex items-center overflow-hidden"
+                  style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+                >
+                  <img
+                    src="/logo24.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="h-4 w-4 mr-2 opacity-0 transform -translate-x-4 transition-all duration-400 ease-out group-hover:opacity-100 group-hover:translate-x-0"
+                  />
+                  {item.name}
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                </a>
+                {item.submenu && (
+                  <div className="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                    <div className="bg-[#1A1A1A] border border-white/10 rounded-md shadow-xl overflow-hidden min-w-[200px]">
+                      {item.submenu.map((sub) => (
+                        <a
+                          key={sub.name}
+                          href={sub.href}
+                          className="block px-4 py-2.5 text-sm text-white/85 hover:bg-white/10 hover:text-primary transition-colors"
+                          style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+                        >
+                          {sub.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
             <a
               href="#contacto"
@@ -124,15 +148,31 @@ const Header = () => {
           <nav className="md:hidden mt-2 pb-2 border-t border-white/10 pt-2">
             <div className="flex flex-col space-y-3">
               {menuItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm font-medium text-white/85 hover:text-primary transition-colors duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                  style={{ fontFamily: 'Nunito Sans, sans-serif' }}
-                >
-                  {item.name}
-                </a>
+                <div key={item.name} className="flex flex-col space-y-2">
+                  <a
+                    href={item.href}
+                    className="text-sm font-medium text-white/85 hover:text-primary transition-colors duration-300"
+                    onClick={() => setIsMenuOpen(false)}
+                    style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+                  >
+                    {item.name}
+                  </a>
+                  {item.submenu && (
+                    <div className="flex flex-col space-y-2 pl-4 border-l border-white/10">
+                      {item.submenu.map((sub) => (
+                        <a
+                          key={sub.name}
+                          href={sub.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="text-xs font-medium text-white/70 hover:text-primary transition-colors"
+                          style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+                        >
+                          {sub.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <a
                 href="#contacto"
