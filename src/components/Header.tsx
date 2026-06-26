@@ -148,15 +148,31 @@ const Header = () => {
           <nav className="md:hidden mt-2 pb-2 border-t border-white/10 pt-2">
             <div className="flex flex-col space-y-3">
               {menuItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm font-medium text-white/85 hover:text-primary transition-colors duration-300"
-                  onClick={() => setIsMenuOpen(false)}
-                  style={{ fontFamily: 'Nunito Sans, sans-serif' }}
-                >
-                  {item.name}
-                </a>
+                <div key={item.name} className="flex flex-col space-y-2">
+                  <a
+                    href={item.href}
+                    className="text-sm font-medium text-white/85 hover:text-primary transition-colors duration-300"
+                    onClick={() => setIsMenuOpen(false)}
+                    style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+                  >
+                    {item.name}
+                  </a>
+                  {item.submenu && (
+                    <div className="flex flex-col space-y-2 pl-4 border-l border-white/10">
+                      {item.submenu.map((sub) => (
+                        <a
+                          key={sub.name}
+                          href={sub.href}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="text-xs font-medium text-white/70 hover:text-primary transition-colors"
+                          style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+                        >
+                          {sub.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <a
                 href="#contacto"
