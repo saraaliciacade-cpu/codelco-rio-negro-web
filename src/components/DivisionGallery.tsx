@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const BRAND_ORANGE = '#E84E1B';
@@ -11,22 +11,43 @@ export interface DivisionGalleryImage {
 
 interface DivisionGalleryProps {
   images: DivisionGalleryImage[];
-  /** Optional fixed step. Defaults to 2. */
+  /** How many items to move per click. Default 2. */
   step?: number;
 }
 
+const getVisibleCount = () => {
+  if (typeof window === 'undefined') return 4;
+  if (window.matchMedia('(min-width: 1024px)').matches) return 4;
+  if (window.matchMedia('(min-width: 640px)').matches) return 2;
+  return 1;
+};
+
 const DivisionGallery = ({ images, step = 2 }: DivisionGalleryProps) => {
   const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState<number>(() => getVisibleCount());
 
-  // Visible window is 4 on desktop / 2 on tablet / 1 on mobile (CSS),
-  // but we paginate logically by `step` items.
-  const maxIndex = Math.max(0, images.length - 1);
+  useEffect(() => {
+    const onResize = () => setVisible(getVisibleCount());
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  const maxIndex = Math.max(0, images.length - visible);
+
+  // Clamp index when viewport changes
+  useEffect(() => {
+    setIndex((i) => Math.min(i, maxIndex));
+  }, [maxIndex]);
 
   const goPrev = () => setIndex((i) => Math.max(0, i - step));
   const goNext = () => setIndex((i) => Math.min(maxIndex, i + step));
 
   const atStart = index === 0;
-  const atEnd = index >= images.length - 4; // at least 4 visible on desktop
+  const atEnd = index >= maxIndex;
+
+  // Each item width = 100% / visible. Translate by index * that width.
+  const itemBasis = `${100 / visible}%`;
+  const translate = `translateX(-${(index * 100) / visible}%)`;
 
   return (
     <div className="relative">
@@ -48,20 +69,16 @@ const DivisionGallery = ({ images, step = 2 }: DivisionGalleryProps) => {
       {/* Viewport */}
       <div className="overflow-hidden px-2 sm:px-6 lg:px-10">
         <div
-          className="flex transition-transform duration-500 ease-out gap-4 sm:gap-5 lg:gap-6"
-          style={{
-            // Slide by (100% / visible) per item. Use CSS var by breakpoint via inline math:
-            // We translate by index * (item width + gap). Because widths vary per breakpoint,
-            // we set each item to flex-basis matching the breakpoint and translate by index/visible*100%.
-            transform: `translateX(calc(${index} * (-100% / var(--visible, 4) - 0px)))`,
-          }}
+          className="flex transition-transform duration-500 ease-out"
+          style={{ transform: translate }}
         >
           {images.map((img, i) => (
             <article
               key={`${img.src}-${i}`}
-              className="shrink-0 basis-full sm:basis-[calc((100%-1.25rem)/2)] lg:basis-[calc((100%-4.5rem)/4)]"
+              className="shrink-0 px-2 sm:px-2.5 lg:px-3"
+              style={{ flexBasis: itemBasis, maxWidth: itemBasis }}
             >
-              <div className="relative bg-white border border-black/5 overflow-hidden group">
+              <div className="relative bg-white border border-black/5 overflow-hidden group h-full">
                 {img.isNew && (
                   <span
                     className="eyebrow absolute top-3 right-3 z-10 text-[10px] text-white px-2.5 py-1 rounded-sm shadow"
@@ -103,13 +120,6 @@ const DivisionGallery = ({ images, step = 2 }: DivisionGalleryProps) => {
       >
         <ChevronRight className="h-6 w-6" />
       </button>
-
-      {/* Responsive visible-count variable */}
-      <style>{`
-        @media (max-width: 639px)  { .division-gallery-root { --visible: 1; } }
-        @media (min-width: 640px) and (max-width: 1023px) { .division-gallery-root { --visible: 2; } }
-        @media (min-width: 1024px) { .division-gallery-root { --visible: 4; } }
-      `}</style>
     </div>
   );
 };
