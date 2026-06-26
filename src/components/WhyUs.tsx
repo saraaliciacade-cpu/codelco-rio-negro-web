@@ -35,14 +35,14 @@ const WhyUs = () => {
               aria-hidden="true"
             />
             <span
-              className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em]"
+              className="eyebrow text-[11px] sm:text-xs"
               style={{ color: BRAND_ORANGE }}
             >
               ¿POR QUÉ ELEGIRNOS?
             </span>
           </div>
           <h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.1]"
+            className="heading text-3xl sm:text-4xl lg:text-5xl leading-[1.1]"
             style={{ color: BRAND_BLACK }}
           >
             Tres razones por las que Vaca Muerta no espera por nosotros
@@ -57,13 +57,13 @@ const WhyUs = () => {
               style={{ backgroundColor: BRAND_CREAM, borderColor: 'rgba(26,26,26,0.1)' }}
             >
               <p
-                className="text-xs font-mono uppercase tracking-[0.2em] mb-6"
+                className="eyebrow text-xs mb-6"
                 style={{ color: BRAND_ORANGE }}
               >
                 {r.num}
               </p>
               <h3
-                className="text-xl lg:text-2xl font-bold mb-4 leading-snug"
+                className="heading text-xl lg:text-2xl mb-4 leading-snug"
                 style={{ color: BRAND_BLACK }}
               >
                 {r.title}
