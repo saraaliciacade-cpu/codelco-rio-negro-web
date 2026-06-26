@@ -15,9 +15,12 @@ export default {
     extend: {
       fontFamily: {
         'ramabhadra': ['Ramabhadra', 'system-ui', 'sans-serif'],
-        'montserrat': ['Montserrat', 'system-ui', 'sans-serif'], 
+        'montserrat': ['Montserrat', 'system-ui', 'sans-serif'],
         'nunito': ['Nunito Sans', 'system-ui', 'sans-serif'],
         'sans': ['Nunito Sans', 'system-ui', 'sans-serif'],
+        // Unified design system aliases
+        'display': ['Montserrat', 'system-ui', 'sans-serif'],
+        'mono': ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
       fontSize: {
         'h1': ['18px', { lineHeight: '1.8', fontWeight: '700' }],

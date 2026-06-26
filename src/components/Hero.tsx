@@ -48,7 +48,7 @@ const Hero = () => {
                 aria-hidden="true"
               />
               <span
-                className="text-[11px] sm:text-xs font-mono uppercase tracking-[0.25em]"
+                className="eyebrow text-[11px] sm:text-xs"
                 style={{ color: BRAND_ORANGE }}
               >
                 Cipolletti, Río Negro · Desde 2012
@@ -56,7 +56,7 @@ const Hero = () => {
             </div>
 
             {/* H1 */}
-            <h1 className="text-white font-bold leading-[1.05] tracking-tight text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
+            <h1 className="heading text-white leading-[1.05] text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
               Módulos Habitacionales, Metalúrgica y{' '}
               <span style={{ color: BRAND_ORANGE }}>Rental</span>{' '}
               para la Industria Petrolera

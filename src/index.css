@@ -128,7 +128,20 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Unified typography system - use these across the whole site */
+  .eyebrow {
+    @apply font-mono uppercase tracking-[0.25em];
+  }
+  .heading {
+    @apply font-display font-bold tracking-tight;
+  }
+  .stat-number {
+    @apply font-mono font-bold tracking-tight;
   }
 }
 
