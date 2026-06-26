@@ -66,13 +66,13 @@ const Services = () => {
       <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <span className="inline-block text-xs md:text-sm font-bold tracking-[0.2em] text-[#E84E1B] uppercase mb-3">
+          <span className="eyebrow inline-block text-xs md:text-sm text-[#E84E1B] mb-3">
             NUESTRAS DIVISIONES
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1A1A1A] mb-4 leading-tight" style={{ fontFamily: 'Nunito Sans, sans-serif' }}>
+          <h2 className="heading text-2xl md:text-3xl lg:text-4xl text-[#1A1A1A] mb-4 leading-tight">
             Fabricación, metalúrgica y rental bajo un mismo techo
           </h2>
-          <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto" style={{ fontFamily: 'Nunito Sans, sans-serif' }}>
+          <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
             Tres áreas que cubren infraestructura completa para una operación petrolera, industrial o de construcción.
           </p>
         </div>
