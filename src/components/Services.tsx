@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Services = () => {
   const divisions = [
     {
@@ -11,7 +13,7 @@ const Services = () => {
         </>
       ),
       cta: "Consultar disponibilidad →",
-      ctaLink: "#contacto",
+      ctaLink: "/fabrica",
     },
     {
       badge: "METALÚRGICA",
@@ -24,7 +26,7 @@ const Services = () => {
         </>
       ),
       cta: "Solicitar presupuesto →",
-      ctaLink: "#contacto",
+      ctaLink: "/metalurgica",
     },
     {
       badge: "RENTAL",
@@ -37,7 +39,7 @@ const Services = () => {
         </>
       ),
       cta: "Ver equipos disponibles →",
-      ctaLink: "#contacto",
+      ctaLink: "/rental",
     },
     {
       badge: "GRUPOS ELECTRÓGENOS",
@@ -50,16 +52,9 @@ const Services = () => {
         </>
       ),
       cta: "Consultar equipos →",
-      ctaLink: "#contacto",
+      ctaLink: "/grupos-electrogenos",
     },
   ];
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section id="servicios" style={{ backgroundColor: "#F5F3EF" }} className="py-16 md:py-20 lg:py-24">
@@ -120,14 +115,14 @@ const Services = () => {
                 <p className="text-sm md:text-base text-gray-300 leading-relaxed mb-6">
                   {div.text}
                 </p>
-                <button
-                  onClick={() => scrollToSection("contacto")}
+                <Link
+                  to={div.ctaLink}
                   className="inline-flex items-center text-sm font-semibold text-[#E84E1B] hover:text-white transition-colors duration-300 group/btn"
                 >
                   <span className="border-b border-[#E84E1B] group-hover/btn:border-white transition-colors duration-300">
                     {div.cta}
                   </span>
-                </button>
+                </Link>
               </div>
             </div>
           ))}

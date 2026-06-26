@@ -8,7 +8,7 @@ import WhyUs from '@/components/WhyUs';
 
 // Lazy load below-the-fold components for better bundle splitting
 const Clients = lazy(() => import('@/components/Clients'));
-const Company = lazy(() => import('@/components/Company'));
+
 const Services = lazy(() => import('@/components/Services'));
 const Gallery = lazy(() => import('@/components/Gallery'));
 const Contact = lazy(() => import('@/components/Contact'));

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { X, Download, Play } from 'lucide-react';
+import { X, Play } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const Gallery = () => {
@@ -425,14 +425,6 @@ const Gallery = () => {
   const handleShowMore = () => {
     setVisibleCount(prev => prev + 24);
   };
-  const downloadImage = (imageSrc: string, fileName: string) => {
-    const link = document.createElement('a');
-    link.href = imageSrc;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
   return <section className="py-15 bg-background">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
@@ -523,10 +515,7 @@ const Gallery = () => {
         {/* Image Modal */}
         {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in" onClick={() => setSelectedImage(null)}>
             <div className="relative max-w-4xl max-h-full bg-white rounded-lg overflow-hidden animate-scale-in transform transition-all duration-300" onClick={e => e.stopPropagation()}>
-              <div className="absolute top-4 right-4 flex gap-2 z-10">
-                <Button onClick={() => downloadImage(selectedImage.src, `codelco-${selectedImage.category}-${selectedImage.id}.jpg`)} aria-label="Descargar imagen" className="bg-primary hover:bg-primary/90 text-white p-2 transition-colors duration-200" size="sm">
-                  <Download className="w-4 h-4" aria-hidden="true" />
-                </Button>
+              <div className="absolute top-4 right-4 z-10">
                 <Button onClick={() => setSelectedImage(null)} aria-label="Cerrar imagen" className="bg-gray-500 hover:bg-gray-600 text-white p-2 transition-colors duration-200" size="sm">
                   <X className="w-4 h-4" aria-hidden="true" />
                 </Button>
