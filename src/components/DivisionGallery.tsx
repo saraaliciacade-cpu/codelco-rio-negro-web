@@ -15,7 +15,7 @@ interface DivisionGalleryProps {
 
 const getVisibleColumns = () => {
   if (typeof window === 'undefined') return 4;
-  if (window.matchMedia('(min-width: 1024px)').matches) return 4;
+  if (window.matchMedia('(min-width: 1024px)').matches) return 3;
   if (window.matchMedia('(min-width: 640px)').matches) return 2;
   return 1;
 };
