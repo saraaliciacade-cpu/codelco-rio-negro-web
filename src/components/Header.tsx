@@ -18,8 +18,15 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const servicesSubmenu = [
+    { name: 'Fábrica', href: '/fabrica' },
+    { name: 'Metalúrgica', href: '/metalurgica' },
+    { name: 'Rental', href: '/rental' },
+    { name: 'Grupos Electrógenos', href: '/grupos-electrogenos' },
+  ];
+
   const menuItems = [
-    { name: 'Divisiones', href: '#servicios' },
+    { name: 'Servicios', href: '#servicios', submenu: servicesSubmenu },
     { name: '¿Por qué elegirnos?', href: '#por-que-elegirnos' },
     { name: 'Clientes', href: '#clientes' },
     { name: 'Novedades', href: '/novedades' },
