@@ -102,7 +102,7 @@ const Services = () => {
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
                 <span
-                  className="absolute top-4 left-4 text-xs font-bold tracking-wider text-white px-3 py-1 rounded-sm"
+                  className="eyebrow absolute top-4 left-4 text-xs text-white px-3 py-1 rounded-sm"
                   style={{ backgroundColor: "#E84E1B" }}
                 >
                   {div.badge}
@@ -111,19 +111,13 @@ const Services = () => {
 
               {/* Content */}
               <div className="p-6 md:p-8">
-                <h3
-                  className="text-lg md:text-xl font-bold text-white mb-2"
-                  style={{ fontFamily: 'Nunito Sans, sans-serif' }}
-                >
+                <h3 className="heading text-lg md:text-xl text-white mb-2">
                   {div.title}
                 </h3>
-                <p className="text-xs md:text-sm font-semibold text-[#E84E1B] mb-4 tracking-wide uppercase">
+                <p className="eyebrow text-xs md:text-sm text-[#E84E1B] mb-4">
                   {div.kicker}
                 </p>
-                <p
-                  className="text-sm md:text-base text-gray-300 leading-relaxed mb-6"
-                  style={{ fontFamily: 'Nunito Sans, sans-serif' }}
-                >
+                <p className="text-sm md:text-base text-gray-300 leading-relaxed mb-6">
                   {div.text}
                 </p>
                 <button
