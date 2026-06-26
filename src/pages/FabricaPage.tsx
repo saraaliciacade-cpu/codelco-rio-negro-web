@@ -181,7 +181,7 @@ const FabricaPage = () => {
             </h2>
           </div>
 
-          <DivisionGallery images={fabricaImages} step={2} />
+          <DivisionGallery images={fabricaImages} />
         </div>
       </section>
 
