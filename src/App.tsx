@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
+import WhatsAppFloat from "@/components/WhatsAppFloat";
+
 // Lazy load pages for better bundle splitting
 const Index = lazy(() => import("./pages/Index"));
 const Webmail = lazy(() => import("./pages/Webmail"));
