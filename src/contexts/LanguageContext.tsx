@@ -90,7 +90,7 @@ const translations = {
     'contact.title': 'CONTACTO',
     'contact.info': 'Información de Contacto',
     'contact.address.label': 'Dirección',
-    'contact.address.value': 'Ruta 22 Km.1114, Cipolletti - Río Negro\nDías: Lunes a viernes\nHorario: 8-12hs / 15-19hs',
+    'contact.address.value': 'Ruta 22 Km 1214, Cipolletti - Río Negro\nDías: Lunes a viernes\nHorario: 8 a 12hs / 15 a 19hs',
     
     // Category translations
     'category.fabrica': 'Fábrica',
