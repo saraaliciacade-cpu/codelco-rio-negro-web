@@ -37,7 +37,7 @@ const contactFormSchema = z.object({
 const Contact = () => {
   const { toast } = useToast();
   const { t } = useLanguage();
-  const [isMapVisible, setIsMapVisible] = useState(false);
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
