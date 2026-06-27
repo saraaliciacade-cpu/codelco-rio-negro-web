@@ -117,39 +117,6 @@ const Contact = () => {
       }
     }
   };
-  const contactInfo = [{
-    icon: MapPin,
-    label: t('contact.address.label'),
-    value: t('contact.address.value')
-  }, {
-    icon: Mail,
-    label: t('contact.email.label'),
-    value: 'ventas@codelco.com.ar'
-  }, {
-    icon: Phone,
-    label: t('contact.phone.label'),
-    value: `${t('contact.phone.rental')}\n${t('contact.phone.compras')}`
-  }];
-
-  // Map initialization logic
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && !isMapVisible) {
-          setIsMapVisible(true);
-        }
-      },
-      { rootMargin: '100px' }
-    );
-
-    const mapElement = document.getElementById('map');
-    if (mapElement) {
-      observer.observe(mapElement);
-    }
-
-    return () => observer.disconnect();
-  }, [isMapVisible]);
 
   // Note: Google Maps JS API removed (no API key / billing required).
 
