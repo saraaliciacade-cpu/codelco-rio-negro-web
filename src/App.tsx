@@ -16,6 +16,7 @@ const FabricaPage = lazy(() => import("./pages/FabricaPage"));
 const MetalurgicaPage = lazy(() => import("./pages/MetalurgicaPage"));
 const RentalPage = lazy(() => import("./pages/RentalPage"));
 const GruposElectrogenosPage = lazy(() => import("./pages/GruposElectrogenosPage"));
+const NovedadesPage = lazy(() => import("./pages/NovedadesPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
