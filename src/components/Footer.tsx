@@ -33,7 +33,7 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-primary-light" />
-                <span className="text-white/80 font-nunito text-base">Ruta 22 Km.1114, Cipolletti - Río Negro</span>
+                <span className="text-white/80 font-nunito text-base">Ruta 22 Km 1214, Cipolletti - Río Negro</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-primary-light" />
