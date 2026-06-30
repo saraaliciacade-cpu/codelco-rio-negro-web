@@ -29,13 +29,20 @@
   Cache-Control: public, max-age=31536000, immutable
   Content-Type: video/mp4
 
+# Never cache the app shell/routes, so published changes appear immediately
+/
+  Cache-Control: no-cache, no-store, must-revalidate
+
+/index.html
+  Cache-Control: no-cache, no-store, must-revalidate
+
 # Cache HTML files for shorter period to allow updates
 /*.html
-  Cache-Control: public, max-age=3600
+  Cache-Control: no-cache, no-store, must-revalidate
 
-# Default cache for all other assets
+# Default headers for SPA routes and all other non-static paths
 /*
-  Cache-Control: public, max-age=31536000
+  Cache-Control: no-cache, no-store, must-revalidate
   
   # Security Headers
   X-Frame-Options: SAMEORIGIN
