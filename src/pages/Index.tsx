@@ -10,7 +10,6 @@ import WhyUs from '@/components/WhyUs';
 const Clients = lazy(() => import('@/components/Clients'));
 
 const Services = lazy(() => import('@/components/Services'));
-const Gallery = lazy(() => import('@/components/Gallery'));
 const Contact = lazy(() => import('@/components/Contact'));
 
 const Footer = lazy(() => import('@/components/Footer'));
