@@ -1,6 +1,22 @@
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 
 const BRAND_ORANGE = '#E84E1B';
+
+const HERO_IMAGES = [
+  {
+    src: '/images/fabrica/fabrica-08.jpg',
+    alt: 'Módulo habitacional Codelco siendo izado por grúa en planta de Cipolletti',
+  },
+  {
+    src: '/metalurgica-05.jpg',
+    alt: 'Soldadura de estructura metálica en planta Codelco — fabricación a medida',
+  },
+  {
+    src: '/rental-01.jpg',
+    alt: 'Flota de equipos de rental Codelco operando en Vaca Muerta',
+  },
+];
 
 const scrollToSection = (sectionId: string) => {
   const el = document.getElementById(sectionId);
@@ -8,23 +24,43 @@ const scrollToSection = (sectionId: string) => {
 };
 
 const Hero = () => {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    // Preload remaining hero images so transitions are instant
+    HERO_IMAGES.slice(1).forEach((img) => {
+      const i = new Image();
+      i.src = img.src;
+    });
+    const id = window.setInterval(() => {
+      setActive((p) => (p + 1) % HERO_IMAGES.length);
+    }, 5500);
+    return () => window.clearInterval(id);
+  }, []);
+
   return (
     <section
       id="inicio"
       className="relative w-full overflow-hidden"
       style={{ minHeight: 'clamp(680px, 90vh, 880px)' }}
     >
-      {/* Background image */}
-      <img
-        src="/images/fabrica/fabrica-08.jpg"
-        alt="Módulo habitacional Codelco siendo izado por grúa en planta de Cipolletti"
-        className="absolute inset-0 w-full h-full object-cover"
-        loading="eager"
-        decoding="sync"
-        fetchPriority="high"
-        width={1920}
-        height={1080}
-      />
+      {/* Background carousel — cross-fade */}
+      {HERO_IMAGES.map((img, idx) => (
+        <img
+          key={img.src}
+          src={img.src}
+          alt={img.alt}
+          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+          style={{ opacity: active === idx ? 1 : 0 }}
+          loading={idx === 0 ? 'eager' : 'lazy'}
+          decoding={idx === 0 ? 'sync' : 'async'}
+          fetchPriority={idx === 0 ? 'high' : 'low'}
+          width={1920}
+          height={1080}
+          aria-hidden={active === idx ? undefined : true}
+        />
+      ))}
+
 
       {/* Gradient overlay 55% top -> 92% bottom */}
       <div
