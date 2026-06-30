@@ -10,7 +10,6 @@ import WhyUs from '@/components/WhyUs';
 const Clients = lazy(() => import('@/components/Clients'));
 
 const Services = lazy(() => import('@/components/Services'));
-const Gallery = lazy(() => import('@/components/Gallery'));
 const Contact = lazy(() => import('@/components/Contact'));
 
 const Footer = lazy(() => import('@/components/Footer'));
@@ -29,13 +28,6 @@ const Index = () => {
         <Services />
         <Suspense fallback={<div className="py-8"><div className="animate-pulse rounded-lg bg-muted h-32 mx-auto max-w-4xl"></div></div>}>
           <Clients />
-        </Suspense>
-        <Suspense fallback={<div className="py-8 text-center">
-          <div className="animate-pulse rounded-lg bg-muted h-64 mx-auto max-w-4xl"></div>
-        </div>}>
-          <div id="galeria">
-            <Gallery />
-          </div>
         </Suspense>
         <Suspense fallback={<div className="py-8 text-center">
           <div className="animate-pulse rounded-lg bg-muted h-96 mx-auto max-w-4xl"></div>
