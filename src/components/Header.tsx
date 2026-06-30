@@ -26,9 +26,9 @@ const Header = () => {
   ];
 
   const menuItems = [
-    { name: 'Servicios', href: '#servicios', submenu: servicesSubmenu },
-    { name: '¿Por qué elegirnos?', href: '#por-que-elegirnos' },
-    { name: 'Clientes', href: '#clientes' },
+    { name: 'Servicios', href: '/#servicios', submenu: servicesSubmenu },
+    { name: '¿Por qué elegirnos?', href: '/#por-que-elegirnos' },
+    { name: 'Clientes', href: '/#clientes' },
     { name: 'Novedades', href: '/novedades' },
   ];
 
@@ -42,7 +42,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo + Language Selector */}
           <div className="flex items-center space-x-6">
-            <a href="#inicio" className="flex items-center">
+            <a href="/#inicio" className="flex items-center">
               <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-8 w-auto brightness-0 invert" />
             </a>
 
@@ -123,7 +123,7 @@ const Header = () => {
               </div>
             ))}
             <a
-              href="#contacto"
+              href="/#contacto"
               className="ml-2 inline-flex items-center justify-center rounded-sm bg-[#e04d1c] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#c94418] transition-colors"
               style={{ fontFamily: 'Nunito Sans, sans-serif' }}
             >
@@ -175,7 +175,7 @@ const Header = () => {
                 </div>
               ))}
               <a
-                href="#contacto"
+                href="/#contacto"
                 onClick={() => setIsMenuOpen(false)}
                 className="inline-flex w-fit items-center justify-center rounded-sm bg-[#e04d1c] px-4 py-2 text-sm font-semibold text-white hover:bg-[#c94418] transition-colors"
                 style={{ fontFamily: 'Nunito Sans, sans-serif' }}
