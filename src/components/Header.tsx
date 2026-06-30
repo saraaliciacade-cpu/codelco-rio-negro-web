@@ -26,9 +26,9 @@ const Header = () => {
   ];
 
   const menuItems = [
-    { name: 'Servicios', href: '#servicios', submenu: servicesSubmenu },
-    { name: '¿Por qué elegirnos?', href: '#por-que-elegirnos' },
-    { name: 'Clientes', href: '#clientes' },
+    { name: 'Servicios', href: '/#servicios', submenu: servicesSubmenu },
+    { name: '¿Por qué elegirnos?', href: '/#por-que-elegirnos' },
+    { name: 'Clientes', href: '/#clientes' },
     { name: 'Novedades', href: '/novedades' },
   ];
 
