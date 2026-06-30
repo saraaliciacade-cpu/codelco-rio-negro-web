@@ -54,7 +54,6 @@ const Hero = () => {
           style={{ opacity: active === idx ? 1 : 0 }}
           loading={idx === 0 ? 'eager' : 'lazy'}
           decoding={idx === 0 ? 'sync' : 'async'}
-          fetchPriority={idx === 0 ? 'high' : 'low'}
           width={1920}
           height={1080}
           aria-hidden={active === idx ? undefined : true}

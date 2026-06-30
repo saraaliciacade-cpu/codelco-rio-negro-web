@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -42,9 +43,9 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo + Language Selector */}
           <div className="flex items-center space-x-6">
-            <a href="/#inicio" className="flex items-center">
+            <Link to="/" className="flex items-center">
               <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-8 w-auto brightness-0 invert" />
-            </a>
+            </Link>
 
             <div className="relative">
               <button
@@ -90,8 +91,8 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8 ml-auto">
             {menuItems.map((item) => (
               <div key={item.name} className="relative group">
-                <a
-                  href={item.href}
+                <Link
+                  to={item.href}
                   className="relative text-sm font-medium text-white/85 hover:text-white transition-all duration-300 ease-in-out flex items-center overflow-hidden"
                   style={{ fontFamily: 'Nunito Sans, sans-serif' }}
                 >
@@ -103,32 +104,32 @@ const Header = () => {
                   />
                   {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 ease-in-out group-hover:w-full"></span>
-                </a>
+                </Link>
                 {item.submenu && (
                   <div className="absolute left-0 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                     <div className="bg-[#1A1A1A] border border-white/10 rounded-md shadow-xl overflow-hidden min-w-[200px]">
                       {item.submenu.map((sub) => (
-                        <a
+                        <Link
                           key={sub.name}
-                          href={sub.href}
+                          to={sub.href}
                           className="block px-4 py-2.5 text-sm text-white/85 hover:bg-white/10 hover:text-primary transition-colors"
                           style={{ fontFamily: 'Nunito Sans, sans-serif' }}
                         >
                           {sub.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   </div>
                 )}
               </div>
             ))}
-            <a
-              href="/#contacto"
+            <Link
+              to="/#contacto"
               className="ml-2 inline-flex items-center justify-center rounded-sm bg-[#e04d1c] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#c94418] transition-colors"
               style={{ fontFamily: 'Nunito Sans, sans-serif' }}
             >
               Solicitar presupuesto
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -149,39 +150,39 @@ const Header = () => {
             <div className="flex flex-col space-y-3">
               {menuItems.map((item) => (
                 <div key={item.name} className="flex flex-col space-y-2">
-                  <a
-                    href={item.href}
+                  <Link
+                    to={item.href}
                     className="text-sm font-medium text-white/85 hover:text-primary transition-colors duration-300"
                     onClick={() => setIsMenuOpen(false)}
                     style={{ fontFamily: 'Nunito Sans, sans-serif' }}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                   {item.submenu && (
                     <div className="flex flex-col space-y-2 pl-4 border-l border-white/10">
                       {item.submenu.map((sub) => (
-                        <a
+                        <Link
                           key={sub.name}
-                          href={sub.href}
+                          to={sub.href}
                           onClick={() => setIsMenuOpen(false)}
                           className="text-xs font-medium text-white/70 hover:text-primary transition-colors"
                           style={{ fontFamily: 'Nunito Sans, sans-serif' }}
                         >
                           {sub.name}
-                        </a>
+                        </Link>
                       ))}
                     </div>
                   )}
                 </div>
               ))}
-              <a
-                href="/#contacto"
+              <Link
+                to="/#contacto"
                 onClick={() => setIsMenuOpen(false)}
                 className="inline-flex w-fit items-center justify-center rounded-sm bg-[#e04d1c] px-4 py-2 text-sm font-semibold text-white hover:bg-[#c94418] transition-colors"
                 style={{ fontFamily: 'Nunito Sans, sans-serif' }}
               >
                 Solicitar presupuesto
-              </a>
+              </Link>
             </div>
           </nav>
         )}
