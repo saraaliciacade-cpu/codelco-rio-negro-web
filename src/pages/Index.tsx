@@ -37,14 +37,6 @@ const Index = () => {
           </div>
         </Suspense>
       </main>
-        <Suspense fallback={<div className="py-8 text-center">
-          <div className="animate-pulse rounded-lg bg-muted h-96 mx-auto max-w-4xl"></div>
-        </div>}>
-          <div id="ubicacion">
-            <Contact />
-          </div>
-        </Suspense>
-      </main>
       <Suspense fallback={<div className="h-16 bg-muted animate-pulse"></div>}>
         <Footer />
       </Suspense>
