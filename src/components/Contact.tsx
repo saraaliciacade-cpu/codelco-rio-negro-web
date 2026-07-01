@@ -128,17 +128,6 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Map */}
-            <div className="w-full overflow-hidden rounded-2xl mt-8 flex-1 min-h-[220px]">
-              <iframe
-                className="w-full h-full border-0"
-                title="Codelco ubicación"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=-38.9475245,-68.0024868&hl=es&z=15&output=embed"
-                allowFullScreen
-              />
-            </div>
           </div>
 
           {/* Right column - Form */}
@@ -202,6 +191,18 @@ const Contact = () => {
                 Enviar consulta →
               </Button>
             </form>
+          </div>
+
+          {/* Map - full width */}
+          <div className="lg:col-span-2 w-full overflow-hidden rounded-2xl" style={{ height: '380px' }}>
+            <iframe
+              className="w-full h-full border-0"
+              title="Codelco ubicación"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=-38.9475245,-68.0024868&hl=es&z=15&output=embed"
+              allowFullScreen
+            />
           </div>
         </div>
       </div>

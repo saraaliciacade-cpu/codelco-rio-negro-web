@@ -41,19 +41,19 @@ const Footer = () => {
         <div className="border-t border-white/10 mt-12 pt-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-nunito text-white/40">
             <p>© 2026 Codelco S.A. — Ruta 22 Km 1214, Cipolletti, Río Negro, Argentina</p>
-          </div>
-          <div className="flex items-center justify-center md:justify-end gap-3 mt-4">
-            <a
-              href="https://organicdesign.com.ar/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-nunito text-white/40 text-xs hover:text-white/70 transition-colors"
-            >
-              Creador del Sitio Web:
-            </a>
-            <a href="https://organicdesign.com.ar/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
-              <img src={organicLogo} alt="Organic Design" className="h-8 w-auto" />
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://organicdesign.com.ar/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white/70 transition-colors"
+              >
+                Creador del Sitio Web:
+              </a>
+              <a href="https://organicdesign.com.ar/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+                <img src={organicLogo} alt="Organic Design" className="h-8 w-auto" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
