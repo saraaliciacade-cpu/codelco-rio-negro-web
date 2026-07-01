@@ -62,7 +62,7 @@ const Contact = () => {
       <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left column */}
-          <div>
+          <div className="flex flex-col">
             <div className="flex items-center gap-3 mb-6">
               <span className="h-[2px] w-8" style={{ backgroundColor: '#e04d1c' }} />
               <span className="text-sm font-bold tracking-widest font-montserrat" style={{ color: '#e04d1c' }}>CONTACTO</span>
@@ -129,7 +129,7 @@ const Contact = () => {
             </div>
 
             {/* Map */}
-            <div className="w-full overflow-hidden rounded-2xl mt-8" style={{ height: '220px' }}>
+            <div className="w-full overflow-hidden rounded-2xl mt-8 flex-1 min-h-[220px]">
               <iframe
                 className="w-full h-full border-0"
                 title="Codelco ubicación"
