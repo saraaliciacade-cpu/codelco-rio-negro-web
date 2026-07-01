@@ -1,81 +1,69 @@
-import { MapPin, Mail, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import organicLogo from '@/assets/logo-organic.png';
-import { useLanguage } from '@/contexts/LanguageContext';
+
 const Footer = () => {
-  const { t } = useLanguage();
-  return <footer className="text-white py-8" style={{
-    backgroundColor: '#333333'
-  }}>
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-6">
-          {/* Company Info */}
-          <div className="space-y-3">
-            <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-12 w-auto" />
-            <p className="text-white/80 leading-relaxed font-nunito text-sm">
-              {t('footer.description')}
+  return (
+    <footer className="text-white" style={{ backgroundColor: '#0f0f0f' }}>
+      <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-7xl py-14">
+        <div className="grid md:grid-cols-3 gap-10">
+          {/* Brand */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center justify-center w-10 h-10 rounded-md font-extrabold text-white text-xl font-montserrat" style={{ backgroundColor: '#e04d1c' }}>
+                c
+              </div>
+              <span className="text-xl font-extrabold font-montserrat">codelco</span>
+            </div>
+            <p className="text-white/50 font-nunito text-sm leading-relaxed max-w-xs">
+              Servicios industriales para el sector petrolero en la Patagonia argentina. Fabricación, metalúrgica y rental desde 2012.
             </p>
           </div>
 
-          {/* Services */}
-          <div className="space-y-3">
-            <h3 className="text-lg font-semibold mb-3 font-montserrat">{t('footer.services.title')}</h3>
-            <ul className="space-y-1 text-white/80 font-nunito text-sm">
-              <li>{t('footer.services.list1')}</li>
-              <li>{t('footer.services.list2')}</li>
-              <li>{t('footer.services.list3')}</li>
-              <li>{t('footer.services.list4')}</li>
+          {/* Divisiones */}
+          <div>
+            <h3 className="text-white font-extrabold font-montserrat text-sm tracking-widest mb-5">DIVISIONES</h3>
+            <ul className="space-y-3 font-nunito text-sm">
+              <li><Link to="/fabrica" className="text-white/60 hover:text-[#e04d1c] transition-colors">Módulos Habitacionales</Link></li>
+              <li><Link to="/metalurgica" className="text-white/60 hover:text-[#e04d1c] transition-colors">Metalúrgica</Link></li>
+              <li><Link to="/rental" className="text-white/60 hover:text-[#e04d1c] transition-colors">Rental</Link></li>
+              <li><Link to="/grupos-electrogenos" className="text-white/60 hover:text-[#e04d1c] transition-colors">Grupos Electrógenos</Link></li>
             </ul>
           </div>
 
-          {/* Contact Info */}
-          <div className="space-y-3">
-            <h3 className="text-lg font-semibold mb-3 font-montserrat">{t('footer.contact.title')}</h3>
-            <div className="space-y-2">
-              <div className="flex items-center space-x-2">
-                <MapPin className="h-4 w-4 text-primary-light" />
-                <span className="text-white/80 font-nunito text-base">Ruta 22 Km 1214, Cipolletti - Río Negro</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4 text-primary-light" />
-                <span className="text-white/80 font-nunito text-base">ventas@codelco.com.ar</span>
-              </div>
-              <div className="flex items-start space-x-2">
-                <Phone className="h-4 w-4 text-primary-light mt-0.5" />
-                <div className="font-nunito text-base text-white/80">
-                  Sebastian - 299 413 6453
-                </div>
-              </div>
-            </div>
+          {/* Empresa */}
+          <div>
+            <h3 className="text-white font-extrabold font-montserrat text-sm tracking-widest mb-5">EMPRESA</h3>
+            <ul className="space-y-3 font-nunito text-sm">
+              <li><Link to="/#por-que-elegirnos" className="text-white/60 hover:text-[#e04d1c] transition-colors">Por qué elegirnos</Link></li>
+              <li><Link to="/clientes" className="text-white/60 hover:text-[#e04d1c] transition-colors">Clientes</Link></li>
+              <li><Link to="/novedades" className="text-white/60 hover:text-[#e04d1c] transition-colors">Novedades</Link></li>
+              <li><Link to="/#contacto" className="text-white/60 hover:text-[#e04d1c] transition-colors">Contacto</Link></li>
+            </ul>
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-8 pt-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="hidden md:block flex-1"></div>
-            <p className="font-nunito text-white text-sm text-center flex-1">
-              © {new Date().getFullYear()} Codelco S.A. {t('footer.copyright')}
-            </p>
-            <div className="flex items-center gap-3 flex-1 justify-end">
-              <a 
-                href="https://organicdesign.com.ar/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="font-nunito text-white/80 text-sm hover:text-white transition-colors"
-              >
-                Creador del Sitio Web:
-              </a>
-              <a 
-                href="https://organicdesign.com.ar/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:opacity-80 transition-opacity"
-              >
-                <img src={organicLogo} alt="Organic Design" className="h-12 w-auto" />
-              </a>
-            </div>
+        <div className="border-t border-white/10 mt-12 pt-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-nunito text-white/40">
+            <p>© {new Date().getFullYear()} Codelco S.A. — Cipolletti, Río Negro, Argentina</p>
+            <p>Ruta 22 Km 1214 · ventas@codelco.com.ar</p>
+          </div>
+          <div className="flex items-center justify-center md:justify-end gap-3 mt-4">
+            <a
+              href="https://organicdesign.com.ar/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-nunito text-white/40 text-xs hover:text-white/70 transition-colors"
+            >
+              Creador del Sitio Web:
+            </a>
+            <a href="https://organicdesign.com.ar/" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+              <img src={organicLogo} alt="Organic Design" className="h-8 w-auto" />
+            </a>
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;
