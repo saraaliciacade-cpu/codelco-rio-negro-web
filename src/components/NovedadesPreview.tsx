@@ -11,13 +11,12 @@ const NovedadesPreview = () => {
   return (
     <section id="novedades" className="py-16 lg:py-24 bg-[#f3f1ec]">
       <div className="container mx-auto px-6 sm:px-10 lg:px-16">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <div className="flex items-center justify-center gap-3 mb-4">
+        <div className="max-w-3xl mb-12 lg:mb-16">
+          <div className="flex items-center gap-3 mb-4">
             <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
             <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
               NOVEDADES DE CODELCO
             </span>
-            <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
           </div>
           <h2 className="heading text-3xl sm:text-4xl lg:text-5xl leading-[1.1]" style={{ color: BRAND_BLACK }}>
             Lo que estamos construyendo
