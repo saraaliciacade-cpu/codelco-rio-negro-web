@@ -4,6 +4,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import StatsBar from '@/components/StatsBar';
 import WhyUs from '@/components/WhyUs';
+import NovedadesPreview from '@/components/NovedadesPreview';
 
 
 // Lazy load below-the-fold components for better bundle splitting
@@ -26,6 +27,7 @@ const Index = () => {
         <StatsBar />
         <WhyUs />
         <Services />
+        <NovedadesPreview />
         <Suspense fallback={<div className="py-8"><div className="animate-pulse rounded-lg bg-muted h-32 mx-auto max-w-4xl"></div></div>}>
           <Clients />
         </Suspense>
