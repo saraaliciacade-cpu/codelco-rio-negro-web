@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import codelcoLogo from '@/assets/codelco-logo-footer.png';
 import organicLogo from '@/assets/logo-organic.png';
 
 const Footer = () => {
@@ -8,12 +9,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-10">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-md font-extrabold text-white text-xl font-montserrat" style={{ backgroundColor: '#e04d1c' }}>
-                c
-              </div>
-              <span className="text-xl font-extrabold font-montserrat">codelco</span>
-            </div>
+            <img src={codelcoLogo} alt="Codelco" className="h-10 w-auto" />
             <p className="text-white/50 font-nunito text-sm leading-relaxed max-w-xs">
               Servicios industriales para el sector petrolero en la Patagonia argentina. Fabricación, metalúrgica y rental desde 2012.
             </p>
@@ -44,8 +40,7 @@ const Footer = () => {
 
         <div className="border-t border-white/10 mt-12 pt-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-nunito text-white/40">
-            <p>© {new Date().getFullYear()} Codelco S.A. — Cipolletti, Río Negro, Argentina</p>
-            <p>Ruta 22 Km 1214 · ventas@codelco.com.ar</p>
+            <p>© 2026 Codelco S.A. — Ruta 22 Km 1214, Cipolletti, Río Negro, Argentina</p>
           </div>
           <div className="flex items-center justify-center md:justify-end gap-3 mt-4">
             <a
