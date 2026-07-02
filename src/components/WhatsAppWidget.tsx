@@ -184,7 +184,7 @@ export default function WhatsAppWidget() {
                     onClick={handleSend}
                     disabled={!message.trim()}
                     className="rounded-full w-9 h-9 sm:w-10 sm:h-10 p-0 bg-primary hover:bg-primary/90 text-white disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
-                    style={{ backgroundColor: '#25D366' }}
+                    style={{ backgroundColor: '#e65b2a' }}
                     aria-label="Send message"
                   >
                     <Send className="w-4 h-4" />
