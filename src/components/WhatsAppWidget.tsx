@@ -160,7 +160,7 @@ export default function WhatsAppWidget() {
                       <button
                         key={qr.label}
                         onClick={() => setMessage(qr.text)}
-                        className="text-left text-xs sm:text-sm bg-[#dcf8c6] hover:bg-[#c8f0a8] text-foreground rounded-2xl rounded-tr-none px-3 py-2 shadow-sm transition-colors max-w-[90%]"
+                        className="text-left text-xs sm:text-sm bg-[#ffe5d9] hover:bg-[#ffccb3] text-foreground rounded-2xl rounded-tr-none px-3 py-2 shadow-sm transition-colors max-w-[90%]"
                       >
                         {qr.label}
                       </button>
