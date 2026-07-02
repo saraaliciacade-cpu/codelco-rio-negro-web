@@ -138,7 +138,10 @@ export default function WhatsAppWidget() {
               </div>
 
               {/* Chat Body */}
-              <div className="flex-1 min-h-0 p-2 sm:p-3 overflow-y-auto relative bg-white">
+              <div
+                className="flex-1 min-h-0 p-2 sm:p-3 overflow-y-auto relative"
+                style={{ backgroundImage: `url(${waBg.url})`, backgroundRepeat: 'repeat', backgroundSize: 'auto' }}
+              >
                 {/* Welcome Message Bubble */}
                 <div className="relative mb-3 animate-fade-in">
                   <div className="bg-white rounded-lg rounded-tl-none p-2 sm:p-2.5 shadow-sm max-w-[85%] inline-block border border-gray-100">
