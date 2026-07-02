@@ -6,7 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
-import WhatsAppFloat from "@/components/WhatsAppFloat";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 // Lazy load pages for better bundle splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -72,7 +72,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
-          <WhatsAppFloat />
+          <WhatsAppWidget />
         </BrowserRouter>
       </LanguageProvider>
     </TooltipProvider>
