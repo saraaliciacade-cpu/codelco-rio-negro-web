@@ -117,7 +117,7 @@ export default function WhatsAppWidget() {
           <div className="animate-scale-in origin-bottom-right fixed bottom-20 right-4 sm:bottom-20 sm:right-6">
             <div className={`w-[280px] max-w-[calc(100vw-2rem)] sm:w-[360px] sm:max-w-[380px] bg-background rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col transition-[height] duration-500 ease-in-out ${showQuickReplies ? 'h-[420px] sm:h-[500px]' : 'h-[300px] sm:h-[370px]'}`}>
               {/* Header */}
-              <div className="bg-primary text-white p-2 sm:p-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#25D366' }}>
+              <div className="bg-primary text-white p-2 sm:p-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#e65b2a' }}>
                 <div className="flex items-center gap-2">
                   <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-white flex-shrink-0">
                     <img src={codelcoProfile} alt="Codelco S.A." className="w-full h-full object-cover" loading="eager" fetchPriority="high" width="96" height="96" decoding="async" />
