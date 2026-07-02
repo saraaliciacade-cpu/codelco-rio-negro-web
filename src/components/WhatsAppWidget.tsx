@@ -5,6 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import whatsappLogo from "@/assets/whatsapp-logo.png";
 import codelcoProfile from "@/assets/codelco-profile.png";
+import waBg from "@/assets/whatsapp-bg-tiny.jpg.asset.json";
 
 export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
