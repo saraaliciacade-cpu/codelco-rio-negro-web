@@ -8,7 +8,7 @@ const Clients = () => {
           PRUEBA SOCIAL
         </p>
         <h2 className="heading text-3xl md:text-5xl text-[#1A1A1A] leading-tight mb-4">
-          +30 empresas del sector petrolero confían en nosotros
+          <span className="text-[#e65b2a]">+30 empresas</span> del sector petrolero <span className="text-[#e65b2a]">confían en nosotros</span>
         </h2>
         <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
           Operadoras, contratistas y empresas de servicios trabajan con Codelco en Vaca Muerta y toda la Patagonia.
@@ -18,9 +18,9 @@ const Clients = () => {
       <LogoCarousel />
 
       <div className="max-w-3xl mx-auto px-4 text-center mt-10 md:mt-14">
-        <h3 className="text-xl md:text-2xl font-bold text-[#1A1A1A] leading-snug">
+        <h3 className="heading text-xl md:text-2xl text-[#1A1A1A] leading-snug">
           Construimos relaciones basadas en confianza y resultados sostenidos, acompañando a cada cliente en cada etapa de su operación.{" "}
-          <span className="text-[#E84E1B]">¿Tu empresa es la próxima?</span>
+          <span className="text-[#e65b2a]">¿Tu empresa es la próxima?</span>
         </h3>
       </div>
     </section>
