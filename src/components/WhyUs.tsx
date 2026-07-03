@@ -70,20 +70,18 @@ const WhyUs = () => {
                 >
                   {r.num}
                 </p>
+                <h3
+                  className="heading text-xl lg:text-2xl mb-4 leading-snug"
+                  style={{ color: BRAND_BLACK }}
+                >
+                  {r.title}
+                </h3>
+                <p className="text-sm lg:text-base leading-relaxed" style={{ color: '#444' }}>
+                  {r.body}
+                </p>
               </article>
             );
           })}
-              <h3
-                className="heading text-xl lg:text-2xl mb-4 leading-snug"
-                style={{ color: BRAND_BLACK }}
-              >
-                {r.title}
-              </h3>
-              <p className="text-sm lg:text-base leading-relaxed" style={{ color: '#444' }}>
-                {r.body}
-              </p>
-            </article>
-          ))}
         </div>
       </div>
     </section>
