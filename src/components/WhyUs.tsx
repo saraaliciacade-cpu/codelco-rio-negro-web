@@ -65,7 +65,7 @@ const WhyUs = () => {
               >
                 <Icon size={32} strokeWidth={1.5} style={{ color: BRAND_ORANGE }} className="mb-4" />
                 <p
-                  className="eyebrow text-xs mb-6"
+                  className="eyebrow text-xs mb-6 font-bold"
                   style={{ color: BRAND_ORANGE }}
                 >
                   {r.num}
@@ -76,7 +76,7 @@ const WhyUs = () => {
                 >
                   {r.title}
                 </h3>
-                <p className="text-sm lg:text-base leading-relaxed" style={{ color: '#444' }}>
+                <p className="text-sm lg:text-base leading-relaxed font-bold" style={{ color: '#444' }}>
                   {r.body}
                 </p>
               </article>

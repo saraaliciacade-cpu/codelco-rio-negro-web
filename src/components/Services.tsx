@@ -109,7 +109,7 @@ const Services = () => {
                 <h3 className="heading text-lg md:text-xl text-white mb-2">
                   {div.title}
                 </h3>
-                <p className="eyebrow text-xs md:text-sm text-[#E84E1B] mb-4">
+                <p className="eyebrow text-xs md:text-sm text-[#E84E1B] mb-4 font-bold">
                   {div.kicker}
                 </p>
                 <p className="text-sm md:text-base text-gray-300 leading-relaxed mb-6">

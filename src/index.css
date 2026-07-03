@@ -135,7 +135,7 @@ All colors MUST be HSL.
 @layer components {
   /* Unified typography system - use these across the whole site */
   .eyebrow {
-    @apply font-mono uppercase tracking-[0.25em];
+    @apply font-montserrat uppercase tracking-widest;
   }
   .heading {
     @apply font-display font-bold tracking-tight;
