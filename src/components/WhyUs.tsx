@@ -1,3 +1,5 @@
+import { Clock, Factory, Wrench } from 'lucide-react';
+
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
 const BRAND_BLACK = '#1A1A1A';
@@ -6,18 +8,21 @@ const reasons = [
   {
     num: '01 / ENTREGA',
     title: 'Entrega en tiempo y forma',
+    icon: Clock,
     body:
       'Cumplimos plazos en operaciones críticas. Si tu cronograma depende de un módulo o un equipo, lo tenés cuando lo necesitás — no "cuando se pueda".',
   },
   {
     num: '02 / FABRICACIÓN',
     title: 'Todo se produce en nuestra planta',
+    icon: Factory,
     body:
       '3.500 m² propios con tecnología CNC, plegadora y soldadoras semiautomáticas. No subcontratamos la fabricación: la controlamos de punta a punta.',
   },
   {
     num: '03 / SOPORTE',
     title: 'Asistencia técnica en campo',
+    icon: Wrench,
     body:
       'Mantenimiento y soporte donde esté tu operación, no solo en nuestra planta. Río Negro, Neuquén o cualquier punto de la Patagonia.',
   },
