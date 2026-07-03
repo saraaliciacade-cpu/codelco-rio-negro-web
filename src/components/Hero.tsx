@@ -83,7 +83,7 @@ const Hero = () => {
                 aria-hidden="true"
               />
               <span
-                className="eyebrow text-[11px] sm:text-xs"
+                className="eyebrow text-[11px] sm:text-xs font-bold"
                 style={{ color: BRAND_ORANGE }}
               >
                 Cipolletti, Río Negro · Desde 2012

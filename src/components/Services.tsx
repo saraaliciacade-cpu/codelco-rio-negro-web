@@ -61,7 +61,7 @@ const Services = () => {
       <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
-          <span className="eyebrow inline-block text-xs md:text-sm text-[#E84E1B] mb-3">
+          <span className="eyebrow inline-block text-xs md:text-sm text-[#E84E1B] mb-3 font-bold">
             NUESTRAS DIVISIONES
           </span>
           <h2 className="heading text-2xl md:text-3xl lg:text-4xl text-[#1A1A1A] mb-4 leading-tight">
