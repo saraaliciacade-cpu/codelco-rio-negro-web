@@ -55,18 +55,24 @@ const WhyUs = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {reasons.map((r) => (
-            <article
-              key={r.num}
-              className="p-8 lg:p-10 border transition hover:-translate-y-1 hover:shadow-lg duration-300"
-              style={{ backgroundColor: BRAND_CREAM, borderColor: 'rgba(26,26,26,0.1)' }}
-            >
-              <p
-                className="eyebrow text-xs mb-6"
-                style={{ color: BRAND_ORANGE }}
+          {reasons.map((r) => {
+            const Icon = r.icon;
+            return (
+              <article
+                key={r.num}
+                className="p-8 lg:p-10 border transition hover:-translate-y-1 hover:shadow-lg duration-300"
+                style={{ backgroundColor: BRAND_CREAM, borderColor: 'rgba(26,26,26,0.1)' }}
               >
-                {r.num}
-              </p>
+                <Icon size={32} strokeWidth={1.5} style={{ color: BRAND_ORANGE }} className="mb-4" />
+                <p
+                  className="eyebrow text-xs mb-6"
+                  style={{ color: BRAND_ORANGE }}
+                >
+                  {r.num}
+                </p>
+              </article>
+            );
+          })}
               <h3
                 className="heading text-xl lg:text-2xl mb-4 leading-snug"
                 style={{ color: BRAND_BLACK }}
