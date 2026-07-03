@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { MapPin, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,6 +6,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { z } from 'zod';
+
+const BG_IMAGES = [
+  '/images/fabrica/fabrica-35.jpg',
+  '/images/fabrica/fabrica-38.jpg',
+];
 
 const contactFormSchema = z.object({
   name: z.string().min(2).max(100).trim(),
@@ -19,6 +24,14 @@ const contactFormSchema = z.object({
 
 const Contact = () => {
   const { toast } = useToast();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % BG_IMAGES.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -58,8 +71,23 @@ const Contact = () => {
   };
 
   return (
-    <section id="contacto" className="py-20" style={{ backgroundColor: '#1a1a1a' }}>
-      <div className="container mx-auto px-4 sm:px-8 lg:px-20 max-w-7xl">
+    <section id="contacto" className="relative py-20 overflow-hidden">
+      {/* Background slideshow */}
+      <div className="absolute inset-0">
+        {BG_IMAGES.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+            style={{ opacity: i === activeIndex ? 1 : 0 }}
+          />
+        ))}
+        {/* Black shadow overlay */}
+        <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.75)' }} />
+      </div>
+
+      <div className="relative container mx-auto px-4 sm:px-8 lg:px-20 max-w-7xl">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left column */}
           <div className="flex flex-col">
