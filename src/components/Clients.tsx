@@ -4,7 +4,7 @@ const Clients = () => {
   return (
     <section id="clientes" className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 text-center mb-10 md:mb-14">
-        <p className="eyebrow text-xs md:text-sm text-[#E84E1B] mb-4">
+        <p className="eyebrow text-xs md:text-sm text-[#E84E1B] mb-4 font-bold">
           PRUEBA SOCIAL
         </p>
         <h2 className="heading text-3xl md:text-5xl text-[#1A1A1A] leading-tight mb-4">

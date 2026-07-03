@@ -14,7 +14,7 @@ const NovedadesPreview = () => {
         <div className="max-w-3xl mb-12 lg:mb-16">
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
-            <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
+            <span className="eyebrow text-[11px] sm:text-xs font-bold" style={{ color: BRAND_ORANGE }}>
               NOVEDADES DE CODELCO
             </span>
           </div>
