@@ -1,3 +1,5 @@
+import { Clock, Factory, Wrench } from 'lucide-react';
+
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
 const BRAND_BLACK = '#1A1A1A';
@@ -6,18 +8,21 @@ const reasons = [
   {
     num: '01 / ENTREGA',
     title: 'Entrega en tiempo y forma',
+    icon: Clock,
     body:
       'Cumplimos plazos en operaciones críticas. Si tu cronograma depende de un módulo o un equipo, lo tenés cuando lo necesitás — no "cuando se pueda".',
   },
   {
     num: '02 / FABRICACIÓN',
     title: 'Todo se produce en nuestra planta',
+    icon: Factory,
     body:
       '3.500 m² propios con tecnología CNC, plegadora y soldadoras semiautomáticas. No subcontratamos la fabricación: la controlamos de punta a punta.',
   },
   {
     num: '03 / SOPORTE',
     title: 'Asistencia técnica en campo',
+    icon: Wrench,
     body:
       'Mantenimiento y soporte donde esté tu operación, no solo en nuestra planta. Río Negro, Neuquén o cualquier punto de la Patagonia.',
   },
@@ -50,29 +55,33 @@ const WhyUs = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {reasons.map((r) => (
-            <article
-              key={r.num}
-              className="p-8 lg:p-10 border transition hover:-translate-y-1 hover:shadow-lg duration-300"
-              style={{ backgroundColor: BRAND_CREAM, borderColor: 'rgba(26,26,26,0.1)' }}
-            >
-              <p
-                className="eyebrow text-xs mb-6"
-                style={{ color: BRAND_ORANGE }}
+          {reasons.map((r) => {
+            const Icon = r.icon;
+            return (
+              <article
+                key={r.num}
+                className="p-8 lg:p-10 border transition hover:-translate-y-1 hover:shadow-lg duration-300"
+                style={{ backgroundColor: BRAND_CREAM, borderColor: 'rgba(26,26,26,0.1)' }}
               >
-                {r.num}
-              </p>
-              <h3
-                className="heading text-xl lg:text-2xl mb-4 leading-snug"
-                style={{ color: BRAND_BLACK }}
-              >
-                {r.title}
-              </h3>
-              <p className="text-sm lg:text-base leading-relaxed" style={{ color: '#444' }}>
-                {r.body}
-              </p>
-            </article>
-          ))}
+                <Icon size={32} strokeWidth={1.5} style={{ color: BRAND_ORANGE }} className="mb-4" />
+                <p
+                  className="eyebrow text-xs mb-6"
+                  style={{ color: BRAND_ORANGE }}
+                >
+                  {r.num}
+                </p>
+                <h3
+                  className="heading text-xl lg:text-2xl mb-4 leading-snug"
+                  style={{ color: BRAND_BLACK }}
+                >
+                  {r.title}
+                </h3>
+                <p className="text-sm lg:text-base leading-relaxed" style={{ color: '#444' }}>
+                  {r.body}
+                </p>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>
