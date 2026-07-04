@@ -42,7 +42,7 @@ const Hero = () => {
     <section
       id="inicio"
       className="relative w-full overflow-hidden"
-      style={{ minHeight: 'clamp(680px, 90vh, 880px)' }}
+      style={{ minHeight: 'clamp(520px, 72vh, 680px)' }}
     >
       {/* Background carousel — cross-fade */}
       {HERO_IMAGES.map((img, idx) => (
