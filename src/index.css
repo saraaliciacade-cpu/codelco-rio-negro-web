@@ -112,18 +112,18 @@ All colors MUST be HSL.
      Tailwind sizes are rem-based, so reducing the root font-size proportionally
      shrinks typography, spacing, and layout widths across the whole app. */
   html {
-    font-size: 14px;
+    font-size: 10.5px;
   }
 
   @media (min-width: 1280px) {
     html {
-      font-size: 15px;
+      font-size: 11.25px;
     }
   }
 
   @media (min-width: 1536px) {
     html {
-      font-size: 16px;
+      font-size: 12px;
     }
   }
 
