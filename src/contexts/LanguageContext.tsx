@@ -21,6 +21,17 @@ const translations = {
     'nav.openMenu': 'Abrir menú',
     'nav.closeMenu': 'Cerrar menú',
     'nav.changeLanguage': 'Cambiar idioma',
+    'nav.services': 'Servicios',
+    'nav.whyUs': '¿Por qué elegirnos?',
+    'nav.clients': 'Clientes',
+    'nav.news': 'Novedades',
+    'nav.quote': 'Solicitar presupuesto',
+    'nav.sub.fabrica': 'Fábrica',
+    'nav.sub.metalurgica': 'Metalúrgica',
+    'nav.sub.rental': 'Rental',
+    'nav.sub.generators': 'Grupos Electrógenos',
+    'nav.language': 'Idioma',
+
     
     // Hero
     'hero.title': 'UNA EMPRESA REGIONAL',
@@ -184,6 +195,17 @@ const translations = {
     'nav.openMenu': 'Open menu',
     'nav.closeMenu': 'Close menu',
     'nav.changeLanguage': 'Change language',
+    'nav.services': 'Services',
+    'nav.whyUs': 'Why choose us?',
+    'nav.clients': 'Clients',
+    'nav.news': 'News',
+    'nav.quote': 'Request a quote',
+    'nav.sub.fabrica': 'Factory',
+    'nav.sub.metalurgica': 'Metallurgical',
+    'nav.sub.rental': 'Rental',
+    'nav.sub.generators': 'Generator Sets',
+    'nav.language': 'Language',
+
     
     // Hero
     'hero.title': 'A REGIONAL COMPANY',
@@ -340,7 +362,23 @@ const translations = {
 };
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('es');
+  const [language, setLanguageState] = useState<Language>(() => {
+    if (typeof window === 'undefined') return 'es';
+    const stored = window.localStorage.getItem('codelco.language');
+    return stored === 'en' || stored === 'es' ? stored : 'es';
+  });
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('codelco.language', lang);
+      document.documentElement.lang = lang;
+    }
+  };
+
+  React.useEffect(() => {
+    if (typeof document !== 'undefined') document.documentElement.lang = language;
+  }, [language]);
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations[typeof language]] || key;
@@ -352,6 +390,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     </LanguageContext.Provider>
   );
 };
+
 
 export const useLanguage = (): LanguageContextType => {
   const context = useContext(LanguageContext);
