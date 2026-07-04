@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X, Globe, Factory, Wrench, Truck, Zap, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -19,18 +19,27 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll while the mobile drawer is open
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   const servicesSubmenu = [
-    { name: 'Fábrica', href: '/fabrica' },
-    { name: 'Metalúrgica', href: '/metalurgica' },
-    { name: 'Rental', href: '/rental' },
-    { name: 'Grupos Electrógenos', href: '/grupos-electrogenos' },
+    { name: t('nav.sub.fabrica'), href: '/fabrica', Icon: Factory },
+    { name: t('nav.sub.metalurgica'), href: '/metalurgica', Icon: Wrench },
+    { name: t('nav.sub.rental'), href: '/rental', Icon: Truck },
+    { name: t('nav.sub.generators'), href: '/grupos-electrogenos', Icon: Zap },
   ];
 
   const menuItems = [
-    { name: 'Servicios', href: '/#servicios', submenu: servicesSubmenu },
-    { name: '¿Por qué elegirnos?', href: '/#por-que-elegirnos' },
-    { name: 'Clientes', href: '/#clientes' },
-    { name: 'Novedades', href: '/novedades' },
+    { name: t('nav.services'), href: '/#servicios', submenu: servicesSubmenu },
+    { name: t('nav.whyUs'), href: '/#por-que-elegirnos' },
+    { name: t('nav.clients'), href: '/#clientes' },
+    { name: t('nav.news'), href: '/novedades' },
   ];
 
   return (
@@ -39,15 +48,16 @@ const Header = () => {
         isScrolled ? 'bg-[#1A1A1A]/90 backdrop-blur-sm' : 'bg-[#1A1A1A]'
       }`}
     >
-      <div className="container mx-auto px-8 max-w-7xl py-3">
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-3">
         <div className="flex items-center justify-between">
           {/* Logo + Language Selector */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-4 sm:space-x-6">
             <Link to="/" className="flex items-center">
               <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-8 w-auto brightness-0 invert" />
             </Link>
 
-            <div className="relative">
+            {/* Desktop language selector (mobile has its own inside the drawer) */}
+            <div className="relative hidden md:block">
               <button
                 onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
                 className="flex items-center space-x-2 font-medium text-white/80 hover:text-primary transition-colors duration-300"
@@ -128,7 +138,7 @@ const Header = () => {
               className="ml-2 inline-flex items-center justify-center rounded-sm bg-[#e04d1c] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#c94418] transition-colors"
               style={{ fontFamily: 'Nunito Sans, sans-serif' }}
             >
-              Solicitar presupuesto
+              {t('nav.quote')}
             </Link>
           </nav>
 
@@ -136,57 +146,143 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden ml-auto text-white hover:bg-white/10 hover:text-white"
+            className="md:hidden ml-auto text-white hover:bg-white/10 hover:text-white z-[60] relative"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
           >
-            {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden mt-2 pb-2 border-t border-white/10 pt-2">
-            <div className="flex flex-col space-y-3">
-              {menuItems.map((item) => (
-                <div key={item.name} className="flex flex-col space-y-2">
-                  <Link
-                    to={item.href}
-                    className="text-sm font-medium text-white/85 hover:text-primary transition-colors duration-300"
-                    onClick={() => setIsMenuOpen(false)}
-                    style={{ fontFamily: 'Nunito Sans, sans-serif' }}
-                  >
-                    {item.name}
-                  </Link>
-                  {item.submenu && (
-                    <div className="flex flex-col space-y-2 pl-4 border-l border-white/10">
-                      {item.submenu.map((sub) => (
-                        <Link
-                          key={sub.name}
-                          to={sub.href}
-                          onClick={() => setIsMenuOpen(false)}
-                          className="text-xs font-medium text-white/70 hover:text-primary transition-colors"
-                          style={{ fontFamily: 'Nunito Sans, sans-serif' }}
-                        >
-                          {sub.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-              <Link
-                to="/#contacto"
-                onClick={() => setIsMenuOpen(false)}
-                className="inline-flex w-fit items-center justify-center rounded-sm bg-[#e04d1c] px-4 py-2 text-sm font-semibold text-white hover:bg-[#c94418] transition-colors"
-                style={{ fontFamily: 'Nunito Sans, sans-serif' }}
-              >
-                Solicitar presupuesto
-              </Link>
-            </div>
-          </nav>
-        )}
       </div>
+
+      {/* Mobile Drawer — slides in from the right, full screen */}
+      {/* Backdrop */}
+      <div
+        onClick={() => setIsMenuOpen(false)}
+        className={`md:hidden fixed inset-0 z-40 bg-black/60 transition-opacity duration-500 ${
+          isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+        aria-hidden="true"
+      />
+      {/* Panel */}
+      <aside
+        aria-hidden={!isMenuOpen}
+        className={`md:hidden fixed top-0 right-0 z-50 h-[100dvh] w-full sm:w-[86%] max-w-sm bg-[#0f0f0f] text-white shadow-2xl transform transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        } flex flex-col`}
+        style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+      >
+        {/* Header row inside drawer */}
+        <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+          <img
+            src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png"
+            alt="Codelco S.A."
+            className="h-7 w-auto brightness-0 invert"
+          />
+          <button
+            onClick={() => setIsMenuOpen(false)}
+            aria-label={t('nav.closeMenu')}
+            className="h-9 w-9 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors"
+          >
+            <X className="h-5 w-5" />
+          </button>
+        </div>
+
+        {/* Scrollable body */}
+        <div className="flex-1 overflow-y-auto px-6 py-6">
+          {/* Services group with icons */}
+          <p className="text-[11px] font-bold uppercase tracking-widest text-[#e04d1c] mb-3">
+            {t('nav.services')}
+          </p>
+          <ul className="space-y-1 mb-8">
+            {servicesSubmenu.map((sub, idx) => (
+              <li
+                key={sub.href}
+                className={`transform transition-all duration-500 ease-out ${
+                  isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-6 opacity-0'
+                }`}
+                style={{ transitionDelay: isMenuOpen ? `${120 + idx * 60}ms` : '0ms' }}
+              >
+                <Link
+                  to={sub.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="group flex items-center justify-between py-3 border-b border-white/5 hover:text-[#e04d1c] transition-colors"
+                >
+                  <span className="flex items-center gap-3">
+                    <sub.Icon className="h-5 w-5 text-[#e04d1c]" strokeWidth={1.75} />
+                    <span className="text-base font-medium">{sub.name}</span>
+                  </span>
+                  <ChevronRight className="h-4 w-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Rest of the nav (no icons) */}
+          <ul className="space-y-1 mb-8">
+            {menuItems.slice(1).map((item, idx) => (
+              <li
+                key={item.href}
+                className={`transform transition-all duration-500 ease-out ${
+                  isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-6 opacity-0'
+                }`}
+                style={{ transitionDelay: isMenuOpen ? `${360 + idx * 60}ms` : '0ms' }}
+              >
+                <Link
+                  to={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block py-3 text-lg font-semibold hover:text-[#e04d1c] transition-colors border-b border-white/5"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            to="/#contacto"
+            onClick={() => setIsMenuOpen(false)}
+            className={`inline-flex w-full items-center justify-center rounded-sm bg-[#e04d1c] px-5 py-3 text-sm font-semibold text-white hover:bg-[#c94418] transition-all duration-500 ${
+              isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+            }`}
+            style={{ transitionDelay: isMenuOpen ? '600ms' : '0ms' }}
+          >
+            {t('nav.quote')}
+          </Link>
+        </div>
+
+        {/* Language selector pinned at the bottom */}
+        <div className="border-t border-white/10 px-6 py-5">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-white/50 mb-3 flex items-center gap-2">
+            <Globe className="h-3.5 w-3.5" />
+            {t('nav.language')}
+          </p>
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              onClick={() => setLanguage('es')}
+              className={`px-3 py-2.5 rounded-sm text-sm font-medium transition-colors text-left ${
+                language === 'es'
+                  ? 'bg-[#e04d1c] text-white'
+                  : 'bg-white/5 text-white/80 hover:bg-white/10'
+              }`}
+            >
+              <span className="block text-[10px] uppercase tracking-wider opacity-70">ARG</span>
+              Español
+            </button>
+            <button
+              onClick={() => setLanguage('en')}
+              className={`px-3 py-2.5 rounded-sm text-sm font-medium transition-colors text-left ${
+                language === 'en'
+                  ? 'bg-[#e04d1c] text-white'
+                  : 'bg-white/5 text-white/80 hover:bg-white/10'
+              }`}
+            >
+              <span className="block text-[10px] uppercase tracking-wider opacity-70">USA</span>
+              English
+            </button>
+          </div>
+        </div>
+      </aside>
     </header>
   );
 };
