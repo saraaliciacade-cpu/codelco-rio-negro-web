@@ -4,13 +4,13 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import WhyUs from '@/components/WhyUs';
 import NovedadesPreview from '@/components/NovedadesPreview';
+import Contact from '@/components/Contact';
 
 
 // Lazy load below-the-fold components for better bundle splitting
 const Clients = lazy(() => import('@/components/Clients'));
 
 const Services = lazy(() => import('@/components/Services'));
-const Contact = lazy(() => import('@/components/Contact'));
 
 const Footer = lazy(() => import('@/components/Footer'));
 

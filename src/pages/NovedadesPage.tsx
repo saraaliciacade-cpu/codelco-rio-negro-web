@@ -153,13 +153,13 @@ const NovedadesPage = () => {
             Escribinos y te mantenemos al tanto de nuevos equipos, proyectos y disponibilidad.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <a
-              href="/#contacto"
+            <Link
+              to="/#contacto"
               className="inline-flex items-center justify-center h-12 px-7 text-sm sm:text-base font-semibold rounded-sm text-white transition hover:opacity-90"
               style={{ backgroundColor: BRAND_ORANGE }}
             >
               Contactar →
-            </a>
+            </Link>
             <a
               href="https://wa.me/5492994136453"
               target="_blank"
