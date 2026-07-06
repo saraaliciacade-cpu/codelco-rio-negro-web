@@ -49,7 +49,7 @@ const Hero = () => {
     <section
       id="inicio"
       className="relative w-full overflow-hidden"
-      style={{ height: '100vh', minHeight: '600px' }}
+      style={{ height: 'calc(100svh - 57px)', minHeight: '560px' }}
     >
       {/* Background carousel — cross-fade */}
       {HERO_IMAGES.map((img, idx) => (
@@ -79,9 +79,9 @@ const Hero = () => {
       />
 
       {/* Content - bottom-left aligned */}
-      <div className="relative z-10 flex flex-col h-full" style={{ height: '100vh', minHeight: '600px' }}>
-        <div className="flex-grow flex flex-col justify-end">
-          <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-8 sm:pb-10 lg:pb-12 pt-20">
+      <div className="relative z-10 flex h-full flex-col">
+        <div className="flex min-h-0 flex-1 flex-col justify-end">
+          <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-6 sm:pb-8 lg:pb-10 pt-14 sm:pt-16 lg:pt-20">
           <div className="max-w-4xl">
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-6">
@@ -155,7 +155,7 @@ const Hero = () => {
               {stats.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 ${
+                  className={`py-4 sm:py-5 lg:py-6 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 ${
                     i % 2 === 1 ? 'border-l border-white/10 lg:border-l-0' : ''
                   }`}
                 >
