@@ -137,14 +137,14 @@ export default function WhatsAppWidget() {
               </div>
 
               {/* Chat Body */}
-              <div className="flex-1 min-h-0 px-4 py-4 overflow-y-auto bg-white">
+              <div className="flex-1 min-h-0 px-3 py-3 sm:px-4 sm:py-4 overflow-y-auto bg-white">
                 {/* Welcome Message Bubble */}
                 <div className="animate-fade-in">
-                  <div className="bg-gray-50 rounded-2xl rounded-tl-sm px-4 py-3 border border-gray-100 shadow-sm">
-                    <p className="text-sm text-foreground whitespace-pre-line leading-relaxed">
+                  <div className="bg-gray-50 rounded-2xl rounded-tl-sm px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-100 shadow-sm">
+                    <p className="text-[15px] sm:text-base text-foreground whitespace-pre-line leading-[1.6]">
                       {welcomeText}
                     </p>
-                    <span className="text-[11px] text-muted-foreground block mt-1.5">
+                    <span className="text-xs text-muted-foreground block mt-2">
                       {new Date().toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
@@ -155,12 +155,12 @@ export default function WhatsAppWidget() {
 
                 {/* Quick Reply Chat Bubbles */}
                 {showQuickReplies && (
-                  <div className="flex flex-col items-end gap-2 mt-3 animate-fade-in">
+                  <div className="flex flex-col items-end gap-1.5 sm:gap-2 mt-3 animate-fade-in">
                     {quickReplies.map((qr) => (
                       <button
                         key={qr.label}
                         onClick={() => setMessage(qr.text)}
-                        className="text-left text-sm bg-[#ffe5d9] hover:bg-[#ffccb3] text-foreground rounded-2xl rounded-tr-sm px-3.5 py-2 shadow-sm transition-colors max-w-[92%]"
+                        className="text-left text-sm bg-[#ffe5d9] hover:bg-[#ffccb3] text-foreground rounded-2xl rounded-tr-sm px-3 py-1.5 sm:px-3.5 sm:py-2 shadow-sm transition-colors max-w-[92%]"
                       >
                         {qr.label}
                       </button>
