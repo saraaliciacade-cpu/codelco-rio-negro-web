@@ -95,17 +95,17 @@ const RentalPage = () => {
             </p>
           </div>
 
-          <ul className="grid grid-cols-2 gap-5">
+          <ul className="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             {specs.map((spec) => (
-              <li key={spec.text} className="flex items-start gap-4 bg-white p-5 border border-black/5">
+              <li key={spec.text} className="flex items-start lg:items-center gap-4 lg:gap-5 bg-white p-5 lg:p-6 border border-black/5">
                 <span
-                  className="shrink-0 mt-0.5 flex items-center justify-center h-10 w-10 rounded-full"
+                  className="shrink-0 mt-0.5 lg:mt-0 flex items-center justify-center h-10 w-10 lg:h-14 lg:w-14 rounded-full"
                   style={{ backgroundColor: BRAND_ORANGE }}
                   aria-hidden="true"
                 >
-                  <spec.icon className="h-5 w-5 text-white" strokeWidth={2} />
+                  <spec.icon className="h-5 w-5 lg:h-7 lg:w-7 text-white" strokeWidth={2} />
                 </span>
-                <span className="text-base lg:text-lg font-medium text-[#1A1A1A]">{spec.text}</span>
+                <span className="text-base lg:text-xl font-medium text-[#1A1A1A]">{spec.text}</span>
               </li>
             ))}
           </ul>
