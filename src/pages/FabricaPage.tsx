@@ -146,20 +146,20 @@ const FabricaPage = () => {
             </p>
           </div>
 
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <ul className="grid grid-cols-2 gap-5">
             {specs.map((spec) => (
               <li
                 key={spec.text}
-                className="flex items-start gap-3 bg-white p-4 border border-black/5"
+                className="flex items-start gap-4 bg-white p-5 border border-black/5"
               >
                 <span
-                  className="shrink-0 mt-0.5 flex items-center justify-center h-6 w-6 rounded-full"
+                  className="shrink-0 mt-0.5 flex items-center justify-center h-10 w-10 rounded-full"
                   style={{ backgroundColor: BRAND_ORANGE }}
                   aria-hidden="true"
                 >
-                  <spec.icon className="h-4 w-4 text-white" strokeWidth={2} />
+                  <spec.icon className="h-5 w-5 text-white" strokeWidth={2} />
                 </span>
-                <span className="text-sm lg:text-base font-medium text-[#1A1A1A]">{spec.text}</span>
+                <span className="text-base lg:text-lg font-medium text-[#1A1A1A]">{spec.text}</span>
               </li>
             ))}
           </ul>
@@ -195,13 +195,13 @@ const FabricaPage = () => {
             Contanos los plazos y especificaciones. Te respondemos con disponibilidad real y un presupuesto en menos de 48 hs.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-            <a
-              href="/#contacto"
+            <Link
+              to="/#contacto"
               className="inline-flex items-center justify-center h-12 px-7 text-sm sm:text-base font-semibold rounded-sm text-white transition hover:opacity-90"
               style={{ backgroundColor: BRAND_ORANGE }}
             >
               Consultar disponibilidad →
-            </a>
+            </Link>
             <a
               href="https://wa.me/5492994136453"
               target="_blank"
