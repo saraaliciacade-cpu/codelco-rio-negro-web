@@ -61,17 +61,13 @@ const Contact = () => {
 
   return (
     <section id="contacto" className="relative py-20 overflow-hidden">
-      {/* Background slideshow */}
+      {/* Background image */}
       <div className="absolute inset-0">
-        {BG_IMAGES.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
-            style={{ opacity: i === activeIndex ? 1 : 0 }}
-          />
-        ))}
+        <img
+          src={BG_IMAGE}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         {/* Black shadow overlay */}
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.75)' }} />
       </div>
