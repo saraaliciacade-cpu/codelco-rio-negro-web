@@ -74,7 +74,7 @@ const Hero = () => {
           <img
             src={img.src}
             alt={img.alt}
-            className="absolute inset-0 h-full w-full object-contain object-center"
+            className="absolute inset-0 h-full w-full object-cover object-center"
             loading={idx === 0 ? 'eager' : 'lazy'}
             decoding={idx === 0 ? 'sync' : 'async'}
             width={1920}
