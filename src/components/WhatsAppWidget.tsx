@@ -102,11 +102,11 @@ export default function WhatsAppWidget() {
         {!isOpen && (
           <button
             onClick={handleButtonClick}
-            className="relative group bg-primary hover:bg-primary/90 text-white rounded-full p-3 sm:p-3.5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+            className="relative group bg-primary hover:bg-primary/90 text-white rounded-full p-4 sm:p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
             aria-label="Open WhatsApp chat"
             style={{ backgroundColor: '#25D366' }}
           >
-            <img src={whatsappLogo} alt="WhatsApp" className="w-7 h-7 sm:w-8 sm:h-8" width="577" height="583" />
+            <img src={whatsappLogo} alt="WhatsApp" className="w-10 h-10 sm:w-12 sm:h-12" width="577" height="583" />
             {/* Red notification badge */}
             <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
           </button>
