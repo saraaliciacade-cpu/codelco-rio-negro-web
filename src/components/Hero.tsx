@@ -139,15 +139,27 @@ const Hero = () => {
           className="relative z-10 w-full"
           style={{ borderTop: `2px solid ${BRAND_ORANGE}` }}
         >
-          <div className="container mx-auto px-6 sm:px-10 lg:px-16">
-            <div className="grid grid-cols-2 lg:grid-cols-4 divide-y divide-white/10 lg:divide-y-0 lg:divide-x lg:divide-white/10">
+          <div className="container mx-auto px-6 sm:px-10 lg:px-16 relative">
+            {/* Side dark fades — only on outer edges (left of ANTIGÜEDAD, right of CARTERA) */}
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-40 lg:w-56"
+              style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0))' }}
+              aria-hidden="true"
+            />
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-40 lg:w-56"
+              style={{ background: 'linear-gradient(to left, rgba(0,0,0,0.75), rgba(0,0,0,0))' }}
+              aria-hidden="true"
+            />
+            <div className="relative grid grid-cols-2 lg:grid-cols-4 divide-y divide-white/10 lg:divide-y-0 lg:divide-x lg:divide-white/10">
               {stats.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 bg-black/50 hover:bg-[#1A1A1A] transition-colors duration-300 ${
+                  className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 ${
                     i % 2 === 1 ? 'border-l border-white/10 lg:border-l-0' : ''
                   }`}
                 >
+
                   <p
                     className="eyebrow text-[10px] sm:text-xs mb-2 sm:mb-3"
                     style={{ color: BRAND_ORANGE }}
