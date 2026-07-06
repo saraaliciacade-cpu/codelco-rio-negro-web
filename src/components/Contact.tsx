@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { MapPin, Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,10 +7,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 import { z } from 'zod';
 
-const BG_IMAGES = [
-  '/images/fabrica/fabrica-35.jpg',
-  '/images/fabrica/fabrica-38.jpg',
-];
+const BG_IMAGE = '/images/fabrica/fabrica-35.jpg';
 
 const contactFormSchema = z.object({
   name: z.string().min(2).max(100).trim(),
@@ -24,14 +21,6 @@ const contactFormSchema = z.object({
 
 const Contact = () => {
   const { toast } = useToast();
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % BG_IMAGES.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
   const [formData, setFormData] = useState({
     name: '',
@@ -72,17 +61,13 @@ const Contact = () => {
 
   return (
     <section id="contacto" className="relative py-20 overflow-hidden">
-      {/* Background slideshow */}
+      {/* Background image */}
       <div className="absolute inset-0">
-        {BG_IMAGES.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
-            style={{ opacity: i === activeIndex ? 1 : 0 }}
-          />
-        ))}
+        <img
+          src={BG_IMAGE}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         {/* Black shadow overlay */}
         <div className="absolute inset-0" style={{ backgroundColor: 'rgba(0,0,0,0.75)' }} />
       </div>
