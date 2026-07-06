@@ -43,7 +43,7 @@ const Services = () => {
     },
     {
       badge: "GRUPOS ELECTRÓGENOS",
-      image: "/rental-03.jpg",
+      image: "/images/novedad/grupo-electrogeno.jpg",
       title: "Alquiler y Mantenimiento",
       kicker: "55 a 180 kVA · Monitoreo técnico",
       text: (
