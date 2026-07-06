@@ -10,7 +10,7 @@ import NovedadesPreview from '@/components/NovedadesPreview';
 const Clients = lazy(() => import('@/components/Clients'));
 
 const Services = lazy(() => import('@/components/Services'));
-const Contact = lazy(() => import('@/components/Contact'));
+import Contact from '@/components/Contact';
 
 const Footer = lazy(() => import('@/components/Footer'));
 
