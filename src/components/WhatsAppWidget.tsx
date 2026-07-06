@@ -117,22 +117,22 @@ export default function WhatsAppWidget() {
               className="w-[340px] max-w-[calc(100vw-1.5rem)] bg-white rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col max-h-[50dvh] sm:max-h-[520px]"
             >
               {/* Header */}
-              <div className="text-white px-4 py-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#e65b2a' }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full overflow-hidden bg-white flex-shrink-0 ring-2 ring-white/30">
+              <div className="text-white px-3 py-2.5 sm:px-4 sm:py-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#e65b2a' }}>
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden bg-white flex-shrink-0 ring-2 ring-white/30">
                     <img src={codelcoProfile} alt="Codelco S.A." className="w-full h-full object-cover" loading="eager" fetchPriority="high" width="96" height="96" decoding="async" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-base leading-tight">Codelco S.A.</h3>
-                    <p className="text-xs text-white/85 leading-tight mt-0.5">{onlineText}</p>
+                    <h3 className="font-semibold text-sm sm:text-base leading-tight">Codelco S.A.</h3>
+                    <p className="text-[11px] sm:text-xs text-white/85 leading-tight mt-0.5">{onlineText}</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="hover:bg-white/15 rounded-full p-1.5 transition-colors"
+                  className="hover:bg-white/15 rounded-full p-1 transition-colors"
                   aria-label="Close chat"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
 
