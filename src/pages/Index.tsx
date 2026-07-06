@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import StatsBar from '@/components/StatsBar';
 import WhyUs from '@/components/WhyUs';
 import NovedadesPreview from '@/components/NovedadesPreview';
 
