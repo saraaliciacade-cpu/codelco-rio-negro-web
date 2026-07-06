@@ -102,20 +102,20 @@ export default function WhatsAppWidget() {
         {!isOpen && (
           <button
             onClick={handleButtonClick}
-            className="relative group bg-primary hover:bg-primary/90 text-white rounded-full p-3.5 sm:p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+            className="relative group bg-primary hover:bg-primary/90 text-white rounded-full p-3 sm:p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
             aria-label="Open WhatsApp chat"
             style={{ backgroundColor: '#25D366' }}
           >
-            <img src={whatsappLogo} alt="WhatsApp" className="w-8 h-8 sm:w-9 sm:h-9" width="577" height="583" />
+            <img src={whatsappLogo} alt="WhatsApp" className="w-6 h-6 sm:w-7 sm:h-7" width="577" height="583" />
             {/* Red notification badge */}
-            <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full animate-pulse" />
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
           </button>
         )}
 
         {/* WhatsApp Chat Window */}
         {isOpen && (
-          <div className="animate-scale-in origin-bottom-right fixed bottom-24 right-4 sm:bottom-24 sm:right-6">
-            <div className={`w-[calc(100vw-2rem)] max-w-[360px] sm:w-[380px] sm:max-w-[400px] bg-background rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col transition-[height] duration-500 ease-in-out ${showQuickReplies ? 'h-[500px] sm:h-[540px]' : 'h-[360px] sm:h-[400px]'}`}>
+          <div className="animate-scale-in origin-bottom-right fixed bottom-20 right-4 sm:bottom-20 sm:right-6">
+            <div className={`w-[280px] max-w-[calc(100vw-2rem)] sm:w-[340px] sm:max-w-[360px] bg-background rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col transition-[height] duration-500 ease-in-out ${showQuickReplies ? 'h-[400px] sm:h-[460px]' : 'h-[280px] sm:h-[340px]'}`}>
               {/* Header */}
               <div className="bg-primary text-white p-2 sm:p-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#e65b2a' }}>
                 <div className="flex items-center gap-2">
