@@ -115,16 +115,19 @@ export default function WhatsAppWidget() {
         {/* WhatsApp Chat Window */}
         {isOpen && (
           <div className="animate-scale-in origin-bottom-right fixed bottom-16 right-4 sm:bottom-20 sm:right-5">
-            <div className={`w-[240px] max-w-[calc(100vw-2rem)] sm:w-[270px] bg-background rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col transition-[height] duration-500 ease-in-out ${showQuickReplies ? 'h-[290px] sm:h-[330px]' : 'h-[210px] sm:h-[240px]'}`}>
+            <div
+              className="w-[320px] max-w-[calc(100vw-2rem)] sm:w-[340px] bg-background rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col"
+              style={{ maxHeight: 'calc(100dvh - 6rem)' }}
+            >
               {/* Header */}
-              <div className="bg-primary text-white p-2 sm:p-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#e65b2a' }}>
-                <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-full overflow-hidden bg-white flex-shrink-0">
+              <div className="bg-primary text-white px-3 py-2.5 sm:px-4 sm:py-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#e65b2a' }}>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full overflow-hidden bg-white flex-shrink-0">
                     <img src={codelcoProfile} alt="Codelco S.A." className="w-full h-full object-cover" loading="eager" fetchPriority="high" width="96" height="96" decoding="async" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-xs sm:text-sm">Codelco S.A.</h3>
-                    <p className="text-[10px] sm:text-xs text-white/80">{onlineText}</p>
+                    <h3 className="font-semibold text-sm sm:text-base leading-tight">Codelco S.A.</h3>
+                    <p className="text-[11px] sm:text-xs text-white/80 leading-tight">{onlineText}</p>
                   </div>
                 </div>
                 <button
@@ -137,14 +140,14 @@ export default function WhatsAppWidget() {
               </div>
 
               {/* Chat Body */}
-              <div className="flex-1 min-h-0 p-1.5 sm:p-2 overflow-y-auto relative bg-white">
+              <div className="flex-1 min-h-0 p-3 overflow-y-auto relative bg-white">
                 {/* Welcome Message Bubble */}
-                <div className="relative mb-2 animate-fade-in">
-                  <div className="bg-white rounded-lg rounded-tl-none p-1.5 sm:p-2 shadow-sm max-w-[90%] inline-block border border-gray-100">
-                    <p className="text-[11px] sm:text-xs text-foreground whitespace-pre-line leading-snug">
+                <div className="relative mb-3 animate-fade-in">
+                  <div className="bg-gray-50 rounded-lg rounded-tl-none p-2.5 shadow-sm max-w-[92%] inline-block border border-gray-100">
+                    <p className="text-[13px] sm:text-sm text-foreground whitespace-pre-line leading-relaxed">
                       {welcomeText}
                     </p>
-                    <span className="text-[10px] text-muted-foreground block mt-0.5">
+                    <span className="text-[10px] text-muted-foreground block mt-1">
                       {new Date().toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
@@ -155,12 +158,12 @@ export default function WhatsAppWidget() {
 
                 {/* Quick Reply Chat Bubbles */}
                 {showQuickReplies && (
-                  <div className="flex flex-col items-end gap-1.5 animate-fade-in">
+                  <div className="flex flex-col items-end gap-2 animate-fade-in">
                     {quickReplies.map((qr) => (
                       <button
                         key={qr.label}
                         onClick={() => setMessage(qr.text)}
-                        className="text-left text-[11px] sm:text-xs bg-[#ffe5d9] hover:bg-[#ffccb3] text-foreground rounded-xl rounded-tr-none px-2.5 py-1.5 shadow-sm transition-colors max-w-[92%]"
+                        className="text-left text-[13px] sm:text-sm bg-[#ffe5d9] hover:bg-[#ffccb3] text-foreground rounded-xl rounded-tr-none px-3 py-2 shadow-sm transition-colors max-w-[92%]"
                       >
                         {qr.label}
                       </button>
@@ -170,20 +173,20 @@ export default function WhatsAppWidget() {
               </div>
 
               {/* Input Area */}
-              <div className="p-2 sm:p-2.5 bg-card border-t border-border flex-shrink-0">
-                <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="p-2.5 sm:p-3 bg-card border-t border-border flex-shrink-0">
+                <div className="flex items-end gap-2">
                   <textarea
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     onKeyDown={handleKeyPress}
-                    rows={2}
+                    rows={1}
                     placeholder={placeholderText}
-                    className="flex-1 px-3 py-2 sm:px-4 sm:py-2 rounded-2xl bg-background border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-xs sm:text-sm resize-none leading-snug min-h-[44px] max-h-28"
+                    className="flex-1 px-3 py-2 rounded-2xl bg-background border border-border focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-sm resize-none leading-snug min-h-[40px] max-h-24"
                   />
                   <Button
                     onClick={handleSend}
                     disabled={!message.trim()}
-                    className="rounded-full w-9 h-9 sm:w-10 sm:h-10 p-0 bg-primary hover:bg-primary/90 text-white disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
+                    className="rounded-full w-10 h-10 p-0 bg-primary hover:bg-primary/90 text-white disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0"
                     style={{ backgroundColor: '#e65b2a' }}
                     aria-label="Send message"
                   >
