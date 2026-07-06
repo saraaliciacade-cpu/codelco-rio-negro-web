@@ -23,7 +23,6 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <StatsBar />
         <WhyUs />
         <Services />
         <NovedadesPreview />
