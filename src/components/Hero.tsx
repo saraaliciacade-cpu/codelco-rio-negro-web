@@ -49,22 +49,36 @@ const Hero = () => {
     <section
       id="inicio"
       className="relative w-full overflow-hidden"
-      style={{ height: 'calc(100svh - 57px)', minHeight: '560px' }}
+      style={{ height: 'calc(100dvh - 57px)', minHeight: 'min(560px, calc(100dvh - 57px))' }}
     >
       {/* Background carousel — cross-fade */}
       {HERO_IMAGES.map((img, idx) => (
-        <img
+        <div
           key={img.src}
-          src={img.src}
-          alt={img.alt}
-          className="absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-1000 ease-in-out"
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
           style={{ opacity: active === idx ? 1 : 0 }}
-          loading={idx === 0 ? 'eager' : 'lazy'}
-          decoding={idx === 0 ? 'sync' : 'async'}
-          width={1920}
-          height={1080}
           aria-hidden={active === idx ? undefined : true}
-        />
+        >
+          <img
+            src={img.src}
+            alt=""
+            className="absolute inset-0 h-full w-full scale-105 object-cover object-center blur-sm"
+            loading={idx === 0 ? 'eager' : 'lazy'}
+            decoding={idx === 0 ? 'sync' : 'async'}
+            width={1920}
+            height={1080}
+            aria-hidden="true"
+          />
+          <img
+            src={img.src}
+            alt={img.alt}
+            className="absolute inset-0 h-full w-full object-contain object-center"
+            loading={idx === 0 ? 'eager' : 'lazy'}
+            decoding={idx === 0 ? 'sync' : 'async'}
+            width={1920}
+            height={1080}
+          />
+        </div>
       ))}
 
 
