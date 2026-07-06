@@ -49,22 +49,36 @@ const Hero = () => {
     <section
       id="inicio"
       className="relative w-full overflow-hidden"
-      style={{ height: '100vh', minHeight: '600px' }}
+      style={{ height: 'calc(100dvh - 57px)', minHeight: 'min(560px, calc(100dvh - 57px))' }}
     >
       {/* Background carousel — cross-fade */}
       {HERO_IMAGES.map((img, idx) => (
-        <img
+        <div
           key={img.src}
-          src={img.src}
-          alt={img.alt}
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
           style={{ opacity: active === idx ? 1 : 0 }}
-          loading={idx === 0 ? 'eager' : 'lazy'}
-          decoding={idx === 0 ? 'sync' : 'async'}
-          width={1920}
-          height={1080}
           aria-hidden={active === idx ? undefined : true}
-        />
+        >
+          <img
+            src={img.src}
+            alt=""
+            className="absolute inset-0 h-full w-full scale-105 object-cover object-center blur-sm"
+            loading={idx === 0 ? 'eager' : 'lazy'}
+            decoding={idx === 0 ? 'sync' : 'async'}
+            width={1920}
+            height={1080}
+            aria-hidden="true"
+          />
+          <img
+            src={img.src}
+            alt={img.alt}
+            className="absolute inset-0 h-full w-full object-contain object-center"
+            loading={idx === 0 ? 'eager' : 'lazy'}
+            decoding={idx === 0 ? 'sync' : 'async'}
+            width={1920}
+            height={1080}
+          />
+        </div>
       ))}
 
 
@@ -79,12 +93,12 @@ const Hero = () => {
       />
 
       {/* Content - bottom-left aligned */}
-      <div className="relative z-10 flex flex-col h-full" style={{ height: '100vh', minHeight: '600px' }}>
-        <div className="flex-grow flex flex-col justify-end">
-          <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-8 sm:pb-10 lg:pb-12 pt-20">
+      <div className="relative z-10 flex h-full flex-col">
+        <div className="flex min-h-0 flex-1 flex-col justify-end">
+          <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-4 sm:pb-5 lg:pb-6 pt-10 sm:pt-12 lg:pt-14">
           <div className="max-w-4xl">
             {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-3 sm:mb-4">
               <span
                 className="h-px w-10"
                 style={{ backgroundColor: BRAND_ORANGE }}
@@ -99,14 +113,14 @@ const Hero = () => {
             </div>
 
             {/* H1 */}
-            <h1 className="heading text-white leading-[1.05] text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
+            <h1 className="heading text-white leading-[1.03] text-[34px] sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
               Módulos Habitacionales, Metalúrgica y{' '}
               <span style={{ color: BRAND_ORANGE }}>Rental</span>{' '}
               para la Industria Petrolera
             </h1>
 
             {/* Subtitle */}
-            <p className="mt-6 text-base sm:text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
+            <p className="mt-4 sm:mt-5 text-base sm:text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
               Fabricamos en planta propia y alquilamos la flota que tu obra
               necesita. <span className="font-bold text-white">+14 años</span>{' '}
               resolviendo infraestructura para Vaca Muerta sin que la operación
@@ -114,7 +128,7 @@ const Hero = () => {
             </p>
 
             {/* CTAs */}
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 onClick={() => scrollToSection('servicios')}
                 className="h-12 px-7 text-sm sm:text-base font-semibold rounded-none text-white border-0 hover:opacity-90 transition"
@@ -155,21 +169,21 @@ const Hero = () => {
               {stats.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 ${
+                  className={`py-3 sm:py-4 lg:py-5 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 ${
                     i % 2 === 1 ? 'border-l border-white/10 lg:border-l-0' : ''
                   }`}
                 >
 
                   <p
-                    className="eyebrow text-[10px] sm:text-xs mb-2 sm:mb-3"
+                    className="eyebrow text-[10px] sm:text-xs mb-1 sm:mb-2"
                     style={{ color: BRAND_ORANGE }}
                   >
                     {s.label}
                   </p>
-                  <p className="stat-number text-white leading-none text-3xl sm:text-4xl lg:text-5xl">
+                  <p className="stat-number text-white leading-none text-3xl sm:text-4xl lg:text-[42px]">
                     {s.value}
                   </p>
-                  <p className="mt-2 sm:mt-3 text-xs sm:text-sm text-white/80">{s.desc}</p>
+                  <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-white/80">{s.desc}</p>
                 </div>
               ))}
             </div>
