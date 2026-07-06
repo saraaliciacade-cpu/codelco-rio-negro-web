@@ -12,14 +12,14 @@ const StatsBar = () => {
   return (
     <section
       aria-label="Codelco en números"
-      style={{ backgroundColor: BRAND_BLACK, borderTop: `2px solid ${BRAND_ORANGE}` }}
+      style={{ backgroundColor: 'transparent', borderTop: `2px solid ${BRAND_ORANGE}` }}
     >
       <div className="container mx-auto px-6 sm:px-10 lg:px-16">
         <div className="grid grid-cols-2 lg:grid-cols-4 divide-y divide-white/10 lg:divide-y-0 lg:divide-x lg:divide-white/10">
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 ${
+              className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 ${
                 i % 2 === 1 ? 'border-l border-white/10 lg:border-l-0' : ''
               }`}
             >
