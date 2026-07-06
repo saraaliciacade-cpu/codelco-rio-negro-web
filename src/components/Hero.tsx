@@ -48,9 +48,11 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative w-full overflow-hidden"
-      style={{ height: 'calc(100dvh - 57px)', minHeight: 'min(560px, calc(100dvh - 57px))' }}
+      className="relative w-full overflow-hidden bg-black flex flex-col"
+      style={{ minHeight: 'calc(100dvh - 57px)' }}
     >
+
+
       {/* Background carousel — cross-fade */}
       {HERO_IMAGES.map((img, idx) => (
         <div
@@ -93,8 +95,9 @@ const Hero = () => {
       />
 
       {/* Content - bottom-left aligned */}
-      <div className="relative z-10 flex h-full flex-col">
+      <div className="relative z-10 flex flex-1 flex-col">
         <div className="flex min-h-0 flex-1 flex-col justify-center">
+
           <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-3 sm:pb-4 pt-4 sm:pt-6">
           <div className="max-w-4xl">
             {/* Eyebrow */}
@@ -151,34 +154,35 @@ const Hero = () => {
         {/* Stats Bar - integrated into hero over the background image */}
         <div
           className="relative z-10 w-full flex-shrink-0"
-          style={{ borderTop: `2px solid ${BRAND_ORANGE}`, backgroundColor: 'rgba(0,0,0,0.55)' }}
+          style={{ borderTop: `2px solid ${BRAND_ORANGE}`, backgroundColor: '#0a0a0a' }}
         >
           <div className="container mx-auto px-6 sm:px-10 lg:px-16 relative">
             <div className="relative grid grid-cols-2 lg:grid-cols-4 items-stretch">
               {stats.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`py-2.5 sm:py-3 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 flex flex-col justify-center ${
+                  className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 flex flex-col justify-center ${
                     i > 0 ? 'lg:border-l lg:border-white/10' : ''
                   } ${i >= 2 ? 'border-t border-white/10 lg:border-t-0' : ''} ${
                     i % 2 === 1 ? 'border-l border-white/10 lg:border-l-0' : ''
                   }`}
                 >
                   <p
-                    className="eyebrow text-[10px] sm:text-xs mb-1"
+                    className="eyebrow text-[10px] sm:text-xs mb-3"
                     style={{ color: BRAND_ORANGE }}
                   >
                     {s.label}
                   </p>
-                  <p className="stat-number text-white leading-none text-2xl sm:text-3xl lg:text-[38px]">
+                  <p className="stat-number text-white leading-none text-3xl sm:text-4xl lg:text-[44px]">
                     {s.value}
                   </p>
-                  <p className="mt-1 text-[11px] sm:text-xs text-white/80 leading-tight">{s.desc}</p>
+                  <p className="mt-4 text-xs sm:text-sm text-white/75 leading-snug">{s.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
+
       </div>
 
     </section>
