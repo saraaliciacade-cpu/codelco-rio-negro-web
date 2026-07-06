@@ -80,7 +80,8 @@ const Hero = () => {
 
       {/* Content - bottom-left aligned */}
       <div className="relative z-10 flex flex-col h-full" style={{ height: '100vh', minHeight: '600px' }}>
-        <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-8 sm:pb-10 lg:pb-12 pt-20">
+        <div className="flex-grow flex flex-col justify-end">
+          <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-8 sm:pb-10 lg:pb-12 pt-20">
           <div className="max-w-4xl">
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-6">
