@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Check, ArrowRight } from 'lucide-react';
+import { ArrowRight, Droplets, Database, Gauge, Waves, Truck, Hammer, Package, Scissors } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
@@ -32,14 +32,14 @@ const metalurgicaImages: DivisionGalleryImage[] = [
 ];
 
 const specs = [
-  'Piletas de acumulación',
-  'Tanques API',
-  'Choke manifolds',
-  'Líneas de alta presión',
-  'Plantas móviles',
-  'Estructuras para decanter',
-  'Contenedores industriales',
-  'Corte y plegado de chapas',
+  { text: 'Piletas de acumulación', icon: Droplets },
+  { text: 'Tanques API', icon: Database },
+  { text: 'Choke manifolds', icon: Gauge },
+  { text: 'Líneas de alta presión', icon: Waves },
+  { text: 'Plantas móviles', icon: Truck },
+  { text: 'Estructuras para decanter', icon: Hammer },
+  { text: 'Contenedores industriales', icon: Package },
+  { text: 'Corte y plegado de chapas', icon: Scissors },
 ];
 
 const otherDivisions = [
@@ -113,15 +113,15 @@ const MetalurgicaPage = () => {
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {specs.map((spec) => (
-              <li key={spec} className="flex items-start gap-3 bg-white p-4 border border-black/5">
+              <li key={spec.text} className="flex items-start gap-3 bg-white p-4 border border-black/5">
                 <span
                   className="shrink-0 mt-0.5 flex items-center justify-center h-6 w-6 rounded-full"
                   style={{ backgroundColor: BRAND_ORANGE }}
                   aria-hidden="true"
                 >
-                  <Check className="h-4 w-4 text-white" strokeWidth={3} />
+                  <spec.icon className="h-4 w-4 text-white" strokeWidth={2} />
                 </span>
-                <span className="text-sm lg:text-base font-medium text-[#1A1A1A]">{spec}</span>
+                <span className="text-sm lg:text-base font-medium text-[#1A1A1A]">{spec.text}</span>
               </li>
             ))}
           </ul>

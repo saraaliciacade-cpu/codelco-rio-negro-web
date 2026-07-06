@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Check, ArrowRight } from 'lucide-react';
+import { ArrowRight, Zap, Settings, CalendarDays, Monitor, Headphones, Clock } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
@@ -21,12 +21,12 @@ const gruposImages: DivisionGalleryImage[] = [
 ];
 
 const specs = [
-  'Equipos de 55 a 180 kVA',
-  'Instalación incluida',
-  'Mantenimiento programado',
-  'Monitoreo técnico',
-  'Soporte especializado',
-  'Disponibilidad permanente 24/7',
+  { text: 'Equipos de 55 a 180 kVA', icon: Zap },
+  { text: 'Instalación incluida', icon: Settings },
+  { text: 'Mantenimiento programado', icon: CalendarDays },
+  { text: 'Monitoreo técnico', icon: Monitor },
+  { text: 'Soporte especializado', icon: Headphones },
+  { text: 'Disponibilidad permanente 24/7', icon: Clock },
 ];
 
 const otherDivisions = [
@@ -98,15 +98,15 @@ const GruposElectrogenosPage = () => {
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {specs.map((spec) => (
-              <li key={spec} className="flex items-start gap-3 bg-white p-4 border border-black/5">
+              <li key={spec.text} className="flex items-start gap-3 bg-white p-4 border border-black/5">
                 <span
                   className="shrink-0 mt-0.5 flex items-center justify-center h-6 w-6 rounded-full"
                   style={{ backgroundColor: BRAND_ORANGE }}
                   aria-hidden="true"
                 >
-                  <Check className="h-4 w-4 text-white" strokeWidth={3} />
+                  <spec.icon className="h-4 w-4 text-white" strokeWidth={2} />
                 </span>
-                <span className="text-sm lg:text-base font-medium text-[#1A1A1A]">{spec}</span>
+                <span className="text-sm lg:text-base font-medium text-[#1A1A1A]">{spec.text}</span>
               </li>
             ))}
           </ul>

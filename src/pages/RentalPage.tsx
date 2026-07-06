@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Check, ArrowRight } from 'lucide-react';
+import { ArrowRight, Car, Truck, Package, Lightbulb, Battery, Wrench } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
@@ -20,12 +20,12 @@ const rentalImages: DivisionGalleryImage[] = [
 ];
 
 const specs = [
-  '+60 unidades Hilux y Amarok',
-  'Trailers rodantes de 6, 9 y 12 metros',
-  'Piletas y contenedores',
-  'Torres de iluminación LED (stock inmediato)',
-  'Abastecimiento autónomo de energía',
-  'Mantenimiento y gestión incluidos',
+  { text: '+60 unidades Hilux y Amarok', icon: Car },
+  { text: 'Trailers rodantes de 6, 9 y 12 metros', icon: Truck },
+  { text: 'Piletas y contenedores', icon: Package },
+  { text: 'Torres de iluminación LED (stock inmediato)', icon: Lightbulb },
+  { text: 'Abastecimiento autónomo de energía', icon: Battery },
+  { text: 'Mantenimiento y gestión incluidos', icon: Wrench },
 ];
 
 const otherDivisions = [
@@ -97,15 +97,15 @@ const RentalPage = () => {
 
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {specs.map((spec) => (
-              <li key={spec} className="flex items-start gap-3 bg-white p-4 border border-black/5">
+              <li key={spec.text} className="flex items-start gap-3 bg-white p-4 border border-black/5">
                 <span
                   className="shrink-0 mt-0.5 flex items-center justify-center h-6 w-6 rounded-full"
                   style={{ backgroundColor: BRAND_ORANGE }}
                   aria-hidden="true"
                 >
-                  <Check className="h-4 w-4 text-white" strokeWidth={3} />
+                  <spec.icon className="h-4 w-4 text-white" strokeWidth={2} />
                 </span>
-                <span className="text-sm lg:text-base font-medium text-[#1A1A1A]">{spec}</span>
+                <span className="text-sm lg:text-base font-medium text-[#1A1A1A]">{spec.text}</span>
               </li>
             ))}
           </ul>
