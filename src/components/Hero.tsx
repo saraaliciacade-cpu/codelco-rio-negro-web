@@ -48,9 +48,10 @@ const Hero = () => {
   return (
     <section
       id="inicio"
-      className="relative w-full overflow-hidden bg-black"
+      className="relative w-full overflow-hidden bg-black flex flex-col"
       style={{ minHeight: 'calc(100dvh - 57px)' }}
     >
+
 
       {/* Background carousel — cross-fade */}
       {HERO_IMAGES.map((img, idx) => (
