@@ -116,7 +116,7 @@ export default function WhatsAppWidget() {
         {isOpen && (
           <div className="animate-scale-in origin-bottom-right fixed bottom-16 right-4 sm:bottom-20 sm:right-5">
             <div
-              className="w-[300px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col"
+              className="w-[280px] sm:w-[300px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col"
               style={{ maxHeight: 'calc(100dvh - 6rem)' }}
             >
               {/* Header */}
