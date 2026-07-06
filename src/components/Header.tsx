@@ -48,7 +48,7 @@ const Header = () => {
         isScrolled ? 'bg-[#1A1A1A]/90 backdrop-blur-sm' : 'bg-[#1A1A1A]'
       }`}
     >
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-3">
+      <div className="container mx-auto px-6 sm:px-10 lg:px-16 py-3">
         <div className="flex items-center justify-between">
           {/* Logo + Language Selector */}
           <div className="flex items-center space-x-4 sm:space-x-6">
