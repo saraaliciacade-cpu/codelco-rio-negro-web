@@ -1,14 +1,16 @@
 ## Objetivo
-Modificar la barra de estadísticas (`StatsBar.tsx`) para que las tarjetas tengan fondo transparente por defecto y se vuelvan negras al pasar el mouse por encima (hover).
 
-## Cambios propuestos
+Que el logo de Codelco quede pegado al borde izquierdo de la pantalla y el botón "Solicitar presupuesto" al borde derecho, como estaba antes (segunda imagen), en lugar de estar centrados dentro del ancho del contenido.
 
-### 1. `src/components/StatsBar.tsx`
-- **Fondo de la sección**: cambiar el `backgroundColor` del `<section>` de `#1A1A1A` (negro) a **transparente**.
-- **Fondo de cada tarjeta**: agregar clase `hover:bg-[#1A1A1A]` a cada tarjeta individual (`<div>` del map de stats).
-- **Bordes**: mantener el `borderTop` naranja de la sección y los bordes blancos entre tarjetas.
-- **Transición**: agregar `transition-colors duration-300` para que el cambio de fondo sea suave.
+## Cambio
 
-### Notas
-- El comportamiento actual en móvil y desktop de la grid (2 columnas / 4 columnas) y los divisores se mantienen sin cambios.
-- Si al probar no le gusta, se revierte fácilmente volviendo a poner el fondo negro en la sección y quitando el hover de las tarjetas.
+En `src/components/Header.tsx` (línea 51), revertir el contenedor:
+
+- Actual: `container mx-auto px-4 md:px-8 lg:px-12 max-w-7xl py-3`
+- Nuevo: `w-full px-4 sm:px-6 lg:px-8 py-3`
+
+Esto quita el `max-w-7xl` centrado y hace que el header ocupe todo el ancho, dejando solo un pequeño padding a los costados.
+
+## Verificación
+
+Screenshot del preview en desktop para confirmar que el logo queda pegado a la izquierda y el botón naranja pegado a la derecha.
