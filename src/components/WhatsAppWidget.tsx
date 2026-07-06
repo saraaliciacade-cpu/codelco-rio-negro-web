@@ -137,14 +137,14 @@ export default function WhatsAppWidget() {
               </div>
 
               {/* Chat Body */}
-              <div className="flex-1 min-h-0 p-2 sm:p-3 overflow-y-auto relative bg-white">
+              <div className="flex-1 min-h-0 p-1.5 sm:p-2 overflow-y-auto relative bg-white">
                 {/* Welcome Message Bubble */}
-                <div className="relative mb-3 animate-fade-in">
-                  <div className="bg-white rounded-lg rounded-tl-none p-2 sm:p-2.5 shadow-sm max-w-[85%] inline-block border border-gray-100">
-                    <p className="text-xs sm:text-sm text-foreground whitespace-pre-line">
+                <div className="relative mb-2 animate-fade-in">
+                  <div className="bg-white rounded-lg rounded-tl-none p-1.5 sm:p-2 shadow-sm max-w-[90%] inline-block border border-gray-100">
+                    <p className="text-[11px] sm:text-xs text-foreground whitespace-pre-line leading-snug">
                       {welcomeText}
                     </p>
-                    <span className="text-[10px] sm:text-xs text-muted-foreground block mt-1">
+                    <span className="text-[10px] text-muted-foreground block mt-0.5">
                       {new Date().toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
@@ -155,12 +155,12 @@ export default function WhatsAppWidget() {
 
                 {/* Quick Reply Chat Bubbles */}
                 {showQuickReplies && (
-                  <div className="flex flex-col items-end gap-2 animate-fade-in">
+                  <div className="flex flex-col items-end gap-1.5 animate-fade-in">
                     {quickReplies.map((qr) => (
                       <button
                         key={qr.label}
                         onClick={() => setMessage(qr.text)}
-                        className="text-left text-xs sm:text-sm bg-[#ffe5d9] hover:bg-[#ffccb3] text-foreground rounded-2xl rounded-tr-none px-3 py-2 shadow-sm transition-colors max-w-[90%]"
+                        className="text-left text-[11px] sm:text-xs bg-[#ffe5d9] hover:bg-[#ffccb3] text-foreground rounded-xl rounded-tr-none px-2.5 py-1.5 shadow-sm transition-colors max-w-[92%]"
                       >
                         {qr.label}
                       </button>
