@@ -112,10 +112,9 @@ export default function WhatsAppWidget() {
 
         {/* WhatsApp Chat Window */}
         {isOpen && (
-          <div className="animate-scale-in origin-bottom-right fixed bottom-16 right-4 sm:bottom-20 sm:right-5">
+          <div className="animate-scale-in origin-bottom-right fixed bottom-12 right-3 sm:bottom-16 sm:right-4">
             <div
-              className="w-[340px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col"
-              style={{ maxHeight: 'calc(100dvh - 6rem)' }}
+              className="w-[340px] max-w-[calc(100vw-1.5rem)] bg-white rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col max-h-[50dvh] sm:max-h-[520px]"
             >
               {/* Header */}
               <div className="text-white px-4 py-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#e65b2a' }}>
