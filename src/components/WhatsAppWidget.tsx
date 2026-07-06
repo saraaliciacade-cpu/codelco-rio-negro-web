@@ -11,7 +11,6 @@ export default function WhatsAppWidget() {
   const [message, setMessage] = useState("");
   const [showQuickReplies, setShowQuickReplies] = useState(false);
   const { language } = useLanguage();
-  const isMobile = useIsMobile();
 
   const playNotificationSound = () => {
     try {
