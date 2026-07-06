@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { X, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useIsMobile } from "@/hooks/use-mobile";
 import whatsappLogo from "@/assets/whatsapp-logo.png";
 import codelcoProfile from "@/assets/codelco-profile.png";
 
@@ -11,7 +10,6 @@ export default function WhatsAppWidget() {
   const [message, setMessage] = useState("");
   const [showQuickReplies, setShowQuickReplies] = useState(false);
   const { language } = useLanguage();
-  const isMobile = useIsMobile();
 
   const playNotificationSound = () => {
     try {
@@ -98,56 +96,55 @@ export default function WhatsAppWidget() {
   return (
     <>
       {/* Floating WhatsApp Button */}
-      <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50">
+      <div className="fixed bottom-3 right-3 sm:bottom-4 sm:right-4 z-50">
         {!isOpen && (
           <button
             onClick={handleButtonClick}
-            className="relative group bg-primary hover:bg-primary/90 text-white rounded-full p-3 sm:p-3.5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+            className="relative group bg-primary hover:bg-primary/90 text-white rounded-full p-2 sm:p-2.5 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
             aria-label="Open WhatsApp chat"
             style={{ backgroundColor: '#25D366' }}
           >
-            <img src={whatsappLogo} alt="WhatsApp" className="w-7 h-7 sm:w-8 sm:h-8" width="577" height="583" />
+            <img src={whatsappLogo} alt="WhatsApp" className="w-5 h-5 sm:w-6 sm:h-6" width="577" height="583" />
             {/* Red notification badge */}
-            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full animate-pulse" />
+            <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse" />
           </button>
         )}
 
         {/* WhatsApp Chat Window */}
         {isOpen && (
-          <div className="animate-scale-in origin-bottom-right fixed bottom-16 right-4 sm:bottom-20 sm:right-5">
+          <div className="animate-scale-in origin-bottom-right fixed bottom-12 right-3 sm:bottom-16 sm:right-4">
             <div
-              className="w-[340px] max-w-[calc(100vw-2rem)] bg-white rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col"
-              style={{ maxHeight: 'calc(100dvh - 6rem)' }}
+              className="w-[340px] max-w-[calc(100vw-1.5rem)] bg-white rounded-2xl shadow-2xl overflow-hidden border border-border flex flex-col max-h-[50dvh] sm:max-h-[520px]"
             >
               {/* Header */}
-              <div className="text-white px-4 py-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#e65b2a' }}>
-                <div className="flex items-center gap-3">
-                  <div className="w-11 h-11 rounded-full overflow-hidden bg-white flex-shrink-0 ring-2 ring-white/30">
+              <div className="text-white px-3 py-2.5 sm:px-4 sm:py-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#e65b2a' }}>
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full overflow-hidden bg-white flex-shrink-0 ring-2 ring-white/30">
                     <img src={codelcoProfile} alt="Codelco S.A." className="w-full h-full object-cover" loading="eager" fetchPriority="high" width="96" height="96" decoding="async" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-base leading-tight">Codelco S.A.</h3>
-                    <p className="text-xs text-white/85 leading-tight mt-0.5">{onlineText}</p>
+                    <h3 className="font-semibold text-sm sm:text-base leading-tight">Codelco S.A.</h3>
+                    <p className="text-[11px] sm:text-xs text-white/85 leading-tight mt-0.5">{onlineText}</p>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="hover:bg-white/15 rounded-full p-1.5 transition-colors"
+                  className="hover:bg-white/15 rounded-full p-1 transition-colors"
                   aria-label="Close chat"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
 
               {/* Chat Body */}
-              <div className="flex-1 min-h-0 px-4 py-4 overflow-y-auto bg-white">
+              <div className="flex-1 min-h-0 px-3 py-3 sm:px-4 sm:py-4 overflow-y-auto bg-white">
                 {/* Welcome Message Bubble */}
                 <div className="animate-fade-in">
-                  <div className="bg-gray-50 rounded-2xl rounded-tl-sm px-4 py-3 border border-gray-100 shadow-sm">
-                    <p className="text-sm text-foreground whitespace-pre-line leading-relaxed">
+                  <div className="bg-gray-50 rounded-2xl rounded-tl-sm px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-100 shadow-sm">
+                    <p className="text-[15px] sm:text-base text-foreground whitespace-pre-line leading-[1.6]">
                       {welcomeText}
                     </p>
-                    <span className="text-[11px] text-muted-foreground block mt-1.5">
+                    <span className="text-xs text-muted-foreground block mt-2">
                       {new Date().toLocaleTimeString([], {
                         hour: "2-digit",
                         minute: "2-digit",
@@ -158,12 +155,12 @@ export default function WhatsAppWidget() {
 
                 {/* Quick Reply Chat Bubbles */}
                 {showQuickReplies && (
-                  <div className="flex flex-col items-end gap-2 mt-3 animate-fade-in">
+                  <div className="flex flex-col items-end gap-1.5 sm:gap-2 mt-3 animate-fade-in">
                     {quickReplies.map((qr) => (
                       <button
                         key={qr.label}
                         onClick={() => setMessage(qr.text)}
-                        className="text-left text-sm bg-[#ffe5d9] hover:bg-[#ffccb3] text-foreground rounded-2xl rounded-tr-sm px-3.5 py-2 shadow-sm transition-colors max-w-[92%]"
+                        className="text-left text-sm bg-[#ffe5d9] hover:bg-[#ffccb3] text-foreground rounded-2xl rounded-tr-sm px-3 py-1.5 sm:px-3.5 sm:py-2 shadow-sm transition-colors max-w-[92%]"
                       >
                         {qr.label}
                       </button>
