@@ -126,11 +126,12 @@ const Services = () => {
                 <p className="text-sm md:text-base text-gray-300 leading-relaxed mb-6">
                   {div.text}
                 </p>
+                <div className="border-t border-white/30 mb-4" />
                 <Link
                   to={div.ctaLink}
-                  className="inline-flex items-center text-sm font-semibold text-[#E84E1B] hover:text-white transition-colors duration-300 group/btn"
+                  className="inline-flex items-center text-sm font-semibold text-white group-hover:text-[#E84E1B] transition-colors duration-300"
                 >
-                  <span className="border-b border-[#E84E1B] group-hover/btn:border-white transition-colors duration-300">
+                  <span className="border-b border-white group-hover:border-[#E84E1B] transition-colors duration-300">
                     {div.cta}
                   </span>
                 </Link>
