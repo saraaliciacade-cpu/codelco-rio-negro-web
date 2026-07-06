@@ -122,12 +122,13 @@ const NovedadesPage = () => {
                     <p className="text-sm text-gray-600 leading-relaxed mb-4 flex-1">
                       {item.summary}
                     </p>
-                    <span
-                      className="inline-flex items-center text-sm font-semibold transition-colors hover:opacity-80"
-                      style={{ color: BRAND_ORANGE }}
+                    <Link
+                      to={`/novedades/${item.slug}`}
+                      className="inline-flex items-center justify-center self-start h-10 px-4 text-sm font-semibold rounded-sm text-white transition hover:opacity-90"
+                      style={{ backgroundColor: BRAND_ORANGE }}
                     >
-                      Leer más <ArrowRight className="ml-1 h-4 w-4" />
-                    </span>
+                      Leer más <ArrowRight className="ml-1.5 h-4 w-4" />
+                    </Link>
                   </div>
                 </article>
               ))}

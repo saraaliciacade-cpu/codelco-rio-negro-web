@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useIsMobile } from "@/hooks/use-mobile";
 import whatsappLogo from "@/assets/whatsapp-logo.png";
-import codelcoProfile from "@/assets/codelco-profile.png";
+import codelcoProfile from "@/assets/codelco-whatsapp-profile.png.asset.json";
 
 export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -123,7 +123,7 @@ export default function WhatsAppWidget() {
               <div className="text-white px-4 py-3 flex items-center justify-between flex-shrink-0" style={{ backgroundColor: '#e65b2a' }}>
                 <div className="flex items-center gap-3">
                   <div className="w-11 h-11 rounded-full overflow-hidden bg-white flex-shrink-0 ring-2 ring-white/30">
-                    <img src={codelcoProfile} alt="Codelco S.A." className="w-full h-full object-cover" loading="eager" fetchPriority="high" width="96" height="96" decoding="async" />
+                    <img src={codelcoProfile.url} alt="Codelco S.A." className="w-full h-full object-cover" loading="eager" fetchPriority="high" width="96" height="96" decoding="async" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-base leading-tight">Codelco S.A.</h3>
