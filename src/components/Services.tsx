@@ -58,7 +58,7 @@ const Services = () => {
 
   return (
     <section id="servicios" style={{ backgroundColor: "#F5F3EF" }} className="py-16 md:py-20 lg:py-24">
-      <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-6xl">
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <span className="eyebrow inline-block text-xs md:text-sm text-[#E84E1B] mb-3 font-bold">
@@ -90,11 +90,22 @@ const Services = () => {
               }}
             >
               {/* Image + Badge */}
-              <div className="relative h-48 md:h-56 overflow-hidden">
+              <div className="relative h-64 md:h-72 lg:h-80 overflow-hidden" style={{ backgroundColor: "#1A1A1A" }}>
                 <img
                   src={div.image}
                   alt={div.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{
+                    objectPosition: div.badge === "GRUPOS ELECTRÓGENOS" ? "center 40%" : "center",
+                  }}
+                />
+                {/* Gradient blend into card */}
+                <div
+                  className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(to bottom, rgba(26,26,26,0) 0%, rgba(26,26,26,0.75) 60%, #1A1A1A 100%)",
+                  }}
                 />
                 <span
                   className="eyebrow absolute top-4 left-4 text-xs text-white px-3 py-1 rounded-sm"
@@ -105,7 +116,7 @@ const Services = () => {
               </div>
 
               {/* Content */}
-              <div className="p-6 md:p-8">
+              <div className="px-6 md:px-8 pt-4 pb-6 md:pb-8">
                 <h3 className="heading text-lg md:text-xl text-white mb-2">
                   {div.title}
                 </h3>
