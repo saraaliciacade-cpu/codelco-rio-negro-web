@@ -95,8 +95,9 @@ const Hero = () => {
       />
 
       {/* Content - bottom-left aligned */}
-      <div className="relative z-10 flex h-full flex-col">
+      <div className="relative z-10 flex flex-1 flex-col">
         <div className="flex min-h-0 flex-1 flex-col justify-center">
+
           <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-3 sm:pb-4 pt-4 sm:pt-6">
           <div className="max-w-4xl">
             {/* Eyebrow */}
