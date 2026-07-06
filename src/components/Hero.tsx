@@ -94,8 +94,8 @@ const Hero = () => {
 
       {/* Content - bottom-left aligned */}
       <div className="relative z-10 flex h-full flex-col">
-        <div className="flex min-h-0 flex-1 flex-col justify-end">
-          <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-4 sm:pb-5 lg:pb-6 pt-10 sm:pt-12 lg:pt-14">
+        <div className="flex min-h-0 flex-1 flex-col justify-center">
+          <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-3 sm:pb-4 pt-4 sm:pt-6">
           <div className="max-w-4xl">
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-3 sm:mb-4">
@@ -113,14 +113,14 @@ const Hero = () => {
             </div>
 
             {/* H1 */}
-            <h1 className="heading text-white leading-[1.03] text-[34px] sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
+            <h1 className="heading text-white leading-[1.03] text-[30px] sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
               Módulos Habitacionales, Metalúrgica y{' '}
               <span style={{ color: BRAND_ORANGE }}>Rental</span>{' '}
               para la Industria Petrolera
             </h1>
 
             {/* Subtitle */}
-            <p className="mt-4 sm:mt-5 text-base sm:text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
               Fabricamos en planta propia y alquilamos la flota que tu obra
               necesita. <span className="font-bold text-white">+14 años</span>{' '}
               resolviendo infraestructura para Vaca Muerta sin que la operación
@@ -128,10 +128,10 @@ const Hero = () => {
             </p>
 
             {/* CTAs */}
-            <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row gap-3 sm:gap-4">
               <Button
                 onClick={() => scrollToSection('servicios')}
-                className="h-12 px-7 text-sm sm:text-base font-semibold rounded-none text-white border-0 hover:opacity-90 transition"
+                className="h-11 sm:h-12 px-6 sm:px-7 text-sm sm:text-base font-semibold rounded-none text-white border-0 hover:opacity-90 transition"
                 style={{ backgroundColor: BRAND_ORANGE }}
               >
                 Ver nuestros equipos →
@@ -139,7 +139,7 @@ const Hero = () => {
               <Button
                 onClick={() => scrollToSection('contacto')}
                 variant="outline"
-                className="h-12 px-7 text-sm sm:text-base font-semibold rounded-none bg-transparent text-white border border-white/70 hover:bg-white hover:text-black transition"
+                className="h-11 sm:h-12 px-6 sm:px-7 text-sm sm:text-base font-semibold rounded-none bg-transparent text-white border border-white/70 hover:bg-white hover:text-black transition"
               >
                 Solicitar presupuesto
               </Button>
@@ -150,46 +150,37 @@ const Hero = () => {
 
         {/* Stats Bar - integrated into hero over the background image */}
         <div
-          className="relative z-10 w-full"
-          style={{ borderTop: `2px solid ${BRAND_ORANGE}` }}
+          className="relative z-10 w-full flex-shrink-0"
+          style={{ borderTop: `2px solid ${BRAND_ORANGE}`, backgroundColor: 'rgba(0,0,0,0.55)' }}
         >
           <div className="container mx-auto px-6 sm:px-10 lg:px-16 relative">
-            {/* Side dark fades — only on outer edges (left of ANTIGÜEDAD, right of CARTERA) */}
-            <div
-              className="pointer-events-none absolute inset-y-0 left-0 w-24 sm:w-40 lg:w-56"
-              style={{ background: 'linear-gradient(to right, rgba(0,0,0,0.75), rgba(0,0,0,0))' }}
-              aria-hidden="true"
-            />
-            <div
-              className="pointer-events-none absolute inset-y-0 right-0 w-24 sm:w-40 lg:w-56"
-              style={{ background: 'linear-gradient(to left, rgba(0,0,0,0.75), rgba(0,0,0,0))' }}
-              aria-hidden="true"
-            />
-            <div className="relative grid grid-cols-2 lg:grid-cols-4 divide-y divide-white/10 lg:divide-y-0 lg:divide-x lg:divide-white/10">
+            <div className="relative grid grid-cols-2 lg:grid-cols-4 items-stretch">
               {stats.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`py-3 sm:py-4 lg:py-5 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 ${
+                  className={`py-2.5 sm:py-3 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 flex flex-col justify-center ${
+                    i > 0 ? 'lg:border-l lg:border-white/10' : ''
+                  } ${i >= 2 ? 'border-t border-white/10 lg:border-t-0' : ''} ${
                     i % 2 === 1 ? 'border-l border-white/10 lg:border-l-0' : ''
                   }`}
                 >
-
                   <p
-                    className="eyebrow text-[10px] sm:text-xs mb-1 sm:mb-2"
+                    className="eyebrow text-[10px] sm:text-xs mb-1"
                     style={{ color: BRAND_ORANGE }}
                   >
                     {s.label}
                   </p>
-                  <p className="stat-number text-white leading-none text-3xl sm:text-4xl lg:text-[42px]">
+                  <p className="stat-number text-white leading-none text-2xl sm:text-3xl lg:text-[38px]">
                     {s.value}
                   </p>
-                  <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-white/80">{s.desc}</p>
+                  <p className="mt-1 text-[11px] sm:text-xs text-white/80 leading-tight">{s.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
+
     </section>
   );
 };
