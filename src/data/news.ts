@@ -112,7 +112,7 @@ export const newsData: NewsItem[] = [
     title: 'Nueva entrega de grupo electrógeno para cliente del sector',
     summary:
       'Equipo de 120 kVA instalado y monitoreado para garantizar energía continua en operación crítica.',
-    image: '/images/fabrica/fabrica-37.jpg',
+    image: '/images/novedad/grupo-electrogeno.jpg',
     body: [
       'Realizamos la entrega, instalación y puesta en marcha de un grupo electrógeno de 120 kVA para un cliente que requería energía continua en una operación crítica.',
       'El equipo fue configurado con sistema de monitoreo remoto, tablero de transferencia automática y plan de mantenimiento preventivo.',
