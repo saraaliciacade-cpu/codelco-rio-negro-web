@@ -132,6 +132,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
+        </div>
 
         {/* Stats Bar - integrated into hero over the background image */}
         <div
