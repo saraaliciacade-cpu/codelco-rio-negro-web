@@ -76,10 +76,13 @@ const RentalPage = () => {
             </span>
           </div>
 
-          <h1 className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-5xl">
-            Vehículos, Trailers,&nbsp;
+          <h1
+            className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-5xl"
+            aria-label="Vehículos, Trailers, Torres de Iluminación LED y Equipos en Alquiler para Vaca Muerta"
+          >
+            Vehículos, Trailers,{' '}
             <br />
-            Torres de Iluminación LED y Equipos
+            Torres de Iluminación LED y Equipos{' '}
             <br />
             en Alquiler para Vaca Muerta
           </h1>
