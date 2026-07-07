@@ -27,6 +27,14 @@ const NovedadesPage = () => {
         path="/novedades"
         keywords="novedades Codelco, proyectos Vaca Muerta, flota rental, obras petroleras"
       />
+      <Helmet>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Codelco S.A. — Novedades (RSS)"
+          href="https://codelco.com.ar/rss.xml"
+        />
+      </Helmet>
       <Header />
 
 
