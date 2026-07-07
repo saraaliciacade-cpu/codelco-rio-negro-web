@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
+import HeroImageCarousel from "@/components/HeroImageCarousel";
+import torresIluminacionAsset from "@/assets/rental-torres-iluminacion-codelco.png.asset.json";
 
 const Services = () => {
   const divisions = [
     {
       badge: "FÁBRICA",
-      image: "/images/fabrica/fabrica-02.jpg",
+      images: [
+        { src: "/images/fabrica/fabrica-32.jpg", alt: "Izaje de módulo prefabricado con grúa en planta de Cipolletti" },
+        { src: "/images/fabrica/fabrica-41.jpg", alt: "Living comedor integrado con grandes ventanales" },
+        { src: "/fabrica-01.jpg", alt: "Módulo habitacional terminado" },
+      ],
       title: "Módulos Habitacionales y Viviendas",
       kicker: "Construcción en seco · Termo-acústica",
       text: (
@@ -17,7 +23,11 @@ const Services = () => {
     },
     {
       badge: "METALÚRGICA",
-      image: "/images/metalurgica/metalurgica-01.jpg",
+      images: [
+        { src: "/metalurgica-05.jpg", alt: "Equipo metalúrgico fabricado en planta Codelco" },
+        { src: "/metalurgica-09.jpg", alt: "Contenedor industrial reforzado" },
+        { src: "/metalurgica-04.jpg", alt: "Estructura metálica especial" },
+      ],
       title: "Equipos, Tanques y Estructuras",
       kicker: "Corte y plegado de chapa · Trazabilidad total",
       text: (
@@ -30,7 +40,11 @@ const Services = () => {
     },
     {
       badge: "RENTAL",
-      image: "/rental-01.jpg",
+      images: [
+        { src: "/rental-01.jpg", alt: "Flota Toyota Hilux y VW Amarok en base operativa" },
+        { src: "/rental-03.jpg", alt: "Trailer rodante de gran porte" },
+        { src: torresIluminacionAsset.url, alt: "Torres de iluminación LED Codelco en yacimiento" },
+      ],
       title: "Vehículos, Trailers y Equipos",
       kicker: "+60 unidades · Mantenimiento incluido",
       text: (
@@ -43,7 +57,9 @@ const Services = () => {
     },
     {
       badge: "GRUPOS ELECTRÓGENOS",
-      image: "/images/novedad/grupo-electrogeno.jpg",
+      images: [
+        { src: "/images/novedad/grupo-electrogeno.jpg", alt: "Entrega de grupo electrógeno Codelco en obra", objectPosition: "center 40%" },
+      ],
       title: "Alquiler y Mantenimiento",
       kicker: "55 a 180 kVA · Monitoreo técnico",
       text: (
@@ -55,6 +71,7 @@ const Services = () => {
       ctaLink: "/grupos-electrogenos",
     },
   ];
+
 
   return (
     <section id="servicios" style={{ backgroundColor: "#F5F3EF" }} className="py-16 md:py-20 lg:py-24">
@@ -91,14 +108,11 @@ const Services = () => {
             >
               {/* Image + Badge */}
               <div className="relative h-64 md:h-72 lg:h-80 overflow-hidden" style={{ backgroundColor: "#1A1A1A" }}>
-                <img
-                  src={div.image}
-                  alt={div.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  style={{
-                    objectPosition: div.badge === "GRUPOS ELECTRÓGENOS" ? "center 40%" : "center",
-                  }}
+                <HeroImageCarousel
+                  images={div.images}
+                  imgClassName="transition-transform duration-500 group-hover:scale-105"
                 />
+
                 {/* Gradient blend into card */}
                 <div
                   className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"

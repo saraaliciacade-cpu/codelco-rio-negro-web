@@ -3,15 +3,22 @@ import { useEffect, useState } from 'react';
 export interface HeroImageCarouselItem {
   src: string;
   alt: string;
+  objectPosition?: string;
 }
 
 interface HeroImageCarouselProps {
   images: HeroImageCarouselItem[];
   intervalMs?: number;
   className?: string;
+  imgClassName?: string;
 }
 
-const HeroImageCarousel = ({ images, intervalMs = 5000, className = '' }: HeroImageCarouselProps) => {
+const HeroImageCarousel = ({
+  images,
+  intervalMs = 5000,
+  className = '',
+  imgClassName = '',
+}: HeroImageCarouselProps) => {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -29,8 +36,11 @@ const HeroImageCarousel = ({ images, intervalMs = 5000, className = '' }: HeroIm
           key={img.src}
           src={img.src}
           alt={img.alt}
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out"
-          style={{ opacity: i === index ? 1 : 0 }}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${imgClassName}`}
+          style={{
+            opacity: i === index ? 1 : 0,
+            objectPosition: img.objectPosition,
+          }}
         />
       ))}
     </div>
