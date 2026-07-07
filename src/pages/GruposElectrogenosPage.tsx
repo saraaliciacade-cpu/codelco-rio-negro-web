@@ -10,16 +10,9 @@ const BRAND_CREAM = '#F5F3EF';
 const BRAND_BLACK = '#1A1A1A';
 
 const gruposImages: DivisionGalleryImage[] = [
-  { src: '/images/fabrica/fabrica-37.jpg', name: 'Unidad móvil con generador incorporado', isNew: true },
-  { src: '/rental-01.jpg', name: 'Equipos energéticos en base operativa' },
-  { src: '/rental-02.jpg', name: 'Soporte y mantenimiento de equipos' },
-  { src: '/rental-03.jpg', name: 'Trailer para equipos auxiliares' },
-  { src: '/rental-04.jpg', name: 'Iluminación autónoma con generador' },
-  { src: '/rental-05.jpg', name: 'Suministro energético en obra' },
-  { src: '/rental-06.jpg', name: 'Equipos auxiliares en yacimiento' },
-  { src: '/rental-07.jpg', name: 'Energía autónoma para operación 24/7' },
-  { src: '/rental-08.jpg', name: 'Equipos listos para entrega' },
+  { src: '/images/novedad/grupo-electrogeno.jpg', name: 'Entrega de grupo electrógeno Codelco en obra' },
 ];
+
 
 const specs = [
   { text: 'Equipos de 55 a 180 kVA', icon: Zap },
@@ -43,10 +36,11 @@ const GruposElectrogenosPage = () => {
 
       <section className="relative w-full" style={{ minHeight: '380px' }}>
         <img
-          src="/images/fabrica/fabrica-37.jpg"
-          alt="Unidad móvil con grupo electrógeno incorporado"
+          src="/images/novedad/grupo-electrogeno.jpg"
+          alt="Entrega de grupo electrógeno Codelco en obra"
           className="absolute inset-0 w-full h-full object-cover"
         />
+
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.8) 100%)' }}
