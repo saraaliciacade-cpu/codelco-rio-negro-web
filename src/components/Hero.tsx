@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import heroVideo from '@/assets/hero-codelco.mp4.asset.json';
 import heroPoster from '@/assets/hero-codelco-poster.jpg.asset.json';
@@ -17,6 +18,30 @@ const scrollToSection = (sectionId: string) => {
 };
 
 const Hero = () => {
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Defer video load so the poster paints instantly.
+    // On mobile (narrow screens or coarse pointer) wait longer / until idle
+    // to avoid competing with critical resources on slow connections.
+    const isMobile =
+      window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
+
+    const load = () => setVideoSrc(heroVideo.url);
+
+    if (isMobile) {
+      const w = window as unknown as { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number };
+      if (typeof w.requestIdleCallback === 'function') {
+        w.requestIdleCallback(load, { timeout: 3000 });
+      } else {
+        window.setTimeout(load, 1500);
+      }
+    } else {
+      // Desktop: load right after first paint
+      window.setTimeout(load, 200);
+    }
+  }, []);
+
   return (
     <section
       id="inicio"
@@ -40,17 +65,19 @@ const Hero = () => {
           width={1920}
           height={1080}
         />
-        <video
-          src={heroVideo.url}
-          poster={heroPoster.url}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-          aria-hidden="true"
-        />
+        {videoSrc && (
+          <video
+            src={videoSrc}
+            poster={heroPoster.url}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+            aria-hidden="true"
+          />
+        )}
       </div>
 
       {/* Gradient overlay */}
@@ -123,7 +150,7 @@ const Hero = () => {
         {/* Stats Bar - integrated into hero over the background image */}
         <div
           className="relative z-10 w-full flex-shrink-0"
-          style={{ borderTop: `2px solid ${BRAND_ORANGE}`, backgroundColor: '#0a0a0a' }}
+          style={{ borderTop: `2px solid ${BRAND_ORANGE}`, backgroundColor: 'transparent' }}
         >
           <div className="container mx-auto px-6 sm:px-10 lg:px-16 relative">
             <div className="relative grid grid-cols-2 lg:grid-cols-4 items-stretch">
