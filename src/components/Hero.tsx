@@ -141,10 +141,9 @@ const Hero = () => {
 
             {/* Subtitle */}
             <p className="mt-3 sm:mt-4 text-sm sm:text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
-              Fabricamos en planta propia y alquilamos la flota que tu obra
-              necesita. <span className="font-bold text-white">+14 años</span>{' '}
-              resolviendo infraestructura para Vaca Muerta sin que la operación
-              se detenga.
+              +14 años resolviendo infraestructura para Vaca Muerta{' '}
+              <br className="hidden sm:block" />
+              sin que la operación se detenga.
             </p>
 
             {/* CTAs */}
