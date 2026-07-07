@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import heroVideo from '@/assets/hero-codelco.mp4.asset.json';
 import heroPoster from '@/assets/hero-codelco-poster.jpg.asset.json';
