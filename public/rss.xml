@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Codelco S.A. — Novedades</title>
+    <link>https://codelco.com.ar/novedades</link>
+    <description>Novedades, proyectos y actualidad de Codelco S.A. — módulos habitacionales, metalúrgica, rental y grupos electrógenos en Vaca Muerta.</description>
+    <language>es-AR</language>
+    <lastBuildDate>Tue, 07 Jul 2026 21:18:43 GMT</lastBuildDate>
+    <atom:link href="https://codelco.com.ar/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ampliamos la flota de torres de iluminación LED</title>
+      <link>https://codelco.com.ar/novedades/ampliamos-flota-torres-iluminacion-led</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/ampliamos-flota-torres-iluminacion-led</guid>
+      <pubDate>Mon, 01 Jun 2026 12:00:00 GMT</pubDate>
+      <category>Flota</category>
+      <description>Suman stock inmediato para operaciones nocturnas y espacios abiertos en yacimientos de Vaca Muerta.</description>
+      <enclosure url="https://codelco.com.ar/images/novedad/torres-led.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Entregamos un campamento habitacional llave en mano</title>
+      <link>https://codelco.com.ar/novedades/entregamos-campamento-habitacional-llave-en-mano</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/entregamos-campamento-habitacional-llave-en-mano</guid>
+      <pubDate>Fri, 01 May 2026 12:00:00 GMT</pubDate>
+      <category>Proyecto</category>
+      <description>Módulos Company Man, comedor y laboratorio instalados y operativos en tiempo récord para una operadora del sector.</description>
+      <enclosure url="https://codelco.com.ar/images/fabrica/fabrica-30.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Nueva plegadora CNC en nuestra planta de Cipolletti</title>
+      <link>https://codelco.com.ar/novedades/nueva-plegadora-cnc-planta-cipolletti</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/nueva-plegadora-cnc-planta-cipolletti</guid>
+      <pubDate>Wed, 01 Apr 2026 12:00:00 GMT</pubDate>
+      <category>Planta</category>
+      <description>Sumamos tecnología para reducir tiempos de fabricación en tanques API y estructuras metalúrgicas.</description>
+      <enclosure url="https://codelco.com.ar/metalurgica-05.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Sumamos unidades a la flota de Toyota Hilux</title>
+      <link>https://codelco.com.ar/novedades/sumamos-unidades-flota-toyota-hilux</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/sumamos-unidades-flota-toyota-hilux</guid>
+      <pubDate>Sun, 01 Mar 2026 12:00:00 GMT</pubDate>
+      <category>Flota</category>
+      <description>Más vehículos livianos disponibles para alquiler en operaciones de Neuquén y Río Negro durante la temporada alta.</description>
+      <enclosure url="https://codelco.com.ar/rental-01.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Instalamos módulos Company Man para nueva operadora</title>
+      <link>https://codelco.com.ar/novedades/instalamos-modulos-company-man-nueva-operadora</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/instalamos-modulos-company-man-nueva-operadora</guid>
+      <pubDate>Sun, 01 Feb 2026 12:00:00 GMT</pubDate>
+      <category>Proyecto</category>
+      <description>Unidades de supervisión trasladadas e instaladas en yacimiento, listas para operar en menos de una semana.</description>
+      <enclosure url="https://codelco.com.ar/images/fabrica/fabrica-32.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Ampliamos el servicio de corte y plegado de chapas</title>
+      <link>https://codelco.com.ar/novedades/ampliamos-servicio-corte-plegado-chapas</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/ampliamos-servicio-corte-plegado-chapas</guid>
+      <pubDate>Thu, 01 Jan 2026 12:00:00 GMT</pubDate>
+      <category>Planta</category>
+      <description>Mayor capacidad productiva para pedidos de piletas, tanques y estructuras a medida.</description>
+      <enclosure url="https://codelco.com.ar/images/metalurgica/metalurgica-01.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Nueva entrega de grupo electrógeno para cliente del sector</title>
+      <link>https://codelco.com.ar/novedades/nueva-entrega-grupo-electrogeno-cliente</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/nueva-entrega-grupo-electrogeno-cliente</guid>
+      <pubDate>Mon, 01 Dec 2025 12:00:00 GMT</pubDate>
+      <category>Clientes</category>
+      <description>Equipo de 120 kVA instalado y monitoreado para garantizar energía continua en operación crítica.</description>
+      <enclosure url="https://codelco.com.ar/images/novedad/grupo-electrogeno.jpg" type="image/jpeg" />
+    </item>
+    <item>
+      <title>Vaca Muerta y la creciente demanda de infraestructura habitacional</title>
+      <link>https://codelco.com.ar/novedades/vaca-muerta-demanda-infraestructura-habitacional</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/vaca-muerta-demanda-infraestructura-habitacional</guid>
+      <pubDate>Sat, 01 Nov 2025 12:00:00 GMT</pubDate>
+      <category>Sector</category>
+      <description>El crecimiento de la actividad petrolera multiplica la necesidad de módulos y campamentos para personal en la región.</description>
+      <enclosure url="https://codelco.com.ar/images/fabrica/fabrica-31.jpg" type="image/jpeg" />
+    </item>
+  </channel>
+</rss>
