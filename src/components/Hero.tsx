@@ -19,17 +19,28 @@ const scrollToSection = (sectionId: string) => {
 
 const Hero = () => {
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   useEffect(() => {
     // Defer video load so the poster paints instantly.
     // On mobile (narrow screens or coarse pointer) wait longer / until idle
     // to avoid competing with critical resources on slow connections.
-    const isMobile =
+    const isMobileDevice =
       window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
 
     const load = () => setVideoSrc(heroVideo.url);
 
-    if (isMobile) {
+    if (isMobileDevice) {
       const w = window as unknown as { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number };
       if (typeof w.requestIdleCallback === 'function') {
         w.requestIdleCallback(load, { timeout: 3000 });
@@ -84,17 +95,18 @@ const Hero = () => {
       <div
         className="absolute inset-0"
         style={{
-          background:
-            'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,0.92) 100%)',
+          background: isMobile
+            ? 'linear-gradient(to bottom, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.70) 100%)'
+            : 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,0.92) 100%)',
         }}
         aria-hidden="true"
       />
 
       {/* Content - bottom-left aligned */}
       <div className="relative z-10 flex flex-1 flex-col">
-        <div className="flex min-h-0 flex-1 flex-col justify-center">
+        <div className={`flex min-h-0 flex-1 flex-col ${isMobile ? 'justify-end pb-6' : 'justify-center'}`}>
 
-          <div className="container mx-auto px-6 sm:px-10 lg:px-16 pb-3 sm:pb-4 pt-4 sm:pt-6">
+          <div className="container mx-auto px-5 sm:px-10 lg:px-16 pb-3 sm:pb-4 pt-4 sm:pt-6">
           <div className="max-w-4xl">
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-3 sm:mb-4">
@@ -157,14 +169,14 @@ const Hero = () => {
               {stats.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 flex flex-col justify-center ${
+                  className={`py-5 sm:py-8 lg:py-10 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 flex flex-col justify-center ${
                     i > 0 ? 'lg:border-l lg:border-white/10' : ''
                   } ${i >= 2 ? 'border-t border-white/10 lg:border-t-0' : ''} ${
                     i % 2 === 1 ? 'border-l border-white/10 lg:border-l-0' : ''
                   }`}
                 >
                   <p
-                    className="eyebrow text-[10px] sm:text-xs mb-3"
+                    className="eyebrow text-[10px] sm:text-xs mb-2 sm:mb-3"
                     style={{ color: BRAND_ORANGE }}
                   >
                     {s.label}
@@ -172,7 +184,7 @@ const Hero = () => {
                   <p className="stat-number text-white leading-none text-3xl sm:text-4xl lg:text-[44px]">
                     {s.value}
                   </p>
-                  <p className="mt-4 text-xs sm:text-sm text-white/75 leading-snug">{s.desc}</p>
+                  <p className="mt-2 sm:mt-4 text-xs sm:text-sm text-white/75 leading-snug">{s.desc}</p>
                 </div>
               ))}
             </div>
