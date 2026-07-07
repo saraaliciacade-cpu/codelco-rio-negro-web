@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Droplets, Database, Gauge, Waves, Truck, Hammer, Package, Scissors } from 'lucide-react';
+import { Phone, MessageCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
@@ -150,7 +151,7 @@ const MetalurgicaPage = () => {
       {/* CTA */}
       <section style={{ backgroundColor: BRAND_BLACK }} className="py-16 lg:py-20">
         <div className="container mx-auto px-6 sm:px-10 lg:px-16 text-center">
-          <h2 className="heading text-white text-2xl sm:text-3xl lg:text-4xl leading-tight max-w-3xl mx-auto">
+          <h2 className="heading text-white text-2xl sm:text-3xl lg:text-4xl leading-tight md:whitespace-nowrap">
             ¿Tenés un proyecto que necesita equipos a medida?
           </h2>
           <p className="mt-4 text-base lg:text-lg text-white/75 max-w-2xl mx-auto">
@@ -159,20 +160,23 @@ const MetalurgicaPage = () => {
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
               to="/#contacto"
-              className="inline-flex items-center justify-center h-12 px-7 text-sm sm:text-base font-semibold rounded-sm text-white transition hover:opacity-90"
+              className="inline-flex items-center justify-center gap-2 h-12 px-7 text-sm sm:text-base font-semibold rounded-sm text-white transition hover:opacity-90"
               style={{ backgroundColor: BRAND_ORANGE }}
             >
-              Solicitar presupuesto →
+              <Phone className="w-4 h-4" />
+              Solicitar presupuesto
             </Link>
             <a
               href="https://wa.me/5492994136453"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-12 px-7 text-sm sm:text-base font-semibold rounded-sm text-white transition hover:opacity-90"
+              className="inline-flex items-center justify-center gap-2 h-12 px-7 text-sm sm:text-base font-semibold rounded-sm text-white transition hover:opacity-90"
               style={{ backgroundColor: '#25D366' }}
             >
+              <MessageCircle className="w-4 h-4" />
               Escribir por WhatsApp
             </a>
+
           </div>
         </div>
       </section>
