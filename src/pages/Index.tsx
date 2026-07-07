@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import WhyUs from '@/components/WhyUs';
@@ -17,10 +17,14 @@ const Footer = lazy(() => import('@/components/Footer'));
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <link rel="canonical" href="https://codelco.com.ar/" />
-      </Helmet>
+      <SEO
+        title="Codelco S.A. — Módulos Habitacionales, Metalúrgica y Rental en Vaca Muerta"
+        description="Fábrica de módulos habitacionales e industriales, metalúrgica, rental de vehículos, trailers, torres de iluminación LED y grupos electrógenos. Cipolletti, Río Negro, Argentina."
+        path="/"
+        keywords="Codelco S.A., módulos habitacionales, metalúrgica, rental Vaca Muerta, torres de iluminación LED, grupos electrógenos, Cipolletti, Río Negro"
+      />
       <Header />
+
       <main>
         <Hero />
         <WhyUs />

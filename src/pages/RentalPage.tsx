@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Car, Truck, Package, Lightbulb, Battery, Wrench } from 'lucide-react';
 import { Phone, MessageCircle } from 'lucide-react';
+import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
@@ -42,7 +43,14 @@ const otherDivisions = [
 const RentalPage = () => {
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Rental de Vehículos, Trailers y Torres de Iluminación LED | Codelco S.A."
+        description="Alquiler de flota Toyota Hilux y VW Amarok, trailers rodantes, torres de iluminación LED y equipos con mantenimiento y gestión incluidos en Vaca Muerta."
+        path="/rental"
+        keywords="rental Vaca Muerta, alquiler Hilux, alquiler Amarok, trailers rodantes, torres de iluminación LED, Codelco"
+      />
       <Header />
+
 
       <section className="relative w-full" style={{ minHeight: '380px' }}>
         <HeroImageCarousel
