@@ -4,6 +4,7 @@ import { Phone, MessageCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
+import HeroImageCarousel from '@/components/HeroImageCarousel';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
@@ -56,23 +57,14 @@ const MetalurgicaPage = () => {
 
       {/* Hero */}
       <section className="relative w-full" style={{ minHeight: '380px' }}>
-        <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
-          <img
-            src="/metalurgica-05.jpg"
-            alt="Equipo metalúrgico fabricado en planta Codelco"
-            className="w-full h-full object-cover"
-          />
-          <img
-            src="/metalurgica-09.jpg"
-            alt="Contenedor industrial reforzado"
-            className="w-full h-full object-cover hidden md:block"
-          />
-          <img
-            src="/metalurgica-04.jpg"
-            alt="Estructura metálica especial"
-            className="w-full h-full object-cover hidden md:block"
-          />
-        </div>
+        <HeroImageCarousel
+          images={[
+            { src: '/metalurgica-05.jpg', alt: 'Equipo metalúrgico fabricado en planta Codelco' },
+            { src: '/metalurgica-09.jpg', alt: 'Contenedor industrial reforzado' },
+            { src: '/metalurgica-04.jpg', alt: 'Estructura metálica especial' },
+          ]}
+        />
+
 
         <div
           className="absolute inset-0"

@@ -4,6 +4,7 @@ import { Phone, MessageCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
+import HeroImageCarousel from '@/components/HeroImageCarousel';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
@@ -87,23 +88,14 @@ const FabricaPage = () => {
         className="relative w-full"
         style={{ minHeight: '380px' }}
       >
-        <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
-          <img
-            src="/images/fabrica/fabrica-32.jpg"
-            alt="Izaje de módulo prefabricado con grúa en planta de Cipolletti"
-            className="w-full h-full object-cover"
-          />
-          <img
-            src="/images/fabrica/fabrica-41.jpg"
-            alt="Living comedor integrado con grandes ventanales"
-            className="w-full h-full object-cover hidden md:block"
-          />
-          <img
-            src="/fabrica-01.jpg"
-            alt="Módulo habitacional terminado"
-            className="w-full h-full object-cover hidden md:block"
-          />
-        </div>
+        <HeroImageCarousel
+          images={[
+            { src: '/images/fabrica/fabrica-32.jpg', alt: 'Izaje de módulo prefabricado con grúa en planta de Cipolletti' },
+            { src: '/images/fabrica/fabrica-41.jpg', alt: 'Living comedor integrado con grandes ventanales' },
+            { src: '/fabrica-01.jpg', alt: 'Módulo habitacional terminado' },
+          ]}
+        />
+
 
         <div
           className="absolute inset-0"
