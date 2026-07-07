@@ -102,11 +102,10 @@ const Hero = () => {
         aria-hidden="true"
       />
 
-      {/* Content - bottom-left aligned */}
-      <div className="relative z-10 flex flex-1 flex-col">
-        <div className={`flex min-h-0 flex-1 flex-col ${isMobile ? 'justify-end pb-6' : 'justify-center'}`}>
-
-          <div className="container mx-auto px-5 sm:px-10 lg:px-16 pb-3 sm:pb-4 pt-4 sm:pt-6">
+      {/* Content */}
+      <div className="relative z-10 flex flex-1 flex-col justify-between">
+        {/* Top text - below the menu */}
+        <div className="container mx-auto px-5 sm:px-10 lg:px-16 pt-6 sm:pt-10 pb-4">
           <div className="max-w-4xl">
             {/* Eyebrow */}
             <div className="flex items-center gap-3 mb-3 sm:mb-4">
@@ -137,27 +136,32 @@ const Hero = () => {
               resolviendo infraestructura para Vaca Muerta sin que la operación
               se detenga.
             </p>
-
-            {/* CTAs */}
-            <div className="mt-4 sm:mt-5 flex flex-row gap-3 sm:gap-4">
-              <Button
-                onClick={() => scrollToSection('servicios')}
-                className="h-11 sm:h-12 flex-1 px-4 sm:px-7 text-xs sm:text-base font-semibold rounded-none text-white border-0 hover:opacity-90 transition"
-                style={{ backgroundColor: BRAND_ORANGE }}
-              >
-                Ver nuestros equipos →
-              </Button>
-              <Button
-                onClick={() => scrollToSection('contacto')}
-                variant="outline"
-                className="h-11 sm:h-12 flex-1 px-4 sm:px-7 text-xs sm:text-base font-semibold rounded-none bg-transparent text-white border border-white/70 hover:bg-white hover:text-black transition"
-              >
-                Solicitar presupuesto
-              </Button>
-            </div>
           </div>
         </div>
-        </div>
+
+        {/* Bottom area: CTAs + stats */}
+        <div>
+          {/* CTAs */}
+          <div className="container mx-auto px-5 sm:px-10 lg:px-16 pb-3 sm:pb-4">
+            <div className="max-w-4xl">
+              <div className="flex flex-row gap-3 sm:gap-4">
+                <Button
+                  onClick={() => scrollToSection('servicios')}
+                  className="h-11 sm:h-12 flex-1 px-4 sm:px-7 text-xs sm:text-base font-semibold rounded-none text-white border-0 hover:opacity-90 transition"
+                  style={{ backgroundColor: BRAND_ORANGE }}
+                >
+                  Ver nuestros equipos →
+                </Button>
+                <Button
+                  onClick={() => scrollToSection('contacto')}
+                  variant="outline"
+                  className="h-11 sm:h-12 flex-1 px-4 sm:px-7 text-xs sm:text-base font-semibold rounded-none bg-transparent text-white border border-white/70 hover:bg-white hover:text-black transition"
+                >
+                  Solicitar presupuesto
+                </Button>
+              </div>
+            </div>
+          </div>
 
         {/* Stats Bar - integrated into hero over the background image */}
         <div
@@ -189,6 +193,7 @@ const Hero = () => {
               ))}
             </div>
           </div>
+        </div>
         </div>
 
       </div>
