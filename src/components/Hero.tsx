@@ -94,7 +94,7 @@ const Hero = () => {
         className="absolute inset-0"
         style={{
           background: isMobile
-            ? 'linear-gradient(to bottom, rgba(0,0,0,0.30) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.80) 100%)'
+            ? 'linear-gradient(to bottom, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.45) 55%, rgba(0,0,0,0.70) 100%)'
             : 'linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.75) 55%, rgba(0,0,0,0.92) 100%)',
         }}
         aria-hidden="true"
