@@ -1,29 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://codelco.com.ar/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/fabrica-01.jpg</image:loc>
+      <image:title>Módulo Company Man Codelco</image:title>
+      <image:caption>Módulo habitacional Company Man fabricado por Codelco para operadoras en Vaca Muerta.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/fabrica-05.jpg</image:loc>
+      <image:title>Módulos habitacionales en planta Cipolletti</image:title>
+      <image:caption>Fabricación de módulos habitacionales industriales en la planta de Codelco en Cipolletti, Río Negro.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/metalurgica-01.jpg</image:loc>
+      <image:title>Tanques industriales Codelco</image:title>
+      <image:caption>Tanques metálicos fabricados por Codelco para la industria petrolera.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/metalurgica-05.jpg</image:loc>
+      <image:title>Piletas y estructuras metálicas</image:title>
+      <image:caption>Piletas, estructuras metálicas y equipos a medida para Vaca Muerta.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/rental-01.jpg</image:loc>
+      <image:title>Flota Toyota Hilux Codelco</image:title>
+      <image:caption>Flota de camionetas Toyota Hilux en alquiler para Vaca Muerta.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/rental-02.jpg</image:loc>
+      <image:title>Camionetas VW Amarok en alquiler</image:title>
+      <image:caption>Camionetas Volkswagen Amarok en alquiler operativo Codelco.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/generadores.png</image:loc>
+      <image:title>Grupos electrógenos Codelco</image:title>
+      <image:caption>Grupos electrógenos en alquiler con mantenimiento y soporte 24/7.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/fabrica</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/fabrica-01.jpg</image:loc>
+      <image:title>Módulo Company Man Codelco</image:title>
+      <image:caption>Módulo habitacional Company Man fabricado por Codelco para operadoras en Vaca Muerta.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/fabrica-05.jpg</image:loc>
+      <image:title>Módulos habitacionales en planta Cipolletti</image:title>
+      <image:caption>Fabricación de módulos habitacionales industriales en la planta de Codelco en Cipolletti, Río Negro.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/fabrica-08.jpg</image:loc>
+      <image:title>Campamento habitacional llave en mano</image:title>
+      <image:caption>Campamento habitacional llave en mano entregado por Codelco S.A.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/fabrica-12.jpg</image:loc>
+      <image:title>Oficinas y comedores modulares</image:title>
+      <image:caption>Oficinas, comedores y laboratorios modulares Codelco para la industria energética.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/fabrica-18.jpg</image:loc>
+      <image:title>Interior de módulo habitacional Codelco</image:title>
+      <image:caption>Interior equipado de un módulo habitacional Codelco.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/metalurgica</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/metalurgica-01.jpg</image:loc>
+      <image:title>Tanques industriales Codelco</image:title>
+      <image:caption>Tanques metálicos fabricados por Codelco para la industria petrolera.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/metalurgica-05.jpg</image:loc>
+      <image:title>Piletas y estructuras metálicas</image:title>
+      <image:caption>Piletas, estructuras metálicas y equipos a medida para Vaca Muerta.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/metalurgica-10.jpg</image:loc>
+      <image:title>Taller metalúrgico Codelco Cipolletti</image:title>
+      <image:caption>Taller metalúrgico Codelco S.A. en Cipolletti, Río Negro.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/metalurgica-15.jpg</image:loc>
+      <image:title>Corte y plegado de chapas CNC</image:title>
+      <image:caption>Servicio de corte y plegado de chapas con plegadora CNC.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/rental</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/rental-01.jpg</image:loc>
+      <image:title>Flota Toyota Hilux Codelco</image:title>
+      <image:caption>Flota de camionetas Toyota Hilux en alquiler para Vaca Muerta.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/rental-02.jpg</image:loc>
+      <image:title>Camionetas VW Amarok en alquiler</image:title>
+      <image:caption>Camionetas Volkswagen Amarok en alquiler operativo Codelco.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/rental-03.jpg</image:loc>
+      <image:title>Trailers rodantes de gran porte</image:title>
+      <image:caption>Trailers rodantes de 6, 9 y 12 metros disponibles en rental Codelco.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/rental-04.jpg</image:loc>
+      <image:title>Torres de iluminación LED en yacimiento</image:title>
+      <image:caption>Torres de iluminación LED con stock inmediato para operaciones en Vaca Muerta.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/rental-07.jpg</image:loc>
+      <image:title>Equipos de iluminación autónoma</image:title>
+      <image:caption>Equipos de iluminación autónoma para obras y yacimientos.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/rental-08.jpg</image:loc>
+      <image:title>Camionetas y trailers en base Codelco</image:title>
+      <image:caption>Camionetas y trailers en base operativa Codelco.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/grupos-electrogenos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/generadores.png</image:loc>
+      <image:title>Grupos electrógenos Codelco</image:title>
+      <image:caption>Grupos electrógenos en alquiler con mantenimiento y soporte 24/7.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/novedad/grupo-electrogeno.jpg</image:loc>
+      <image:title>Grupo electrógeno entregado a cliente</image:title>
+      <image:caption>Grupo electrógeno Codelco entregado y puesto en marcha para cliente del sector energético.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/novedades</loc>
@@ -40,47 +161,87 @@
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/novedad/torres-led.jpg</image:loc>
+      <image:title>Ampliamos la flota de torres de iluminación LED</image:title>
+      <image:caption>Suman stock inmediato para operaciones nocturnas y espacios abiertos en yacimientos de Vaca Muerta.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/novedades/entregamos-campamento-habitacional-llave-en-mano</loc>
     <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/fabrica/fabrica-30.jpg</image:loc>
+      <image:title>Entregamos un campamento habitacional llave en mano</image:title>
+      <image:caption>Módulos Company Man, comedor y laboratorio instalados y operativos en tiempo récord para una operadora del sector.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/novedades/nueva-plegadora-cnc-planta-cipolletti</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/metalurgica-05.jpg</image:loc>
+      <image:title>Nueva plegadora CNC en nuestra planta de Cipolletti</image:title>
+      <image:caption>Sumamos tecnología para reducir tiempos de fabricación en tanques API y estructuras metalúrgicas.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/novedades/sumamos-unidades-flota-toyota-hilux</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/rental-01.jpg</image:loc>
+      <image:title>Sumamos unidades a la flota de Toyota Hilux</image:title>
+      <image:caption>Más vehículos livianos disponibles para alquiler en operaciones de Neuquén y Río Negro durante la temporada alta.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/novedades/instalamos-modulos-company-man-nueva-operadora</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/fabrica/fabrica-32.jpg</image:loc>
+      <image:title>Instalamos módulos Company Man para nueva operadora</image:title>
+      <image:caption>Unidades de supervisión trasladadas e instaladas en yacimiento, listas para operar en menos de una semana.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/novedades/ampliamos-servicio-corte-plegado-chapas</loc>
     <lastmod>2026-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/metalurgica/metalurgica-01.jpg</image:loc>
+      <image:title>Ampliamos el servicio de corte y plegado de chapas</image:title>
+      <image:caption>Mayor capacidad productiva para pedidos de piletas, tanques y estructuras a medida.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/novedades/nueva-entrega-grupo-electrogeno-cliente</loc>
     <lastmod>2025-12-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/novedad/grupo-electrogeno.jpg</image:loc>
+      <image:title>Nueva entrega de grupo electrógeno para cliente del sector</image:title>
+      <image:caption>Equipo de 120 kVA instalado y monitoreado para garantizar energía continua en operación crítica.</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/novedades/vaca-muerta-demanda-infraestructura-habitacional</loc>
     <lastmod>2025-11-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/fabrica/fabrica-31.jpg</image:loc>
+      <image:title>Vaca Muerta y la creciente demanda de infraestructura habitacional</image:title>
+      <image:caption>El crecimiento de la actividad petrolera multiplica la necesidad de módulos y campamentos para personal en la región.</image:caption>
+    </image:image>
   </url>
 </urlset>
