@@ -1,16 +1,27 @@
-## Problema
+# Reemplazar carrusel del Hero por imagen + video
 
-Ahora el logo/botón están pegados a los bordes de la pantalla, pero vos querés que arranquen y terminen en la misma línea vertical donde arranca el título "Módulos Habitacionales..." y donde termina el contenido del Hero.
+Igual que en la web de Organic Design: primero se ve una imagen fija (poster) instantáneamente, y encima carga el video que arranca solo, en loop y sin sonido. Mismo comportamiento en desktop y mobile — el poster asegura que en mobile no se vea vacío mientras el .mp4 termina de cargar.
 
-## Cambio
+## Cambios
 
-En `src/components/Header.tsx` (línea 51), usar el mismo contenedor que usa el Hero para que el logo quede alineado con el título:
+**1. Subir los archivos como assets CDN (Lovable Assets)**
+- `user-uploads://CodelcoWeb.mp4` → `src/assets/hero-codelco.mp4.asset.json`
+- `user-uploads://CodelcoWeb.00_00_00_00.Imagen_fija001.jpg` → `src/assets/hero-codelco-poster.jpg.asset.json`
 
-- Actual: `w-full px-4 sm:px-6 lg:px-8 py-3`
-- Nuevo: `container mx-auto px-6 sm:px-10 lg:px-16 py-3`
+Se suben al CDN (no quedan como binarios en el repo).
 
-Así el logo de Codelco queda alineado a la izquierda con "Módulos Habitacionales" y el botón "Solicitar presupuesto" queda alineado a la derecha con el borde derecho del hero.
+**2. `src/components/Hero.tsx`**
+- Eliminar el arreglo `HERO_IMAGES` y toda la lógica de rotación (`useState`, `useEffect`, `setInterval`, preload).
+- Reemplazar el bloque de `HERO_IMAGES.map(...)` por un único `<video>` de fondo:
+  - `src` = video del CDN
+  - `poster` = imagen del CDN (aparece al instante, misma foto que el primer frame del video)
+  - `autoPlay`, `muted`, `loop`, `playsInline`, `preload="metadata"` (para que en mobile no descargue todo el video antes de mostrar algo — se ve el poster mientras carga)
+  - Mismas clases que las imágenes actuales: `absolute inset-0 h-full w-full object-cover object-center`
+  - Mantener el `<img>` blureado detrás usando el poster, para conservar el efecto visual actual.
+- Mantener intacto: overlay gradiente, contenido (h1, subtítulo, CTAs) y stats bar.
 
-## Verificación
+## Detalles técnicos
 
-Screenshot desktop para confirmar la alineación con el hero.
+- `preload="metadata"` + `poster` es lo que hace que en mobile se vea la imagen primero y el video cargue después sin bloquear el render.
+- `playsInline` es obligatorio para que iOS Safari no abra el video fullscreen.
+- No se toca ningún otro componente ni la lógica de negocio.
