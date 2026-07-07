@@ -44,23 +44,14 @@ const RentalPage = () => {
       <Header />
 
       <section className="relative w-full" style={{ minHeight: '380px' }}>
-        <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
-          <img
-            src="/rental-01.jpg"
-            alt="Flota Toyota Hilux y VW Amarok en base operativa"
-            className="w-full h-full object-cover"
-          />
-          <img
-            src="/rental-03.jpg"
-            alt="Trailer rodante de gran porte"
-            className="w-full h-full object-cover hidden md:block"
-          />
-          <img
-            src={torresIluminacionAsset.url}
-            alt="Torres de iluminación LED Codelco en yacimiento"
-            className="w-full h-full object-cover hidden md:block"
-          />
-        </div>
+        <HeroImageCarousel
+          images={[
+            { src: '/rental-01.jpg', alt: 'Flota Toyota Hilux y VW Amarok en base operativa' },
+            { src: '/rental-03.jpg', alt: 'Trailer rodante de gran porte' },
+            { src: torresIluminacionAsset.url, alt: 'Torres de iluminación LED Codelco en yacimiento' },
+          ]}
+        />
+
 
         <div
           className="absolute inset-0"
