@@ -77,7 +77,8 @@ const RentalPage = () => {
           </div>
 
           <h1 className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-4xl">
-            Vehículos, Trailers y Equipos en Alquiler para Vaca Muerta
+            Vehículos, Trailers, Torres de Iluminación&nbsp;LED y Equipos en Alquiler para&nbsp;<br />
+            Vaca Muerta
           </h1>
           <p className="mt-5 text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed">
             Flota liviana Toyota Hilux y VW Amarok, trailers rodantes y torres de iluminación LED con
