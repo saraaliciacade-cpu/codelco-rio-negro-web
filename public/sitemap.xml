@@ -6,13 +6,73 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://codelco.com.ar/fabrica</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/metalurgica</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/rental</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/grupos-electrogenos</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/novedades</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://codelco.com.ar/clientes</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://codelco.com.ar/webmail</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://codelco.com.ar/novedades/ampliamos-flota-torres-iluminacion-led</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/novedades/entregamos-campamento-habitacional-llave-en-mano</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/novedades/nueva-plegadora-cnc-planta-cipolletti</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/novedades/sumamos-unidades-flota-toyota-hilux</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/novedades/instalamos-modulos-company-man-nueva-operadora</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/novedades/ampliamos-servicio-corte-plegado-chapas</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/novedades/nueva-entrega-grupo-electrogeno-cliente</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://codelco.com.ar/novedades/vaca-muerta-demanda-infraestructura-habitacional</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
 </urlset>
