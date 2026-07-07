@@ -124,10 +124,19 @@ const Hero = () => {
             </div>
 
             {/* H1 */}
-            <h1 className="heading text-white leading-[1.03] text-[30px] sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
-              Módulos Habitacionales, Metalúrgica y{' '}
-              <span style={{ color: BRAND_ORANGE }}>Rental</span>{' '}
-              para la Industria Petrolera
+            <h1 className="heading text-white leading-[1.03] text-[20px] sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
+              {/* Mobile: 4 forced lines */}
+              <span className="block sm:hidden">Módulos</span>
+              <span className="block sm:hidden">Habitacionales,</span>
+              <span className="block sm:hidden">Metalúrgica y <span style={{ color: BRAND_ORANGE }}>Rental</span></span>
+              <span className="block sm:hidden">para la Industria Petrolera</span>
+              {/* Desktop: 4 forced lines */}
+              <span className="hidden sm:block">
+                Módulos<br />
+                Habitacionales,<br />
+                Metalúrgica y <span style={{ color: BRAND_ORANGE }}>Rental</span><br />
+                para la Industria Petrolera
+              </span>
             </h1>
 
             {/* Subtitle */}
