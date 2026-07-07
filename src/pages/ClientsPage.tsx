@@ -35,9 +35,12 @@ import tuboscopeLogo from '@/assets/clients/tuboscope.jpg';
 import veinticincoMayoLogo from '@/assets/clients/25-de-mayo-new.png';
 
 import { Helmet } from 'react-helmet-async';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import Contact from '@/components/Contact';
+import Services from '@/components/Services';
 
 const ClientsPage = () => {
-  // All clients combined
   const allClients = [
     { name: "Compressco LP", logo: comprescoLogo },
     { name: "Transportes Crexell S.A.", logo: crexellLogo },
@@ -72,13 +75,13 @@ const ClientsPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white py-12 px-4">
+    <div className="min-h-screen bg-white">
       <Helmet>
-        <title>Nuestros Clientes — Codelco S.A.</title>
-        <meta name="description" content="Empresas líderes del sector industrial y petrolero que confían en Codelco S.A. para servicios de fabricación, metalúrgica y rental." />
+        <title>+30 empresas del sector petrolero confían en Codelco S.A.</title>
+        <meta name="description" content="Operadoras, contratistas y empresas de servicios de Vaca Muerta y la Patagonia trabajan con Codelco S.A. en fabricación, metalúrgica, rental y grupos electrógenos." />
         <link rel="canonical" href="https://codelco.com.ar/clientes" />
-        <meta property="og:title" content="Nuestros Clientes — Codelco S.A." />
-        <meta property="og:description" content="Conocé a los clientes que eligen a Codelco S.A. en la industria petrolera, energética y de servicios." />
+        <meta property="og:title" content="+30 empresas del sector petrolero confían en Codelco S.A." />
+        <meta property="og:description" content="Conocé a los clientes que eligen a Codelco S.A. en la industria petrolera de Vaca Muerta y la Patagonia." />
         <meta property="og:url" content="https://codelco.com.ar/clientes" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
@@ -88,32 +91,53 @@ const ClientsPage = () => {
           "about": allClients.map(c => ({ "@type": "Organization", "name": c.name }))
         })}</script>
       </Helmet>
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-12">
-          <span className="text-[#333333]">Nuestros </span>
-          <span className="text-[#d25840]">Clientes</span>
-        </h1>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
-          {allClients.map((client, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center justify-center"
-            >
-              <div className="h-28 w-48 p-4 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200">
-                <img
-                  src={client.logo}
-                  alt={`${client.name} — cliente de Codelco S.A.`}
-                  className="max-h-full max-w-full object-contain"
-                />
-              </div>
-              <p className="text-sm text-gray-800 text-center font-bold leading-tight px-2 mt-3">
-                {client.name}
-              </p>
-            </div>
-          ))}
+      <Header />
+
+      {/* Hero / Prueba Social */}
+      <section className="pt-28 md:pt-32 pb-10 md:pb-14 bg-white">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+          <p className="eyebrow text-xs md:text-sm text-[#E84E1B] mb-4 font-bold">
+            PRUEBA SOCIAL
+          </p>
+          <h1 className="heading text-3xl md:text-5xl text-[#1A1A1A] leading-tight mb-4">
+            <span className="text-[#e65b2a]">+30 empresas</span> del sector petrolero <span className="text-[#e65b2a]">confían en nosotros</span>
+          </h1>
+          <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+            Operadoras, contratistas y empresas de servicios trabajan con Codelco en Vaca Muerta y toda la Patagonia.
+          </p>
         </div>
-      </div>
+      </section>
+
+      {/* Grilla de clientes */}
+      <section className="pb-16 md:pb-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+            {allClients.map((client, index) => (
+              <div key={index} className="flex flex-col items-center justify-center">
+                <div className="h-28 w-48 p-4 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200">
+                  <img
+                    src={client.logo}
+                    alt={`${client.name} — cliente de Codelco S.A.`}
+                    className="max-h-full max-w-full object-contain"
+                  />
+                </div>
+                <p className="text-sm text-gray-800 text-center font-bold leading-tight px-2 mt-3">
+                  {client.name}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Nuestras Divisiones */}
+      <Services />
+
+      {/* Contacto */}
+      <Contact />
+
+      <Footer />
     </div>
   );
 };
