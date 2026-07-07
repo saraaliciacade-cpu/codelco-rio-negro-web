@@ -124,18 +124,26 @@ const Hero = () => {
             </div>
 
             {/* H1 */}
-            <h1 className="heading text-white leading-[1.03] text-[30px] sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
-              Módulos Habitacionales, Metalúrgica y{' '}
-              <span style={{ color: BRAND_ORANGE }}>Rental</span>{' '}
-              para la Industria Petrolera
+            <h1 className="heading text-white leading-[1.03] text-[20px] sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
+              {/* Mobile: 4 forced lines */}
+              <span className="block sm:hidden">Módulos</span>
+              <span className="block sm:hidden">Habitacionales,</span>
+              <span className="block sm:hidden">Metalúrgica y <span style={{ color: BRAND_ORANGE }}>Rental</span></span>
+              <span className="block sm:hidden">para la Industria Petrolera</span>
+              {/* Desktop: 4 forced lines */}
+              <span className="hidden sm:block">
+                Módulos<br />
+                Habitacionales,<br />
+                Metalúrgica y <span style={{ color: BRAND_ORANGE }}>Rental</span><br />
+                para la Industria Petrolera
+              </span>
             </h1>
 
             {/* Subtitle */}
             <p className="mt-3 sm:mt-4 text-sm sm:text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
-              Fabricamos en planta propia y alquilamos la flota que tu obra
-              necesita. <span className="font-bold text-white">+14 años</span>{' '}
-              resolviendo infraestructura para Vaca Muerta sin que la operación
-              se detenga.
+              +14 años resolviendo infraestructura para Vaca Muerta{' '}
+              <br className="hidden sm:block" />
+              sin que la operación se detenga.
             </p>
 
             {/* CTAs */}
