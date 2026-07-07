@@ -54,7 +54,14 @@ const otherDivisions = [
 const MetalurgicaPage = () => {
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Metalúrgica Industrial: Tanques, Piletas y Estructuras | Codelco S.A."
+        description="Taller metalúrgico especializado en tanques, piletas, estructuras metálicas y equipos a medida para la industria petrolera y de servicios en Vaca Muerta."
+        path="/metalurgica"
+        keywords="metalúrgica industrial, tanques, piletas, estructuras metálicas, Vaca Muerta, Codelco"
+      />
       <Header />
+
 
       {/* Hero */}
       <section className="relative w-full" style={{ minHeight: '380px' }}>
