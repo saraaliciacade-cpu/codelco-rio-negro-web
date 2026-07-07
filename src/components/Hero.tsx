@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
+import heroVideo from '@/assets/hero-codelco.mp4.asset.json';
+import heroPoster from '@/assets/hero-codelco-poster.jpg.asset.json';
 
 const BRAND_ORANGE = '#E84E1B';
 
@@ -10,81 +11,49 @@ const stats = [
   { label: '// CARTERA', value: '+30', desc: 'empresas activas del sector' },
 ];
 
-const HERO_IMAGES = [
-  {
-    src: '/images/fabrica/fabrica-08.jpg',
-    alt: 'Módulo habitacional Codelco siendo izado por grúa en planta de Cipolletti',
-  },
-  {
-    src: '/metalurgica-05.jpg',
-    alt: 'Soldadura de estructura metálica en planta Codelco — fabricación a medida',
-  },
-  {
-    src: '/rental-01.jpg',
-    alt: 'Flota de equipos de rental Codelco operando en Vaca Muerta',
-  },
-];
-
 const scrollToSection = (sectionId: string) => {
   const el = document.getElementById(sectionId);
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 };
 
 const Hero = () => {
-  const [active, setActive] = useState(0);
-
-  useEffect(() => {
-    // Preload remaining hero images so transitions are instant
-    HERO_IMAGES.slice(1).forEach((img) => {
-      const i = new Image();
-      i.src = img.src;
-    });
-    const id = window.setInterval(() => {
-      setActive((p) => (p + 1) % HERO_IMAGES.length);
-    }, 5500);
-    return () => window.clearInterval(id);
-  }, []);
-
   return (
     <section
       id="inicio"
       className="relative w-full overflow-hidden bg-black flex flex-col"
       style={{ minHeight: 'calc(100dvh - 57px)' }}
     >
+      {/* Background: poster image shows instantly; video loads on top and autoplays */}
+      <div className="absolute inset-0">
+        <img
+          src={heroPoster.url}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full scale-105 object-cover object-center blur-sm"
+          width={1920}
+          height={1080}
+        />
+        <img
+          src={heroPoster.url}
+          alt="Módulo habitacional Codelco siendo izado por grúa en planta de Cipolletti"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          width={1920}
+          height={1080}
+        />
+        <video
+          src={heroVideo.url}
+          poster={heroPoster.url}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          aria-hidden="true"
+        />
+      </div>
 
-
-      {/* Background carousel — cross-fade */}
-      {HERO_IMAGES.map((img, idx) => (
-        <div
-          key={img.src}
-          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
-          style={{ opacity: active === idx ? 1 : 0 }}
-          aria-hidden={active === idx ? undefined : true}
-        >
-          <img
-            src={img.src}
-            alt=""
-            className="absolute inset-0 h-full w-full scale-105 object-cover object-center blur-sm"
-            loading={idx === 0 ? 'eager' : 'lazy'}
-            decoding={idx === 0 ? 'sync' : 'async'}
-            width={1920}
-            height={1080}
-            aria-hidden="true"
-          />
-          <img
-            src={img.src}
-            alt={img.alt}
-            className="absolute inset-0 h-full w-full object-cover object-center"
-            loading={idx === 0 ? 'eager' : 'lazy'}
-            decoding={idx === 0 ? 'sync' : 'async'}
-            width={1920}
-            height={1080}
-          />
-        </div>
-      ))}
-
-
-      {/* Gradient overlay 55% top -> 92% bottom */}
+      {/* Gradient overlay */}
       <div
         className="absolute inset-0"
         style={{
