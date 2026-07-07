@@ -4,12 +4,14 @@ import { Phone, MessageCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
+import torresIluminacionAsset from '@/assets/rental-torres-iluminacion-codelco.png.asset.json';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
 const BRAND_BLACK = '#1A1A1A';
 
 const rentalImages: DivisionGalleryImage[] = [
+  { src: torresIluminacionAsset.url, name: 'Torres de iluminación LED Codelco en yacimiento', isNew: true },
   { src: '/rental-01.jpg', name: 'Flota Toyota Hilux en base operativa' },
   { src: '/rental-02.jpg', name: 'Camionetas VW Amarok listas para servicio' },
   { src: '/rental-03.jpg', name: 'Trailer rodante de gran porte' },
@@ -19,6 +21,7 @@ const rentalImages: DivisionGalleryImage[] = [
   { src: '/rental-07.jpg', name: 'Equipos de iluminación autónoma' },
   { src: '/rental-08.jpg', name: 'Camionetas y trailers en base Codelco' },
 ];
+
 
 const specs = [
   { text: '+60 unidades Hilux y Amarok', icon: Car },
