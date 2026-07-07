@@ -44,11 +44,24 @@ const RentalPage = () => {
       <Header />
 
       <section className="relative w-full" style={{ minHeight: '380px' }}>
-        <img
-          src="/rental-01.jpg"
-          alt="Flota Toyota Hilux y VW Amarok en base operativa"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
+          <img
+            src="/rental-01.jpg"
+            alt="Flota Toyota Hilux y VW Amarok en base operativa"
+            className="w-full h-full object-cover"
+          />
+          <img
+            src="/rental-03.jpg"
+            alt="Trailer rodante de gran porte"
+            className="w-full h-full object-cover hidden md:block"
+          />
+          <img
+            src={torresIluminacionAsset.url}
+            alt="Torres de iluminación LED Codelco en yacimiento"
+            className="w-full h-full object-cover hidden md:block"
+          />
+        </div>
+
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.8) 100%)' }}
