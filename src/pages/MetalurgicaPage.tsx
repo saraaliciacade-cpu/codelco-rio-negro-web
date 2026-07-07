@@ -56,11 +56,24 @@ const MetalurgicaPage = () => {
 
       {/* Hero */}
       <section className="relative w-full" style={{ minHeight: '380px' }}>
-        <img
-          src="/metalurgica-05.jpg"
-          alt="Equipo metalúrgico fabricado en planta Codelco"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
+          <img
+            src="/metalurgica-05.jpg"
+            alt="Equipo metalúrgico fabricado en planta Codelco"
+            className="w-full h-full object-cover"
+          />
+          <img
+            src="/metalurgica-09.jpg"
+            alt="Contenedor industrial reforzado"
+            className="w-full h-full object-cover hidden md:block"
+          />
+          <img
+            src="/metalurgica-04.jpg"
+            alt="Estructura metálica especial"
+            className="w-full h-full object-cover hidden md:block"
+          />
+        </div>
+
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.8) 100%)' }}

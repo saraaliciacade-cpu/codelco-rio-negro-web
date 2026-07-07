@@ -4,12 +4,14 @@ import { Phone, MessageCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
+import torresIluminacionAsset from '@/assets/rental-torres-iluminacion-codelco.png.asset.json';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
 const BRAND_BLACK = '#1A1A1A';
 
 const rentalImages: DivisionGalleryImage[] = [
+  { src: torresIluminacionAsset.url, name: 'Torres de iluminación LED Codelco en yacimiento', isNew: true },
   { src: '/rental-01.jpg', name: 'Flota Toyota Hilux en base operativa' },
   { src: '/rental-02.jpg', name: 'Camionetas VW Amarok listas para servicio' },
   { src: '/rental-03.jpg', name: 'Trailer rodante de gran porte' },
@@ -19,6 +21,7 @@ const rentalImages: DivisionGalleryImage[] = [
   { src: '/rental-07.jpg', name: 'Equipos de iluminación autónoma' },
   { src: '/rental-08.jpg', name: 'Camionetas y trailers en base Codelco' },
 ];
+
 
 const specs = [
   { text: '+60 unidades Hilux y Amarok', icon: Car },
@@ -41,11 +44,24 @@ const RentalPage = () => {
       <Header />
 
       <section className="relative w-full" style={{ minHeight: '380px' }}>
-        <img
-          src="/rental-01.jpg"
-          alt="Flota Toyota Hilux y VW Amarok en base operativa"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-3">
+          <img
+            src="/rental-01.jpg"
+            alt="Flota Toyota Hilux y VW Amarok en base operativa"
+            className="w-full h-full object-cover"
+          />
+          <img
+            src="/rental-03.jpg"
+            alt="Trailer rodante de gran porte"
+            className="w-full h-full object-cover hidden md:block"
+          />
+          <img
+            src={torresIluminacionAsset.url}
+            alt="Torres de iluminación LED Codelco en yacimiento"
+            className="w-full h-full object-cover hidden md:block"
+          />
+        </div>
+
         <div
           className="absolute inset-0"
           style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.8) 100%)' }}
