@@ -19,17 +19,26 @@ const scrollToSection = (sectionId: string) => {
 
 const Hero = () => {
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia('(max-width: 767px)');
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
 
   useEffect(() => {
     // Defer video load so the poster paints instantly.
     // On mobile (narrow screens or coarse pointer) wait longer / until idle
     // to avoid competing with critical resources on slow connections.
-    const isMobile =
+    const isMobileDevice =
       window.matchMedia('(max-width: 768px), (pointer: coarse)').matches;
 
     const load = () => setVideoSrc(heroVideo.url);
 
-    if (isMobile) {
+    if (isMobileDevice) {
       const w = window as unknown as { requestIdleCallback?: (cb: () => void, opts?: { timeout: number }) => number };
       if (typeof w.requestIdleCallback === 'function') {
         w.requestIdleCallback(load, { timeout: 3000 });
