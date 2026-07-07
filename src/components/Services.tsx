@@ -45,7 +45,7 @@ const Services = () => {
         { src: "/rental-03.jpg", alt: "Trailer rodante de gran porte" },
         { src: torresIluminacionAsset.url, alt: "Torres de iluminación LED Codelco en yacimiento" },
       ],
-      title: "Vehículos, Trailers y Equipos",
+      title: "Vehículos, Trailers y Equipos de Torres LED",
       kicker: "+60 unidades · Mantenimiento incluido",
       text: (
         <>
