@@ -33,7 +33,14 @@ const otherDivisions = [
 const GruposElectrogenosPage = () => {
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Grupos Electrógenos: Alquiler y Mantenimiento 24/7 | Codelco S.A."
+        description="Alquiler de grupos electrógenos con mantenimiento programado, monitoreo y soporte 24/7 para la industria energética, minera y de la construcción en la Patagonia."
+        path="/grupos-electrogenos"
+        keywords="grupos electrógenos, alquiler generadores, mantenimiento grupos electrógenos, Vaca Muerta, Codelco"
+      />
       <Header />
+
 
       <section className="relative w-full" style={{ minHeight: '380px' }}>
         <img
