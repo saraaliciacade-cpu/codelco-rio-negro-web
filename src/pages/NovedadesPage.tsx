@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Phone, MessageCircle } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -26,6 +27,14 @@ const NovedadesPage = () => {
         path="/novedades"
         keywords="novedades Codelco, proyectos Vaca Muerta, flota rental, obras petroleras"
       />
+      <Helmet>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Codelco S.A. — Novedades (RSS)"
+          href="https://codelco.com.ar/rss.xml"
+        />
+      </Helmet>
       <Header />
 
 
