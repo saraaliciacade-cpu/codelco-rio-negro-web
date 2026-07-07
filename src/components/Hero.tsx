@@ -127,10 +127,10 @@ const Hero = () => {
             </p>
 
             {/* CTAs */}
-            <div className="mt-4 sm:mt-5 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <div className="mt-4 sm:mt-5 flex flex-row gap-3 sm:gap-4">
               <Button
                 onClick={() => scrollToSection('servicios')}
-                className="h-11 sm:h-12 px-6 sm:px-7 text-sm sm:text-base font-semibold rounded-none text-white border-0 hover:opacity-90 transition"
+                className="h-11 sm:h-12 flex-1 px-4 sm:px-7 text-xs sm:text-base font-semibold rounded-none text-white border-0 hover:opacity-90 transition"
                 style={{ backgroundColor: BRAND_ORANGE }}
               >
                 Ver nuestros equipos →
@@ -138,7 +138,7 @@ const Hero = () => {
               <Button
                 onClick={() => scrollToSection('contacto')}
                 variant="outline"
-                className="h-11 sm:h-12 px-6 sm:px-7 text-sm sm:text-base font-semibold rounded-none bg-transparent text-white border border-white/70 hover:bg-white hover:text-black transition"
+                className="h-11 sm:h-12 flex-1 px-4 sm:px-7 text-xs sm:text-base font-semibold rounded-none bg-transparent text-white border border-white/70 hover:bg-white hover:text-black transition"
               >
                 Solicitar presupuesto
               </Button>
