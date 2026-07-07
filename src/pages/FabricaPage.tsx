@@ -81,7 +81,14 @@ const otherDivisions = [
 const FabricaPage = () => {
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Fábrica de Módulos Habitacionales e Industriales | Codelco S.A."
+        description="Diseñamos y fabricamos módulos habitacionales, oficinas, comedores, laboratorios y campamentos llave en mano para la industria energética y minera en Argentina."
+        path="/fabrica"
+        keywords="módulos habitacionales, campamentos petroleros, oficinas modulares, viviendas industriales, Vaca Muerta, Codelco"
+      />
       <Header />
+
 
       {/* Hero */}
       <section
