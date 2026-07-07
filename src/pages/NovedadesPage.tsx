@@ -20,7 +20,14 @@ const NovedadesPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title="Novedades y Proyectos Recientes | Codelco S.A."
+        description="Últimas novedades de Codelco S.A.: nuevos proyectos, incorporaciones a la flota de rental, obras entregadas y actualidad del sector energético en Vaca Muerta."
+        path="/novedades"
+        keywords="novedades Codelco, proyectos Vaca Muerta, flota rental, obras petroleras"
+      />
       <Header />
+
 
       {/* Hero */}
       <section className="relative w-full" style={{ minHeight: '280px' }}>
