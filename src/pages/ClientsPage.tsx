@@ -128,8 +128,16 @@ const ClientsPage = () => {
               </div>
             ))}
           </div>
+
+          <div className="max-w-5xl mx-auto px-4 text-center mt-14 md:mt-20">
+            <h2 className="heading text-3xl md:text-5xl text-[#1A1A1A] leading-tight">
+              Construimos relaciones basadas en confianza acompañando a cada cliente{" "}
+              <span className="text-[#e65b2a]">¿Tu empresa será la próxima?</span>
+            </h2>
+          </div>
         </div>
       </section>
+
 
       {/* Nuestras Divisiones */}
       <Services />
