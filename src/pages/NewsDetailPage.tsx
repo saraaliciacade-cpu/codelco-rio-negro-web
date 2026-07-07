@@ -18,7 +18,28 @@ const NewsDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title={`${item.title} | Novedades Codelco S.A.`}
+        description={item.summary}
+        path={`/novedades/${item.slug}`}
+        image={item.image?.startsWith('http') ? item.image : undefined}
+        type="article"
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'NewsArticle',
+          headline: item.title,
+          description: item.summary,
+          datePublished: item.date,
+          articleSection: item.category,
+          image: item.image,
+          publisher: {
+            '@type': 'Organization',
+            name: 'Codelco S.A.',
+          },
+        }}
+      />
       <Header />
+
 
       {/* Hero */}
       <section className="relative w-full" style={{ minHeight: '360px' }}>
