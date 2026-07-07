@@ -4,6 +4,7 @@ import { Phone, MessageCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
+import HeroImageCarousel from '@/components/HeroImageCarousel';
 import torresIluminacionAsset from '@/assets/rental-torres-iluminacion-codelco.png.asset.json';
 
 const BRAND_ORANGE = '#E84E1B';
