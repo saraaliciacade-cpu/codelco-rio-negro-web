@@ -1,5 +1,6 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { newsData } from '@/data/news';
