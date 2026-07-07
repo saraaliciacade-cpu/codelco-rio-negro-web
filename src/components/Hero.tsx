@@ -150,7 +150,7 @@ const Hero = () => {
         {/* Stats Bar - integrated into hero over the background image */}
         <div
           className="relative z-10 w-full flex-shrink-0"
-          style={{ borderTop: `2px solid ${BRAND_ORANGE}`, backgroundColor: '#0a0a0a' }}
+          style={{ borderTop: `2px solid ${BRAND_ORANGE}`, backgroundColor: 'transparent' }}
         >
           <div className="container mx-auto px-6 sm:px-10 lg:px-16 relative">
             <div className="relative grid grid-cols-2 lg:grid-cols-4 items-stretch">
