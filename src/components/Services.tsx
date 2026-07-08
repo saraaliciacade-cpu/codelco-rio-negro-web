@@ -114,7 +114,7 @@ const Services = () => {
               }}
             >
               {/* Image + Badge */}
-              <div className="relative h-96 md:h-[26rem] lg:h-[32rem] overflow-hidden" style={{ backgroundColor: "#1A1A1A" }}>
+              <div className="relative h-72 md:h-80 lg:h-[22rem] overflow-hidden" style={{ backgroundColor: "#1A1A1A" }}>
                 <HeroImageCarousel
                   images={div.images}
                   imgClassName="transition-transform duration-500 group-hover:scale-105"
