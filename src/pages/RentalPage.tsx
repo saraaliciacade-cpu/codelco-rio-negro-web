@@ -3,6 +3,7 @@ import { ArrowRight, Car, Truck, Package, Lightbulb, Battery, Wrench } from 'luc
 import { Phone, MessageCircle } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
+import ShareServices from '@/components/ShareServices';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 import HeroImageCarousel from '@/components/HeroImageCarousel';
@@ -94,10 +95,13 @@ const RentalPage = () => {
             <br />
             en Alquiler para Vaca Muerta
           </h1>
-          <p className="mt-5 text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed">
-            Flota liviana Toyota Hilux y VW Amarok, trailers rodantes y torres de iluminación LED con
-            disponibilidad inmediata. Mantenimiento y gestión permanente incluidos.
-          </p>
+          <div className="mt-5 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <p className="text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed">
+              Flota liviana Toyota Hilux y VW Amarok, trailers rodantes y torres de iluminación LED con
+              disponibilidad inmediata. Mantenimiento y gestión permanente incluidos.
+            </p>
+            <ShareServices title="Rental — Vehículos, Trailers y Torres de Iluminación" path="/rental" color="light" />
+          </div>
         </div>
       </section>
 

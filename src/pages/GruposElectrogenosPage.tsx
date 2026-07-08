@@ -3,6 +3,7 @@ import { ArrowRight, Zap, Settings, CalendarDays, Monitor, Headphones, Clock } f
 import { Phone, MessageCircle } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
+import ShareServices from '@/components/ShareServices';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 
@@ -74,10 +75,13 @@ const GruposElectrogenosPage = () => {
           <h1 className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-4xl">
             Alquiler y Mantenimiento de Grupos Electrógenos Industriales
           </h1>
-          <p className="mt-5 text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed">
-            Energía confiable y continua para operaciones críticas. Equipos de 55 a 180 kVA con
-            monitoreo y soporte técnico especializado.
-          </p>
+          <div className="mt-5 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <p className="text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed">
+              Energía confiable y continua para operaciones críticas. Equipos de 55 a 180 kVA con
+              monitoreo y soporte técnico especializado.
+            </p>
+            <ShareServices title="Grupos Electrógenos Industriales" path="/grupos-electrogenos" color="light" />
+          </div>
         </div>
       </section>
 
