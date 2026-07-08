@@ -54,8 +54,9 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
         <div key={i} className="my-8 flex justify-center">
           <div
             className="relative overflow-hidden rounded-lg bg-black w-full"
-            style={{ maxWidth: '360px', aspectRatio: '9 / 16' }}
+            style={{ maxWidth: '480px', aspectRatio: '9 / 16' }}
           >
+
             <iframe
               className="absolute inset-0 w-full h-full"
               src={`https://www.youtube.com/embed/${block.id}`}
