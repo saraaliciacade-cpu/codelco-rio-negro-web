@@ -1,19 +1,143 @@
+import fachada from '@/assets/guerra-codelco-fachada.jpg.asset.json';
+import maquina from '@/assets/guerra-maquina-cargo.webp.asset.json';
+import soldadura from '@/assets/guerra-soldadura-chispas.webp.asset.json';
+import rionegroPreview from '@/assets/rionegro-lee-tambien.png.asset.json';
+
 export type NewsCategory = 'Todas' | 'Flota' | 'Proyecto' | 'Planta' | 'Clientes' | 'Sector';
+
+export type NewsBlock =
+  | { type: 'p'; text: string }
+  | { type: 'image'; src: string; alt?: string; caption?: string }
+  | { type: 'video'; provider: 'youtube'; id: string; title?: string }
+  | { type: 'heading'; text: string }
+  | {
+      type: 'related';
+      eyebrow?: string;
+      title: string;
+      summary?: string;
+      image?: string;
+      href?: string;
+    };
 
 export interface NewsItem {
   id: number;
   slug: string;
-  category: NewsCategory;
+  category: Exclude<NewsCategory, 'Todas'>;
   date: string;
   title: string;
   summary: string;
   image: string;
-  body: string[];
+  body: (string | NewsBlock)[];
+  sourceUrl?: string;
+  sourceLabel?: string;
 }
 
 export const categories: NewsCategory[] = ['Todas', 'Flota', 'Proyecto', 'Planta', 'Clientes', 'Sector'];
 
 export const newsData: NewsItem[] = [
+  {
+    id: 9,
+    slug: 'historia-familia-guerra-codelco',
+    category: 'Proyecto',
+    date: 'Julio 2026',
+    title: 'La historia de construcción y trabajo detrás de la familia Guerra.',
+    summary:
+      'Cuatro generaciones de gomeros, una reconversión al ritmo de Vaca Muerta y el nacimiento de Codelco como proveedor esencial de la industria energética.',
+    image: fachada.url,
+    sourceUrl:
+      'https://www.rionegro.com.ar/economia/su-abuelo-llego-desde-espana-tras-la-primera-guerra-y-cuatro-generaciones-despues-sostienen-el-oficio-y-proveen-a-vaca-muerta/',
+    sourceLabel: 'Río Negro Económico',
+    body: [
+      {
+        type: 'p',
+        text: 'Una historia que florece en el presente, es resultado de la siembra silenciosa que se realizó en el pasado, y el fruto de los años de trabajo esforzado que quedaron en el camino.',
+      },
+      {
+        type: 'p',
+        text: '"Mi abuelo fue de los primeros que trajo una máquina para reconstruir un neumático al país. Somos la única empresa en la Argentina con cuarta generación de gomeros", relata Adrián Guerra, titular de Neumáticos del Sur y Codelco.',
+      },
+      { type: 'video', provider: 'youtube', id: 'B6m7aNsU93k', title: 'La historia de la familia Guerra' },
+      {
+        type: 'p',
+        text: 'Su abuelo, Antonio Guerra llegó desde España tras la Primera Guerra Mundial, y se estableció en General Roca con una gomería tradicional. "Entre la Primera y la Segunda Guerra Mundial no había caucho, las gomas se las arreglaban de cualquier manera teniendo en cuenta lo que eran los vehículos en esa época", rememora Adrián.',
+      },
+      {
+        type: 'p',
+        text: 'Años después, ya en la década del \'50, se trasladaron a Mendoza donde fundaron la primer empresa de la familia, Antonio Guerra SA, que creció hasta San Luis y San Juan.',
+      },
+      { type: 'heading', text: 'Los inicios en la Patagonia' },
+      {
+        type: 'p',
+        text: 'Llegado 1985, su padre Herminio Guerra, decide volver al sur, y es en ese momento cuando nace Neumáticos del Sur SA en Cipolletti, una empresa dedicada a la reconstrucción de neumáticos, que luego se expandiría con una planta en Buenos Aires y otra en General Pico, La Pampa.',
+      },
+      {
+        type: 'p',
+        text: 'Los tres hermanos Oscar, Javier y Adrian, continuaron el legado de Herminio hasta la actualidad, incluyendo a dos de los integrantes de la cuarta generación familiar, Benicio, Ignacio, Camila y Facundo.',
+      },
+      {
+        type: 'image',
+        src: maquina.url,
+        alt: 'Adrián Guerra junto a la máquina VR 50-130 Cargo en la planta de Neumáticos del Sur',
+        caption: 'Cuarta generación de gomeros: la planta de reconstrucción de neumáticos en Cipolletti.',
+      },
+      {
+        type: 'p',
+        text: 'Hoy, desde las tres plantas proveen neumáticos para vehículos desde camionetas hasta equipos de gran porte en la actividad rural, vial e industrial.',
+      },
+      {
+        type: 'p',
+        text: 'No obstante, el enclave en uno de los lugares con mayor potencial productivo del país, puso por delante una oportunidad de diversificación que terminaría siendo determinante para el futuro de la empresa y de la familia.',
+      },
+      { type: 'heading', text: 'La reconversión al ritmo de Vaca Muerta' },
+      {
+        type: 'p',
+        text: 'Fue hace 17 años, cuando el no convencional comenzaba a dar sus primeras señales, que detectaron lo que podía ser un nicho de mercado: el shale comenzaría a necesitar locaciones móviles para ubicar en las perforaciones.',
+      },
+      {
+        type: 'p',
+        text: '"Empezamos comprando algunos trailers como negocio y nos ocurrió que nos encontramos pagando un producto malo y muy caro", recuerda Adrian y agrega: "Lo que veíamos en el mercado no nos convencía y nos pusimos a fabricar nosotros". Así nació Codelco, una empresa local dedicada a las construcción y comercialización de soluciones habitacionales móviles, con especial foco en Vaca Muerta.',
+      },
+      {
+        type: 'p',
+        text: 'Un nicho de mercado al inicio de la explotación no convencional, los movió a transformar su empresa para ser proveedores esenciales de Vaca Muerta.',
+      },
+      {
+        type: 'p',
+        text: 'Junto a la irrupción del shale, la demanda no tardó en crecer y rápidamente comprendieron las características del producto. "Compramos plegadoras, guillotinas, y sin darnos cuenta teníamos montada casi una metalúrgica", recuerda Guerra. "Luego en un momento fuimos tomando noción de la escala, y tercerizamos parte del trabajo para ganar eficiencia", agrega.',
+      },
+      {
+        type: 'p',
+        text: 'El producto de aquellos inicios fue evolucionando hasta llegar a los módulos que Codelco fabrica en la actualidad, de 6 o 12 metros de largo por 2,6 metros de ancho, compuestos por paneles de fibra de vidrio EPS de alta densidad íntegramente equipados llave en mano, autosustentables y listos para ser colocados en campo.',
+      },
+      {
+        type: 'image',
+        src: soldadura.url,
+        alt: 'Operario cortando y soldando estructura metálica en la planta metalúrgica de Codelco',
+        caption: 'Corte y soldadura en la planta metalúrgica: la base de los módulos habitacionales.',
+      },
+      {
+        type: 'p',
+        text: 'A ello agregaron más tarde el servicio de alquiler de equipos electrógenos y torres de iluminación para las operadoras de Vaca Muerta. "El plan de perforación de YPF habla de multiplicar la producción 2,5 veces en los próximos años, ese es el horizonte" se entusiasma Guerra.',
+      },
+      {
+        type: 'p',
+        text: 'Hacia adelante, trabajan en un módulo habitacional para primera vivienda destinado a quienes buscan dejar de alquilar. "Una de las cosas que permite la apertura es que entran materiales de muy buena calidad que son una solución para estructurar una vivienda en un tiempo relativamente rápido y con un costo relativamente ajustado", afirma Guerra.',
+      },
+      {
+        type: 'related',
+        eyebrow: 'TE PODRÍA INTERESAR TAMBIÉN',
+        title: 'Entregamos un campamento habitacional llave en mano',
+        summary:
+          'Módulos Company Man, comedor y laboratorio instalados y operativos en tiempo récord para una operadora del sector.',
+        image: rionegroPreview.url,
+        href: '/novedades/entregamos-campamento-habitacional-llave-en-mano',
+      },
+      {
+        type: 'p',
+        text: 'Aquel viaje iniciado hace 90 años hoy continúa. "Estamos en un camino largo, pero hay que transitarlo. No va a ser abrupto, pero el crecimiento que viene para la región será sostenido, y nuestro objetivo es ser parte", se entusiasma Guerra, el nieto de aquel inmigrante español que hace 90 años dejó su tierra buscando ese horizonte que hoy es real.',
+      },
+    ],
+  },
   {
     id: 1,
     slug: 'ampliamos-flota-torres-iluminacion-led',
@@ -135,3 +259,5 @@ export const newsData: NewsItem[] = [
     ],
   },
 ];
+
+export const latestNewsId = newsData[0].id;

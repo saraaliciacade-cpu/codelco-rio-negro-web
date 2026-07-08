@@ -1,12 +1,113 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { newsData } from '@/data/news';
+import { newsData, latestNewsId, type NewsBlock } from '@/data/news';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_BLACK = '#1A1A1A';
+
+const renderBlock = (block: string | NewsBlock, i: number) => {
+  if (typeof block === 'string') {
+    return (
+      <p key={i} className="text-base sm:text-lg text-gray-700 leading-relaxed mb-5">
+        {block}
+      </p>
+    );
+  }
+  switch (block.type) {
+    case 'p':
+      return (
+        <p key={i} className="text-base sm:text-lg text-gray-700 leading-relaxed mb-5">
+          {block.text}
+        </p>
+      );
+    case 'heading':
+      return (
+        <h2
+          key={i}
+          className="heading text-2xl sm:text-3xl mt-10 mb-5"
+          style={{ color: BRAND_BLACK }}
+        >
+          {block.text}
+        </h2>
+      );
+    case 'image':
+      return (
+        <figure key={i} className="my-8">
+          <img
+            src={block.src}
+            alt={block.alt ?? ''}
+            className="w-full h-auto rounded-lg"
+            loading="lazy"
+          />
+          {block.caption && (
+            <figcaption className="mt-3 text-sm text-gray-500 italic">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    case 'video':
+      return (
+        <div
+          key={i}
+          className="my-8 relative w-full overflow-hidden rounded-lg bg-black"
+          style={{ paddingTop: '56.25%' }}
+        >
+          <iframe
+            className="absolute inset-0 w-full h-full"
+            src={`https://www.youtube.com/embed/${block.id}`}
+            title={block.title ?? 'Video'}
+            frameBorder={0}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+      );
+    case 'related': {
+      const inner = (
+        <div className="flex gap-4 items-center">
+          {block.image && (
+            <div className="flex-shrink-0 w-28 h-20 sm:w-36 sm:h-24 overflow-hidden rounded-sm">
+              <img src={block.image} alt={block.title} className="w-full h-full object-cover" loading="lazy" />
+            </div>
+          )}
+          <div className="flex-1 min-w-0">
+            {block.eyebrow && (
+              <span
+                className="eyebrow text-[10px] sm:text-xs font-bold block mb-1"
+                style={{ color: BRAND_ORANGE }}
+              >
+                {block.eyebrow}
+              </span>
+            )}
+            <p className="heading text-sm sm:text-base leading-snug" style={{ color: BRAND_BLACK }}>
+              {block.title}
+            </p>
+            {block.summary && (
+              <p className="text-xs sm:text-sm text-gray-600 mt-1 line-clamp-2">{block.summary}</p>
+            )}
+          </div>
+        </div>
+      );
+      return (
+        <aside key={i} className="my-8 p-4 sm:p-5 border-l-4 bg-gray-50" style={{ borderColor: BRAND_ORANGE }}>
+          {block.href ? (
+            <Link to={block.href} className="block hover:opacity-90">
+              {inner}
+            </Link>
+          ) : (
+            inner
+          )}
+        </aside>
+      );
+    }
+    default:
+      return null;
+  }
+};
 
 const NewsDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -14,6 +115,7 @@ const NewsDetailPage = () => {
 
   if (!item) return <Navigate to="/novedades" replace />;
 
+  const isLatest = item.id === latestNewsId;
   const related = newsData.filter((n) => n.id !== item.id).slice(0, 3);
 
   return (
@@ -66,7 +168,15 @@ const NewsDetailPage = () => {
             </ol>
           </nav>
 
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-4 flex-wrap">
+            {isLatest && (
+              <span
+                className="eyebrow text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
+                style={{ backgroundColor: '#DC2626' }}
+              >
+                ÚLTIMA NOTICIA
+              </span>
+            )}
             <span
               className="eyebrow text-[11px] sm:text-xs text-white px-2.5 py-1 rounded-sm"
               style={{ backgroundColor: BRAND_ORANGE }}
@@ -75,6 +185,7 @@ const NewsDetailPage = () => {
             </span>
             <span className="text-xs sm:text-sm text-white/80">{item.date}</span>
           </div>
+
 
           <h1 className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-4xl">
             {item.title}
@@ -158,11 +269,26 @@ const NewsDetailPage = () => {
               <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium mb-8">
                 {item.summary}
               </p>
-              {item.body.map((paragraph, i) => (
-                <p key={i} className="text-base sm:text-lg text-gray-700 leading-relaxed mb-5">
-                  {paragraph}
-                </p>
-              ))}
+              {item.body.map((block, i) => renderBlock(block, i))}
+
+              {item.sourceUrl && (
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  <p className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-2">
+                    Ver noticia en
+                  </p>
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold break-all hover:underline"
+                    style={{ color: BRAND_ORANGE }}
+                  >
+                    <ExternalLink className="w-4 h-4 flex-shrink-0" />
+                    {item.sourceLabel ?? item.sourceUrl}
+                  </a>
+                </div>
+              )}
+
 
               {/* Mobile share */}
               <div className="lg:hidden mt-8 pt-6 border-t border-gray-200">
