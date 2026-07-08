@@ -18,7 +18,7 @@ const Clients = () => {
       <LogoCarousel />
 
       <div className="max-w-5xl mx-auto px-4 text-center mt-10 md:mt-14">
-        <h3 className="heading text-3xl md:text-5xl text-[#1A1A1A] leading-tight">
+        <h3 className="heading text-xl md:text-3xl text-[#1A1A1A] leading-tight">
           Construimos relaciones basadas en confianza acompañando a cada cliente{" "}
           <span className="text-[#e65b2a]">¿Tu empresa será la próxima?</span>
         </h3>
