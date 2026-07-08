@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
+import { ArrowRight, Home, Database, Truck, Zap } from "lucide-react";
 import HeroImageCarousel from "@/components/HeroImageCarousel";
 import torresIluminacionAsset from "@/assets/rental-torres-iluminacion-codelco.png.asset.json";
+
 
 const Services = () => {
   const divisions = [
     {
       badge: "FÁBRICA",
+      icon: Home,
       images: [
         { src: "/images/fabrica/fabrica-32.jpg", alt: "Izaje de módulo prefabricado con grúa en planta de Cipolletti" },
         { src: "/images/fabrica/fabrica-41.jpg", alt: "Living comedor integrado con grandes ventanales" },
@@ -18,11 +21,12 @@ const Services = () => {
           Diseñamos y fabricamos <strong>trailers autoportantes, módulos Company Man, comedores, cocinas, laboratorios y viviendas en seco</strong>, con línea de producción integral desde ingeniería hasta entrega final.
         </>
       ),
-      cta: "Consultar disponibilidad →",
+      cta: "Consultar disponibilidad y ver galería",
       ctaLink: "/fabrica",
     },
     {
       badge: "METALÚRGICA",
+      icon: Database,
       images: [
         { src: "/metalurgica-05.jpg", alt: "Equipo metalúrgico fabricado en planta Codelco" },
         { src: "/metalurgica-09.jpg", alt: "Contenedor industrial reforzado" },
@@ -35,11 +39,12 @@ const Services = () => {
           Fabricamos <strong>piletas de acumulación, tanques API, choke manifolds, líneas de alta presión y estructuras para decanter</strong>, con calidad y precisión certificada en cada proceso.
         </>
       ),
-      cta: "Solicitar presupuesto →",
+      cta: "Solicitar presupuesto y ver galería",
       ctaLink: "/metalurgica",
     },
     {
       badge: "RENTAL",
+      icon: Truck,
       images: [
         { src: "/rental-01.jpg", alt: "Flota Toyota Hilux y VW Amarok en base operativa" },
         { src: "/rental-03.jpg", alt: "Trailer rodante de gran porte" },
@@ -52,11 +57,12 @@ const Services = () => {
           Flota liviana <strong>Toyota Hilux y VW Amarok</strong>, trailers rodantes de 6, 9 y 12 metros, piletas y contenedores. Incluye torres de iluminación LED con stock inmediato.
         </>
       ),
-      cta: "Ver equipos disponibles →",
+      cta: "Ver equipos disponibles y galería",
       ctaLink: "/rental",
     },
     {
       badge: "GRUPOS ELECTRÓGENOS",
+      icon: Zap,
       images: [
         { src: "/images/novedad/grupo-electrogeno.jpg", alt: "Entrega de grupo electrógeno Codelco en obra", objectPosition: "center 40%" },
       ],
@@ -67,10 +73,11 @@ const Services = () => {
           Energía confiable y continua para operaciones críticas. Equipos de <strong>55 a 180 kVA</strong> con soporte técnico especializado y disponibilidad permanente.
         </>
       ),
-      cta: "Consultar equipos →",
+      cta: "Consultar equipos y ver galería",
       ctaLink: "/grupos-electrogenos",
     },
   ];
+
 
 
   return (
@@ -107,7 +114,7 @@ const Services = () => {
               }}
             >
               {/* Image + Badge */}
-              <div className="relative h-64 md:h-72 lg:h-80 overflow-hidden" style={{ backgroundColor: "#1A1A1A" }}>
+              <div className="relative aspect-square md:aspect-[5/4] lg:aspect-square overflow-hidden" style={{ backgroundColor: "#1A1A1A" }}>
                 <HeroImageCarousel
                   images={div.images}
                   imgClassName="transition-transform duration-500 group-hover:scale-105"
@@ -115,10 +122,10 @@ const Services = () => {
 
                 {/* Gradient blend into card */}
                 <div
-                  className="absolute inset-x-0 bottom-0 h-24 pointer-events-none"
+                  className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
                   style={{
                     background:
-                      "linear-gradient(to bottom, rgba(26,26,26,0) 0%, rgba(26,26,26,0.75) 60%, #1A1A1A 100%)",
+                      "linear-gradient(to bottom, rgba(26,26,26,0) 0%, rgba(26,26,26,0.75) 55%, #1A1A1A 100%)",
                   }}
                 />
                 <span
@@ -130,8 +137,8 @@ const Services = () => {
               </div>
 
               {/* Content */}
-              <div className="px-6 md:px-8 pt-4 pb-6 md:pb-8">
-                <h3 className="heading text-lg md:text-xl text-white mb-2">
+              <div className="px-6 md:px-8 pt-5 pb-6 md:pb-8">
+                <h3 className="heading text-xl md:text-2xl text-white mb-2">
                   {div.title}
                 </h3>
                 <p className="eyebrow text-xs md:text-sm text-[#E84E1B] mb-4 font-bold">
@@ -140,14 +147,15 @@ const Services = () => {
                 <p className="text-sm md:text-base text-gray-300 leading-relaxed mb-6">
                   {div.text}
                 </p>
-                <div className="border-t border-white/30 mb-4" />
                 <Link
                   to={div.ctaLink}
-                  className="inline-flex items-center text-sm font-semibold text-white group-hover:text-[#E84E1B] transition-colors duration-300"
+                  className="group/btn inline-flex w-full items-center justify-between gap-3 rounded-lg border-2 border-[#E84E1B] px-4 py-3 text-sm md:text-base font-semibold text-[#E84E1B] transition-all duration-300 hover:bg-[#E84E1B] hover:text-white group-hover:bg-[#E84E1B] group-hover:text-white"
                 >
-                  <span className="border-b border-white group-hover:border-[#E84E1B] transition-colors duration-300">
-                    {div.cta}
+                  <span className="inline-flex items-center gap-2.5">
+                    <div.icon className="h-5 w-5 shrink-0" strokeWidth={1.75} />
+                    <span className="text-left leading-tight">{div.cta}</span>
                   </span>
+                  <ArrowRight className="h-5 w-5 shrink-0 transition-transform duration-300 group-hover/btn:translate-x-1 group-hover:translate-x-1" />
                 </Link>
               </div>
             </div>
@@ -159,3 +167,4 @@ const Services = () => {
 };
 
 export default Services;
+
