@@ -1,4 +1,7 @@
 import { Clock, Factory, Wrench } from 'lucide-react';
+import vacaMuertaAsset from '@/assets/vaca-muerta-codelco.png.asset.json';
+import cipollettiAsset from '@/assets/codelco-cipolletti.png.asset.json';
+import patagoniaAsset from '@/assets/patagonia-codelco.jpg.asset.json';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
@@ -9,6 +12,8 @@ const reasons = [
     num: '01 / ENTREGA',
     title: 'Entrega en tiempo y forma',
     icon: Clock,
+    image: vacaMuertaAsset.url,
+    imageAlt: 'Camioneta Codelco al atardecer en la Patagonia',
     body:
       'Cumplimos plazos en operaciones críticas. Si tu cronograma depende de un módulo o un equipo, lo tenés cuando lo necesitás — no "cuando se pueda".',
   },
@@ -16,6 +21,8 @@ const reasons = [
     num: '02 / FABRICACIÓN',
     title: 'Todo se produce en nuestra planta',
     icon: Factory,
+    image: cipollettiAsset.url,
+    imageAlt: 'Planta de Codelco en Cipolletti, Río Negro',
     body:
       '3.500 m² propios con tecnología CNC, plegadora y soldadoras semiautomáticas. No subcontratamos la fabricación: la controlamos de punta a punta.',
   },
@@ -23,6 +30,8 @@ const reasons = [
     num: '03 / SOPORTE',
     title: 'Asistencia técnica en campo',
     icon: Wrench,
+    image: patagoniaAsset.url,
+    imageAlt: 'Mapa de Patagonia con presencia de Codelco',
     body:
       'Mantenimiento y soporte donde esté tu operación, no solo en nuestra planta. Río Negro, Neuquén o cualquier punto de la Patagonia.',
   },
@@ -60,25 +69,56 @@ const WhyUs = () => {
             return (
               <article
                 key={r.num}
-                className="p-8 lg:p-10 border transition hover:-translate-y-1 hover:shadow-lg duration-300"
+                className="group relative overflow-hidden p-8 lg:p-10 border transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
                 style={{ backgroundColor: BRAND_CREAM, borderColor: 'rgba(26,26,26,0.1)' }}
               >
-                <Icon size={32} strokeWidth={1.5} style={{ color: BRAND_ORANGE }} className="mb-4" />
-                <p
-                  className="eyebrow text-xs mb-6 font-bold"
-                  style={{ color: BRAND_ORANGE }}
+                {/* Hover image sliding left-to-right */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 -translate-x-full opacity-0 transition-all duration-700 ease-out group-hover:translate-x-0 group-hover:opacity-100"
                 >
-                  {r.num}
-                </p>
-                <h3
-                  className="heading text-xl lg:text-2xl mb-4 leading-snug"
-                  style={{ color: BRAND_BLACK }}
-                >
-                  {r.title}
-                </h3>
-                <p className="text-sm lg:text-base leading-relaxed font-bold" style={{ color: '#444' }}>
-                  {r.body}
-                </p>
+                  <img
+                    src={r.image}
+                    alt=""
+                    className="h-full w-full object-cover"
+                    loading="lazy"
+                  />
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background:
+                        'linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.7) 55%, rgba(26,26,26,0.55) 100%)',
+                    }}
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  <Icon
+                    size={32}
+                    strokeWidth={1.5}
+                    style={{ color: BRAND_ORANGE }}
+                    className="mb-4"
+                  />
+                  <p
+                    className="eyebrow text-xs mb-6 font-bold"
+                    style={{ color: BRAND_ORANGE }}
+                  >
+                    {r.num}
+                  </p>
+                  <h3
+                    className="heading text-xl lg:text-2xl mb-4 leading-snug transition-colors duration-500 group-hover:text-white"
+                    style={{ color: BRAND_BLACK }}
+                  >
+                    {r.title}
+                  </h3>
+                  <p
+                    className="text-sm lg:text-base leading-relaxed font-bold transition-colors duration-500 group-hover:text-white/90"
+                    style={{ color: '#444' }}
+                  >
+                    {r.body}
+                  </p>
+                </div>
               </article>
             );
           })}
