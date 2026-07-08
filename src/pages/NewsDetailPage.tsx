@@ -184,7 +184,6 @@ const NewsDetailPage = () => {
               </div>
             </div>
           </div>
-        </div>
       </section>
 
 
