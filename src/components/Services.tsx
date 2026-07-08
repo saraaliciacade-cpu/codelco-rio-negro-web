@@ -101,7 +101,7 @@ const Services = () => {
           {divisions.map((div) => (
             <div
               key={div.badge}
-              className="group rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
+              className="group overflow-hidden transition-all duration-300 hover:shadow-xl"
               style={{
                 backgroundColor: "#1A1A1A",
                 border: "2px solid transparent",
@@ -149,7 +149,7 @@ const Services = () => {
                 </p>
                 <Link
                   to={div.ctaLink}
-                  className="group/btn inline-flex w-full items-center justify-between gap-3 rounded-lg border-2 border-white px-4 py-3 text-sm md:text-base font-semibold text-white transition-all duration-300 hover:bg-[#E84E1B] hover:border-[#E84E1B] hover:text-white group-hover:bg-[#E84E1B] group-hover:border-[#E84E1B] group-hover:text-white"
+                  className="group/btn inline-flex w-full items-center justify-between gap-3 border-2 border-white px-4 py-3 text-sm md:text-base font-semibold text-white transition-all duration-300 hover:bg-[#E84E1B] hover:border-[#E84E1B] hover:text-white group-hover:bg-[#E84E1B] group-hover:border-[#E84E1B] group-hover:text-white"
                 >
                   <span className="inline-flex items-center gap-2.5">
                     <div.icon className="h-5 w-5 shrink-0" strokeWidth={1.75} />
