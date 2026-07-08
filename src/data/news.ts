@@ -27,7 +27,9 @@ export interface NewsItem {
   title: string;
   summary: string;
   image: string;
+  imagePosition?: string;
   body: (string | NewsBlock)[];
+
   sourceUrl?: string;
   sourceLabel?: string;
 }
