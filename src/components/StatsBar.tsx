@@ -19,7 +19,7 @@ const StatsBar = () => {
           {stats.map((s, i) => (
             <div
               key={s.label}
-              className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 ${
+              className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-6 ${
                 i % 2 === 1 ? 'border-l border-white/10 lg:border-l-0' : ''
               }`}
             >
