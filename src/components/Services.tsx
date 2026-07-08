@@ -101,7 +101,7 @@ const Services = () => {
           {divisions.map((div) => (
             <div
               key={div.badge}
-              className="group rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
+              className="group flex flex-col rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
               style={{
                 backgroundColor: "#1A1A1A",
                 border: "2px solid transparent",
