@@ -137,8 +137,8 @@ const Services = () => {
               </div>
 
               {/* Content */}
-              <div className="px-6 md:px-8 pt-5 pb-6 md:pb-8">
-                <h3 className="heading text-xl md:text-2xl text-white mb-2">
+              <div className="flex flex-col flex-1 px-6 md:px-8 pt-5 pb-6 md:pb-8">
+                <h3 className="heading text-xl md:text-2xl text-white mb-2 min-h-[3.5rem] md:min-h-[4rem]">
                   {div.title}
                 </h3>
                 <p className="eyebrow text-xs md:text-sm text-[#E84E1B] mb-4 font-bold">
@@ -147,6 +147,7 @@ const Services = () => {
                 <p className="text-sm md:text-base text-gray-300 leading-relaxed mb-6">
                   {div.text}
                 </p>
+
                 <Link
                   to={div.ctaLink}
                   className="group/btn inline-flex w-full items-center justify-between gap-3 rounded-lg border-2 border-white px-4 py-3 text-sm md:text-base font-semibold text-white transition-all duration-300 hover:bg-[#E84E1B] hover:border-[#E84E1B] hover:text-white group-hover:bg-[#E84E1B] group-hover:border-[#E84E1B] group-hover:text-white"
