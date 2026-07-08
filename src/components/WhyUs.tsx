@@ -106,16 +106,10 @@ const WhyUs = () => {
                   >
                     {r.num}
                   </p>
-                  <h3
-                    className="heading text-xl lg:text-2xl mb-4 leading-snug transition-colors duration-500 group-hover:text-white"
-                    style={{ color: BRAND_BLACK }}
-                  >
+                  <h3 className="heading text-xl lg:text-2xl mb-4 leading-snug transition-colors duration-500 text-[#1A1A1A] group-hover:text-white">
                     {r.title}
                   </h3>
-                  <p
-                    className="text-sm lg:text-base leading-relaxed font-bold transition-colors duration-500 group-hover:text-white/90"
-                    style={{ color: '#444' }}
-                  >
+                  <p className="text-sm lg:text-base leading-relaxed font-bold transition-colors duration-500 text-[#444] group-hover:text-white">
                     {r.body}
                   </p>
                 </div>
