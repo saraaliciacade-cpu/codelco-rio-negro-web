@@ -40,6 +40,7 @@ const HeroImageCarousel = ({
           style={{
             opacity: i === index ? 1 : 0,
             objectPosition: img.objectPosition,
+            transition: 'opacity 2000ms ease-in-out',
           }}
         />
       ))}
