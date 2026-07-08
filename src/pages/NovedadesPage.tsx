@@ -125,6 +125,14 @@ const NovedadesPage = () => {
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
+                    {item.id === latestNewsId && (
+                      <span
+                        className="eyebrow absolute top-3 right-3 text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
+                        style={{ backgroundColor: '#DC2626' }}
+                      >
+                        ÚLTIMA NOTICIA
+                      </span>
+                    )}
                     <span
                       className="eyebrow absolute top-3 left-3 text-[10px] sm:text-xs text-white px-2.5 py-1 rounded-sm"
                       style={{ backgroundColor: BRAND_ORANGE }}
@@ -132,6 +140,7 @@ const NovedadesPage = () => {
                       {item.category}
                     </span>
                   </div>
+
                   <div className="flex flex-col flex-1 p-5">
                     <span className="text-xs text-gray-500 mb-2">{item.date}</span>
                     <h3 className="heading text-base sm:text-lg leading-snug mb-2" style={{ color: BRAND_BLACK }}>
