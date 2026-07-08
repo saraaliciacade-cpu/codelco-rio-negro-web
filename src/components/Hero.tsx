@@ -169,7 +169,7 @@ const Hero = () => {
               {stats.map((s, i) => (
                 <div
                   key={s.label}
-                  className={`py-5 sm:py-8 lg:py-10 px-4 sm:px-6 hover:bg-[#1A1A1A] transition-colors duration-300 flex flex-col justify-center ${
+                  className={`py-5 sm:py-8 lg:py-10 px-4 sm:px-6 flex flex-col justify-center ${
                     i > 0 ? 'lg:border-l lg:border-white/10' : ''
                   } ${i >= 2 ? 'border-t border-white/10 lg:border-t-0' : ''} ${
                     i % 2 === 1 ? 'border-l border-white/10 lg:border-l-0' : ''
