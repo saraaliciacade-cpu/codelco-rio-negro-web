@@ -3,6 +3,7 @@ import { ArrowRight, Droplets, Database, Gauge, Waves, Truck, Hammer, Package, S
 import { Phone, MessageCircle } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
+import ShareServices from '@/components/ShareServices';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 import HeroImageCarousel from '@/components/HeroImageCarousel';
@@ -99,10 +100,13 @@ const MetalurgicaPage = () => {
           <h1 className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-4xl">
             Tanques, Piletas y Estructuras para la Industria Petrolera
           </h1>
-          <p className="mt-5 text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed">
-            Fabricación de equipos metalúrgicos con trazabilidad y precisión certificada en cada proceso:
-            piletas de acumulación, tanques API, choke manifolds y estructuras especiales.
-          </p>
+          <div className="mt-5 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <p className="text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed">
+              Fabricación de equipos metalúrgicos con trazabilidad y precisión certificada en cada proceso:
+              piletas de acumulación, tanques API, choke manifolds y estructuras especiales.
+            </p>
+            <ShareServices title="Metalúrgica — Tanques, Piletas y Estructuras" path="/metalurgica" color="light" />
+          </div>
         </div>
       </section>
 
