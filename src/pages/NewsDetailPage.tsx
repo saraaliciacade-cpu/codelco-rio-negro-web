@@ -190,6 +190,7 @@ const NewsDetailPage = () => {
 
 
 
+
       {/* Related */}
       {related.length > 0 && (
         <section className="pb-20 bg-white">
