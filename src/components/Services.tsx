@@ -8,6 +8,7 @@ const Services = () => {
   const divisions = [
     {
       badge: "FÁBRICA",
+      icon: Home,
       images: [
         { src: "/images/fabrica/fabrica-32.jpg", alt: "Izaje de módulo prefabricado con grúa en planta de Cipolletti" },
         { src: "/images/fabrica/fabrica-41.jpg", alt: "Living comedor integrado con grandes ventanales" },
@@ -20,11 +21,12 @@ const Services = () => {
           Diseñamos y fabricamos <strong>trailers autoportantes, módulos Company Man, comedores, cocinas, laboratorios y viviendas en seco</strong>, con línea de producción integral desde ingeniería hasta entrega final.
         </>
       ),
-      cta: "Consultar disponibilidad →",
+      cta: "Consultar disponibilidad y ver galería",
       ctaLink: "/fabrica",
     },
     {
       badge: "METALÚRGICA",
+      icon: Database,
       images: [
         { src: "/metalurgica-05.jpg", alt: "Equipo metalúrgico fabricado en planta Codelco" },
         { src: "/metalurgica-09.jpg", alt: "Contenedor industrial reforzado" },
@@ -37,11 +39,12 @@ const Services = () => {
           Fabricamos <strong>piletas de acumulación, tanques API, choke manifolds, líneas de alta presión y estructuras para decanter</strong>, con calidad y precisión certificada en cada proceso.
         </>
       ),
-      cta: "Solicitar presupuesto →",
+      cta: "Solicitar presupuesto y ver galería",
       ctaLink: "/metalurgica",
     },
     {
       badge: "RENTAL",
+      icon: Truck,
       images: [
         { src: "/rental-01.jpg", alt: "Flota Toyota Hilux y VW Amarok en base operativa" },
         { src: "/rental-03.jpg", alt: "Trailer rodante de gran porte" },
@@ -54,11 +57,12 @@ const Services = () => {
           Flota liviana <strong>Toyota Hilux y VW Amarok</strong>, trailers rodantes de 6, 9 y 12 metros, piletas y contenedores. Incluye torres de iluminación LED con stock inmediato.
         </>
       ),
-      cta: "Ver equipos disponibles →",
+      cta: "Ver equipos disponibles y galería",
       ctaLink: "/rental",
     },
     {
       badge: "GRUPOS ELECTRÓGENOS",
+      icon: Zap,
       images: [
         { src: "/images/novedad/grupo-electrogeno.jpg", alt: "Entrega de grupo electrógeno Codelco en obra", objectPosition: "center 40%" },
       ],
@@ -69,10 +73,11 @@ const Services = () => {
           Energía confiable y continua para operaciones críticas. Equipos de <strong>55 a 180 kVA</strong> con soporte técnico especializado y disponibilidad permanente.
         </>
       ),
-      cta: "Consultar equipos →",
+      cta: "Consultar equipos y ver galería",
       ctaLink: "/grupos-electrogenos",
     },
   ];
+
 
 
   return (
