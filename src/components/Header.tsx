@@ -146,11 +146,11 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden ml-auto text-white hover:bg-white/10 hover:text-white z-[60] relative"
+            className={`md:hidden ml-auto text-white hover:bg-white/10 hover:text-white z-[60] relative ${isMenuOpen ? 'invisible pointer-events-none' : ''}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
           >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            <Menu className="h-5 w-5" />
           </Button>
         </div>
       </div>
