@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { newsData, categories, type NewsCategory } from '@/data/news';
+import { newsData, categories, latestNewsId, type NewsCategory } from '@/data/news';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_BLACK = '#1A1A1A';
