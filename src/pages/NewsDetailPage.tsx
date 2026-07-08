@@ -150,10 +150,11 @@ const NewsDetailPage = () => {
                   ));
                 })()}
               </div>
-            </aside>
+            </div>
 
             {/* Article content */}
-            <div className="flex-1 min-w-0">
+            <div>
+
               <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium mb-8">
                 {item.summary}
               </p>
