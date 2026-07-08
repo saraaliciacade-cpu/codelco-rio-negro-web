@@ -269,11 +269,26 @@ const NewsDetailPage = () => {
               <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium mb-8">
                 {item.summary}
               </p>
-              {item.body.map((paragraph, i) => (
-                <p key={i} className="text-base sm:text-lg text-gray-700 leading-relaxed mb-5">
-                  {paragraph}
-                </p>
-              ))}
+              {item.body.map((block, i) => renderBlock(block, i))}
+
+              {item.sourceUrl && (
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  <p className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-2">
+                    Ver noticia en
+                  </p>
+                  <a
+                    href={item.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold break-all hover:underline"
+                    style={{ color: BRAND_ORANGE }}
+                  >
+                    <ExternalLink className="w-4 h-4 flex-shrink-0" />
+                    {item.sourceLabel ?? item.sourceUrl}
+                  </a>
+                </div>
+              )}
+
 
               {/* Mobile share */}
               <div className="lg:hidden mt-8 pt-6 border-t border-gray-200">
