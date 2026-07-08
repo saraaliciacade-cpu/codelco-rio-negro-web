@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { ArrowRight, Home, Database, Truck, Zap } from "lucide-react";
 import HeroImageCarousel from "@/components/HeroImageCarousel";
 import torresIluminacionAsset from "@/assets/rental-torres-iluminacion-codelco.png.asset.json";
+
 
 const Services = () => {
   const divisions = [
