@@ -157,6 +157,17 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://codelco.com.ar/novedades/historia-familia-guerra-codelco</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/__l5e/assets-v1/3ba62fa1-4b54-4610-9ee6-bd128d25ab80/guerra-codelco-fachada.jpg</image:loc>
+      <image:title>La historia de construcción y trabajo detrás de la familia Guerra.</image:title>
+      <image:caption>Cuatro generaciones de gomeros, una reconversión al ritmo de Vaca Muerta y el nacimiento de Codelco como proveedor esencial de la industria energética.</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://codelco.com.ar/novedades/ampliamos-flota-torres-iluminacion-led</loc>
     <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>

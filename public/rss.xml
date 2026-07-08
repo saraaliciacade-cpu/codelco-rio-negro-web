@@ -5,8 +5,17 @@
     <link>https://codelco.com.ar/novedades</link>
     <description>Novedades, proyectos y actualidad de Codelco S.A. — módulos habitacionales, metalúrgica, rental y grupos electrógenos en Vaca Muerta.</description>
     <language>es-AR</language>
-    <lastBuildDate>Wed, 08 Jul 2026 16:59:40 GMT</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 18:40:27 GMT</lastBuildDate>
     <atom:link href="https://codelco.com.ar/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>La historia de construcción y trabajo detrás de la familia Guerra.</title>
+      <link>https://codelco.com.ar/novedades/historia-familia-guerra-codelco</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/historia-familia-guerra-codelco</guid>
+      <pubDate>Wed, 01 Jul 2026 12:00:00 GMT</pubDate>
+      <category>Proyecto</category>
+      <description>Cuatro generaciones de gomeros, una reconversión al ritmo de Vaca Muerta y el nacimiento de Codelco como proveedor esencial de la industria energética.</description>
+      <enclosure url="https://codelco.com.ar/__l5e/assets-v1/3ba62fa1-4b54-4610-9ee6-bd128d25ab80/guerra-codelco-fachada.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Ampliamos la flota de torres de iluminación LED</title>
       <link>https://codelco.com.ar/novedades/ampliamos-flota-torres-iluminacion-led</link>
