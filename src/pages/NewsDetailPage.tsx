@@ -51,27 +51,42 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
       );
     case 'video':
       return (
-        <div
-          key={i}
-          className="my-8 relative w-full overflow-hidden rounded-lg bg-black"
-          style={{ paddingTop: '56.25%' }}
-        >
-          <iframe
-            className="absolute inset-0 w-full h-full"
-            src={`https://www.youtube.com/embed/${block.id}`}
-            title={block.title ?? 'Video'}
-            frameBorder={0}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          />
+        <div key={i} className="my-8 flex justify-center">
+          <div
+            className="relative overflow-hidden rounded-lg bg-black w-full"
+            style={{ maxWidth: '360px', aspectRatio: '9 / 16' }}
+          >
+            <iframe
+              className="absolute inset-0 w-full h-full"
+              src={`https://www.youtube.com/embed/${block.id}`}
+              title={block.title ?? 'Video'}
+              frameBorder={0}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
         </div>
       );
     case 'related': {
+      // If href points to another news item, use that item's image/summary automatically
+      const relatedSlug = block.href?.startsWith('/novedades/')
+        ? block.href.replace('/novedades/', '')
+        : undefined;
+      const relatedItem = relatedSlug ? newsData.find((n) => n.slug === relatedSlug) : undefined;
+      const image = relatedItem?.image ?? block.image;
+      const summary = block.summary ?? relatedItem?.summary;
+      const title = block.title || relatedItem?.title || '';
       const inner = (
         <div className="flex gap-4 items-center">
-          {block.image && (
+          {image && (
             <div className="flex-shrink-0 w-28 h-20 sm:w-36 sm:h-24 overflow-hidden rounded-sm">
-              <img src={block.image} alt={block.title} className="w-full h-full object-cover" loading="lazy" />
+              <img
+                src={image}
+                alt={title}
+                className="w-full h-full object-cover"
+                style={{ objectPosition: relatedItem?.imagePosition ?? 'center' }}
+                loading="lazy"
+              />
             </div>
           )}
           <div className="flex-1 min-w-0">
@@ -84,10 +99,10 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
               </span>
             )}
             <p className="heading text-sm sm:text-base leading-snug" style={{ color: BRAND_BLACK }}>
-              {block.title}
+              {title}
             </p>
-            {block.summary && (
-              <p className="text-xs sm:text-sm text-gray-600 mt-1 line-clamp-2">{block.summary}</p>
+            {summary && (
+              <p className="text-xs sm:text-sm text-gray-600 mt-1 line-clamp-2">{summary}</p>
             )}
           </div>
         </div>
@@ -104,6 +119,7 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
         </aside>
       );
     }
+
     default:
       return null;
   }
