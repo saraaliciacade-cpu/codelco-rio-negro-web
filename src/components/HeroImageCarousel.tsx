@@ -31,18 +31,24 @@ const HeroImageCarousel = ({
 
   return (
     <div className={`absolute inset-0 overflow-hidden ${className}`}>
-      {images.map((img, i) => (
-        <img
-          key={img.src}
-          src={img.src}
-          alt={img.alt}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ease-in-out ${imgClassName}`}
-          style={{
-            opacity: i === index ? 1 : 0,
-            objectPosition: img.objectPosition,
-          }}
-        />
-      ))}
+      {images.map((img, i) => {
+        const active = i === index;
+        return (
+          <img
+            key={img.src}
+            src={img.src}
+            alt={img.alt}
+            className={`absolute inset-0 w-full h-full object-cover transition-all ease-in-out ${imgClassName}`}
+            style={{
+              opacity: active ? 1 : 0,
+              transform: active ? 'scale(1.06)' : 'scale(1)',
+              transitionDuration: active ? '6000ms, 2000ms' : '2000ms, 2000ms',
+              transitionProperty: 'transform, opacity',
+              objectPosition: img.objectPosition,
+            }}
+          />
+        );
+      })}
     </div>
   );
 };
