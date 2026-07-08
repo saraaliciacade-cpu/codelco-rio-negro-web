@@ -168,7 +168,15 @@ const NewsDetailPage = () => {
             </ol>
           </nav>
 
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-4 flex-wrap">
+            {isLatest && (
+              <span
+                className="eyebrow text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
+                style={{ backgroundColor: '#DC2626' }}
+              >
+                ÚLTIMA NOTICIA
+              </span>
+            )}
             <span
               className="eyebrow text-[11px] sm:text-xs text-white px-2.5 py-1 rounded-sm"
               style={{ backgroundColor: BRAND_ORANGE }}
@@ -177,6 +185,7 @@ const NewsDetailPage = () => {
             </span>
             <span className="text-xs sm:text-sm text-white/80">{item.date}</span>
           </div>
+
 
           <h1 className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-4xl">
             {item.title}
