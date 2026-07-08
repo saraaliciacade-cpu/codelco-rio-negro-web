@@ -54,8 +54,9 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
         <div key={i} className="my-8 flex justify-center">
           <div
             className="relative overflow-hidden rounded-lg bg-black w-full"
-            style={{ maxWidth: '360px', aspectRatio: '9 / 16' }}
+            style={{ maxWidth: '480px', aspectRatio: '9 / 16' }}
           >
+
             <iframe
               className="absolute inset-0 w-full h-full"
               src={`https://www.youtube.com/embed/${block.id}`}
@@ -214,8 +215,9 @@ const NewsDetailPage = () => {
       {/* Body */}
       <section className="py-16 lg:py-20 bg-white">
         <div className="container mx-auto px-6 sm:px-10 lg:px-16 max-w-3xl relative">
-          <div className="hidden lg:block lg:fixed lg:left-4 xl:left-8 lg:top-1/2 lg:-translate-y-1/2 lg:z-40">
-            <div className="flex lg:flex-col flex-row items-center gap-3">
+          <div className="hidden lg:block lg:absolute lg:left-[-72px] lg:top-0 lg:h-full">
+            <div className="lg:sticky lg:top-28 flex lg:flex-col flex-row items-center gap-3">
+
 
 
                 <span className="text-[10px] font-bold tracking-widest text-gray-500 uppercase writing-mode-vertical hidden sm:block mb-1">
