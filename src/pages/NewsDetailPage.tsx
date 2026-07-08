@@ -84,11 +84,10 @@ const NewsDetailPage = () => {
 
       {/* Body */}
       <section className="py-16 lg:py-20 bg-white">
-        <div className="container mx-auto px-6 sm:px-10 lg:px-16 max-w-4xl">
-          <div className="flex gap-6 lg:gap-10">
-            {/* Share sidebar */}
-            <aside className="flex-shrink-0">
-              <div className="sticky top-28 flex flex-col items-center gap-3">
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16 max-w-3xl relative">
+          <div className="lg:absolute lg:left-[-72px] lg:top-0 mb-6 lg:mb-0">
+            <div className="lg:sticky lg:top-28 flex lg:flex-col flex-row items-center gap-3">
+
                 <span className="text-[10px] font-bold tracking-widest text-gray-500 uppercase writing-mode-vertical hidden sm:block mb-1">
                   Compartir
                 </span>
@@ -151,10 +150,11 @@ const NewsDetailPage = () => {
                   ));
                 })()}
               </div>
-            </aside>
+            </div>
 
             {/* Article content */}
-            <div className="flex-1 min-w-0">
+            <div>
+
               <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium mb-8">
                 {item.summary}
               </p>
@@ -184,8 +184,10 @@ const NewsDetailPage = () => {
               </div>
             </div>
           </div>
-        </div>
       </section>
+
+
+
 
 
       {/* Related */}
