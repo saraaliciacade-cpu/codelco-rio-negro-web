@@ -38,8 +38,10 @@ const NovedadesPreview = () => {
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  style={{ objectPosition: item.imagePosition ?? 'center' }}
                   loading="lazy"
                 />
+
                 {item.id === latestNewsId && (
                   <span
                     className="eyebrow absolute top-3 right-3 text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
