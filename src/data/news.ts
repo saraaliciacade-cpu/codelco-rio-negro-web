@@ -27,7 +27,9 @@ export interface NewsItem {
   title: string;
   summary: string;
   image: string;
+  imagePosition?: string;
   body: (string | NewsBlock)[];
+
   sourceUrl?: string;
   sourceLabel?: string;
 }
@@ -44,6 +46,8 @@ export const newsData: NewsItem[] = [
     summary:
       'Cuatro generaciones de gomeros, una reconversión al ritmo de Vaca Muerta y el nacimiento de Codelco como proveedor esencial de la industria energética.',
     image: fachada.url,
+    imagePosition: 'top',
+
     sourceUrl:
       'https://www.rionegro.com.ar/economia/su-abuelo-llego-desde-espana-tras-la-primera-guerra-y-cuatro-generaciones-despues-sostienen-el-oficio-y-proveen-a-vaca-muerta/',
     sourceLabel: 'Río Negro Económico',

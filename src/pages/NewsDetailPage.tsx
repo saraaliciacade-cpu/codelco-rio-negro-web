@@ -149,7 +149,9 @@ const NewsDetailPage = () => {
           src={item.image}
           alt={item.title}
           className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: item.imagePosition ?? 'center' }}
         />
+
         <div
           className="absolute inset-0"
           style={{
