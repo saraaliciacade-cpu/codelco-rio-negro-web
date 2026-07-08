@@ -66,7 +66,7 @@ const Services = () => {
       images: [
         { src: "/images/novedad/grupo-electrogeno.jpg", alt: "Entrega de grupo electrógeno Codelco en obra", objectPosition: "center 40%" },
       ],
-      title: "Alquiler y Mantenimiento",
+      title: "Alquiler y Mantenimiento de Grupos Electrógenos",
       kicker: "55 a 180 kVA · Monitoreo técnico",
       text: (
         <>
