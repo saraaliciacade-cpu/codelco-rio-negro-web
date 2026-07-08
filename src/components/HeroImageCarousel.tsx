@@ -36,7 +36,7 @@ const HeroImageCarousel = ({
           key={img.src}
           src={img.src}
           alt={img.alt}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ease-in-out ${imgClassName}`}
+          className={`absolute inset-0 w-full h-full object-cover ease-in-out ${imgClassName}`}
           style={{
             opacity: i === index ? 1 : 0,
             objectPosition: img.objectPosition,
