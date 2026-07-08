@@ -1,7 +1,7 @@
 import { Clock, Factory, Wrench } from 'lucide-react';
 import vacaMuertaAsset from '@/assets/vaca-muerta-codelco.png.asset.json';
 import cipollettiAsset from '@/assets/codelco-cipolletti.png.asset.json';
-import patagoniaAsset from '@/assets/patagonia-codelco-2.jpg.asset.json';
+import patagoniaAsset from '@/assets/patagonia-codelco-3.jpg.asset.json';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
