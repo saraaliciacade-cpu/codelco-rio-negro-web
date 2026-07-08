@@ -1,12 +1,113 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { newsData } from '@/data/news';
+import { newsData, latestNewsId, type NewsBlock } from '@/data/news';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_BLACK = '#1A1A1A';
+
+const renderBlock = (block: string | NewsBlock, i: number) => {
+  if (typeof block === 'string') {
+    return (
+      <p key={i} className="text-base sm:text-lg text-gray-700 leading-relaxed mb-5">
+        {block}
+      </p>
+    );
+  }
+  switch (block.type) {
+    case 'p':
+      return (
+        <p key={i} className="text-base sm:text-lg text-gray-700 leading-relaxed mb-5">
+          {block.text}
+        </p>
+      );
+    case 'heading':
+      return (
+        <h2
+          key={i}
+          className="heading text-2xl sm:text-3xl mt-10 mb-5"
+          style={{ color: BRAND_BLACK }}
+        >
+          {block.text}
+        </h2>
+      );
+    case 'image':
+      return (
+        <figure key={i} className="my-8">
+          <img
+            src={block.src}
+            alt={block.alt ?? ''}
+            className="w-full h-auto rounded-lg"
+            loading="lazy"
+          />
+          {block.caption && (
+            <figcaption className="mt-3 text-sm text-gray-500 italic">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    case 'video':
+      return (
+        <div
+          key={i}
+          className="my-8 relative w-full overflow-hidden rounded-lg bg-black"
+          style={{ paddingTop: '56.25%' }}
+        >
+          <iframe
+            className="absolute inset-0 w-full h-full"
+            src={`https://www.youtube.com/embed/${block.id}`}
+            title={block.title ?? 'Video'}
+            frameBorder={0}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+      );
+    case 'related': {
+      const inner = (
+        <div className="flex gap-4 items-center">
+          {block.image && (
+            <div className="flex-shrink-0 w-28 h-20 sm:w-36 sm:h-24 overflow-hidden rounded-sm">
+              <img src={block.image} alt={block.title} className="w-full h-full object-cover" loading="lazy" />
+            </div>
+          )}
+          <div className="flex-1 min-w-0">
+            {block.eyebrow && (
+              <span
+                className="eyebrow text-[10px] sm:text-xs font-bold block mb-1"
+                style={{ color: BRAND_ORANGE }}
+              >
+                {block.eyebrow}
+              </span>
+            )}
+            <p className="heading text-sm sm:text-base leading-snug" style={{ color: BRAND_BLACK }}>
+              {block.title}
+            </p>
+            {block.summary && (
+              <p className="text-xs sm:text-sm text-gray-600 mt-1 line-clamp-2">{block.summary}</p>
+            )}
+          </div>
+        </div>
+      );
+      return (
+        <aside key={i} className="my-8 p-4 sm:p-5 border-l-4 bg-gray-50" style={{ borderColor: BRAND_ORANGE }}>
+          {block.href ? (
+            <Link to={block.href} className="block hover:opacity-90">
+              {inner}
+            </Link>
+          ) : (
+            inner
+          )}
+        </aside>
+      );
+    }
+    default:
+      return null;
+  }
+};
 
 const NewsDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -14,6 +115,7 @@ const NewsDetailPage = () => {
 
   if (!item) return <Navigate to="/novedades" replace />;
 
+  const isLatest = item.id === latestNewsId;
   const related = newsData.filter((n) => n.id !== item.id).slice(0, 3);
 
   return (
