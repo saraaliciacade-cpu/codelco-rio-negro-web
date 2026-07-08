@@ -95,7 +95,7 @@ const FabricaPage = () => {
       {/* Hero */}
       <section
         className="relative w-full"
-        style={{ minHeight: '380px' }}
+        style={{ minHeight: '500px' }}
       >
         <HeroImageCarousel
           images={[
@@ -113,7 +113,7 @@ const FabricaPage = () => {
               'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.8) 100%)',
           }}
         />
-        <div className="relative container mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-16 min-h-[380px] flex flex-col justify-end">
+        <div className="relative container mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-16 min-h-[500px] flex flex-col justify-end">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-5 text-xs sm:text-sm text-white/70">
             <ol className="flex items-center gap-2 flex-wrap">

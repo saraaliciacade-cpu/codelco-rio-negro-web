@@ -43,7 +43,7 @@ const GruposElectrogenosPage = () => {
       <Header />
 
 
-      <section className="relative w-full" style={{ minHeight: '380px' }}>
+      <section className="relative w-full" style={{ minHeight: '500px' }}>
         <img
           src="/images/novedad/grupo-electrogeno.jpg"
           alt="Entrega de grupo electrógeno Codelco en obra"
@@ -54,7 +54,7 @@ const GruposElectrogenosPage = () => {
           className="absolute inset-0"
           style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.8) 100%)' }}
         />
-        <div className="relative container mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-16 min-h-[380px] flex flex-col justify-end">
+        <div className="relative container mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-16 min-h-[500px] flex flex-col justify-end">
           <nav aria-label="Breadcrumb" className="mb-5 text-xs sm:text-sm text-white/70">
             <ol className="flex items-center gap-2 flex-wrap">
               <li><Link to="/" className="hover:text-white">Inicio</Link></li>

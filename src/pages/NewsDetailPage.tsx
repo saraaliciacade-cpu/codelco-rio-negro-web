@@ -161,7 +161,7 @@ const NewsDetailPage = () => {
 
 
       {/* Hero */}
-      <section className="relative w-full" style={{ minHeight: '560px' }}>
+      <section className="relative w-full" style={{ minHeight: '480px' }}>
         <img
           src={item.image}
           alt={item.title}
@@ -176,7 +176,7 @@ const NewsDetailPage = () => {
               'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.75) 100%)',
           }}
         />
-        <div className="relative container mx-auto px-6 sm:px-10 lg:px-16 pt-24 pb-12 min-h-[560px] flex flex-col justify-end">
+        <div className="relative container mx-auto px-6 sm:px-10 lg:px-16 pt-24 pb-12 min-h-[480px] flex flex-col justify-end">
 
           <nav aria-label="Breadcrumb" className="mb-4 text-xs sm:text-sm text-white/70">
             <ol className="flex items-center gap-2 flex-wrap">
