@@ -50,7 +50,7 @@ const WhyUs = () => {
             className="heading text-3xl sm:text-4xl lg:text-5xl leading-[1.1]"
             style={{ color: BRAND_BLACK }}
           >
-            Tres razones por las que Vaca Muerta no espera por nosotros
+            Tres razones por las que Vaca Muerta elige Codelco
           </h2>
         </div>
 
