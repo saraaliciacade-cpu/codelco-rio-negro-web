@@ -6,7 +6,7 @@ import heroPoster from '@/assets/hero-codelco-poster.jpg.asset.json';
 const BRAND_ORANGE = '#E84E1B';
 
 const stats = [
-  { label: '// ANTIGÜEDAD', value: '+14', desc: 'años en la industria' },
+  { label: '// ANTIGÜEDAD', value: '+14', desc: 'años en la industria. Comenzo todo en el 2012' },
   { label: '// CAPACIDAD', value: '3.500', desc: 'm² de planta propia' },
   { label: '// FLOTA', value: '+60', desc: 'unidades Hilux y Amarok' },
   { label: '// CARTERA', value: '+30', desc: 'empresas activas del sector' },
