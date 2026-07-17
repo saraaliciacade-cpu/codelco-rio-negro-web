@@ -3,7 +3,9 @@
 
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { newsData, type NewsItem } from '../src/data/news';
+import { newsData as allNews, isPublished, type NewsItem } from '../src/data/news';
+
+const newsData: NewsItem[] = allNews.filter(isPublished);
 
 const BASE_URL = 'https://codelco.com.ar';
 
