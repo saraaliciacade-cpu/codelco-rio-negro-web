@@ -1,7 +1,14 @@
 import { StrictMode } from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
-import { HelmetProvider, type FilledContext } from "react-helmet-async";
+import { HelmetProvider } from "react-helmet-async";
+
+type HelmetInstances = {
+  title: { toString(): string };
+  meta: { toString(): string };
+  link: { toString(): string };
+  script: { toString(): string };
+};
 import { AppProviders, AppRoutes } from "./App";
 import "./index.css";
 
