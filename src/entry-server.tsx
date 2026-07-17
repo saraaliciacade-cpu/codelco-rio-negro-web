@@ -3,12 +3,6 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import { HelmetProvider } from "react-helmet-async";
 
-type HelmetInstances = {
-  title: { toString(): string };
-  meta: { toString(): string };
-  link: { toString(): string };
-  script: { toString(): string };
-};
 import { AppProviders, AppRoutes } from "./App";
 import "./index.css";
 
@@ -18,7 +12,8 @@ export interface RenderResult {
 }
 
 export function render(url: string): RenderResult {
-  const helmetContext: { helmet?: HelmetInstances } = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const helmetContext: any = {};
 
   const html = renderToString(
     <StrictMode>
