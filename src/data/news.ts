@@ -30,9 +30,14 @@ export interface NewsItem {
   imagePosition?: string;
   body: (string | NewsBlock)[];
 
+  /** 'draft' articles are excluded from SSG prerender, sitemap, RSS, and get noindex. Defaults to 'published' when omitted. */
+  status?: 'draft' | 'published';
+
   sourceUrl?: string;
   sourceLabel?: string;
 }
+
+export const isPublished = (n: NewsItem): boolean => n.status !== 'draft';
 
 export const categories: NewsCategory[] = ['Todas', 'Flota', 'Proyecto', 'Planta', 'Clientes', 'Sector'];
 
