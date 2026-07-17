@@ -1,10 +1,21 @@
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import App from "./App.tsx";
 import "./index.css";
 
-createRoot(document.getElementById("root")!).render(
-  <HelmetProvider>
-    <App />
-  </HelmetProvider>
-);
+const container = document.getElementById("root")!;
+
+if (import.meta.env.PROD && container.dataset.ssg === "true") {
+  hydrateRoot(
+    container,
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  );
+} else {
+  createRoot(container).render(
+    <HelmetProvider>
+      <App />
+    </HelmetProvider>
+  );
+}
