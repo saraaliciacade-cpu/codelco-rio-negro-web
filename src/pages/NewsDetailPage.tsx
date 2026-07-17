@@ -143,6 +143,7 @@ const NewsDetailPage = () => {
         path={`/novedades/${item.slug}`}
         image={item.image?.startsWith('http') ? item.image : undefined}
         type="article"
+        noindex={item.status === 'draft'}
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'NewsArticle',
