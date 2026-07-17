@@ -23,6 +23,7 @@ const SEO = ({
   type = 'website',
   keywords,
   jsonLd,
+  noindex = false,
 }: SEOProps) => {
   const url = `${SITE_URL}${path}`;
   const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
@@ -31,8 +32,10 @@ const SEO = ({
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, follow" />}
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={url} />
+
 
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
