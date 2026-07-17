@@ -1,53 +1,37 @@
 
-# Verificar Google Search Console
+## Objetivo
+Evitar contenido duplicado en Search Console, asegurar que Google rastree todo el sitio y enviar el sitemap.
 
-Google acepta dos métodos para probar que el dominio es tuyo. Los dos funcionan con SIS y **no tocan** MX/SPF/DKIM, así que el correo sigue intacto.
+## Estado actual (verificado)
+- `public/robots.txt`: permite todos los bots y ya declara `Sitemap: https://codelco.com.ar/sitemap.xml`. ✅
+- `src/components/SEO.tsx`: cada página emite `canonical` y `og:url` absolutos hacia `https://codelco.com.ar{path}`. ✅
+- `index.html`: `og:url` sitewide apunta a `https://codelco.com.ar/`. ✅
+- `sitemap.xml` se regenera en cada build desde `scripts/generate-seo.ts`. ✅
 
-## Opción A — Meta tag en el `<head>` (recomendada, la hago yo)
+O sea: canónicos, robots y sitemap ya están bien. Falta cerrar HTTPS/redirects (server) y hacer el envío en Search Console.
 
-Es la más simple: agrego una línea en `index.html` y listo. No requiere tocar nada en SIS.
+## Cambios de código (mínimos)
+1. **`index.html`** — agregar `<link rel="canonical" href="https://codelco.com.ar/" />` como fallback estático para crawlers que no ejecutan JS (hoy solo está el `og:url`). En rutas internas, Helmet lo sobreescribe.
+2. **`public/robots.txt`** — dejar un único bloque `User-agent: *` con `Allow: /` (los bloques por bot repiten lo mismo y ensucian). Mantener la línea `Sitemap:`.
 
-**Cambio en `index.html`** (dentro del `<head>`):
+No se toca nada más de código: los canónicos por ruta ya están, y forzar HTTPS/redirects `www → apex` es tarea del servidor (SIS), no de la SPA.
 
-```html
-<meta name="google-site-verification" content="FkDSP312-DahP2PCmnYNlhkuu23xY5Uy_AFQ379GN3w" />
-```
+## Acciones fuera del código (las hace el usuario en SIS y en Search Console)
 
-**Después:**
-1. Publicás la web (o esperás a que se propague el deploy en SIS si estás sirviendo desde ahí).
-2. En Google Search Console, en la propiedad **URL-prefix** `https://codelco.com.ar/`, apretás **Verificar**.
-3. Google lee el meta y queda verificado.
+**En SISargentina (una sola vez):**
+- Activar "Forzar HTTPS" / redirect 301 de `http://` a `https://` para `codelco.com.ar` y `www.codelco.com.ar`.
+- Configurar redirect 301 de `www.codelco.com.ar` → `codelco.com.ar` (dominio canónico sin www, que es el que usa el sitemap y los canonical tags).
 
-Limitación: sirve solo para la propiedad tipo **URL-prefix** (`https://codelco.com.ar/`). Si querés una propiedad de **Dominio** (cubre subdominios y http/https), necesitás sí o sí la Opción B.
+**En Google Search Console:**
+- Propiedad de Dominio `codelco.com.ar` (la que estás verificando por TXT).
+- Menú **Sitemaps** → agregar `https://codelco.com.ar/sitemap.xml` → Enviar.
+- Opcional: en **Inspección de URL** probar `https://codelco.com.ar/` y pedir indexación.
 
-## Opción B — Registro TXT en SIS (para propiedad de Dominio)
+## Detalle técnico
+- El canonical estático de `index.html` no entra en conflicto con Helmet: `react-helmet-async` deduplica `<link rel="canonical">` reemplazando el del head al hidratar la ruta.
+- El redirect HTTPS + apex es obligatorio para que Google no vea 4 versiones (`http://`, `https://`, con/sin www) del mismo contenido. Los canonical tags ayudan pero no reemplazan al 301.
 
-Le pedís a SIS que agregue este registro en la zona DNS de `codelco.com.ar`:
-
-| Campo | Valor |
-|---|---|
-| Tipo | `TXT` |
-| Nombre / Host | `@` (o `codelco.com.ar.`) |
-| Valor | `google-site-verification=FkDSP312-DahP2PCmnYNlhkuu23xY5Uy_AFQ379GN3w` |
-| TTL | 3600 (por defecto) |
-
-**Mensaje sugerido para SIS:**
-
-> Hola, necesito agregar un registro TXT en la zona DNS de codelco.com.ar para verificar Google Search Console. Es un TXT adicional en el root del dominio (@), no reemplaza ningún registro existente (no afecta MX, SPF, ni DKIM).
-> - Tipo: TXT
-> - Nombre: @
-> - Valor: `google-site-verification=FkDSP312-DahP2PCmnYNlhkuu23xY5Uy_AFQ379GN3w`
-> - TTL: 3600
-> Gracias.
-
-**Después:** en Search Console, propiedad tipo **Dominio** → apretás **Verificar**. Puede tardar hasta unas horas en propagar.
-
-## Recomendación
-
-Ir con **A + B en paralelo**:
-- Yo dejo el meta tag ahora → verificás la propiedad URL-prefix en minutos.
-- Le pedís a SIS el TXT → cuando esté, verificás también la propiedad Dominio (más completa para SEO).
-
-## Confirmame
-
-¿Aplico ya la **Opción A** (meta tag en `index.html`)? Si querés solo la B, no toco código y te quedás con el mensaje para SIS.
+## Resultado esperado
+- Una sola URL canónica por página (`https://codelco.com.ar/...`).
+- Robots limpio y sitemap enviado.
+- Sin duplicados en Search Console una vez propagados los 301.
