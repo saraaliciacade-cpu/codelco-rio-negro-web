@@ -8,6 +8,7 @@ interface SEOProps {
   type?: 'website' | 'article';
   keywords?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
 }
 
 const SITE_URL = 'https://codelco.com.ar';
