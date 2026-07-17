@@ -18,7 +18,7 @@ export interface RenderResult {
 }
 
 export function render(url: string): RenderResult {
-  const helmetContext: { helmet?: FilledContext["helmet"] } = {};
+  const helmetContext: { helmet?: HelmetInstances } = {};
 
   const html = renderToString(
     <StrictMode>
