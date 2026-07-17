@@ -26,6 +26,7 @@ const ScrollToHash = () => {
   const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
     if (!hash) {
       window.scrollTo({ top: 0, behavior: "auto" });
       return;
@@ -49,36 +50,48 @@ const ScrollToHash = () => {
   return null;
 };
 
-const App = () => (
+export const AppRoutes = () => (
+  <>
+    <ScrollToHash />
+    <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+    </div>}>
+      <Routes>
+        <Route path="/" element={<Index />} />
+        <Route path="/webmail" element={<Webmail />} />
+        <Route path="/clientes" element={<ClientsPage />} />
+        <Route path="/fabrica" element={<FabricaPage />} />
+        <Route path="/metalurgica" element={<MetalurgicaPage />} />
+        <Route path="/rental" element={<RentalPage />} />
+        <Route path="/grupos-electrogenos" element={<GruposElectrogenosPage />} />
+        <Route path="/novedades" element={<NovedadesPage />} />
+        <Route path="/novedades/:slug" element={<NewsDetailPage />} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Suspense>
+    <WhatsAppWidget />
+  </>
+);
+
+export const AppProviders = ({ children }: { children: React.ReactNode }) => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <LanguageProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
-          <ScrollToHash />
-          <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-          </div>}>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/webmail" element={<Webmail />} />
-              <Route path="/clientes" element={<ClientsPage />} />
-              <Route path="/fabrica" element={<FabricaPage />} />
-              <Route path="/metalurgica" element={<MetalurgicaPage />} />
-              <Route path="/rental" element={<RentalPage />} />
-              <Route path="/grupos-electrogenos" element={<GruposElectrogenosPage />} />
-              <Route path="/novedades" element={<NovedadesPage />} />
-              <Route path="/novedades/:slug" element={<NewsDetailPage />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-          <WhatsAppWidget />
-        </BrowserRouter>
+        {children}
       </LanguageProvider>
     </TooltipProvider>
   </QueryClientProvider>
+);
+
+const App = () => (
+  <AppProviders>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
+  </AppProviders>
 );
 
 export default App;
