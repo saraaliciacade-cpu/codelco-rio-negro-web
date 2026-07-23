@@ -32,15 +32,12 @@ export default function WhatsAppWidget() {
     } catch {}
   };
 
-  // Auto-open after 20s (once per session, scoped per route)
+  // Auto-open after 15s on every page load
   useEffect(() => {
-    const key = `wa_auto_opened_${window.location.pathname}`;
-    if (sessionStorage.getItem(key)) return;
     const t = setTimeout(() => {
       setIsOpen(true);
-      sessionStorage.setItem(key, "1");
       playNotificationSound();
-    }, 20000);
+    }, 15000);
     return () => clearTimeout(t);
   }, []);
 
