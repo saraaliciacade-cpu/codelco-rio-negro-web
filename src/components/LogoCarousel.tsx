@@ -80,7 +80,7 @@ const renderCarouselRow = (
   reverse = false
 ) => {
   return (
-    <div className="clients-row group/row relative overflow-hidden w-full">
+    <div className="clients-row group/row relative overflow-x-hidden overflow-y-visible w-full py-4">
       <div
         className={`flex ${reverse ? 'animate-infinite-scroll-reverse' : 'animate-infinite-scroll-smooth'} clients-carousel`}
         style={{
