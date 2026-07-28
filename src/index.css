@@ -227,11 +227,6 @@ All colors MUST be HSL.
   animation: infinite-scroll-reverse 65s linear infinite;
 }
 
-/* Pause scroll when hovering the row */
-.clients-row:hover .animate-infinite-scroll-smooth,
-.clients-row:hover .animate-infinite-scroll-reverse {
-  animation-play-state: paused;
-}
 
 /* Responsive animation timing and width for clients carousel */
 .clients-carousel {
