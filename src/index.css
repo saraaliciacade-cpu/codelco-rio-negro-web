@@ -220,11 +220,17 @@ All colors MUST be HSL.
 }
 
 .animate-infinite-scroll-smooth {
-  animation: infinite-scroll-smooth 90s linear infinite;
+  animation: infinite-scroll-smooth 65s linear infinite;
 }
 
 .animate-infinite-scroll-reverse {
-  animation: infinite-scroll-reverse 90s linear infinite;
+  animation: infinite-scroll-reverse 65s linear infinite;
+}
+
+/* Pause scroll when hovering the row */
+.clients-row:hover .animate-infinite-scroll-smooth,
+.clients-row:hover .animate-infinite-scroll-reverse {
+  animation-play-state: paused;
 }
 
 /* Responsive animation timing and width for clients carousel */
@@ -238,23 +244,24 @@ All colors MUST be HSL.
   .clients-carousel {
     width: 5760px;
   }
-  
+
   .animate-infinite-scroll-smooth {
-    animation-duration: 90s;
+    animation-duration: 65s;
   }
-  
+
   .animate-infinite-scroll-reverse {
-    animation-duration: 90s;
+    animation-duration: 65s;
   }
 }
 
 @media (max-width: 767px) {
   .animate-infinite-scroll-smooth {
-    animation-duration: 70s;
+    animation-duration: 50s;
   }
-  
+
   .animate-infinite-scroll-reverse {
-    animation-duration: 70s;
+    animation-duration: 50s;
   }
 }
+
 
