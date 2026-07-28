@@ -115,7 +115,7 @@ const renderCarouselRow = (
 
 const LogoCarousel = () => {
   return (
-    <div className="space-y-6 md:space-y-8 overflow-hidden">
+    <div className="space-y-6 md:space-y-8 overflow-x-hidden overflow-y-visible">
       {renderCarouselRow(clientsRow1, 0, false, false)}
       {renderCarouselRow(clientsRow2, 0, true, true)}
       {renderCarouselRow(clientsRow3, 0, false, false)}
