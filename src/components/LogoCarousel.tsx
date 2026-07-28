@@ -94,7 +94,7 @@ const renderCarouselRow = (
               key={`${setIndex}-${index}`}
               className="flex-shrink-0 w-40 md:w-56 mx-4 md:mx-8 flex flex-col items-center justify-center group/item transition-all duration-300 ease-out opacity-100 group-hover/row:opacity-40 hover:!opacity-100"
             >
-              <div className="h-20 md:h-24 w-36 md:w-48 p-4 md:p-6 mb-3 md:mb-4 flex items-center justify-center bg-white rounded-xl shadow-lg border-2 border-gray-200 transition-all duration-300 ease-out group-hover/item:border-[#e65b2a] group-hover/item:shadow-2xl group-hover/item:scale-105">
+              <div className="h-20 md:h-24 w-36 md:w-48 p-4 md:p-6 mb-3 md:mb-4 flex items-center justify-center bg-white rounded-xl shadow-lg border-2 border-gray-200 transition-all duration-300 ease-out group-hover/item:border-[#e65b2a] group-hover/item:scale-105">
                 <img
                   src={client.logo}
                   alt={`${client.name} — cliente de Codelco S.A.`}
