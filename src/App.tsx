@@ -52,9 +52,15 @@ const ScrollToHash = () => {
 
 const GaPageViews = () => {
   const { pathname, search } = useLocation();
+  const isFirst = useRef(true);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+    // gtag('config') already sends the initial page_view
+    if (isFirst.current) {
+      isFirst.current = false;
+      return;
+    }
     const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
     if (typeof gtag !== "function") return;
     gtag("event", "page_view", {
