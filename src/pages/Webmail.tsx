@@ -13,10 +13,10 @@ const Webmail = () => {
   return (
     <div className="min-h-screen bg-background flex items-center justify-center">
       <Helmet>
-        <title>Webmail Codelco — Acceso al correo corporativo</title>
+        <title>Personal Codelco — Acceso al correo corporativo</title>
         <meta
           name="description"
-          content="Accedé al webmail corporativo de Codelco S.A. para gestionar tu correo electrónico institucional."
+          content="Accedé al correo corporativo de Codelco S.A. para gestionar tu correo electrónico institucional."
         />
         <meta name="robots" content="noindex, nofollow" />
         <meta name="googlebot" content="noindex, nofollow" />
@@ -24,7 +24,7 @@ const Webmail = () => {
         <meta httpEquiv="refresh" content={`0;url=${WEBMAIL_URL}`} />
       </Helmet>
       <div className="text-center">
-        <h1 className="sr-only">Webmail Codelco — Redirigiendo al correo corporativo</h1>
+        <h1 className="sr-only">Personal Codelco — Redirigiendo al correo corporativo</h1>
         <div
           className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"
           aria-hidden="true"
