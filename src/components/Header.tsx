@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, Globe, Factory, Wrench, Truck, Zap, ChevronRight } from 'lucide-react';
+import { Menu, X, Globe, Factory, Wrench, Truck, Zap, ChevronRight, User } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/contexts/LanguageContext';
 
@@ -137,10 +137,11 @@ const Header = () => {
               href="https://webmail.codelco.com.ar"
               target="_blank"
               rel="noopener noreferrer nofollow"
-              className="text-sm font-medium text-white/70 hover:text-primary transition-colors"
+              className="inline-flex items-center justify-center rounded-full w-9 h-9 bg-white/10 hover:bg-[#e04d1c] text-white/80 hover:text-white transition-colors"
+              aria-label="Personal Codelco"
               style={{ fontFamily: 'Nunito Sans, sans-serif' }}
             >
-              Webmail
+              <User className="h-4 w-4" />
             </a>
             <Link
               to="/#contacto"
@@ -252,9 +253,10 @@ const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer nofollow"
                 onClick={() => setIsMenuOpen(false)}
-                className="block py-3 text-lg font-semibold hover:text-[#e04d1c] transition-colors border-b border-white/5"
+                className="flex items-center gap-3 py-3 text-lg font-semibold hover:text-[#e04d1c] transition-colors border-b border-white/5"
               >
-                Webmail
+                <User className="h-5 w-5 text-[#e04d1c]" strokeWidth={1.75} />
+                Personal Codelco
               </a>
             </li>
           </ul>
