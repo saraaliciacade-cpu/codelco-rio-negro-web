@@ -50,9 +50,27 @@ const ScrollToHash = () => {
   return null;
 };
 
+const GaPageViews = () => {
+  const { pathname, search } = useLocation();
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const gtag = (window as unknown as { gtag?: (...args: unknown[]) => void }).gtag;
+    if (typeof gtag !== "function") return;
+    gtag("event", "page_view", {
+      page_path: `${pathname}${search}`,
+      page_location: window.location.href,
+      page_title: document.title,
+    });
+  }, [pathname, search]);
+
+  return null;
+};
+
 export const AppRoutes = () => (
   <>
     <ScrollToHash />
+    <GaPageViews />
     <Suspense fallback={<div className="min-h-screen bg-background flex items-center justify-center">
       <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
     </div>}>
