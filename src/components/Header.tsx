@@ -227,15 +227,39 @@ const Header = () => {
             ))}
           </ul>
 
-          <a
-            href="https://webmail.codelco.com.ar"
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            onClick={() => setIsMenuOpen(false)}
-            className="block py-3 mb-6 text-lg font-semibold hover:text-[#e04d1c] transition-colors border-b border-white/5"
-          >
-            Webmail
-          </a>
+          {/* Rest of the nav (no icons) */}
+          <ul className="space-y-1 mb-8">
+            {menuItems.slice(1).map((item, idx) => (
+              <li
+                key={item.href}
+                className={`transform transition-all duration-500 ease-out ${
+                  isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-6 opacity-0'
+                }`}
+                style={{ transitionDelay: isMenuOpen ? `${360 + idx * 60}ms` : '0ms' }}
+              >
+                <Link
+                  to={item.href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block py-3 text-lg font-semibold hover:text-[#e04d1c] transition-colors border-b border-white/5"
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <a
+                href="https://webmail.codelco.com.ar"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                onClick={() => setIsMenuOpen(false)}
+                className="block py-3 text-lg font-semibold hover:text-[#e04d1c] transition-colors border-b border-white/5"
+              >
+                Webmail
+              </a>
+            </li>
+          </ul>
+
+
 
 
           <Link
