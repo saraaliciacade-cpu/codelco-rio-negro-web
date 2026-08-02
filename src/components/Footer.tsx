@@ -34,6 +34,7 @@ const Footer = () => {
               <li><Link to="/clientes" className="text-white/60 hover:text-[#e04d1c] transition-colors">Clientes</Link></li>
               <li><Link to="/novedades" className="text-white/60 hover:text-[#e04d1c] transition-colors">Novedades</Link></li>
               <li><Link to="/#contacto" className="text-white/60 hover:text-[#e04d1c] transition-colors">Contacto</Link></li>
+              <li><a href="https://webmail.codelco.com.ar" target="_blank" rel="noopener noreferrer nofollow" className="text-white/60 hover:text-[#e04d1c] transition-colors">Webmail</a></li>
             </ul>
           </div>
         </div>

@@ -133,6 +133,15 @@ const Header = () => {
                 )}
               </div>
             ))}
+            <a
+              href="https://webmail.codelco.com.ar"
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="text-sm font-medium text-white/70 hover:text-primary transition-colors"
+              style={{ fontFamily: 'Nunito Sans, sans-serif' }}
+            >
+              Webmail
+            </a>
             <Link
               to="/#contacto"
               className="ml-2 inline-flex items-center justify-center rounded-sm bg-[#e04d1c] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#c94418] transition-colors"
@@ -237,7 +246,21 @@ const Header = () => {
                 </Link>
               </li>
             ))}
+            <li>
+              <a
+                href="https://webmail.codelco.com.ar"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                onClick={() => setIsMenuOpen(false)}
+                className="block py-3 text-lg font-semibold hover:text-[#e04d1c] transition-colors border-b border-white/5"
+              >
+                Webmail
+              </a>
+            </li>
           </ul>
+
+
+
 
           <Link
             to="/#contacto"
