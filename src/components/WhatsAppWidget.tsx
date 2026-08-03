@@ -10,8 +10,27 @@ export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [showQuickReplies, setShowQuickReplies] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [autoOpenPending, setAutoOpenPending] = useState(false);
   const { language } = useLanguage();
   const isMobile = useIsMobile();
+
+  // Track the mobile drawer so the widget never blocks the menu
+  useEffect(() => {
+    const onMenu = (e: Event) => {
+      const open = !!(e as CustomEvent<{ open: boolean }>).detail?.open;
+      setMenuOpen(open);
+      if (open) {
+        setIsOpen((wasOpen) => {
+          if (wasOpen) setAutoOpenPending(true);
+          return false;
+        });
+      }
+    };
+    window.addEventListener("codelco:mobile-menu", onMenu);
+    return () => window.removeEventListener("codelco:mobile-menu", onMenu);
+  }, []);
+
 
   const playNotificationSound = () => {
     try {
@@ -32,14 +51,23 @@ export default function WhatsAppWidget() {
     } catch {}
   };
 
-  // Auto-open after 15s on every page load
+  // Auto-open after 15s on every page load (deferred while the menu is open)
   useEffect(() => {
+    const t = setTimeout(() => setAutoOpenPending(true), 15000);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Fire the deferred auto-open once the menu is closed
+  useEffect(() => {
+    if (!autoOpenPending || menuOpen) return;
     const t = setTimeout(() => {
       setIsOpen(true);
       playNotificationSound();
-    }, 15000);
+      setAutoOpenPending(false);
+    }, 400);
     return () => clearTimeout(t);
-  }, []);
+  }, [autoOpenPending, menuOpen]);
+
 
   // Show quick replies 6s after open
   useEffect(() => {
@@ -92,10 +120,13 @@ export default function WhatsAppWidget() {
   const placeholderText = language === "es" ? "Escribe tu mensaje..." : "Write your message...";
   const onlineText = language === "es" ? "En línea" : "Online";
 
+  if (menuOpen) return null;
+
   return (
     <>
       {/* Floating WhatsApp Button */}
-      <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50">
+      <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40">
+
         {!isOpen && (
           <button
             onClick={handleButtonClick}
