@@ -232,7 +232,7 @@ const Header = () => {
           </ul>
 
           {/* Rest of the nav (no icons) */}
-          <ul className="space-y-1 mb-8">
+          <ul className="space-y-1 mb-6">
             {menuItems.slice(1).map((item, idx) => (
               <li
                 key={item.href}
@@ -250,33 +250,34 @@ const Header = () => {
                 </Link>
               </li>
             ))}
-            <li>
-              <a
-                href="https://webmail.codelco.com.ar"
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                onClick={() => setIsMenuOpen(false)}
-                className="flex items-center gap-3 py-3 text-lg font-semibold hover:text-[#e04d1c] transition-colors border-b border-white/5"
-              >
-                <User className="h-5 w-5 text-[#e04d1c]" strokeWidth={1.75} />
-                Personal Codelco
-              </a>
-            </li>
           </ul>
 
-
-
-
+          {/* Quote button right after Novedades */}
           <Link
             to="/#contacto"
             onClick={() => setIsMenuOpen(false)}
-            className={`inline-flex w-full items-center justify-center rounded-sm bg-[#e04d1c] px-5 py-3 text-sm font-semibold text-white hover:bg-[#c94418] transition-all duration-500 ${
+            className={`inline-flex w-full items-center justify-center rounded-sm bg-[#e04d1c] px-5 py-3 text-sm font-semibold text-white hover:bg-[#c94418] transition-all duration-500 mb-6 ${
               isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
             }`}
-            style={{ transitionDelay: isMenuOpen ? '600ms' : '0ms' }}
+            style={{ transitionDelay: isMenuOpen ? '540ms' : '0ms' }}
           >
             {t('nav.quote')}
           </Link>
+
+          {/* Personal Codelco — placed above the language selector */}
+          <a
+            href="https://webmail.codelco.com.ar"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            onClick={() => setIsMenuOpen(false)}
+            className={`flex items-center gap-3 py-3 text-lg font-semibold hover:text-[#e04d1c] transition-colors border-b border-white/5 mb-6 transform transition-all duration-500 ${
+              isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-6 opacity-0'
+            }`}
+            style={{ transitionDelay: isMenuOpen ? '600ms' : '0ms' }}
+          >
+            <User className="h-5 w-5 text-[#e04d1c]" strokeWidth={1.75} />
+            Personal Codelco
+          </a>
         </div>
 
         {/* Language selector pinned at the bottom */}
