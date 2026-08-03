@@ -10,8 +10,27 @@ export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [showQuickReplies, setShowQuickReplies] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [autoOpenPending, setAutoOpenPending] = useState(false);
   const { language } = useLanguage();
   const isMobile = useIsMobile();
+
+  // Track the mobile drawer so the widget never blocks the menu
+  useEffect(() => {
+    const onMenu = (e: Event) => {
+      const open = !!(e as CustomEvent<{ open: boolean }>).detail?.open;
+      setMenuOpen(open);
+      if (open) {
+        setIsOpen((wasOpen) => {
+          if (wasOpen) setAutoOpenPending(true);
+          return false;
+        });
+      }
+    };
+    window.addEventListener("codelco:mobile-menu", onMenu);
+    return () => window.removeEventListener("codelco:mobile-menu", onMenu);
+  }, []);
+
 
   const playNotificationSound = () => {
     try {
