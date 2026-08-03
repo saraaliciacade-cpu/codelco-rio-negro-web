@@ -19,14 +19,17 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll while the mobile drawer is open
+  // Lock body scroll while the mobile drawer is open + notify other widgets
   useEffect(() => {
     if (typeof document === 'undefined') return;
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    window.dispatchEvent(new CustomEvent('codelco:mobile-menu', { detail: { open: isMenuOpen } }));
     return () => {
       document.body.style.overflow = '';
+      window.dispatchEvent(new CustomEvent('codelco:mobile-menu', { detail: { open: false } }));
     };
   }, [isMenuOpen]);
+
 
   const servicesSubmenu = [
     { name: t('nav.sub.fabrica'), href: '/fabrica', Icon: Factory },
