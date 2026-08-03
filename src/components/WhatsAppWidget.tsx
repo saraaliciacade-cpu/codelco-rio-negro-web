@@ -51,14 +51,23 @@ export default function WhatsAppWidget() {
     } catch {}
   };
 
-  // Auto-open after 15s on every page load
+  // Auto-open after 15s on every page load (deferred while the menu is open)
   useEffect(() => {
+    const t = setTimeout(() => setAutoOpenPending(true), 15000);
+    return () => clearTimeout(t);
+  }, []);
+
+  // Fire the deferred auto-open once the menu is closed
+  useEffect(() => {
+    if (!autoOpenPending || menuOpen) return;
     const t = setTimeout(() => {
       setIsOpen(true);
       playNotificationSound();
-    }, 15000);
+      setAutoOpenPending(false);
+    }, 400);
     return () => clearTimeout(t);
-  }, []);
+  }, [autoOpenPending, menuOpen]);
+
 
   // Show quick replies 6s after open
   useEffect(() => {
