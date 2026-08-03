@@ -120,10 +120,13 @@ export default function WhatsAppWidget() {
   const placeholderText = language === "es" ? "Escribe tu mensaje..." : "Write your message...";
   const onlineText = language === "es" ? "En línea" : "Online";
 
+  if (menuOpen) return null;
+
   return (
     <>
       {/* Floating WhatsApp Button */}
-      <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50">
+      <div className="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-40">
+
         {!isOpen && (
           <button
             onClick={handleButtonClick}
