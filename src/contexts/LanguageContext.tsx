@@ -364,6 +364,7 @@ const translations = {
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window === 'undefined') return 'es';
+    if (window.location.pathname === '/en' || window.location.pathname.startsWith('/en/')) return 'en';
     const stored = window.localStorage.getItem('codelco.language');
     return stored === 'en' || stored === 'es' ? stored : 'es';
   });
@@ -373,6 +374,9 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     if (typeof window !== 'undefined') {
       window.localStorage.setItem('codelco.language', lang);
       document.documentElement.lang = lang;
+      const isEnglishRoute = window.location.pathname === '/en' || window.location.pathname.startsWith('/en/');
+      if (lang === 'en' && !isEnglishRoute) window.location.assign('/en');
+      if (lang === 'es' && isEnglishRoute) window.location.assign('/');
     }
   };
 

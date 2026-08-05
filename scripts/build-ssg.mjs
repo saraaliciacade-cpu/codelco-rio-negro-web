@@ -146,6 +146,7 @@ async function prerender() {
 
   const staticRoutes = [
     '/',
+    '/en',
     '/fabrica',
     '/metalurgica',
     '/rental',
@@ -162,12 +163,13 @@ async function prerender() {
     try {
       const { html, head } = render(route);
       const outHtml = injectIntoTemplate(template, { html, head, isDraft: false });
+      const localizedHtml = outHtml.replace('<html lang="en">', `<html lang="${route === '/en' ? 'en' : 'es'}">`);
       const outPath =
         route === '/'
           ? resolve(distDir, 'index.html')
           : resolve(distDir, route.replace(/^\//, ''), 'index.html');
       await mkdir(dirname(outPath), { recursive: true });
-      await writeFile(outPath, outHtml, 'utf8');
+      await writeFile(outPath, localizedHtml, 'utf8');
       console.log(`[ssg] ✓ ${route}`);
     } catch (err) {
       console.error(`[ssg] ✗ ${route}`, err);
