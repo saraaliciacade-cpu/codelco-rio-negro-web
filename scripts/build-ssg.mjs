@@ -146,7 +146,6 @@ async function prerender() {
 
   const staticRoutes = [
     '/',
-    '/en',
     '/fabrica',
     '/metalurgica',
     '/rental',
@@ -163,7 +162,7 @@ async function prerender() {
     try {
       const { html, head } = render(route);
       const outHtml = injectIntoTemplate(template, { html, head, isDraft: false });
-      const localizedHtml = outHtml.replace('<html lang="en">', `<html lang="${route === '/en' ? 'en' : 'es'}">`);
+      const localizedHtml = outHtml.replace('<html lang="en">', '<html lang="es">');
       const outPath =
         route === '/'
           ? resolve(distDir, 'index.html')
