@@ -21,6 +21,8 @@ const Index = () => {
         title="Codelco S.A. — Módulos Habitacionales, Metalúrgica y Rental en Vaca Muerta"
         description="Fábrica de módulos habitacionales e industriales, metalúrgica, rental de vehículos, trailers, torres de iluminación LED y grupos electrógenos. Cipolletti, Río Negro, Argentina."
         path="/"
+        language="es"
+        alternatePath="/en"
         keywords="Codelco S.A., módulos habitacionales, metalúrgica, rental Vaca Muerta, torres de iluminación LED, grupos electrógenos, Cipolletti, Río Negro"
       />
       <Header />

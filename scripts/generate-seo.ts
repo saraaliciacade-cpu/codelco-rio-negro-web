@@ -90,6 +90,17 @@ const homeImages: SitemapImage[] = [
 
 const staticEntries: FullEntry[] = [
   { path: '/', changefreq: 'weekly', priority: '1.0', images: homeImages },
+  {
+    path: '/en',
+    changefreq: 'monthly',
+    priority: '0.8',
+    images: [
+      { loc: abs('/images/fabrica/fabrica-32.jpg'), title: 'Codelco residential modules', caption: 'Prefabricated residential and industrial modules manufactured in Cipolletti, Argentina.' },
+      { loc: abs('/metalurgica-05.jpg'), title: 'Codelco steel fabrication', caption: 'Industrial tanks, equipment and steel structures for oil and gas operations.' },
+      { loc: abs('/rental-01.jpg'), title: 'Codelco vehicle rental fleet', caption: 'Toyota Hilux and Volkswagen Amarok rental fleet for Vaca Muerta and Patagonia.' },
+      { loc: abs('/images/novedad/grupo-electrogeno.jpg'), title: 'Codelco industrial generator sets', caption: 'Industrial generator set rental with installation and preventive maintenance.' },
+    ],
+  },
   { path: '/fabrica', changefreq: 'monthly', priority: '0.9', images: fabricaImages },
   { path: '/metalurgica', changefreq: 'monthly', priority: '0.9', images: metalurgicaImages },
   { path: '/rental', changefreq: 'monthly', priority: '0.9', images: rentalImages },

@@ -9,6 +9,8 @@ interface SEOProps {
   keywords?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
+  language?: 'es' | 'en';
+  alternatePath?: string;
 }
 
 const SITE_URL = 'https://codelco.com.ar';
@@ -24,6 +26,8 @@ const SEO = ({
   keywords,
   jsonLd,
   noindex = false,
+  language = 'es',
+  alternatePath,
 }: SEOProps) => {
   const url = `${SITE_URL}${path}`;
   const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
@@ -35,6 +39,15 @@ const SEO = ({
       {noindex && <meta name="robots" content="noindex, follow" />}
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={url} />
+      {alternatePath && (
+        <link
+          rel="alternate"
+          hrefLang={language === 'es' ? 'en' : 'es'}
+          href={`${SITE_URL}${alternatePath}`}
+        />
+      )}
+      {alternatePath && <link rel="alternate" hrefLang={language} href={url} />}
+      {alternatePath && <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/`} />}
 
 
       <meta property="og:title" content={title} />
@@ -42,7 +55,7 @@ const SEO = ({
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={image} />
-      <meta property="og:locale" content="es_AR" />
+      <meta property="og:locale" content={language === 'en' ? 'en_US' : 'es_AR'} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
