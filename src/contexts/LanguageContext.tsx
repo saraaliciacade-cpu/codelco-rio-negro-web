@@ -364,7 +364,8 @@ const translations = {
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [language, setLanguageState] = useState<Language>(() => {
     if (typeof window === 'undefined') return 'es';
-    if (window.location.pathname === '/en' || window.location.pathname.startsWith('/en/')) return 'en';
+    const pathname = window.location?.pathname ?? '/';
+    if (pathname === '/en' || pathname.startsWith('/en/')) return 'en';
     const stored = window.localStorage.getItem('codelco.language');
     return stored === 'en' || stored === 'es' ? stored : 'es';
   });
