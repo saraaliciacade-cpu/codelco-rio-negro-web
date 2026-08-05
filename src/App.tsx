@@ -19,7 +19,6 @@ const GruposElectrogenosPage = lazy(() => import("./pages/GruposElectrogenosPage
 const NovedadesPage = lazy(() => import("./pages/NovedadesPage"));
 const NewsDetailPage = lazy(() => import("./pages/NewsDetailPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const EnglishPage = lazy(() => import("./pages/EnglishPage"));
 
 const queryClient = new QueryClient();
 
@@ -83,7 +82,6 @@ export const AppRoutes = () => (
     </div>}>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/en" element={<EnglishPage />} />
         <Route path="/webmail" element={<Webmail />} />
         <Route path="/clientes" element={<ClientsPage />} />
         <Route path="/fabrica" element={<FabricaPage />} />

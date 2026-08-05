@@ -9,7 +9,6 @@ const Header = () => {
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { language, setLanguage, t } = useLanguage();
-  const englishHome = language === 'en' ? '/en' : '';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,16 +32,16 @@ const Header = () => {
 
 
   const servicesSubmenu = [
-    { name: t('nav.sub.fabrica'), href: language === 'en' ? '/en#factory' : '/fabrica', Icon: Factory },
-    { name: t('nav.sub.metalurgica'), href: language === 'en' ? '/en#metallurgy' : '/metalurgica', Icon: Wrench },
-    { name: t('nav.sub.rental'), href: language === 'en' ? '/en#rental' : '/rental', Icon: Truck },
-    { name: t('nav.sub.generators'), href: language === 'en' ? '/en#generators' : '/grupos-electrogenos', Icon: Zap },
+    { name: t('nav.sub.fabrica'), href: '/fabrica', Icon: Factory },
+    { name: t('nav.sub.metalurgica'), href: '/metalurgica', Icon: Wrench },
+    { name: t('nav.sub.rental'), href: '/rental', Icon: Truck },
+    { name: t('nav.sub.generators'), href: '/grupos-electrogenos', Icon: Zap },
   ];
 
   const menuItems = [
-    { name: t('nav.services'), href: language === 'en' ? '/en#services' : '/#servicios', submenu: servicesSubmenu },
-    { name: t('nav.whyUs'), href: language === 'en' ? '/en#why-us' : '/#por-que-elegirnos' },
-    { name: t('nav.clients'), href: language === 'en' ? '/en#clients' : '/#clientes' },
+    { name: t('nav.services'), href: '/#servicios', submenu: servicesSubmenu },
+    { name: t('nav.whyUs'), href: '/#por-que-elegirnos' },
+    { name: t('nav.clients'), href: '/#clientes' },
     { name: t('nav.news'), href: '/novedades' },
   ];
 
@@ -56,7 +55,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo + Language Selector */}
           <div className="flex items-center space-x-4 sm:space-x-6">
-            <Link to={englishHome || '/'} className="flex items-center">
+            <Link to={'/'} className="flex items-center">
               <img src="/lovable-uploads/4e9dfae6-c0eb-4f51-b236-7cf5da74d7a9.png" alt="Codelco S.A." className="h-8 w-auto brightness-0 invert" />
             </Link>
 
@@ -148,7 +147,7 @@ const Header = () => {
               <User className="h-4 w-4" />
             </a>
             <Link
-              to={language === 'en' ? '/en#contact' : '/#contacto'}
+              to={'/#contacto'}
               className="ml-2 inline-flex items-center justify-center rounded-sm bg-[#e04d1c] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#c94418] transition-colors"
               style={{ fontFamily: 'Nunito Sans, sans-serif' }}
             >
@@ -255,7 +254,7 @@ const Header = () => {
 
           {/* Quote button right after Novedades */}
           <Link
-            to={language === 'en' ? '/en#contact' : '/#contacto'}
+            to={'/#contacto'}
             onClick={() => setIsMenuOpen(false)}
             className={`inline-flex w-full items-center justify-center rounded-sm bg-[#e04d1c] px-5 py-3 text-sm font-semibold text-white hover:bg-[#c94418] transition-all duration-500 mb-6 ${
               isMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
