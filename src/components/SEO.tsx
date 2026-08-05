@@ -41,9 +41,9 @@ const SEO = ({
       <link rel="canonical" href={url} />
       {alternatePath && (
         <>
-          <link rel="alternate" hrefLang={language === 'es' ? 'en' : 'es'} href={`${SITE_URL}${alternatePath}`} />
-          <link rel="alternate" hrefLang={language === 'es' ? 'es' : 'en'} href={url} />
-          <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/`} />
+          <link key={`alternate-${language === 'es' ? 'en' : 'es'}`} rel="alternate" hrefLang={language === 'es' ? 'en' : 'es'} href={`${SITE_URL}${alternatePath}`} />
+          <link key={`alternate-${language}`} rel="alternate" hrefLang={language} href={url} />
+          <link key="alternate-default" rel="alternate" hrefLang="x-default" href={`${SITE_URL}/`} />
         </>
       )}
 
