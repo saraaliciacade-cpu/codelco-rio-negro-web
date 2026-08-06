@@ -107,6 +107,9 @@ const translations = {
     
     // Clients
     'clients.title': 'NUESTROS CLIENTES',
+    'clients.hero.eyebrow': 'PRUEBA SOCIAL',
+    'clients.hero.title': '+30 empresas del sector petrolero confían en nosotros',
+    'clients.hero.subtitle': 'Operadoras, contratistas y empresas de servicios trabajan con Codelco en Vaca Muerta y toda la Patagonia.',
     
     // Contact
     'contact.title': 'CONTACTO',
