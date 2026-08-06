@@ -22,16 +22,43 @@ function installBrowserPolyfills() {
   const g = globalThis;
   if (typeof g.window === 'undefined') g.window = g;
   if (typeof g.document === 'undefined') {
+    const makeNode = () => ({
+      style: {},
+      sheet: { insertRule() {}, cssRules: [] },
+      classList: { add() {}, remove() {}, toggle() {}, contains: () => false },
+      dataset: {},
+      setAttribute() {},
+      getAttribute: () => null,
+      removeAttribute() {},
+      appendChild() {},
+      removeChild() {},
+      insertBefore() {},
+      addEventListener() {},
+      removeEventListener() {},
+      childNodes: [],
+      firstChild: null,
+      parentNode: null,
+      querySelector: () => null,
+      querySelectorAll: () => [],
+      getElementsByTagName: () => [],
+    });
     g.document = {
-      createElement: () => ({ style: {}, setAttribute() {}, appendChild() {} }),
-      head: { appendChild() {} },
-      body: { appendChild() {} },
+      createElement: makeNode,
+      createElementNS: makeNode,
+      createTextNode: (text) => ({ nodeValue: String(text ?? ''), textContent: String(text ?? '') }),
+      createDocumentFragment: makeNode,
+      createComment: () => ({ nodeValue: '' }),
+      head: makeNode(),
+      body: makeNode(),
+      styleSheets: [],
+      getElementsByTagName: () => [makeNode()],
+      getElementsByClassName: () => [],
       addEventListener() {},
       removeEventListener() {},
       getElementById: () => null,
       querySelector: () => null,
       querySelectorAll: () => [],
-      documentElement: { style: {}, classList: { add() {}, remove() {}, toggle() {} } },
+      documentElement: makeNode(),
     };
   }
   if (typeof g.navigator === 'undefined') g.navigator = { userAgent: 'node' };
@@ -66,6 +93,12 @@ function installBrowserPolyfills() {
     g.ResizeObserver = class { observe() {} unobserve() {} disconnect() {} };
   }
   if (typeof g.scrollTo === 'undefined') g.scrollTo = () => {};
+  if (typeof g.getComputedStyle !== 'function') {
+    g.getComputedStyle = () => ({ getPropertyValue: () => '', setProperty() {} });
+  }
+  if (typeof g.HTMLElement === 'undefined') g.HTMLElement = class {};
+  if (typeof g.Element === 'undefined') g.Element = class {};
+  if (typeof g.Node === 'undefined') g.Node = class {};
 }
 
 installBrowserPolyfills();
@@ -109,8 +142,18 @@ async function runViteBuilds() {
       outDir: 'dist/server',
       emptyOutDir: true,
       ssr: 'src/entry-server.tsx',
-      rollupOptions: { input: resolve(root, 'src/entry-server.tsx') },
+      minify: false,
+      rollupOptions: {
+        input: resolve(root, 'src/entry-server.tsx'),
+        output: {
+          // The client config splits vendor chunks (icons/animations/…). That
+          // splitting breaks module init order in the SSR bundle, so keep the
+          // server build as a single inlined module.
+          manualChunks: () => 'entry-server',
+        },
+      },
     },
+
     ssr: { noExternal: true },
   });
 }
