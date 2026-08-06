@@ -2,26 +2,28 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import heroVideo from '@/assets/hero-codelco.mp4.asset.json';
 import heroPoster from '@/assets/hero-codelco-poster.jpg.asset.json';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
 
-const stats = [
-  { label: '// ANTIGÜEDAD', value: '+14', desc: 'años en la industria. Exactamente en el año 2012' },
-  { label: '// CAPACIDAD', value: '3.500', desc: 'm² de planta propia' },
-  { label: '// FLOTA', value: '+60', desc: 'unidades Hilux y Amarok' },
-  { label: '// CARTERA', value: '+30', desc: 'empresas activas del sector' },
-];
-
-const scrollToSection = (sectionId: string) => {
-  const el = document.getElementById(sectionId);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-};
-
 const Hero = () => {
+  const { t } = useLanguage();
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false
   );
+
+  const stats = [
+    { label: t('stats.experience'), value: '+14', desc: t('stats.experience.desc') },
+    { label: t('stats.capacity'), value: '3.500', desc: t('stats.capacity.desc') },
+    { label: t('stats.fleet'), value: '+60', desc: t('stats.fleet.desc') },
+    { label: t('stats.portfolio'), value: '+30', desc: t('stats.portfolio.desc') },
+  ];
+
+  const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 767px)');
@@ -119,23 +121,18 @@ const Hero = () => {
                 className="eyebrow text-[11px] sm:text-xs font-bold"
                 style={{ color: BRAND_ORANGE }}
               >
-                Cipolletti, Río Negro · Desde 2012
+                {t('hero.eyebrow')}
               </span>
             </div>
 
             {/* H1 */}
             <h1 className="heading text-white leading-[1.03] text-[30px] sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl">
-              Módulos Habitacionales, Metalúrgica y{' '}
-              <span style={{ color: BRAND_ORANGE }}>Rental</span>{' '}
-              para la Industria Petrolera
+              {t('hero.title')}
             </h1>
 
             {/* Subtitle */}
             <p className="mt-3 sm:mt-4 text-sm sm:text-lg md:text-xl text-white/85 max-w-2xl leading-relaxed">
-              Fabricamos en planta propia y alquilamos la flota que tu obra
-              necesita. <span className="font-bold text-white">+14 años</span>{' '}
-              resolviendo infraestructura para Vaca Muerta sin que la operación
-              se detenga.
+              {t('hero.subtitle')}
             </p>
 
             {/* CTAs */}
@@ -145,14 +142,14 @@ const Hero = () => {
                 className="h-11 sm:h-12 flex-1 px-4 sm:px-7 text-xs sm:text-base font-semibold rounded-none text-white border-0 hover:opacity-90 transition"
                 style={{ backgroundColor: BRAND_ORANGE }}
               >
-                Ver nuestros equipos →
+                {t('hero.button.services')}
               </Button>
               <Button
                 onClick={() => scrollToSection('contacto')}
                 variant="outline"
                 className="h-11 sm:h-12 flex-1 px-4 sm:px-7 text-xs sm:text-base font-semibold rounded-none bg-transparent text-white border border-white/70 hover:bg-white hover:text-black transition"
               >
-                Solicitar presupuesto
+                {t('hero.button.contact')}
               </Button>
             </div>
           </div>

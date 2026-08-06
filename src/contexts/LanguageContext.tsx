@@ -34,10 +34,21 @@ const translations = {
 
     
     // Hero
-    'hero.title': 'UNA EMPRESA REGIONAL',
-    'hero.description': 'Nuestro objetivo es proveerles a nuestros clientes un servicio integral, desde el asesoramiento inicial hasta la entrega final. Para ello, contamos con una planta de 3500m2, totalmente dedicada y equipada a la realización de nuestros productos y todo el personal necesario específicamente para cada sector.',
-    'hero.button.services': 'Nuestros Servicios',
-    'hero.button.contact': 'Contactanos',
+    'hero.title': 'Módulos Habitacionales, Metalúrgica y Rental para la Industria Petrolera',
+    'hero.subtitle': 'Fabricamos en planta propia y alquilamos la flota que tu obra necesita. +14 años resolviendo infraestructura para Vaca Muerta sin que la operación se detenga.',
+    'hero.eyebrow': 'Cipolletti, Río Negro · Desde 2012',
+    'hero.button.services': 'Ver nuestros equipos →',
+    'hero.button.contact': 'Solicitar presupuesto',
+    
+    // Stats
+    'stats.experience': '// ANTIGÜEDAD',
+    'stats.experience.desc': 'años en la industria. Exactamente en el año 2012',
+    'stats.capacity': '// CAPACIDAD',
+    'stats.capacity.desc': 'm² de planta propia',
+    'stats.fleet': '// FLOTA',
+    'stats.fleet.desc': 'unidades Hilux y Amarok',
+    'stats.portfolio': '// CARTERA',
+    'stats.portfolio.desc': 'empresas activas del sector',
     
     // Company
     'company.title': 'NUESTRA EMPRESA',
@@ -208,10 +219,21 @@ const translations = {
 
     
     // Hero
-    'hero.title': 'A REGIONAL COMPANY',
-    'hero.description': 'Our objective is to provide our clients with comprehensive service, from initial consultation to final delivery. For this, we have a 3500m2 plant, fully dedicated and equipped for the production of our products and all the necessary personnel specifically for each sector.',
-    'hero.button.services': 'Our Services',
-    'hero.button.contact': 'Contact Us',
+    'hero.title': 'Residential Modules, Metallurgy and Rental for the Oil Industry',
+    'hero.subtitle': 'We manufacture in our own plant and rent the fleet your work needs. +14 years solving infrastructure for Vaca Muerta without the operation stopping.',
+    'hero.eyebrow': 'Cipolletti, Río Negro · Since 2012',
+    'hero.button.services': 'See our equipment →',
+    'hero.button.contact': 'Request a quote',
+    
+    // Stats
+    'stats.experience': '// EXPERIENCE',
+    'stats.experience.desc': 'years in the industry. Exactly in 2012',
+    'stats.capacity': '// CAPACITY',
+    'stats.capacity.desc': 'm² of own plant',
+    'stats.fleet': '// FLEET',
+    'stats.fleet.desc': 'Hilux and Amarok units',
+    'stats.portfolio': '// PORTFOLIO',
+    'stats.portfolio.desc': 'active companies in the sector',
     
     // Company
     'company.title': 'OUR COMPANY',
