@@ -39,8 +39,10 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Services from '@/components/Services';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ClientsPage = () => {
+  const { t } = useLanguage();
   const allClients = [
     { name: "Compressco LP", logo: comprescoLogo },
     { name: "Transportes Crexell S.A.", logo: crexellLogo },
