@@ -109,8 +109,19 @@ async function runViteBuilds() {
       outDir: 'dist/server',
       emptyOutDir: true,
       ssr: 'src/entry-server.tsx',
-      rollupOptions: { input: resolve(root, 'src/entry-server.tsx') },
+      minify: false,
+      rollupOptions: {
+        input: resolve(root, 'src/entry-server.tsx'),
+        output: {
+          // The client config splits vendor chunks (icons/animations/…). That
+          // splitting breaks module init order in the SSR bundle, so keep the
+          // server build as a single inlined module.
+          manualChunks: undefined,
+          inlineDynamicImports: true,
+        },
+      },
     },
+
     ssr: { noExternal: true },
   });
 }
