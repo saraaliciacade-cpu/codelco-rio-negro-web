@@ -2,26 +2,23 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import heroVideo from '@/assets/hero-codelco.mp4.asset.json';
 import heroPoster from '@/assets/hero-codelco-poster.jpg.asset.json';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
 
-const stats = [
-  { label: '// ANTIGÜEDAD', value: '+14', desc: 'años en la industria. Exactamente en el año 2012' },
-  { label: '// CAPACIDAD', value: '3.500', desc: 'm² de planta propia' },
-  { label: '// FLOTA', value: '+60', desc: 'unidades Hilux y Amarok' },
-  { label: '// CARTERA', value: '+30', desc: 'empresas activas del sector' },
-];
-
-const scrollToSection = (sectionId: string) => {
-  const el = document.getElementById(sectionId);
-  if (el) el.scrollIntoView({ behavior: 'smooth' });
-};
-
 const Hero = () => {
+  const { t } = useLanguage();
   const [videoSrc, setVideoSrc] = useState<string | null>(null);
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' ? window.matchMedia('(max-width: 767px)').matches : false
   );
+
+  const stats = [
+    { label: t('stats.experience'), value: '+14', desc: t('stats.experience.desc') },
+    { label: t('stats.capacity'), value: '3.500', desc: t('stats.capacity.desc') },
+    { label: t('stats.fleet'), value: '+60', desc: t('stats.fleet.desc') },
+    { label: t('stats.portfolio'), value: '+30', desc: t('stats.portfolio.desc') },
+  ];
 
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 767px)');
