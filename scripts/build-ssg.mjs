@@ -47,6 +47,8 @@ function installBrowserPolyfills() {
       head: makeNode(),
       body: makeNode(),
       styleSheets: [],
+      getElementsByTagName: () => [makeNode()],
+      getElementsByClassName: () => [],
       addEventListener() {},
       removeEventListener() {},
       getElementById: () => null,
