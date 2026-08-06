@@ -52,7 +52,7 @@ function installBrowserPolyfills() {
       getElementById: () => null,
       querySelector: () => null,
       querySelectorAll: () => [],
-      documentElement: { style: {}, classList: { add() {}, remove() {}, toggle() {} } },
+      documentElement: makeNode(),
     };
   }
   if (typeof g.navigator === 'undefined') g.navigator = { userAgent: 'node' };
