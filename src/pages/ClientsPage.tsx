@@ -39,8 +39,10 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Services from '@/components/Services';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ClientsPage = () => {
+  const { t } = useLanguage();
   const allClients = [
     { name: "Compressco LP", logo: comprescoLogo },
     { name: "Transportes Crexell S.A.", logo: crexellLogo },
@@ -98,13 +100,13 @@ const ClientsPage = () => {
       <section className="pt-28 md:pt-32 pb-10 md:pb-14 bg-white">
         <div className="max-w-5xl mx-auto px-4 text-center">
           <p className="eyebrow text-xs md:text-sm text-[#E84E1B] mb-4 font-bold">
-            PRUEBA SOCIAL
+            {t('clients.hero.eyebrow')}
           </p>
           <h1 className="heading text-3xl md:text-5xl text-[#1A1A1A] leading-tight mb-4">
-            <span className="text-[#e65b2a]">+30 empresas</span> del sector petrolero <span className="text-[#e65b2a]">confían en nosotros</span>
+            {t('clients.hero.title')}
           </h1>
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
-            Operadoras, contratistas y empresas de servicios trabajan con Codelco en Vaca Muerta y toda la Patagonia.
+            {t('clients.hero.subtitle')}
           </p>
         </div>
       </section>
