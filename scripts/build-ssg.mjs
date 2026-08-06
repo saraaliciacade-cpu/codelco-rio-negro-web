@@ -116,8 +116,7 @@ async function runViteBuilds() {
           // The client config splits vendor chunks (icons/animations/…). That
           // splitting breaks module init order in the SSR bundle, so keep the
           // server build as a single inlined module.
-          manualChunks: undefined,
-          inlineDynamicImports: true,
+          manualChunks: () => 'entry-server',
         },
       },
     },
