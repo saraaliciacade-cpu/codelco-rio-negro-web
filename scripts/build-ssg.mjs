@@ -87,6 +87,12 @@ function installBrowserPolyfills() {
     g.ResizeObserver = class { observe() {} unobserve() {} disconnect() {} };
   }
   if (typeof g.scrollTo === 'undefined') g.scrollTo = () => {};
+  if (typeof g.getComputedStyle !== 'function') {
+    g.getComputedStyle = () => ({ getPropertyValue: () => '', setProperty() {} });
+  }
+  if (typeof g.HTMLElement === 'undefined') g.HTMLElement = class {};
+  if (typeof g.Element === 'undefined') g.Element = class {};
+  if (typeof g.Node === 'undefined') g.Node = class {};
 }
 
 installBrowserPolyfills();
