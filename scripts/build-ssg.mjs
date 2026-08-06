@@ -37,6 +37,10 @@ function installBrowserPolyfills() {
       removeEventListener() {},
       childNodes: [],
       firstChild: null,
+      parentNode: null,
+      querySelector: () => null,
+      querySelectorAll: () => [],
+      getElementsByTagName: () => [],
     });
     g.document = {
       createElement: makeNode,
