@@ -20,6 +20,11 @@ const Hero = () => {
     { label: t('stats.portfolio'), value: '+30', desc: t('stats.portfolio.desc') },
   ];
 
+  const scrollToSection = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   useEffect(() => {
     const mq = window.matchMedia('(max-width: 767px)');
     setIsMobile(mq.matches);
