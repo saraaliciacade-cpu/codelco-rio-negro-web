@@ -34,10 +34,21 @@ const translations = {
 
     
     // Hero
-    'hero.title': 'UNA EMPRESA REGIONAL',
-    'hero.description': 'Nuestro objetivo es proveerles a nuestros clientes un servicio integral, desde el asesoramiento inicial hasta la entrega final. Para ello, contamos con una planta de 3500m2, totalmente dedicada y equipada a la realización de nuestros productos y todo el personal necesario específicamente para cada sector.',
-    'hero.button.services': 'Nuestros Servicios',
-    'hero.button.contact': 'Contactanos',
+    'hero.title': 'Módulos Habitacionales, Metalúrgica y Rental para la Industria Petrolera',
+    'hero.subtitle': 'Fabricamos en planta propia y alquilamos la flota que tu obra necesita. +14 años resolviendo infraestructura para Vaca Muerta sin que la operación se detenga.',
+    'hero.eyebrow': 'Cipolletti, Río Negro · Desde 2012',
+    'hero.button.services': 'Ver nuestros equipos →',
+    'hero.button.contact': 'Solicitar presupuesto',
+    
+    // Stats
+    'stats.experience': '// ANTIGÜEDAD',
+    'stats.experience.desc': 'años en la industria. Exactamente en el año 2012',
+    'stats.capacity': '// CAPACIDAD',
+    'stats.capacity.desc': 'm² de planta propia',
+    'stats.fleet': '// FLOTA',
+    'stats.fleet.desc': 'unidades Hilux y Amarok',
+    'stats.portfolio': '// CARTERA',
+    'stats.portfolio.desc': 'empresas activas del sector',
     
     // Company
     'company.title': 'NUESTRA EMPRESA',
