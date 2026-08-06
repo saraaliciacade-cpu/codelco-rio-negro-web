@@ -233,7 +233,13 @@ async function main() {
   console.log('[ssg] done.');
 }
 
-main().catch((err) => {
-  console.error('[ssg] build failed:', err);
-  process.exit(1);
-});
+main()
+  .then(() => {
+    // Exit explicitly: SSR rendering leaves timers/handles open in the event loop.
+    process.exit(0);
+  })
+  .catch((err) => {
+    console.error('[ssg] build failed:', err);
+    process.exit(1);
+  });
+
