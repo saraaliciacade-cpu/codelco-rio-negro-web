@@ -22,10 +22,31 @@ function installBrowserPolyfills() {
   const g = globalThis;
   if (typeof g.window === 'undefined') g.window = g;
   if (typeof g.document === 'undefined') {
+    const makeNode = () => ({
+      style: {},
+      sheet: { insertRule() {}, cssRules: [] },
+      classList: { add() {}, remove() {}, toggle() {}, contains: () => false },
+      dataset: {},
+      setAttribute() {},
+      getAttribute: () => null,
+      removeAttribute() {},
+      appendChild() {},
+      removeChild() {},
+      insertBefore() {},
+      addEventListener() {},
+      removeEventListener() {},
+      childNodes: [],
+      firstChild: null,
+    });
     g.document = {
-      createElement: () => ({ style: {}, setAttribute() {}, appendChild() {} }),
-      head: { appendChild() {} },
-      body: { appendChild() {} },
+      createElement: makeNode,
+      createElementNS: makeNode,
+      createTextNode: (text) => ({ nodeValue: String(text ?? ''), textContent: String(text ?? '') }),
+      createDocumentFragment: makeNode,
+      createComment: () => ({ nodeValue: '' }),
+      head: makeNode(),
+      body: makeNode(),
+      styleSheets: [],
       addEventListener() {},
       removeEventListener() {},
       getElementById: () => null,
