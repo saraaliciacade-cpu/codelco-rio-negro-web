@@ -295,6 +295,9 @@ const translations = {
     
     // Clients
     'clients.title': 'OUR CLIENTS',
+    'clients.hero.eyebrow': 'SOCIAL PROOF',
+    'clients.hero.title': '+30 oil sector companies trust us',
+    'clients.hero.subtitle': 'Operators, contractors and service companies work with Codelco in Vaca Muerta and throughout Patagonia.',
     
     // Contact
     'contact.title': 'CONTACT',
