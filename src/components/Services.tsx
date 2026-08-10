@@ -2,83 +2,169 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Home, Database, Truck, Zap } from "lucide-react";
 import HeroImageCarousel from "@/components/HeroImageCarousel";
 import torresIluminacionAsset from "@/assets/rental-torres-iluminacion-codelco.png.asset.json";
+import { useLanguage } from "@/contexts/LanguageContext";
 
+const copy = {
+  es: {
+    eyebrow: "NUESTRAS DIVISIONES",
+    heading: "Fabricación, metalúrgica y rental bajo un mismo techo",
+    subtitle: "Tres áreas que cubren infraestructura completa para una operación petrolera, industrial o de construcción.",
+    divisions: [
+      {
+        badge: "FÁBRICA",
+        icon: Home,
+        images: [
+          { src: "/images/fabrica/fabrica-32.jpg", alt: "Izaje de módulo prefabricado con grúa en planta de Cipolletti" },
+          { src: "/images/fabrica/fabrica-41.jpg", alt: "Living comedor integrado con grandes ventanales" },
+          { src: "/fabrica-01.jpg", alt: "Módulo habitacional terminado" },
+        ],
+        title: "Módulos Habitacionales y Viviendas",
+        kicker: "Construcción en seco · Termo-acústica",
+        text: (
+          <>
+            Diseñamos y fabricamos <strong>trailers autoportantes, módulos Company Man, comedores, cocinas, laboratorios y viviendas en seco</strong>, con línea de producción integral desde ingeniería hasta entrega final.
+          </>
+        ),
+        cta: "Consultar disponibilidad y ver galería",
+        ctaLink: "/fabrica",
+      },
+      {
+        badge: "METALÚRGICA",
+        icon: Database,
+        images: [
+          { src: "/metalurgica-05.jpg", alt: "Equipo metalúrgico fabricado en planta Codelco" },
+          { src: "/metalurgica-09.jpg", alt: "Contenedor industrial reforzado" },
+          { src: "/metalurgica-04.jpg", alt: "Estructura metálica especial" },
+        ],
+        title: "Equipos, Tanques y Estructuras",
+        kicker: "Corte y plegado de chapa · Trazabilidad total",
+        text: (
+          <>
+            Fabricamos <strong>piletas de acumulación, tanques API, choke manifolds, líneas de alta presión y estructuras para decanter</strong>, con calidad y precisión certificada en cada proceso.
+          </>
+        ),
+        cta: "Solicitar presupuesto y ver galería",
+        ctaLink: "/metalurgica",
+      },
+      {
+        badge: "RENTAL",
+        icon: Truck,
+        images: [
+          { src: "/rental-01.jpg", alt: "Flota Toyota Hilux y VW Amarok en base operativa" },
+          { src: "/rental-03.jpg", alt: "Trailer rodante de gran porte" },
+          { src: torresIluminacionAsset.url, alt: "Torres de iluminación LED Codelco en yacimiento" },
+        ],
+        title: "Vehículos, Trailers y Equipos de Torres LED",
+        kicker: "+60 unidades · Mantenimiento incluido",
+        text: (
+          <>
+            Flota liviana <strong>Toyota Hilux y VW Amarok</strong>, trailers rodantes de 6, 9 y 12 metros, piletas y contenedores. Incluye torres de iluminación LED con stock inmediato.
+          </>
+        ),
+        cta: "Ver equipos disponibles y galería",
+        ctaLink: "/rental",
+      },
+      {
+        badge: "GRUPOS ELECTRÓGENOS",
+        icon: Zap,
+        images: [
+          { src: "/images/novedad/grupo-electrogeno.jpg", alt: "Entrega de grupo electrógeno Codelco en obra", objectPosition: "center 40%" },
+        ],
+        title: "Alquiler y Mantenimiento de Grupos Electrógenos",
+        kicker: "55 a 180 kVA · Monitoreo técnico",
+        text: (
+          <>
+            Energía confiable y continua para operaciones críticas. Equipos de <strong>55 a 180 kVA</strong> con soporte técnico especializado y disponibilidad permanente.
+          </>
+        ),
+        cta: "Consultar equipos y ver galería",
+        ctaLink: "/grupos-electrogenos",
+      },
+    ],
+  },
+  en: {
+    eyebrow: "OUR DIVISIONS",
+    heading: "Manufacturing, metalworking and rental under one roof",
+    subtitle: "Three areas covering complete infrastructure for oil, industrial or construction operations.",
+    divisions: [
+      {
+        badge: "FACTORY",
+        icon: Home,
+        images: [
+          { src: "/images/fabrica/fabrica-32.jpg", alt: "Izaje de módulo prefabricado con grúa en planta de Cipolletti" },
+          { src: "/images/fabrica/fabrica-41.jpg", alt: "Living comedor integrado con grandes ventanales" },
+          { src: "/fabrica-01.jpg", alt: "Módulo habitacional terminado" },
+        ],
+        title: "Housing and Residential Modules",
+        kicker: "Dry construction · Thermo-acoustic",
+        text: (
+          <>
+            We design and manufacture <strong>self-supporting trailers, Company Man modules, dining halls, kitchens, laboratories and dry-built housing</strong>, with an integrated production line from engineering to final delivery.
+          </>
+        ),
+        cta: "Check availability and view gallery",
+        ctaLink: "/fabrica",
+      },
+      {
+        badge: "METALWORKING",
+        icon: Database,
+        images: [
+          { src: "/metalurgica-05.jpg", alt: "Equipo metalúrgico fabricado en planta Codelco" },
+          { src: "/metalurgica-09.jpg", alt: "Contenedor industrial reforzado" },
+          { src: "/metalurgica-04.jpg", alt: "Estructura metálica especial" },
+        ],
+        title: "Equipment, Tanks and Structures",
+        kicker: "Sheet cutting and bending · Full traceability",
+        text: (
+          <>
+            We manufacture <strong>accumulation basins, API tanks, choke manifolds, high-pressure lines and decanter structures</strong>, with certified quality and precision in every process.
+          </>
+        ),
+        cta: "Request a quote and view gallery",
+        ctaLink: "/metalurgica",
+      },
+      {
+        badge: "RENTAL",
+        icon: Truck,
+        images: [
+          { src: "/rental-01.jpg", alt: "Flota Toyota Hilux y VW Amarok en base operativa" },
+          { src: "/rental-03.jpg", alt: "Trailer rodante de gran porte" },
+          { src: torresIluminacionAsset.url, alt: "Torres de iluminación LED Codelco en yacimiento" },
+        ],
+        title: "Vehicles, Trailers and LED Light Tower Equipment",
+        kicker: "+60 units · Maintenance included",
+        text: (
+          <>
+            Light fleet of <strong>Toyota Hilux and VW Amarok</strong>, rolling trailers of 6, 9 and 12 meters, basins and containers. Includes LED light towers with immediate stock.
+          </>
+        ),
+        cta: "View available equipment and gallery",
+        ctaLink: "/rental",
+      },
+      {
+        badge: "GENERATOR SETS",
+        icon: Zap,
+        images: [
+          { src: "/images/novedad/grupo-electrogeno.jpg", alt: "Entrega de grupo electrógeno Codelco en obra", objectPosition: "center 40%" },
+        ],
+        title: "Generator Set Rental and Maintenance",
+        kicker: "55 to 180 kVA · Technical monitoring",
+        text: (
+          <>
+            Reliable, continuous power for critical operations. Equipment from <strong>55 to 180 kVA</strong> with specialized technical support and permanent availability.
+          </>
+        ),
+        cta: "Check equipment and view gallery",
+        ctaLink: "/grupos-electrogenos",
+      },
+    ],
+  },
+} as const;
 
 const Services = () => {
-  const divisions = [
-    {
-      badge: "FÁBRICA",
-      icon: Home,
-      images: [
-        { src: "/images/fabrica/fabrica-32.jpg", alt: "Izaje de módulo prefabricado con grúa en planta de Cipolletti" },
-        { src: "/images/fabrica/fabrica-41.jpg", alt: "Living comedor integrado con grandes ventanales" },
-        { src: "/fabrica-01.jpg", alt: "Módulo habitacional terminado" },
-      ],
-      title: "Módulos Habitacionales y Viviendas",
-      kicker: "Construcción en seco · Termo-acústica",
-      text: (
-        <>
-          Diseñamos y fabricamos <strong>trailers autoportantes, módulos Company Man, comedores, cocinas, laboratorios y viviendas en seco</strong>, con línea de producción integral desde ingeniería hasta entrega final.
-        </>
-      ),
-      cta: "Consultar disponibilidad y ver galería",
-      ctaLink: "/fabrica",
-    },
-    {
-      badge: "METALÚRGICA",
-      icon: Database,
-      images: [
-        { src: "/metalurgica-05.jpg", alt: "Equipo metalúrgico fabricado en planta Codelco" },
-        { src: "/metalurgica-09.jpg", alt: "Contenedor industrial reforzado" },
-        { src: "/metalurgica-04.jpg", alt: "Estructura metálica especial" },
-      ],
-      title: "Equipos, Tanques y Estructuras",
-      kicker: "Corte y plegado de chapa · Trazabilidad total",
-      text: (
-        <>
-          Fabricamos <strong>piletas de acumulación, tanques API, choke manifolds, líneas de alta presión y estructuras para decanter</strong>, con calidad y precisión certificada en cada proceso.
-        </>
-      ),
-      cta: "Solicitar presupuesto y ver galería",
-      ctaLink: "/metalurgica",
-    },
-    {
-      badge: "RENTAL",
-      icon: Truck,
-      images: [
-        { src: "/rental-01.jpg", alt: "Flota Toyota Hilux y VW Amarok en base operativa" },
-        { src: "/rental-03.jpg", alt: "Trailer rodante de gran porte" },
-        { src: torresIluminacionAsset.url, alt: "Torres de iluminación LED Codelco en yacimiento" },
-      ],
-      title: "Vehículos, Trailers y Equipos de Torres LED",
-      kicker: "+60 unidades · Mantenimiento incluido",
-      text: (
-        <>
-          Flota liviana <strong>Toyota Hilux y VW Amarok</strong>, trailers rodantes de 6, 9 y 12 metros, piletas y contenedores. Incluye torres de iluminación LED con stock inmediato.
-        </>
-      ),
-      cta: "Ver equipos disponibles y galería",
-      ctaLink: "/rental",
-    },
-    {
-      badge: "GRUPOS ELECTRÓGENOS",
-      icon: Zap,
-      images: [
-        { src: "/images/novedad/grupo-electrogeno.jpg", alt: "Entrega de grupo electrógeno Codelco en obra", objectPosition: "center 40%" },
-      ],
-      title: "Alquiler y Mantenimiento de Grupos Electrógenos",
-      kicker: "55 a 180 kVA · Monitoreo técnico",
-      text: (
-        <>
-          Energía confiable y continua para operaciones críticas. Equipos de <strong>55 a 180 kVA</strong> con soporte técnico especializado y disponibilidad permanente.
-        </>
-      ),
-      cta: "Consultar equipos y ver galería",
-      ctaLink: "/grupos-electrogenos",
-    },
-  ];
-
-
+  const { language } = useLanguage();
+  const c = copy[language];
+  const divisions = c.divisions;
 
   return (
     <section id="servicios" style={{ backgroundColor: "#F5F3EF" }} className="py-16 md:py-20 lg:py-24">
@@ -86,13 +172,13 @@ const Services = () => {
         {/* Header */}
         <div className="text-center mb-12 md:mb-16">
           <span className="eyebrow inline-block text-xs md:text-sm text-[#E84E1B] mb-3 font-bold">
-            NUESTRAS DIVISIONES
+            {c.eyebrow}
           </span>
           <h2 className="heading text-2xl md:text-3xl lg:text-4xl text-[#1A1A1A] mb-4 leading-tight">
-            Fabricación, metalúrgica y rental bajo un mismo techo
+            {c.heading}
           </h2>
           <p className="text-sm md:text-base text-gray-600 max-w-2xl mx-auto">
-            Tres áreas que cubren infraestructura completa para una operación petrolera, industrial o de construcción.
+            {c.subtitle}
           </p>
         </div>
 
@@ -167,4 +253,3 @@ const Services = () => {
 };
 
 export default Services;
-

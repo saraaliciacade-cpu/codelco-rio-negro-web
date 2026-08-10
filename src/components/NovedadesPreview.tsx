@@ -1,11 +1,33 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { newsData, latestNewsId } from '@/data/news';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_BLACK = '#1A1A1A';
 
+const copy = {
+  es: {
+    eyebrow: 'NOVEDADES DE CODELCO',
+    title: 'Lo que estamos construyendo',
+    subtitle: 'Equipos nuevos, entregas, flota y proyectos terminados. Así avanza la operación.',
+    latest: 'ÚLTIMA NOTICIA',
+    readMore: 'Leer más',
+    viewAll: 'Ver todas las novedades',
+  },
+  en: {
+    eyebrow: 'CODELCO NEWS',
+    title: 'What we are building',
+    subtitle: 'New equipment, deliveries, fleet and completed projects. This is how operations move forward.',
+    latest: 'LATEST NEWS',
+    readMore: 'Read more',
+    viewAll: 'View all news',
+  },
+} as const;
+
 const NovedadesPreview = () => {
+  const { language } = useLanguage();
+  const c = copy[language];
   const items = newsData.slice(0, 3);
 
   return (
@@ -15,14 +37,14 @@ const NovedadesPreview = () => {
           <div className="flex items-center gap-3 mb-4">
             <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
             <span className="eyebrow text-[11px] sm:text-xs font-bold" style={{ color: BRAND_ORANGE }}>
-              NOVEDADES DE CODELCO
+              {c.eyebrow}
             </span>
           </div>
           <h2 className="heading text-3xl sm:text-4xl lg:text-5xl leading-[1.1]" style={{ color: BRAND_BLACK }}>
-            Lo que estamos construyendo
+            {c.title}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-gray-600 leading-relaxed">
-            Equipos nuevos, entregas, flota y proyectos terminados. Así avanza la operación.
+            {c.subtitle}
           </p>
         </div>
 
@@ -47,7 +69,7 @@ const NovedadesPreview = () => {
                     className="eyebrow absolute top-3 right-3 text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
                     style={{ backgroundColor: '#DC2626' }}
                   >
-                    ÚLTIMA NOTICIA
+                    {c.latest}
                   </span>
                 )}
                 <span
@@ -68,7 +90,7 @@ const NovedadesPreview = () => {
                   className="inline-flex items-center text-sm font-semibold"
                   style={{ color: BRAND_ORANGE }}
                 >
-                  Leer más <ArrowRight className="ml-1 h-4 w-4" />
+                  {c.readMore} <ArrowRight className="ml-1 h-4 w-4" />
                 </span>
               </div>
             </Link>
@@ -81,7 +103,7 @@ const NovedadesPreview = () => {
             className="inline-flex items-center justify-center h-12 px-7 text-sm sm:text-base font-semibold rounded-sm text-white transition hover:opacity-90"
             style={{ backgroundColor: BRAND_BLACK }}
           >
-            Ver todas las novedades
+            {c.viewAll}
           </Link>
         </div>
       </div>

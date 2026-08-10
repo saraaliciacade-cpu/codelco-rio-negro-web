@@ -4,8 +4,67 @@ import { Badge } from '@/components/ui/badge';
 import { X, Play } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+
+const copy = {
+  es: {
+    nuevo: 'NUEVO',
+    closeImage: 'Cerrar imagen',
+    alts: {
+      996: 'Interior modular con entrepiso y cocina integrada - Módulo habitacional completo',
+      990: 'Dormitorio con vista panorámica - Interior de módulo de vivienda',
+      1003: 'Módulo habitacional al atardecer - Vista exterior con entrada e iluminación interior',
+      993: 'Módulo habitacional exterior con escalera de acceso - Listo para transporte',
+      995: 'Módulo transportable blanco terminado - Vista exterior con entrada',
+      1002: 'Dormitorio moderno con piso de madera - Interior de módulo premium',
+      1001: 'Living comedor integrado con grandes ventanales - Módulo habitable completo',
+      994: 'Izaje de módulo prefabricado con grúa - Montaje industrial',
+      992: 'Interior moderno con grandes ventanales y terraza - Módulo premium',
+      991: 'Render 3D de módulo habitacional con revestimiento exterior moderno',
+      2001: 'Trailers Autoportantes y Equipos sobre Viga - Módulo en construcción',
+      989: 'Unidad móvil para servicios con generador eléctrico incorporado',
+      2002: 'Trailers Autoportantes y Equipos sobre Viga - Vista frontal',
+      988: 'Estructura metálica en proceso de construcción - Sistema Steel Frame',
+      2003: 'Trailers Autoportantes y Equipos sobre Viga - Estructura autoportante',
+      2004: 'Trailers Autoportantes y Equipos sobre Viga - Interior en construcción',
+      2005: 'Trailers Autoportantes y Equipos sobre Viga - Vista lateral',
+      1000: 'Video de proceso de fabricación en planta industrial (Crexell)',
+      999: 'Interior terminado con piso de madera y luces LED (Crexell)',
+      998: 'Instalación eléctrica profesional con equipamiento Siemens (Crexell)',
+      997: 'Proceso de montaje de módulos en nuestra planta industrial (Crexell)',
+    },
+  },
+  en: {
+    nuevo: 'NEW',
+    closeImage: 'Close image',
+    alts: {
+      996: 'Modular interior with mezzanine and integrated kitchen - Complete housing module',
+      990: 'Bedroom with panoramic view - Interior of housing module',
+      1003: 'Housing module at sunset - Exterior view with entrance and interior lighting',
+      993: 'Housing module exterior with access staircase - Ready for transport',
+      995: 'Finished white transportable module - Exterior view with entrance',
+      1002: 'Modern bedroom with wood flooring - Interior of premium module',
+      1001: 'Integrated living-dining room with large windows - Complete living module',
+      994: 'Lifting a prefabricated module with a crane - Industrial assembly',
+      992: 'Modern interior with large windows and terrace - Premium module',
+      991: '3D render of housing module with modern exterior cladding',
+      2001: 'Self-supporting Trailers and Beam-mounted Equipment - Module under construction',
+      989: 'Mobile service unit with built-in electric generator',
+      2002: 'Self-supporting Trailers and Beam-mounted Equipment - Front view',
+      988: 'Metal structure under construction - Steel Frame system',
+      2003: 'Self-supporting Trailers and Beam-mounted Equipment - Self-supporting structure',
+      2004: 'Self-supporting Trailers and Beam-mounted Equipment - Interior under construction',
+      2005: 'Self-supporting Trailers and Beam-mounted Equipment - Side view',
+      1000: 'Video of manufacturing process at industrial plant (Crexell)',
+      999: 'Finished interior with wood flooring and LED lights (Crexell)',
+      998: 'Professional electrical installation with Siemens equipment (Crexell)',
+      997: 'Module assembly process at our industrial plant (Crexell)',
+    },
+  },
+} as const;
+
 const Gallery = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const c = copy[language];
   const [activeFilter, setActiveFilter] = useState('todas');
   const [selectedImage, setSelectedImage] = useState<any>(null);
   const [visibleCount, setVisibleCount] = useState(24);
@@ -30,103 +89,103 @@ const Gallery = () => {
     id: 996,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-30.jpg',
-    alt: 'Interior modular con entrepiso y cocina integrada - Módulo habitacional completo',
+    alt: c.alts[996],
     isNew: true
   }, {
     id: 990,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-36.jpg',
-    alt: 'Dormitorio con vista panorámica - Interior de módulo de vivienda',
+    alt: c.alts[990],
     isNew: true
   }, {
     id: 1003,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-39.jpg',
-    alt: 'Módulo habitacional al atardecer - Vista exterior con entrada e iluminación interior',
+    alt: c.alts[1003],
     isNew: true
   }, {
     id: 993,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-33.jpg',
-    alt: 'Módulo habitacional exterior con escalera de acceso - Listo para transporte',
+    alt: c.alts[993],
     isNew: true
   }, {
     id: 995,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-31.jpg',
-    alt: 'Módulo transportable blanco terminado - Vista exterior con entrada',
+    alt: c.alts[995],
     isNew: true
   }, {
     id: 1002,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-40.jpg',
-    alt: 'Dormitorio moderno con piso de madera - Interior de módulo premium',
+    alt: c.alts[1002],
     isNew: true
   }, {
     id: 1001,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-41.jpg',
-    alt: 'Living comedor integrado con grandes ventanales - Módulo habitable completo',
+    alt: c.alts[1001],
     isNew: true
   }, {
     id: 994,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-32.jpg',
-    alt: 'Izaje de módulo prefabricado con grúa - Montaje industrial',
+    alt: c.alts[994],
     isNew: true
   }, {
     id: 992,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-34.jpg',
-    alt: 'Interior moderno con grandes ventanales y terraza - Módulo premium',
+    alt: c.alts[992],
     isNew: true
   }, {
     id: 991,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-35.jpg',
-    alt: 'Render 3D de módulo habitacional con revestimiento exterior moderno',
+    alt: c.alts[991],
     isNew: true
   }, {
     id: 2001,
     category: 'fabrica',
     src: '/images/novedad/novedad-01.jpg',
-    alt: 'Trailers Autoportantes y Equipos sobre Viga - Módulo en construcción',
+    alt: c.alts[2001],
     isNew: true
   }, {
     id: 989,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-37.jpg',
-    alt: 'Unidad móvil para servicios con generador eléctrico incorporado',
+    alt: c.alts[989],
     isNew: true
   }, {
     id: 2002,
     category: 'fabrica',
     src: '/images/novedad/novedad-02.jpg',
-    alt: 'Trailers Autoportantes y Equipos sobre Viga - Vista frontal',
+    alt: c.alts[2002],
     isNew: true
   }, {
     id: 988,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-38.jpg',
-    alt: 'Estructura metálica en proceso de construcción - Sistema Steel Frame',
+    alt: c.alts[988],
     isNew: true
   }, {
     id: 2003,
     category: 'fabrica',
     src: '/images/novedad/novedad-03.jpg',
-    alt: 'Trailers Autoportantes y Equipos sobre Viga - Estructura autoportante',
+    alt: c.alts[2003],
     isNew: true
   }, {
     id: 2004,
     category: 'fabrica',
     src: '/images/novedad/novedad-04.jpg',
-    alt: 'Trailers Autoportantes y Equipos sobre Viga - Interior en construcción',
+    alt: c.alts[2004],
     isNew: true
   }, {
     id: 2005,
     category: 'fabrica',
     src: '/images/novedad/novedad-05.jpg',
-    alt: 'Trailers Autoportantes y Equipos sobre Viga - Vista lateral',
+    alt: c.alts[2005],
     isNew: true
   },
   // Fábrica - Crexell images (without NEW badge, between new and old)
@@ -134,23 +193,23 @@ const Gallery = () => {
     id: 1000,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-29.mp4',
-    alt: 'Video de proceso de fabricación en planta industrial (Crexell)',
+    alt: c.alts[1000],
     isVideo: true
   }, {
     id: 999,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-26.jpg',
-    alt: 'Interior terminado con piso de madera y luces LED (Crexell)'
+    alt: c.alts[999]
   }, {
     id: 998,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-27.jpg',
-    alt: 'Instalación eléctrica profesional con equipamiento Siemens (Crexell)'
+    alt: c.alts[998]
   }, {
     id: 997,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-28.jpg',
-    alt: 'Proceso de montaje de módulos en nuestra planta industrial (Crexell)'
+    alt: c.alts[997]
   },
   // Metalúrgica category images (18 images total)
   {
@@ -450,7 +509,7 @@ const Gallery = () => {
           {displayedImages.map(image => <button type="button" key={image.id} aria-label={image.alt} className="gallery-item group relative overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer text-left p-0" onClick={() => setSelectedImage(image)}>
               {(image as any).isNew && (
                 <Badge className="absolute top-2 right-2 z-10 bg-primary text-white font-semibold px-2 py-1 text-xs shadow-lg">
-                  NUEVO
+                  {c.nuevo}
                 </Badge>
               )}
               <div className="aspect-square overflow-hidden relative">
@@ -516,7 +575,7 @@ const Gallery = () => {
         {selectedImage && <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 animate-fade-in" onClick={() => setSelectedImage(null)}>
             <div className="relative max-w-4xl max-h-full bg-white rounded-lg overflow-hidden animate-scale-in transform transition-all duration-300" onClick={e => e.stopPropagation()}>
               <div className="absolute top-4 right-4 z-10">
-                <Button onClick={() => setSelectedImage(null)} aria-label="Cerrar imagen" className="bg-gray-500 hover:bg-gray-600 text-white p-2 transition-colors duration-200" size="sm">
+                <Button onClick={() => setSelectedImage(null)} aria-label={c.closeImage} className="bg-gray-500 hover:bg-gray-600 text-white p-2 transition-colors duration-200" size="sm">
                   <X className="w-4 h-4" aria-hidden="true" />
                 </Button>
               </div>

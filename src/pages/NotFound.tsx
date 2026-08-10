@@ -1,9 +1,23 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
+import { useLanguage } from "@/contexts/LanguageContext";
+
+const copy = {
+  es: {
+    notFound: 'Página no encontrada',
+    backHome: 'Volver al inicio',
+  },
+  en: {
+    notFound: 'Page not found',
+    backHome: 'Back to home',
+  },
+} as const;
 
 const NotFound = () => {
   const location = useLocation();
+  const { language } = useLanguage();
+  const c = copy[language];
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);
@@ -23,9 +37,9 @@ const NotFound = () => {
       <div className="flex min-h-screen items-center justify-center bg-background">
         <div className="text-center">
           <h1 className="mb-4 text-4xl font-bold text-foreground">404</h1>
-          <p className="mb-4 text-xl text-muted-foreground">Página no encontrada</p>
+          <p className="mb-4 text-xl text-muted-foreground">{c.notFound}</p>
           <a href="/" className="text-primary underline hover:opacity-80">
-            Volver al inicio
+            {c.backHome}
           </a>
         </div>
       </div>
