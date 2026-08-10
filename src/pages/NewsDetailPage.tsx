@@ -33,14 +33,25 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
           {block.text}
         </h2>
       );
+    case 'html':
+      return (
+        <div
+          key={i}
+          className="news-html text-base sm:text-lg text-gray-700 leading-relaxed mb-5"
+          dangerouslySetInnerHTML={{ __html: block.html }}
+        />
+      );
     case 'image':
       return (
         <figure key={i} className="my-8">
           <img
             src={block.src}
             alt={block.alt ?? ''}
+            width={block.width}
+            height={block.height}
             className="w-full h-auto rounded-lg"
-            loading="lazy"
+            loading={block.priority ? 'eager' : 'lazy'}
+            {...(block.priority ? { fetchpriority: 'high' as const } : {})}
           />
           {block.caption && (
             <figcaption className="mt-3 text-sm text-gray-500 italic">
@@ -48,6 +59,26 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
             </figcaption>
           )}
         </figure>
+      );
+    case 'imageGrid':
+      return (
+        <div key={i} className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {block.images.map((img, k) => (
+            <figure key={k} className="m-0">
+              <img
+                src={img.src}
+                alt={img.alt ?? ''}
+                width={img.width}
+                height={img.height}
+                className="w-full h-auto rounded-lg"
+                loading="lazy"
+              />
+              {img.caption && (
+                <figcaption className="mt-2 text-sm text-gray-500 italic">{img.caption}</figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
       );
     case 'video':
       return (
