@@ -8,40 +8,127 @@ import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 import HeroImageCarousel from '@/components/HeroImageCarousel';
 import torresIluminacionAsset from '@/assets/rental-torres-iluminacion-codelco.png.asset.json';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
 const BRAND_BLACK = '#1A1A1A';
 
-const rentalImages: DivisionGalleryImage[] = [
-  { src: torresIluminacionAsset.url, name: 'Torres de iluminación LED Codelco en yacimiento', isNew: true },
-  { src: '/rental-01.jpg', name: 'Flota Toyota Hilux en base operativa' },
-  { src: '/rental-02.jpg', name: 'Camionetas VW Amarok listas para servicio' },
-  { src: '/rental-03.jpg', name: 'Trailer rodante de gran porte' },
-  { src: '/rental-04.jpg', name: 'Torre de iluminación LED en yacimiento' },
-  { src: '/rental-05.jpg', name: 'Flota liviana en operación' },
-  { src: '/rental-06.jpg', name: 'Trailer rodante en obra' },
-  { src: '/rental-07.jpg', name: 'Equipos de iluminación autónoma' },
-  { src: '/rental-08.jpg', name: 'Camionetas y trailers en base Codelco' },
-];
-
-
-const specs = [
-  { text: '+60 unidades Hilux y Amarok', icon: Car },
-  { text: 'Trailers rodantes de 6, 9 y 12 metros', icon: Truck },
-  { text: 'Piletas y contenedores', icon: Package },
-  { text: 'Torres de iluminación LED (stock inmediato)', icon: Lightbulb },
-  { text: 'Abastecimiento autónomo de energía', icon: Battery },
-  { text: 'Mantenimiento y gestión incluidos', icon: Wrench },
-];
-
-const otherDivisions = [
-  { to: '/fabrica', badge: 'FÁBRICA', title: 'Módulos y viviendas industriales', img: '/fabrica-01.jpg' },
-  { to: '/metalurgica', badge: 'METALÚRGICA', title: 'Equipos, tanques y estructuras', img: '/metalurgica-01.jpg' },
-  { to: '/grupos-electrogenos', badge: 'GRUPOS ELECTRÓGENOS', title: 'Alquiler y mantenimiento', img: '/rental-03.jpg' },
-];
+const copy = {
+  es: {
+    breadcrumbHome: 'Inicio',
+    breadcrumbServices: 'Servicios',
+    breadcrumbCurrent: 'Rental',
+    eyebrowHero: 'RENTAL · +60 UNIDADES EN FLOTA',
+    h1AriaLabel: 'Vehículos, Trailers, Torres de Iluminación LED y Equipos en Alquiler para Vaca Muerta',
+    h1Line1: 'Vehículos, Trailers,',
+    h1Line2: 'Torres de Iluminación LED y Equipos',
+    h1Line3: 'en Alquiler para Vaca Muerta',
+    heroParagraph:
+      'Flota liviana Toyota Hilux y VW Amarok, trailers rodantes y torres de iluminación LED con disponibilidad inmediata. Mantenimiento y gestión permanente incluidos.',
+    shareTitle: 'Rental — Vehículos, Trailers y Torres de Iluminación',
+    eyebrowQue: 'QUÉ ALQUILAMOS',
+    quePlate: 'Flota lista para operar, con gestión y mantenimiento incluidos',
+    queParagraph:
+      'Más de 60 unidades en flota propia, mantenimiento programado y soporte permanente para que tu operación no se detenga. Disponibilidad real al instante.',
+    specs: [
+      { text: '+60 unidades Hilux y Amarok', icon: Car },
+      { text: 'Trailers rodantes de 6, 9 y 12 metros', icon: Truck },
+      { text: 'Piletas y contenedores', icon: Package },
+      { text: 'Torres de iluminación LED (stock inmediato)', icon: Lightbulb },
+      { text: 'Abastecimiento autónomo de energía', icon: Battery },
+      { text: 'Mantenimiento y gestión incluidos', icon: Wrench },
+    ],
+    eyebrowGaleria: 'GALERÍA',
+    galeriaTitle: 'Equipos y flota en operación',
+    ctaTitle: '¿Necesitás flota disponible para tu operación?',
+    ctaParagraph: 'Contanos cantidad de unidades y plazo. Te confirmamos disponibilidad real al instante.',
+    ctaButton1: 'Ver equipos disponibles',
+    ctaButton2: 'Escribir por WhatsApp',
+    eyebrowOtras: 'OTRAS DIVISIONES',
+    otrasTitle: 'Conocé el resto de nuestras áreas',
+    otherDivisions: [
+      { to: '/fabrica', badge: 'FÁBRICA', title: 'Módulos y viviendas industriales', img: '/fabrica-01.jpg' },
+      { to: '/metalurgica', badge: 'METALÚRGICA', title: 'Equipos, tanques y estructuras', img: '/metalurgica-01.jpg' },
+      { to: '/grupos-electrogenos', badge: 'GRUPOS ELECTRÓGENOS', title: 'Alquiler y mantenimiento', img: '/rental-03.jpg' },
+    ],
+    galleryImages: [
+      { src: torresIluminacionAsset.url, name: 'Torres de iluminación LED Codelco en yacimiento', isNew: true },
+      { src: '/rental-01.jpg', name: 'Flota Toyota Hilux en base operativa' },
+      { src: '/rental-02.jpg', name: 'Camionetas VW Amarok listas para servicio' },
+      { src: '/rental-03.jpg', name: 'Trailer rodante de gran porte' },
+      { src: '/rental-04.jpg', name: 'Torre de iluminación LED en yacimiento' },
+      { src: '/rental-05.jpg', name: 'Flota liviana en operación' },
+      { src: '/rental-06.jpg', name: 'Trailer rodante en obra' },
+      { src: '/rental-07.jpg', name: 'Equipos de iluminación autónoma' },
+      { src: '/rental-08.jpg', name: 'Camionetas y trailers en base Codelco' },
+    ],
+    heroCarouselAlts: [
+      'Flota Toyota Hilux y VW Amarok en base operativa',
+      'Trailer rodante de gran porte',
+      'Torres de iluminación LED Codelco en yacimiento',
+    ],
+  },
+  en: {
+    breadcrumbHome: 'Home',
+    breadcrumbServices: 'Services',
+    breadcrumbCurrent: 'Rental',
+    eyebrowHero: 'RENTAL · +60 UNITS IN FLEET',
+    h1AriaLabel: 'Vehicles, Trailers, LED Light Towers and Equipment for Rent in Vaca Muerta',
+    h1Line1: 'Vehicles, Trailers,',
+    h1Line2: 'LED Light Towers and Equipment',
+    h1Line3: 'for Rent in Vaca Muerta',
+    heroParagraph:
+      'Toyota Hilux and VW Amarok light fleet, rolling trailers and LED light towers with immediate availability. Maintenance and ongoing management included.',
+    shareTitle: 'Rental — Vehicles, Trailers and Light Towers',
+    eyebrowQue: 'WHAT WE RENT',
+    quePlate: 'Fleet ready to operate, with management and maintenance included',
+    queParagraph:
+      'Over 60 units in our own fleet, scheduled maintenance and ongoing support so your operation never stops. Real availability, instantly.',
+    specs: [
+      { text: '+60 Hilux and Amarok units', icon: Car },
+      { text: 'Rolling trailers of 6, 9 and 12 meters', icon: Truck },
+      { text: 'Tanks and containers', icon: Package },
+      { text: 'LED light towers (immediate stock)', icon: Lightbulb },
+      { text: 'Autonomous power supply', icon: Battery },
+      { text: 'Maintenance and management included', icon: Wrench },
+    ],
+    eyebrowGaleria: 'GALLERY',
+    galeriaTitle: 'Equipment and fleet in operation',
+    ctaTitle: 'Do you need available fleet for your operation?',
+    ctaParagraph: 'Tell us how many units you need and for how long. We confirm real availability instantly.',
+    ctaButton1: 'View available equipment',
+    ctaButton2: 'Write on WhatsApp',
+    eyebrowOtras: 'OTHER DIVISIONS',
+    otrasTitle: 'Discover the rest of our areas',
+    otherDivisions: [
+      { to: '/fabrica', badge: 'FACTORY', title: 'Industrial modules and housing', img: '/fabrica-01.jpg' },
+      { to: '/metalurgica', badge: 'METALLURGY', title: 'Equipment, tanks and structures', img: '/metalurgica-01.jpg' },
+      { to: '/grupos-electrogenos', badge: 'GENERATOR SETS', title: 'Rental and maintenance', img: '/rental-03.jpg' },
+    ],
+    galleryImages: [
+      { src: torresIluminacionAsset.url, name: 'Codelco LED light towers at the site', isNew: true },
+      { src: '/rental-01.jpg', name: 'Toyota Hilux fleet at operating base' },
+      { src: '/rental-02.jpg', name: 'VW Amarok pickups ready for service' },
+      { src: '/rental-03.jpg', name: 'Large rolling trailer' },
+      { src: '/rental-04.jpg', name: 'LED light tower at the site' },
+      { src: '/rental-05.jpg', name: 'Light fleet in operation' },
+      { src: '/rental-06.jpg', name: 'Rolling trailer on site' },
+      { src: '/rental-07.jpg', name: 'Autonomous lighting equipment' },
+      { src: '/rental-08.jpg', name: 'Pickups and trailers at Codelco base' },
+    ],
+    heroCarouselAlts: [
+      'Toyota Hilux and VW Amarok fleet at operating base',
+      'Large rolling trailer',
+      'Codelco LED light towers at the site',
+    ],
+  },
+} as const;
 
 const RentalPage = () => {
+  const { language } = useLanguage();
+  const c = copy[language];
+
   return (
     <div className="min-h-screen bg-white">
       <SEO
@@ -56,9 +143,9 @@ const RentalPage = () => {
       <section className="relative w-full" style={{ minHeight: '500px' }}>
         <HeroImageCarousel
           images={[
-            { src: '/rental-01.jpg', alt: 'Flota Toyota Hilux y VW Amarok en base operativa' },
-            { src: '/rental-03.jpg', alt: 'Trailer rodante de gran porte' },
-            { src: torresIluminacionAsset.url, alt: 'Torres de iluminación LED Codelco en yacimiento' },
+            { src: '/rental-01.jpg', alt: c.heroCarouselAlts[0] },
+            { src: '/rental-03.jpg', alt: c.heroCarouselAlts[1] },
+            { src: torresIluminacionAsset.url, alt: c.heroCarouselAlts[2] },
           ]}
         />
 
@@ -70,37 +157,36 @@ const RentalPage = () => {
         <div className="relative container mx-auto px-6 sm:px-10 lg:px-16 pt-32 pb-16 min-h-[500px] flex flex-col justify-end">
           <nav aria-label="Breadcrumb" className="mb-5 text-xs sm:text-sm text-white/70">
             <ol className="flex items-center gap-2 flex-wrap">
-              <li><Link to="/" className="hover:text-white">Inicio</Link></li>
+              <li><Link to="/" className="hover:text-white">{c.breadcrumbHome}</Link></li>
               <li aria-hidden="true">/</li>
-              <li><a href="/#servicios" className="hover:text-white">Servicios</a></li>
+              <li><a href="/#servicios" className="hover:text-white">{c.breadcrumbServices}</a></li>
               <li aria-hidden="true">/</li>
-              <li className="text-white font-semibold">Rental</li>
+              <li className="text-white font-semibold">{c.breadcrumbCurrent}</li>
             </ol>
           </nav>
 
           <div className="flex items-center gap-3 mb-5">
             <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
             <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
-              RENTAL · +60 UNIDADES EN FLOTA
+              {c.eyebrowHero}
             </span>
           </div>
 
           <h1
             className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-5xl"
-            aria-label="Vehículos, Trailers, Torres de Iluminación LED y Equipos en Alquiler para Vaca Muerta"
+            aria-label={c.h1AriaLabel}
           >
-            Vehículos, Trailers,{' '}
+            {c.h1Line1}{'\u00a0'}
             <br />
-            Torres de Iluminación LED y Equipos{' '}
+            {c.h1Line2}{' '}
             <br />
-            en Alquiler para Vaca Muerta
+            {c.h1Line3}
           </h1>
           <div className="mt-5 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <p className="text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed">
-              Flota liviana Toyota Hilux y VW Amarok, trailers rodantes y torres de iluminación LED con
-              disponibilidad inmediata. Mantenimiento y gestión permanente incluidos.
+              {c.heroParagraph}
             </p>
-            <ShareServices title="Rental — Vehículos, Trailers y Torres de Iluminación" path="/rental" color="light" />
+            <ShareServices title={c.shareTitle} path="/rental" color="light" />
           </div>
         </div>
       </section>
@@ -111,20 +197,19 @@ const RentalPage = () => {
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
               <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
-                QUÉ ALQUILAMOS
+                {c.eyebrowQue}
               </span>
             </div>
             <h2 className="heading text-3xl sm:text-4xl lg:text-5xl leading-[1.1]" style={{ color: BRAND_BLACK }}>
-              Flota lista para operar, con gestión y mantenimiento incluidos
+              {c.quePlate}
             </h2>
             <p className="mt-5 text-base lg:text-lg text-gray-700 leading-relaxed">
-              Más de 60 unidades en flota propia, mantenimiento programado y soporte permanente
-              para que tu operación no se detenga. Disponibilidad real al instante.
+              {c.queParagraph}
             </p>
           </div>
 
           <ul className="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-            {specs.map((spec) => (
+            {c.specs.map((spec) => (
               <li key={spec.text} className="flex items-start lg:items-center gap-4 lg:gap-5 bg-white p-5 lg:p-6 border border-black/5">
                 <span
                   className="shrink-0 mt-0.5 lg:mt-0 flex items-center justify-center h-10 w-10 lg:h-14 lg:w-14 rounded-full"
@@ -146,25 +231,25 @@ const RentalPage = () => {
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
               <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
-                GALERÍA
+                {c.eyebrowGaleria}
               </span>
             </div>
             <h2 className="heading text-3xl sm:text-4xl lg:text-5xl leading-[1.1]" style={{ color: BRAND_BLACK }}>
-              Equipos y flota en operación
+              {c.galeriaTitle}
             </h2>
           </div>
 
-          <DivisionGallery images={rentalImages} />
+          <DivisionGallery images={c.galleryImages as unknown as DivisionGalleryImage[]} />
         </div>
       </section>
 
       <section style={{ backgroundColor: BRAND_BLACK }} className="py-16 lg:py-20">
         <div className="container mx-auto px-6 sm:px-10 lg:px-16 text-center">
           <h2 className="heading text-white text-2xl sm:text-3xl lg:text-4xl leading-tight md:whitespace-nowrap">
-            ¿Necesitás flota disponible para tu operación?
+            {c.ctaTitle}
           </h2>
           <p className="mt-4 text-base lg:text-lg text-white/75 max-w-2xl mx-auto">
-            Contanos cantidad de unidades y plazo. Te confirmamos disponibilidad real al instante.
+            {c.ctaParagraph}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
@@ -173,7 +258,7 @@ const RentalPage = () => {
               style={{ backgroundColor: BRAND_ORANGE }}
             >
               <Phone className="w-4 h-4" />
-              Ver equipos disponibles
+              {c.ctaButton1}
             </Link>
             <a
               href="https://wa.me/5492994136453"
@@ -183,7 +268,7 @@ const RentalPage = () => {
               style={{ backgroundColor: '#25D366' }}
             >
               <MessageCircle className="w-4 h-4" />
-              Escribir por WhatsApp
+              {c.ctaButton2}
             </a>
 
           </div>
@@ -194,15 +279,15 @@ const RentalPage = () => {
         <div className="container mx-auto px-6 sm:px-10 lg:px-16">
           <div className="text-center mb-12">
             <span className="eyebrow inline-block text-xs sm:text-sm mb-3" style={{ color: BRAND_ORANGE }}>
-              OTRAS DIVISIONES
+              {c.eyebrowOtras}
             </span>
             <h2 className="heading text-2xl sm:text-3xl lg:text-4xl" style={{ color: BRAND_BLACK }}>
-              Conocé el resto de nuestras áreas
+              {c.otrasTitle}
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {otherDivisions.map((d) => (
+            {c.otherDivisions.map((d) => (
               <Link
                 key={d.to}
                 to={d.to}

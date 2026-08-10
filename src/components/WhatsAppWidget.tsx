@@ -6,6 +6,31 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import whatsappLogo from "@/assets/whatsapp-logo.png";
 import codelcoProfile from "@/assets/codelco-whatsapp-profile.png.asset.json";
 
+const copy = {
+  es: {
+    quickReplies: [
+      { label: "🏭 Módulos y Viviendas", text: "¡Hola! Estoy interesado en consultar por módulos habitacionales y viviendas para mi proyecto." },
+      { label: "⚙️ Tanques y Equipos", text: "¡Hola! Quería consultar por la fabricación de tanques, piletas o equipos metalúrgicos a medida." },
+      { label: "🚗 Rental de Vehículos", text: "¡Hola! Necesito información sobre alquiler de vehículos, trailers o equipos para mi operación." },
+      { label: "⚡ Grupos Electrógenos", text: "¡Hola! Me interesa el alquiler o mantenimiento de grupos electrógenos industriales." },
+    ],
+    welcomeText: "¡Hola! Somos Codelco S.A. 👋\n¿Necesitás módulos habitacionales, equipos metalúrgicos, rental de vehículos o grupos electrógenos?\nConsultá sin compromiso y te asesoramos.",
+    placeholderText: "Escribe tu mensaje...",
+    onlineText: "En línea",
+  },
+  en: {
+    quickReplies: [
+      { label: "🏭 Modules & Housing", text: "Hi! I'm interested in modular housing and residential modules for my project." },
+      { label: "⚙️ Tanks & Equipment", text: "Hi! I'd like to inquire about custom tanks, pools or metallurgical equipment." },
+      { label: "🚗 Vehicle Rental", text: "Hi! I need information about vehicle, trailer or equipment rental for my operation." },
+      { label: "⚡ Generator Sets", text: "Hi! I'm interested in rental or maintenance of industrial generator sets." },
+    ],
+    welcomeText: "Hello! We are Codelco S.A. 👋\nDo you need residential modules, metallurgical equipment, vehicle rental or generator sets?\nAsk us with no obligation and we'll advise you.",
+    placeholderText: "Write your message...",
+    onlineText: "Online",
+  },
+} as const;
+
 export default function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
@@ -79,19 +104,7 @@ export default function WhatsAppWidget() {
     return () => clearTimeout(t);
   }, [isOpen]);
 
-  const quickReplies = language === "es"
-    ? [
-        { label: "🏭 Módulos y Viviendas", text: "¡Hola! Estoy interesado en consultar por módulos habitacionales y viviendas para mi proyecto." },
-        { label: "⚙️ Tanques y Equipos", text: "¡Hola! Quería consultar por la fabricación de tanques, piletas o equipos metalúrgicos a medida." },
-        { label: "🚗 Rental de Vehículos", text: "¡Hola! Necesito información sobre alquiler de vehículos, trailers o equipos para mi operación." },
-        { label: "⚡ Grupos Electrógenos", text: "¡Hola! Me interesa el alquiler o mantenimiento de grupos electrógenos industriales." },
-      ]
-    : [
-        { label: "🏭 Modules & Housing", text: "Hi! I'm interested in modular housing and residential modules for my project." },
-        { label: "⚙️ Tanks & Equipment", text: "Hi! I'd like to inquire about custom tanks, pools or metallurgical equipment." },
-        { label: "🚗 Vehicle Rental", text: "Hi! I need information about vehicle, trailer or equipment rental for my operation." },
-        { label: "⚡ Generator Sets", text: "Hi! I'm interested in rental or maintenance of industrial generator sets." },
-      ];
+  const quickReplies = copy[language].quickReplies;
 
   const handleSend = () => {
     if (message.trim()) {
@@ -113,12 +126,9 @@ export default function WhatsAppWidget() {
     setIsOpen(true);
   };
 
-  const welcomeText = language === "es"
-    ? "¡Hola! Somos Codelco S.A. 👋\n¿Necesitás módulos habitacionales, equipos metalúrgicos, rental de vehículos o grupos electrógenos?\nConsultá sin compromiso y te asesoramos."
-    : "Hello! We are Codelco S.A. 👋\nDo you need residential modules, metallurgical equipment, vehicle rental or generator sets?\nAsk us with no obligation and we'll advise you.";
-
-  const placeholderText = language === "es" ? "Escribe tu mensaje..." : "Write your message...";
-  const onlineText = language === "es" ? "En línea" : "Online";
+  const welcomeText = copy[language].welcomeText;
+  const placeholderText = copy[language].placeholderText;
+  const onlineText = copy[language].onlineText;
 
   if (menuOpen) return null;
 

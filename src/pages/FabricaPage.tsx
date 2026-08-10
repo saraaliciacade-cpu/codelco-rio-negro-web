@@ -7,6 +7,7 @@ import ShareServices from '@/components/ShareServices';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 import HeroImageCarousel from '@/components/HeroImageCarousel';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
@@ -64,23 +65,68 @@ const fabricaImages: DivisionGalleryImage[] = [
 ];
 
 const specs = [
-  { text: 'Trailers autoportantes', icon: Home },
-  { text: 'Módulos Company Man', icon: Building2 },
-  { text: 'Comedor y cocina industrial', icon: UtensilsCrossed },
-  { text: 'Laboratorios móviles', icon: FlaskConical },
-  { text: 'Contenedores habitacionales', icon: Package },
-  { text: 'Viviendas en seco', icon: Home },
-  { text: 'Aislación termo-acústica', icon: Thermometer },
-  { text: 'Ingeniería y diseño propios', icon: PenTool },
+  { es: 'Trailers autoportantes', en: 'Self-supporting trailers', icon: Home },
+  { es: 'Módulos Company Man', en: 'Company Man modules', icon: Building2 },
+  { es: 'Comedor y cocina industrial', en: 'Industrial dining hall and kitchen', icon: UtensilsCrossed },
+  { es: 'Laboratorios móviles', en: 'Mobile laboratories', icon: FlaskConical },
+  { es: 'Contenedores habitacionales', en: 'Residential containers', icon: Package },
+  { es: 'Viviendas en seco', en: 'Dry-construction housing', icon: Home },
+  { es: 'Aislación termo-acústica', en: 'Thermo-acoustic insulation', icon: Thermometer },
+  { es: 'Ingeniería y diseño propios', en: 'In-house engineering and design', icon: PenTool },
 ];
 
 const otherDivisions = [
-  { to: '/metalurgica', badge: 'METALÚRGICA', title: 'Equipos, tanques y estructuras', img: '/metalurgica-01.jpg' },
-  { to: '/rental', badge: 'RENTAL', title: 'Vehículos, trailers y equipos', img: '/rental-01.jpg' },
-  { to: '/grupos-electrogenos', badge: 'GRUPOS ELECTRÓGENOS', title: 'Alquiler y mantenimiento', img: '/rental-03.jpg' },
+  { to: '/metalurgica', badge: { es: 'METALÚRGICA', en: 'METALWORKS' }, title: { es: 'Equipos, tanques y estructuras', en: 'Equipment, tanks and structures' }, img: '/metalurgica-01.jpg' },
+  { to: '/rental', badge: { es: 'RENTAL', en: 'RENTAL' }, title: { es: 'Vehículos, trailers y equipos', en: 'Vehicles, trailers and equipment' }, img: '/rental-01.jpg' },
+  { to: '/grupos-electrogenos', badge: { es: 'GRUPOS ELECTRÓGENOS', en: 'GENERATOR SETS' }, title: { es: 'Alquiler y mantenimiento', en: 'Rental and maintenance' }, img: '/rental-03.jpg' },
 ];
 
+const copy = {
+  es: {
+    breadcrumbHome: 'Inicio',
+    breadcrumbDivisions: 'Divisiones',
+    breadcrumbCurrent: 'Fábrica',
+    eyebrowHero: 'FÁBRICA · PLANTA PROPIA DE 3.500 M²',
+    h1: 'Módulos Habitacionales y Viviendas para la Industria Petrolera',
+    heroParagraph: 'Trailers autoportantes, módulos Company Man, comedores, cocinas, laboratorios y viviendas en seco. Diseño, ingeniería y fabricación bajo un mismo techo en Cipolletti.',
+    shareTitle: 'Fábrica — Módulos Habitacionales y Viviendas',
+    eyebrowWhat: 'QUÉ FABRICAMOS',
+    whatH2: 'Línea de producción integral, de la ingeniería a la entrega',
+    whatParagraph: 'Controlamos cada etapa del proceso productivo: diseño, corte de chapa, plegado CNC, soldadura, aislación, instalaciones, terminaciones y entrega. Sin intermediarios, sin tiempos muertos.',
+    eyebrowGallery: 'GALERÍA',
+    galleryH2: 'Obras y módulos fabricados en nuestra planta',
+    ctaH2: '¿Necesitás un módulo para tu próxima obra?',
+    ctaParagraph: 'Contanos los plazos y especificaciones. Te respondemos con disponibilidad real y un presupuesto en menos de 48 hs.',
+    ctaBtn1: 'Consultar disponibilidad',
+    ctaBtn2: 'Escribir por WhatsApp',
+    eyebrowOther: 'OTRAS DIVISIONES',
+    otherH2: 'Conocé el resto de nuestras áreas',
+  },
+  en: {
+    breadcrumbHome: 'Home',
+    breadcrumbDivisions: 'Divisions',
+    breadcrumbCurrent: 'Factory',
+    eyebrowHero: 'FACTORY · OWN 3,500 M² PLANT',
+    h1: 'Housing Modules and Homes for the Oil Industry',
+    heroParagraph: 'Self-supporting trailers, Company Man modules, dining halls, kitchens, laboratories and dry-construction housing. Design, engineering and manufacturing under one roof in Cipolletti.',
+    shareTitle: 'Factory — Housing Modules and Homes',
+    eyebrowWhat: 'WHAT WE MANUFACTURE',
+    whatH2: 'A fully integrated production line, from engineering to delivery',
+    whatParagraph: 'We control every stage of the production process: design, sheet metal cutting, CNC bending, welding, insulation, installations, finishing and delivery. No middlemen, no downtime.',
+    eyebrowGallery: 'GALLERY',
+    galleryH2: 'Projects and modules manufactured at our plant',
+    ctaH2: 'Need a module for your next project?',
+    ctaParagraph: "Tell us the timelines and specifications. We'll respond with real availability and a quote in less than 48 hours.",
+    ctaBtn1: 'Check availability',
+    ctaBtn2: 'Message on WhatsApp',
+    eyebrowOther: 'OTHER DIVISIONS',
+    otherH2: 'Explore our other areas',
+  },
+} as const;
+
 const FabricaPage = () => {
+  const { language } = useLanguage();
+  const c = copy[language];
   return (
     <div className="min-h-screen bg-white">
       <SEO

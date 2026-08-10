@@ -7,11 +7,45 @@ import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { newsData, categories, latestNewsId, type NewsCategory } from '@/data/news';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_BLACK = '#1A1A1A';
 
+const copy = {
+  es: {
+    breadcrumbHome: 'Inicio',
+    breadcrumbCurrent: 'Novedades',
+    eyebrow: 'NOVEDADES DE CODELCO',
+    heroTitle: 'Lo que estamos construyendo',
+    heroSubtitle: 'Equipos nuevos, entregas, flota y proyectos terminados — así avanza la operación.',
+    latestBadge: 'ÚLTIMA NOTICIA',
+    readMore: 'Leer más',
+    emptyState: 'No hay novedades en esta categoría todavía.',
+    ctaTitle: '¿Querés que te avisemos de las próximas novedades?',
+    ctaSubtitle: 'Escribinos y te mantenemos al tanto de nuevos equipos, proyectos y disponibilidad.',
+    ctaContact: 'Contactar',
+    ctaWhatsapp: 'Escribir por WhatsApp',
+  },
+  en: {
+    breadcrumbHome: 'Home',
+    breadcrumbCurrent: 'News',
+    eyebrow: 'CODELCO NEWS',
+    heroTitle: 'What we are building',
+    heroSubtitle: 'New equipment, deliveries, fleet and completed projects — this is how operations move forward.',
+    latestBadge: 'LATEST NEWS',
+    readMore: 'Read more',
+    emptyState: 'There are no news in this category yet.',
+    ctaTitle: 'Want us to notify you about upcoming news?',
+    ctaSubtitle: "Write to us and we'll keep you posted on new equipment, projects and availability.",
+    ctaContact: 'Contact us',
+    ctaWhatsapp: 'Message on WhatsApp',
+  },
+} as const;
+
 const NovedadesPage = () => {
+  const { language } = useLanguage();
+  const c = copy[language];
   const [activeCategory, setActiveCategory] = useState<NewsCategory>('Todas');
 
   const filteredNews =
@@ -58,11 +92,11 @@ const NovedadesPage = () => {
             <ol className="flex items-center gap-2 flex-wrap">
               <li>
                 <Link to="/" className="hover:text-white">
-                  Inicio
+                  {c.breadcrumbHome}
                 </Link>
               </li>
               <li aria-hidden="true">/</li>
-              <li className="text-white font-semibold">Novedades</li>
+              <li className="text-white font-semibold">{c.breadcrumbCurrent}</li>
             </ol>
           </nav>
 
@@ -73,15 +107,15 @@ const NovedadesPage = () => {
               aria-hidden="true"
             />
             <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
-              NOVEDADES DE CODELCO
+              {c.eyebrow}
             </span>
           </div>
 
           <h1 className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-4xl">
-            Lo que estamos construyendo
+            {c.heroTitle}
           </h1>
           <p className="mt-4 text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed">
-            Equipos nuevos, entregas, flota y proyectos terminados — así avanza la operación.
+            {c.heroSubtitle}
           </p>
         </div>
       </section>
@@ -132,7 +166,7 @@ const NovedadesPage = () => {
                         className="eyebrow absolute top-3 right-3 text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
                         style={{ backgroundColor: '#DC2626' }}
                       >
-                        ÚLTIMA NOTICIA
+                        {c.latestBadge}
                       </span>
                     )}
                     <span
@@ -156,7 +190,7 @@ const NovedadesPage = () => {
                       className="inline-flex items-center justify-center self-start h-10 px-4 text-sm font-semibold rounded-sm text-white transition hover:opacity-90"
                       style={{ backgroundColor: BRAND_ORANGE }}
                     >
-                      Leer más <ArrowRight className="ml-1.5 h-4 w-4" />
+                      {c.readMore} <ArrowRight className="ml-1.5 h-4 w-4" />
                     </Link>
                   </div>
                 </article>
@@ -165,7 +199,7 @@ const NovedadesPage = () => {
           ) : (
             <div className="text-center py-16">
               <p className="text-gray-500 text-base">
-                No hay novedades en esta categoría todavía.
+                {c.emptyState}
               </p>
             </div>
           )}
@@ -176,10 +210,10 @@ const NovedadesPage = () => {
       <section style={{ backgroundColor: BRAND_BLACK }} className="py-16 lg:py-20">
         <div className="container mx-auto px-6 sm:px-10 lg:px-16 text-center">
           <h2 className="heading text-white text-2xl sm:text-3xl lg:text-4xl leading-tight md:whitespace-nowrap">
-            ¿Querés que te avisemos de las próximas novedades?
+            {c.ctaTitle}
           </h2>
           <p className="mt-4 text-base lg:text-lg text-white/75 max-w-2xl mx-auto">
-            Escribinos y te mantenemos al tanto de nuevos equipos, proyectos y disponibilidad.
+            {c.ctaSubtitle}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
@@ -188,7 +222,7 @@ const NovedadesPage = () => {
               style={{ backgroundColor: BRAND_ORANGE }}
             >
               <Phone className="w-4 h-4" />
-              Contactar
+              {c.ctaContact}
             </Link>
             <a
               href="https://wa.me/5492994136453"
@@ -198,7 +232,7 @@ const NovedadesPage = () => {
               style={{ backgroundColor: '#25D366' }}
             >
               <MessageCircle className="w-4 h-4" />
-              Escribir por WhatsApp
+              {c.ctaWhatsapp}
             </a>
 
           </div>
