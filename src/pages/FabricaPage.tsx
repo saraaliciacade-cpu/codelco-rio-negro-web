@@ -211,7 +211,7 @@ const FabricaPage = () => {
           <ul className="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             {specs.map((spec) => (
               <li
-                key={spec.text}
+                key={spec.es}
                 className="flex items-start lg:items-center gap-4 lg:gap-5 bg-white p-5 lg:p-6 border border-black/5"
               >
                 <span
