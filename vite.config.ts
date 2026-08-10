@@ -72,10 +72,8 @@ export default defineConfig(({ mode }) => ({
           if (id.includes('embla-carousel') || id.includes('vaul') || id.includes('sonner')) {
             return 'animations';
           }
-          // Heavy components (lazy load)
-          if (id.includes('Gallery') || id.includes('Contact') || id.includes('Map') || id.includes('Services')) {
-            return 'lazy-components';
-          }
+          // (removed) grouping app source files by name — it broke lazy-load boundaries
+
           // Non-critical UI components
           if (id.includes('ui/accordion') || id.includes('ui/alert') || id.includes('ui/calendar') || 
               id.includes('ui/chart') || id.includes('ui/command') || id.includes('ui/context-menu') ||
