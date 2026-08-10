@@ -98,15 +98,32 @@ const staticEntries: FullEntry[] = [
   { path: '/clientes', changefreq: 'monthly', priority: '0.7' },
 ];
 
+const newsImages = (item: NewsItem): SitemapImage[] => {
+  const seen = new Set<string>();
+  const out: SitemapImage[] = [];
+  const push = (src?: string, title?: string, caption?: string) => {
+    if (!src || src.startsWith('http') || seen.has(src)) return;
+    seen.add(src);
+    out.push({ loc: abs(src), title: title || item.title, caption: caption || item.summary });
+  };
+  push(item.image, item.title, item.summary);
+  for (const block of item.body) {
+    if (typeof block === 'string') continue;
+    if (block.type === 'image') push(block.src, block.title ?? block.caption ?? block.alt, block.alt);
+    if (block.type === 'imageGrid')
+      for (const img of block.images) push(img.src, img.title ?? img.caption ?? img.alt, img.alt);
+  }
+  return out;
+};
+
 const newsEntries: FullEntry[] = newsData.map((item: NewsItem) => ({
   path: `/novedades/${item.slug}`,
   lastmod: parseDate(item.date).toISOString().slice(0, 10),
   changefreq: 'monthly',
   priority: '0.6',
-  images: item.image
-    ? [{ loc: abs(item.image), title: item.title, caption: item.summary }]
-    : undefined,
+  images: newsImages(item),
 }));
+
 
 const allEntries: FullEntry[] = [...staticEntries, ...newsEntries];
 
