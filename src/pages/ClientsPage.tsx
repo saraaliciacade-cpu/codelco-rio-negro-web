@@ -41,8 +41,20 @@ import Contact from '@/components/Contact';
 import Services from '@/components/Services';
 import { useLanguage } from '@/contexts/LanguageContext';
 
+const copy = {
+  es: {
+    trustHeading: 'Construimos relaciones basadas en confianza acompañando a cada cliente',
+    trustCta: '¿Tu empresa será la próxima?',
+  },
+  en: {
+    trustHeading: 'We build relationships based on trust, supporting every client',
+    trustCta: 'Will your company be next?',
+  },
+} as const;
+
 const ClientsPage = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const c = copy[language];
   const allClients = [
     { name: "Compressco LP", logo: comprescoLogo },
     { name: "Transportes Crexell S.A.", logo: crexellLogo },
@@ -133,8 +145,8 @@ const ClientsPage = () => {
 
           <div className="max-w-5xl mx-auto px-4 text-center mt-14 md:mt-20">
             <h2 className="heading text-3xl md:text-5xl text-[#1A1A1A] leading-tight">
-              Construimos relaciones basadas en confianza acompañando a cada cliente{" "}
-              <span className="text-[#e65b2a]">¿Tu empresa será la próxima?</span>
+              {c.trustHeading}{" "}
+              <span className="text-[#e65b2a]">{c.trustCta}</span>
             </h2>
           </div>
         </div>

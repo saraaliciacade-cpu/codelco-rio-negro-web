@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
 
@@ -20,7 +21,22 @@ const getVisibleColumns = () => {
   return 1;
 };
 
+const copy = {
+  es: {
+    prev: 'Imágenes anteriores',
+    next: 'Imágenes siguientes',
+    nuevo: 'NUEVO',
+  },
+  en: {
+    prev: 'Previous images',
+    next: 'Next images',
+    nuevo: 'NEW',
+  },
+} as const;
+
 const DivisionGallery = ({ images }: DivisionGalleryProps) => {
+  const { language } = useLanguage();
+  const c = copy[language];
   const [index, setIndex] = useState(0);
   const [visibleCols, setVisibleCols] = useState<number>(() => getVisibleColumns());
 
@@ -58,7 +74,7 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
     <div className="relative">
       <button
         type="button"
-        aria-label="Imágenes anteriores"
+        aria-label={c.prev}
         onClick={goPrev}
         disabled={atStart}
         className="absolute left-0 top-1/2 -translate-y-1/2 z-10 -ml-2 sm:-ml-4 lg:-ml-6
@@ -91,7 +107,7 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
                       className="eyebrow absolute top-3 right-3 z-10 text-[10px] text-white px-2.5 py-1 rounded-sm shadow"
                       style={{ backgroundColor: BRAND_ORANGE }}
                     >
-                      NUEVO
+                      {c.nuevo}
                     </span>
                   )}
                   <div className="aspect-[4/3] overflow-hidden bg-gray-100">
@@ -116,7 +132,7 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
 
       <button
         type="button"
-        aria-label="Imágenes siguientes"
+        aria-label={c.next}
         onClick={goNext}
         disabled={atEnd}
         className="absolute right-0 top-1/2 -translate-y-1/2 z-10 -mr-2 sm:-mr-4 lg:-mr-6

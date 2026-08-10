@@ -1,3 +1,5 @@
+import { useLanguage } from '@/contexts/LanguageContext';
+
 interface ShareServicesProps {
   title: string;
   path: string;
@@ -7,7 +9,21 @@ interface ShareServicesProps {
 
 const BRAND_ORANGE = '#E84E1B';
 
-const ShareServices = ({ title, path, label = 'Comparte nuestros Servicios', color = 'light' }: ShareServicesProps) => {
+const copy = {
+  es: {
+    defaultLabel: 'Comparte nuestros Servicios',
+    shareOn: (l: string) => `Compartir en ${l}`,
+  },
+  en: {
+    defaultLabel: 'Share our Services',
+    shareOn: (l: string) => `Share on ${l}`,
+  },
+} as const;
+
+const ShareServices = ({ title, path, label, color = 'light' }: ShareServicesProps) => {
+  const { language } = useLanguage();
+  const c = copy[language];
+  const resolvedLabel = label ?? c.defaultLabel;
   const shareUrl = `https://codelco.com.ar${path}`;
   const shareText = `${title} — Codelco S.A.`;
   const enc = encodeURIComponent;
@@ -59,7 +75,7 @@ const ShareServices = ({ title, path, label = 'Comparte nuestros Servicios', col
   return (
     <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
       <span className={`text-[11px] font-bold tracking-widest uppercase ${textColor}`}>
-        {label}
+        {resolvedLabel}
       </span>
       <div className="flex items-center gap-2">
         {links.map((l) => (
@@ -68,7 +84,7 @@ const ShareServices = ({ title, path, label = 'Comparte nuestros Servicios', col
             href={l.href}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={`Compartir en ${l.label}`}
+            aria-label={c.shareOn(l.label)}
             className={`w-9 h-9 rounded-full border ${borderColor} ${iconColor} flex items-center justify-center transition-colors hover:text-white hover:border-transparent`}
             onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = BRAND_ORANGE)}
             onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}

@@ -7,6 +7,7 @@ import ShareServices from '@/components/ShareServices';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 import HeroImageCarousel from '@/components/HeroImageCarousel';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
@@ -64,23 +65,68 @@ const fabricaImages: DivisionGalleryImage[] = [
 ];
 
 const specs = [
-  { text: 'Trailers autoportantes', icon: Home },
-  { text: 'Módulos Company Man', icon: Building2 },
-  { text: 'Comedor y cocina industrial', icon: UtensilsCrossed },
-  { text: 'Laboratorios móviles', icon: FlaskConical },
-  { text: 'Contenedores habitacionales', icon: Package },
-  { text: 'Viviendas en seco', icon: Home },
-  { text: 'Aislación termo-acústica', icon: Thermometer },
-  { text: 'Ingeniería y diseño propios', icon: PenTool },
+  { es: 'Trailers autoportantes', en: 'Self-supporting trailers', icon: Home },
+  { es: 'Módulos Company Man', en: 'Company Man modules', icon: Building2 },
+  { es: 'Comedor y cocina industrial', en: 'Industrial dining hall and kitchen', icon: UtensilsCrossed },
+  { es: 'Laboratorios móviles', en: 'Mobile laboratories', icon: FlaskConical },
+  { es: 'Contenedores habitacionales', en: 'Residential containers', icon: Package },
+  { es: 'Viviendas en seco', en: 'Dry-construction housing', icon: Home },
+  { es: 'Aislación termo-acústica', en: 'Thermo-acoustic insulation', icon: Thermometer },
+  { es: 'Ingeniería y diseño propios', en: 'In-house engineering and design', icon: PenTool },
 ];
 
 const otherDivisions = [
-  { to: '/metalurgica', badge: 'METALÚRGICA', title: 'Equipos, tanques y estructuras', img: '/metalurgica-01.jpg' },
-  { to: '/rental', badge: 'RENTAL', title: 'Vehículos, trailers y equipos', img: '/rental-01.jpg' },
-  { to: '/grupos-electrogenos', badge: 'GRUPOS ELECTRÓGENOS', title: 'Alquiler y mantenimiento', img: '/rental-03.jpg' },
+  { to: '/metalurgica', badge: { es: 'METALÚRGICA', en: 'METALWORKS' }, title: { es: 'Equipos, tanques y estructuras', en: 'Equipment, tanks and structures' }, img: '/metalurgica-01.jpg' },
+  { to: '/rental', badge: { es: 'RENTAL', en: 'RENTAL' }, title: { es: 'Vehículos, trailers y equipos', en: 'Vehicles, trailers and equipment' }, img: '/rental-01.jpg' },
+  { to: '/grupos-electrogenos', badge: { es: 'GRUPOS ELECTRÓGENOS', en: 'GENERATOR SETS' }, title: { es: 'Alquiler y mantenimiento', en: 'Rental and maintenance' }, img: '/rental-03.jpg' },
 ];
 
+const copy = {
+  es: {
+    breadcrumbHome: 'Inicio',
+    breadcrumbDivisions: 'Divisiones',
+    breadcrumbCurrent: 'Fábrica',
+    eyebrowHero: 'FÁBRICA · PLANTA PROPIA DE 3.500 M²',
+    h1: 'Módulos Habitacionales y Viviendas para la Industria Petrolera',
+    heroParagraph: 'Trailers autoportantes, módulos Company Man, comedores, cocinas, laboratorios y viviendas en seco. Diseño, ingeniería y fabricación bajo un mismo techo en Cipolletti.',
+    shareTitle: 'Fábrica — Módulos Habitacionales y Viviendas',
+    eyebrowWhat: 'QUÉ FABRICAMOS',
+    whatH2: 'Línea de producción integral, de la ingeniería a la entrega',
+    whatParagraph: 'Controlamos cada etapa del proceso productivo: diseño, corte de chapa, plegado CNC, soldadura, aislación, instalaciones, terminaciones y entrega. Sin intermediarios, sin tiempos muertos.',
+    eyebrowGallery: 'GALERÍA',
+    galleryH2: 'Obras y módulos fabricados en nuestra planta',
+    ctaH2: '¿Necesitás un módulo para tu próxima obra?',
+    ctaParagraph: 'Contanos los plazos y especificaciones. Te respondemos con disponibilidad real y un presupuesto en menos de 48 hs.',
+    ctaBtn1: 'Consultar disponibilidad',
+    ctaBtn2: 'Escribir por WhatsApp',
+    eyebrowOther: 'OTRAS DIVISIONES',
+    otherH2: 'Conocé el resto de nuestras áreas',
+  },
+  en: {
+    breadcrumbHome: 'Home',
+    breadcrumbDivisions: 'Divisions',
+    breadcrumbCurrent: 'Factory',
+    eyebrowHero: 'FACTORY · OWN 3,500 M² PLANT',
+    h1: 'Housing Modules and Homes for the Oil Industry',
+    heroParagraph: 'Self-supporting trailers, Company Man modules, dining halls, kitchens, laboratories and dry-construction housing. Design, engineering and manufacturing under one roof in Cipolletti.',
+    shareTitle: 'Factory — Housing Modules and Homes',
+    eyebrowWhat: 'WHAT WE MANUFACTURE',
+    whatH2: 'A fully integrated production line, from engineering to delivery',
+    whatParagraph: 'We control every stage of the production process: design, sheet metal cutting, CNC bending, welding, insulation, installations, finishing and delivery. No middlemen, no downtime.',
+    eyebrowGallery: 'GALLERY',
+    galleryH2: 'Projects and modules manufactured at our plant',
+    ctaH2: 'Need a module for your next project?',
+    ctaParagraph: "Tell us the timelines and specifications. We'll respond with real availability and a quote in less than 48 hours.",
+    ctaBtn1: 'Check availability',
+    ctaBtn2: 'Message on WhatsApp',
+    eyebrowOther: 'OTHER DIVISIONS',
+    otherH2: 'Explore our other areas',
+  },
+} as const;
+
 const FabricaPage = () => {
+  const { language } = useLanguage();
+  const c = copy[language];
   return (
     <div className="min-h-screen bg-white">
       <SEO
@@ -117,30 +163,29 @@ const FabricaPage = () => {
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-5 text-xs sm:text-sm text-white/70">
             <ol className="flex items-center gap-2 flex-wrap">
-              <li><Link to="/" className="hover:text-white">Inicio</Link></li>
+              <li><Link to="/" className="hover:text-white">{c.breadcrumbHome}</Link></li>
               <li aria-hidden="true">/</li>
-              <li><a href="/#servicios" className="hover:text-white">Divisiones</a></li>
+              <li><a href="/#servicios" className="hover:text-white">{c.breadcrumbDivisions}</a></li>
               <li aria-hidden="true">/</li>
-              <li className="text-white font-semibold">Fábrica</li>
+              <li className="text-white font-semibold">{c.breadcrumbCurrent}</li>
             </ol>
           </nav>
 
           <div className="flex items-center gap-3 mb-5">
             <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
             <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
-              FÁBRICA · PLANTA PROPIA DE 3.500 M²
+              {c.eyebrowHero}
             </span>
           </div>
 
           <h1 className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-4xl">
-            Módulos Habitacionales y Viviendas para la Industria Petrolera
+            {c.h1}
           </h1>
           <div className="mt-5 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <p className="text-base sm:text-lg text-white/85 max-w-3xl leading-relaxed">
-              Trailers autoportantes, módulos Company Man, comedores, cocinas, laboratorios y viviendas en seco.
-              Diseño, ingeniería y fabricación bajo un mismo techo en Cipolletti.
+              {c.heroParagraph}
             </p>
-            <ShareServices title="Fábrica — Módulos Habitacionales y Viviendas" path="/fabrica" color="light" />
+            <ShareServices title={c.shareTitle} path="/fabrica" color="light" />
           </div>
         </div>
       </section>
@@ -152,22 +197,21 @@ const FabricaPage = () => {
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
               <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
-                QUÉ FABRICAMOS
+                {c.eyebrowWhat}
               </span>
             </div>
             <h2 className="heading text-3xl sm:text-4xl lg:text-5xl leading-[1.1]" style={{ color: BRAND_BLACK }}>
-              Línea de producción integral, de la ingeniería a la entrega
+              {c.whatH2}
             </h2>
             <p className="mt-5 text-base lg:text-lg text-gray-700 leading-relaxed">
-              Controlamos cada etapa del proceso productivo: diseño, corte de chapa, plegado CNC, soldadura,
-              aislación, instalaciones, terminaciones y entrega. Sin intermediarios, sin tiempos muertos.
+              {c.whatParagraph}
             </p>
           </div>
 
           <ul className="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             {specs.map((spec) => (
               <li
-                key={spec.text}
+                key={spec.es}
                 className="flex items-start lg:items-center gap-4 lg:gap-5 bg-white p-5 lg:p-6 border border-black/5"
               >
                 <span
@@ -177,7 +221,7 @@ const FabricaPage = () => {
                 >
                   <spec.icon className="h-5 w-5 lg:h-7 lg:w-7 text-white" strokeWidth={2} />
                 </span>
-                <span className="text-base lg:text-xl font-medium text-[#1A1A1A]">{spec.text}</span>
+                <span className="text-base lg:text-xl font-medium text-[#1A1A1A]">{spec[language]}</span>
               </li>
             ))}
           </ul>
@@ -191,11 +235,11 @@ const FabricaPage = () => {
             <div className="flex items-center gap-3 mb-5">
               <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
               <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
-                GALERÍA
+                {c.eyebrowGallery}
               </span>
             </div>
             <h2 className="heading text-3xl sm:text-4xl lg:text-5xl leading-[1.1]" style={{ color: BRAND_BLACK }}>
-              Obras y módulos fabricados en nuestra planta
+              {c.galleryH2}
             </h2>
           </div>
 
@@ -207,10 +251,10 @@ const FabricaPage = () => {
       <section style={{ backgroundColor: BRAND_BLACK }} className="py-16 lg:py-20">
         <div className="container mx-auto px-6 sm:px-10 lg:px-16 text-center">
           <h2 className="heading text-white text-2xl sm:text-3xl lg:text-4xl leading-tight md:whitespace-nowrap">
-            ¿Necesitás un módulo para tu próxima obra?
+            {c.ctaH2}
           </h2>
           <p className="mt-4 text-base lg:text-lg text-white/75 max-w-2xl mx-auto">
-            Contanos los plazos y especificaciones. Te respondemos con disponibilidad real y un presupuesto en menos de 48 hs.
+            {c.ctaParagraph}
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link
@@ -219,7 +263,7 @@ const FabricaPage = () => {
               style={{ backgroundColor: BRAND_ORANGE }}
             >
               <Phone className="w-4 h-4" />
-              Consultar disponibilidad
+              {c.ctaBtn1}
             </Link>
             <a
               href="https://wa.me/5492994136453"
@@ -229,7 +273,7 @@ const FabricaPage = () => {
               style={{ backgroundColor: '#25D366' }}
             >
               <MessageCircle className="w-4 h-4" />
-              Escribir por WhatsApp
+              {c.ctaBtn2}
             </a>
 
           </div>
@@ -241,10 +285,10 @@ const FabricaPage = () => {
         <div className="container mx-auto px-6 sm:px-10 lg:px-16">
           <div className="text-center mb-12">
             <span className="eyebrow inline-block text-xs sm:text-sm mb-3" style={{ color: BRAND_ORANGE }}>
-              OTRAS DIVISIONES
+              {c.eyebrowOther}
             </span>
             <h2 className="heading text-2xl sm:text-3xl lg:text-4xl" style={{ color: BRAND_BLACK }}>
-              Conocé el resto de nuestras áreas
+              {c.otherH2}
             </h2>
           </div>
 
@@ -261,18 +305,18 @@ const FabricaPage = () => {
                 <div className="relative h-44 overflow-hidden">
                   <img
                     src={d.img}
-                    alt={d.title}
+                    alt={d.title[language]}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <span
                     className="eyebrow absolute top-4 left-4 text-xs text-white px-3 py-1 rounded-sm"
                     style={{ backgroundColor: BRAND_ORANGE }}
                   >
-                    {d.badge}
+                    {d.badge[language]}
                   </span>
                 </div>
                 <div className="p-6 flex items-center justify-between">
-                  <h3 className="heading text-lg text-white">{d.title}</h3>
+                  <h3 className="heading text-lg text-white">{d.title[language]}</h3>
                   <ArrowRight className="h-5 w-5 text-[#E84E1B] transition-transform group-hover:translate-x-1" />
                 </div>
               </Link>
