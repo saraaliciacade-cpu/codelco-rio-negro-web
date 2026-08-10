@@ -47,6 +47,7 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
           <img
             src={block.src}
             alt={block.alt ?? ''}
+            title={block.title ?? block.caption}
             width={block.width}
             height={block.height}
             className="w-full h-auto rounded-lg"
@@ -68,6 +69,7 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
               <img
                 src={img.src}
                 alt={img.alt ?? ''}
+                title={img.title ?? img.caption}
                 width={img.width}
                 height={img.height}
                 className="w-full h-auto rounded-lg"
