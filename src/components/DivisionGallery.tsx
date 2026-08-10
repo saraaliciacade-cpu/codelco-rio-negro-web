@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Newspaper } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
@@ -8,6 +9,8 @@ export interface DivisionGalleryImage {
   src: string;
   name: string;
   isNew?: boolean;
+  /** When set, a button linking to this article appears on hover. */
+  newsHref?: string;
 }
 
 interface DivisionGalleryProps {
@@ -26,11 +29,13 @@ const copy = {
     prev: 'Imágenes anteriores',
     next: 'Imágenes siguientes',
     nuevo: 'NUEVO',
+    verNoticia: 'Ver la noticia',
   },
   en: {
     prev: 'Previous images',
     next: 'Next images',
     nuevo: 'NEW',
+    verNoticia: 'Read the article',
   },
 } as const;
 
@@ -110,13 +115,25 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
                       {c.nuevo}
                     </span>
                   )}
-                  <div className="aspect-[4/3] overflow-hidden bg-gray-100">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                     <img
                       src={img.src}
                       alt={img.name}
                       loading="lazy"
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
+                    {img.newsHref && (
+                      <Link
+                        to={img.newsHref}
+                        className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 text-white text-sm font-semibold py-2.5
+                          opacity-0 translate-y-full transition-all duration-300
+                          group-hover:opacity-100 group-hover:translate-y-0 focus:opacity-100 focus:translate-y-0"
+                        style={{ backgroundColor: BRAND_ORANGE }}
+                      >
+                        <Newspaper className="h-4 w-4" aria-hidden="true" />
+                        {c.verNoticia}
+                      </Link>
+                    )}
                   </div>
                   <div className="p-3 text-center min-h-[56px] flex items-center justify-center">
                     <h3 className="text-sm font-semibold text-[#1A1A1A] line-clamp-2">

@@ -72,7 +72,6 @@ export const newsData: NewsItem[] = [
     id: 10,
     slug: 'trailer-habitacional-autonomo',
     category: 'Proyecto',
-    status: 'draft',
     date: '10 de agosto de 2026',
     dateIso: '2026-08-10',
     title: 'Trailer habitacional autónomo para operaciones de campo',

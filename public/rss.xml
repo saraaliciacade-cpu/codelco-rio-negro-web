@@ -5,8 +5,17 @@
     <link>https://codelco.com.ar/novedades</link>
     <description>Novedades, proyectos y actualidad de Codelco S.A. — módulos habitacionales, metalúrgica, rental y grupos electrógenos en Vaca Muerta.</description>
     <language>es-AR</language>
-    <lastBuildDate>Mon, 10 Aug 2026 05:08:01 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 10 Aug 2026 05:13:39 GMT</lastBuildDate>
     <atom:link href="https://codelco.com.ar/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Trailer habitacional autónomo para operaciones de campo</title>
+      <link>https://codelco.com.ar/novedades/trailer-habitacional-autonomo</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/trailer-habitacional-autonomo</guid>
+      <pubDate>Mon, 10 Aug 2026 12:00:00 GMT</pubDate>
+      <category>Proyecto</category>
+      <description>Una unidad rodante que llega lista para operar: agua, energía, climatización e iluminación propias, sin depender de la infraestructura del yacimiento.</description>
+      <enclosure url="https://codelco.com.ar/images/noticias/trailer-habitacional/trailer-habitacional-autonomo-exterior-planta.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>La historia de construcción y trabajo detrás de la familia Guerra.</title>
       <link>https://codelco.com.ar/novedades/historia-familia-guerra-codelco</link>
