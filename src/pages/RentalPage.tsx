@@ -176,7 +176,7 @@ const RentalPage = () => {
             className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-5xl"
             aria-label={c.h1AriaLabel}
           >
-            {c.h1Line1}{'\u00a0'}
+            {c.h1Line1}{' '}
             <br />
             {c.h1Line2}{' '}
             <br />
