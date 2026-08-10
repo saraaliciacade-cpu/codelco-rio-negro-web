@@ -22,6 +22,10 @@ const MONTHS: Record<string, string> = {
 };
 
 // Parse "Junio 2026" -> "2026-06-01"
+function newsDate(item: { date: string; dateIso?: string }): Date {
+  return item.dateIso ? new Date(`${item.dateIso}T12:00:00Z`) : parseDate(item.date);
+}
+
 function parseDate(input: string): Date {
   const parts = input.toLowerCase().trim().split(/\s+/);
   const month = MONTHS[parts[0]] ?? '01';
@@ -118,7 +122,7 @@ const newsImages = (item: NewsItem): SitemapImage[] => {
 
 const newsEntries: FullEntry[] = newsData.map((item: NewsItem) => ({
   path: `/novedades/${item.slug}`,
-  lastmod: item.dateIso ?? parseDate(item.date).toISOString().slice(0, 10),
+  lastmod: newsDate(item).toISOString().slice(0, 10),
   changefreq: 'monthly',
   priority: '0.6',
   images: newsImages(item),
@@ -166,14 +170,14 @@ console.log(`sitemap.xml written (${allEntries.length} entries, ${totalImages} i
 // -------- RSS --------
 
 const sortedNews = [...newsData].sort(
-  (a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime(),
+  (a, b) => newsDate(b).getTime() - newsDate(a).getTime(),
 );
 
 const buildDate = new Date().toUTCString();
 
 const rssItems = sortedNews.map((item) => {
   const url = `${BASE_URL}/novedades/${item.slug}`;
-  const pubDate = parseDate(item.date).toUTCString();
+  const pubDate = newsDate(item).toUTCString();
   const image = item.image?.startsWith('http') ? item.image : `${BASE_URL}${item.image}`;
   return [
     '    <item>',
