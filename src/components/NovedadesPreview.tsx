@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { newsData, latestNewsId } from '@/data/news';
+import { publishedNews, latestNewsId } from '@/data/news';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
@@ -28,7 +28,7 @@ const copy = {
 const NovedadesPreview = () => {
   const { language } = useLanguage();
   const c = copy[language];
-  const items = newsData.slice(0, 3);
+  const items = publishedNews.slice(0, 3);
 
   return (
     <section id="novedades" className="py-16 lg:py-24 bg-[#f3f1ec]">

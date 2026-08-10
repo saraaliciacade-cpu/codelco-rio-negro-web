@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { newsData, latestNewsId, type NewsBlock } from '@/data/news';
+import { newsData, publishedNews, latestNewsId, type NewsBlock } from '@/data/news';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_BLACK = '#1A1A1A';
@@ -33,14 +33,25 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
           {block.text}
         </h2>
       );
+    case 'html':
+      return (
+        <div
+          key={i}
+          className="news-html text-base sm:text-lg text-gray-700 leading-relaxed mb-5"
+          dangerouslySetInnerHTML={{ __html: block.html }}
+        />
+      );
     case 'image':
       return (
         <figure key={i} className="my-8">
           <img
             src={block.src}
             alt={block.alt ?? ''}
+            width={block.width}
+            height={block.height}
             className="w-full h-auto rounded-lg"
-            loading="lazy"
+            loading={block.priority ? 'eager' : 'lazy'}
+            {...(block.priority ? { fetchpriority: 'high' as const } : {})}
           />
           {block.caption && (
             <figcaption className="mt-3 text-sm text-gray-500 italic">
@@ -48,6 +59,26 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
             </figcaption>
           )}
         </figure>
+      );
+    case 'imageGrid':
+      return (
+        <div key={i} className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {block.images.map((img, k) => (
+            <figure key={k} className="m-0">
+              <img
+                src={img.src}
+                alt={img.alt ?? ''}
+                width={img.width}
+                height={img.height}
+                className="w-full h-auto rounded-lg"
+                loading="lazy"
+              />
+              {img.caption && (
+                <figcaption className="mt-2 text-sm text-gray-500 italic">{img.caption}</figcaption>
+              )}
+            </figure>
+          ))}
+        </div>
       );
     case 'video':
       return (
@@ -133,23 +164,26 @@ const NewsDetailPage = () => {
   if (!item) return <Navigate to="/novedades" replace />;
 
   const isLatest = item.id === latestNewsId;
-  const related = newsData.filter((n) => n.id !== item.id).slice(0, 3);
+  const isDraft = item.status === 'draft';
+  const related = publishedNews.filter((n) => n.id !== item.id).slice(0, 3);
+  const metaDescription = item.metaDescription ?? item.summary;
 
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title={`${item.title} | Novedades Codelco S.A.`}
-        description={item.summary}
+        title={item.seoTitle ?? `${item.title} | Novedades Codelco S.A.`}
+        description={metaDescription}
         path={`/novedades/${item.slug}`}
         image={item.image?.startsWith('http') ? item.image : undefined}
         type="article"
-        noindex={item.status === 'draft'}
+        noindex={isDraft}
+        nofollow={isDraft}
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'NewsArticle',
           headline: item.title,
-          description: item.summary,
-          datePublished: item.date,
+          description: metaDescription,
+          datePublished: item.dateIso ?? item.date,
           articleSection: item.category,
           image: item.image,
           publisher: {
@@ -347,7 +381,16 @@ const NewsDetailPage = () => {
                 </div>
               </div>
 
-              <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              {item.ctaQuestion && (
+                <p
+                  className="heading mt-10 text-xl sm:text-2xl leading-snug"
+                  style={{ color: BRAND_BLACK }}
+                >
+                  {item.ctaQuestion}
+                </p>
+              )}
+
+              <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
 
                 <Link
                   to="/novedades"

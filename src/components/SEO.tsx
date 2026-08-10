@@ -9,6 +9,8 @@ interface SEOProps {
   keywords?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
+  /** when noindex is set, also block link following (drafts) */
+  nofollow?: boolean;
   language?: 'es' | 'en';
   alternatePath?: string;
 }
@@ -26,6 +28,7 @@ const SEO = ({
   keywords,
   jsonLd,
   noindex = false,
+  nofollow = false,
   language = 'es',
   alternatePath,
 }: SEOProps) => {
@@ -36,7 +39,9 @@ const SEO = ({
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
-      {noindex && <meta name="robots" content="noindex, follow" />}
+      {noindex && (
+        <meta name="robots" content={`noindex, ${nofollow ? 'nofollow' : 'follow'}`} />
+      )}
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={url} />
       {alternatePath && (
