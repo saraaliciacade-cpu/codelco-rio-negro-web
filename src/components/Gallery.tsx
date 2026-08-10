@@ -10,6 +10,10 @@ const copy = {
     nuevo: 'NUEVO',
     closeImage: 'Cerrar imagen',
     alts: {
+      3001: 'Trailer habitacional autónomo Codelco con grupo electrógeno integrado - Exterior en planta',
+      3002: 'Cocina equipada del trailer habitacional con heladera, horno, microondas y aire acondicionado',
+      3003: 'Baño completo del trailer habitacional con ducha, inodoro y bidet',
+      3004: 'Dormitorios del trailer habitacional con camas y guardado bajo cama',
       996: 'Interior modular con entrepiso y cocina integrada - Módulo habitacional completo',
       990: 'Dormitorio con vista panorámica - Interior de módulo de vivienda',
       1003: 'Módulo habitacional al atardecer - Vista exterior con entrada e iluminación interior',
@@ -37,6 +41,10 @@ const copy = {
     nuevo: 'NEW',
     closeImage: 'Close image',
     alts: {
+      3001: 'Self-contained Codelco housing trailer with built-in generator - Exterior at the plant',
+      3002: 'Fully equipped kitchen of the housing trailer with fridge, oven, microwave and air conditioning',
+      3003: 'Full bathroom of the housing trailer with shower, toilet and bidet',
+      3004: 'Bedrooms of the housing trailer with beds and under-bed storage',
       996: 'Modular interior with mezzanine and integrated kitchen - Complete housing module',
       990: 'Bedroom with panoramic view - Interior of housing module',
       1003: 'Housing module at sunset - Exterior view with entrance and interior lighting',
@@ -84,109 +92,139 @@ const Gallery = () => {
 
   // Gallery images - manually uploaded photos
   const images = [
+  // NEWEST — Trailer habitacional autónomo (nota en Novedades)
+  {
+    id: 3001,
+    category: 'fabrica',
+    src: '/images/noticias/trailer-habitacional/trailer-habitacional-autonomo-exterior-planta.jpg',
+    alt: c.alts[3001],
+    isNew: true,
+    newsHref: '/novedades/trailer-habitacional-autonomo'
+  }, {
+    id: 3002,
+    category: 'fabrica',
+    src: '/images/noticias/trailer-habitacional/trailer-habitacional-cocina-completa.jpg',
+    alt: c.alts[3002],
+    isNew: true,
+    newsHref: '/novedades/trailer-habitacional-autonomo'
+  }, {
+    id: 3003,
+    category: 'fabrica',
+    src: '/images/noticias/trailer-habitacional/trailer-habitacional-bano-completo.jpg',
+    alt: c.alts[3003],
+    isNew: true,
+    newsHref: '/novedades/trailer-habitacional-autonomo'
+  }, {
+    id: 3004,
+    category: 'fabrica',
+    src: '/images/noticias/trailer-habitacional/trailer-habitacional-dormitorios-camas.jpg',
+    alt: c.alts[3004],
+    isNew: true,
+    newsHref: '/novedades/trailer-habitacional-autonomo'
+  },
   // NEWEST Fábrica images (non-Crexell)
   {
     id: 996,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-30.jpg',
     alt: c.alts[996],
-    isNew: true
+    isNew: false
   }, {
     id: 990,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-36.jpg',
     alt: c.alts[990],
-    isNew: true
+    isNew: false
   }, {
     id: 1003,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-39.jpg',
     alt: c.alts[1003],
-    isNew: true
+    isNew: false
   }, {
     id: 993,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-33.jpg',
     alt: c.alts[993],
-    isNew: true
+    isNew: false
   }, {
     id: 995,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-31.jpg',
     alt: c.alts[995],
-    isNew: true
+    isNew: false
   }, {
     id: 1002,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-40.jpg',
     alt: c.alts[1002],
-    isNew: true
+    isNew: false
   }, {
     id: 1001,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-41.jpg',
     alt: c.alts[1001],
-    isNew: true
+    isNew: false
   }, {
     id: 994,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-32.jpg',
     alt: c.alts[994],
-    isNew: true
+    isNew: false
   }, {
     id: 992,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-34.jpg',
     alt: c.alts[992],
-    isNew: true
+    isNew: false
   }, {
     id: 991,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-35.jpg',
     alt: c.alts[991],
-    isNew: true
+    isNew: false
   }, {
     id: 2001,
     category: 'fabrica',
     src: '/images/novedad/novedad-01.jpg',
     alt: c.alts[2001],
-    isNew: true
+    isNew: false
   }, {
     id: 989,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-37.jpg',
     alt: c.alts[989],
-    isNew: true
+    isNew: false
   }, {
     id: 2002,
     category: 'fabrica',
     src: '/images/novedad/novedad-02.jpg',
     alt: c.alts[2002],
-    isNew: true
+    isNew: false
   }, {
     id: 988,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-38.jpg',
     alt: c.alts[988],
-    isNew: true
+    isNew: false
   }, {
     id: 2003,
     category: 'fabrica',
     src: '/images/novedad/novedad-03.jpg',
     alt: c.alts[2003],
-    isNew: true
+    isNew: false
   }, {
     id: 2004,
     category: 'fabrica',
     src: '/images/novedad/novedad-04.jpg',
     alt: c.alts[2004],
-    isNew: true
+    isNew: false
   }, {
     id: 2005,
     category: 'fabrica',
     src: '/images/novedad/novedad-05.jpg',
     alt: c.alts[2005],
-    isNew: true
+    isNew: false
   },
   // Fábrica - Crexell images (without NEW badge, between new and old)
   {
