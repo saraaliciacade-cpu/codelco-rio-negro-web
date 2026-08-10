@@ -9,6 +9,8 @@ interface SEOProps {
   keywords?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
+  /** when noindex is set, also block link following (drafts) */
+  nofollow?: boolean;
   language?: 'es' | 'en';
   alternatePath?: string;
 }
