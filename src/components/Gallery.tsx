@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { X, Play } from 'lucide-react';
+import { X, Play, Newspaper } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 
 const copy = {
   es: {
     nuevo: 'NUEVO',
+    verNoticia: 'Ver la noticia',
     closeImage: 'Cerrar imagen',
     alts: {
       3001: 'Trailer habitacional autónomo Codelco con grupo electrógeno integrado - Exterior en planta',
@@ -39,6 +41,7 @@ const copy = {
   },
   en: {
     nuevo: 'NEW',
+    verNoticia: 'Read the article',
     closeImage: 'Close image',
     alts: {
       3001: 'Self-contained Codelco housing trailer with built-in generator - Exterior at the plant',
@@ -90,6 +93,8 @@ const Gallery = () => {
     label: t('gallery.filter.rental')
   }];
 
+  const navigate = useNavigate();
+
   // Gallery images - manually uploaded photos
   const images = [
   // NEWEST — Trailer habitacional autónomo (nota en Novedades)
@@ -127,104 +132,87 @@ const Gallery = () => {
     id: 996,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-30.jpg',
-    alt: c.alts[996],
-    isNew: false
+    alt: c.alts[996]
   }, {
     id: 990,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-36.jpg',
-    alt: c.alts[990],
-    isNew: false
+    alt: c.alts[990]
   }, {
     id: 1003,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-39.jpg',
-    alt: c.alts[1003],
-    isNew: false
+    alt: c.alts[1003]
   }, {
     id: 993,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-33.jpg',
-    alt: c.alts[993],
-    isNew: false
+    alt: c.alts[993]
   }, {
     id: 995,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-31.jpg',
-    alt: c.alts[995],
-    isNew: false
+    alt: c.alts[995]
   }, {
     id: 1002,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-40.jpg',
-    alt: c.alts[1002],
-    isNew: false
+    alt: c.alts[1002]
   }, {
     id: 1001,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-41.jpg',
-    alt: c.alts[1001],
-    isNew: false
+    alt: c.alts[1001]
   }, {
     id: 994,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-32.jpg',
-    alt: c.alts[994],
-    isNew: false
+    alt: c.alts[994]
   }, {
     id: 992,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-34.jpg',
-    alt: c.alts[992],
-    isNew: false
+    alt: c.alts[992]
   }, {
     id: 991,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-35.jpg',
-    alt: c.alts[991],
-    isNew: false
+    alt: c.alts[991]
   }, {
     id: 2001,
     category: 'fabrica',
     src: '/images/novedad/novedad-01.jpg',
-    alt: c.alts[2001],
-    isNew: false
+    alt: c.alts[2001]
   }, {
     id: 989,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-37.jpg',
-    alt: c.alts[989],
-    isNew: false
+    alt: c.alts[989]
   }, {
     id: 2002,
     category: 'fabrica',
     src: '/images/novedad/novedad-02.jpg',
-    alt: c.alts[2002],
-    isNew: false
+    alt: c.alts[2002]
   }, {
     id: 988,
     category: 'fabrica',
     src: '/images/fabrica/fabrica-38.jpg',
-    alt: c.alts[988],
-    isNew: false
+    alt: c.alts[988]
   }, {
     id: 2003,
     category: 'fabrica',
     src: '/images/novedad/novedad-03.jpg',
-    alt: c.alts[2003],
-    isNew: false
+    alt: c.alts[2003]
   }, {
     id: 2004,
     category: 'fabrica',
     src: '/images/novedad/novedad-04.jpg',
-    alt: c.alts[2004],
-    isNew: false
+    alt: c.alts[2004]
   }, {
     id: 2005,
     category: 'fabrica',
     src: '/images/novedad/novedad-05.jpg',
-    alt: c.alts[2005],
-    isNew: false
+    alt: c.alts[2005]
   },
   // Fábrica - Crexell images (without NEW badge, between new and old)
   {
@@ -580,6 +568,18 @@ const Gallery = () => {
                     height="380"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                   />
+                )}
+                {(image as any).newsHref && (
+                  <span
+                    role="link"
+                    tabIndex={0}
+                    onClick={(e) => { e.stopPropagation(); navigate((image as any).newsHref); }}
+                    onKeyDown={(e) => { if (e.key === 'Enter') { e.stopPropagation(); navigate((image as any).newsHref); } }}
+                    className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 bg-primary text-white text-xs sm:text-sm font-semibold py-2 opacity-0 translate-y-full transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 focus:opacity-100 focus:translate-y-0 cursor-pointer"
+                  >
+                    <Newspaper className="w-4 h-4" aria-hidden="true" />
+                    {c.verNoticia}
+                  </span>
                 )}
               </div>
               <div className="p-4 text-center">
