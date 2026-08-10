@@ -62,7 +62,122 @@ export const isPublished = (n: NewsItem): boolean => n.status !== 'draft';
 
 export const categories: NewsCategory[] = ['Todas', 'Flota', 'Proyecto', 'Planta', 'Clientes', 'Sector'];
 
+const TRAILER_IMG = '/images/noticias/trailer-habitacional';
+
 export const newsData: NewsItem[] = [
+  {
+    id: 10,
+    slug: 'trailer-habitacional-autonomo',
+    category: 'Proyecto',
+    status: 'draft',
+    date: '10 de agosto de 2026',
+    dateIso: '2026-08-10',
+    title: 'Trailer habitacional autónomo para operaciones de campo',
+    seoTitle: 'Trailer Habitacional Autónomo para Vaca Muerta | Codelco S.A.',
+    metaDescription:
+      'Trailer habitacional autónomo con cocina, baño, dormitorios y energía propia. Fabricación propia desde 2012 para Vaca Muerta. Consultá disponibilidad.',
+    summary:
+      'Una unidad rodante que llega lista para operar: agua, energía, climatización e iluminación propias, sin depender de la infraestructura del yacimiento.',
+    ctaQuestion: '¿Necesitás una unidad lista para operar en tu yacimiento?',
+    image: `${TRAILER_IMG}/trailer-habitacional-autonomo-exterior-planta.jpg`,
+    body: [
+      {
+        type: 'image',
+        src: `${TRAILER_IMG}/trailer-habitacional-autonomo-exterior-planta.jpg`,
+        alt: 'Trailer habitacional autónomo autoportante fabricado por Codelco S.A. con grupo electrógeno integrado',
+        width: 1200,
+        height: 800,
+        priority: true,
+      },
+      {
+        type: 'html',
+        html: 'En un yacimiento, cada día que el campamento no está operativo es producción que se pierde. Por eso diseñamos y fabricamos en <strong>planta propia</strong> trailers habitacionales autónomos: unidades pensadas para funcionar <strong>donde no hay red</strong> de agua ni de energía.',
+      },
+      { type: 'heading', text: 'Una unidad autoportante y autosuficiente' },
+      {
+        type: 'html',
+        html: 'Cada trailer es <strong>autoportante</strong> —se sostiene y se traslada sobre su propio chasis rodante— y <strong>autosuficiente en servicios</strong>. Llega al campo con cocina, baño completo, dormitorios y todos los sistemas necesarios para que el personal viva y trabaje <strong>desde el primer día</strong>, sin obras previas ni conexiones externas.',
+      },
+      {
+        type: 'image',
+        src: `${TRAILER_IMG}/trailer-habitacional-exterior-chasis-rodante.jpg`,
+        alt: 'Trailer habitacional autoportante sobre chasis rodante con aire acondicionado exterior',
+        width: 1200,
+        height: 800,
+      },
+      { type: 'heading', text: 'Equipamiento completo' },
+      {
+        type: 'imageGrid',
+        images: [
+          {
+            src: `${TRAILER_IMG}/trailer-habitacional-cocina-completa.jpg`,
+            alt: 'Cocina completa del trailer habitacional con heladera, horno, microondas y aire acondicionado',
+            width: 800,
+            height: 600,
+          },
+          {
+            src: `${TRAILER_IMG}/trailer-habitacional-cocina-bacha-doble.jpg`,
+            alt: 'Cocina del módulo habitacional con bacha doble de acero y muebles integrados',
+            width: 800,
+            height: 600,
+          },
+        ],
+      },
+      {
+        type: 'html',
+        html: `<ul>
+<li><strong>Cocina completa:</strong> heladera con freezer, anafe y horno, microondas, campana y bacha doble de acero.</li>
+<li><strong>Baño:</strong> ducha, inodoro, bidet y vanitory con espejo.</li>
+<li><strong>Descanso:</strong> dormitorios con camas y guardado bajo cama.</li>
+<li><strong>Confort:</strong> aire acondicionado frío/calor, iluminación LED y TV.</li>
+<li><strong>Autonomía de agua:</strong> tanque propio con bomba presurizadora (agua corriente a presión).</li>
+<li><strong>Autonomía de energía:</strong> <a href="/rental">grupo electrógeno</a> integrado.</li>
+<li><strong>Construcción:</strong> aislación termoacústica y terminación industrial en chapa.</li>
+</ul>`,
+      },
+      {
+        type: 'image',
+        src: `${TRAILER_IMG}/trailer-habitacional-dormitorios-camas.jpg`,
+        alt: 'Dormitorios del trailer habitacional con camas y guardado bajo cama',
+        width: 1200,
+        height: 800,
+      },
+      {
+        type: 'imageGrid',
+        images: [
+          {
+            src: `${TRAILER_IMG}/trailer-habitacional-bano-completo.jpg`,
+            alt: 'Baño completo del trailer habitacional con ducha, inodoro y bidet',
+            width: 800,
+            height: 600,
+          },
+          {
+            src: `${TRAILER_IMG}/trailer-habitacional-bano-vanitory.jpg`,
+            alt: 'Baño del módulo con vanitory, espejo y ducha con terminación industrial',
+            width: 800,
+            height: 600,
+          },
+        ],
+      },
+      {
+        type: 'heading',
+        text: 'Por qué un módulo habitacional autónomo cambia los tiempos de tu operación',
+      },
+      {
+        type: 'html',
+        html: 'En Vaca Muerta el <strong>tiempo muerto se paga caro</strong>. Un módulo que depende de conexiones externas puede sumar semanas entre el traslado y la puesta en marcha. Uno autónomo <strong>arranca el día uno, no la semana tres</strong>: menos coordinación con terceros, menos imprevistos y personal alojado con confort real desde el arranque.',
+      },
+      { type: 'heading', text: 'Fabricación propia desde 2012' },
+      {
+        type: 'html',
+        html: 'Producimos estas unidades en nuestra planta de <strong>3.500 m²</strong> en Cipolletti, con línea integral: ingeniería, <a href="/fabrica">corte y plegado de chapa</a>, armado y terminación. Desde <strong>2012</strong> acompañamos a <strong>más de 30 empresas</strong> del sector oil &amp; gas con equipos robustos y soporte técnico en campo.',
+      },
+      {
+        type: 'html',
+        html: 'Adaptamos cada unidad a tu operación: cantidad de plazas, distribución interna y nivel de equipamiento. <strong>Consultanos disponibilidad</strong> y te asesoramos sobre la configuración que mejor se ajusta a tu proyecto.',
+      },
+    ],
+  },
   {
     id: 9,
     slug: 'historia-familia-guerra-codelco',
