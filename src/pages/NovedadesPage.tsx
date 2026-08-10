@@ -50,8 +50,8 @@ const NovedadesPage = () => {
 
   const filteredNews =
     activeCategory === 'Todas'
-      ? newsData
-      : newsData.filter((n) => n.category === activeCategory);
+      ? publishedNews
+      : publishedNews.filter((n) => n.category === activeCategory);
 
   return (
     <div className="min-h-screen bg-white">
