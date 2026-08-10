@@ -8,7 +8,10 @@ export type NewsCategory = 'Todas' | 'Flota' | 'Proyecto' | 'Planta' | 'Clientes
 export interface NewsImage {
   src: string;
   alt?: string;
+  /** Visible caption under the image (also used as the img title attribute). */
   caption?: string;
+  /** Optional img title attribute; falls back to caption. */
+  title?: string;
   width?: number;
   height?: number;
   /** first/cover image inside the body: eager + high fetch priority */
@@ -85,8 +88,9 @@ export const newsData: NewsItem[] = [
         type: 'image',
         src: `${TRAILER_IMG}/trailer-habitacional-autonomo-exterior-planta.jpg`,
         alt: 'Trailer habitacional autónomo autoportante fabricado por Codelco S.A. con grupo electrógeno integrado',
-        width: 1200,
-        height: 800,
+        caption: 'Trailer habitacional autónomo Codelco S.A. con grupo electrógeno integrado, terminado en planta de Cipolletti',
+        width: 1280,
+        height: 1280,
         priority: true,
       },
       {
@@ -102,8 +106,9 @@ export const newsData: NewsItem[] = [
         type: 'image',
         src: `${TRAILER_IMG}/trailer-habitacional-exterior-chasis-rodante.jpg`,
         alt: 'Trailer habitacional autoportante sobre chasis rodante con aire acondicionado exterior',
-        width: 1200,
-        height: 800,
+        caption: 'Módulo habitacional autoportante sobre chasis rodante, con equipo de aire acondicionado exterior',
+        width: 1280,
+        height: 1280,
       },
       { type: 'heading', text: 'Equipamiento completo' },
       {
@@ -112,14 +117,16 @@ export const newsData: NewsItem[] = [
           {
             src: `${TRAILER_IMG}/trailer-habitacional-cocina-completa.jpg`,
             alt: 'Cocina completa del trailer habitacional con heladera, horno, microondas y aire acondicionado',
-            width: 800,
-            height: 600,
+            caption: 'Cocina equipada del trailer habitacional: heladera con freezer, horno, microondas, campana y aire acondicionado',
+            width: 1280,
+            height: 1280,
           },
           {
             src: `${TRAILER_IMG}/trailer-habitacional-cocina-bacha-doble.jpg`,
             alt: 'Cocina del módulo habitacional con bacha doble de acero y muebles integrados',
-            width: 800,
-            height: 600,
+            caption: 'Sector cocina-comedor con bacha doble de acero, muebles integrados y mesa fija',
+            width: 1280,
+            height: 1280,
           },
         ],
       },
@@ -139,8 +146,9 @@ export const newsData: NewsItem[] = [
         type: 'image',
         src: `${TRAILER_IMG}/trailer-habitacional-dormitorios-camas.jpg`,
         alt: 'Dormitorios del trailer habitacional con camas y guardado bajo cama',
-        width: 1200,
-        height: 800,
+        caption: 'Dormitorios del trailer habitacional con camas y cajones de guardado bajo cama',
+        width: 1280,
+        height: 1280,
       },
       {
         type: 'imageGrid',
@@ -148,14 +156,16 @@ export const newsData: NewsItem[] = [
           {
             src: `${TRAILER_IMG}/trailer-habitacional-bano-completo.jpg`,
             alt: 'Baño completo del trailer habitacional con ducha, inodoro y bidet',
-            width: 800,
-            height: 600,
+            caption: 'Baño completo del trailer habitacional con ducha, inodoro y bidet',
+            width: 1280,
+            height: 1280,
           },
           {
             src: `${TRAILER_IMG}/trailer-habitacional-bano-vanitory.jpg`,
             alt: 'Baño del módulo con vanitory, espejo y ducha con terminación industrial',
-            width: 800,
-            height: 600,
+            caption: 'Baño del módulo habitacional con vanitory, espejo y ducha con terminación industrial',
+            width: 1280,
+            height: 1280,
           },
         ],
       },
