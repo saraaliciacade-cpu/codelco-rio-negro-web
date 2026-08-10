@@ -164,23 +164,26 @@ const NewsDetailPage = () => {
   if (!item) return <Navigate to="/novedades" replace />;
 
   const isLatest = item.id === latestNewsId;
-  const related = newsData.filter((n) => n.id !== item.id).slice(0, 3);
+  const isDraft = item.status === 'draft';
+  const related = publishedNews.filter((n) => n.id !== item.id).slice(0, 3);
+  const metaDescription = item.metaDescription ?? item.summary;
 
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title={`${item.title} | Novedades Codelco S.A.`}
-        description={item.summary}
+        title={item.seoTitle ?? `${item.title} | Novedades Codelco S.A.`}
+        description={metaDescription}
         path={`/novedades/${item.slug}`}
         image={item.image?.startsWith('http') ? item.image : undefined}
         type="article"
-        noindex={item.status === 'draft'}
+        noindex={isDraft}
+        nofollow={isDraft}
         jsonLd={{
           '@context': 'https://schema.org',
           '@type': 'NewsArticle',
           headline: item.title,
-          description: item.summary,
-          datePublished: item.date,
+          description: metaDescription,
+          datePublished: item.dateIso ?? item.date,
           articleSection: item.category,
           image: item.image,
           publisher: {
