@@ -405,4 +405,9 @@ export const newsData: NewsItem[] = [
   },
 ];
 
-export const latestNewsId = newsData[0].id;
+/** Public-facing list: drafts are hidden from listings, previews and "última noticia". */
+export const publishedNews: NewsItem[] = newsData.filter(isPublished);
+
+export const draftNews: NewsItem[] = newsData.filter((n) => !isPublished(n));
+
+export const latestNewsId = publishedNews[0]?.id ?? newsData[0].id;
