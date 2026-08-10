@@ -5,9 +5,22 @@ import rionegroPreview from '@/assets/rionegro-lee-tambien.png.asset.json';
 
 export type NewsCategory = 'Todas' | 'Flota' | 'Proyecto' | 'Planta' | 'Clientes' | 'Sector';
 
+export interface NewsImage {
+  src: string;
+  alt?: string;
+  caption?: string;
+  width?: number;
+  height?: number;
+  /** first/cover image inside the body: eager + high fetch priority */
+  priority?: boolean;
+}
+
 export type NewsBlock =
   | { type: 'p'; text: string }
-  | { type: 'image'; src: string; alt?: string; caption?: string }
+  /** rich paragraph / list: trusted inline HTML (strong, a, ul/li) authored in this file */
+  | { type: 'html'; html: string }
+  | ({ type: 'image' } & NewsImage)
+  | { type: 'imageGrid'; images: NewsImage[] }
   | { type: 'video'; provider: 'youtube'; id: string; title?: string }
   | { type: 'heading'; text: string }
   | {
@@ -25,6 +38,14 @@ export interface NewsItem {
   category: Exclude<NewsCategory, 'Todas'>;
   date: string;
   title: string;
+  /** Optional SEO <title> / og:title, different from the visible H1 (title). */
+  seoTitle?: string;
+  /** Optional meta description; falls back to summary. */
+  metaDescription?: string;
+  /** ISO date (YYYY-MM-DD) for structured data / sitemap when `date` is a human label. */
+  dateIso?: string;
+  /** Optional question shown above the CTA buttons. */
+  ctaQuestion?: string;
   summary: string;
   image: string;
   imagePosition?: string;
