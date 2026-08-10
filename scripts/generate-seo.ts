@@ -118,7 +118,7 @@ const newsImages = (item: NewsItem): SitemapImage[] => {
 
 const newsEntries: FullEntry[] = newsData.map((item: NewsItem) => ({
   path: `/novedades/${item.slug}`,
-  lastmod: parseDate(item.date).toISOString().slice(0, 10),
+  lastmod: item.dateIso ?? parseDate(item.date).toISOString().slice(0, 10),
   changefreq: 'monthly',
   priority: '0.6',
   images: newsImages(item),
