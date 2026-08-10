@@ -23,14 +23,14 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Core React (only essential)
-          if (id.includes('react-dom/client') || id.includes('react/jsx-runtime')) {
-            return 'react-core';
-          }
-          // React runtime (deferred)
-          if (id.includes('react') && !id.includes('react-dom/client') && !id.includes('react/jsx-runtime')) {
+          // Keep the whole React runtime (react, react-dom, scheduler) in ONE chunk.
+          // Splitting it causes duplicate/partial React copies -> minified error #61.
+          if (
+            /node_modules\/(react|react-dom|scheduler|use-sync-external-store)\//.test(id)
+          ) {
             return 'react-vendor';
           }
+
           // UI framework - split by usage frequency
           if (id.includes('@radix-ui/react-toast') || id.includes('@radix-ui/react-slot') || id.includes('@radix-ui/react-label')) {
             return 'ui-core';
