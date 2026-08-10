@@ -157,6 +157,47 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://codelco.com.ar/novedades/trailer-habitacional-autonomo</loc>
+    <lastmod>2026-08-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/noticias/trailer-habitacional/trailer-habitacional-autonomo-exterior-planta.jpg</image:loc>
+      <image:title>Trailer habitacional autónomo para operaciones de campo</image:title>
+      <image:caption>Una unidad rodante que llega lista para operar: agua, energía, climatización e iluminación propias, sin depender de la infraestructura del yacimiento.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/noticias/trailer-habitacional/trailer-habitacional-exterior-chasis-rodante.jpg</image:loc>
+      <image:title>Módulo habitacional autoportante sobre chasis rodante, con equipo de aire acondicionado exterior</image:title>
+      <image:caption>Trailer habitacional autoportante sobre chasis rodante con aire acondicionado exterior</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/noticias/trailer-habitacional/trailer-habitacional-cocina-completa.jpg</image:loc>
+      <image:title>Cocina equipada del trailer habitacional: heladera con freezer, horno, microondas, campana y aire acondicionado</image:title>
+      <image:caption>Cocina completa del trailer habitacional con heladera, horno, microondas y aire acondicionado</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/noticias/trailer-habitacional/trailer-habitacional-cocina-bacha-doble.jpg</image:loc>
+      <image:title>Sector cocina-comedor con bacha doble de acero, muebles integrados y mesa fija</image:title>
+      <image:caption>Cocina del módulo habitacional con bacha doble de acero y muebles integrados</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/noticias/trailer-habitacional/trailer-habitacional-dormitorios-camas.jpg</image:loc>
+      <image:title>Dormitorios del trailer habitacional con camas y cajones de guardado bajo cama</image:title>
+      <image:caption>Dormitorios del trailer habitacional con camas y guardado bajo cama</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/noticias/trailer-habitacional/trailer-habitacional-bano-completo.jpg</image:loc>
+      <image:title>Baño completo del trailer habitacional con ducha, inodoro y bidet</image:title>
+      <image:caption>Baño completo del trailer habitacional con ducha, inodoro y bidet</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/noticias/trailer-habitacional/trailer-habitacional-bano-vanitory.jpg</image:loc>
+      <image:title>Baño del módulo habitacional con vanitory, espejo y ducha con terminación industrial</image:title>
+      <image:caption>Baño del módulo con vanitory, espejo y ducha con terminación industrial</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://codelco.com.ar/novedades/historia-familia-guerra-codelco</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
