@@ -104,10 +104,10 @@ export default defineConfig(({ mode }) => ({
       },
       mangle: {
         safari10: true,
-        properties: {
-          regex: /^_/
-        }
+        // NOTE: never mangle properties. It renamed React internals like
+        // `__html` (dangerouslySetInnerHTML) -> minified error #61 + blank page.
       },
+
       format: {
         comments: false,
       },

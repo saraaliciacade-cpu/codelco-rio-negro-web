@@ -38,7 +38,7 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
         <div
           key={i}
           className="news-html text-base sm:text-lg text-gray-700 leading-relaxed mb-5"
-          dangerouslySetInnerHTML={{ __html: block.html }}
+          dangerouslySetInnerHTML={{ __html: typeof block.html === 'string' ? block.html : '' }}
         />
       );
     case 'image':
