@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { newsData, latestNewsId, type NewsBlock } from '@/data/news';
+import { newsData, publishedNews, latestNewsId, type NewsBlock } from '@/data/news';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_BLACK = '#1A1A1A';
