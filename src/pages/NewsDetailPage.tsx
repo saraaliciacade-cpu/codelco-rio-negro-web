@@ -381,7 +381,16 @@ const NewsDetailPage = () => {
                 </div>
               </div>
 
-              <div className="mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              {item.ctaQuestion && (
+                <p
+                  className="heading mt-10 text-xl sm:text-2xl leading-snug"
+                  style={{ color: BRAND_BLACK }}
+                >
+                  {item.ctaQuestion}
+                </p>
+              )}
+
+              <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
 
                 <Link
                   to="/novedades"
