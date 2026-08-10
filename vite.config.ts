@@ -23,14 +23,14 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Core React (only essential)
-          if (id.includes('react-dom/client') || id.includes('react/jsx-runtime')) {
-            return 'react-core';
-          }
-          // React runtime (deferred)
-          if (id.includes('react') && !id.includes('react-dom/client') && !id.includes('react/jsx-runtime')) {
+          // Keep the whole React runtime (react, react-dom, scheduler) in ONE chunk.
+          // Splitting it causes duplicate/partial React copies -> minified error #61.
+          if (
+            /node_modules\/(react|react-dom|scheduler|use-sync-external-store)\//.test(id)
+          ) {
             return 'react-vendor';
           }
+
           // UI framework - split by usage frequency
           if (id.includes('@radix-ui/react-toast') || id.includes('@radix-ui/react-slot') || id.includes('@radix-ui/react-label')) {
             return 'ui-core';
@@ -72,10 +72,8 @@ export default defineConfig(({ mode }) => ({
           if (id.includes('embla-carousel') || id.includes('vaul') || id.includes('sonner')) {
             return 'animations';
           }
-          // Heavy components (lazy load)
-          if (id.includes('Gallery') || id.includes('Contact') || id.includes('Map') || id.includes('Services')) {
-            return 'lazy-components';
-          }
+          // (removed) grouping app source files by name — it broke lazy-load boundaries
+
           // Non-critical UI components
           if (id.includes('ui/accordion') || id.includes('ui/alert') || id.includes('ui/calendar') || 
               id.includes('ui/chart') || id.includes('ui/command') || id.includes('ui/context-menu') ||
