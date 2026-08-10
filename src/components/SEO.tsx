@@ -28,6 +28,7 @@ const SEO = ({
   keywords,
   jsonLd,
   noindex = false,
+  nofollow = false,
   language = 'es',
   alternatePath,
 }: SEOProps) => {
