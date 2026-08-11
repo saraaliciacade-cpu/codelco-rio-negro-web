@@ -35,10 +35,12 @@ import tuboscopeLogo from '@/assets/clients/tuboscope.jpg';
 import veinticincoMayoLogo from '@/assets/clients/25-de-mayo-new.png';
 
 import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Services from '@/components/Services';
+import LogoCarousel from '@/components/LogoCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const copy = {
@@ -55,6 +57,18 @@ const copy = {
 const ClientsPage = () => {
   const { t, language } = useLanguage();
   const c = copy[language];
+  const [introVisible, setIntroVisible] = useState(true);
+  const [introFading, setIntroFading] = useState(false);
+
+  useEffect(() => {
+    const fade = setTimeout(() => setIntroFading(true), 1800);
+    const hide = setTimeout(() => setIntroVisible(false), 3000);
+    return () => {
+      clearTimeout(fade);
+      clearTimeout(hide);
+    };
+  }, []);
+
   const allClients = [
     { name: "Compressco LP", logo: comprescoLogo },
     { name: "Transportes Crexell S.A.", logo: crexellLogo },
@@ -90,6 +104,19 @@ const ClientsPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      {introVisible && (
+        <div
+          aria-hidden="true"
+          className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#e65b2a] transition-opacity duration-1000 ${introFading ? 'opacity-0' : 'opacity-100'}`}
+        >
+          <img
+            src="/logo24.png"
+            alt=""
+            className="w-56 md:w-96 max-w-[70vw] brightness-0 invert animate-scale-in"
+          />
+        </div>
+      )}
+
       <Helmet>
         <title>+30 empresas del sector petrolero confían en Codelco S.A.</title>
         <meta name="description" content="Operadoras, contratistas y empresas de servicios de Vaca Muerta y la Patagonia trabajan con Codelco S.A. en fabricación, metalúrgica, rental y grupos electrógenos." />
@@ -123,34 +150,25 @@ const ClientsPage = () => {
         </div>
       </section>
 
-      {/* Grilla de clientes */}
-      <section className="pb-16 md:pb-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
-            {allClients.map((client, index) => (
-              <div key={index} className="flex flex-col items-center justify-center">
-                <div className="h-28 w-48 p-4 flex items-center justify-center bg-white rounded-xl shadow-lg border border-gray-200">
-                  <img
-                    src={client.logo}
-                    alt={`${client.name} — cliente de Codelco S.A.`}
-                    className="max-h-full max-w-full object-contain"
-                  />
-                </div>
-                <p className="text-sm text-gray-800 text-center font-bold leading-tight px-2 mt-3">
-                  {client.name}
-                </p>
-              </div>
-            ))}
-          </div>
+      {/* Carrusel de clientes (a todo color) */}
+      <section className="pb-16 md:pb-20 bg-white overflow-hidden">
+        <LogoCarousel fullColor />
 
-          <div className="max-w-5xl mx-auto px-4 text-center mt-14 md:mt-20">
-            <h2 className="heading text-3xl md:text-5xl text-[#1A1A1A] leading-tight">
-              {c.trustHeading}{" "}
-              <span className="text-[#e65b2a]">{c.trustCta}</span>
-            </h2>
-          </div>
+        {/* Lista para SEO / accesibilidad */}
+        <ul className="sr-only">
+          {allClients.map((client, index) => (
+            <li key={index}>{client.name}</li>
+          ))}
+        </ul>
+
+        <div className="max-w-5xl mx-auto px-4 text-center mt-14 md:mt-20">
+          <h2 className="heading text-3xl md:text-5xl text-[#1A1A1A] leading-tight">
+            {c.trustHeading}{" "}
+            <span className="text-[#e65b2a]">{c.trustCta}</span>
+          </h2>
         </div>
       </section>
+
 
 
       {/* Nuestras Divisiones */}
