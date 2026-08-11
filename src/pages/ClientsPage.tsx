@@ -66,8 +66,20 @@ const ClientsPage = () => {
           "@type": "CollectionPage",
           "name": "Clientes de Codelco S.A.",
           "url": "https://codelco.com.ar/clientes",
-          "about": allClients.map(c => ({ "@type": "Organization", "name": c.name }))
+          "about": allClients.map(c => ({
+            "@type": "Organization",
+            "name": c.name,
+            "logo": {
+              "@type": "ImageObject",
+              "url": `https://codelco.com.ar${c.logo}`,
+              "name": `Logo de ${c.name}`,
+              "caption": `${c.name} — cliente de Codelco S.A.`,
+              "contentUrl": `https://codelco.com.ar${c.logo}`,
+            },
+          })),
+          "image": allClients.map(c => `https://codelco.com.ar${c.logo}`),
         })}</script>
+
       </Helmet>
 
       <Header />
