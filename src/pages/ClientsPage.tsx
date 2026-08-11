@@ -1,38 +1,5 @@
-// Import client logos - Row 1
-import comprescoLogo from '@/assets/clients/compresco.jpeg';
-import crexellLogo from '@/assets/clients/crexell.png';
-import datumLogo from '@/assets/clients/datum.png';
-import egServiciosLogo from '@/assets/clients/eg-servicios.png';
-import edvsaLogo from '@/assets/clients/edvsa.png';
-import emergenciasLogo from '@/assets/clients/emergencias-new.png';
-import flargentLogo from '@/assets/clients/flargent.jpg';
-import hidromecLogo from '@/assets/clients/hidromec-new.jpeg';
-import hotHedLogo from '@/assets/clients/hot-hed.png';
-import indasycLogo from '@/assets/clients/indasyc-new.png';
+import { allClients } from '@/data/clients';
 
-// Import client logos - Row 2
-import slGroupLogo from '@/assets/clients/sl-group.jpg';
-import ingenieriaLogo from '@/assets/clients/ingenieria-terra.png';
-import lygServiciosLogo from '@/assets/clients/lyg-servicios-new.jpeg';
-import netlogLogo from '@/assets/clients/netlog.png';
-import oilstoneLogo from '@/assets/clients/oilstone-new.jpg';
-import prodengLogo from '@/assets/clients/prodeng.png';
-import quimpeLogo from '@/assets/clients/quimpe-new.png';
-import rakiduamLogo from '@/assets/clients/rakiduam.png';
-import rangerOilLogo from '@/assets/clients/ranger-oil-new.png';
-import sanAntonioLogo from '@/assets/clients/san-antonio-new.png';
-
-// Import client logos - Row 3
-import wintershallLogo from '@/assets/clients/wintershall-new.png';
-import technipFmcLogo from '@/assets/clients/technip-fmc.webp';
-import tecpetrolLogo from '@/assets/clients/tecpetrol-new.png';
-import tetraLogo from '@/assets/clients/tetra.png';
-import tomrelLogo from '@/assets/clients/tomrel.png';
-import tackerLogo from '@/assets/clients/tacker-new.png';
-import transporteFerraLogo from '@/assets/clients/transporte-ferra.png';
-import tsbLogo from '@/assets/clients/tsb-new.png';
-import tuboscopeLogo from '@/assets/clients/tuboscope.jpg';
-import veinticincoMayoLogo from '@/assets/clients/25-de-mayo-new.png';
 
 import { Helmet } from 'react-helmet-async';
 import { useEffect, useState } from 'react';
