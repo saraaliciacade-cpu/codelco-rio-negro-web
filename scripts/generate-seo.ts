@@ -99,7 +99,7 @@ const staticEntries: FullEntry[] = [
   { path: '/rental', changefreq: 'monthly', priority: '0.9', images: rentalImages },
   { path: '/grupos-electrogenos', changefreq: 'monthly', priority: '0.9', images: gruposImages },
   { path: '/novedades', changefreq: 'weekly', priority: '0.8' },
-  { path: '/clientes', changefreq: 'monthly', priority: '0.7' },
+  { path: '/clientes', changefreq: 'weekly', priority: '0.8' },
 ];
 
 const newsImages = (item: NewsItem): SitemapImage[] => {

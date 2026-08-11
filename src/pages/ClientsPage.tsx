@@ -154,12 +154,22 @@ const ClientsPage = () => {
       <section className="pb-16 md:pb-20 bg-white overflow-hidden">
         <LogoCarousel fullColor />
 
-        {/* Lista para SEO / accesibilidad */}
-        <ul className="sr-only">
-          {allClients.map((client, index) => (
-            <li key={index}>{client.name}</li>
-          ))}
-        </ul>
+        {/* Nombres de empresas como encabezados H2 para indexación SEO en Google */}
+        <div className="max-w-6xl mx-auto px-4 mt-14 md:mt-20">
+          <p className="eyebrow text-xs md:text-sm text-[#E84E1B] mb-3 font-bold text-center">
+            +30 empresas del sector petrolero y energético
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            {allClients.map((client) => (
+              <h2
+                key={client.name}
+                className="text-sm md:text-base text-[#1A1A1A] font-medium border border-gray-200 px-4 py-4 text-center hover:border-[#e65b2a] hover:text-[#e65b2a] transition-colors"
+              >
+                {client.name}
+              </h2>
+            ))}
+          </div>
+        </div>
 
         <div className="max-w-5xl mx-auto px-4 text-center mt-14 md:mt-20">
           <h2 className="heading text-3xl md:text-5xl text-[#1A1A1A] leading-tight">
