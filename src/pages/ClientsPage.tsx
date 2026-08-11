@@ -35,10 +35,12 @@ import tuboscopeLogo from '@/assets/clients/tuboscope.jpg';
 import veinticincoMayoLogo from '@/assets/clients/25-de-mayo-new.png';
 
 import { Helmet } from 'react-helmet-async';
+import { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Contact from '@/components/Contact';
 import Services from '@/components/Services';
+import LogoCarousel from '@/components/LogoCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const copy = {
@@ -55,6 +57,18 @@ const copy = {
 const ClientsPage = () => {
   const { t, language } = useLanguage();
   const c = copy[language];
+  const [introVisible, setIntroVisible] = useState(true);
+  const [introFading, setIntroFading] = useState(false);
+
+  useEffect(() => {
+    const fade = setTimeout(() => setIntroFading(true), 1800);
+    const hide = setTimeout(() => setIntroVisible(false), 3000);
+    return () => {
+      clearTimeout(fade);
+      clearTimeout(hide);
+    };
+  }, []);
+
   const allClients = [
     { name: "Compressco LP", logo: comprescoLogo },
     { name: "Transportes Crexell S.A.", logo: crexellLogo },
