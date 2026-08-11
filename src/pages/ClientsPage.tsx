@@ -110,9 +110,9 @@ const ClientsPage = () => {
           className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#e65b2a] transition-opacity duration-1000 ${introFading ? 'opacity-0' : 'opacity-100'}`}
         >
           <img
-            src="/logo24.png"
+            src="/codelco-logo-footer.png"
             alt=""
-            className="w-56 md:w-96 max-w-[70vw] brightness-0 invert animate-scale-in"
+            className="w-72 md:w-[30rem] max-w-[80vw] brightness-0 invert animate-scale-in"
           />
         </div>
       )}
