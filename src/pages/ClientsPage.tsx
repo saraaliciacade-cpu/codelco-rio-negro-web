@@ -98,14 +98,26 @@ const ClientsPage = () => {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
             {allClients.map((client) => (
-              <h2
+              <article
                 key={client.name}
-                className="text-sm md:text-base text-[#1A1A1A] font-medium border border-gray-200 px-4 py-4 text-center hover:border-[#e65b2a] hover:text-[#e65b2a] transition-colors"
+                className="border border-gray-200 px-4 py-5 flex flex-col items-center justify-center gap-3 hover:border-[#e65b2a] transition-colors group"
               >
-                {client.name}
-              </h2>
+                <img
+                  src={client.logo}
+                  alt={`Logo de ${client.name}, cliente de Codelco S.A. en Vaca Muerta`}
+                  title={`${client.name} — cliente de Codelco S.A.`}
+                  width={160}
+                  height={64}
+                  loading="lazy"
+                  className="h-12 md:h-14 w-auto max-w-[80%] object-contain"
+                />
+                <h2 className="text-sm md:text-base text-[#1A1A1A] font-medium text-center group-hover:text-[#e65b2a] transition-colors">
+                  {client.name}
+                </h2>
+              </article>
             ))}
           </div>
+
         </div>
 
         <div className="max-w-5xl mx-auto px-4 text-center mt-14 md:mt-20">
