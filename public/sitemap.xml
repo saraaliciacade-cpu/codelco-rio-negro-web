@@ -155,6 +155,156 @@
     <loc>https://codelco.com.ar/clientes</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/compresco.jpeg</image:loc>
+      <image:title>Logo de Compressco LP</image:title>
+      <image:caption>Compressco LP — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/crexell.png</image:loc>
+      <image:title>Logo de Transportes Crexell S.A.</image:title>
+      <image:caption>Transportes Crexell S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/datum.png</image:loc>
+      <image:title>Logo de Datum S.A.</image:title>
+      <image:caption>Datum S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/eg-servicios.png</image:loc>
+      <image:title>Logo de E&amp;G Servicios SRL</image:title>
+      <image:caption>E&amp;G Servicios SRL — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/edvsa.png</image:loc>
+      <image:title>Logo de Edvsa</image:title>
+      <image:caption>Edvsa — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/emergencias-new.png</image:loc>
+      <image:title>Logo de Emergencias</image:title>
+      <image:caption>Emergencias — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/flargent.jpg</image:loc>
+      <image:title>Logo de Flargent S.A.</image:title>
+      <image:caption>Flargent S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/hidromec-new.jpeg</image:loc>
+      <image:title>Logo de Hidromec SRL</image:title>
+      <image:caption>Hidromec SRL — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/hot-hed.png</image:loc>
+      <image:title>Logo de Hot Hed S.A.</image:title>
+      <image:caption>Hot Hed S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/indasyc-new.png</image:loc>
+      <image:title>Logo de Indasyc</image:title>
+      <image:caption>Indasyc — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/sl-group.jpg</image:loc>
+      <image:title>Logo de SL Group Oil Solutions</image:title>
+      <image:caption>SL Group Oil Solutions — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/ingenieria-terra.png</image:loc>
+      <image:title>Logo de Ingenieria Terra S.A.</image:title>
+      <image:caption>Ingenieria Terra S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/lyg-servicios-new.jpeg</image:loc>
+      <image:title>Logo de LyG Servicios SRL</image:title>
+      <image:caption>LyG Servicios SRL — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/netlog.png</image:loc>
+      <image:title>Logo de Net Log S.A.</image:title>
+      <image:caption>Net Log S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/oilstone-new.jpg</image:loc>
+      <image:title>Logo de Oilstone</image:title>
+      <image:caption>Oilstone — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/prodeng.png</image:loc>
+      <image:title>Logo de Prodeng S.A.</image:title>
+      <image:caption>Prodeng S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/quimpe-new.png</image:loc>
+      <image:title>Logo de Quimpe SRL</image:title>
+      <image:caption>Quimpe SRL — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/rakiduam.png</image:loc>
+      <image:title>Logo de Rakiduam S.A.</image:title>
+      <image:caption>Rakiduam S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/ranger-oil-new.png</image:loc>
+      <image:title>Logo de Ranger Oil S.A.</image:title>
+      <image:caption>Ranger Oil S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/san-antonio-new.png</image:loc>
+      <image:title>Logo de San Antonio Internacional</image:title>
+      <image:caption>San Antonio Internacional — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/wintershall-new.png</image:loc>
+      <image:title>Logo de Wintershall</image:title>
+      <image:caption>Wintershall — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/technip-fmc.webp</image:loc>
+      <image:title>Logo de Technip FMC</image:title>
+      <image:caption>Technip FMC — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/tecpetrol-new.png</image:loc>
+      <image:title>Logo de Tecpetrol S.A.</image:title>
+      <image:caption>Tecpetrol S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/tetra.png</image:loc>
+      <image:title>Logo de Tetra Technologies</image:title>
+      <image:caption>Tetra Technologies — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/tomrel.png</image:loc>
+      <image:title>Logo de Tomrel S.A.</image:title>
+      <image:caption>Tomrel S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/tacker-new.png</image:loc>
+      <image:title>Logo de Tacker SRL</image:title>
+      <image:caption>Tacker SRL — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/transporte-ferra.png</image:loc>
+      <image:title>Logo de Transportes Ferra S.A.</image:title>
+      <image:caption>Transportes Ferra S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/tsb-new.png</image:loc>
+      <image:title>Logo de Compañía TSB</image:title>
+      <image:caption>Compañía TSB — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/tuboscope.jpg</image:loc>
+      <image:title>Logo de Tuboscope Vetco Ar.</image:title>
+      <image:caption>Tuboscope Vetco Ar. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/clientes/25-de-mayo-new.png</image:loc>
+      <image:title>Logo de 25 de Mayo S.A.</image:title>
+      <image:caption>25 de Mayo S.A. — cliente de Codelco S.A. en Vaca Muerta</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://codelco.com.ar/novedades/trailer-habitacional-autonomo</loc>

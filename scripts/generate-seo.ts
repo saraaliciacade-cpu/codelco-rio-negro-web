@@ -4,6 +4,7 @@
 import { writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { newsData as allNews, isPublished, type NewsItem } from '../src/data/news';
+import { allClients } from '../src/data/clients';
 
 const newsData: NewsItem[] = allNews.filter(isPublished);
 
@@ -99,7 +100,16 @@ const staticEntries: FullEntry[] = [
   { path: '/rental', changefreq: 'monthly', priority: '0.9', images: rentalImages },
   { path: '/grupos-electrogenos', changefreq: 'monthly', priority: '0.9', images: gruposImages },
   { path: '/novedades', changefreq: 'weekly', priority: '0.8' },
-  { path: '/clientes', changefreq: 'weekly', priority: '0.8' },
+  {
+    path: '/clientes',
+    changefreq: 'weekly',
+    priority: '0.8',
+    images: allClients.map((c) => ({
+      loc: abs(c.logo),
+      title: `Logo de ${c.name}`,
+      caption: `${c.name} — cliente de Codelco S.A. en Vaca Muerta`,
+    })),
+  },
 ];
 
 const newsImages = (item: NewsItem): SitemapImage[] => {
