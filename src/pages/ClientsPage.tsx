@@ -36,38 +36,8 @@ const ClientsPage = () => {
     };
   }, []);
 
-  const allClients = [
-    { name: "Compressco LP", logo: comprescoLogo },
-    { name: "Transportes Crexell S.A.", logo: crexellLogo },
-    { name: "Datum S.A.", logo: datumLogo },
-    { name: "E&G Servicios SRL", logo: egServiciosLogo },
-    { name: "Edvsa", logo: edvsaLogo },
-    { name: "Emergencias", logo: emergenciasLogo },
-    { name: "Flargent S.A.", logo: flargentLogo },
-    { name: "Hidromec SRL", logo: hidromecLogo },
-    { name: "Hot Hed S.A.", logo: hotHedLogo },
-    { name: "Indasyc", logo: indasycLogo },
-    { name: "SL Group Oil Solutions", logo: slGroupLogo },
-    { name: "Ingenieria Terra S.A.", logo: ingenieriaLogo },
-    { name: "LyG Servicios SRL", logo: lygServiciosLogo },
-    { name: "Net Log S.A.", logo: netlogLogo },
-    { name: "Oilstone", logo: oilstoneLogo },
-    { name: "Prodeng S.A.", logo: prodengLogo },
-    { name: "Quimpe SRL", logo: quimpeLogo },
-    { name: "Rakiduam S.A.", logo: rakiduamLogo },
-    { name: "Ranger Oil S.A.", logo: rangerOilLogo },
-    { name: "San Antonio Internacional", logo: sanAntonioLogo },
-    { name: "Wintershall", logo: wintershallLogo },
-    { name: "Technip FMC", logo: technipFmcLogo },
-    { name: "Tecpetrol S.A.", logo: tecpetrolLogo },
-    { name: "Tetra Technologies", logo: tetraLogo },
-    { name: "Tomrel S.A.", logo: tomrelLogo },
-    { name: "Tacker SRL", logo: tackerLogo },
-    { name: "Transportes Ferra S.A.", logo: transporteFerraLogo },
-    { name: "Compañía TSB", logo: tsbLogo },
-    { name: "Tuboscope Vetco Ar.", logo: tuboscopeLogo },
-    { name: "25 de Mayo S.A.", logo: veinticincoMayoLogo },
-  ];
+
+
 
   return (
     <div className="min-h-screen bg-white">
