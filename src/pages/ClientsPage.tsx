@@ -104,6 +104,19 @@ const ClientsPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      {introVisible && (
+        <div
+          aria-hidden="true"
+          className={`fixed inset-0 z-[100] flex items-center justify-center bg-[#e65b2a] transition-opacity duration-1000 ${introFading ? 'opacity-0' : 'opacity-100'}`}
+        >
+          <img
+            src="/logo24.png"
+            alt=""
+            className="w-56 md:w-96 max-w-[70vw] brightness-0 invert animate-scale-in"
+          />
+        </div>
+      )}
+
       <Helmet>
         <title>+30 empresas del sector petrolero confían en Codelco S.A.</title>
         <meta name="description" content="Operadoras, contratistas y empresas de servicios de Vaca Muerta y la Patagonia trabajan con Codelco S.A. en fabricación, metalúrgica, rental y grupos electrógenos." />
