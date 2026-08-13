@@ -241,21 +241,21 @@ All colors MUST be HSL.
   }
 
   .animate-infinite-scroll-smooth {
-    animation-duration: 65s;
+    animation-duration: 40s;
   }
 
   .animate-infinite-scroll-reverse {
-    animation-duration: 65s;
+    animation-duration: 40s;
   }
 }
 
 @media (max-width: 767px) {
   .animate-infinite-scroll-smooth {
-    animation-duration: 50s;
+    animation-duration: 30s;
   }
 
   .animate-infinite-scroll-reverse {
-    animation-duration: 50s;
+    animation-duration: 30s;
   }
 }
 
