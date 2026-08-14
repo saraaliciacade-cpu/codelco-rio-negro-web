@@ -263,6 +263,7 @@ serve(async (req) => {
         name: body.name.trim(),
         email: body.email.trim().toLowerCase(),
         phone: body.phone?.trim() || null,
+        company: body.company?.trim() || null,
         subject: body.subject,
         message: body.message.trim(),
         ip_address: clientIP,
