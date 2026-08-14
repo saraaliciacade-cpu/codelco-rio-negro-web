@@ -1,34 +1,44 @@
-# Guardar los mensajes de contacto en base de datos (Etapa 1)
+# Etapa 2 — Migrar las noticias a Supabase
 
-## Buena noticia: casi todo ya está hecho
+Objetivo: que las novedades se guarden en la base de datos y que la web las lea desde ahí, sin cambiar nada del diseño ni del formulario de contacto.
 
-El proyecto **ya está conectado a Supabase** (no necesitás activar nada de tu lado) y el formulario de contacto **ya guarda los mensajes en una tabla** llamada `contact_submissions`, además de enviar los mails. Eso lo verifiqué en el código del formulario y en la base.
+## 1. Tabla nueva: `news`
 
-Hoy se guardan: nombre, email, teléfono, división/qué necesita (campo `subject`), mensaje, fecha/hora, más IP y navegador (para control de spam).
+Campos (respetando lo que hoy tiene cada noticia en el archivo):
 
-## Lo único que falta
+- título, título SEO (opcional), slug (único)
+- categoría: Flota / Proyecto / Planta / Clientes / Sector
+- fecha visible (texto, ej. "10 de agosto de 2026") y fecha real (para orden, sitemap y RSS)
+- resumen / excerpt y meta descripción (opcional)
+- imagen principal y posición de la imagen (opcional)
+- cuerpo de la nota: se guarda tal cual está hoy (párrafos, títulos, imágenes, galerías, videos y bloque "te puede interesar") en un campo flexible, así no se pierde ningún formato
+- pregunta del CTA, link y etiqueta de fuente (opcionales)
+- estado: `draft` (borrador) o `published` (publicado), por defecto borrador
+- fecha de creación y de última modificación
 
-El campo **Empresa** existe en el formulario y se valida, pero **no se guarda** en la base: la tabla no tiene esa columna y la función que graba no la envía. Eso es lo que hay que completar.
+Reglas de acceso:
+- Cualquier visitante puede ver **solo** las noticias publicadas.
+- Nadie puede crear, editar ni borrar desde la web pública (eso queda para el panel de la Etapa 3, con login).
 
-## Qué haría
+## 2. Migración de las 8 noticias existentes
 
-1. **Migración de base de datos**: agregar la columna `company` (texto, opcional) a la tabla `contact_submissions`. No se toca ninguna otra tabla ni dato existente.
-2. **Guardado**: en la función que recibe el formulario, incluir `company` al grabar el registro (con límite de largo, igual que los otros campos).
-3. **Sin cambios visuales**: el formulario queda idéntico y sigue mostrando el mensaje de "gracias, te contactamos".
-4. **Sin tocar el correo**: no modifico configuración de mail, remitentes ni destinatarios. Los mails a `codelcoweb@gmail.com` y la confirmación al usuario siguen exactamente igual (opcionalmente puedo sumar la línea "Empresa" al mail interno, decime si lo querés).
+Las noticias actuales se cargan una por una en la tabla, con su mismo slug, categoría, fecha, imágenes y cuerpo completo (incluida la que hoy está en borrador, que se carga como borrador). Las rutas de imágenes se mantienen iguales, así que las fotos siguen mostrándose exactamente igual.
 
-## Reglas de acceso
+## 3. La web lee desde Supabase
 
-Se mantienen como están hoy y son las correctas para esta etapa:
-- Cualquier visitante puede enviar el formulario.
-- Nadie puede leer, modificar ni borrar los mensajes desde la web pública. Solo el servidor (la función interna) escribe, y los mensajes se leen desde el panel de Supabase.
+- `/novedades`: mismo diseño, mismos filtros por categoría y mismo badge "NUEVO"/"ÚLTIMA NOTICIA". Solo cambia el origen de los datos. Mientras carga se muestran placeholders del mismo tamaño de las tarjetas para que no salte el layout.
+- `/novedades/:slug`: la nota se busca en la base. Si no existe, redirige a `/novedades` como ahora. Las notas relacionadas ("Te puede interesar") también salen de la base.
+- Bloque de novedades en la home: igual, leyendo de la base.
+- Solo se muestran las publicadas (los borradores siguen accesibles por link directo con `noindex`, como hoy).
 
-## Etapa 2 (no incluida ahora)
+## 4. Sitemap, RSS y prerenderizado (SSG)
 
-Panel interno con login para ver y gestionar los mensajes. Cuando lo hagamos, ahí se definen los usuarios y los permisos de lectura.
+En esta etapa se mantienen generándose desde `src/data/news.ts` para no romper el SEO ya logrado. El archivo se conserva como fuente para el build, sin que la web lo use para mostrar contenido. En la Etapa 3 (panel) se pasa la generación a leer desde Supabase.
 
-## Detalle técnico
+## Detalles técnicos
 
-- Migración: `ALTER TABLE public.contact_submissions ADD COLUMN company text;`
-- Edge function `contact-submit`: agregar `company` al `insert` y al límite de validación (máx. 120 caracteres).
-- Sin cambios en `src/components/Contact.tsx` (ya envía `company` en el body).
+- Migración SQL: `CREATE TABLE public.news` con `body jsonb`, `status text` con validación por trigger, índice único en `slug`, `GRANT SELECT` a `anon`/`authenticated`, `GRANT ALL` a `service_role`, RLS activada con política de lectura solo para `status = 'published'` y trigger de `updated_at`.
+- Carga de datos con el tool de inserción (8 filas).
+- Nuevo `src/hooks/useNews.ts` (React Query) con `fetchNews()` / `fetchNewsBySlug()` y mapeo de la fila de la base al tipo `NewsItem` ya existente, para no tocar el render.
+- Archivos a modificar: `src/pages/NovedadesPage.tsx`, `src/pages/NewsDetailPage.tsx`, `src/components/NovedadesPreview.tsx`.
+- Archivos que NO se tocan: `src/data/news.ts` (queda para sitemap/RSS/SSG), `scripts/generate-seo.ts`, `scripts/build-ssg.mjs`, `src/components/Contact.tsx` y la función `contact-submit`.
