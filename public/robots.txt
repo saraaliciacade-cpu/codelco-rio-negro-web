@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /webmail
+Disallow: /panel
 
 Sitemap: https://codelco.com.ar/sitemap.xml
