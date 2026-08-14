@@ -18,6 +18,8 @@ const RentalPage = lazy(() => import("./pages/RentalPage"));
 const GruposElectrogenosPage = lazy(() => import("./pages/GruposElectrogenosPage"));
 const NovedadesPage = lazy(() => import("./pages/NovedadesPage"));
 const NewsDetailPage = lazy(() => import("./pages/NewsDetailPage"));
+const PanelLogin = lazy(() => import("./pages/panel/PanelLogin"));
+const PanelPage = lazy(() => import("./pages/panel/PanelPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
