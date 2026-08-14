@@ -75,7 +75,10 @@ const GaPageViews = () => {
   return null;
 };
 
-export const AppRoutes = () => (
+export const AppRoutes = () => {
+  const isPanel = useLocation().pathname.startsWith("/panel");
+
+  return (
   <>
     <ScrollToHash />
     <GaPageViews />
@@ -98,9 +101,10 @@ export const AppRoutes = () => (
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
-    <WhatsAppWidget />
+    {!isPanel && <WhatsAppWidget />}
   </>
-);
+  );
+};
 
 export const AppProviders = ({ children }: { children: React.ReactNode }) => (
   <QueryClientProvider client={queryClient}>
