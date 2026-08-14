@@ -27,6 +27,7 @@ interface ContactSubmission {
   name: string;
   email: string;
   phone?: string;
+  company?: string;
   subject: string;
   message: string;
   website?: string; // Honeypot field
@@ -37,6 +38,7 @@ const INPUT_LIMITS = {
   name: { min: 2, max: 100 },
   email: { min: 5, max: 255 },
   phone: { min: 0, max: 20 },
+  company: { min: 0, max: 120 },
   message: { min: 10, max: 2000 }
 };
 
@@ -154,6 +156,16 @@ serve(async (req) => {
       );
     }
 
+    if (body.company && body.company.trim().length > INPUT_LIMITS.company.max) {
+      return new Response(
+        JSON.stringify({ error: `Company must be less than ${INPUT_LIMITS.company.max} characters` }),
+        { 
+          status: 400, 
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
     if (body.message.trim().length < INPUT_LIMITS.message.min) {
       return new Response(
         JSON.stringify({ error: `Message must be at least ${INPUT_LIMITS.message.min} characters` }),
@@ -251,6 +263,7 @@ serve(async (req) => {
         name: body.name.trim(),
         email: body.email.trim().toLowerCase(),
         phone: body.phone?.trim() || null,
+        company: body.company?.trim() || null,
         subject: body.subject,
         message: body.message.trim(),
         ip_address: clientIP,
@@ -330,6 +343,7 @@ serve(async (req) => {
                 <h2 style="color: #d25840;">Nuevo mensaje de contacto</h2>
                 <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
                   <p><strong>Nombre:</strong> ${escapeHtml(body.name)}</p>
+                  <p><strong>Empresa:</strong> ${escapeHtml(body.company || 'No proporcionado')}</p>
                   <p><strong>Email:</strong> <a href="mailto:${escapeHtml(body.email)}">${escapeHtml(body.email)}</a></p>
                   <p><strong>Teléfono:</strong> ${escapeHtml(body.phone || 'No proporcionado')}</p>
                   <p><strong>Asunto:</strong> ${escapeHtml(subjectText)}</p>
