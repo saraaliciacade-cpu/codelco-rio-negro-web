@@ -27,6 +27,7 @@ interface ContactSubmission {
   name: string;
   email: string;
   phone?: string;
+  company?: string;
   subject: string;
   message: string;
   website?: string; // Honeypot field
@@ -37,6 +38,7 @@ const INPUT_LIMITS = {
   name: { min: 2, max: 100 },
   email: { min: 5, max: 255 },
   phone: { min: 0, max: 20 },
+  company: { min: 0, max: 120 },
   message: { min: 10, max: 2000 }
 };
 
