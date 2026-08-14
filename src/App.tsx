@@ -18,6 +18,8 @@ const RentalPage = lazy(() => import("./pages/RentalPage"));
 const GruposElectrogenosPage = lazy(() => import("./pages/GruposElectrogenosPage"));
 const NovedadesPage = lazy(() => import("./pages/NovedadesPage"));
 const NewsDetailPage = lazy(() => import("./pages/NewsDetailPage"));
+const PanelLogin = lazy(() => import("./pages/panel/PanelLogin"));
+const PanelPage = lazy(() => import("./pages/panel/PanelPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -73,7 +75,10 @@ const GaPageViews = () => {
   return null;
 };
 
-export const AppRoutes = () => (
+export const AppRoutes = () => {
+  const isPanel = useLocation().pathname.startsWith("/panel");
+
+  return (
   <>
     <ScrollToHash />
     <GaPageViews />
@@ -90,13 +95,16 @@ export const AppRoutes = () => (
         <Route path="/grupos-electrogenos" element={<GruposElectrogenosPage />} />
         <Route path="/novedades" element={<NovedadesPage />} />
         <Route path="/novedades/:slug" element={<NewsDetailPage />} />
+        <Route path="/panel/login" element={<PanelLogin />} />
+        <Route path="/panel" element={<PanelPage />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
-    <WhatsAppWidget />
+    {!isPanel && <WhatsAppWidget />}
   </>
-);
+  );
+};
 
 export const AppProviders = ({ children }: { children: React.ReactNode }) => (
   <QueryClientProvider client={queryClient}>
