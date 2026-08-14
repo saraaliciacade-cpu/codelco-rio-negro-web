@@ -156,6 +156,16 @@ serve(async (req) => {
       );
     }
 
+    if (body.company && body.company.trim().length > INPUT_LIMITS.company.max) {
+      return new Response(
+        JSON.stringify({ error: `Company must be less than ${INPUT_LIMITS.company.max} characters` }),
+        { 
+          status: 400, 
+          headers: { ...headers, 'Content-Type': 'application/json' }
+        }
+      );
+    }
+
     if (body.message.trim().length < INPUT_LIMITS.message.min) {
       return new Response(
         JSON.stringify({ error: `Message must be at least ${INPUT_LIMITS.message.min} characters` }),
