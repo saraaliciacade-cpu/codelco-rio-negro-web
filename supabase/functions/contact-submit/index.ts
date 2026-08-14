@@ -343,6 +343,7 @@ serve(async (req) => {
                 <h2 style="color: #d25840;">Nuevo mensaje de contacto</h2>
                 <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
                   <p><strong>Nombre:</strong> ${escapeHtml(body.name)}</p>
+                  <p><strong>Empresa:</strong> ${escapeHtml(body.company || 'No proporcionado')}</p>
                   <p><strong>Email:</strong> <a href="mailto:${escapeHtml(body.email)}">${escapeHtml(body.email)}</a></p>
                   <p><strong>Teléfono:</strong> ${escapeHtml(body.phone || 'No proporcionado')}</p>
                   <p><strong>Asunto:</strong> ${escapeHtml(subjectText)}</p>
