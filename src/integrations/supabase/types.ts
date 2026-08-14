@@ -113,6 +113,69 @@ export type Database = {
         }
         Relationships: []
       }
+      news: {
+        Row: {
+          body: Json
+          category: string
+          created_at: string
+          cta_question: string | null
+          date_iso: string | null
+          date_label: string
+          id: number
+          image: string | null
+          image_position: string | null
+          meta_description: string | null
+          seo_title: string | null
+          slug: string
+          source_label: string | null
+          source_url: string | null
+          status: string
+          summary: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          body?: Json
+          category: string
+          created_at?: string
+          cta_question?: string | null
+          date_iso?: string | null
+          date_label: string
+          id?: number
+          image?: string | null
+          image_position?: string | null
+          meta_description?: string | null
+          seo_title?: string | null
+          slug: string
+          source_label?: string | null
+          source_url?: string | null
+          status?: string
+          summary: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          body?: Json
+          category?: string
+          created_at?: string
+          cta_question?: string | null
+          date_iso?: string | null
+          date_label?: string
+          id?: number
+          image?: string | null
+          image_position?: string | null
+          meta_description?: string | null
+          seo_title?: string | null
+          slug?: string
+          source_label?: string | null
+          source_url?: string | null
+          status?: string
+          summary?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       rate_limit: {
         Row: {
           created_at: string | null
