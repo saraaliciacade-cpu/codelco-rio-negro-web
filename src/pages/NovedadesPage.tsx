@@ -6,7 +6,8 @@ import { Helmet } from 'react-helmet-async';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { publishedNews, categories, latestNewsId, type NewsCategory } from '@/data/news';
+import { categories, type NewsCategory } from '@/data/news';
+import { usePublishedNews } from '@/hooks/useNews';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
@@ -47,6 +48,7 @@ const NovedadesPage = () => {
   const { language } = useLanguage();
   const c = copy[language];
   const [activeCategory, setActiveCategory] = useState<NewsCategory>('Todas');
+  const { news: publishedNews, latestNewsId } = usePublishedNews();
 
   const filteredNews =
     activeCategory === 'Todas'
