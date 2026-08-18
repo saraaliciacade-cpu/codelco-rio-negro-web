@@ -3,13 +3,12 @@ import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { type NewsBlock, type NewsItem } from '@/data/news';
-import { usePublishedNews, useNewsBySlug } from '@/hooks/useNews';
+import { newsData, publishedNews, latestNewsId, type NewsBlock } from '@/data/news';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_BLACK = '#1A1A1A';
 
-const renderBlock = (block: string | NewsBlock, i: number, allNews: NewsItem[] = []) => {
+const renderBlock = (block: string | NewsBlock, i: number) => {
   if (typeof block === 'string') {
     return (
       <p key={i} className="text-base sm:text-lg text-gray-700 leading-relaxed mb-5">
@@ -107,7 +106,7 @@ const renderBlock = (block: string | NewsBlock, i: number, allNews: NewsItem[] =
       const relatedSlug = block.href?.startsWith('/novedades/')
         ? block.href.replace('/novedades/', '')
         : undefined;
-      const relatedItem = relatedSlug ? allNews.find((n) => n.slug === relatedSlug) : undefined;
+      const relatedItem = relatedSlug ? newsData.find((n) => n.slug === relatedSlug) : undefined;
       const image = relatedItem?.image ?? block.image;
       const summary = block.summary ?? relatedItem?.summary;
       const title = block.title || relatedItem?.title || '';
@@ -162,11 +161,9 @@ const renderBlock = (block: string | NewsBlock, i: number, allNews: NewsItem[] =
 
 const NewsDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { news: publishedNews, latestNewsId } = usePublishedNews();
-  const { item, isLoading, notFound } = useNewsBySlug(slug);
+  const item = newsData.find((n) => n.slug === slug);
 
-  if (isLoading) return <div className="min-h-screen bg-white" />;
-  if (!item || notFound) return <Navigate to="/novedades" replace />;
+  if (!item) return <Navigate to="/novedades" replace />;
 
   const isLatest = item.id === latestNewsId;
   const isDraft = item.status === 'draft';
@@ -331,7 +328,7 @@ const NewsDetailPage = () => {
               <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium mb-8">
                 {item.summary}
               </p>
-              {item.body.map((block, i) => renderBlock(block, i, publishedNews))}
+              {item.body.map((block, i) => renderBlock(block, i))}
 
               {item.sourceUrl && (
                 <div className="mt-8 pt-6 border-t border-gray-200">

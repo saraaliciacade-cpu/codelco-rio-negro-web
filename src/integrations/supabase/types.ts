@@ -43,7 +43,6 @@ export type Database = {
       }
       contact_submissions: {
         Row: {
-          company: string | null
           created_at: string | null
           email: string
           id: string
@@ -55,7 +54,6 @@ export type Database = {
           user_agent: string | null
         }
         Insert: {
-          company?: string | null
           created_at?: string | null
           email: string
           id?: string
@@ -67,7 +65,6 @@ export type Database = {
           user_agent?: string | null
         }
         Update: {
-          company?: string | null
           created_at?: string | null
           email?: string
           id?: string
@@ -113,69 +110,6 @@ export type Database = {
         }
         Relationships: []
       }
-      news: {
-        Row: {
-          body: Json
-          category: string
-          created_at: string
-          cta_question: string | null
-          date_iso: string | null
-          date_label: string
-          id: number
-          image: string | null
-          image_position: string | null
-          meta_description: string | null
-          seo_title: string | null
-          slug: string
-          source_label: string | null
-          source_url: string | null
-          status: string
-          summary: string
-          title: string
-          updated_at: string
-        }
-        Insert: {
-          body?: Json
-          category: string
-          created_at?: string
-          cta_question?: string | null
-          date_iso?: string | null
-          date_label: string
-          id?: number
-          image?: string | null
-          image_position?: string | null
-          meta_description?: string | null
-          seo_title?: string | null
-          slug: string
-          source_label?: string | null
-          source_url?: string | null
-          status?: string
-          summary: string
-          title: string
-          updated_at?: string
-        }
-        Update: {
-          body?: Json
-          category?: string
-          created_at?: string
-          cta_question?: string | null
-          date_iso?: string | null
-          date_label?: string
-          id?: number
-          image?: string | null
-          image_position?: string | null
-          meta_description?: string | null
-          seo_title?: string | null
-          slug?: string
-          source_label?: string | null
-          source_url?: string | null
-          status?: string
-          summary?: string
-          title?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
       rate_limit: {
         Row: {
           created_at: string | null
@@ -200,27 +134,6 @@ export type Database = {
         }
         Relationships: []
       }
-      user_roles: {
-        Row: {
-          created_at: string
-          id: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-          role: Database["public"]["Enums"]["app_role"]
-          user_id: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-          role?: Database["public"]["Enums"]["app_role"]
-          user_id?: string
-        }
-        Relationships: []
-      }
     }
     Views: {
       [_ in never]: never
@@ -239,16 +152,9 @@ export type Database = {
         }[]
       }
       cleanup_rate_limits: { Args: never; Returns: undefined }
-      has_role: {
-        Args: {
-          _role: Database["public"]["Enums"]["app_role"]
-          _user_id: string
-        }
-        Returns: boolean
-      }
     }
     Enums: {
-      app_role: "admin"
+      [_ in never]: never
     }
     CompositeTypes: {
       [_ in never]: never
@@ -375,8 +281,6 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {
-      app_role: ["admin"],
-    },
+    Enums: {},
   },
 } as const
