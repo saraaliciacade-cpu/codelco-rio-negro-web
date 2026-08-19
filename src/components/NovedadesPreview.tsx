@@ -28,7 +28,8 @@ const copy = {
 const NovedadesPreview = () => {
   const { language } = useLanguage();
   const c = copy[language];
-  const items = publishedNews.slice(0, 3);
+  const { news, latestId } = usePublishedNews();
+  const items = news.slice(0, 3);
 
   return (
     <section id="novedades" className="py-16 lg:py-24 bg-[#f3f1ec]">
