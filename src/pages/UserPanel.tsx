@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Session } from '@supabase/supabase-js';
 import { supabase } from '@/integrations/supabase/client';
@@ -6,8 +6,8 @@ import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { newsData, isPublished } from '@/data/news';
-import { Loader2, LogOut, Mail, Newspaper, RefreshCw, ExternalLink } from 'lucide-react';
+import NewsAdmin from '@/components/admin/NewsAdmin';
+import { Loader2, LogOut, Mail, Newspaper, RefreshCw } from 'lucide-react';
 
 interface Submission {
   id: string;
@@ -179,14 +179,6 @@ const UserPanel = () => {
     if (isAdmin) loadSubmissions();
   }, [isAdmin]);
 
-  const { published, drafts } = useMemo(
-    () => ({
-      published: newsData.filter(isPublished),
-      drafts: newsData.filter((n) => !isPublished(n)),
-    }),
-    [],
-  );
-
   const seo = (
     <SEO
       title="Panel interno | Codelco"
@@ -288,7 +280,7 @@ const UserPanel = () => {
               className="rounded-none"
               onClick={() => setTab('novedades')}
             >
-              <Newspaper className="mr-2 h-4 w-4" /> Novedades ({newsData.length})
+              <Newspaper className="mr-2 h-4 w-4" /> Novedades
             </Button>
           </div>
 
@@ -357,51 +349,7 @@ const UserPanel = () => {
             </section>
           )}
 
-          {tab === 'novedades' && (
-            <section className="space-y-8">
-              {[
-                { label: 'Publicadas', items: published, badge: 'PUBLICADA' },
-                { label: 'Borradores (sin indexar)', items: drafts, badge: 'BORRADOR' },
-              ].map(({ label, items, badge }) => (
-                <div key={label} className="space-y-3">
-                  <h2 className="font-montserrat text-lg font-bold text-foreground">
-                    {label} ({items.length})
-                  </h2>
-                  {items.length === 0 ? (
-                    <p className="font-nunito text-sm text-muted-foreground">Sin noticias en este estado.</p>
-                  ) : (
-                    <div className="grid gap-3">
-                      {items.map((n) => (
-                        <article
-                          key={n.id}
-                          className="bg-card border border-border p-4 flex flex-wrap items-center gap-4"
-                        >
-                          <img
-                            src={n.image}
-                            alt={n.title}
-                            loading="lazy"
-                            className="h-16 w-24 object-cover"
-                          />
-                          <div className="flex-1 min-w-[200px] space-y-1">
-                            <p className="font-nunito text-xs uppercase tracking-wide text-muted-foreground">
-                              {badge} · {n.category} · {n.date}
-                            </p>
-                            <h3 className="font-montserrat font-semibold text-foreground">{n.title}</h3>
-                            <p className="font-nunito text-xs text-muted-foreground">/novedades/{n.slug}</p>
-                          </div>
-                          <Button asChild variant="outline" size="sm" className="rounded-none">
-                            <Link to={`/novedades/${n.slug}`}>
-                              Ver <ExternalLink className="ml-2 h-3.5 w-3.5" />
-                            </Link>
-                          </Button>
-                        </article>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </section>
-          )}
+          {tab === 'novedades' && <NewsAdmin enabled={isAdmin === true} />}
         </div>
       </div>
     </>
