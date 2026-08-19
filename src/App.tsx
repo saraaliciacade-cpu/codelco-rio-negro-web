@@ -91,8 +91,10 @@ export const AppRoutes = () => (
         <Route path="/grupos-electrogenos" element={<GruposElectrogenosPage />} />
         <Route path="/novedades" element={<NovedadesPage />} />
         <Route path="/novedades/:slug" element={<NewsDetailPage />} />
+        <Route path="/user" element={<UserPanel />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
+
       </Routes>
     </Suspense>
     <WhatsAppWidget />
