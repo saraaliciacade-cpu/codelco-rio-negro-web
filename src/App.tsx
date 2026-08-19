@@ -18,6 +18,7 @@ const RentalPage = lazy(() => import("./pages/RentalPage"));
 const GruposElectrogenosPage = lazy(() => import("./pages/GruposElectrogenosPage"));
 const NovedadesPage = lazy(() => import("./pages/NovedadesPage"));
 const NewsDetailPage = lazy(() => import("./pages/NewsDetailPage"));
+const UserPanel = lazy(() => import("./pages/UserPanel"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -90,8 +91,10 @@ export const AppRoutes = () => (
         <Route path="/grupos-electrogenos" element={<GruposElectrogenosPage />} />
         <Route path="/novedades" element={<NovedadesPage />} />
         <Route path="/novedades/:slug" element={<NewsDetailPage />} />
+        <Route path="/user" element={<UserPanel />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
+
       </Routes>
     </Suspense>
     <WhatsAppWidget />
