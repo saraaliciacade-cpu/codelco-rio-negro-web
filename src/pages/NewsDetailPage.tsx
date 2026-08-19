@@ -3,7 +3,8 @@ import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { newsData, publishedNews, latestNewsId, type NewsBlock } from '@/data/news';
+import { newsData, type NewsBlock } from '@/data/news';
+import { usePublishedNews, findStaticNews } from '@/hooks/useNews';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_BLACK = '#1A1A1A';
@@ -161,11 +162,15 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
 
 const NewsDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const item = newsData.find((n) => n.slug === slug);
+  const { news: publishedNews, latestId, isLoading } = usePublishedNews();
+  const item = publishedNews.find((n) => n.slug === slug) ?? findStaticNews(slug);
 
-  if (!item) return <Navigate to="/novedades" replace />;
+  if (!item) {
+    if (isLoading) return <div className="min-h-screen bg-white" />;
+    return <Navigate to="/novedades" replace />;
+  }
 
-  const isLatest = item.id === latestNewsId;
+  const isLatest = item.id === latestId;
   const isDraft = item.status === 'draft';
   const related = publishedNews.filter((n) => n.id !== item.id).slice(0, 3);
   const metaDescription = item.metaDescription ?? item.summary;

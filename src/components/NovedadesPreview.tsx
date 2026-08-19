@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { publishedNews, latestNewsId } from '@/data/news';
+import { usePublishedNews } from '@/hooks/useNews';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
@@ -28,7 +28,8 @@ const copy = {
 const NovedadesPreview = () => {
   const { language } = useLanguage();
   const c = copy[language];
-  const items = publishedNews.slice(0, 3);
+  const { news, latestId } = usePublishedNews();
+  const items = news.slice(0, 3);
 
   return (
     <section id="novedades" className="py-16 lg:py-24 bg-[#f3f1ec]">
@@ -64,7 +65,7 @@ const NovedadesPreview = () => {
                   loading="lazy"
                 />
 
-                {item.id === latestNewsId && (
+                {item.id === latestId && (
                   <span
                     className="eyebrow absolute top-3 right-3 text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
                     style={{ backgroundColor: '#DC2626' }}
