@@ -79,8 +79,11 @@ export const useAdminNews = (enabled: boolean) =>
     enabled,
   });
 
-/** Static fallback lookup so directly-opened draft URLs keep working during prerender. */
+/** Static/build-time fallback lookup so directly-opened URLs keep working during prerender. */
 export const findStaticNews = (slug?: string) =>
-  slug ? newsData.find((n) => n.slug === slug) : undefined;
+  slug
+    ? remoteNews.find((n) => n.slug === slug) ?? newsData.find((n) => n.slug === slug)
+    : undefined;
+
 
 export { isPublished };
