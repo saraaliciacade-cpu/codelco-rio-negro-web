@@ -18,12 +18,18 @@ export interface NewsRow {
   source_url: string | null;
   source_label: string | null;
   status: string;
+  author?: {
+    name: string;
+    role: string;
+    image: string;
+    url: string;
+  } | null;
   created_at?: string | null;
   updated_at?: string | null;
 }
 
 export const NEWS_COLUMNS =
-  'id, slug, title, seo_title, category, date_label, date_iso, summary, meta_description, image, image_position, body, cta_question, source_url, source_label, status, created_at, updated_at';
+  'id, slug, title, seo_title, category, date_label, date_iso, summary, meta_description, image, image_position, body, cta_question, source_url, source_label, status, author, created_at, updated_at';
 
 /** Maps a Supabase `news` row to the NewsItem shape the public pages already render. */
 export const rowToNewsItem = (row: NewsRow): NewsItem => ({
@@ -43,4 +49,5 @@ export const rowToNewsItem = (row: NewsRow): NewsItem => ({
   status: row.status === 'draft' ? 'draft' : 'published',
   sourceUrl: row.source_url ?? undefined,
   sourceLabel: row.source_label ?? undefined,
+  author: row.author ?? undefined,
 });
