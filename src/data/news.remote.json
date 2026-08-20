@@ -1,1 +1,437 @@
-[]
+[
+  {
+    "id": 10,
+    "slug": "trailer-habitacional-autonomo",
+    "title": "Trailer habitacional autónomo para operaciones de campo",
+    "seo_title": "Trailer Habitacional Autónomo para Vaca Muerta | Codelco S.A.",
+    "category": "Proyecto",
+    "date_label": "10 de agosto de 2026",
+    "date_iso": "2026-08-10",
+    "summary": "Una unidad rodante que llega lista para operar: agua, energía, climatización e iluminación propias, sin depender de la infraestructura del yacimiento.",
+    "meta_description": "Trailer habitacional autónomo con cocina, baño, dormitorios y energía propia. Fabricación propia desde 2012 para Vaca Muerta. Consultá disponibilidad.",
+    "image": "/images/noticias/trailer-habitacional/trailer-habitacional-autonomo-exterior-planta.jpg",
+    "image_position": null,
+    "body": [
+      {
+        "alt": "Trailer habitacional autónomo autoportante fabricado por Codelco S.A. con grupo electrógeno integrado",
+        "src": "/images/noticias/trailer-habitacional/trailer-habitacional-autonomo-exterior-planta.jpg",
+        "type": "image",
+        "width": 1280,
+        "height": 1280,
+        "caption": "Trailer habitacional autónomo Codelco S.A. con grupo electrógeno integrado, terminado en planta de Cipolletti",
+        "priority": true
+      },
+      {
+        "html": "En un yacimiento, cada día que el campamento no está operativo es producción que se pierde. Por eso diseñamos y fabricamos en <strong>planta propia</strong> trailers habitacionales autónomos: unidades pensadas para funcionar <strong>donde no hay red</strong> de agua ni de energía.",
+        "type": "html"
+      },
+      {
+        "text": "Una unidad autoportante y autosuficiente",
+        "type": "heading"
+      },
+      {
+        "html": "Cada trailer es <strong>autoportante</strong> —se sostiene y se traslada sobre su propio chasis rodante— y <strong>autosuficiente en servicios</strong>. Llega al campo con cocina, baño completo, dormitorios y todos los sistemas necesarios para que el personal viva y trabaje <strong>desde el primer día</strong>, sin obras previas ni conexiones externas.",
+        "type": "html"
+      },
+      {
+        "alt": "Trailer habitacional autoportante sobre chasis rodante con aire acondicionado exterior",
+        "src": "/images/noticias/trailer-habitacional/trailer-habitacional-exterior-chasis-rodante.jpg",
+        "type": "image",
+        "width": 1280,
+        "height": 1280,
+        "caption": "Módulo habitacional autoportante sobre chasis rodante, con equipo de aire acondicionado exterior"
+      },
+      {
+        "text": "Equipamiento completo",
+        "type": "heading"
+      },
+      {
+        "type": "imageGrid",
+        "images": [
+          {
+            "alt": "Cocina completa del trailer habitacional con heladera, horno, microondas y aire acondicionado",
+            "src": "/images/noticias/trailer-habitacional/trailer-habitacional-cocina-completa.jpg",
+            "width": 1280,
+            "height": 1280,
+            "caption": "Cocina equipada del trailer habitacional: heladera con freezer, horno, microondas, campana y aire acondicionado"
+          },
+          {
+            "alt": "Cocina del módulo habitacional con bacha doble de acero y muebles integrados",
+            "src": "/images/noticias/trailer-habitacional/trailer-habitacional-cocina-bacha-doble.jpg",
+            "width": 1280,
+            "height": 1280,
+            "caption": "Sector cocina-comedor con bacha doble de acero, muebles integrados y mesa fija"
+          }
+        ]
+      },
+      {
+        "html": "<ul>\n<li><strong>Cocina completa:</strong> heladera con freezer, anafe y horno, microondas, campana y bacha doble de acero.</li>\n<li><strong>Baño:</strong> ducha, inodoro, bidet y vanitory con espejo.</li>\n<li><strong>Descanso:</strong> dormitorios con camas y guardado bajo cama.</li>\n<li><strong>Confort:</strong> aire acondicionado frío/calor, iluminación LED y TV.</li>\n<li><strong>Autonomía de agua:</strong> tanque propio con bomba presurizadora (agua corriente a presión).</li>\n<li><strong>Autonomía de energía:</strong> <a href=\"/rental\">grupo electrógeno</a> integrado.</li>\n<li><strong>Construcción:</strong> aislación termoacústica y terminación industrial en chapa.</li>\n</ul>",
+        "type": "html"
+      },
+      {
+        "alt": "Dormitorios del trailer habitacional con camas y guardado bajo cama",
+        "src": "/images/noticias/trailer-habitacional/trailer-habitacional-dormitorios-camas.jpg",
+        "type": "image",
+        "width": 1280,
+        "height": 1280,
+        "caption": "Dormitorios del trailer habitacional con camas y cajones de guardado bajo cama"
+      },
+      {
+        "type": "imageGrid",
+        "images": [
+          {
+            "alt": "Baño completo del trailer habitacional con ducha, inodoro y bidet",
+            "src": "/images/noticias/trailer-habitacional/trailer-habitacional-bano-completo.jpg",
+            "width": 1280,
+            "height": 1280,
+            "caption": "Baño completo del trailer habitacional con ducha, inodoro y bidet"
+          },
+          {
+            "alt": "Baño del módulo con vanitory, espejo y ducha con terminación industrial",
+            "src": "/images/noticias/trailer-habitacional/trailer-habitacional-bano-vanitory.jpg",
+            "width": 1280,
+            "height": 1280,
+            "caption": "Baño del módulo habitacional con vanitory, espejo y ducha con terminación industrial"
+          }
+        ]
+      },
+      {
+        "text": "Por qué un módulo habitacional autónomo cambia los tiempos de tu operación",
+        "type": "heading"
+      },
+      {
+        "html": "En Vaca Muerta el <strong>tiempo muerto se paga caro</strong>. Un módulo que depende de conexiones externas puede sumar semanas entre el traslado y la puesta en marcha. Uno autónomo <strong>arranca el día uno, no la semana tres</strong>: menos coordinación con terceros, menos imprevistos y personal alojado con confort real desde el arranque.",
+        "type": "html"
+      },
+      {
+        "text": "Fabricación propia desde 2012",
+        "type": "heading"
+      },
+      {
+        "html": "Producimos estas unidades en nuestra planta de <strong>3.500 m²</strong> en Cipolletti, con línea integral: ingeniería, <a href=\"/fabrica\">corte y plegado de chapa</a>, armado y terminación. Desde <strong>2012</strong> acompañamos a <strong>más de 30 empresas</strong> del sector oil &amp; gas con equipos robustos y soporte técnico en campo.",
+        "type": "html"
+      },
+      {
+        "html": "Adaptamos cada unidad a tu operación: cantidad de plazas, distribución interna y nivel de equipamiento. <strong>Consultanos disponibilidad</strong> y te asesoramos sobre la configuración que mejor se ajusta a tu proyecto.",
+        "type": "html"
+      }
+    ],
+    "cta_question": "¿Necesitás una unidad lista para operar en tu yacimiento?",
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-08-14T05:58:29.184648+00:00",
+    "updated_at": "2026-08-14T05:58:29.184648+00:00"
+  },
+  {
+    "id": 9,
+    "slug": "historia-familia-guerra-codelco",
+    "title": "La historia de construcción y trabajo detrás de la familia Guerra.",
+    "seo_title": null,
+    "category": "Proyecto",
+    "date_label": "Julio 2026",
+    "date_iso": "2026-07-01",
+    "summary": "Cuatro generaciones de gomeros, una reconversión al ritmo de Vaca Muerta y el nacimiento de Codelco como proveedor esencial de la industria energética.",
+    "meta_description": null,
+    "image": "/__l5e/assets-v1/3ba62fa1-4b54-4610-9ee6-bd128d25ab80/guerra-codelco-fachada.jpg",
+    "image_position": "top",
+    "body": [
+      {
+        "text": "Una historia que florece en el presente, es resultado de la siembra silenciosa que se realizó en el pasado, y el fruto de los años de trabajo esforzado que quedaron en el camino.",
+        "type": "p"
+      },
+      {
+        "text": "\"Mi abuelo fue de los primeros que trajo una máquina para reconstruir un neumático al país. Somos la única empresa en la Argentina con cuarta generación de gomeros\", relata Adrián Guerra, titular de Neumáticos del Sur y Codelco.",
+        "type": "p"
+      },
+      {
+        "id": "B6m7aNsU93k",
+        "type": "video",
+        "title": "La historia de la familia Guerra",
+        "provider": "youtube"
+      },
+      {
+        "text": "Su abuelo, Antonio Guerra llegó desde España tras la Primera Guerra Mundial, y se estableció en General Roca con una gomería tradicional. \"Entre la Primera y la Segunda Guerra Mundial no había caucho, las gomas se las arreglaban de cualquier manera teniendo en cuenta lo que eran los vehículos en esa época\", rememora Adrián.",
+        "type": "p"
+      },
+      {
+        "text": "Años después, ya en la década del '50, se trasladaron a Mendoza donde fundaron la primer empresa de la familia, Antonio Guerra SA, que creció hasta San Luis y San Juan.",
+        "type": "p"
+      },
+      {
+        "text": "Los inicios en la Patagonia",
+        "type": "heading"
+      },
+      {
+        "text": "Llegado 1985, su padre Herminio Guerra, decide volver al sur, y es en ese momento cuando nace Neumáticos del Sur SA en Cipolletti, una empresa dedicada a la reconstrucción de neumáticos, que luego se expandiría con una planta en Buenos Aires y otra en General Pico, La Pampa.",
+        "type": "p"
+      },
+      {
+        "text": "Los tres hermanos Oscar, Javier y Adrian, continuaron el legado de Herminio hasta la actualidad, incluyendo a dos de los integrantes de la cuarta generación familiar, Benicio, Ignacio, Camila y Facundo.",
+        "type": "p"
+      },
+      {
+        "alt": "Adrián Guerra junto a la máquina VR 50-130 Cargo en la planta de Neumáticos del Sur",
+        "src": "/__l5e/assets-v1/9c370d9f-77c2-4f56-a99f-382dffe8b4fe/guerra-maquina-cargo.webp",
+        "type": "image",
+        "caption": "Cuarta generación de gomeros: la planta de reconstrucción de neumáticos en Cipolletti."
+      },
+      {
+        "text": "Hoy, desde las tres plantas proveen neumáticos para vehículos desde camionetas hasta equipos de gran porte en la actividad rural, vial e industrial.",
+        "type": "p"
+      },
+      {
+        "text": "No obstante, el enclave en uno de los lugares con mayor potencial productivo del país, puso por delante una oportunidad de diversificación que terminaría siendo determinante para el futuro de la empresa y de la familia.",
+        "type": "p"
+      },
+      {
+        "text": "La reconversión al ritmo de Vaca Muerta",
+        "type": "heading"
+      },
+      {
+        "text": "Fue hace 17 años, cuando el no convencional comenzaba a dar sus primeras señales, que detectaron lo que podía ser un nicho de mercado: el shale comenzaría a necesitar locaciones móviles para ubicar en las perforaciones.",
+        "type": "p"
+      },
+      {
+        "text": "\"Empezamos comprando algunos trailers como negocio y nos ocurrió que nos encontramos pagando un producto malo y muy caro\", recuerda Adrian y agrega: \"Lo que veíamos en el mercado no nos convencía y nos pusimos a fabricar nosotros\". Así nació Codelco, una empresa local dedicada a las construcción y comercialización de soluciones habitacionales móviles, con especial foco en Vaca Muerta.",
+        "type": "p"
+      },
+      {
+        "text": "Un nicho de mercado al inicio de la explotación no convencional, los movió a transformar su empresa para ser proveedores esenciales de Vaca Muerta.",
+        "type": "p"
+      },
+      {
+        "text": "Junto a la irrupción del shale, la demanda no tardó en crecer y rápidamente comprendieron las características del producto. \"Compramos plegadoras, guillotinas, y sin darnos cuenta teníamos montada casi una metalúrgica\", recuerda Guerra. \"Luego en un momento fuimos tomando noción de la escala, y tercerizamos parte del trabajo para ganar eficiencia\", agrega.",
+        "type": "p"
+      },
+      {
+        "text": "El producto de aquellos inicios fue evolucionando hasta llegar a los módulos que Codelco fabrica en la actualidad, de 6 o 12 metros de largo por 2,6 metros de ancho, compuestos por paneles de fibra de vidrio EPS de alta densidad íntegramente equipados llave en mano, autosustentables y listos para ser colocados en campo.",
+        "type": "p"
+      },
+      {
+        "alt": "Operario cortando y soldando estructura metálica en la planta metalúrgica de Codelco",
+        "src": "/__l5e/assets-v1/e9de3639-e749-4c58-86b9-27de46db5334/guerra-soldadura-chispas.webp",
+        "type": "image",
+        "caption": "Corte y soldadura en la planta metalúrgica: la base de los módulos habitacionales."
+      },
+      {
+        "text": "A ello agregaron más tarde el servicio de alquiler de equipos electrógenos y torres de iluminación para las operadoras de Vaca Muerta. \"El plan de perforación de YPF habla de multiplicar la producción 2,5 veces en los próximos años, ese es el horizonte\" se entusiasma Guerra.",
+        "type": "p"
+      },
+      {
+        "text": "Hacia adelante, trabajan en un módulo habitacional para primera vivienda destinado a quienes buscan dejar de alquilar. \"Una de las cosas que permite la apertura es que entran materiales de muy buena calidad que son una solución para estructurar una vivienda en un tiempo relativamente rápido y con un costo relativamente ajustado\", afirma Guerra.",
+        "type": "p"
+      },
+      {
+        "href": "/novedades/entregamos-campamento-habitacional-llave-en-mano",
+        "type": "related",
+        "image": "/__l5e/assets-v1/c745c19f-f00d-4197-988e-3b9071b6ea2e/rionegro-lee-tambien.png",
+        "title": "Entregamos un campamento habitacional llave en mano",
+        "eyebrow": "TE PODRÍA INTERESAR TAMBIÉN",
+        "summary": "Módulos Company Man, comedor y laboratorio instalados y operativos en tiempo récord para una operadora del sector."
+      },
+      {
+        "text": "Aquel viaje iniciado hace 90 años hoy continúa. \"Estamos en un camino largo, pero hay que transitarlo. No va a ser abrupto, pero el crecimiento que viene para la región será sostenido, y nuestro objetivo es ser parte\", se entusiasma Guerra, el nieto de aquel inmigrante español que hace 90 años dejó su tierra buscando ese horizonte que hoy es real.",
+        "type": "p"
+      }
+    ],
+    "cta_question": null,
+    "source_url": "https://www.rionegro.com.ar/economia/su-abuelo-llego-desde-espana-tras-la-primera-guerra-y-cuatro-generaciones-despues-sostienen-el-oficio-y-proveen-a-vaca-muerta/",
+    "source_label": "Río Negro Económico",
+    "status": "published",
+    "created_at": "2026-08-14T05:58:29.184648+00:00",
+    "updated_at": "2026-08-14T05:58:43.512046+00:00"
+  },
+  {
+    "id": 1,
+    "slug": "ampliamos-flota-torres-iluminacion-led",
+    "title": "Ampliamos la flota de torres de iluminación LED",
+    "seo_title": null,
+    "category": "Flota",
+    "date_label": "Junio 2026",
+    "date_iso": "2026-06-01",
+    "summary": "Suman stock inmediato para operaciones nocturnas y espacios abiertos en yacimientos de Vaca Muerta.",
+    "meta_description": null,
+    "image": "/images/novedad/torres-led.jpg",
+    "image_position": null,
+    "body": [
+      "En Codelco S.A. incorporamos nuevas torres de iluminación LED a nuestra flota de rental, con el objetivo de acompañar el crecimiento de las operaciones nocturnas en Vaca Muerta y en obras de infraestructura de toda la Patagonia.",
+      "Las nuevas unidades cuentan con generador propio, mástil telescópico y proyectores LED de alta eficiencia, que garantizan iluminación uniforme sobre grandes superficies con un consumo significativamente menor al de los equipos halógenos tradicionales.",
+      "Están disponibles para alquiler de corto y largo plazo, con entrega, puesta en marcha y mantenimiento preventivo incluidos. De esta manera reforzamos la disponibilidad inmediata para nuestros clientes del sector energético, de la construcción y de servicios especiales."
+    ],
+    "cta_question": null,
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-08-14T05:58:29.184648+00:00",
+    "updated_at": "2026-08-14T05:58:43.512046+00:00"
+  },
+  {
+    "id": 2,
+    "slug": "entregamos-campamento-habitacional-llave-en-mano",
+    "title": "Entregamos un campamento habitacional llave en mano",
+    "seo_title": null,
+    "category": "Proyecto",
+    "date_label": "Mayo 2026",
+    "date_iso": "2026-05-01",
+    "summary": "Módulos Company Man, comedor y laboratorio instalados y operativos en tiempo récord para una operadora del sector.",
+    "meta_description": null,
+    "image": "/images/fabrica/fabrica-30.jpg",
+    "image_position": null,
+    "body": [
+      "Completamos la entrega llave en mano de un campamento habitacional para una operadora del sector petrolero, incluyendo módulos Company Man, comedor, sanitarios y laboratorio.",
+      "Todo el proceso —fabricación, traslado, instalación y puesta en servicio— se ejecutó en tiempo récord, minimizando el impacto sobre la operación del cliente.",
+      "Cada módulo fue construido en nuestra planta de Cipolletti bajo estrictos estándares de calidad, aislación térmica y seguridad, listos para operar en condiciones exigentes."
+    ],
+    "cta_question": null,
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-08-14T05:58:29.184648+00:00",
+    "updated_at": "2026-08-14T05:58:43.512046+00:00"
+  },
+  {
+    "id": 3,
+    "slug": "nueva-plegadora-cnc-planta-cipolletti",
+    "title": "Nueva plegadora CNC en nuestra planta de Cipolletti",
+    "seo_title": null,
+    "category": "Planta",
+    "date_label": "Abril 2026",
+    "date_iso": "2026-04-01",
+    "summary": "Sumamos tecnología para reducir tiempos de fabricación en tanques API y estructuras metalúrgicas.",
+    "meta_description": null,
+    "image": "/metalurgica-05.jpg",
+    "image_position": null,
+    "body": [
+      "Incorporamos una nueva plegadora CNC de última generación a nuestra planta metalúrgica de Cipolletti, ampliando la capacidad productiva del área de corte y plegado.",
+      "La nueva máquina permite reducir los tiempos de fabricación de tanques API, estructuras y piezas a medida, manteniendo la precisión milimétrica que caracteriza a nuestros trabajos.",
+      "Con esta inversión reforzamos nuestro compromiso de responder con mayor rapidez a los pedidos de nuestros clientes de la industria energética y de la construcción."
+    ],
+    "cta_question": null,
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-08-14T05:58:29.184648+00:00",
+    "updated_at": "2026-08-14T05:58:43.512046+00:00"
+  },
+  {
+    "id": 4,
+    "slug": "sumamos-unidades-flota-toyota-hilux",
+    "title": "Sumamos unidades a la flota de Toyota Hilux",
+    "seo_title": null,
+    "category": "Flota",
+    "date_label": "Marzo 2026",
+    "date_iso": "2026-03-01",
+    "summary": "Más vehículos livianos disponibles para alquiler en operaciones de Neuquén y Río Negro durante la temporada alta.",
+    "meta_description": null,
+    "image": "/rental-01.jpg",
+    "image_position": null,
+    "body": [
+      "Ampliamos nuestra flota de vehículos livianos con nuevas unidades Toyota Hilux 0km, disponibles para alquiler en Neuquén, Río Negro y toda la región.",
+      "Las unidades se incorporan para dar respuesta al aumento de demanda durante la temporada alta, especialmente en yacimientos, obras y servicios de logística.",
+      "Todas las camionetas cuentan con mantenimiento incluido, seguros y respaldo operativo 24/7 por parte del equipo de Codelco S.A."
+    ],
+    "cta_question": null,
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-08-14T05:58:29.184648+00:00",
+    "updated_at": "2026-08-14T05:58:43.512046+00:00"
+  },
+  {
+    "id": 5,
+    "slug": "instalamos-modulos-company-man-nueva-operadora",
+    "title": "Instalamos módulos Company Man para nueva operadora",
+    "seo_title": null,
+    "category": "Proyecto",
+    "date_label": "Febrero 2026",
+    "date_iso": "2026-02-01",
+    "summary": "Unidades de supervisión trasladadas e instaladas en yacimiento, listas para operar en menos de una semana.",
+    "meta_description": null,
+    "image": "/images/fabrica/fabrica-32.jpg",
+    "image_position": null,
+    "body": [
+      "Realizamos el traslado e instalación de módulos Company Man para una nueva operadora que comenzó a trabajar en la región.",
+      "Las unidades de supervisión quedaron operativas en menos de una semana, con conexión de servicios, mobiliario y climatización lista para uso inmediato.",
+      "Nuestro equipo acompaña el proyecto con soporte técnico y mantenimiento durante toda la campaña."
+    ],
+    "cta_question": null,
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-08-14T05:58:29.184648+00:00",
+    "updated_at": "2026-08-14T05:58:43.512046+00:00"
+  },
+  {
+    "id": 6,
+    "slug": "ampliamos-servicio-corte-plegado-chapas",
+    "title": "Ampliamos el servicio de corte y plegado de chapas",
+    "seo_title": null,
+    "category": "Planta",
+    "date_label": "Enero 2026",
+    "date_iso": "2026-01-01",
+    "summary": "Mayor capacidad productiva para pedidos de piletas, tanques y estructuras a medida.",
+    "meta_description": null,
+    "image": "/images/metalurgica/metalurgica-01.jpg",
+    "image_position": null,
+    "body": [
+      "Ampliamos la capacidad del servicio de corte y plegado de chapas en la planta metalúrgica, para responder a pedidos de mayor volumen.",
+      "La ampliación permite fabricar piletas, tanques y estructuras a medida en plazos más cortos, sin resignar calidad de terminación.",
+      "Trabajamos con clientes de la industria energética, agropecuaria e industrial en toda la Patagonia."
+    ],
+    "cta_question": null,
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-08-14T05:58:29.184648+00:00",
+    "updated_at": "2026-08-14T05:58:43.512046+00:00"
+  },
+  {
+    "id": 7,
+    "slug": "nueva-entrega-grupo-electrogeno-cliente",
+    "title": "Nueva entrega de grupo electrógeno para cliente del sector",
+    "seo_title": null,
+    "category": "Clientes",
+    "date_label": "Diciembre 2025",
+    "date_iso": "2025-12-01",
+    "summary": "Equipo de 120 kVA instalado y monitoreado para garantizar energía continua en operación crítica.",
+    "meta_description": null,
+    "image": "/images/novedad/grupo-electrogeno.jpg",
+    "image_position": null,
+    "body": [
+      "Realizamos la entrega, instalación y puesta en marcha de un grupo electrógeno de 120 kVA para un cliente que requería energía continua en una operación crítica.",
+      "El equipo fue configurado con sistema de monitoreo remoto, tablero de transferencia automática y plan de mantenimiento preventivo.",
+      "Con esta entrega reforzamos nuestro servicio de alquiler y venta de grupos electrógenos industriales, con respaldo técnico permanente."
+    ],
+    "cta_question": null,
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-08-14T05:58:29.184648+00:00",
+    "updated_at": "2026-08-14T05:58:43.512046+00:00"
+  },
+  {
+    "id": 8,
+    "slug": "vaca-muerta-demanda-infraestructura-habitacional",
+    "title": "Vaca Muerta y la creciente demanda de infraestructura habitacional",
+    "seo_title": null,
+    "category": "Sector",
+    "date_label": "Noviembre 2025",
+    "date_iso": "2025-11-01",
+    "summary": "El crecimiento de la actividad petrolera multiplica la necesidad de módulos y campamentos para personal en la región.",
+    "meta_description": null,
+    "image": "/images/fabrica/fabrica-31.jpg",
+    "image_position": null,
+    "body": [
+      "La expansión de la actividad no convencional en Vaca Muerta continúa impulsando la demanda de infraestructura habitacional para personal en yacimiento.",
+      "Desde Codelco S.A. acompañamos este crecimiento con módulos habitacionales, comedores, sanitarios y campamentos completos, fabricados en nuestra planta de Cipolletti.",
+      "La cercanía a los yacimientos, la capacidad productiva propia y la flexibilidad para adaptar los diseños permiten responder rápidamente a los tiempos que exige el sector."
+    ],
+    "cta_question": null,
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-08-14T05:58:29.184648+00:00",
+    "updated_at": "2026-08-14T05:58:43.512046+00:00"
+  }
+]
