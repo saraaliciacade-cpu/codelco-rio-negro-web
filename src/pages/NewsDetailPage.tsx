@@ -468,8 +468,7 @@ const NewsDetailPage = () => {
                 </p>
               )}
 
-              <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
-
+              <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4 flex-wrap">
                 <Link
                   to="/novedades"
                   className="inline-flex items-center justify-center h-12 px-6 text-sm font-semibold rounded-sm border transition hover:bg-gray-50"
@@ -477,6 +476,23 @@ const NewsDetailPage = () => {
                 >
                   <ArrowLeft className="mr-2 h-4 w-4" /> Volver a Novedades
                 </Link>
+                <a
+                  href="https://wa.me/5492994136453?text=Hola%2C%20vi%20una%20novedad%20en%20codelco.com.ar%20y%20quiero%20consultar."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center h-12 px-6 text-sm font-semibold rounded-sm text-white transition hover:opacity-90"
+                  style={{ backgroundColor: '#25D366' }}
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="mr-2 h-5 w-5"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .18 5.32.18 11.88c0 2.09.55 4.13 1.6 5.93L0 24l6.35-1.66a11.86 11.86 0 0 0 5.7 1.45h.01c6.56 0 11.88-5.32 11.88-11.88 0-3.17-1.24-6.15-3.42-8.43ZM12.06 21.6h-.01a9.7 9.7 0 0 1-4.94-1.35l-.36-.21-3.77.99 1.01-3.68-.23-.38a9.72 9.72 0 0 1-1.49-5.09c0-5.38 4.37-9.75 9.79-9.75 2.61 0 5.07 1.02 6.91 2.87a9.7 9.7 0 0 1 2.86 6.9c0 5.38-4.37 9.7-9.77 9.7Zm5.36-7.28c-.29-.15-1.74-.86-2.01-.96-.27-.1-.47-.15-.66.15-.19.29-.76.96-.93 1.15-.17.19-.34.22-.63.07-.29-.15-1.24-.46-2.36-1.47-.87-.78-1.46-1.74-1.63-2.03-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.6-.9-2.19-.24-.57-.48-.49-.66-.5l-.56-.01c-.19 0-.51.07-.78.36-.27.29-1.02 1-1.02 2.44 0 1.44 1.05 2.83 1.2 3.02.15.19 2.06 3.14 4.99 4.4.7.3 1.24.48 1.66.62.7.22 1.33.19 1.84.11.56-.08 1.74-.71 1.98-1.4.24-.68.24-1.27.17-1.4-.07-.13-.27-.2-.56-.35Z" />
+                  </svg>
+                  Hablar por WhatsApp
+                </a>
                 <a
                   href="https://wa.me/5492994136453"
                   target="_blank"
