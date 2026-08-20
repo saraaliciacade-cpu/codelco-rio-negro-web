@@ -541,9 +541,43 @@ const NewsDetailPage = () => {
                   Consultar por esta novedad
                 </a>
               </div>
+
+              {/* Mobile author badge */}
+              {item.author && (
+                <div className="lg:hidden mt-8 pt-6 border-t border-gray-200">
+                  <p className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-3">
+                    Escritor de la nota
+                  </p>
+                  <a
+                    href={item.author.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${item.author.name} — ${item.author.role}`}
+                    className="group flex items-center gap-3 bg-white rounded-sm p-2.5 pr-4 border border-gray-200 transition-all duration-300 hover:shadow-lg hover:scale-[1.01]"
+                  >
+                    <img
+                      src={item.author.image}
+                      alt={item.author.name}
+                      width={56}
+                      height={56}
+                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0"
+                    />
+                    <div className="min-w-0">
+                      <p className="text-sm sm:text-base font-bold text-gray-900 leading-tight truncate">
+                        {item.author.name}{' '}
+                        <span className="text-[#E84E1B] font-bold">Codelco</span>
+                      </p>
+                      <p className="text-xs sm:text-sm text-gray-600 leading-tight truncate">
+                        {item.author.role}
+                      </p>
+                    </div>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
       </section>
+
 
 
 
