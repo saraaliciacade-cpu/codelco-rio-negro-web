@@ -404,7 +404,7 @@ const NewsDetailPage = () => {
               <p className="text-lg sm:text-xl text-gray-700 leading-relaxed font-medium mb-8">
                 {item.summary}
               </p>
-              {item.body.map((block, i) => renderBlock(block, i))}
+              {item.body.map((block, i) => renderBlock(block, i, openLightbox))}
 
               {item.sourceUrl && (
                 <div className="mt-8 pt-6 border-t border-gray-200">
