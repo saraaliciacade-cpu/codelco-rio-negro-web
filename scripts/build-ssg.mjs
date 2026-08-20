@@ -105,13 +105,11 @@ installBrowserPolyfills();
 
 async function loadPublishedNews() {
   // Read news.ts and extract slugs from published items. We can't safely import
-  // news.ts here because it imports @/assets/*.asset.json aliases. So we read
-  // slugs + status via light parsing after building the SSR bundle we could
-  // dynamic-import — but the SSR entry doesn't re-export news. Simpler: use
-  // a tiny regex parse of src/data/news.ts.
+  // news.ts here because it imports @/assets/*.asset.json aliases, so we do a
+  // light regex parse. Then we add the slugs of the Supabase snapshot written
+  // by scripts/sync-news.mjs (articles created from the /user panel).
   const src = await readFile(resolve(root, 'src/data/news.ts'), 'utf8');
-  // Match each object entry with slug + optional status.
-  const entries = [];
+  const slugs = [];
   const re = /\{\s*id:\s*\d+[\s\S]*?slug:\s*['"]([^'"]+)['"][\s\S]*?\}/g;
   let m;
   while ((m = re.exec(src)) !== null) {
@@ -119,10 +117,24 @@ async function loadPublishedNews() {
     const slug = m[1];
     const statusMatch = block.match(/status:\s*['"](draft|published)['"]/);
     const status = statusMatch ? statusMatch[1] : 'published';
-    if (status !== 'draft') entries.push(slug);
+    if (status !== 'draft') slugs.push(slug);
   }
-  return entries;
+
+  try {
+    const remoteRaw = await readFile(resolve(root, 'src/data/news.remote.json'), 'utf8');
+    const rows = JSON.parse(remoteRaw);
+    if (Array.isArray(rows)) {
+      for (const row of rows) {
+        if (row && row.slug && row.status !== 'draft') slugs.push(row.slug);
+      }
+    }
+  } catch {
+    // No snapshot available — keep the bundled slugs only.
+  }
+
+  return [...new Set(slugs)];
 }
+
 
 async function runViteBuilds() {
   console.log('[ssg] building client bundle…');

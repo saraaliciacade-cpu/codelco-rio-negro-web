@@ -1,14 +1,39 @@
-// Generates public/sitemap.xml and public/rss.xml from routes and src/data/news.ts.
-// Runs via predev/prebuild npm hooks.
+// Generates public/sitemap.xml and public/rss.xml from routes, src/data/news.ts
+// and the Supabase snapshot in src/data/news.remote.json.
+// Runs via predev/prebuild npm hooks (after sync-news).
 
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { newsData as allNews, isPublished, type NewsItem } from '../src/data/news';
+import { rowToNewsItem, type NewsRow } from '../src/data/newsRow';
 import { allClients } from '../src/data/clients';
 
-const newsData: NewsItem[] = allNews.filter(isPublished);
+function loadRemoteNews(): NewsItem[] {
+  try {
+    const raw = readFileSync(resolve('src/data/news.remote.json'), 'utf8');
+    const rows = JSON.parse(raw);
+    if (!Array.isArray(rows)) return [];
+    return (rows as NewsRow[])
+      .filter((r) => r && r.slug && r.status !== 'draft')
+      .map(rowToNewsItem);
+  } catch {
+    return [];
+  }
+}
+
+function mergeBySlug(...lists: NewsItem[][]): NewsItem[] {
+  const bySlug = new Map<string, NewsItem>();
+  for (const list of lists) {
+    for (const item of list) if (!bySlug.has(item.slug)) bySlug.set(item.slug, item);
+  }
+  return [...bySlug.values()];
+}
+
+// Remote (panel-created) articles win over the bundled copy.
+const newsData: NewsItem[] = mergeBySlug(loadRemoteNews(), allNews.filter(isPublished));
 
 const BASE_URL = 'https://codelco.com.ar';
+
 
 interface SitemapEntry {
   path: string;
