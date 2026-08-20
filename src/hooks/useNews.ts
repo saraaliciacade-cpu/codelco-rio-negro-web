@@ -59,7 +59,8 @@ export const usePublishedNews = () => {
   });
 
   const items =
-    query.data && query.data.length > 0 ? query.data : sortNewsItems(staticPublishedNews);
+    query.data && query.data.length > 0 ? query.data : sortNewsItems(fallbackPublishedNews());
+
 
   return { ...query, news: items, latestId: items[0]?.id };
 };
