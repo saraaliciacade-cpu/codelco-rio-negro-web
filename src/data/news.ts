@@ -54,6 +54,14 @@ export interface NewsItem {
   imagePosition?: string;
   body: (string | NewsBlock)[];
 
+  /** Optional author / byline credit shown next to the headline. */
+  author?: {
+    name: string;
+    role: string;
+    image: string;
+    url: string;
+  };
+
   /** 'draft' articles are excluded from SSG prerender, sitemap, RSS, and get noindex. Defaults to 'published' when omitted. */
   status?: 'draft' | 'published';
 
