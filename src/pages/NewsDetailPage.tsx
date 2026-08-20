@@ -202,6 +202,39 @@ const NewsDetailPage = () => {
   const { news: publishedNews, latestId, isLoading } = usePublishedNews();
   const item = publishedNews.find((n) => n.slug === slug) ?? findStaticNews(slug);
 
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const lightboxImages = useMemo<LightboxImage[]>(() => {
+    if (!item) return [];
+    const images: LightboxImage[] = [];
+    item.body.forEach((block) => {
+      if (typeof block === 'string') return;
+      if (block.type === 'image') {
+        images.push({ src: block.src, alt: block.alt, caption: block.caption });
+      } else if (block.type === 'imageGrid') {
+        block.images.forEach((img) =>
+          images.push({ src: img.src, alt: img.alt, caption: img.caption })
+        );
+      }
+    });
+    return images;
+  }, [item]);
+
+  const openLightbox = (src: string) => {
+    const index = lightboxImages.findIndex((img) => img.src === src);
+    setLightboxIndex(index >= 0 ? index : 0);
+    setLightboxOpen(true);
+  };
+
+  const nextImage = () => {
+    setLightboxIndex((prev) => (prev + 1) % lightboxImages.length);
+  };
+
+  const prevImage = () => {
+    setLightboxIndex((prev) => (prev - 1 + lightboxImages.length) % lightboxImages.length);
+  };
+
   if (!item) {
     if (isLoading) return <div className="min-h-screen bg-white" />;
     return <Navigate to="/novedades" replace />;
@@ -211,6 +244,7 @@ const NewsDetailPage = () => {
   const isDraft = item.status === 'draft';
   const related = publishedNews.filter((n) => n.id !== item.id).slice(0, 3);
   const metaDescription = item.metaDescription ?? item.summary;
+
 
   return (
     <div className="min-h-screen bg-white">
