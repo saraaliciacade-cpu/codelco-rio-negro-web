@@ -1,5 +1,5 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, ZoomIn } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
