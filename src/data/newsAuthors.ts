@@ -1,3 +1,5 @@
+import ignacioGuerraCodelcoPerfil from '@/assets/ignacio-guerra-codelco-perfil.webp.asset.json';
+
 export const newsAuthorOverrides: Record<
   string,
   {
@@ -10,7 +12,8 @@ export const newsAuthorOverrides: Record<
   'que-es-un-modulo-habitacional': {
     name: 'Ignacio Guerra',
     role: 'Organic Design · Neuquén',
-    image: '/images/noticias/ignacio-guerra-organic-design.png',
+    image: ignacioGuerraCodelcoPerfil.url,
     url: 'https://organicdesign.com.ar/sobre-mi',
   },
 };
+
