@@ -1,5 +1,3 @@
-import ignacioGuerra from '@/assets/ignacio-guerra-organic-design.png.asset.json';
-
 export const newsAuthorOverrides: Record<
   string,
   {
@@ -12,7 +10,7 @@ export const newsAuthorOverrides: Record<
   'que-es-un-modulo-habitacional': {
     name: 'Ignacio Guerra',
     role: 'Organic Design · Neuquén',
-    image: ignacioGuerra.url,
+    image: '/images/noticias/ignacio-guerra-organic-design.png',
     url: 'https://organicdesign.com.ar/sobre-mi',
   },
 };
