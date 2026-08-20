@@ -264,6 +264,13 @@ const NewsDetailPage = () => {
           datePublished: item.dateIso ?? item.date,
           articleSection: item.category,
           image: item.image,
+          author: item.author
+            ? {
+                '@type': 'Person',
+                name: item.author.name,
+                url: item.author.url,
+              }
+            : undefined,
           publisher: {
             '@type': 'Organization',
             name: 'Codelco S.A.',
