@@ -1,13 +1,22 @@
 import { Link, useParams, Navigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, ZoomIn } from 'lucide-react';
+import { useState, useMemo } from 'react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ImageLightbox from '@/components/ImageLightbox';
 import { newsData, type NewsBlock } from '@/data/news';
 import { usePublishedNews, findStaticNews } from '@/hooks/useNews';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_BLACK = '#1A1A1A';
+
+interface LightboxImage {
+  src: string;
+  alt?: string;
+  caption?: string;
+}
+
 
 const renderBlock = (block: string | NewsBlock, i: number) => {
   if (typeof block === 'string') {

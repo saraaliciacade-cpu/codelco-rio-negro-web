@@ -1,5 +1,193 @@
 [
   {
+    "id": 11,
+    "slug": "que-es-un-modulo-habitacional",
+    "title": "¿Qué es un módulo habitacional? Guía completa para la industria",
+    "seo_title": "¿Qué es un módulo habitacional? Guía completa | Codelco",
+    "category": "Planta",
+    "date_label": "20/8/2026",
+    "date_iso": "2026-08-20",
+    "summary": "Qué es un módulo habitacional, de qué está hecho, qué tipos existen y cuándo conviene usarlo en la industria petrolera y la construcción.",
+    "meta_description": "Qué es un módulo habitacional, de qué está hecho, qué tipos existen y cuándo conviene usarlo en la industria petrolera y la construcción. Guía técnica de Codelco.",
+    "image": "/images/noticias/que-es-un-modulo-habitacional/que-es-un-modulo-habitacional-portada.jpg",
+    "image_position": "center",
+    "body": [
+      {
+        "html": "Un <strong>módulo habitacional</strong> es una unidad constructiva prefabricada, fabricada íntegramente en planta y transportada lista para usar hasta el lugar donde se necesita. En pocas palabras: es un espacio habitable —una oficina, un dormitorio, un comedor, un laboratorio— que se construye en un taller bajo condiciones controladas y llega al obrador o al yacimiento para <strong>instalarse en cuestión de horas</strong>.",
+        "type": "html"
+      },
+      {
+        "html": "En zonas como <strong>Vaca Muerta</strong>, donde la actividad crece más rápido que la infraestructura disponible, los módulos habitacionales se volvieron la forma más ágil de resolver el alojamiento y los espacios de trabajo del personal <strong>sin depender de obras tradicionales que tardan meses</strong>.",
+        "type": "html"
+      },
+      {
+        "html": "En esta guía explicamos qué es exactamente, de qué está hecho, qué tipos existen y cuándo conviene elegir uno.",
+        "type": "html"
+      },
+      {
+        "text": "¿Qué es un módulo habitacional y en qué se diferencia de una construcción tradicional?",
+        "type": "heading"
+      },
+      {
+        "html": "La diferencia central está en <strong>dónde y cómo se construye</strong>. Una obra tradicional se levanta en el terreno, ladrillo por ladrillo, expuesta al clima y a los tiempos de cada etapa. Un módulo habitacional, en cambio, se fabrica en una planta industrial con procesos estandarizados, y recién después se traslada e instala en destino.",
+        "type": "html"
+      },
+      {
+        "alt": "Esquema comparativo de plazos entre un módulo habitacional fabricado en planta y una obra tradicional construida en el lugar",
+        "src": "/images/noticias/que-es-un-modulo-habitacional/modulo-habitacional-plazos-vs-obra-tradicional.webp",
+        "type": "image",
+        "width": 1600,
+        "height": 900,
+        "caption": "Mientras la obra tradicional avanza etapa por etapa en el terreno, el módulo se fabrica en planta en paralelo a la preparación del sitio."
+      },
+      {
+        "html": "Esto cambia todo en términos de plazos y previsibilidad. Mientras una construcción convencional depende del avance en el lugar, un módulo <strong>se produce en paralelo a la preparación del terreno</strong>, lo que reduce los tiempos totales de forma drástica. Para una operación que no puede detenerse, esa diferencia es decisiva.",
+        "type": "html"
+      },
+      {
+        "html": "En Codelco fabricamos estos módulos en una <strong>planta propia de 3.500 m²</strong> en Cipolletti, Río Negro, con línea de producción integral: del diseño y la <a href=\"/fabrica\">ingeniería</a> hasta la entrega final.",
+        "type": "html"
+      },
+      {
+        "text": "Componentes principales de un módulo habitacional",
+        "type": "heading"
+      },
+      {
+        "html": "Aunque cada módulo se adapta a su uso, la mayoría comparte una estructura común:",
+        "type": "html"
+      },
+      {
+        "alt": "Corte constructivo de un módulo habitacional: estructura metálica autoportante, instalaciones, paneles de cerramiento con aislación termo-acústica y cubierta",
+        "src": "/images/noticias/que-es-un-modulo-habitacional/modulo-habitacional-corte-constructivo.webp",
+        "type": "image",
+        "width": 1600,
+        "height": 1000,
+        "caption": "Anatomía de un módulo habitacional Codelco: estructura autoportante, instalaciones incorporadas, paneles con aislación termo-acústica y cubierta."
+      },
+      {
+        "html": "<ul><li><strong>Estructura metálica autoportante:</strong> el «esqueleto» de acero que le da resistencia y permite trasladar la unidad sin que se deforme.</li><li><strong>Paneles de cerramiento con aislación termo-acústica:</strong> las paredes, techo y piso, diseñados para mantener la temperatura interior y reducir el ruido, algo clave en el clima patagónico.</li><li><strong>Instalaciones incorporadas:</strong> electricidad, iluminación, y según el módulo, agua, sanitarios y climatización, todo integrado de fábrica.</li><li><strong>Terminaciones interiores:</strong> pisos, revestimientos, aberturas y equipamiento según la función de la unidad.</li></ul>",
+        "type": "html"
+      },
+      {
+        "html": "La calidad de estos componentes es lo que distingue a un módulo que <strong>aguanta años de uso intensivo</strong> de uno que se deteriora en la primera temporada.",
+        "type": "html"
+      },
+      {
+        "text": "Tipos de módulos habitacionales según su uso",
+        "type": "heading"
+      },
+      {
+        "html": "No todos los módulos son iguales: se diseñan según la función que van a cumplir. Estos son los tipos más habituales en la industria:",
+        "type": "html"
+      },
+      {
+        "html": "<ul><li><strong>Módulos habitacionales (dormitorios):</strong> para el descanso del personal en yacimientos y obras, individuales o compartidos.</li><li><strong>Módulos Company Man:</strong> oficinas de supervisión en yacimiento, pensadas para el responsable de la operación.</li><li><strong>Comedores y cocinas:</strong> unidades equipadas para la alimentación del personal en campo.</li><li><strong>Laboratorios:</strong> para el control de procesos y análisis en el sitio de trabajo.</li><li><strong>Oficinas y sanitarios:</strong> espacios administrativos y de servicio.</li><li><strong>Viviendas en seco:</strong> soluciones habitacionales con terminación residencial, tanto para familias como para uso corporativo.</li></ul>",
+        "type": "html"
+      },
+      {
+        "type": "imageGrid",
+        "images": [
+          {
+            "alt": "Módulo habitacional fabricado por Codelco para el Área de Control Ambiental del Gobierno de la Provincia del Neuquén",
+            "src": "/images/noticias/que-es-un-modulo-habitacional/modulo-habitacional-control-ambiental-neuquen.jpg",
+            "width": 800,
+            "height": 600,
+            "caption": "Módulo operativo entregado para el Área de Control Ambiental del Gobierno de Neuquén: uso institucional en campo."
+          },
+          {
+            "alt": "Interior de un módulo habitacional de doble piso con entrepiso, dormitorio y ventanal completo",
+            "src": "/images/noticias/que-es-un-modulo-habitacional/modulo-habitacional-doble-piso-interior.jpg",
+            "width": 900,
+            "height": 1600,
+            "caption": "Módulo de doble piso: entrepiso habitable y ventanal completo, con terminación residencial."
+          }
+        ]
+      },
+      {
+        "html": "La ventaja de trabajar con un <strong>fabricante integral</strong> es que estos módulos se pueden combinar para armar desde una oficina aislada hasta un <strong>campamento completo</strong> para decenas de personas.",
+        "type": "html"
+      },
+      {
+        "alt": "Esquemas en planta de combinación de módulos habitacionales: unidad simple, dos módulos unidos, bloque de cuatro y campamento completo",
+        "src": "/images/noticias/que-es-un-modulo-habitacional/modulo-habitacional-combinacion-modular.webp",
+        "type": "image",
+        "width": 1600,
+        "height": 1000,
+        "caption": "Los módulos se combinan en planta o en obra: de una oficina de 15,6 m² a un campamento de 124,8 m²."
+      },
+      {
+        "text": "¿Cuándo conviene elegir un módulo habitacional?",
+        "type": "heading"
+      },
+      {
+        "html": "Un módulo habitacional es la mejor opción cuando se dan una o varias de estas condiciones:",
+        "type": "html"
+      },
+      {
+        "html": "<ul><li><strong>El tiempo es crítico.</strong> Cuando la operación necesita los espacios funcionando en semanas, no en meses.</li><li><strong>El lugar es remoto o de difícil acceso.</strong> En yacimientos alejados, llevar una unidad terminada es más práctico que montar una obra en el lugar.</li><li><strong>Se necesita flexibilidad.</strong> Los módulos se pueden trasladar, ampliar o reubicar según cómo evolucione el proyecto.</li><li><strong>Se busca previsibilidad de costos.</strong> Al fabricarse en planta, el costo y el plazo se conocen de antemano, sin las sorpresas típicas de una obra tradicional.</li></ul>",
+        "type": "html"
+      },
+      {
+        "html": "Para la industria petrolera, la construcción y la minería, estas ventajas explican por qué el módulo se convirtió en el <strong>estándar para resolver infraestructura en poco tiempo</strong>.",
+        "type": "html"
+      },
+      {
+        "alt": "Interior de un módulo habitacional con terminación residencial, ventanal completo y revestimiento de madera",
+        "src": "/images/noticias/que-es-un-modulo-habitacional/modulo-habitacional-interior-moderno.jpg",
+        "type": "image",
+        "width": 1600,
+        "height": 1066,
+        "caption": "Interior de módulo con terminación residencial: el mismo sistema constructivo, con otro nivel de equipamiento."
+      },
+      {
+        "text": "Preguntas frecuentes sobre módulos habitacionales",
+        "type": "heading"
+      },
+      {
+        "html": "<strong>¿Cuánto tarda en fabricarse un módulo habitacional?</strong><br/>Depende del tipo y la cantidad, pero al producirse en planta los plazos son mucho más cortos y predecibles que una obra tradicional. Lo ideal es consultar por el proyecto puntual para tener un plazo real.",
+        "type": "html"
+      },
+      {
+        "html": "<strong>¿Los módulos sirven para el clima de la Patagonia?</strong><br/>Sí, siempre que estén fabricados con la aislación termo-acústica adecuada. Un módulo pensado para la Patagonia debe mantener la temperatura interior tanto en el frío extremo como en el calor, y resistir el viento de la zona.",
+        "type": "html"
+      },
+      {
+        "html": "<strong>¿Se pueden combinar varios módulos?</strong><br/>Sí. Es justamente una de sus mayores ventajas: se pueden unir para formar comedores, oficinas más grandes o campamentos completos, y reubicar según las necesidades del proyecto.",
+        "type": "html"
+      },
+      {
+        "html": "<strong>¿Qué diferencia hay entre un módulo y un contenedor habitable?</strong><br/>Es una de las dudas más comunes, y merece su propia explicación. En resumen, difieren en la estructura, la aislación y la terminación. Lo desarrollamos en detalle en un próximo artículo.",
+        "type": "html"
+      },
+      {
+        "text": "¿Necesitás módulos para tu operación?",
+        "type": "heading"
+      },
+      {
+        "alt": "Módulo habitacional terminado en la planta de Codelco en Cipolletti, Río Negro",
+        "src": "/images/noticias/que-es-un-modulo-habitacional/modulo-habitacional-planta-cipolletti.jpg",
+        "type": "image",
+        "width": 1280,
+        "height": 942,
+        "caption": "Módulo terminado en la planta de Cipolletti, listo para su traslado al yacimiento."
+      },
+      {
+        "html": "En Codelco fabricamos <a href=\"/fabrica\">módulos habitacionales</a>, Company Man, comedores, laboratorios y viviendas en seco en nuestra planta de Cipolletti, con más de <strong>14 años</strong> de experiencia resolviendo infraestructura para Vaca Muerta.",
+        "type": "html"
+      },
+      {
+        "html": "Contanos qué necesitás y <strong>te respondemos con disponibilidad real en menos de 24 horas</strong>.",
+        "type": "html"
+      }
+    ],
+    "cta_question": "¿Necesitás módulos habitacionales para tu operación?",
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-08-19T05:39:27.842976+00:00",
+    "updated_at": "2026-08-20T06:02:47.478853+00:00"
+  },
+  {
     "id": 10,
     "slug": "trailer-habitacional-autonomo",
     "title": "Trailer habitacional autónomo para operaciones de campo",
