@@ -18,10 +18,14 @@ interface LightboxImage {
 }
 
 
-const renderBlock = (block: string | NewsBlock, i: number) => {
+const renderBlock = (
+  block: string | NewsBlock,
+  i: number,
+  onImageClick?: (src: string) => void
+) => {
   if (typeof block === 'string') {
     return (
-      <p key={i} className="text-base sm:text-lg text-gray-700 leading-relaxed mb-5">
+      <p key={i} className="text-lg sm:text-xl text-gray-700 leading-relaxed mb-6">
         {block}
       </p>
     );
@@ -29,7 +33,7 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
   switch (block.type) {
     case 'p':
       return (
-        <p key={i} className="text-base sm:text-lg text-gray-700 leading-relaxed mb-5">
+        <p key={i} className="text-lg sm:text-xl text-gray-700 leading-relaxed mb-6">
           {block.text}
         </p>
       );
@@ -37,7 +41,7 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
       return (
         <h2
           key={i}
-          className="heading text-2xl sm:text-3xl mt-10 mb-5"
+          className="heading text-2xl sm:text-3xl lg:text-4xl mt-12 mb-6"
           style={{ color: BRAND_BLACK }}
         >
           {block.text}
@@ -47,25 +51,37 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
       return (
         <div
           key={i}
-          className="news-html text-base sm:text-lg text-gray-700 leading-relaxed mb-5"
+          className="news-html text-lg sm:text-xl text-gray-700 leading-relaxed mb-6"
           dangerouslySetInnerHTML={{ __html: typeof block.html === 'string' ? block.html : '' }}
         />
       );
     case 'image':
       return (
-        <figure key={i} className="my-8">
-          <img
-            src={block.src}
-            alt={block.alt ?? ''}
-            title={block.title ?? block.caption}
-            width={block.width}
-            height={block.height}
-            className="w-full h-auto rounded-lg"
-            loading={block.priority ? 'eager' : 'lazy'}
-            {...(block.priority ? { fetchpriority: 'high' as const } : {})}
-          />
+        <figure key={i} className="my-10">
+          <button
+            type="button"
+            onClick={() => onImageClick?.(block.src)}
+            className="group relative block w-full overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E84E1B]"
+            aria-label={`Ampliar imagen: ${block.alt ?? block.caption ?? 'Imagen de la noticia'}`}
+          >
+            <img
+              src={block.src}
+              alt={block.alt ?? ''}
+              title={block.title ?? block.caption}
+              width={block.width}
+              height={block.height}
+              className="w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
+              loading={block.priority ? 'eager' : 'lazy'}
+              {...(block.priority ? { fetchpriority: 'high' as const } : {})}
+            />
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/25 transition-colors duration-300">
+              <div className="w-14 h-14 rounded-full bg-white/90 text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl">
+                <ZoomIn className="w-7 h-7" />
+              </div>
+            </div>
+          </button>
           {block.caption && (
-            <figcaption className="mt-3 text-sm text-gray-500 italic">
+            <figcaption className="mt-3 text-base sm:text-lg text-gray-500 italic">
               {block.caption}
             </figcaption>
           )}
@@ -73,20 +89,32 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
       );
     case 'imageGrid':
       return (
-        <div key={i} className="my-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div key={i} className="my-10 grid grid-cols-1 sm:grid-cols-2 gap-5">
           {block.images.map((img, k) => (
             <figure key={k} className="m-0">
-              <img
-                src={img.src}
-                alt={img.alt ?? ''}
-                title={img.title ?? img.caption}
-                width={img.width}
-                height={img.height}
-                className="w-full h-auto rounded-lg"
-                loading="lazy"
-              />
+              <button
+                type="button"
+                onClick={() => onImageClick?.(img.src)}
+                className="group relative block w-full overflow-hidden rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E84E1B]"
+                aria-label={`Ampliar imagen: ${img.alt ?? img.caption ?? 'Imagen de la noticia'}`}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt ?? ''}
+                  title={img.title ?? img.caption}
+                  width={img.width}
+                  height={img.height}
+                  className="w-full h-auto transition-transform duration-500 group-hover:scale-[1.02]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/25 transition-colors duration-300">
+                  <div className="w-12 h-12 rounded-full bg-white/90 text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-xl">
+                    <ZoomIn className="w-6 h-6" />
+                  </div>
+                </div>
+              </button>
               {img.caption && (
-                <figcaption className="mt-2 text-sm text-gray-500 italic">{img.caption}</figcaption>
+                <figcaption className="mt-2 text-base sm:text-lg text-gray-500 italic">{img.caption}</figcaption>
               )}
             </figure>
           ))}
@@ -94,12 +122,11 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
       );
     case 'video':
       return (
-        <div key={i} className="my-8 flex justify-center">
+        <div key={i} className="my-10 flex justify-center">
           <div
             className="relative overflow-hidden rounded-lg bg-black w-full"
-            style={{ maxWidth: '480px', aspectRatio: '9 / 16' }}
+            style={{ maxWidth: '540px', aspectRatio: '9 / 16' }}
           >
-
             <iframe
               className="absolute inset-0 w-full h-full"
               src={`https://www.youtube.com/embed/${block.id}`}
@@ -152,7 +179,7 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
         </div>
       );
       return (
-        <aside key={i} className="my-8 p-4 sm:p-5 border-l-4 bg-gray-50" style={{ borderColor: BRAND_ORANGE }}>
+        <aside key={i} className="my-10 p-5 sm:p-6 border-l-4 bg-gray-50" style={{ borderColor: BRAND_ORANGE }}>
           {block.href ? (
             <Link to={block.href} className="block hover:opacity-90">
               {inner}
@@ -168,6 +195,7 @@ const renderBlock = (block: string | NewsBlock, i: number) => {
       return null;
   }
 };
+
 
 const NewsDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
