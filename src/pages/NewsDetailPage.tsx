@@ -328,7 +328,7 @@ const NewsDetailPage = () => {
 
       {/* Body */}
       <section className="py-16 lg:py-20 bg-white">
-        <div className="container mx-auto px-6 sm:px-10 lg:px-16 max-w-3xl relative">
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16 max-w-4xl relative">
           <div className="hidden lg:block lg:absolute lg:left-[-72px] lg:top-0 lg:h-full">
             <div className="lg:sticky lg:top-28 flex lg:flex-col flex-row items-center gap-3">
 
