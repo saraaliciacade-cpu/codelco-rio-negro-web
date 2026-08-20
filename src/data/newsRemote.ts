@@ -1,4 +1,5 @@
 import remoteRows from '@/data/news.remote.json';
+import { newsAuthorOverrides } from '@/data/newsAuthors';
 import { rowToNewsItem, type NewsRow } from '@/data/newsRow';
 import type { NewsItem } from '@/data/news';
 
@@ -9,4 +10,8 @@ import type { NewsItem } from '@/data/news';
  */
 export const remoteNews: NewsItem[] = ((remoteRows ?? []) as unknown as NewsRow[])
   .filter((row) => row && row.slug && row.status !== 'draft')
-  .map(rowToNewsItem);
+  .map(rowToNewsItem)
+  .map((item) => {
+    const override = newsAuthorOverrides[item.slug];
+    return override ? { ...item, author: override } : item;
+  });

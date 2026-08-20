@@ -264,6 +264,13 @@ const NewsDetailPage = () => {
           datePublished: item.dateIso ?? item.date,
           articleSection: item.category,
           image: item.image,
+          author: item.author
+            ? {
+                '@type': 'Person',
+                name: item.author.name,
+                url: item.author.url,
+              }
+            : undefined,
           publisher: {
             '@type': 'Organization',
             name: 'Codelco S.A.',
@@ -301,28 +308,57 @@ const NewsDetailPage = () => {
             </ol>
           </nav>
 
-          <div className="flex items-center gap-3 mb-4 flex-wrap">
-            {isLatest && (
-              <span
-                className="eyebrow text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
-                style={{ backgroundColor: '#DC2626' }}
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+            <div>
+              <div className="flex items-center gap-3 mb-4 flex-wrap">
+                {isLatest && (
+                  <span
+                    className="eyebrow text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
+                    style={{ backgroundColor: '#DC2626' }}
+                  >
+                    ÚLTIMA NOTICIA
+                  </span>
+                )}
+                <span
+                  className="eyebrow text-[11px] sm:text-xs text-white px-2.5 py-1 rounded-sm"
+                  style={{ backgroundColor: BRAND_ORANGE }}
+                >
+                  {item.category}
+                </span>
+                <span className="text-xs sm:text-sm text-white/80">{item.date}</span>
+              </div>
+
+              <h1 className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-4xl">
+                {item.title}
+              </h1>
+            </div>
+
+            {item.author && (
+              <a
+                href={item.author.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${item.author.name} — ${item.author.role}`}
+                className="group flex items-center gap-3 bg-white/95 hover:bg-white rounded-sm p-2.5 pr-4 shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-[1.02] flex-shrink-0"
               >
-                ÚLTIMA NOTICIA
-              </span>
+                <img
+                  src={item.author.image}
+                  alt={item.author.name}
+                  width={56}
+                  height={56}
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover flex-shrink-0"
+                />
+                <div className="min-w-0">
+                  <p className="text-sm sm:text-base font-bold text-gray-900 leading-tight truncate">
+                    {item.author.name}
+                  </p>
+                  <p className="text-xs sm:text-sm text-gray-600 leading-tight truncate">
+                    {item.author.role}
+                  </p>
+                </div>
+              </a>
             )}
-            <span
-              className="eyebrow text-[11px] sm:text-xs text-white px-2.5 py-1 rounded-sm"
-              style={{ backgroundColor: BRAND_ORANGE }}
-            >
-              {item.category}
-            </span>
-            <span className="text-xs sm:text-sm text-white/80">{item.date}</span>
           </div>
-
-
-          <h1 className="heading text-white text-3xl sm:text-4xl lg:text-5xl leading-[1.1] max-w-4xl">
-            {item.title}
-          </h1>
         </div>
       </section>
 
