@@ -536,7 +536,17 @@ const NewsDetailPage = () => {
         </section>
       )}
 
+      <ImageLightbox
+        images={lightboxImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNext={nextImage}
+        onPrev={prevImage}
+      />
+
       <Footer />
+
     </div>
   );
 };
