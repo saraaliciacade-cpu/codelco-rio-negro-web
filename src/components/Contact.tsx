@@ -230,7 +230,7 @@ const Contact = () => {
                     style={{ backgroundColor: '#0A66C2', minWidth: '200px' }}
                   >
                     <Linkedin className="h-3.5 w-3.5" />
-                    {language === 'en' ? 'Follow us' : 'Seguinos'}
+                    {c.linkedinTitle}
                   </a>
                 </div>
               </div>
