@@ -353,7 +353,10 @@ const NewsDetailPage = () => {
                     {item.author.name}{' '}
                     <span className="text-[#E84E1B] font-bold">Codelco</span>
                   </p>
-                  <p className="text-xs sm:text-sm text-gray-600 leading-tight truncate">
+                  <p className="text-xs sm:text-sm text-gray-500 leading-tight truncate">
+                    Escritor y Diseñador
+                  </p>
+                  <p className="text-xs sm:text-sm font-semibold leading-tight truncate" style={{ color: BRAND_ORANGE }}>
                     {item.author.role}
                   </p>
                 </div>
@@ -546,7 +549,7 @@ const NewsDetailPage = () => {
               {item.author && (
                 <div className="lg:hidden mt-8 pt-6 border-t border-gray-200">
                   <p className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-3">
-                    Escritor de la nota
+                    Escritor y Diseñador
                   </p>
                   <a
                     href={item.author.url}
@@ -567,7 +570,10 @@ const NewsDetailPage = () => {
                         {item.author.name}{' '}
                         <span className="text-[#E84E1B] font-bold">Codelco</span>
                       </p>
-                      <p className="text-xs sm:text-sm text-gray-600 leading-tight truncate">
+                      <p className="text-xs sm:text-sm text-gray-500 leading-tight truncate">
+                        Escritor y Diseñador
+                      </p>
+                      <p className="text-xs sm:text-sm font-semibold leading-tight truncate" style={{ color: BRAND_ORANGE }}>
                         {item.author.role}
                       </p>
                     </div>
