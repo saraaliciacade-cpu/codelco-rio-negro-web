@@ -229,7 +229,7 @@ const Contact = () => {
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white font-semibold text-sm hover:opacity-90 transition-opacity"
                     style={{ backgroundColor: '#0A66C2' }}
                   >
-                    <Linkedin className="h-4 w-4" />
+                    <Linkedin className="h-3.5 w-3.5" />
                     {c.linkedinTitle}
                   </a>
                 </div>
