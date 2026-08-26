@@ -549,7 +549,7 @@ const NewsDetailPage = () => {
               {item.author && (
                 <div className="lg:hidden mt-8 pt-6 border-t border-gray-200">
                   <p className="text-xs font-bold tracking-widest text-gray-500 uppercase mb-3">
-                    Escritor de la nota
+                    Escritor y Diseñador
                   </p>
                   <a
                     href={item.author.url}
