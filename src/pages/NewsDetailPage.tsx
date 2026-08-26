@@ -350,8 +350,7 @@ const NewsDetailPage = () => {
                 />
                 <div className="min-w-0">
                   <p className="text-sm sm:text-base font-bold text-gray-900 leading-tight truncate">
-                    {item.author.name}{' '}
-                    <span className="text-[#E84E1B] font-bold">Codelco</span>
+                    {item.author.name}
                   </p>
                   <p className="text-xs sm:text-sm text-gray-500 leading-tight truncate">
                     Escritor y Diseñador
@@ -567,8 +566,7 @@ const NewsDetailPage = () => {
                     />
                     <div className="min-w-0">
                       <p className="text-sm sm:text-base font-bold text-gray-900 leading-tight truncate">
-                        {item.author.name}{' '}
-                        <span className="text-[#E84E1B] font-bold">Codelco</span>
+                        {item.author.name}
                       </p>
                       <p className="text-xs sm:text-sm text-gray-500 leading-tight truncate">
                         Escritor y Diseñador
