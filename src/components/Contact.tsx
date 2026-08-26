@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Mail, Phone } from 'lucide-react';
+import { MapPin, Mail, Phone, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -37,6 +37,7 @@ const copy = {
     telefonoNumbers: '299 413 6453 — 299 571 4703',
     whatsappCta: 'Escribir por WhatsApp',
     emailTitle: 'Email',
+    linkedinTitle: 'Seguinos en LinkedIn',
     formTitle: 'Solicitar presupuesto',
     formSubtitle: 'Completá el formulario y un asesor te contacta a la brevedad.',
     nameLabel: 'Nombre y apellido *',
@@ -74,6 +75,7 @@ const copy = {
     telefonoNumbers: '299 413 6453 — 299 571 4703',
     whatsappCta: 'Message us on WhatsApp',
     emailTitle: 'Email',
+    linkedinTitle: 'Follow us on LinkedIn',
     formTitle: 'Request a quote',
     formSubtitle: 'Fill out the form and an advisor will contact you shortly.',
     nameLabel: 'Full name *',
@@ -208,15 +210,27 @@ const Contact = () => {
                 </div>
               </div>
 
-              {/* Email */}
+              {/* Email + LinkedIn */}
               <div className="flex items-start gap-4 py-5">
                 <div className="rounded-lg p-2.5 shrink-0" style={{ backgroundColor: '#e04d1c' }}>
                   <Mail className="h-5 w-5 text-white" />
                 </div>
-                <div>
-                  <h3 className="text-white font-bold font-montserrat text-base mb-1">{c.emailTitle}</h3>
-                  <a href="mailto:ventas@codelco.com.ar" className="font-nunito text-sm hover:underline" style={{ color: '#e04d1c' }}>
-                    ventas@codelco.com.ar
+                <div className="flex-1 flex flex-wrap items-center justify-between gap-3">
+                  <div>
+                    <h3 className="text-white font-bold font-montserrat text-base mb-1">{c.emailTitle}</h3>
+                    <a href="mailto:ventas@codelco.com.ar" className="font-nunito text-sm hover:underline" style={{ color: '#e04d1c' }}>
+                      ventas@codelco.com.ar
+                    </a>
+                  </div>
+                  <a
+                    href="https://ar.linkedin.com/company/codelco-sa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white font-semibold text-sm hover:opacity-90 transition-opacity"
+                    style={{ backgroundColor: '#0A66C2' }}
+                  >
+                    <Linkedin className="h-4 w-4" />
+                    {c.linkedinTitle}
                   </a>
                 </div>
               </div>
