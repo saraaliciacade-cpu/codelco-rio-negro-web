@@ -4,7 +4,9 @@
 // postMessage so the project's preview surfaces share one login; else localStorage.
 export function brokeredPreviewStorage() {
   if (typeof window === 'undefined') return undefined;
-  const host = location.hostname;
+  // During SSG/SSR, `window` may be a stub (globalThis) without real browser APIs.
+  if (!window.location || !window.localStorage || typeof window.addEventListener !== 'function') return undefined;
+  const host = window.location.hostname;
   const PREVIEW_ZONES = ['lovableproject.com', 'lovableproject-dev.com', 'lovable.app', 'gpt-eng.com', 'gptengineer.run'];
   const onPreviewZone = PREVIEW_ZONES.some((z) => host === z || host.endsWith('.' + z));
   // Read the id only from non-user-controlled host positions, so a user-named
@@ -15,7 +17,7 @@ export function brokeredPreviewStorage() {
         ?? host.match(new RegExp('^(' + UUID + ')(?=[.-])', 'i'))?.[1])
     : undefined;
   const framed = window.parent && window.parent !== window;
-  if (!projectId || !framed) return localStorage;
+  if (!projectId || !framed) return window.localStorage;
 
   // Post only to the real editor ancestor, validated as a Lovable origin, so the
   // session token can never reach an untrusted embedder.
@@ -23,7 +25,7 @@ export function brokeredPreviewStorage() {
   const EDITOR = dev
     ? /^https:\/\/([a-z0-9-]+\.)*(lovable\.dev|gptengineer\.app)$|^http:\/\/localhost:3000$/
     : /^https:\/\/([a-z0-9-]+\.)*(lovable\.dev|gptengineer\.app)$/;
-  const ancestor = (location.ancestorOrigins && location.ancestorOrigins[0]) || (document.referrer ? new URL(document.referrer).origin : '');
+  const ancestor = (window.location.ancestorOrigins && window.location.ancestorOrigins[0]) || (typeof document !== "undefined" && document.referrer ? new URL(document.referrer).origin : '');
   const editorOrigins = ancestor && EDITOR.test(ancestor)
     ? [ancestor]
     : (dev ? ['https://lovable.dev', 'http://localhost:3000'] : ['https://lovable.dev']);
@@ -71,17 +73,17 @@ export function brokeredPreviewStorage() {
       // '' is the logout tombstone: clear the local copy too so it can't resurrect if
       // the broker later goes silent. A null reply means never-synced -> keep local.
       if (res && res.ok && typeof res.value === 'string') {
-        if (res.value === '') { localStorage.removeItem(key); return null; }
+        if (res.value === '') { window.localStorage.removeItem(key); return null; }
         return res.value;
       }
-      return localStorage.getItem(key);
+      return window.localStorage.getItem(key);
     },
     setItem: (key: string, value: string) => {
-      localStorage.setItem(key, value);
+      window.localStorage.setItem(key, value);
       return request('lovable-preview-auth:set', key, value).then(() => undefined);
     },
     removeItem: (key: string) => {
-      localStorage.removeItem(key);
+      window.localStorage.removeItem(key);
       return request('lovable-preview-auth:remove', key).then(() => undefined);
     },
   };
