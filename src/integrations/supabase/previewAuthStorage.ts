@@ -4,7 +4,9 @@
 // postMessage so the project's preview surfaces share one login; else localStorage.
 export function brokeredPreviewStorage() {
   if (typeof window === 'undefined') return undefined;
-  const host = location.hostname;
+  // During SSG/SSR, `window` may be a stub (globalThis) without real browser APIs.
+  if (!window.location || !window.localStorage || typeof window.addEventListener !== 'function') return undefined;
+  const host = window.location.hostname;
   const PREVIEW_ZONES = ['lovableproject.com', 'lovableproject-dev.com', 'lovable.app', 'gpt-eng.com', 'gptengineer.run'];
   const onPreviewZone = PREVIEW_ZONES.some((z) => host === z || host.endsWith('.' + z));
   // Read the id only from non-user-controlled host positions, so a user-named
