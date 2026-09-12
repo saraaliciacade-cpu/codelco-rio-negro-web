@@ -20,7 +20,11 @@ const serverDir = resolve(distDir, 'server');
 // react-helmet-async, some libs, and lazy modules may touch these at import time.
 function installBrowserPolyfills() {
   const g = globalThis;
-  if (typeof g.window === 'undefined') g.window = g;
+  // NOTE: `window` is intentionally NOT set to globalThis. react-helmet-async
+  // treats `window.document` as "we are in a browser" and then writes head tags
+  // straight into the DOM instead of the SSR context, which would leave every
+  // prerendered page with the generic template <title>. So `window` exposes the
+  // few APIs modules touch at import time, but no `document`.
   if (typeof g.document === 'undefined') {
     const makeNode = () => ({
       style: {},
