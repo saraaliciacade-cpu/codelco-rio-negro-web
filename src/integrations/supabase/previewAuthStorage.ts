@@ -3,18 +3,8 @@
 // On a Lovable preview surface, broker the auth session to the editor over
 // postMessage so the project's preview surfaces share one login; else localStorage.
 export function brokeredPreviewStorage() {
-  // The SSG build installs a minimal `window` polyfill, so checking only
-  // `typeof window` is not enough to distinguish Node from a real browser.
-  if (
-    typeof window === 'undefined' ||
-    !window.location ||
-    !window.localStorage ||
-    typeof window.addEventListener !== 'function'
-  ) return undefined;
-
-  const browserWindow = window;
-  const storage = browserWindow.localStorage;
-  const host = browserWindow.location.hostname;
+  if (typeof window === 'undefined') return undefined;
+  const host = location.hostname;
   const PREVIEW_ZONES = ['lovableproject.com', 'lovableproject-dev.com', 'lovable.app', 'gpt-eng.com', 'gptengineer.run'];
   const onPreviewZone = PREVIEW_ZONES.some((z) => host === z || host.endsWith('.' + z));
   // Read the id only from non-user-controlled host positions, so a user-named
@@ -24,8 +14,8 @@ export function brokeredPreviewStorage() {
     ? (host.match(new RegExp('^(?:id-preview(?:-[a-z0-9]+)?|project)--(' + UUID + ')(?:-dev)?(?=\\.|$)', 'i'))?.[1]
         ?? host.match(new RegExp('^(' + UUID + ')(?=[.-])', 'i'))?.[1])
     : undefined;
-  const framed = browserWindow.parent && browserWindow.parent !== browserWindow;
-  if (!projectId || !framed) return storage;
+  const framed = window.parent && window.parent !== window;
+  if (!projectId || !framed) return localStorage;
 
   // Post only to the real editor ancestor, validated as a Lovable origin, so the
   // session token can never reach an untrusted embedder.
@@ -33,9 +23,7 @@ export function brokeredPreviewStorage() {
   const EDITOR = dev
     ? /^https:\/\/([a-z0-9-]+\.)*(lovable\.dev|gptengineer\.app)$|^http:\/\/localhost:3000$/
     : /^https:\/\/([a-z0-9-]+\.)*(lovable\.dev|gptengineer\.app)$/;
-  const ancestor =
-    (browserWindow.location.ancestorOrigins && browserWindow.location.ancestorOrigins[0]) ||
-    (browserWindow.document.referrer ? new URL(browserWindow.document.referrer).origin : '');
+  const ancestor = (location.ancestorOrigins && location.ancestorOrigins[0]) || (document.referrer ? new URL(document.referrer).origin : '');
   const editorOrigins = ancestor && EDITOR.test(ancestor)
     ? [ancestor]
     : (dev ? ['https://lovable.dev', 'http://localhost:3000'] : ['https://lovable.dev']);
@@ -52,7 +40,7 @@ export function brokeredPreviewStorage() {
         if (done) return;
         done = true;
         clearTimeout(timer);
-        browserWindow.removeEventListener('message', onMessage);
+        window.removeEventListener('message', onMessage);
         resolve(r);
       };
       const onMessage = (e: MessageEvent) => {
@@ -60,11 +48,11 @@ export function brokeredPreviewStorage() {
         const d = e.data;
         if (d && d.type === RESULT && d.requestId === requestId) finish(d);
       };
-      browserWindow.addEventListener('message', onMessage);
+      window.addEventListener('message', onMessage);
       const msg: Record<string, unknown> = { type, requestId, projectId, key };
       if (value !== undefined) msg['value'] = value;
       // targetOrigin per trusted editor origin, so a session token never reaches an arbitrary embedder.
-      for (const origin of editorOrigins) browserWindow.parent.postMessage(msg, origin);
+      for (const origin of editorOrigins) window.parent.postMessage(msg, origin);
       timer = setTimeout(() => finish(null), TIMEOUT);
     });
 
@@ -83,17 +71,17 @@ export function brokeredPreviewStorage() {
       // '' is the logout tombstone: clear the local copy too so it can't resurrect if
       // the broker later goes silent. A null reply means never-synced -> keep local.
       if (res && res.ok && typeof res.value === 'string') {
-        if (res.value === '') { storage.removeItem(key); return null; }
+        if (res.value === '') { localStorage.removeItem(key); return null; }
         return res.value;
       }
-      return storage.getItem(key);
+      return localStorage.getItem(key);
     },
     setItem: (key: string, value: string) => {
-      storage.setItem(key, value);
+      localStorage.setItem(key, value);
       return request('lovable-preview-auth:set', key, value).then(() => undefined);
     },
     removeItem: (key: string) => {
-      storage.removeItem(key);
+      localStorage.removeItem(key);
       return request('lovable-preview-auth:remove', key).then(() => undefined);
     },
   };
