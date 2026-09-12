@@ -103,37 +103,32 @@ function installBrowserPolyfills() {
 
 installBrowserPolyfills();
 
-async function loadPublishedNews() {
-  // Read news.ts and extract slugs from published items. We can't safely import
-  // news.ts here because it imports @/assets/*.asset.json aliases, so we do a
-  // light regex parse. Then we add the slugs of the Supabase snapshot written
-  // by scripts/sync-news.mjs (articles created from the /user panel).
-  const src = await readFile(resolve(root, 'src/data/news.ts'), 'utf8');
-  const slugs = [];
-  const re = /\{\s*id:\s*\d+[\s\S]*?slug:\s*['"]([^'"]+)['"][\s\S]*?\}/g;
-  let m;
-  while ((m = re.exec(src)) !== null) {
-    const block = m[0];
-    const slug = m[1];
-    const statusMatch = block.match(/status:\s*['"](draft|published)['"]/);
-    const status = statusMatch ? statusMatch[1] : 'published';
-    if (status !== 'draft') slugs.push(slug);
-  }
+const HOME_TITLE = 'Codelco S.A. | Soluciones Industriales para Oil &amp; Gas';
+const HOME_TITLE_RAW = 'Codelco S.A. | Soluciones Industriales para Oil & Gas';
 
+async function loadPrerenderRoutes() {
+  const routesPath = resolve(root, 'src/data/prerender-routes.json');
+  let raw;
   try {
-    const remoteRaw = await readFile(resolve(root, 'src/data/news.remote.json'), 'utf8');
-    const rows = JSON.parse(remoteRaw);
-    if (Array.isArray(rows)) {
-      for (const row of rows) {
-        if (row && row.slug && row.status !== 'draft') slugs.push(row.slug);
-      }
-    }
+    raw = await readFile(routesPath, 'utf8');
   } catch {
-    // No snapshot available — keep the bundled slugs only.
+    throw new Error(
+      `[ssg] src/data/prerender-routes.json no existe. Corré "npm run generate-seo" (o el hook prebuild) antes del SSG.`
+    );
   }
-
-  return [...new Set(slugs)];
+  let routes;
+  try {
+    routes = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(`[ssg] src/data/prerender-routes.json es JSON inválido: ${err.message}`);
+  }
+  if (!Array.isArray(routes) || routes.length === 0) {
+    throw new Error('[ssg] src/data/prerender-routes.json está vacío — abortando para no publicar rutas incompletas.');
+  }
+  return [...new Set(routes)];
 }
+
+
 
 
 async function runViteBuilds() {
