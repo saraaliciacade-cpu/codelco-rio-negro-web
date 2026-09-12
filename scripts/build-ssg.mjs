@@ -215,6 +215,36 @@ async function prerender() {
       throw err;
     }
   }
+
+  // ---- Verificación: cada ruta tiene su HTML y las notas tienen title propio ----
+  const failures = [];
+  for (const route of routes) {
+    const outPath = outPathFor(route);
+    let html;
+    try {
+      html = await readFile(outPath, 'utf8');
+    } catch {
+      failures.push(`${route} → falta ${outPath}`);
+      continue;
+    }
+    const titleMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+    const title = titleMatch ? titleMatch[1].trim() : '';
+    if (!title) {
+      failures.push(`${route} → sin <title>`);
+      continue;
+    }
+    if (route.startsWith('/novedades/') && (title === HOME_TITLE || title === HOME_TITLE_RAW)) {
+      failures.push(`${route} → title genérico del home ("${title}")`);
+    }
+  }
+
+  if (failures.length > 0) {
+    throw new Error(
+      `[ssg] verificación fallida en ${failures.length} ruta(s):\n  - ${failures.join('\n  - ')}`
+    );
+  }
+
+  console.log(`[ssg] verificación OK (${routes.length} rutas)`);
 }
 
 async function cleanup() {
