@@ -62,6 +62,22 @@ function installBrowserPolyfills() {
     };
   }
   if (typeof g.navigator === 'undefined') g.navigator = { userAgent: 'node' };
+  if (typeof g.location === 'undefined') {
+    g.location = {
+      hostname: 'localhost',
+      host: 'localhost',
+      href: 'http://localhost/',
+      origin: 'http://localhost',
+      protocol: 'http:',
+      pathname: '/',
+      search: '',
+      hash: '',
+      ancestorOrigins: [],
+      assign() {}, replace() {}, reload() {},
+      toString: () => 'http://localhost/',
+    };
+  }
+  if (g.document && typeof g.document.referrer === 'undefined') g.document.referrer = '';
   if (typeof g.localStorage === 'undefined') {
     const store = new Map();
     g.localStorage = {
