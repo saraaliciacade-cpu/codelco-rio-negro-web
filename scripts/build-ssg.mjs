@@ -221,6 +221,26 @@ async function loadRenderer() {
 function injectIntoTemplate(template, { html, head, isDraft }) {
   let out = template;
   if (head) {
+    // Drop the template's generic head tags that the page's own head replaces,
+    // otherwise crawlers read the first (generic) <title>/description instead.
+    if (/<title[^>]*>[^<]+<\/title>/i.test(head)) {
+      out = out.replace(/[ \t]*<title>[\s\S]*?<\/title>\n?/i, '');
+    }
+    const dedupe = [
+      [/name="description"/i, /[ \t]*<meta\s+name="description"[^>]*>\n?/i],
+      [/rel="canonical"/i, /[ \t]*<link\s+rel="canonical"[^>]*>\n?/i],
+      [/property="og:title"/i, /[ \t]*<meta\s+property="og:title"[^>]*>\n?/i],
+      [/property="og:description"/i, /[ \t]*<meta\s+property="og:description"[^>]*>\n?/i],
+      [/property="og:url"/i, /[ \t]*<meta\s+property="og:url"[^>]*>\n?/i],
+      [/property="og:type"/i, /[ \t]*<meta\s+property="og:type"[^>]*>\n?/i],
+      [/property="og:image"/i, /[ \t]*<meta\s+property="og:image"[^>]*>\n?/i],
+      [/name="twitter:title"/i, /[ \t]*<meta\s+name="twitter:title"[^>]*>\n?/i],
+      [/name="twitter:description"/i, /[ \t]*<meta\s+name="twitter:description"[^>]*>\n?/i],
+      [/name="twitter:image"/i, /[ \t]*<meta\s+name="twitter:image"[^>]*>\n?/i],
+    ];
+    for (const [inHead, templateTag] of dedupe) {
+      if (inHead.test(head)) out = out.replace(templateTag, '');
+    }
     out = out.replace('<!--ssg-head-->', head);
   }
   if (isDraft) {
