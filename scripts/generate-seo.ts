@@ -245,3 +245,17 @@ const rss = [
 
 writeFileSync(resolve('public/rss.xml'), rss);
 console.log(`rss.xml written (${sortedNews.length} items)`);
+
+
+// -------- Prerender routes (single source of truth for scripts/build-ssg.mjs) --------
+
+const prerenderRoutes: string[] = [
+  ...staticEntries.map((e) => e.path),
+  ...newsEntries.map((e) => e.path),
+];
+
+writeFileSync(
+  resolve('src/data/prerender-routes.json'),
+  `${JSON.stringify(prerenderRoutes, null, 2)}\n`,
+);
+console.log(`prerender-routes.json written (${prerenderRoutes.length} routes)`);

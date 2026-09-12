@@ -20,7 +20,11 @@ const serverDir = resolve(distDir, 'server');
 // react-helmet-async, some libs, and lazy modules may touch these at import time.
 function installBrowserPolyfills() {
   const g = globalThis;
-  if (typeof g.window === 'undefined') g.window = g;
+  // NOTE: `window` is intentionally NOT set to globalThis. react-helmet-async
+  // treats `window.document` as "we are in a browser" and then writes head tags
+  // straight into the DOM instead of the SSR context, which would leave every
+  // prerendered page with the generic template <title>. So `window` exposes the
+  // few APIs modules touch at import time, but no `document`.
   if (typeof g.document === 'undefined') {
     const makeNode = () => ({
       style: {},
@@ -62,6 +66,22 @@ function installBrowserPolyfills() {
     };
   }
   if (typeof g.navigator === 'undefined') g.navigator = { userAgent: 'node' };
+  if (typeof g.location === 'undefined') {
+    g.location = {
+      hostname: 'localhost',
+      host: 'localhost',
+      href: 'http://localhost/',
+      origin: 'http://localhost',
+      protocol: 'http:',
+      pathname: '/',
+      search: '',
+      hash: '',
+      ancestorOrigins: [],
+      assign() {}, replace() {}, reload() {},
+      toString: () => 'http://localhost/',
+    };
+  }
+  if (g.document && typeof g.document.referrer === 'undefined') g.document.referrer = '';
   if (typeof g.localStorage === 'undefined') {
     const store = new Map();
     g.localStorage = {
@@ -99,41 +119,63 @@ function installBrowserPolyfills() {
   if (typeof g.HTMLElement === 'undefined') g.HTMLElement = class {};
   if (typeof g.Element === 'undefined') g.Element = class {};
   if (typeof g.Node === 'undefined') g.Node = class {};
+
+  if (typeof g.window === 'undefined') {
+    g.window = {
+      location: g.location,
+      localStorage: g.localStorage,
+      sessionStorage: g.sessionStorage,
+      matchMedia: g.matchMedia,
+      requestAnimationFrame: g.requestAnimationFrame,
+      cancelAnimationFrame: g.cancelAnimationFrame,
+      getComputedStyle: g.getComputedStyle,
+      IntersectionObserver: g.IntersectionObserver,
+      ResizeObserver: g.ResizeObserver,
+      setTimeout: (...a) => setTimeout(...a),
+      clearTimeout: (...a) => clearTimeout(...a),
+      setInterval: (...a) => setInterval(...a),
+      clearInterval: (...a) => clearInterval(...a),
+      scrollTo() {},
+      scrollY: 0,
+      innerWidth: 1280,
+      innerHeight: 800,
+      devicePixelRatio: 1,
+      addEventListener() {},
+      removeEventListener() {},
+      dispatchEvent: () => false,
+      // parent === undefined so preview-only code paths stay disabled
+    };
+  }
 }
 
 installBrowserPolyfills();
 
-async function loadPublishedNews() {
-  // Read news.ts and extract slugs from published items. We can't safely import
-  // news.ts here because it imports @/assets/*.asset.json aliases, so we do a
-  // light regex parse. Then we add the slugs of the Supabase snapshot written
-  // by scripts/sync-news.mjs (articles created from the /user panel).
-  const src = await readFile(resolve(root, 'src/data/news.ts'), 'utf8');
-  const slugs = [];
-  const re = /\{\s*id:\s*\d+[\s\S]*?slug:\s*['"]([^'"]+)['"][\s\S]*?\}/g;
-  let m;
-  while ((m = re.exec(src)) !== null) {
-    const block = m[0];
-    const slug = m[1];
-    const statusMatch = block.match(/status:\s*['"](draft|published)['"]/);
-    const status = statusMatch ? statusMatch[1] : 'published';
-    if (status !== 'draft') slugs.push(slug);
-  }
+const HOME_TITLE = 'Codelco S.A. | Soluciones Industriales para Oil &amp; Gas';
+const HOME_TITLE_RAW = 'Codelco S.A. | Soluciones Industriales para Oil & Gas';
 
+async function loadPrerenderRoutes() {
+  const routesPath = resolve(root, 'src/data/prerender-routes.json');
+  let raw;
   try {
-    const remoteRaw = await readFile(resolve(root, 'src/data/news.remote.json'), 'utf8');
-    const rows = JSON.parse(remoteRaw);
-    if (Array.isArray(rows)) {
-      for (const row of rows) {
-        if (row && row.slug && row.status !== 'draft') slugs.push(row.slug);
-      }
-    }
+    raw = await readFile(routesPath, 'utf8');
   } catch {
-    // No snapshot available — keep the bundled slugs only.
+    throw new Error(
+      `[ssg] src/data/prerender-routes.json no existe. Corré "npm run generate-seo" (o el hook prebuild) antes del SSG.`
+    );
   }
-
-  return [...new Set(slugs)];
+  let routes;
+  try {
+    routes = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(`[ssg] src/data/prerender-routes.json es JSON inválido: ${err.message}`);
+  }
+  if (!Array.isArray(routes) || routes.length === 0) {
+    throw new Error('[ssg] src/data/prerender-routes.json está vacío — abortando para no publicar rutas incompletas.');
+  }
+  return [...new Set(routes)];
 }
+
+
 
 
 async function runViteBuilds() {
@@ -173,12 +215,32 @@ async function runViteBuilds() {
 async function loadRenderer() {
   const entryPath = resolve(serverDir, 'entry-server.js');
   const mod = await import(pathToFileURL(entryPath).href);
-  return mod.render;
+  return mod.renderPage ?? mod.render;
 }
 
 function injectIntoTemplate(template, { html, head, isDraft }) {
   let out = template;
   if (head) {
+    // Drop the template's generic head tags that the page's own head replaces,
+    // otherwise crawlers read the first (generic) <title>/description instead.
+    if (/<title[^>]*>[^<]+<\/title>/i.test(head)) {
+      out = out.replace(/[ \t]*<title>[\s\S]*?<\/title>\n?/i, '');
+    }
+    const dedupe = [
+      [/name="description"/i, /[ \t]*<meta\s+name="description"[^>]*>\n?/i],
+      [/rel="canonical"/i, /[ \t]*<link\s+rel="canonical"[^>]*>\n?/i],
+      [/property="og:title"/i, /[ \t]*<meta\s+property="og:title"[^>]*>\n?/i],
+      [/property="og:description"/i, /[ \t]*<meta\s+property="og:description"[^>]*>\n?/i],
+      [/property="og:url"/i, /[ \t]*<meta\s+property="og:url"[^>]*>\n?/i],
+      [/property="og:type"/i, /[ \t]*<meta\s+property="og:type"[^>]*>\n?/i],
+      [/property="og:image"/i, /[ \t]*<meta\s+property="og:image"[^>]*>\n?/i],
+      [/name="twitter:title"/i, /[ \t]*<meta\s+name="twitter:title"[^>]*>\n?/i],
+      [/name="twitter:description"/i, /[ \t]*<meta\s+name="twitter:description"[^>]*>\n?/i],
+      [/name="twitter:image"/i, /[ \t]*<meta\s+name="twitter:image"[^>]*>\n?/i],
+    ];
+    for (const [inHead, templateTag] of dedupe) {
+      if (inHead.test(head)) out = out.replace(templateTag, '');
+    }
     out = out.replace('<!--ssg-head-->', head);
   }
   if (isDraft) {
@@ -199,29 +261,19 @@ async function prerender() {
   const templatePath = resolve(distDir, 'index.html');
   const template = await readFile(templatePath, 'utf8');
 
-  const staticRoutes = [
-    '/',
-    '/fabrica',
-    '/metalurgica',
-    '/rental',
-    '/grupos-electrogenos',
-    '/novedades',
-    '/clientes',
-  ];
+  const routes = await loadPrerenderRoutes();
 
-  const slugs = await loadPublishedNews();
-  const newsRoutes = slugs.map((s) => `/novedades/${s}`);
-  const routes = [...staticRoutes, ...newsRoutes];
+  const outPathFor = (route) =>
+    route === '/'
+      ? resolve(distDir, 'index.html')
+      : resolve(distDir, route.replace(/^\//, ''), 'index.html');
 
   for (const route of routes) {
     try {
-      const { html, head } = render(route);
+      const { html, head } = await render(route);
       const outHtml = injectIntoTemplate(template, { html, head, isDraft: false });
       const localizedHtml = outHtml.replace('<html lang="en">', '<html lang="es">');
-      const outPath =
-        route === '/'
-          ? resolve(distDir, 'index.html')
-          : resolve(distDir, route.replace(/^\//, ''), 'index.html');
+      const outPath = outPathFor(route);
       await mkdir(dirname(outPath), { recursive: true });
       await writeFile(outPath, localizedHtml, 'utf8');
       console.log(`[ssg] ✓ ${route}`);
@@ -230,6 +282,36 @@ async function prerender() {
       throw err;
     }
   }
+
+  // ---- Verificación: cada ruta tiene su HTML y las notas tienen title propio ----
+  const failures = [];
+  for (const route of routes) {
+    const outPath = outPathFor(route);
+    let html;
+    try {
+      html = await readFile(outPath, 'utf8');
+    } catch {
+      failures.push(`${route} → falta ${outPath}`);
+      continue;
+    }
+    const titleMatch = html.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+    const title = titleMatch ? titleMatch[1].trim() : '';
+    if (!title) {
+      failures.push(`${route} → sin <title>`);
+      continue;
+    }
+    if (route.startsWith('/novedades/') && (title === HOME_TITLE || title === HOME_TITLE_RAW)) {
+      failures.push(`${route} → title genérico del home ("${title}")`);
+    }
+  }
+
+  if (failures.length > 0) {
+    throw new Error(
+      `[ssg] verificación fallida en ${failures.length} ruta(s):\n  - ${failures.join('\n  - ')}`
+    );
+  }
+
+  console.log(`[ssg] verificación OK (${routes.length} rutas)`);
 }
 
 async function cleanup() {
