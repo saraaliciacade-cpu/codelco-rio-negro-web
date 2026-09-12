@@ -206,10 +206,7 @@ async function prerender() {
       const { html, head } = render(route);
       const outHtml = injectIntoTemplate(template, { html, head, isDraft: false });
       const localizedHtml = outHtml.replace('<html lang="en">', '<html lang="es">');
-      const outPath =
-        route === '/'
-          ? resolve(distDir, 'index.html')
-          : resolve(distDir, route.replace(/^\//, ''), 'index.html');
+      const outPath = outPathFor(route);
       await mkdir(dirname(outPath), { recursive: true });
       await writeFile(outPath, localizedHtml, 'utf8');
       console.log(`[ssg] ✓ ${route}`);
