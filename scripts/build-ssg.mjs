@@ -194,19 +194,12 @@ async function prerender() {
   const templatePath = resolve(distDir, 'index.html');
   const template = await readFile(templatePath, 'utf8');
 
-  const staticRoutes = [
-    '/',
-    '/fabrica',
-    '/metalurgica',
-    '/rental',
-    '/grupos-electrogenos',
-    '/novedades',
-    '/clientes',
-  ];
+  const routes = await loadPrerenderRoutes();
 
-  const slugs = await loadPublishedNews();
-  const newsRoutes = slugs.map((s) => `/novedades/${s}`);
-  const routes = [...staticRoutes, ...newsRoutes];
+  const outPathFor = (route) =>
+    route === '/'
+      ? resolve(distDir, 'index.html')
+      : resolve(distDir, route.replace(/^\//, ''), 'index.html');
 
   for (const route of routes) {
     try {
