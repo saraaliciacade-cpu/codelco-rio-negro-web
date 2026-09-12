@@ -184,7 +184,7 @@ async function runViteBuilds() {
 async function loadRenderer() {
   const entryPath = resolve(serverDir, 'entry-server.js');
   const mod = await import(pathToFileURL(entryPath).href);
-  return mod.render;
+  return mod.renderPage ?? mod.render;
 }
 
 function injectIntoTemplate(template, { html, head, isDraft }) {
@@ -219,7 +219,7 @@ async function prerender() {
 
   for (const route of routes) {
     try {
-      const { html, head } = render(route);
+      const { html, head } = await render(route);
       const outHtml = injectIntoTemplate(template, { html, head, isDraft: false });
       const localizedHtml = outHtml.replace('<html lang="en">', '<html lang="es">');
       const outPath = outPathFor(route);
