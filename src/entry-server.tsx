@@ -41,3 +41,19 @@ export function render(url: string): RenderResult {
 
   return { html, head };
 }
+
+/**
+ * Pages are code-split with React.lazy, so the first synchronous render only
+ * produces the Suspense fallback (no Helmet head). Rendering repeatedly while
+ * flushing microtasks lets the lazy modules resolve, after which the real page
+ * markup and its head tags are produced.
+ */
+export async function renderPage(url: string, attempts = 12): Promise<RenderResult> {
+  let result = render(url);
+  for (let i = 0; i < attempts; i += 1) {
+    if (/<title[^>]*>[^<]+<\/title>/.test(result.head)) return result;
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    result = render(url);
+  }
+  return result;
+}
