@@ -119,6 +119,33 @@ function installBrowserPolyfills() {
   if (typeof g.HTMLElement === 'undefined') g.HTMLElement = class {};
   if (typeof g.Element === 'undefined') g.Element = class {};
   if (typeof g.Node === 'undefined') g.Node = class {};
+
+  if (typeof g.window === 'undefined') {
+    g.window = {
+      location: g.location,
+      localStorage: g.localStorage,
+      sessionStorage: g.sessionStorage,
+      matchMedia: g.matchMedia,
+      requestAnimationFrame: g.requestAnimationFrame,
+      cancelAnimationFrame: g.cancelAnimationFrame,
+      getComputedStyle: g.getComputedStyle,
+      IntersectionObserver: g.IntersectionObserver,
+      ResizeObserver: g.ResizeObserver,
+      setTimeout: (...a) => setTimeout(...a),
+      clearTimeout: (...a) => clearTimeout(...a),
+      setInterval: (...a) => setInterval(...a),
+      clearInterval: (...a) => clearInterval(...a),
+      scrollTo() {},
+      scrollY: 0,
+      innerWidth: 1280,
+      innerHeight: 800,
+      devicePixelRatio: 1,
+      addEventListener() {},
+      removeEventListener() {},
+      dispatchEvent: () => false,
+      // parent === undefined so preview-only code paths stay disabled
+    };
+  }
 }
 
 installBrowserPolyfills();
