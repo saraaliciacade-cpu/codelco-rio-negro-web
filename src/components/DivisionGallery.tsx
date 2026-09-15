@@ -134,7 +134,8 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
                       src={img.src}
                       alt={img.name}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onClick={() => openLightbox(img.src)}
+                      className="w-full h-full object-cover cursor-zoom-in transition-transform duration-500 group-hover:scale-105"
                     />
                     {img.newsHref && (
                       <Link
