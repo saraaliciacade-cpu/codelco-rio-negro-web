@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight, Newspaper } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import ImageLightbox from '@/components/ImageLightbox';
 
 const BRAND_ORANGE = '#E84E1B';
 
@@ -75,6 +76,19 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
   const colBasis = `${100 / visibleCols}%`;
   const translate = `translateX(-${(index * 100) / visibleCols}%)`;
 
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const lightboxImages = useMemo(
+    () => images.map((img) => ({ src: img.src, alt: img.name, caption: img.name })),
+    [images],
+  );
+
+  const openLightbox = (src: string) => {
+    const i = images.findIndex((img) => img.src === src);
+    setLightboxIndex(i >= 0 ? i : 0);
+    setLightboxOpen(true);
+  };
+
   return (
     <div className="relative">
       <button
@@ -120,7 +134,8 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
                       src={img.src}
                       alt={img.name}
                       loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onClick={() => openLightbox(img.src)}
+                      className="w-full h-full object-cover cursor-zoom-in transition-transform duration-500 group-hover:scale-105"
                     />
                     {img.newsHref && (
                       <Link
@@ -160,6 +175,15 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
       >
         <ChevronRight className="h-6 w-6" />
       </button>
+
+      <ImageLightbox
+        images={lightboxImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNext={() => setLightboxIndex((p) => (p + 1) % lightboxImages.length)}
+        onPrev={() => setLightboxIndex((p) => (p - 1 + lightboxImages.length) % lightboxImages.length)}
+      />
     </div>
   );
 };
