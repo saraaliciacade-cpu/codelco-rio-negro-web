@@ -175,6 +175,15 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
       >
         <ChevronRight className="h-6 w-6" />
       </button>
+
+      <ImageLightbox
+        images={lightboxImages}
+        currentIndex={lightboxIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        onNext={() => setLightboxIndex((p) => (p + 1) % lightboxImages.length)}
+        onPrev={() => setLightboxIndex((p) => (p - 1 + lightboxImages.length) % lightboxImages.length)}
+      />
     </div>
   );
 };
