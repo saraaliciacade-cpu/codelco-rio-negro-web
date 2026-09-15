@@ -8,18 +8,43 @@ import { LanguageProvider } from "@/contexts/LanguageContext";
 
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 
-// Lazy load pages for better bundle splitting
-const Index = lazy(() => import("./pages/Index"));
-const Webmail = lazy(() => import("./pages/Webmail"));
-const ClientsPage = lazy(() => import("./pages/ClientsPage"));
-const FabricaPage = lazy(() => import("./pages/FabricaPage"));
-const MetalurgicaPage = lazy(() => import("./pages/MetalurgicaPage"));
-const RentalPage = lazy(() => import("./pages/RentalPage"));
-const GruposElectrogenosPage = lazy(() => import("./pages/GruposElectrogenosPage"));
-const NovedadesPage = lazy(() => import("./pages/NovedadesPage"));
-const NewsDetailPage = lazy(() => import("./pages/NewsDetailPage"));
-const UserPanel = lazy(() => import("./pages/UserPanel"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+// Lazy load pages for better bundle splitting.
+// After a new deploy, an old cached index.html can point at chunk filenames that
+// no longer exist -> "Failed to fetch dynamically imported module" + blank page.
+// Retry once, then force a one-time hard reload to pick up the new index.html.
+const RELOAD_FLAG = "chunk-reload-attempted";
+
+function lazyPage<T extends { default: React.ComponentType<unknown> }>(
+  importer: () => Promise<T>
+) {
+  return lazy(async () => {
+    try {
+      const mod = await importer();
+      if (typeof window !== "undefined") sessionStorage.removeItem(RELOAD_FLAG);
+      return mod;
+    } catch (error) {
+      if (typeof window !== "undefined" && !sessionStorage.getItem(RELOAD_FLAG)) {
+        sessionStorage.setItem(RELOAD_FLAG, "1");
+        window.location.reload();
+        // Keep Suspense pending while the page reloads
+        await new Promise(() => {});
+      }
+      throw error;
+    }
+  });
+}
+
+const Index = lazyPage(() => import("./pages/Index"));
+const Webmail = lazyPage(() => import("./pages/Webmail"));
+const ClientsPage = lazyPage(() => import("./pages/ClientsPage"));
+const FabricaPage = lazyPage(() => import("./pages/FabricaPage"));
+const MetalurgicaPage = lazyPage(() => import("./pages/MetalurgicaPage"));
+const RentalPage = lazyPage(() => import("./pages/RentalPage"));
+const GruposElectrogenosPage = lazyPage(() => import("./pages/GruposElectrogenosPage"));
+const NovedadesPage = lazyPage(() => import("./pages/NovedadesPage"));
+const NewsDetailPage = lazyPage(() => import("./pages/NewsDetailPage"));
+const UserPanel = lazyPage(() => import("./pages/UserPanel"));
+const NotFound = lazyPage(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
