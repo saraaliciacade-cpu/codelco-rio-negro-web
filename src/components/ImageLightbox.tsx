@@ -1,5 +1,5 @@
 import { useEffect, useCallback } from 'react';
-import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ZoomIn, Download } from 'lucide-react';
 
 interface LightboxImage {
   src: string;
@@ -67,6 +67,18 @@ const ImageLightbox = ({
       >
         <X className="w-7 h-7" />
       </button>
+
+      {/* Download button */}
+      <a
+        href={current.src}
+        download={current.src.split('/').pop()?.split('?')[0] || 'imagen'}
+        onClick={(e) => e.stopPropagation()}
+        className="absolute top-4 right-20 z-10 w-12 h-12 flex items-center justify-center text-white/80 hover:text-white hover:bg-white/10 rounded-full transition"
+        aria-label="Descargar imagen"
+        title="Descargar imagen"
+      >
+        <Download className="w-6 h-6" />
+      </a>
 
       {/* Counter */}
       {images.length > 1 && (
