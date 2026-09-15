@@ -76,6 +76,19 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
   const colBasis = `${100 / visibleCols}%`;
   const translate = `translateX(-${(index * 100) / visibleCols}%)`;
 
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const lightboxImages = useMemo(
+    () => images.map((img) => ({ src: img.src, alt: img.name, caption: img.name })),
+    [images],
+  );
+
+  const openLightbox = (src: string) => {
+    const i = images.findIndex((img) => img.src === src);
+    setLightboxIndex(i >= 0 ? i : 0);
+    setLightboxOpen(true);
+  };
+
   return (
     <div className="relative">
       <button
