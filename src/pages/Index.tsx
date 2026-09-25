@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -7,12 +7,9 @@ import NovedadesPreview from '@/components/NovedadesPreview';
 import Contact from '@/components/Contact';
 
 
-// Lazy load below-the-fold components for better bundle splitting
-const Clients = lazy(() => import('@/components/Clients'));
-
-const Services = lazy(() => import('@/components/Services'));
-
-const Footer = lazy(() => import('@/components/Footer'));
+import Clients from '@/components/Clients';
+import Services from '@/components/Services';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
