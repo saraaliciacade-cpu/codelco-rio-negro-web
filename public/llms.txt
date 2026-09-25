@@ -1,14 +1,40 @@
 # Codelco S.A.
 
-> Empresa argentina ubicada en Cipolletti, Río Negro, especializada en la fabricación de módulos habitacionales, equipos metalúrgicos para la industria petrolera, rental de vehículos y grupos electrógenos.
+> Empresa de Cipolletti (Río Negro, Argentina) que brinda soluciones industriales para Oil & Gas en Vaca Muerta: fábrica de módulos habitacionales e industriales, metalúrgica, rental de vehículos, trailers y torres de iluminación LED, y alquiler y mantenimiento de grupos electrógenos.
 
-Codelco S.A. cuenta con una planta de 3500 m² y brinda servicio integral desde el asesoramiento inicial hasta la entrega final, con divisiones de Fábrica, Metalúrgica, Rental y Grupos Electrógenos.
+## Contacto
 
-## Pages
+- Dirección: Ruta 22 Km 1214, Cipolletti, Río Negro, Argentina
+- Teléfonos: 299 413 6453 / 299 571 4703
+- Email: ventas@codelco.com.ar
+- Sitio: https://codelco.com.ar/
 
-- [Inicio](/): Presentación de la empresa, servicios, galería, ubicación y contacto.
-- [Clientes](/clientes): Empresas del sector industrial y petrolero que trabajan con Codelco S.A.
+## Páginas
 
-## Optional
+- [Inicio](https://codelco.com.ar/): Presentación de Codelco S.A.: divisiones, por qué elegirnos, novedades, clientes y contacto.
+- [Fábrica de módulos](https://codelco.com.ar/fabrica): Módulos habitacionales e industriales, campamentos llave en mano, oficinas, comedores y laboratorios.
+- [Metalúrgica](https://codelco.com.ar/metalurgica): Tanques, piletas, estructuras metálicas, corte y plegado CNC para la industria petrolera.
+- [Rental](https://codelco.com.ar/rental): Alquiler de camionetas, trailers rodantes y torres de iluminación LED para Vaca Muerta.
+- [Grupos electrógenos](https://codelco.com.ar/grupos-electrogenos): Alquiler y mantenimiento de grupos electrógenos con soporte 24/7.
+- [Clientes](https://codelco.com.ar/clientes): Operadoras y empresas del sector energético que trabajan con Codelco.
+- [Novedades](https://codelco.com.ar/novedades): Noticias, proyectos y actualidad de Codelco S.A.
 
-- [Webmail](/webmail): Acceso al correo corporativo (redirección externa).
+## Novedades
+
+- [¿Qué es un módulo habitacional? Guía completa para la industria](https://codelco.com.ar/novedades/que-es-un-modulo-habitacional) (20/8/2026): Qué es un módulo habitacional, de qué está hecho, qué tipos existen y cuándo conviene usarlo en la industria petrolera y la construcción.
+- [Trailer habitacional autónomo para operaciones de campo](https://codelco.com.ar/novedades/trailer-habitacional-autonomo) (10 de agosto de 2026): Una unidad rodante que llega lista para operar: agua, energía, climatización e iluminación propias, sin depender de la infraestructura del yacimiento.
+- [La historia de construcción y trabajo detrás de la familia Guerra.](https://codelco.com.ar/novedades/historia-familia-guerra-codelco) (Julio 2026): Cuatro generaciones de gomeros, una reconversión al ritmo de Vaca Muerta y el nacimiento de Codelco como proveedor esencial de la industria energética.
+- [Ampliamos la flota de torres de iluminación LED](https://codelco.com.ar/novedades/ampliamos-flota-torres-iluminacion-led) (Junio 2026): Suman stock inmediato para operaciones nocturnas y espacios abiertos en yacimientos de Vaca Muerta.
+- [Entregamos un campamento habitacional llave en mano](https://codelco.com.ar/novedades/entregamos-campamento-habitacional-llave-en-mano) (Mayo 2026): Módulos Company Man, comedor y laboratorio instalados y operativos en tiempo récord para una operadora del sector.
+- [Nueva plegadora CNC en nuestra planta de Cipolletti](https://codelco.com.ar/novedades/nueva-plegadora-cnc-planta-cipolletti) (Abril 2026): Sumamos tecnología para reducir tiempos de fabricación en tanques API y estructuras metalúrgicas.
+- [Sumamos unidades a la flota de Toyota Hilux](https://codelco.com.ar/novedades/sumamos-unidades-flota-toyota-hilux) (Marzo 2026): Más vehículos livianos disponibles para alquiler en operaciones de Neuquén y Río Negro durante la temporada alta.
+- [Instalamos módulos Company Man para nueva operadora](https://codelco.com.ar/novedades/instalamos-modulos-company-man-nueva-operadora) (Febrero 2026): Unidades de supervisión trasladadas e instaladas en yacimiento, listas para operar en menos de una semana.
+- [Ampliamos el servicio de corte y plegado de chapas](https://codelco.com.ar/novedades/ampliamos-servicio-corte-plegado-chapas) (Enero 2026): Mayor capacidad productiva para pedidos de piletas, tanques y estructuras a medida.
+- [Nueva entrega de grupo electrógeno para cliente del sector](https://codelco.com.ar/novedades/nueva-entrega-grupo-electrogeno-cliente) (Diciembre 2025): Equipo de 120 kVA instalado y monitoreado para garantizar energía continua en operación crítica.
+- [Vaca Muerta y la creciente demanda de infraestructura habitacional](https://codelco.com.ar/novedades/vaca-muerta-demanda-infraestructura-habitacional) (Noviembre 2025): El crecimiento de la actividad petrolera multiplica la necesidad de módulos y campamentos para personal en la región.
+
+## Opcional
+
+- [Texto completo de las novedades](https://codelco.com.ar/llms-full.txt)
+- [RSS](https://codelco.com.ar/rss.xml)
+- [Sitemap](https://codelco.com.ar/sitemap.xml)

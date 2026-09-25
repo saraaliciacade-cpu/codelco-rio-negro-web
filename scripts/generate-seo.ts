@@ -292,9 +292,72 @@ const blockToMd = (block: NewsItem['body'][number]): string => {
   }
 };
 
-const pageDescriptions: Record<string, [string, string]> = {
-  '/': ['Inicio', 'Presentación de Codelco S.A.: divisiones, por qué elegirnos, novedades, clientes y contacto.'],
-  '/fabrica': ['Fábrica de módulos', 'Módulos habitacionales e industriales, campamentos llave en mano, oficinas, comedores y laboratorios.'],
-  '/metalurgica': ['Metalúrgica', 'Tanques, piletas, estructuras metálicas, corte y plegado CNC para la industria petrolera.'],
-  '/rental', : undefined as never,
-} as never;
+const pageDescriptions: [string, string, string][] = [
+  ['/', 'Inicio', 'Presentación de Codelco S.A.: divisiones, por qué elegirnos, novedades, clientes y contacto.'],
+  ['/fabrica', 'Fábrica de módulos', 'Módulos habitacionales e industriales, campamentos llave en mano, oficinas, comedores y laboratorios.'],
+  ['/metalurgica', 'Metalúrgica', 'Tanques, piletas, estructuras metálicas, corte y plegado CNC para la industria petrolera.'],
+  ['/rental', 'Rental', 'Alquiler de camionetas, trailers rodantes y torres de iluminación LED para Vaca Muerta.'],
+  ['/grupos-electrogenos', 'Grupos electrógenos', 'Alquiler y mantenimiento de grupos electrógenos con soporte 24/7.'],
+  ['/clientes', 'Clientes', 'Operadoras y empresas del sector energético que trabajan con Codelco.'],
+  ['/novedades', 'Novedades', 'Noticias, proyectos y actualidad de Codelco S.A.'],
+];
+
+const llmsHeader = [
+  '# Codelco S.A.',
+  '',
+  '> Empresa de Cipolletti (Río Negro, Argentina) que brinda soluciones industriales para Oil & Gas en Vaca Muerta: fábrica de módulos habitacionales e industriales, metalúrgica, rental de vehículos, trailers y torres de iluminación LED, y alquiler y mantenimiento de grupos electrógenos.',
+  '',
+  '## Contacto',
+  '',
+  '- Dirección: Ruta 22 Km 1214, Cipolletti, Río Negro, Argentina',
+  '- Teléfonos: 299 413 6453 / 299 571 4703',
+  '- Email: ventas@codelco.com.ar',
+  `- Sitio: ${BASE_URL}/`,
+  '',
+];
+
+const llms = [
+  ...llmsHeader,
+  '## Páginas',
+  '',
+  ...pageDescriptions.map(([path, name, desc]) => `- [${name}](${abs(path)}): ${desc}`),
+  '',
+  '## Novedades',
+  '',
+  ...sortedNews.map(
+    (n) => `- [${n.title}](${abs(`/novedades/${n.slug}`)}) (${n.date}): ${n.summary}`,
+  ),
+  '',
+  '## Opcional',
+  '',
+  `- [Texto completo de las novedades](${abs('/llms-full.txt')})`,
+  `- [RSS](${abs('/rss.xml')})`,
+  `- [Sitemap](${abs('/sitemap.xml')})`,
+  '',
+].join('\n');
+
+writeFileSync(resolve('public/llms.txt'), llms);
+
+const llmsFull = [
+  ...llmsHeader,
+  '## Novedades (texto completo)',
+  '',
+  ...sortedNews.map((n) =>
+    [
+      `## ${n.title}`,
+      '',
+      `- Fecha: ${n.date}`,
+      `- Categoría: ${n.category}`,
+      `- URL: ${abs(`/novedades/${n.slug}`)}`,
+      '',
+      n.summary,
+      '',
+      ...n.body.map(blockToMd).filter((t) => t && t.trim()).flatMap((t) => [t, '']),
+      '---',
+      '',
+    ].join('\n'),
+  ),
+].join('\n');
+
+writeFileSync(resolve('public/llms-full.txt'), llmsFull);
+console.log(`llms.txt + llms-full.txt written (${sortedNews.length} news)`);

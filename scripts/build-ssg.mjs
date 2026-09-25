@@ -303,6 +303,21 @@ async function prerender() {
     if (route.startsWith('/novedades/') && (title === HOME_TITLE || title === HOME_TITLE_RAW)) {
       failures.push(`${route} → title genérico del home ("${title}")`);
     }
+    if (html.includes('<!--$!-->')) {
+      failures.push(`${route} → contiene fallback de Suspense (<!--$!-->)`);
+    }
+    const rootStart = html.indexOf('<div id="root">');
+    const rootHtml = rootStart >= 0 ? html.slice(rootStart) : html;
+    const visible = rootHtml
+      .replace(/<script[\s\S]*?<\/script>/gi, '')
+      .replace(/<style[\s\S]*?<\/style>/gi, '')
+      .replace(/<!--[\s\S]*?-->/g, '')
+      .replace(/<[^>]+>/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (visible.length < 500) {
+      failures.push(`${route} → poco texto visible en #root (${visible.length} caracteres)`);
+    }
   }
 
   if (failures.length > 0) {
