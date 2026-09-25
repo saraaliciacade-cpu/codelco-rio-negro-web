@@ -259,3 +259,42 @@ writeFileSync(
   `${JSON.stringify(prerenderRoutes, null, 2)}\n`,
 );
 console.log(`prerender-routes.json written (${prerenderRoutes.length} routes)`);
+
+
+// -------- llms.txt / llms-full.txt (llmstxt.org) --------
+
+const stripHtml = (html: string): string =>
+  html
+    .replace(/<li[^>]*>/gi, '\n- ')
+    .replace(/<\/(p|ul|ol|li|h\d)>/gi, '\n')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<a[^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, '[$2]($1)')
+    .replace(/<strong>([\s\S]*?)<\/strong>/gi, '**$1**')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&amp;/g, '&')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+
+const blockToMd = (block: NewsItem['body'][number]): string => {
+  if (typeof block === 'string') return block;
+  switch (block.type) {
+    case 'p': return block.text;
+    case 'html': return stripHtml(block.html);
+    case 'heading': return `### ${block.text}`;
+    case 'image': return block.alt ? `[Imagen: ${block.alt}]` : '';
+    case 'imageGrid':
+      return block.images.filter((i) => i.alt).map((i) => `[Imagen: ${i.alt}]`).join('\n');
+    case 'video': return block.title ? `[Video: ${block.title}]` : '';
+    case 'related':
+      return `Relacionado: ${block.title}${block.href ? ` (${abs(block.href)})` : ''}${block.summary ? ` — ${block.summary}` : ''}`;
+    default: return '';
+  }
+};
+
+const pageDescriptions: Record<string, [string, string]> = {
+  '/': ['Inicio', 'Presentación de Codelco S.A.: divisiones, por qué elegirnos, novedades, clientes y contacto.'],
+  '/fabrica': ['Fábrica de módulos', 'Módulos habitacionales e industriales, campamentos llave en mano, oficinas, comedores y laboratorios.'],
+  '/metalurgica': ['Metalúrgica', 'Tanques, piletas, estructuras metálicas, corte y plegado CNC para la industria petrolera.'],
+  '/rental', : undefined as never,
+} as never;
