@@ -26,6 +26,7 @@ export type NewsBlock =
   | { type: 'imageGrid'; images: NewsImage[] }
   | { type: 'video'; provider: 'youtube'; id: string; title?: string }
   | { type: 'heading'; text: string }
+  | { type: 'flipbook'; src: string; title: string; downloadable?: boolean }
   | {
       type: 'related';
       eyebrow?: string;
@@ -37,6 +38,8 @@ export type NewsBlock =
 
 export interface NewsItem {
   id: number;
+  /** Novedad definida solo en código (no está en Supabase): se suma igual al listado público. */
+  codeOnly?: boolean;
   slug: string;
   category: Exclude<NewsCategory, 'Todas'>;
   date: string;
@@ -76,6 +79,49 @@ export const categories: NewsCategory[] = ['Todas', 'Flota', 'Proyecto', 'Planta
 const TRAILER_IMG = '/images/noticias/trailer-habitacional';
 
 export const newsData: NewsItem[] = [
+  {
+    id: 11,
+    codeOnly: true,
+    slug: 'revista-codelco-modulos-habitacionales-trailers',
+    category: 'Planta',
+    date: '1 de octubre de 2026',
+    dateIso: '2026-10-01',
+    title: 'Hojeá nuestra revista: módulos habitacionales y trailers para tu operación',
+    seoTitle: 'Revista Codelco: Módulos Habitacionales y Trailers | Codelco S.A.',
+    metaDescription:
+      'Hojeá online la revista de Codelco: módulos Company Man, trailers autoportantes y laboratorios móviles fabricados en Cipolletti para Vaca Muerta. Pedí presupuesto.',
+    summary:
+      'Todo lo que fabricamos para Oil & Gas, minería y construcción, en una revista que podés hojear acá mismo.',
+    ctaQuestion: '¿Necesitás un módulo o un trailer para tu operación? Pedí tu presupuesto.',
+    image: '/images/noticias/revista-codelco/revista-codelco-portada.jpg',
+    body: [
+      {
+        type: 'html',
+        html: 'Reunimos en una revista <strong>todo lo que fabricamos en nuestra planta de Cipolletti</strong>: módulos Company Man, trailers autoportantes, laboratorios móviles, oficinas, sanitarios, comedores y viviendas en seco. <strong>Hojeala acá abajo</strong> y ampliá cualquier página para ver cada detalle.',
+      },
+      {
+        type: 'flipbook',
+        src: '/revistas/codelco-revista-trailers.pdf',
+        title: 'Revista Codelco — Módulos habitacionales y trailers',
+        downloadable: true,
+      },
+      { type: 'heading', text: 'Por qué elegir Codelco' },
+      {
+        type: 'html',
+        html: `<ul>
+<li><strong>+14 años</strong> fabricando para la industria energética.</li>
+<li><strong>Planta propia de 3.500 m²</strong>: de la ingeniería a la entrega, sin intermediarios.</li>
+<li><strong>Unidades listas para operar</strong>: llegan equipadas y funcionando desde el primer día.</li>
+<li><strong>Fabricadas según el Decreto 911/96</strong> de Higiene y Seguridad en la Construcción.</li>
+<li><strong>A medida</strong>: adaptamos cada unidad a tu dotación y a tu operación.</li>
+</ul>`,
+      },
+      {
+        type: 'html',
+        html: '¿Querés compartirla con tu equipo? <strong>Descargá el PDF</strong> desde el botón del visor, o escribinos por WhatsApp y te armamos un presupuesto a medida.',
+      },
+    ],
+  },
   {
     id: 10,
     slug: 'trailer-habitacional-autonomo',

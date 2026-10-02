@@ -58,8 +58,11 @@ export const usePublishedNews = () => {
     staleTime: 60_000,
   });
 
-  const items =
-    query.data && query.data.length > 0 ? query.data : sortNewsItems(fallbackPublishedNews());
+  const base =
+    query.data && query.data.length > 0 ? query.data : fallbackPublishedNews();
+  // Novedades definidas solo en código (codeOnly) se suman aunque no estén en Supabase.
+  const codeOnly = staticPublishedNews.filter((n) => n.codeOnly);
+  const items = sortNewsItems(dedupeBySlug([...base, ...codeOnly]));
 
 
   return { ...query, news: items, latestId: items[0]?.id };

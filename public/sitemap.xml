@@ -502,4 +502,15 @@
       <image:caption>El crecimiento de la actividad petrolera multiplica la necesidad de módulos y campamentos para personal en la región.</image:caption>
     </image:image>
   </url>
+  <url>
+    <loc>https://codelco.com.ar/novedades/revista-codelco-modulos-habitacionales-trailers</loc>
+    <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/images/noticias/revista-codelco/revista-codelco-portada.jpg</image:loc>
+      <image:title>Hojeá nuestra revista: módulos habitacionales y trailers para tu operación</image:title>
+      <image:caption>Todo lo que fabricamos para Oil &amp; Gas, minería y construcción, en una revista que podés hojear acá mismo.</image:caption>
+    </image:image>
+  </url>
 </urlset>

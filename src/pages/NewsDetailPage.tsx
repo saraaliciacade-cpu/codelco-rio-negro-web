@@ -5,6 +5,7 @@ import SEO from '@/components/SEO';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ImageLightbox from '@/components/ImageLightbox';
+import PdfFlipbook from '@/components/PdfFlipbook';
 import { newsData, type NewsBlock } from '@/data/news';
 import { usePublishedNews, findStaticNews } from '@/hooks/useNews';
 
@@ -36,6 +37,10 @@ const renderBlock = (
         <p key={i} className="text-lg sm:text-xl text-gray-700 leading-relaxed mb-6">
           {block.text}
         </p>
+      );
+    case 'flipbook':
+      return (
+        <PdfFlipbook key={i} src={block.src} title={block.title} downloadable={block.downloadable} className="my-10" />
       );
     case 'heading':
       return (
