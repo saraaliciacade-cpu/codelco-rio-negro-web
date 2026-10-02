@@ -286,6 +286,7 @@ const blockToMd = (block: NewsItem['body'][number]): string => {
     case 'imageGrid':
       return block.images.filter((i) => i.alt).map((i) => `[Imagen: ${i.alt}]`).join('\n');
     case 'video': return block.title ? `[Video: ${block.title}]` : '';
+    case 'flipbook': return `[Revista PDF: ${block.title}](${abs(block.src)})`;
     case 'related':
       return `Relacionado: ${block.title}${block.href ? ` (${abs(block.href)})` : ''}${block.summary ? ` — ${block.summary}` : ''}`;
     default: return '';
