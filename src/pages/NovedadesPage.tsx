@@ -48,7 +48,7 @@ const NovedadesPage = () => {
   const { language } = useLanguage();
   const c = copy[language];
   const [activeCategory, setActiveCategory] = useState<NewsCategory>('Todas');
-  const { news: publishedNews, latestId } = usePublishedNews();
+  const { news: publishedNews, latestSlug } = usePublishedNews();
 
   const filteredNews =
     activeCategory === 'Todas'
@@ -151,7 +151,7 @@ const NovedadesPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredNews.map((item) => (
                 <article
-                  key={item.id}
+                  key={item.slug}
                   className="group flex flex-col bg-white border border-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
                 >
                   <div className="relative h-52 overflow-hidden">
@@ -163,7 +163,7 @@ const NovedadesPage = () => {
                       loading="lazy"
                     />
 
-                    {item.id === latestId && (
+                    {item.slug === latestSlug && (
                       <span
                         className="eyebrow absolute top-3 right-3 text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
                         style={{ backgroundColor: '#DC2626' }}

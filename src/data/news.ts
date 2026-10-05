@@ -84,9 +84,9 @@ export const newsData: NewsItem[] = [
     codeOnly: true,
     slug: 'revista-codelco-modulos-habitacionales-trailers',
     category: 'Planta',
-    date: '1 de octubre de 2026',
-    dateIso: '2026-10-01',
-    title: 'Hojeá nuestra revista: módulos habitacionales y trailers para tu operación',
+    date: '5 de octubre de 2026',
+    dateIso: '2026-10-05',
+    title: 'Nueva revista: módulos habitacionales y trailers para tu operación',
     seoTitle: 'Revista Codelco: Módulos Habitacionales y Trailers | Codelco S.A.',
     metaDescription:
       'Hojeá online la revista de Codelco: módulos Company Man, trailers autoportantes y laboratorios móviles fabricados en Cipolletti para Vaca Muerta. Pedí presupuesto.',
@@ -94,6 +94,12 @@ export const newsData: NewsItem[] = [
       'Todo lo que fabricamos para Oil & Gas, minería y construcción, en una revista que podés hojear acá mismo.',
     ctaQuestion: '¿Necesitás un módulo o un trailer para tu operación? Pedí tu presupuesto.',
     image: '/images/noticias/revista-codelco/revista-codelco-portada.jpg',
+    author: {
+      name: 'Ignacio Guerra',
+      role: 'Organic Design · Neuquén',
+      image: '/images/noticias/ignacio-guerra-codelco-perfil.webp',
+      url: 'https://organicdesign.com.ar/sobre-mi',
+    },
     body: [
       {
         type: 'html',
