@@ -14,9 +14,33 @@ import type { PDFDocumentLoadingTask, PDFDocumentProxy } from "pdfjs-dist";
 // pdf.js y page-flip se cargan solo en el navegador, cuando se monta el
 // componente: así no rompen el prerenderizado (SSR/SSG) ni pesan en el resto del sitio.
 type Libs = { pdfjs: typeof import("pdfjs-dist"); PageFlip: any };
+
+// pdf.js 6 usa Map.getOrInsertComputed (propuesta ES todavía sin soporte nativo
+// en la mayoría de los navegadores estables). Sin este polyfill el render de
+// páginas falla con "getOrInsertComputed is not a function".
+function ensureMapUpsertPolyfill() {
+  const mp = Map.prototype as any;
+  if (typeof mp.getOrInsert !== "function") {
+    mp.getOrInsert = function (key: unknown, value: unknown) {
+      if (this.has(key)) return this.get(key);
+      this.set(key, value);
+      return value;
+    };
+  }
+  if (typeof mp.getOrInsertComputed !== "function") {
+    mp.getOrInsertComputed = function (key: unknown, callback: (k: unknown) => unknown) {
+      if (this.has(key)) return this.get(key);
+      const value = callback(key);
+      this.set(key, value);
+      return value;
+    };
+  }
+}
+
 let libsPromise: Promise<Libs> | null = null;
 function loadLibs(): Promise<Libs> {
   if (!libsPromise) {
+    ensureMapUpsertPolyfill();
     libsPromise = Promise.all([
       import("pdfjs-dist"),
       import("pdfjs-dist/build/pdf.worker.min.mjs?url"),

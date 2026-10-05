@@ -7,6 +7,8 @@ import ShareServices from '@/components/ShareServices';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 import HeroImageCarousel from '@/components/HeroImageCarousel';
+import PdfFlipbook from '@/components/PdfFlipbook';
+import { BookOpen } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
@@ -105,6 +107,10 @@ const copy = {
     ctaBtn2: 'Escribir por WhatsApp',
     eyebrowOther: 'OTRAS DIVISIONES',
     otherH2: 'Conocé el resto de nuestras áreas',
+    magazineEyebrow: 'REVISTA CODELCO · EDICIÓN MÓDULOS Y TRAILERS',
+    magazineH2: 'Hojeá nuestra revista: módulos habitacionales y trailers para tu operación',
+    magazineParagraph: 'Pasá las páginas como en una revista de papel, hacé zoom en lo que te interese y descargala gratis para compartir con tu equipo.',
+    magazineLink: 'Ver la nota completa',
   },
   en: {
     breadcrumbHome: 'Home',
@@ -125,6 +131,10 @@ const copy = {
     ctaBtn2: 'Message on WhatsApp',
     eyebrowOther: 'OTHER DIVISIONS',
     otherH2: 'Explore our other areas',
+    magazineEyebrow: 'CODELCO MAGAZINE · MODULES & TRAILERS EDITION',
+    magazineH2: 'Flip through our magazine: housing modules and trailers for your operation',
+    magazineParagraph: 'Turn the pages like a print magazine, zoom in on what interests you and download it for free to share with your team.',
+    magazineLink: 'Read the full article',
   },
 } as const;
 
@@ -229,6 +239,47 @@ const FabricaPage = () => {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Revista Codelco — visor flipbook */}
+      <section className="py-20 lg:py-24" style={{ backgroundColor: BRAND_CREAM }}>
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="max-w-3xl mb-12">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
+              <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
+                {c.magazineEyebrow}
+              </span>
+            </div>
+            <h2 className="heading text-3xl sm:text-4xl lg:text-5xl leading-[1.1]" style={{ color: BRAND_BLACK }}>
+              {c.magazineH2}
+            </h2>
+            <p className="mt-5 text-base lg:text-lg text-gray-700 leading-relaxed">
+              {c.magazineParagraph}
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto rounded-xl overflow-hidden bg-white border border-black/10 shadow-xl">
+            <PdfFlipbook
+              src="/revistas/codelco-revista-trailers.pdf"
+              title="Revista Codelco — Módulos habitacionales y trailers"
+              downloadable
+              className="my-0"
+            />
+          </div>
+
+          <div className="max-w-5xl mx-auto mt-6">
+            <Link
+              to="/novedades/revista-codelco-modulos-habitacionales-trailers"
+              className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold transition hover:opacity-80"
+              style={{ color: BRAND_ORANGE }}
+            >
+              <BookOpen className="w-4 h-4" />
+              {c.magazineLink}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
         </div>
       </section>
 
