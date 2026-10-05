@@ -242,6 +242,47 @@ const FabricaPage = () => {
         </div>
       </section>
 
+      {/* Revista Codelco — visor flipbook */}
+      <section className="py-20 lg:py-24" style={{ backgroundColor: BRAND_CREAM }}>
+        <div className="container mx-auto px-6 sm:px-10 lg:px-16">
+          <div className="max-w-3xl mb-12">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="h-px w-10" style={{ backgroundColor: BRAND_ORANGE }} aria-hidden="true" />
+              <span className="eyebrow text-[11px] sm:text-xs" style={{ color: BRAND_ORANGE }}>
+                {c.magazineEyebrow}
+              </span>
+            </div>
+            <h2 className="heading text-3xl sm:text-4xl lg:text-5xl leading-[1.1]" style={{ color: BRAND_BLACK }}>
+              {c.magazineH2}
+            </h2>
+            <p className="mt-5 text-base lg:text-lg text-gray-700 leading-relaxed">
+              {c.magazineParagraph}
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto rounded-xl overflow-hidden bg-white border border-black/10 shadow-xl">
+            <PdfFlipbook
+              src="/revistas/codelco-revista-trailers.pdf"
+              title="Revista Codelco — Módulos habitacionales y trailers"
+              downloadable
+              className="my-0"
+            />
+          </div>
+
+          <div className="max-w-5xl mx-auto mt-6">
+            <Link
+              to="/novedades/revista-codelco-modulos-habitacionales-trailers"
+              className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold transition hover:opacity-80"
+              style={{ color: BRAND_ORANGE }}
+            >
+              <BookOpen className="w-4 h-4" />
+              {c.magazineLink}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Galería */}
       <section className="py-20 lg:py-24 bg-white">
         <div className="container mx-auto px-6 sm:px-10 lg:px-16">
