@@ -204,7 +204,7 @@ const renderBlock = (
 
 const NewsDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { news: publishedNews, latestId, isLoading } = usePublishedNews();
+  const { news: publishedNews, latestSlug, isLoading } = usePublishedNews();
   const item = publishedNews.find((n) => n.slug === slug) ?? findStaticNews(slug);
 
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -245,9 +245,9 @@ const NewsDetailPage = () => {
     return <Navigate to="/novedades" replace />;
   }
 
-  const isLatest = item.id === latestId;
+  const isLatest = item.slug === latestSlug;
   const isDraft = item.status === 'draft';
-  const related = publishedNews.filter((n) => n.id !== item.id).slice(0, 3);
+  const related = publishedNews.filter((n) => n.slug !== item.slug).slice(0, 3);
   const metaDescription = item.metaDescription ?? item.summary;
 
 

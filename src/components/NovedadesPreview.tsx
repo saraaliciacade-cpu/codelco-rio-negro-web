@@ -28,7 +28,7 @@ const copy = {
 const NovedadesPreview = () => {
   const { language } = useLanguage();
   const c = copy[language];
-  const { news, latestId } = usePublishedNews();
+  const { news, latestSlug } = usePublishedNews();
   const items = news.slice(0, 3);
 
   return (
@@ -53,7 +53,7 @@ const NovedadesPreview = () => {
           {items.map((item) => (
             <Link
               to={`/novedades/${item.slug}`}
-              key={item.id}
+              key={item.slug}
               className="group flex flex-col bg-white border border-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
             >
               <div className="relative h-52 overflow-hidden">
@@ -65,7 +65,7 @@ const NovedadesPreview = () => {
                   loading="lazy"
                 />
 
-                {item.id === latestId && (
+                {item.slug === latestSlug && (
                   <span
                     className="eyebrow absolute top-3 right-3 text-[10px] sm:text-xs font-bold text-white px-2.5 py-1 rounded-sm animate-pulse"
                     style={{ backgroundColor: '#DC2626' }}

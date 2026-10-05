@@ -25,21 +25,24 @@ const fallbackPublishedNews = (): NewsItem[] =>
   dedupeBySlug([...remoteNews, ...staticPublishedNews]);
 
 
-/**
- * Keeps the exact order the site had while news lived in src/data/news.ts,
- * and puts any newly created article at the top of the list.
- */
-const LEGACY_ORDER = newsData.map((n) => n.slug);
+/** Publication dates determine order, regardless of the source or numeric ID. */
+const publicationTime = (item: NewsItem): number => {
+  if (item.dateIso) {
+    const timestamp = Date.parse(item.dateIso);
+    if (Number.isFinite(timestamp)) return timestamp;
+  }
+  const numeric = item.date.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (numeric) return Date.UTC(Number(numeric[3]), Number(numeric[2]) - 1, Number(numeric[1]));
+  const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+  const label = item.date.toLowerCase();
+  const month = months.findIndex((name) => label.includes(name));
+  const year = label.match(/\b(\d{4})\b/);
+  const day = label.match(/^(\d{1,2})\s/);
+  return month >= 0 && year ? Date.UTC(Number(year[1]), month, day ? Number(day[1]) : 1) : 0;
+};
 
 export const sortNewsItems = (items: NewsItem[]): NewsItem[] =>
-  [...items].sort((a, b) => {
-    const ia = LEGACY_ORDER.indexOf(a.slug);
-    const ib = LEGACY_ORDER.indexOf(b.slug);
-    if (ia === -1 && ib === -1) return b.id - a.id;
-    if (ia === -1) return -1;
-    if (ib === -1) return 1;
-    return ia - ib;
-  });
+  [...items].sort((a, b) => publicationTime(b) - publicationTime(a) || b.id - a.id || a.slug.localeCompare(b.slug));
 
 const fetchPublishedNews = async (): Promise<NewsItem[]> => {
   const { data, error } = await supabase
@@ -65,7 +68,7 @@ export const usePublishedNews = () => {
   const items = sortNewsItems(dedupeBySlug([...base, ...codeOnly]));
 
 
-  return { ...query, news: items, latestId: items[0]?.id };
+  return { ...query, news: items, latestId: items[0]?.id, latestSlug: items[0]?.slug };
 };
 
 /** Every article (drafts included) — only readable by admins per RLS. */
