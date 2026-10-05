@@ -105,6 +105,10 @@ const copy = {
     ctaBtn2: 'Escribir por WhatsApp',
     eyebrowOther: 'OTRAS DIVISIONES',
     otherH2: 'Conocé el resto de nuestras áreas',
+    magazineEyebrow: 'REVISTA CODELCO · EDICIÓN MÓDULOS Y TRAILERS',
+    magazineH2: 'Hojeá nuestra revista: módulos habitacionales y trailers para tu operación',
+    magazineParagraph: 'Pasá las páginas como en una revista de papel, hacé zoom en lo que te interese y descargala gratis para compartir con tu equipo.',
+    magazineLink: 'Ver la nota completa',
   },
   en: {
     breadcrumbHome: 'Home',
