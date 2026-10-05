@@ -7,6 +7,8 @@ import ShareServices from '@/components/ShareServices';
 import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 import HeroImageCarousel from '@/components/HeroImageCarousel';
+import PdfFlipbook from '@/components/PdfFlipbook';
+import { BookOpen } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 const BRAND_ORANGE = '#E84E1B';
@@ -129,6 +131,10 @@ const copy = {
     ctaBtn2: 'Message on WhatsApp',
     eyebrowOther: 'OTHER DIVISIONS',
     otherH2: 'Explore our other areas',
+    magazineEyebrow: 'CODELCO MAGAZINE · MODULES & TRAILERS EDITION',
+    magazineH2: 'Flip through our magazine: housing modules and trailers for your operation',
+    magazineParagraph: 'Turn the pages like a print magazine, zoom in on what interests you and download it for free to share with your team.',
+    magazineLink: 'Read the full article',
   },
 } as const;
 
