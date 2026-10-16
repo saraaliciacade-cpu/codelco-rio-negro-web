@@ -3,13 +3,13 @@
     "id": 11,
     "slug": "que-es-un-modulo-habitacional",
     "title": "¿Qué es un módulo habitacional? Guía completa para la industria",
-    "seo_title": "¿Qué es un módulo habitacional? Guía completa | Codelco",
+    "seo_title": "Tipos de Módulos Habitacionales: Qué Son y Cuál Elegir",
     "category": "Planta",
     "date_label": "20/8/2026",
     "date_iso": "2026-08-20",
-    "summary": "Qué es un módulo habitacional, de qué está hecho, qué tipos existen y cuándo conviene usarlo en la industria petrolera y la construcción.",
-    "meta_description": "Qué es un módulo habitacional, de qué está hecho, qué tipos existen y cuándo conviene usarlo en la industria petrolera y la construcción. Guía técnica de Codelco.",
-    "image": "/images/noticias/que-es-un-modulo-habitacional/que-es-un-modulo-habitacional-portada.jpg",
+    "summary": "Qué es un módulo habitacional, de qué está hecho y los 6 tipos que existen —dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios— con plantas y tabla comparativa.",
+    "meta_description": "Tipos de módulos habitacionales: dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios. Plantas, tabla comparativa y precios a medida. Fábrica en Cipolletti.",
+    "image": "/__l5e/assets-v1/9a19ff12-c9c8-4c36-9145-09e94b496c5b/tipos-de-modulos-habitacionales-portada.jpg",
     "image_position": "center",
     "body": [
       {
@@ -23,6 +23,20 @@
       {
         "html": "En esta guía explicamos qué es exactamente, de qué está hecho, qué tipos existen y cuándo conviene elegir uno.",
         "type": "html"
+      },
+      {
+        "text": "Los 6 tipos de módulos habitacionales, en una revista",
+        "type": "heading"
+      },
+      {
+        "html": "Antes de entrar en detalle, hojeá nuestra revista: ahí mostramos los <strong>módulos habitacionales que fabricamos</strong> —dormitorios, Company Man, comedores, cocinas, laboratorios y sanitarios— con fotos reales de planta y obra. Pasá las páginas, hacé zoom o descargala.",
+        "type": "html"
+      },
+      {
+        "src": "/revistas/codelco-revista-trailers.pdf",
+        "type": "flipbook",
+        "title": "Revista Codelco — Módulos habitacionales y trailers",
+        "downloadable": true
       },
       {
         "text": "¿Qué es un módulo habitacional y en qué se diferencia de una construcción tradicional?",
@@ -83,6 +97,22 @@
       {
         "html": "<ul><li><strong>Módulos habitacionales (dormitorios):</strong> para el descanso del personal en yacimientos y obras, individuales o compartidos.</li><li><strong>Módulos Company Man:</strong> oficinas de supervisión en yacimiento, pensadas para el responsable de la operación.</li><li><strong>Comedores y cocinas:</strong> unidades equipadas para la alimentación del personal en campo.</li><li><strong>Laboratorios:</strong> para el control de procesos y análisis en el sitio de trabajo.</li><li><strong>Oficinas y sanitarios:</strong> espacios administrativos y de servicio.</li><li><strong>Viviendas en seco:</strong> soluciones habitacionales con terminación residencial, tanto para familias como para uso corporativo.</li></ul>",
         "type": "html"
+      },
+      {
+        "alt": "Plantas de los seis tipos de módulos habitacionales Codelco de 6,00 × 2,60 m: dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios con vestuario",
+        "src": "/__l5e/assets-v1/ac768f46-6463-4a5d-a2bf-76b991ae9e92/modulo-habitacional-tipos-plantas.jpg",
+        "type": "image",
+        "width": 1920,
+        "height": 1764,
+        "caption": "Seis módulos, seis funciones: plantas orientativas de cada tipo en un módulo de 6,00 × 2,60 m (15,6 m²)."
+      },
+      {
+        "alt": "Tabla comparativa de tipos de módulos habitacionales: uso principal, ocupación típica, servicios incluidos y con qué se combina cada uno",
+        "src": "/__l5e/assets-v1/ab3cd877-acc1-4f44-8d63-37f1a3cf8428/modulo-habitacional-tabla-comparativa-tipos.jpg",
+        "type": "image",
+        "width": 1920,
+        "height": 1392,
+        "caption": "Qué módulo conviene según el proyecto: uso, ocupación, servicios y combinaciones de cada tipo."
       },
       {
         "type": "imageGrid",
@@ -185,7 +215,7 @@
     "source_label": null,
     "status": "published",
     "created_at": "2026-08-19T05:39:27.842976+00:00",
-    "updated_at": "2026-08-20T06:02:47.478853+00:00"
+    "updated_at": "2026-10-16T01:14:28.014516+00:00"
   },
   {
     "id": 10,
