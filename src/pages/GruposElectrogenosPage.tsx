@@ -100,10 +100,11 @@ const GruposElectrogenosPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title="Grupos Electrógenos: Alquiler y Mantenimiento 24/7 | Codelco S.A."
-        description="Alquiler de grupos electrógenos con mantenimiento programado, monitoreo y soporte 24/7 para la industria energética, minera y de la construcción en la Patagonia."
+        title="Alquiler de Grupos Electrógenos | Codelco S.A - Servicios Industriales"
+        description="Alquiler de grupos electrógenos de 55 a 180 kVA en Neuquén y Río Negro, con mantenimiento, monitoreo y soporte 24/7 para petróleo, minería y obra."
         path="/grupos-electrogenos"
         keywords="grupos electrógenos, alquiler generadores, mantenimiento grupos electrógenos, Vaca Muerta, Codelco"
+        image="/og/grupos-electrogenos.jpg"
       />
       <Header />
 
