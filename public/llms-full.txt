@@ -45,13 +45,19 @@ Reunimos en una revista **todo lo que fabricamos en nuestra planta de Cipolletti
 - Categoría: Planta
 - URL: https://codelco.com.ar/novedades/que-es-un-modulo-habitacional
 
-Qué es un módulo habitacional, de qué está hecho, qué tipos existen y cuándo conviene usarlo en la industria petrolera y la construcción.
+Qué es un módulo habitacional, de qué está hecho y los 6 tipos que existen —dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios— con plantas y tabla comparativa.
 
 Un **módulo habitacional** es una unidad constructiva prefabricada, fabricada íntegramente en planta y transportada lista para usar hasta el lugar donde se necesita. En pocas palabras: es un espacio habitable —una oficina, un dormitorio, un comedor, un laboratorio— que se construye en un taller bajo condiciones controladas y llega al obrador o al yacimiento para **instalarse en cuestión de horas**.
 
 En zonas como **Vaca Muerta**, donde la actividad crece más rápido que la infraestructura disponible, los módulos habitacionales se volvieron la forma más ágil de resolver el alojamiento y los espacios de trabajo del personal **sin depender de obras tradicionales que tardan meses**.
 
 En esta guía explicamos qué es exactamente, de qué está hecho, qué tipos existen y cuándo conviene elegir uno.
+
+### Los 6 tipos de módulos habitacionales, en una revista
+
+Antes de entrar en detalle, hojeá nuestra revista: ahí mostramos los **módulos habitacionales que fabricamos** —dormitorios, Company Man, comedores, cocinas, laboratorios y sanitarios— con fotos reales de planta y obra. Pasá las páginas, hacé zoom o descargala.
+
+[Revista PDF: Revista Codelco — Módulos habitacionales y trailers](https://codelco.com.ar/revistas/codelco-revista-trailers.pdf)
 
 ### ¿Qué es un módulo habitacional y en qué se diferencia de una construcción tradicional?
 
@@ -94,6 +100,10 @@ No todos los módulos son iguales: se diseñan según la función que van a cump
 - **Oficinas y sanitarios:** espacios administrativos y de servicio.
 
 - **Viviendas en seco:** soluciones habitacionales con terminación residencial, tanto para familias como para uso corporativo.
+
+[Imagen: Plantas de los seis tipos de módulos habitacionales Codelco de 6,00 × 2,60 m: dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios con vestuario]
+
+[Imagen: Tabla comparativa de tipos de módulos habitacionales: uso principal, ocupación típica, servicios incluidos y con qué se combina cada uno]
 
 [Imagen: Módulo habitacional fabricado por Codelco para el Área de Control Ambiental del Gobierno de la Provincia del Neuquén]
 [Imagen: Interior de un módulo habitacional de doble piso con entrepiso, dormitorio y ventanal completo]
