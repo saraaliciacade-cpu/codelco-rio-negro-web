@@ -307,14 +307,35 @@
     </image:image>
   </url>
   <url>
+    <loc>https://codelco.com.ar/novedades/tipos-de-modulos-habitacionales</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <image:image>
+      <image:loc>https://codelco.com.ar/__l5e/assets-v1/9a19ff12-c9c8-4c36-9145-09e94b496c5b/tipos-de-modulos-habitacionales-portada.jpg</image:loc>
+      <image:title>Tipos de módulos habitacionales: ¿cuál es el ideal para tu proyecto?</image:title>
+      <image:caption>Dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios: qué resuelve cada tipo de módulo habitacional, qué incluye y cuál conviene según el proyecto.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/__l5e/assets-v1/ac768f46-6463-4a5d-a2bf-76b991ae9e92/modulo-habitacional-tipos-plantas.jpg</image:loc>
+      <image:title>Los seis tipos más habituales, todos sobre el mismo módulo de 6,00 × 2,60 m y dibujados a la misma escala.</image:title>
+      <image:caption>Plantas comparadas de seis tipos de módulo habitacional: dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://codelco.com.ar/__l5e/assets-v1/ab3cd877-acc1-4f44-8d63-37f1a3cf8428/modulo-habitacional-tabla-comparativa-tipos.jpg</image:loc>
+      <image:title>Cuadro de selección: uso principal, ocupación típica, servicios y con qué otro módulo se combina cada tipo.</image:title>
+      <image:caption>Tabla comparativa de tipos de módulos habitacionales por uso, ocupación, servicios incluidos y combinaciones</image:caption>
+    </image:image>
+  </url>
+  <url>
     <loc>https://codelco.com.ar/novedades/que-es-un-modulo-habitacional</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <image:image>
-      <image:loc>https://codelco.com.ar/__l5e/assets-v1/9a19ff12-c9c8-4c36-9145-09e94b496c5b/tipos-de-modulos-habitacionales-portada.jpg</image:loc>
+      <image:loc>https://codelco.com.ar/images/noticias/que-es-un-modulo-habitacional/que-es-un-modulo-habitacional-portada.jpg</image:loc>
       <image:title>¿Qué es un módulo habitacional? Guía completa para la industria</image:title>
-      <image:caption>Qué es un módulo habitacional, de qué está hecho y los 6 tipos que existen —dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios— con plantas y tabla comparativa.</image:caption>
+      <image:caption>Qué es un módulo habitacional, de qué está hecho, qué tipos existen y cuándo conviene usarlo en la industria petrolera y la construcción.</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://codelco.com.ar/images/noticias/que-es-un-modulo-habitacional/modulo-habitacional-plazos-vs-obra-tradicional.webp</image:loc>
@@ -325,16 +346,6 @@
       <image:loc>https://codelco.com.ar/images/noticias/que-es-un-modulo-habitacional/modulo-habitacional-corte-constructivo.webp</image:loc>
       <image:title>Anatomía de un módulo habitacional Codelco: estructura autoportante, instalaciones incorporadas, paneles con aislación termo-acústica y cubierta.</image:title>
       <image:caption>Corte constructivo de un módulo habitacional: estructura metálica autoportante, instalaciones, paneles de cerramiento con aislación termo-acústica y cubierta</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://codelco.com.ar/__l5e/assets-v1/ac768f46-6463-4a5d-a2bf-76b991ae9e92/modulo-habitacional-tipos-plantas.jpg</image:loc>
-      <image:title>Seis módulos, seis funciones: plantas orientativas de cada tipo en un módulo de 6,00 × 2,60 m (15,6 m²).</image:title>
-      <image:caption>Plantas de los seis tipos de módulos habitacionales Codelco de 6,00 × 2,60 m: dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios con vestuario</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://codelco.com.ar/__l5e/assets-v1/ab3cd877-acc1-4f44-8d63-37f1a3cf8428/modulo-habitacional-tabla-comparativa-tipos.jpg</image:loc>
-      <image:title>Qué módulo conviene según el proyecto: uso, ocupación, servicios y combinaciones de cada tipo.</image:title>
-      <image:caption>Tabla comparativa de tipos de módulos habitacionales: uso principal, ocupación típica, servicios incluidos y con qué se combina cada uno</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://codelco.com.ar/images/noticias/que-es-un-modulo-habitacional/modulo-habitacional-control-ambiental-neuquen.jpg</image:loc>

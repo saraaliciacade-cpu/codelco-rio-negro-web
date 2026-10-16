@@ -5,8 +5,17 @@
     <link>https://codelco.com.ar/novedades</link>
     <description>Novedades, proyectos y actualidad de Codelco S.A. — módulos habitacionales, metalúrgica, rental y grupos electrógenos en Vaca Muerta.</description>
     <language>es-AR</language>
-    <lastBuildDate>Fri, 16 Oct 2026 01:16:41 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 16 Oct 2026 04:05:15 GMT</lastBuildDate>
     <atom:link href="https://codelco.com.ar/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tipos de módulos habitacionales: ¿cuál es el ideal para tu proyecto?</title>
+      <link>https://codelco.com.ar/novedades/tipos-de-modulos-habitacionales</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/tipos-de-modulos-habitacionales</guid>
+      <pubDate>Thu, 15 Oct 2026 12:00:00 GMT</pubDate>
+      <category>Planta</category>
+      <description>Dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios: qué resuelve cada tipo de módulo habitacional, qué incluye y cuál conviene según el proyecto.</description>
+      <enclosure url="https://codelco.com.ar/__l5e/assets-v1/9a19ff12-c9c8-4c36-9145-09e94b496c5b/tipos-de-modulos-habitacionales-portada.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Nueva revista: módulos habitacionales y trailers para tu operación</title>
       <link>https://codelco.com.ar/novedades/revista-codelco-modulos-habitacionales-trailers</link>
@@ -22,8 +31,8 @@
       <guid isPermaLink="true">https://codelco.com.ar/novedades/que-es-un-modulo-habitacional</guid>
       <pubDate>Thu, 20 Aug 2026 12:00:00 GMT</pubDate>
       <category>Planta</category>
-      <description>Qué es un módulo habitacional, de qué está hecho y los 6 tipos que existen —dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios— con plantas y tabla comparativa.</description>
-      <enclosure url="https://codelco.com.ar/__l5e/assets-v1/9a19ff12-c9c8-4c36-9145-09e94b496c5b/tipos-de-modulos-habitacionales-portada.jpg" type="image/jpeg" />
+      <description>Qué es un módulo habitacional, de qué está hecho, qué tipos existen y cuándo conviene usarlo en la industria petrolera y la construcción.</description>
+      <enclosure url="https://codelco.com.ar/images/noticias/que-es-un-modulo-habitacional/que-es-un-modulo-habitacional-portada.jpg" type="image/jpeg" />
     </item>
     <item>
       <title>Trailer habitacional autónomo para operaciones de campo</title>
