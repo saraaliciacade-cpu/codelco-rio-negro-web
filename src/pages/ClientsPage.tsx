@@ -55,12 +55,18 @@ const ClientsPage = () => {
       )}
 
       <Helmet>
-        <title>+30 empresas del sector petrolero confían en Codelco S.A.</title>
-        <meta name="description" content="Operadoras, contratistas y empresas de servicios de Vaca Muerta y la Patagonia trabajan con Codelco S.A. en fabricación, metalúrgica, rental y grupos electrógenos." />
+        <title>Clientes: +30 Empresas Petroleras | Codelco S.A - Servicios Industriales</title>
+        <meta name="description" content="Operadoras y contratistas de Vaca Muerta confían en Codelco S.A.: módulos habitacionales, metalúrgica, rental de camionetas y grupos electrógenos." />
         <link rel="canonical" href="https://codelco.com.ar/clientes" />
-        <meta property="og:title" content="+30 empresas del sector petrolero confían en Codelco S.A." />
-        <meta property="og:description" content="Conocé a los clientes que eligen a Codelco S.A. en la industria petrolera de Vaca Muerta y la Patagonia." />
+        <meta property="og:title" content="Clientes: +30 Empresas Petroleras | Codelco S.A - Servicios Industriales" />
+        <meta property="og:description" content="Operadoras y contratistas de Vaca Muerta confían en Codelco S.A.: módulos habitacionales, metalúrgica, rental de camionetas y grupos electrógenos." />
         <meta property="og:url" content="https://codelco.com.ar/clientes" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://codelco.com.ar/og/clientes.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Clientes: +30 Empresas Petroleras | Codelco S.A - Servicios Industriales" />
+        <meta name="twitter:description" content="Operadoras y contratistas de Vaca Muerta confían en Codelco S.A.: módulos habitacionales, metalúrgica, rental de camionetas y grupos electrógenos." />
+        <meta name="twitter:image" content="https://codelco.com.ar/og/clientes.jpg" />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",

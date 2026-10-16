@@ -254,10 +254,10 @@ const NewsDetailPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title={item.seoTitle ?? `${item.title} | Novedades Codelco S.A.`}
+        title={`${item.title} | Codelco S.A - Servicios Industriales`}
         description={metaDescription}
         path={`/novedades/${item.slug}`}
-        image={item.image?.startsWith('http') ? item.image : undefined}
+        image={item.image || undefined}
         type="article"
         noindex={isDraft}
         nofollow={isDraft}

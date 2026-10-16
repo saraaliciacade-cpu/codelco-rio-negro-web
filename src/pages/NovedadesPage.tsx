@@ -58,10 +58,11 @@ const NovedadesPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title="Novedades y Proyectos Recientes | Codelco S.A."
-        description="Últimas novedades de Codelco S.A.: nuevos proyectos, incorporaciones a la flota de rental, obras entregadas y actualidad del sector energético en Vaca Muerta."
+        title="Novedades y Proyectos | Codelco S.A - Servicios Industriales"
+        description="Novedades de Codelco S.A.: módulos habitacionales entregados, nueva flota de rental, campamentos llave en mano y proyectos en Vaca Muerta."
         path="/novedades"
         keywords="novedades Codelco, proyectos Vaca Muerta, flota rental, obras petroleras"
+        image="/og/novedades.jpg"
       />
       <Helmet>
         <link

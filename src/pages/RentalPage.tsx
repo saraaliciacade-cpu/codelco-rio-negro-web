@@ -132,10 +132,11 @@ const RentalPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title="Rental de Vehículos, Trailers y Torres de Iluminación LED | Codelco S.A."
-        description="Alquiler de flota Toyota Hilux y VW Amarok, trailers rodantes, torres de iluminación LED y equipos con mantenimiento y gestión incluidos en Vaca Muerta."
+        title="Alquiler de Camionetas y Torres LED | Codelco S.A - Servicios Industriales"
+        description="Alquiler de camionetas Hilux y Amarok, trailers habitacionales y torres de iluminación LED en Neuquén y Vaca Muerta, con mantenimiento incluido."
         path="/rental"
         keywords="rental Vaca Muerta, alquiler Hilux, alquiler Amarok, trailers rodantes, torres de iluminación LED, Codelco"
+        image="/og/rental.jpg"
       />
       <Header />
 

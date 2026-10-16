@@ -102,10 +102,11 @@ const MetalurgicaPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title="Metalúrgica Industrial: Tanques, Piletas y Estructuras | Codelco S.A."
-        description="Taller metalúrgico especializado en tanques, piletas, estructuras metálicas y equipos a medida para la industria petrolera y de servicios en Vaca Muerta."
+        title="Metalúrgica: Tanques y Estructuras | Codelco S.A - Servicios Industriales"
+        description="Metalúrgica industrial en Neuquén y Río Negro: tanques API, piletas de acumulación, choke manifolds y estructuras metálicas a medida para Vaca Muerta."
         path="/metalurgica"
         keywords="metalúrgica industrial, tanques, piletas, estructuras metálicas, Vaca Muerta, Codelco"
+        image="/og/metalurgica.jpg"
       />
       <Header />
 
