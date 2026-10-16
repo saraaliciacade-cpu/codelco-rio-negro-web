@@ -1,27 +1,27 @@
 [
   {
-    "id": 11,
-    "slug": "que-es-un-modulo-habitacional",
-    "title": "¿Qué es un módulo habitacional? Guía completa para la industria",
-    "seo_title": "Tipos de Módulos Habitacionales: Qué Son y Cuál Elegir",
+    "id": 13,
+    "slug": "tipos-de-modulos-habitacionales",
+    "title": "Tipos de módulos habitacionales: ¿cuál es el ideal para tu proyecto?",
+    "seo_title": "Tipos de módulos habitacionales: ¿cuál es el ideal para tu proyecto?",
     "category": "Planta",
-    "date_label": "20/8/2026",
-    "date_iso": "2026-08-20",
-    "summary": "Qué es un módulo habitacional, de qué está hecho y los 6 tipos que existen —dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios— con plantas y tabla comparativa.",
-    "meta_description": "Tipos de módulos habitacionales: dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios. Plantas, tabla comparativa y precios a medida. Fábrica en Cipolletti.",
+    "date_label": "15 de octubre de 2026",
+    "date_iso": "2026-10-15",
+    "summary": "Dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios: qué resuelve cada tipo de módulo habitacional, qué incluye y cuál conviene según el proyecto.",
+    "meta_description": "Los tipos de módulos habitacionales que se usan en la industria: dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios. Qué incluye cada uno y cómo elegir. Guía de Codelco.",
     "image": "/__l5e/assets-v1/9a19ff12-c9c8-4c36-9145-09e94b496c5b/tipos-de-modulos-habitacionales-portada.jpg",
-    "image_position": "center",
+    "image_position": null,
     "body": [
       {
-        "html": "Un <strong>módulo habitacional</strong> es una unidad constructiva prefabricada, fabricada íntegramente en planta y transportada lista para usar hasta el lugar donde se necesita. En pocas palabras: es un espacio habitable —una oficina, un dormitorio, un comedor, un laboratorio— que se construye en un taller bajo condiciones controladas y llega al obrador o al yacimiento para <strong>instalarse en cuestión de horas</strong>.",
+        "html": "Cuando alguien pide «un módulo habitacional», casi nunca está pidiendo una sola cosa. Un yacimiento que arranca necesita dormir a la cuadrilla, darle de comer, tener al supervisor con una oficina y resolver los sanitarios. Cada una de esas funciones es <strong>un tipo de módulo distinto</strong>, con equipamiento, instalaciones y hasta exigencias legales propias.",
         "type": "html"
       },
       {
-        "html": "En zonas como <strong>Vaca Muerta</strong>, donde la actividad crece más rápido que la infraestructura disponible, los módulos habitacionales se volvieron la forma más ágil de resolver el alojamiento y los espacios de trabajo del personal <strong>sin depender de obras tradicionales que tardan meses</strong>.",
+        "html": "La buena noticia es que todos parten de la misma base constructiva: <a href=\"/novedades/que-es-un-modulo-habitacional\">la unidad prefabricada que explicamos en esta guía</a>, de <strong>6,00 × 2,60 metros</strong>, con estructura metálica autoportante y paneles con aislación termo-acústica. Lo que cambia es lo que pasa adentro.",
         "type": "html"
       },
       {
-        "html": "En esta guía explicamos qué es exactamente, de qué está hecho, qué tipos existen y cuándo conviene elegir uno.",
+        "html": "Acá los vemos uno por uno, con la planta de cada uno a la misma escala, y cerramos con una tabla comparativa para decidir rápido.",
         "type": "html"
       },
       {
@@ -37,6 +37,167 @@
         "type": "flipbook",
         "title": "Revista Codelco — Módulos habitacionales y trailers",
         "downloadable": true
+      },
+      {
+        "text": "Módulos residenciales: dormitorios y viviendas en seco",
+        "type": "heading"
+      },
+      {
+        "html": "Son los que le dan nombre a la categoría. Un <strong>módulo dormitorio</strong> aloja al personal en yacimiento u obra, y no es un espacio librado al criterio de cada proveedor: el <strong>Decreto 911/96</strong>, que reglamenta la Ley 19.587 de Higiene y Seguridad para la industria de la construcción, fija el piso mínimo.",
+        "type": "html"
+      },
+      {
+        "html": "<ul><li>Máximo <strong>dos trabajadores por unidad</strong>.</li><li>Altura mínima de <strong>2,60 m</strong>.</li><li>Superficie mínima de <strong>6 m² para dormitorio individual</strong> y <strong>9 m² para dormitorio doble</strong>.</li><li>Ventilación con <strong>cuatro renovaciones de aire por hora</strong> y superficie de ventilación equivalente a 1/8 de la del dormitorio.</li></ul>",
+        "type": "html"
+      },
+      {
+        "html": "La misma norma aclara algo que conviene tener presente al comparar presupuestos: los dormitorios <strong>pueden ser modulares o mampuestos</strong>. Es decir, el módulo prefabricado está expresamente contemplado, siempre que cumpla esas condiciones.",
+        "type": "html"
+      },
+      {
+        "html": "En el otro extremo del abanico residencial están las <strong>viviendas en seco</strong>: la misma lógica de fabricación en planta, pero con terminación de nivel residencial, tanto para uso familiar como corporativo.",
+        "type": "html"
+      },
+      {
+        "text": "Módulos industriales y petroleros: Company Man y laboratorio",
+        "type": "heading"
+      },
+      {
+        "html": "El <strong>módulo Company Man</strong> es el puesto de mando en el yacimiento. Ahí trabaja el responsable de la operación, y por eso se resuelve distinto: escritorio, un sector de reuniones, buena climatización y <strong>baño privado dentro de la misma unidad</strong>, para que la persona que coordina el pozo no dependa del sector común.",
+        "type": "html"
+      },
+      {
+        "html": "El <strong>módulo laboratorio</strong> resuelve el control de procesos y los análisis en el sitio de trabajo, sin tener que mandar muestras a cientos de kilómetros. Lleva mesada continua, <strong>campana de extracción con evacuación al exterior</strong>, guardado de reactivos bajo llave y tomas específicas para los equipos.",
+        "type": "html"
+      },
+      {
+        "alt": "Plantas comparadas de seis tipos de módulo habitacional: dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios",
+        "src": "/__l5e/assets-v1/ac768f46-6463-4a5d-a2bf-76b991ae9e92/modulo-habitacional-tipos-plantas.jpg",
+        "type": "image",
+        "width": 1920,
+        "height": 1764,
+        "caption": "Los seis tipos más habituales, todos sobre el mismo módulo de 6,00 × 2,60 m y dibujados a la misma escala."
+      },
+      {
+        "text": "Módulos sanitarios: lo que la norma exige, no lo que parece razonable",
+        "type": "heading"
+      },
+      {
+        "html": "Este es el tipo de módulo donde más presupuestos se caen a mitad de obra, porque se dimensiona «a ojo». El <strong>artículo 24 del Decreto 911/96</strong> es concreto: <strong>cada 15 trabajadores</strong> hacen falta <strong>1 inodoro, 1 mingitorio, 2 lavabos y 5 duchas con agua fría y caliente</strong>.",
+        "type": "html"
+      },
+      {
+        "html": "Además, el artículo 23 obliga a que <strong>todos</strong> los ámbitos de trabajo —frentes de obra, talleres, oficinas y campamentos— tengan servicios sanitarios adecuados e <strong>independientes por sexo</strong>. Y los artículos 28 y 29 suman los vestuarios, con <strong>armario individual incombustible para cada trabajador</strong>.",
+        "type": "html"
+      },
+      {
+        "html": "Traducido a decisiones: el módulo sanitario no se elige por metros cuadrados, se calcula por dotación. Si el conjunto crece, crece el módulo sanitario.",
+        "type": "html"
+      },
+      {
+        "text": "Comedores, cocinas y oficinas",
+        "type": "heading"
+      },
+      {
+        "html": "El <strong>comedor</strong> y la <strong>cocina</strong> suelen pensarse como una sola cosa, pero funcionan mejor como dos módulos que se acoplan: uno con mesas y bancos fijos para el turno completo, otro con mesadas de acero, bachas, anafe y horno, campana y guardado en frío. El artículo 30 del Decreto 911/96 pide un local para comer con mesas y bancos <strong>acordes al total de personal por turno</strong>.",
+        "type": "html"
+      },
+      {
+        "html": "Las <strong>oficinas modulares</strong>, por su parte, son la versión administrativa del Company Man: puestos de trabajo, sala de reuniones y archivo, con la conectividad y la climatización resueltas de fábrica.",
+        "type": "html"
+      },
+      {
+        "html": "Un detalle que aparece poco en los pliegos y sí en el <strong>Convenio Colectivo 644/12 de Petroleros</strong>: el artículo 72 obliga a las empresas a <strong>lavar y reponer semanalmente la ropa de trabajo y la ropa de cama</strong> del personal afectado a permanencia en campamento. Eso implica prever un módulo de lavandería cuando la dotación lo justifica.",
+        "type": "html"
+      },
+      {
+        "text": "Tabla comparativa por tipo de módulo",
+        "type": "heading"
+      },
+      {
+        "html": "Este cuadro resume lo anterior para decidir de un vistazo:",
+        "type": "html"
+      },
+      {
+        "alt": "Tabla comparativa de tipos de módulos habitacionales por uso, ocupación, servicios incluidos y combinaciones",
+        "src": "/__l5e/assets-v1/ab3cd877-acc1-4f44-8d63-37f1a3cf8428/modulo-habitacional-tabla-comparativa-tipos.jpg",
+        "type": "image",
+        "width": 1920,
+        "height": 1392,
+        "caption": "Cuadro de selección: uso principal, ocupación típica, servicios y con qué otro módulo se combina cada tipo."
+      },
+      {
+        "text": "Cómo elegir sin equivocarse",
+        "type": "heading"
+      },
+      {
+        "html": "<ul><li><strong>Empezá por la función, no por el tamaño.</strong> Primero definí qué pasa adentro de cada unidad; la cantidad de módulos sale sola después.</li><li><strong>Contá la dotación real, incluyendo picos.</strong> Los sanitarios y el comedor se dimensionan por cantidad de personas por turno, no por metros.</li><li><strong>Si hay gente pernoctando, el conjunto es indivisible.</strong> Dormitorios sin sanitarios no cumplen: la norma los exige juntos.</li><li><strong>Pensá en la etapa siguiente.</strong> Un conjunto bien planteado se amplía sumando módulos; uno mal planteado hay que rehacerlo.</li></ul>",
+        "type": "html"
+      },
+      {
+        "text": "Preguntas frecuentes",
+        "type": "heading"
+      },
+      {
+        "html": "<strong>¿Cuántas personas pueden dormir en un módulo habitacional?</strong><br/>El Decreto 911/96 fija un máximo de dos trabajadores por dormitorio, con 9 m² de superficie mínima para el dormitorio doble y 2,60 m de altura. Un módulo puede contener uno o más dormitorios según su largo y su distribución interna.",
+        "type": "html"
+      },
+      {
+        "html": "<strong>¿Se pueden combinar tipos distintos de módulo?</strong><br/>Sí, y es lo habitual. Los conjuntos se arman uniendo módulos de funciones distintas: dormitorios con sanitarios, comedor con cocina, oficinas con Company Man. Todos comparten el mismo sistema constructivo, así que encastran entre sí.",
+        "type": "html"
+      },
+      {
+        "html": "<strong>¿Qué diferencia hay entre un módulo Company Man y una oficina modular?</strong><br/>El Company Man está pensado para una persona con responsabilidad operativa en yacimiento: suma baño privado y sector de reuniones en la misma unidad. La oficina modular es un espacio administrativo para varios puestos de trabajo.",
+        "type": "html"
+      },
+      {
+        "html": "<strong>¿Los módulos sanitarios necesitan conexión a red?</strong><br/>No necesariamente. Se pueden resolver con tanque de agua propio, bomba presurizadora y sistema de efluentes, que es lo habitual en yacimientos sin infraestructura. La configuración se define según el sitio.",
+        "type": "html"
+      },
+      {
+        "text": "¿Necesitás definir qué módulos lleva tu proyecto?",
+        "type": "heading"
+      },
+      {
+        "html": "En Codelco fabricamos los seis tipos en nuestra <a href=\"/fabrica\">planta de 3.500 m² en Cipolletti</a>, y también los alquilamos a través de <a href=\"/rental\">rental</a> cuando el proyecto es temporario. Trabajamos desde 2012 con más de 30 empresas del sector.",
+        "type": "html"
+      },
+      {
+        "html": "Contanos la dotación y el plazo de tu operación y <strong>te armamos la combinación de módulos que corresponde</strong>, con disponibilidad real, en menos de 24 horas.",
+        "type": "html"
+      }
+    ],
+    "cta_question": null,
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "created_at": "2026-10-14T16:22:48.884298+00:00",
+    "updated_at": "2026-10-16T01:48:02.650718+00:00"
+  },
+  {
+    "id": 11,
+    "slug": "que-es-un-modulo-habitacional",
+    "title": "¿Qué es un módulo habitacional? Guía completa para la industria",
+    "seo_title": "¿Qué es un módulo habitacional? Guía completa para la industria",
+    "category": "Planta",
+    "date_label": "20/8/2026",
+    "date_iso": "2026-08-20",
+    "summary": "Qué es un módulo habitacional, de qué está hecho, qué tipos existen y cuándo conviene usarlo en la industria petrolera y la construcción.",
+    "meta_description": "Qué es un módulo habitacional, de qué está hecho, qué tipos existen y cuándo conviene usarlo en la industria petrolera y la construcción. Guía técnica de Codelco.",
+    "image": "/images/noticias/que-es-un-modulo-habitacional/que-es-un-modulo-habitacional-portada.jpg",
+    "image_position": "center",
+    "body": [
+      {
+        "html": "Un <strong>módulo habitacional</strong> es una unidad constructiva prefabricada, fabricada íntegramente en planta y transportada lista para usar hasta el lugar donde se necesita. En pocas palabras: es un espacio habitable —una oficina, un dormitorio, un comedor, un laboratorio— que se construye en un taller bajo condiciones controladas y llega al obrador o al yacimiento para <strong>instalarse en cuestión de horas</strong>.",
+        "type": "html"
+      },
+      {
+        "html": "En zonas como <strong>Vaca Muerta</strong>, donde la actividad crece más rápido que la infraestructura disponible, los módulos habitacionales se volvieron la forma más ágil de resolver el alojamiento y los espacios de trabajo del personal <strong>sin depender de obras tradicionales que tardan meses</strong>.",
+        "type": "html"
+      },
+      {
+        "html": "En esta guía explicamos qué es exactamente, de qué está hecho, qué tipos existen y cuándo conviene elegir uno.",
+        "type": "html"
       },
       {
         "text": "¿Qué es un módulo habitacional y en qué se diferencia de una construcción tradicional?",
@@ -97,22 +258,6 @@
       {
         "html": "<ul><li><strong>Módulos habitacionales (dormitorios):</strong> para el descanso del personal en yacimientos y obras, individuales o compartidos.</li><li><strong>Módulos Company Man:</strong> oficinas de supervisión en yacimiento, pensadas para el responsable de la operación.</li><li><strong>Comedores y cocinas:</strong> unidades equipadas para la alimentación del personal en campo.</li><li><strong>Laboratorios:</strong> para el control de procesos y análisis en el sitio de trabajo.</li><li><strong>Oficinas y sanitarios:</strong> espacios administrativos y de servicio.</li><li><strong>Viviendas en seco:</strong> soluciones habitacionales con terminación residencial, tanto para familias como para uso corporativo.</li></ul>",
         "type": "html"
-      },
-      {
-        "alt": "Plantas de los seis tipos de módulos habitacionales Codelco de 6,00 × 2,60 m: dormitorio, Company Man, comedor, cocina, laboratorio y sanitarios con vestuario",
-        "src": "/__l5e/assets-v1/ac768f46-6463-4a5d-a2bf-76b991ae9e92/modulo-habitacional-tipos-plantas.jpg",
-        "type": "image",
-        "width": 1920,
-        "height": 1764,
-        "caption": "Seis módulos, seis funciones: plantas orientativas de cada tipo en un módulo de 6,00 × 2,60 m (15,6 m²)."
-      },
-      {
-        "alt": "Tabla comparativa de tipos de módulos habitacionales: uso principal, ocupación típica, servicios incluidos y con qué se combina cada uno",
-        "src": "/__l5e/assets-v1/ab3cd877-acc1-4f44-8d63-37f1a3cf8428/modulo-habitacional-tabla-comparativa-tipos.jpg",
-        "type": "image",
-        "width": 1920,
-        "height": 1392,
-        "caption": "Qué módulo conviene según el proyecto: uso, ocupación, servicios y combinaciones de cada tipo."
       },
       {
         "type": "imageGrid",
@@ -215,7 +360,7 @@
     "source_label": null,
     "status": "published",
     "created_at": "2026-08-19T05:39:27.842976+00:00",
-    "updated_at": "2026-10-16T01:14:28.014516+00:00"
+    "updated_at": "2026-10-16T01:37:00.418091+00:00"
   },
   {
     "id": 10,
