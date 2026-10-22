@@ -2,20 +2,20 @@ import { describe, expect, test } from 'bun:test';
 import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
-import { archivedNews, archivedNewsRows } from './archivedNews';
-import { rowToNewsItem, type NewsRow } from './newsRow';
-import { mergeNewsBySlug, sortNewsItems } from './newsSources';
+import { archivedNews, archivedNewsRows } from '../src/data/archivedNews';
+import { rowToNewsItem, type NewsRow } from '../src/data/newsRow';
+import { mergeNewsBySlug, sortNewsItems } from '../src/data/newsSources';
 
 const slug = 'vaca-muerta-demanda-infraestructura-habitacional';
 const pilot = archivedNews[0];
 const snapshot: NewsRow[] = JSON.parse(readFileSync(resolve('src/data/news.remote.json'), 'utf8'));
 
 describe('reversible one-article archive', () => {
-  test('keeps every original field, null, timestamp and body value from the snapshot', () => {
+  test('keeps historical fields and explicit null author added since the snapshot', () => {
     const original = snapshot.find((row) => row.slug === slug);
     expect(original).toBeDefined();
     expect(archivedNewsRows).toHaveLength(1);
-    expect(archivedNewsRows[0]).toEqual(original);
+    expect(archivedNewsRows[0]).toEqual({ ...original, author: original?.author ?? null });
     expect(archivedNewsRows[0].author).toBeNull();
     expect(archivedNewsRows[0].date_iso).toBe('2025-11-01');
   });

@@ -8,7 +8,7 @@
 
 ## Validation and rollback
 
-Run `bun test src/data/newsSources.test.ts`. Preview checks must compare the normal page with a browser-only simulated response omitting ID 8, including body, metadata, image, list deduplication and another live article. The simulation must never modify Supabase.
+Run `bun test scripts/newsSources.test.ts`. Preview checks must compare the normal page with a browser-only simulated response omitting ID 8, including body, metadata, image, list deduplication and another live article. The simulation must never modify Supabase.
 
 Rollback: remove the pilot import/registration from `src/data/archivedNews.ts` (retain the JSON for audit). While the original remains published, live behavior is unchanged. Remove the integration files only if reverting the entire feature.
 
