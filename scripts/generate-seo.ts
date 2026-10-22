@@ -6,6 +6,8 @@ import { writeFileSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { newsData as allNews, isPublished, type NewsItem } from '../src/data/news';
 import { rowToNewsItem, type NewsRow } from '../src/data/newsRow';
+import { archivedNews } from '../src/data/archivedNews';
+import { mergeNewsBySlug, sortNewsItems } from '../src/data/newsSources';
 import { allClients } from '../src/data/clients';
 
 function loadRemoteNews(): NewsItem[] {
@@ -21,16 +23,8 @@ function loadRemoteNews(): NewsItem[] {
   }
 }
 
-function mergeBySlug(...lists: NewsItem[][]): NewsItem[] {
-  const bySlug = new Map<string, NewsItem>();
-  for (const list of lists) {
-    for (const item of list) if (!bySlug.has(item.slug)) bySlug.set(item.slug, item);
-  }
-  return [...bySlug.values()];
-}
-
 // Remote (panel-created) articles win over the bundled copy.
-const newsData: NewsItem[] = mergeBySlug(loadRemoteNews(), allNews.filter(isPublished));
+const newsData: NewsItem[] = mergeNewsBySlug(loadRemoteNews(), archivedNews, allNews.filter(isPublished));
 
 const BASE_URL = 'https://codelco.com.ar';
 
@@ -204,9 +198,7 @@ console.log(`sitemap.xml written (${allEntries.length} entries, ${totalImages} i
 
 // -------- RSS --------
 
-const sortedNews = [...newsData].sort(
-  (a, b) => newsDate(b).getTime() - newsDate(a).getTime(),
-);
+const sortedNews = sortNewsItems(newsData);
 
 const buildDate = new Date().toUTCString();
 
