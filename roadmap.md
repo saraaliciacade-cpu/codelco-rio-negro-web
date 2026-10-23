@@ -1,7 +1,7 @@
 # Tasks
-- [ ] Create the mobile workshop project article with the supplied photos, exact search/share metadata, author and latest-news date.
-- [ ] Add the project photos and news links to Metalúrgica and its mobile plants service preview.
-- [ ] Verify article, latest-news placement, metadata, gallery links and media without publishing the site.
+- [x] Create the mobile workshop project article with the supplied photos, exact search/share metadata, author and latest-news date.
+- [x] Add the project photos and news links to Metalúrgica and its mobile plants service preview.
+- [x] Verify article, latest-news placement, metadata, gallery links and media without publishing the site. Local browser checks fetched CDN media through the public domain and bypassed a stale SEO transform; 3 workshop tests passed. An existing archive test expects a live row absent from the current snapshot; unchanged.
 - [x] Copy the oldest published Supabase news row faithfully into a versioned local archive, without database writes.
 - [x] Integrate archive fallback into public news and SEO with slug deduplication and reversible precedence.
 - [x] Verify exact row equality, media, preview with/without the original row, and other news; document rollback and deferred removal.
