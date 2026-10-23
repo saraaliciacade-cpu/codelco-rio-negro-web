@@ -8,12 +8,15 @@ import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 import HeroImageCarousel from '@/components/HeroImageCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Button } from '@/components/ui/button';
+import { mobileWorkshopImages } from '@/data/mobileWorkshop';
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
 const BRAND_BLACK = '#1A1A1A';
 
 const metalurgicaImages: DivisionGalleryImage[] = [
+  ...mobileWorkshopImages,
   { src: '/metalurgica-01.jpg', name: 'Equipo metalúrgico fabricado en planta' },
   { src: '/metalurgica-02.jpg', name: 'Pileta de acumulación' },
   { src: '/metalurgica-03.jpg', name: 'Tanque API en proceso' },
@@ -176,6 +179,22 @@ const MetalurgicaPage = () => {
 
           <ul className="grid grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
             {specs.map((spec) => (
+              spec.es === 'Plantas móviles' ? (
+                <li key={spec.es} className="border border-border bg-card overflow-hidden group relative">
+                  <Button asChild variant="ghost" className="h-full w-full p-0 rounded-none whitespace-normal block text-left">
+                    <a href="#galeria-metalurgica">
+                      <div className="relative aspect-[4/3] overflow-hidden">
+                        <HeroImageCarousel images={mobileWorkshopImages.slice(0, 3).map((img) => ({ src: img.src, alt: img.name }))} />
+                        <span className="absolute top-3 right-3 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1">{language === 'es' ? 'NUEVAS' : 'NEW'}</span>
+                      </div>
+                      <span className="flex items-center justify-between gap-3 p-5 text-base lg:text-xl font-medium">
+                        <span className="flex items-center gap-3"><Truck className="h-5 w-5 text-primary" />{spec[language]}</span>
+                        <ArrowRight className="h-5 w-5 text-primary" />
+                      </span>
+                    </a>
+                  </Button>
+                </li>
+              ) : (
               <li key={spec.es} className="flex items-start lg:items-center gap-4 lg:gap-5 bg-white p-5 lg:p-6 border border-black/5">
                 <span
                   className="shrink-0 mt-0.5 lg:mt-0 flex items-center justify-center h-10 w-10 lg:h-14 lg:w-14 rounded-full"
@@ -186,13 +205,14 @@ const MetalurgicaPage = () => {
                 </span>
                 <span className="text-base lg:text-xl font-medium text-[#1A1A1A]">{spec[language]}</span>
               </li>
+              )
             ))}
           </ul>
         </div>
       </section>
 
       {/* Galería */}
-      <section className="py-20 lg:py-24 bg-white">
+      <section id="galeria-metalurgica" className="py-20 lg:py-24 bg-white scroll-mt-24">
         <div className="container mx-auto px-6 sm:px-10 lg:px-16">
           <div className="max-w-3xl mb-12">
             <div className="flex items-center gap-3 mb-5">

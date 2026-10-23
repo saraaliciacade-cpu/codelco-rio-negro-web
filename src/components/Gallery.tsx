@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { X, Play, Newspaper } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { mobileWorkshopImages } from '@/data/mobileWorkshop';
 
 
 const copy = {
@@ -97,6 +98,7 @@ const Gallery = () => {
 
   // Gallery images - manually uploaded photos
   const images = [
+  ...mobileWorkshopImages.map((img, index) => ({ id: 4001 + index, category: 'metalurgica', src: img.src, alt: img.name, isNew: true, newsHref: img.newsHref })),
   // NEWEST — Trailer habitacional autónomo (nota en Novedades)
   {
     id: 3001,

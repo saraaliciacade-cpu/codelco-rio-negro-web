@@ -16,7 +16,7 @@ const root = resolve(__dirname, '..');
 const outPath = resolve(root, 'src/data/news.remote.json');
 
 const NEWS_COLUMNS =
-  'id,slug,title,seo_title,category,date_label,date_iso,summary,meta_description,image,image_position,body,cta_question,source_url,source_label,status,created_at,updated_at';
+  'id,slug,title,seo_title,category,date_label,date_iso,summary,meta_description,image,image_position,body,cta_question,source_url,source_label,status,author,created_at,updated_at';
 
 function warn(message) {
   console.warn(`[sync-news] ${message} — se mantiene el snapshot actual.`);

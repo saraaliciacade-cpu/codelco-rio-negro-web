@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet-async';
 interface SEOProps {
   title: string;
   description: string;
+  shareTitle?: string;
+  shareDescription?: string;
   path: string;
   image?: string;
   type?: 'website' | 'article';
@@ -22,6 +24,8 @@ const DEFAULT_IMAGE =
 const SEO = ({
   title,
   description,
+  shareTitle,
+  shareDescription,
   path,
   image = DEFAULT_IMAGE,
   type = 'website',
@@ -56,16 +60,16 @@ const SEO = ({
       {alternatePath && <link rel="alternate" hrefLang="x-default" href={`${SITE_URL}/`} />}
 
 
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={shareTitle ?? title} />
+      <meta property="og:description" content={shareDescription ?? description} />
       <meta property="og:type" content={type} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={imageUrl} />
       <meta property="og:locale" content={language === 'en' ? 'en_US' : 'es_AR'} />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:title" content={shareTitle ?? title} />
+      <meta name="twitter:description" content={shareDescription ?? description} />
       <meta name="twitter:image" content={imageUrl} />
 
       {schemas.map((schema, i) => (
