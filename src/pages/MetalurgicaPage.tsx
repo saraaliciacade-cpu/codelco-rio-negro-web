@@ -8,8 +8,8 @@ import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 import HeroImageCarousel from '@/components/HeroImageCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
 import { mobileWorkshopImages } from '@/data/mobileWorkshop';
+
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
