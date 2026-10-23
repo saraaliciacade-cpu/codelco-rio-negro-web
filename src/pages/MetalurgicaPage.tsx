@@ -195,7 +195,7 @@ const MetalurgicaPage = () => {
                         style={{ backgroundColor: BRAND_ORANGE }}
                         aria-hidden="true"
                       >
-                        <Truck className="h-5 w-5 lg:h-7 lg:w-7 text-white" strokeWidth={2} />
+                        <Truck className="!h-5 !w-5 lg:!h-7 lg:!w-7 text-white" strokeWidth={2} />
                       </span>
                       <span className="text-base lg:text-xl font-medium text-[#1A1A1A]">{spec[language]}</span>
                       <span className="shrink-0 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1">{language === 'es' ? 'NUEVAS' : 'NEW'}</span>
