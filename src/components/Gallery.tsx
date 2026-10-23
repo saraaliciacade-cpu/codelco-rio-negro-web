@@ -98,7 +98,7 @@ const Gallery = () => {
 
   // Gallery images - manually uploaded photos
   const images = [
-  ...mobileWorkshopImages.map((img, index) => ({ id: 4001 + index, category: 'metalurgica', src: img.src, alt: img.name, isNew: true, newsHref: img.newsHref })),
+  ...mobileWorkshopImages.map((img, index) => ({ id: 4001 + index, category: 'metalurgica', src: img.src, alt: img.name, isNew: true, newLabel: img.newLabel, newsHref: img.newsHref })),
   // NEWEST — Trailer habitacional autónomo (nota en Novedades)
   {
     id: 3001,
@@ -537,7 +537,7 @@ const Gallery = () => {
           {displayedImages.map(image => <button type="button" key={image.id} aria-label={image.alt} className="gallery-item group relative overflow-hidden bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer text-left p-0" onClick={() => setSelectedImage(image)}>
               {(image as any).isNew && (
                 <Badge className="absolute top-2 right-2 z-10 bg-primary text-white font-semibold px-2 py-1 text-xs shadow-lg">
-                  {c.nuevo}
+                  {language === 'es' && 'newLabel' in image ? image.newLabel : c.nuevo}
                 </Badge>
               )}
               <div className="aspect-square overflow-hidden relative">

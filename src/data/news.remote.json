@@ -1,5 +1,206 @@
 [
   {
+    "id": 14,
+    "slug": "taller-movil-mantenimiento-industrial",
+    "title": "Taller móvil industrial: una unidad equipada para mantenimiento y reparaciones en campo",
+    "seo_title": "Taller móvil industrial para mantenimiento en campo | Codelco",
+    "category": "Proyecto",
+    "date_label": "23 de octubre de 2026",
+    "date_iso": "2026-10-23",
+    "summary": "Un taller sobre ruedas: una solución equipada con torno mecánico, sistema de elevación de cargas y herramientas de trabajo para intervenir piezas y componentes industriales directamente en campo.",
+    "meta_description": "Conocé nuestro proyecto de taller móvil industrial, equipado con torno mecánico, malacate eléctrico y herramientas para mantenimiento y reparaciones en campo.",
+    "image": "/__l5e/assets-v1/81f90994-49bc-4316-9a0d-bb13f34b47d4/taller-movil-exterior.jpg",
+    "image_position": null,
+    "body": [
+      {
+        "text": "Un taller sobre ruedas: una solución equipada con torno mecánico, sistema de elevación de cargas y herramientas de trabajo para intervenir piezas y componentes industriales directamente en campo.",
+        "type": "p"
+      },
+      {
+        "text": "En la industria petrolera, minera y energética, no todas las reparaciones pueden esperar. Cuando un equipo necesita mantenimiento en un yacimiento o una operación alejada de los centros industriales, trasladar herramientas y capacidad de trabajo hasta el lugar puede marcar una diferencia importante.",
+        "type": "p"
+      },
+      {
+        "text": "Esta unidad de taller móvil industrial reúne equipamiento de mecanizado, sistemas de elevación y espacios de trabajo organizados dentro de una camioneta adaptada para tareas técnicas.",
+        "type": "p"
+      },
+      {
+        "text": "Su configuración permite acercar herramientas y equipos especializados a diferentes entornos operativos, ofreciendo una alternativa práctica para realizar determinados trabajos de mantenimiento y reparación de piezas en campo.",
+        "type": "p"
+      },
+      {
+        "alt": "Vista exterior de la unidad móvil en planta",
+        "src": "/__l5e/assets-v1/81f90994-49bc-4316-9a0d-bb13f34b47d4/taller-movil-exterior.jpg",
+        "type": "image",
+        "caption": "Vista exterior de la unidad móvil en planta"
+      },
+      {
+        "text": "Un torno mecánico para trabajos de precisión",
+        "type": "heading"
+      },
+      {
+        "text": "Uno de los equipos principales de esta unidad es un torno mecánico de banco DUCA, una herramienta utilizada para realizar operaciones de mecanizado sobre piezas y componentes metálicos.",
+        "type": "p"
+      },
+      {
+        "text": "Mediante el movimiento rotativo de la pieza y el uso de herramientas de corte, permite realizar trabajos de torneado, refrentado, ajustes de diámetros y mecanizado de componentes cilíndricos.",
+        "type": "p"
+      },
+      {
+        "text": "Su incorporación dentro de un taller móvil amplía las posibilidades de intervención técnica, ya que permite efectuar determinados ajustes y reparaciones directamente en el lugar de trabajo.",
+        "type": "p"
+      },
+      {
+        "text": "Para operaciones industriales ubicadas lejos de talleres convencionales, contar con este tipo de equipamiento puede contribuir a reducir traslados y optimizar los tiempos destinados al mantenimiento.",
+        "type": "p"
+      },
+      {
+        "type": "imageGrid",
+        "images": [
+          {
+            "alt": "Torno mecánico DUCA instalado en la unidad",
+            "src": "/__l5e/assets-v1/9c2b0923-ceb3-4b9c-aeb9-a7c7d12655d2/taller-movil-torno.jpg",
+            "caption": "Torno mecánico DUCA instalado en la unidad"
+          },
+          {
+            "alt": "Detalle del torno y sus mandos",
+            "src": "/__l5e/assets-v1/58ea3f04-f275-4262-9f7c-25ac63f43f83/taller-movil-torno-detalle.jpg",
+            "caption": "Detalle del torno y sus mandos"
+          }
+        ]
+      },
+      {
+        "text": "Un malacate eléctrico para manipular componentes pesados",
+        "type": "heading"
+      },
+      {
+        "text": "La unidad también incorpora un malacate eléctrico Wortec, instalado sobre una estructura metálica de soporte especialmente destinada a las maniobras de elevación.",
+        "type": "p"
+      },
+      {
+        "text": "Este equipo facilita el levantamiento y la manipulación controlada de componentes industriales, como válvulas y piezas metálicas que requieren asistencia mecánica debido a su peso.",
+        "type": "p"
+      },
+      {
+        "text": "El sistema permite complementar los trabajos de mecanizado y mantenimiento, favoreciendo la manipulación de cargas dentro de las capacidades nominales y condiciones de seguridad establecidas para el conjunto.",
+        "type": "p"
+      },
+      {
+        "text": "De esta manera, el taller móvil combina herramientas de precisión con equipamiento de elevación, integrando distintas funciones en un espacio de trabajo compacto.",
+        "type": "p"
+      },
+      {
+        "alt": "Malacate eléctrico Wortec sobre estructura metálica",
+        "src": "/__l5e/assets-v1/a5657f68-ec53-494a-bdbc-f002031e2e4a/taller-movil-malacate.jpg",
+        "type": "image",
+        "caption": "Malacate eléctrico Wortec sobre estructura metálica"
+      },
+      {
+        "text": "Un espacio de trabajo preparado para la operación",
+        "type": "heading"
+      },
+      {
+        "text": "Más allá de sus equipos principales, el interior de la camioneta presenta una distribución pensada para organizar herramientas, materiales y superficies de trabajo.",
+        "type": "p"
+      },
+      {
+        "html": "La unidad cuenta con:<ul><li>Mesadas y gabinetes metálicos: superficies resistentes y espacios de almacenamiento para organizar herramientas y componentes.</li><li>Instalación eléctrica: canalizaciones, tomacorrientes y tableros de distribución para el equipamiento instalado.</li><li>Iluminación LED: luminarias interiores que favorecen la visibilidad durante las tareas técnicas.</li><li>Protecciones industriales: revestimientos metálicos y superficies acondicionadas para el uso dentro de un entorno de trabajo.</li><li>Zona central de circulación: una distribución que permite acceder a las herramientas y desplazarse por el interior de la unidad.</li></ul>",
+        "type": "html"
+      },
+      {
+        "text": "Esta organización aprovecha el espacio disponible y reúne los elementos necesarios para desarrollar distintas tareas de mantenimiento industrial.",
+        "type": "p"
+      },
+      {
+        "text": "El interior cuenta con revestimiento interior en paredes y superficies acondicionadas para el trabajo técnico, junto con piso y frentes de gabinetes de chapa antiderrapante.",
+        "type": "p"
+      },
+      {
+        "type": "imageGrid",
+        "images": [
+          {
+            "alt": "Revestimiento interior y mobiliario técnico",
+            "src": "/__l5e/assets-v1/3b7f7690-bc41-4219-aee6-0ca95632a7da/taller-movil-revestimiento.jpg",
+            "caption": "Revestimiento interior y mobiliario técnico"
+          },
+          {
+            "alt": "Instalación eléctrica, gabinetes e iluminación interior",
+            "src": "/__l5e/assets-v1/91294ae6-55dc-4698-acad-3524e3fe8e9d/taller-movil-tablero.jpg",
+            "caption": "Instalación eléctrica, gabinetes e iluminación interior"
+          }
+        ]
+      },
+      {
+        "text": "Taller móvil para la industria petrolera y operaciones en Vaca Muerta",
+        "type": "heading"
+      },
+      {
+        "text": "En sectores como Oil & Gas, minería, energía y construcción, las operaciones suelen desarrollarse lejos de los centros urbanos y de los talleres especializados.",
+        "type": "p"
+      },
+      {
+        "text": "En regiones industriales como Vaca Muerta, contar con soluciones móviles permite acercar herramientas y equipamiento a las áreas donde se realizan tareas de mantenimiento, inspección y reparación.",
+        "type": "p"
+      },
+      {
+        "text": "Un taller móvil para la industria petrolera puede representar una alternativa para operaciones que necesitan trabajar sobre determinados componentes sin depender exclusivamente de su traslado a instalaciones fijas.",
+        "type": "p"
+      },
+      {
+        "text": "La combinación de un torno mecánico, un malacate eléctrico y mobiliario técnico permite integrar diferentes capacidades de trabajo dentro de una misma unidad.",
+        "type": "p"
+      },
+      {
+        "text": "Infraestructura y equipamiento para una industria que no puede esperar",
+        "type": "heading"
+      },
+      {
+        "text": "El desarrollo de soluciones industriales móviles responde a una necesidad concreta: disponer de herramientas y espacios funcionales donde la operación los requiere.",
+        "type": "p"
+      },
+      {
+        "text": "En Codelco, acompañamos las necesidades de la industria mediante soluciones de infraestructura, fabricación y equipamiento para proyectos industriales.",
+        "type": "p"
+      },
+      {
+        "text": "Desde nuestra división de Metalúrgica, trabajamos con equipos y estructuras destinadas a diferentes aplicaciones industriales, mientras continuamos compartiendo nuevos desarrollos en nuestra sección de Novedades y proyectos.",
+        "type": "p"
+      },
+      {
+        "text": "Esta unidad móvil refleja las posibilidades de integrar movilidad, mecanizado, elevación de cargas y organización del espacio en una solución orientada al trabajo en campo.",
+        "type": "p"
+      },
+      {
+        "text": "Porque cuando una operación necesita una solución, el equipamiento debe estar preparado para acompañarla.",
+        "type": "p"
+      },
+      {
+        "text": "¿Necesitás desarrollar o equipar una unidad móvil para tu operación?",
+        "type": "heading"
+      },
+      {
+        "text": "En Codelco trabajamos con soluciones de infraestructura y equipamiento para proyectos de Oil & Gas, minería, energía y construcción.",
+        "type": "p"
+      },
+      {
+        "text": "Conocé nuestras soluciones y contactanos para evaluar tu proyecto.",
+        "type": "p"
+      }
+    ],
+    "cta_question": "¿Necesitás desarrollar o equipar una unidad móvil para tu operación?",
+    "source_url": null,
+    "source_label": null,
+    "status": "published",
+    "author": {
+      "url": "https://organicdesign.com.ar/sobre-mi",
+      "name": "Ignacio Guerra",
+      "role": "Organic Design · Neuquén",
+      "image": "/images/noticias/ignacio-guerra-codelco-perfil.webp"
+    },
+    "created_at": "2026-10-23T19:08:16.081139+00:00",
+    "updated_at": "2026-10-23T19:08:16.081139+00:00"
+  },
+  {
     "id": 13,
     "slug": "tipos-de-modulos-habitacionales",
     "title": "Tipos de módulos habitacionales: ¿cuál es el ideal para tu proyecto?",
@@ -171,6 +372,12 @@
     "source_url": null,
     "source_label": null,
     "status": "published",
+    "author": {
+      "url": "https://organicdesign.com.ar/sobre-mi",
+      "name": "Ignacio Guerra",
+      "role": "Organic Design · Neuquén",
+      "image": "/images/noticias/ignacio-guerra-codelco-perfil.webp"
+    },
     "created_at": "2026-10-14T16:22:48.884298+00:00",
     "updated_at": "2026-10-16T04:07:13.295598+00:00"
   },
@@ -359,6 +566,7 @@
     "source_url": null,
     "source_label": null,
     "status": "published",
+    "author": null,
     "created_at": "2026-08-19T05:39:27.842976+00:00",
     "updated_at": "2026-10-16T01:37:00.418091+00:00"
   },
@@ -483,6 +691,7 @@
     "source_url": null,
     "source_label": null,
     "status": "published",
+    "author": null,
     "created_at": "2026-08-14T05:58:29.184648+00:00",
     "updated_at": "2026-08-14T05:58:29.184648+00:00"
   },
@@ -602,6 +811,7 @@
     "source_url": "https://www.rionegro.com.ar/economia/su-abuelo-llego-desde-espana-tras-la-primera-guerra-y-cuatro-generaciones-despues-sostienen-el-oficio-y-proveen-a-vaca-muerta/",
     "source_label": "Río Negro Económico",
     "status": "published",
+    "author": null,
     "created_at": "2026-08-14T05:58:29.184648+00:00",
     "updated_at": "2026-08-14T05:58:43.512046+00:00"
   },
@@ -626,6 +836,7 @@
     "source_url": null,
     "source_label": null,
     "status": "published",
+    "author": null,
     "created_at": "2026-08-14T05:58:29.184648+00:00",
     "updated_at": "2026-08-14T05:58:43.512046+00:00"
   },
@@ -650,6 +861,7 @@
     "source_url": null,
     "source_label": null,
     "status": "published",
+    "author": null,
     "created_at": "2026-08-14T05:58:29.184648+00:00",
     "updated_at": "2026-08-14T05:58:43.512046+00:00"
   },
@@ -674,6 +886,7 @@
     "source_url": null,
     "source_label": null,
     "status": "published",
+    "author": null,
     "created_at": "2026-08-14T05:58:29.184648+00:00",
     "updated_at": "2026-08-14T05:58:43.512046+00:00"
   },
@@ -698,6 +911,7 @@
     "source_url": null,
     "source_label": null,
     "status": "published",
+    "author": null,
     "created_at": "2026-08-14T05:58:29.184648+00:00",
     "updated_at": "2026-08-14T05:58:43.512046+00:00"
   },
@@ -722,6 +936,7 @@
     "source_url": null,
     "source_label": null,
     "status": "published",
+    "author": null,
     "created_at": "2026-08-14T05:58:29.184648+00:00",
     "updated_at": "2026-08-14T05:58:43.512046+00:00"
   },
@@ -746,6 +961,7 @@
     "source_url": null,
     "source_label": null,
     "status": "published",
+    "author": null,
     "created_at": "2026-08-14T05:58:29.184648+00:00",
     "updated_at": "2026-08-14T05:58:43.512046+00:00"
   },
@@ -770,6 +986,7 @@
     "source_url": null,
     "source_label": null,
     "status": "published",
+    "author": null,
     "created_at": "2026-08-14T05:58:29.184648+00:00",
     "updated_at": "2026-08-14T05:58:43.512046+00:00"
   }
