@@ -5,8 +5,17 @@
     <link>https://codelco.com.ar/novedades</link>
     <description>Novedades, proyectos y actualidad de Codelco S.A. — módulos habitacionales, metalúrgica, rental y grupos electrógenos en Vaca Muerta.</description>
     <language>es-AR</language>
-    <lastBuildDate>Fri, 23 Oct 2026 19:03:08 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 23 Oct 2026 19:16:57 GMT</lastBuildDate>
     <atom:link href="https://codelco.com.ar/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Taller móvil industrial: una unidad equipada para mantenimiento y reparaciones en campo</title>
+      <link>https://codelco.com.ar/novedades/taller-movil-mantenimiento-industrial</link>
+      <guid isPermaLink="true">https://codelco.com.ar/novedades/taller-movil-mantenimiento-industrial</guid>
+      <pubDate>Fri, 23 Oct 2026 12:00:00 GMT</pubDate>
+      <category>Proyecto</category>
+      <description>Un taller sobre ruedas: una solución equipada con torno mecánico, sistema de elevación de cargas y herramientas de trabajo para intervenir piezas y componentes industriales directamente en campo.</description>
+      <enclosure url="https://codelco.com.ar/__l5e/assets-v1/81f90994-49bc-4316-9a0d-bb13f34b47d4/taller-movil-exterior.jpg" type="image/jpeg" />
+    </item>
     <item>
       <title>Tipos de módulos habitacionales: ¿cuál es el ideal para tu proyecto?</title>
       <link>https://codelco.com.ar/novedades/tipos-de-modulos-habitacionales</link>
