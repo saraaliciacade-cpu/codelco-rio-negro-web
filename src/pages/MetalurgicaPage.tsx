@@ -8,8 +8,8 @@ import Footer from '@/components/Footer';
 import DivisionGallery, { DivisionGalleryImage } from '@/components/DivisionGallery';
 import HeroImageCarousel from '@/components/HeroImageCarousel';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Button } from '@/components/ui/button';
 import { mobileWorkshopImages } from '@/data/mobileWorkshop';
+
 
 const BRAND_ORANGE = '#E84E1B';
 const BRAND_CREAM = '#F5F3EF';
@@ -181,26 +181,25 @@ const MetalurgicaPage = () => {
             {specs.map((spec) => (
               spec.es === 'Plantas móviles' ? (
                 <li key={spec.es}>
-                  <Button asChild variant="ghost" className="h-full w-full p-0 rounded-none bg-white border border-black/5 hover:bg-white justify-start">
-                    <a
-                      href="#galeria-metalurgica"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        document.getElementById('galeria-metalurgica')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="flex items-center gap-4 lg:gap-5 p-5 lg:p-6"
+                  <a
+                    href="#galeria-metalurgica"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById('galeria-metalurgica')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="flex h-full w-full items-center justify-start gap-4 whitespace-nowrap bg-white p-5 transition-colors border border-black/5 lg:gap-5 lg:p-6"
+                  >
+                    <span
+                      className="shrink-0 flex items-center justify-center h-10 w-10 lg:h-14 lg:w-14 rounded-full"
+                      style={{ backgroundColor: BRAND_ORANGE }}
+                      aria-hidden="true"
                     >
-                      <span
-                        className="shrink-0 flex items-center justify-center h-10 w-10 lg:h-14 lg:w-14 rounded-full"
-                        style={{ backgroundColor: BRAND_ORANGE }}
-                        aria-hidden="true"
-                      >
-                        <Truck className="h-5 w-5 lg:h-7 lg:w-7 text-white" strokeWidth={2} />
-                      </span>
-                      <span className="text-base lg:text-xl font-medium text-[#1A1A1A]">{spec[language]}</span>
-                      <span className="shrink-0 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1">{language === 'es' ? 'NUEVAS' : 'NEW'}</span>
-                    </a>
-                  </Button>
+                      <Truck className="h-5 w-5 lg:h-7 lg:w-7 text-white" strokeWidth={2} />
+                    </span>
+                    <span className="text-base lg:text-xl font-medium text-[#1A1A1A]">{spec[language]}</span>
+                    <span className="shrink-0 bg-primary text-primary-foreground text-[10px] font-bold px-2 py-1">{language === 'es' ? 'NUEVAS' : 'NEW'}</span>
+                  </a>
+
                 </li>
               ) : (
               <li key={spec.es} className="flex items-start lg:items-center gap-4 lg:gap-5 bg-white p-5 lg:p-6 border border-black/5">
