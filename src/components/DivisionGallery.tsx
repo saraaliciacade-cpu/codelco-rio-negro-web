@@ -10,6 +10,7 @@ export interface DivisionGalleryImage {
   src: string;
   name: string;
   isNew?: boolean;
+  newLabel?: string;
   /** When set, a button linking to this article appears on hover. */
   newsHref?: string;
 }
@@ -126,7 +127,7 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
                       className="eyebrow absolute top-3 right-3 z-10 text-[10px] text-white px-2.5 py-1 rounded-sm shadow"
                       style={{ backgroundColor: BRAND_ORANGE }}
                     >
-                      {c.nuevo}
+                      {language === 'es' ? img.newLabel ?? c.nuevo : c.nuevo}
                     </span>
                   )}
                   <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
@@ -141,7 +142,7 @@ const DivisionGallery = ({ images }: DivisionGalleryProps) => {
                       <Link
                         to={img.newsHref}
                         className="absolute inset-x-0 bottom-0 z-10 flex items-center justify-center gap-2 text-white text-sm font-semibold py-2.5
-                          opacity-0 translate-y-full transition-all duration-300
+                          opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-full transition-all duration-300
                           group-hover:opacity-100 group-hover:translate-y-0 focus:opacity-100 focus:translate-y-0"
                         style={{ backgroundColor: BRAND_ORANGE }}
                       >

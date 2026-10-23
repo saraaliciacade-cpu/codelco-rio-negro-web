@@ -2,6 +2,7 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, ExternalLink, ZoomIn } from 'lucide-react';
 import { useState, useMemo } from 'react';
 import SEO from '@/components/SEO';
+import { mobileWorkshopSlug, mobileWorkshopShare } from '@/data/mobileWorkshop';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ImageLightbox from '@/components/ImageLightbox';
@@ -254,8 +255,10 @@ const NewsDetailPage = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO
-        title={`${item.title} | Codelco S.A - Servicios Industriales`}
+        title={item.slug === mobileWorkshopSlug ? item.seoTitle ?? item.title : `${item.title} | Codelco S.A - Servicios Industriales`}
         description={metaDescription}
+        shareTitle={item.slug === mobileWorkshopSlug ? mobileWorkshopShare.title : undefined}
+        shareDescription={item.slug === mobileWorkshopSlug ? mobileWorkshopShare.description : undefined}
         path={`/novedades/${item.slug}`}
         image={item.image || undefined}
         type="article"

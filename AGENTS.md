@@ -1,4 +1,5 @@
 ## News identity and ordering
+- Keep project photo collections and distinct share metadata in a shared typed data module; news content and author remain in the CMS so page/gallery media stay consistent.
 - Use article slugs for public list keys, latest-news badges, and related-item exclusion because code-only and database articles can share numeric IDs.
 - Sort public news by publication date descending, with deterministic tie breakers, so the most recent article is first regardless of its source.
 
